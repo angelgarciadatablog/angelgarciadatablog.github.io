@@ -37,8 +37,7 @@
         { "label": "Google Sheet", "url": "https://www.youtube.com/playlist?list=PLV4oS06_KpqY5xZ2gZ8u_79cmLrVUsGNe" },
         { "label": "Power Query", "url": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqawr6ifquiC0M_Hg2onwtJ5" },
         { "label": "Matemática/Negocios", "url": "https://www.youtube.com/playlist?list=PLV4oS06_KpqacM_CdWLJq4SttTNfszK0Q" },
-        { "label": "Terminal de Mac", "url": "#" },
-        { "label": "Terminal de Windows", "url": "#" },
+        { "label": "Consola de Mac", "url": "#" },
         { "label": "Programas con IA", "url": "#" }
       ]
     }
