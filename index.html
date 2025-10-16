@@ -20,36 +20,9 @@
   <!-- Nombre del autor de la web -->
   <meta name="author" content="Angel García">
 
-  <!-- ================== OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ================== -->
-  
-  <!-- Título que aparece cuando compartes tu web -->
-  <meta property="og:title" content="Angel García Data Blog">
-
-  <!-- Descripción del preview al compartir -->
-  <meta property="og:description" content="Tutoriales creados a partir de lo que aprendo día a día sobre SQL, Power BI, Python y más, aplicados al análisis de datos y programación.">
-
-  <!-- Tipo de recurso: "website" es lo normal, puede ser "article", "video", etc. -->
-  <meta property="og:type" content="website">
-
-  <!-- URL canónica que se mostrará en el preview -->
-  <meta property="og:url" content="https://www.angelgarciadatablog.com">
-
-  <!-- Imagen que aparece en el preview -->
-  <meta property="og:image" content="img/usmp_horizontal.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  
-
-  <!-- Tipografía: JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#000000">
 </head>
 <body>
   <header class="site-header">
@@ -66,18 +39,89 @@
     </div>
   </header>
 
-  <main class="site-main container">
-    <section class="hero">
-      <h1>Bienvenido a mi sitio personal</h1>
-      <p>
-        En angelgarciadatablog comparto mi camino en el mundo del análisis de datos, aprendiendo y enseñando al mismo tiempo. 
-        Aquí encontrarás cursos y recursos prácticos de SQL, Power BI, Python y más, creados desde la experiencia de alguien que disfruta explorar y explicar lo aprendido. 
-        Mi objetivo es construir un espacio donde aprender sea accesible, cercano y aplicable al día a día. Si tú también crees en el valor del aprendizaje continuo, este lugar es para ti.
-      </p>
+  <main class="site-main">
+    <!-- Sección: Publicaciones Recientes -->
+    <section class="recent-posts">
+      <div class="container">
+        <h2>Publicaciones Recientes</h2>
+      <div class="posts-carousel-wrapper">
+        <div class="posts-grid" id="linkedin-posts">
+          <!-- Aquí se inyectarán las publicaciones de LinkedIn -->
+          <div class="post-card">
+            <p class="post-preview">Próximamente: Última publicación de LinkedIn #1</p>
+            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
+          </div>
+          <div class="post-card">
+            <p class="post-preview">Próximamente: Última publicación de LinkedIn #2</p>
+            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
+          </div>
+          <div class="post-card">
+            <p class="post-preview">Próximamente: Última publicación de LinkedIn #3</p>
+            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
+          </div>
+        </div>
+        <!-- Indicadores de scroll para mobile -->
+        <div class="posts-scroll-indicator" id="posts-indicators">
+          <span class="scroll-dot active"></span>
+          <span class="scroll-dot"></span>
+          <span class="scroll-dot"></span>
+        </div>
+      </div>
+      </div>
     </section>
 
-    <!-- Aquí se inyectarán las secciones desde data/sections.json -->
+    <!-- Sección: Bienvenida -->
+    <section class="hero">
+      <div class="container">
+        <h1>Bienvenido a mi sitio personal</h1>
+      <p>
+        Aquí comparto mi camino en el mundo del análisis de datos, aprendiendo y enseñando al mismo tiempo.
+      </p>
+      <p>
+        Aquí encontrarás cursos y recursos prácticos de SQL, Power BI, Python y más, creados desde la experiencia de alguien que disfruta explorar y explicar lo aprendido. Mi objetivo es construir un espacio donde aprender sea accesible, cercano y aplicable al día a día.
+      </p>
+      <p>
+        Si tú también crees en el valor del aprendizaje continuo, este lugar es para ti.
+      </p>
+      </div>
+    </section>
+
+    <!-- Aquí se inyectarán las 5 secciones principales desde data/sections.json -->
     <div id="sections-root" aria-live="polite"></div>
+
+    <!-- Sección: Panel de Recursos -->
+    <section class="resources-panel">
+      <div class="container">
+        <h2>Panel de Recursos</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-btn--prev" aria-label="Anterior">‹</button>
+        <div class="carousel-track" id="resources-carousel">
+          <a href="recursos-sql.html" class="resource-card">
+            <h3>Recursos SQL</h3>
+            <p>Consultas, scripts y mejores prácticas de SQL</p>
+          </a>
+          <a href="recursos-dax.html" class="resource-card">
+            <h3>Recursos DAX</h3>
+            <p>Fórmulas y patrones DAX para Power BI</p>
+          </a>
+        </div>
+        <button class="carousel-btn carousel-btn--next" aria-label="Siguiente">›</button>
+      </div>
+      </div>
+    </section>
+
+    <!-- CTA de Contacto -->
+    <section class="cta-contact">
+      <div class="container">
+        <div class="cta-content">
+        <h2>¿Listo para conectar?</h2>
+        <p>Si tienes preguntas, quieres colaborar o simplemente conversar sobre datos, escríbeme en LinkedIn.</p>
+        <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="btn-cta">
+          Contáctame en LinkedIn
+        </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">

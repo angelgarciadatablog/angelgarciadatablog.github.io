@@ -40,6 +40,15 @@
         { "label": "Consola de Mac", "url": "#" },
         { "label": "Programas con IA", "url": "#" }
       ]
+    },
+    {
+      "id": "cursos-de-paga",
+      "title": "Cursos de Paga (Próximamente)",
+      "items": [
+        { "label": "SQL Avanzado", "url": "#" },
+        { "label": "Power BI Profesional", "url": "#" },
+        { "label": "Python para Analistas", "url": "#" }
+      ]
     }
   ]
 }
