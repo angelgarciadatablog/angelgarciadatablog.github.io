@@ -1857,3 +1857,393 @@ body {
 .error-state p {
   color: #ef4444;
 }
+
+/* === TIMELINE SECTION === */
+.timeline-section {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.timeline-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  .timeline-section h2 {
+    font-size: 32px;
+  }
+}
+
+.timeline-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+@media (min-width: 768px) {
+  .timeline-subtitle {
+    font-size: 16px;
+    margin-bottom: 80px;
+  }
+}
+
+/* Timeline Container */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Mobile: Línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(124, 58, 237, 0.5),
+    rgba(59, 130, 246, 0.5)
+  );
+}
+
+@media (min-width: 768px) {
+  /* Desktop: Línea horizontal */
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  .timeline::before {
+    left: 0;
+    top: 35px;
+    right: 0;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.5),
+      rgba(59, 130, 246, 0.5)
+    );
+  }
+}
+
+/* Timeline Item */
+.timeline-item {
+  position: relative;
+  padding-left: 80px;
+  margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .timeline-item {
+    flex: 1;
+    padding-left: 0;
+    padding-top: 80px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+/* Timeline Icon */
+.timeline-icon {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(124, 58, 237, 0.2);
+  z-index: 2;
+}
+
+.timeline-icon svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .timeline-icon {
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%);
+  }
+}
+
+/* Timeline Content */
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  background: rgba(124, 58, 237, 0.05);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+.timeline-date {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .timeline-date {
+    font-size: 18px;
+  }
+}
+
+.timeline-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .timeline-description {
+    font-size: 15px;
+  }
+}
+
+/* Timeline CTA */
+.timeline-cta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .timeline-cta {
+    margin-top: 80px;
+  }
+}
+
+.btn-timeline {
+  display: inline-block;
+  padding: 14px 40px;
+  background: transparent;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-timeline:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  background: rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .btn-timeline {
+    font-size: 16px;
+    padding: 16px 48px;
+  }
+}
+
+/* === ABOUT / SOBRE MÍ SECTION === */
+.about-section {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 60px;
+  }
+}
+
+/* Imagen circular */
+.about-image {
+  flex-shrink: 0;
+}
+
+.about-image img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(124, 58, 237, 0.3);
+  box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.1);
+}
+
+@media (min-width: 768px) {
+  .about-image img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Contenido de texto */
+.about-text-content {
+  flex: 1;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .about-text-content {
+    text-align: left;
+  }
+}
+
+.about-text-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  .about-text-content h2 {
+    font-size: 32px;
+  }
+}
+
+.about-description {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .about-description {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+}
+
+/* Lista de marcas */
+.brands-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .brands-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brands-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .brands-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+.brand-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  width: 18px;
+  height: 18px;
+  color: rgba(124, 58, 237, 0.7);
+  flex-shrink: 0;
+}
+
+.brand-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .brand-item span {
+    font-size: 15px;
+  }
+}
+
+/* Botón de contacto */
+.about-cta {
+  margin-top: 24px;
+}
+
+.btn-about {
+  display: inline-block;
+  padding: 14px 40px;
+  background: transparent;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-about:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  background: rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .btn-about {
+    font-size: 16px;
+    padding: 16px 48px;
+  }
+}
