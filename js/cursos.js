@@ -38,6 +38,21 @@ function getIconForCurso(nombreCurso) {
 }
 
 /**
+ * Obtiene la URL de la página del curso según su nombre
+ * @param {string} nombreCurso - Nombre del curso
+ * @returns {string} URL de la página del curso
+ */
+function getCursoUrl(nombreCurso) {
+  const nombre = nombreCurso.toLowerCase();
+
+  if (nombre.includes('sql') && nombre.includes('bigquery')) return 'cursos/sql-bigquery.html';
+  if (nombre.includes('power bi') || nombre.includes('powerbi')) return 'cursos/power-bi.html';
+  if (nombre.includes('google analytics') || nombre.includes('analytics')) return 'cursos/google-analytics.html';
+
+  return '#'; // fallback
+}
+
+/**
  * Renderiza una tarjeta de curso
  * @param {Object} curso - Datos del curso
  * @returns {HTMLElement} Tarjeta de curso
@@ -47,6 +62,7 @@ function renderCursoCard(curso) {
   card.className = 'curso-card';
 
   const icon = getIconForCurso(curso['nombre-curso'] || '');
+  const cursoUrl = getCursoUrl(curso['nombre-curso'] || '');
 
   card.innerHTML = `
     <div class="curso-header">
@@ -66,7 +82,7 @@ function renderCursoCard(curso) {
     </p>
 
     <div class="curso-footer">
-      <a href="#" class="curso-btn">Empezar curso</a>
+      <a href="${cursoUrl}" class="curso-btn">Empezar curso</a>
       <span class="curso-nivel">${curso.nivel || 'N/A'}</span>
     </div>
   `;
