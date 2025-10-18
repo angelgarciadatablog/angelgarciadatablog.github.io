@@ -24,13 +24,16 @@
 // Funcionalidad del carrusel de videos recientes
 (function initVideosCarousel() {
   const videosGrid = document.getElementById('youtube-videos');
-  const indicators = document.querySelectorAll('#videos-indicators .scroll-dot');
 
   if (!videosGrid) return;
 
   function updateIndicators() {
     // Solo funciona en mobile (cuando es flex/scroll)
     if (window.innerWidth >= 640) return;
+
+    // Obtener indicators cada vez (porque se crean dinámicamente)
+    const indicators = document.querySelectorAll('#videos-indicators .scroll-dot');
+    if (indicators.length === 0) return;
 
     const scrollLeft = videosGrid.scrollLeft;
     const cardWidth = videosGrid.querySelector('.video-card')?.offsetWidth || 300;
@@ -52,7 +55,15 @@
     videosGrid.addEventListener('scroll', updateIndicators);
     window.addEventListener('resize', updateIndicators);
 
-    // Esperar a que los videos se carguen para actualizar
+    // Actualizar cuando los videos se carguen
+    // Usar un MutationObserver para detectar cuando se agregan los videos
+    const observer = new MutationObserver(() => {
+      updateIndicators();
+    });
+
+    observer.observe(videosGrid, { childList: true });
+
+    // Fallback por si acaso
     setTimeout(updateIndicators, 1000);
   }
 })();

@@ -58,11 +58,11 @@ function getCursoUrl(nombreCurso) {
  * @returns {HTMLElement} Tarjeta de curso
  */
 function renderCursoCard(curso) {
-  const card = document.createElement('div');
+  const card = document.createElement('a');
   card.className = 'curso-card';
+  card.href = getCursoUrl(curso['nombre-curso'] || '');
 
   const icon = getIconForCurso(curso['nombre-curso'] || '');
-  const cursoUrl = getCursoUrl(curso['nombre-curso'] || '');
 
   card.innerHTML = `
     <div class="curso-header">
@@ -82,7 +82,7 @@ function renderCursoCard(curso) {
     </p>
 
     <div class="curso-footer">
-      <a href="${cursoUrl}" class="curso-btn">Empezar curso</a>
+      <span class="curso-btn">Empezar curso</span>
       <span class="curso-nivel">${curso.nivel || 'N/A'}</span>
     </div>
   `;

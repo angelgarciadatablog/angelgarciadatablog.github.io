@@ -788,6 +788,8 @@ body {
   flex-direction: column;
   gap: 16px;
   position: relative;
+  text-decoration: none;
+  color: inherit;
 }
 
 .curso-card:hover {
@@ -873,13 +875,14 @@ body {
 
 .curso-btn {
   display: inline-block;
-  padding: 8px 20px;
-  background: linear-gradient(135deg, rgba(38, 116, 237, 0.1), rgba(124, 58, 237, 0.1));
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  padding: 10px 24px;
+  border: 2px solid transparent;
   border-radius: 6px;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+              var(--gradient) border-box;
   color: var(--text);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -897,16 +900,16 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
+  border-radius: 4px;
 }
 
-.curso-btn:hover::before {
-  opacity: 0.15;
+.curso-card:hover .curso-btn::before {
+  opacity: 0.1;
 }
 
-.curso-btn:hover {
-  border-color: rgba(124, 58, 237, 0.6);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+.curso-card:hover .curso-btn {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
 }
 
 .curso-nivel {
@@ -1330,16 +1333,16 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #3a3a3a;
+  background: rgba(124, 58, 237, 0.3);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .scroll-dot.active {
-  background: var(--accent-secondary);
+  background: rgba(124, 58, 237, 1);
   width: 24px;
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(249, 200, 35, 0.5);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.5);
 }
 
 /* === PANEL DE RECURSOS === */
