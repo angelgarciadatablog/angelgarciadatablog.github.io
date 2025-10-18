@@ -23,7 +23,7 @@ const CONFIG = {
 
   // Caché para reducir llamadas a YouTube API
   cache: {
-    duration: 5 * 60 * 1000,  // 5 minutos en milisegundos
+    duration: 12 * 60 * 60 * 1000,  // 12 horas en milisegundos (optimizado)
     enabled: true
   },
 

@@ -4,8 +4,8 @@
  */
 
 const YOUTUBE_SECURE_CONFIG = {
-  // URL de tu Cloud Function (cambiar después del deployment)
-  cloudFunctionUrl: 'https://REGION-PROJECT_ID.cloudfunctions.net/getYouTubeVideos',
+  // URL de tu Cloud Function
+  cloudFunctionUrl: 'https://getyoutubevideos-35759247090.us-central1.run.app',
 
   // Para desarrollo local
   localDevelopment: false,
