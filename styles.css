@@ -1778,15 +1778,15 @@ body {
 
 .recursos-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   max-width: 800px;
   margin: 0 auto;
 }
 
 @media (min-width: 640px) {
   .recursos-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
@@ -2009,18 +2009,14 @@ body {
 
 /* Timeline Content */
 .timeline-content {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: transparent;
+  border: none;
   padding: 20px;
   transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
-  border-color: rgba(124, 58, 237, 0.5);
-  background: rgba(124, 58, 237, 0.05);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-accent);
 }
 
 .timeline-date {
