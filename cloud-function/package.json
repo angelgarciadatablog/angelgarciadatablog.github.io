@@ -1,0 +1,20 @@
+{
+  "name": "youtube-api-proxy",
+  "version": "1.0.0",
+  "description": "Cloud Function proxy seguro para YouTube API",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gcloud functions deploy getYouTubeVideos --runtime nodejs20 --trigger-http --allow-unauthenticated --set-env-vars YOUTUBE_API_KEY=TU_API_KEY_AQUI",
+    "deploy-with-limits": "gcloud functions deploy getYouTubeVideos --gen2 --runtime nodejs20 --trigger-http --allow-unauthenticated --max-instances=10 --memory=256MB --timeout=10s --set-env-vars YOUTUBE_API_KEY=TU_API_KEY_AQUI",
+    "test-local": "functions-framework --target=getYouTubeVideos"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
