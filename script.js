@@ -19,75 +19,21 @@
   });
 })();
 
-(async () => {
-  const root = document.getElementById('sections-root');
-  if (!root) return;
+// Código de sections.json eliminado - ahora usaremos Google Sheets
 
-  try {
-    const res = await fetch('data/sections.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+// Funcionalidad del carrusel de videos recientes
+(function initVideosCarousel() {
+  const videosGrid = document.getElementById('youtube-videos');
+  const indicators = document.querySelectorAll('#videos-indicators .scroll-dot');
 
-    const frag = document.createDocumentFragment();
-    (data.sections || []).forEach(section => {
-      const sec = document.createElement('section');
-      sec.className = 'block';
-      if (section.id) sec.id = section.id;
-
-      // Crear contenedor interno
-      const container = document.createElement('div');
-      container.className = 'container';
-
-      const h2 = document.createElement('h2');
-      h2.textContent = section.title || '';
-      container.appendChild(h2);
-
-      const grid = document.createElement('div');
-      grid.className = 'grid';
-
-      (section.items || []).forEach(item => {
-        const a = document.createElement('a');
-        const isUnavailable = !item.url || item.url === '#';
-        a.className = isUnavailable ? 'card card--unavailable' : 'card';
-        a.href = item.url || '#';
-
-        // Solo agregar target="_blank" para enlaces reales
-        if (!isUnavailable) {
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-        }
-
-        const span = document.createElement('span');
-        span.textContent = item.label || '';
-        a.appendChild(span);
-
-        grid.appendChild(a);
-      });
-
-      container.appendChild(grid);
-      sec.appendChild(container);
-      frag.appendChild(sec);
-    });
-
-    root.replaceChildren(frag);
-  } catch (err) {
-    console.error('No se pudo cargar data/sections.json', err);
-    const fallback = document.createElement('p');
-    fallback.textContent = 'No se pudo cargar el contenido. Intenta recargar la página.';
-    root.replaceChildren(fallback);
-  }
-})();
-
-// Funcionalidad del carrusel de publicaciones recientes
-(function initPostsCarousel() {
-  const postsGrid = document.getElementById('linkedin-posts');
-  const indicators = document.querySelectorAll('#posts-indicators .scroll-dot');
-
-  if (!postsGrid || indicators.length === 0) return;
+  if (!videosGrid) return;
 
   function updateIndicators() {
-    const scrollLeft = postsGrid.scrollLeft;
-    const cardWidth = postsGrid.querySelector('.post-card')?.offsetWidth || 300;
+    // Solo funciona en mobile (cuando es flex/scroll)
+    if (window.innerWidth >= 640) return;
+
+    const scrollLeft = videosGrid.scrollLeft;
+    const cardWidth = videosGrid.querySelector('.video-card')?.offsetWidth || 300;
     const gap = 16;
     const totalWidth = cardWidth + gap;
     const currentIndex = Math.round(scrollLeft / totalWidth);
@@ -101,46 +47,12 @@
     });
   }
 
-  postsGrid.addEventListener('scroll', updateIndicators);
-  updateIndicators(); // Estado inicial
-})();
+  // Solo agregar listener si existe el contenedor
+  if (videosGrid) {
+    videosGrid.addEventListener('scroll', updateIndicators);
+    window.addEventListener('resize', updateIndicators);
 
-// Funcionalidad del carrusel de recursos
-(function initResourcesCarousel() {
-  const track = document.getElementById('resources-carousel');
-  const prevBtn = document.querySelector('.carousel-btn--prev');
-  const nextBtn = document.querySelector('.carousel-btn--next');
-
-  if (!track || !prevBtn || !nextBtn) return;
-
-  const scrollAmount = 300; // Cantidad de píxeles a desplazar
-
-  prevBtn.addEventListener('click', () => {
-    track.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth'
-    });
-  });
-
-  nextBtn.addEventListener('click', () => {
-    track.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
-  });
-
-  // Actualizar estado de botones según posición del scroll
-  function updateButtons() {
-    const isAtStart = track.scrollLeft <= 0;
-    const isAtEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-
-    prevBtn.style.opacity = isAtStart ? '0.3' : '1';
-    prevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
-
-    nextBtn.style.opacity = isAtEnd ? '0.3' : '1';
-    nextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+    // Esperar a que los videos se carguen para actualizar
+    setTimeout(updateIndicators, 1000);
   }
-
-  track.addEventListener('scroll', updateButtons);
-  updateButtons(); // Estado inicial
 })();

@@ -22,7 +22,7 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#0a0a0a">
 </head>
 <body>
   <header class="site-header">
@@ -39,89 +39,119 @@
     </div>
   </header>
 
-  <main class="site-main">
-    <!-- Sección: Publicaciones Recientes -->
-    <section class="recent-posts">
-      <div class="container">
-        <h2>Publicaciones Recientes</h2>
-      <div class="posts-carousel-wrapper">
-        <div class="posts-grid" id="linkedin-posts">
-          <!-- Aquí se inyectarán las publicaciones de LinkedIn -->
-          <div class="post-card">
-            <p class="post-preview">Próximamente: Última publicación de LinkedIn #1</p>
-            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
-          </div>
-          <div class="post-card">
-            <p class="post-preview">Próximamente: Última publicación de LinkedIn #2</p>
-            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
-          </div>
-          <div class="post-card">
-            <p class="post-preview">Próximamente: Última publicación de LinkedIn #3</p>
-            <a href="#" class="post-link" target="_blank" rel="noopener noreferrer">Ver publicación →</a>
-          </div>
-        </div>
-        <!-- Indicadores de scroll para mobile -->
-        <div class="posts-scroll-indicator" id="posts-indicators">
-          <span class="scroll-dot active"></span>
-          <span class="scroll-dot"></span>
-          <span class="scroll-dot"></span>
-        </div>
-      </div>
-      </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <!-- Líneas decorativas diagonales -->
+      <div class="hero-line hero-line-1"></div>
+      <div class="hero-line hero-line-2"></div>
+      <div class="hero-line hero-line-3"></div>
 
-    <!-- Sección: Bienvenida -->
-    <section class="hero">
-      <div class="container">
-        <h1>Bienvenido a mi sitio personal</h1>
-      <p>
+      <!-- Iconos flotantes de análisis de datos y programación -->
+      <div class="floating-icon floating-icon-1" title="Python">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+        </svg>
+      </div>
+      <div class="floating-icon floating-icon-2" title="Análisis de Datos">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 3v18h18v-2H5V3H3m18 2v12l-4-4-4 4-4-4-4 4v2l4-4 4 4 4-4 4 4V5h-4z"/>
+        </svg>
+      </div>
+      <div class="floating-icon floating-icon-3" title="SQL Database">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+        </svg>
+      </div>
+      <div class="floating-icon floating-icon-4" title="Power BI">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 2v20H8V2h2m6 4v16h-2V6h2m6 6v10h-2V12h2M4 14v8H2v-8h2z"/>
+        </svg>
+      </div>
+      <div class="floating-icon floating-icon-5" title="Machine Learning">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+        </svg>
+      </div>
+      <div class="floating-icon floating-icon-6" title="Code">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 3l-2 7h2.5L7 17l8-10h-3l2-4H8z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container hero-content">
+      <h1 class="hero-title">
+        Bienvenido a mi <span class="gradient-text">Sitio Web</span><br>
+        angelgarciadatablog
+      </h1>
+      </p>
+      <p class="hero-tagline">
         Aquí comparto mi camino en el mundo del análisis de datos, aprendiendo y enseñando al mismo tiempo.
       </p>
-      <p>
-        Aquí encontrarás cursos y recursos prácticos de SQL, Power BI, Python y más, creados desde la experiencia de alguien que disfruta explorar y explicar lo aprendido. Mi objetivo es construir un espacio donde aprender sea accesible, cercano y aplicable al día a día.
-      </p>
-      <p>
-        Si tú también crees en el valor del aprendizaje continuo, este lugar es para ti.
-      </p>
-      </div>
-    </section>
+      <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="btn-hero">
+        Contáctame/Linkedin
+      </a>
+    </div>
+  </section>
 
-    <!-- Aquí se inyectarán las 5 secciones principales desde data/sections.json -->
-    <div id="sections-root" aria-live="polite"></div>
-
-    <!-- Sección: Panel de Recursos -->
-    <section class="resources-panel">
+  <main class="site-main">
+    <!-- Sección: Estadísticas -->
+    <section class="stats-section">
       <div class="container">
-        <h2>Panel de Recursos</h2>
-      <div class="carousel-container">
-        <button class="carousel-btn carousel-btn--prev" aria-label="Anterior">‹</button>
-        <div class="carousel-track" id="resources-carousel">
-          <a href="recursos-sql.html" class="resource-card">
-            <h3>Recursos SQL</h3>
-            <p>Consultas, scripts y mejores prácticas de SQL</p>
-          </a>
-          <a href="recursos-dax.html" class="resource-card">
-            <h3>Recursos DAX</h3>
-            <p>Fórmulas y patrones DAX para Power BI</p>
-          </a>
-        </div>
-        <button class="carousel-btn carousel-btn--next" aria-label="Siguiente">›</button>
-      </div>
-      </div>
-    </section>
-
-    <!-- CTA de Contacto -->
-    <section class="cta-contact">
-      <div class="container">
-        <div class="cta-content">
-        <h2>¿Listo para conectar?</h2>
-        <p>Si tienes preguntas, quieres colaborar o simplemente conversar sobre datos, escríbeme en LinkedIn.</p>
-        <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="btn-cta">
-          Contáctame en LinkedIn
-        </a>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Videos Youtube</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">Suscriptores Youtube</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2,000+</div>
+            <div class="stat-label">Linkedin</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Cursos Completos</div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Sección: Videos Recientes -->
+    <section class="recent-videos">
+      <div class="container">
+        <h2>Videos Recientes</h2>
+        <div class="videos-carousel-wrapper">
+          <div class="videos-grid" id="youtube-videos">
+            <!-- Aquí se inyectarán los videos de YouTube automáticamente -->
+            <div class="video-card loading">
+              <div class="video-thumbnail-skeleton"></div>
+              <p class="video-title-skeleton"></p>
+            </div>
+            <div class="video-card loading">
+              <div class="video-thumbnail-skeleton"></div>
+              <p class="video-title-skeleton"></p>
+            </div>
+            <div class="video-card loading">
+              <div class="video-thumbnail-skeleton"></div>
+              <p class="video-title-skeleton"></p>
+            </div>
+          </div>
+          <!-- Indicadores de scroll para mobile -->
+          <div class="videos-scroll-indicator" id="videos-indicators">
+            <span class="scroll-dot active"></span>
+            <span class="scroll-dot"></span>
+            <span class="scroll-dot"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aquí se agregarán las nuevas secciones desde Google Sheets -->
+
   </main>
 
   <footer class="site-footer">
@@ -144,6 +174,8 @@
     </div>
   </footer>
 
+  <script src="js/googleSheets.js"></script>
+  <script src="js/youtube.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
