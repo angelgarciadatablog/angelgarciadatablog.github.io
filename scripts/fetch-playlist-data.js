@@ -117,7 +117,11 @@ async function generatePlaylistsJSON() {
           thumbnail: video.thumbnail,
           url: `https://www.youtube.com/watch?v=${video.id}`,
           publishedAt: video.publishedAt,
-          posicion: video.position !== undefined ? video.position : index
+          posicion: video.position !== undefined ? video.position : index,
+          duracion: video.duration || null,
+          vistas: video.viewCount || 0,
+          likes: video.likeCount || 0,
+          comentarios: video.commentCount || 0
         }))
       });
 

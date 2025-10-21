@@ -2,13 +2,13 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-10-21T03:46:27.228Z",
+  "fechaActualizacion": "2025-10-21T06:38:46.942Z",
   "modulos": [
     {
       "moduloId": 1,
       "titulo": "Cláusulas Principales de SQL",
       "descripcion": "Nivel Básico",
-      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
+      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en an��lisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
       "playlistId": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "totalVideos": 50,
@@ -17,29 +17,41 @@
         {
           "id": "mj_b9_nxJfw",
           "titulo": "Curso gratuito de SQL en BigQuery (desde cero) | Curso de SQL BigQuery #1",
-          "descripcion": "Bienvenido al Curso Gratuito de SQL aplicado en BigQuery desde cero 🚀\n\nEn este primer video te explico las diferencias entre una base de datos relacional y BigQuery, y por qué esto es clave antes de empezar a escribir consultas. También conocerás los diferentes tipos de sentencias SQL (DQL, DML y DDL) que usaremos a lo largo del curso.\n\n🔍 Lo que aprenderás en este video:\n\nDiferencias entre una base de datos relacional y BigQuery.\nConceptos de llaves primarias, llaves foráneas y cómo se aplican (o no) en BigQuery.\nIntroducción a los tipos de sentencias SQL: DQL, DML y DDL.\nEstructura general del curso: nivel básico, intermedio y avanzado.\n\n��� Este curso está diseñado para:\n\nPersonas que quieren aprender SQL desde cero.\nAnalistas de datos y marketers que trabajan con Google Analytics 4 y BigQuery.\nProfesionales que buscan aplicar SQL en proyectos reales con grandes volúmenes de datos.\n\n📚 Próximos módulos:\n\nMódulo básico: SELECT, FROM, WHERE, GROUP BY, JOIN, ORDER BY\nMódulo intermedio: JOINS, subconsultas, operadores de conjunto, expresiones de tabla.\nMódulo avanzado: funciones de ventana y análisis con tablas derivadas.\n\n💡 No olvides suscribirte al canal y activar la campanita 🔔 para no perderte los próximos capítulos del curso.",
+          "descripcion": "Bienvenido al Curso Gratuito de SQL aplicado en BigQuery desde cero 🚀\n\nEn este primer video te explico las diferencias entre una base de datos relacional y BigQuery, y por qué esto es clave antes de empezar a escribir consultas. También conocerás los diferentes tipos de sentencias SQL (DQL, DML y DDL) que usaremos a lo largo del curso.\n\n🔍 Lo que aprenderás en este video:\n\nDiferencias entre una base de datos relacional y BigQuery.\nConceptos de llaves primarias, llaves foráneas y cómo se aplican (o no) en BigQuery.\nIntroducción a los tipos de sentencias SQL: DQL, DML y DDL.\nEstructura general del curso: nivel básico, intermedio y avanzado.\n\n🎯 Este curso está diseñado para:\n\nPersonas que quieren aprender SQL desde cero.\nAnalistas de datos y marketers que trabajan con Google Analytics 4 y BigQuery.\nProfesionales que buscan aplicar SQL en proyectos reales con grandes volúmenes de datos.\n\n📚 Próximos módulos:\n\nMódulo básico: SELECT, FROM, WHERE, GROUP BY, JOIN, ORDER BY\nMódulo intermedio: JOINS, subconsultas, operadores de conjunto, expresiones de tabla.\nMódulo avanzado: funciones de ventana y análisis con tablas derivadas.\n\n💡 No olvides suscribirte al canal y activar la campanita 🔔 para no perderte los próximos capítulos del curso.",
           "thumbnail": "https://i.ytimg.com/vi/mj_b9_nxJfw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=mj_b9_nxJfw",
           "publishedAt": "2025-09-01T08:50:36Z",
-          "posicion": 0
+          "posicion": 0,
+          "duracion": "PT3M57S",
+          "vistas": 317,
+          "likes": 15,
+          "comentarios": 2
         },
         {
           "id": "LDp0JP4L6YY",
           "titulo": "Cómo crear cuenta en Google Cloud y activar BigQuery | Curso de SQL BigQuery #2",
-          "descripcion": "En este video aprenderemos paso a paso cómo crear tu cuenta en Google Cloud para comenzar a trabajar con BigQuery, el potente servicio de análisis de datos en la nube de Google.\n\n📌 Temas:\n✅ Qué es BigQuery y cómo funciona dentro de Google Cloud.\n✅Cómo se cobra el servicio (pago bajo demanda).\n���Cómo aprovechar el plan gratuito y los 300 USD en créditos de prueba.\n✅Cómo crear tu primer proyecto en Google Cloud.\n\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📖 Diapositivas:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
+          "descripcion": "En este video aprenderemos paso a paso cómo crear tu cuenta en Google Cloud para comenzar a trabajar con BigQuery, el potente servicio de análisis de datos en la nube de Google.\n\n📌 Temas:\n✅ Qué es BigQuery y cómo funciona dentro de Google Cloud.\n✅Cómo se cobra el servicio (pago bajo demanda).\n✅Cómo aprovechar el plan gratuito y los 300 USD en créditos de prueba.\n✅Cómo crear tu primer proyecto en Google Cloud.\n\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📖 Diapositivas:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
           "thumbnail": "https://i.ytimg.com/vi/LDp0JP4L6YY/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=LDp0JP4L6YY",
           "publishedAt": "2025-08-12T06:40:37Z",
-          "posicion": 1
+          "posicion": 1,
+          "duracion": "PT6M37S",
+          "vistas": 179,
+          "likes": 7,
+          "comentarios": 0
         },
         {
           "id": "X6JyQKV5d0E",
           "titulo": "Estructura de proyectos y menús en Google Cloud | Curso de SQL BigQuery #3",
-          "descripcion": "En este video exploramos la estructura básica de BigQuery dentro de la plataforma de Google Cloud. Aprenderemos a diferenciar los menús de Google Cloud y BigQuery, cómo funcionan los proyectos y la cuenta de facturación para acceder a créditos gratuitos y funcionalidades avanzadas.\n\n📍Temas\n✅¿Qu�� es un proyecto en Google Cloud?\n✅ Menús esenciales para trabajar con BigQuery\n✅ Navegación por el explorador de BigQuery: conjuntos de datos y tablas\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
+          "descripcion": "En este video exploramos la estructura básica de BigQuery dentro de la plataforma de Google Cloud. Aprenderemos a diferenciar los menús de Google Cloud y BigQuery, cómo funcionan los proyectos y la cuenta de facturación para acceder a créditos gratuitos y funcionalidades avanzadas.\n\n📍Temas\n✅¿Qué es un proyecto en Google Cloud?\n✅ Menús esenciales para trabajar con BigQuery\n✅ Navegación por el explorador de BigQuery: conjuntos de datos y tablas\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
           "thumbnail": "https://i.ytimg.com/vi/X6JyQKV5d0E/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=X6JyQKV5d0E",
           "publishedAt": "2025-08-12T10:15:47Z",
-          "posicion": 2
+          "posicion": 2,
+          "duracion": "PT5M19S",
+          "vistas": 95,
+          "likes": 2,
+          "comentarios": 2
         },
         {
           "id": "aLp96mNnYA8",
@@ -48,7 +60,11 @@
           "thumbnail": "https://i.ytimg.com/vi/aLp96mNnYA8/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=aLp96mNnYA8",
           "publishedAt": "2025-08-12T10:21:59Z",
-          "posicion": 3
+          "posicion": 3,
+          "duracion": "PT6M36S",
+          "vistas": 90,
+          "likes": 3,
+          "comentarios": 1
         },
         {
           "id": "v1lKqeiQFTI",
@@ -57,16 +73,24 @@
           "thumbnail": "https://i.ytimg.com/vi/v1lKqeiQFTI/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=v1lKqeiQFTI",
           "publishedAt": "2025-08-14T06:20:44Z",
-          "posicion": 4
+          "posicion": 4,
+          "duracion": "PT11M10S",
+          "vistas": 140,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "PIOYkiA1qBw",
           "titulo": "Cómo se registran los datos en la tabla de events | Curso de SQL BigQuery #6",
-          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos en detalle qué representa cada fila registrada en la tabla events.\n\n📌 Temas clave:\n\n✅ Explicación de la tabla events de google analytics 04\n✅ Eventos en google analytics 04\n✅ Esquema de la tabla events (columnas de la tabla)\n✅ Columnas básicas de análisis (event_date, event_timestamp, event_name, user_pseudo_id)\n\nEste capítulo es esencial para entender cómo se reciben los datos de la tabla events en BigQuery usando los datos de Google Analytics 4.\n\n👉 Link a la lista de reproducción de Google analytics 04 | nivel básico\nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n👉 Link de apoyo, eventos automáticos registrados en GA4\nhttps://support.google.com/analytics/answer/9234069?hl=es\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_timestamp #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos en detalle qué representa cada fila registrada en la tabla events.\n\n📌 Temas clave:\n\n✅ Explicación de la tabla events de google analytics 04\n✅ Eventos en google analytics 04\n✅ Esquema de la tabla events (columnas de la tabla)\n✅ Columnas b��sicas de análisis (event_date, event_timestamp, event_name, user_pseudo_id)\n\nEste capítulo es esencial para entender cómo se reciben los datos de la tabla events en BigQuery usando los datos de Google Analytics 4.\n\n👉 Link a la lista de reproducción de Google analytics 04 | nivel básico\nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n👉 Link de apoyo, eventos automáticos registrados en GA4\nhttps://support.google.com/analytics/answer/9234069?hl=es\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_timestamp #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/PIOYkiA1qBw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=PIOYkiA1qBw",
           "publishedAt": "2025-08-14T06:24:19Z",
-          "posicion": 5
+          "posicion": 5,
+          "duracion": "PT10M33S",
+          "vistas": 63,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "CHz9g2LGYlo",
@@ -75,16 +99,24 @@
           "thumbnail": "https://i.ytimg.com/vi/CHz9g2LGYlo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=CHz9g2LGYlo",
           "publishedAt": "2025-08-14T06:32:16Z",
-          "posicion": 6
+          "posicion": 6,
+          "duracion": "PT10M48S",
+          "vistas": 262,
+          "likes": 11,
+          "comentarios": 2
         },
         {
           "id": "YnFvHoWdvzs",
           "titulo": "Crea tu primera tabla plana desde events de Google Analytics 4 | Curso de SQL BigQuery #8",
-          "descripcion": "En este capítulo haremos un breve paréntesis antes de continuar con SQL, para transformar la tabla events (que no es plana) en una tabla plana y regular con la que podamos practicar las consultas básicas de SQL en BigQuery.\n\n📌 Temas clave:\n✅ Consultas de tipo DQL (Data Query Language).\n✅ Crear una tabla plana en base a la tabla events.\n✅ Cómo crear un conjunto de datos y almacenar allí tu tabla.\n✅ Cómo guardar los resultados como una tabla física en tu proyecto de BigQuery.\n��� Primeros pasos con las cláusulas SELECT y FROM.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n👉Consulta SQL: Creación de tabla prueba\nhttps://drive.google.com/file/d/1Qe8tGA9X_UAfoLjaQvUZjSR2f72WnYJ4/view?usp=sharing\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo haremos un breve paréntesis antes de continuar con SQL, para transformar la tabla events (que no es plana) en una tabla plana y regular con la que podamos practicar las consultas básicas de SQL en BigQuery.\n\n📌 Temas clave:\n✅ Consultas de tipo DQL (Data Query Language).\n✅ Crear una tabla plana en base a la tabla events.\n✅ Cómo crear un conjunto de datos y almacenar allí tu tabla.\n✅ Cómo guardar los resultados como una tabla física en tu proyecto de BigQuery.\n✅ Primeros pasos con las cláusulas SELECT y FROM.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n👉Consulta SQL: Creación de tabla prueba\nhttps://drive.google.com/file/d/1Qe8tGA9X_UAfoLjaQvUZjSR2f72WnYJ4/view?usp=sharing\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/YnFvHoWdvzs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=YnFvHoWdvzs",
           "publishedAt": "2025-08-14T06:36:01Z",
-          "posicion": 7
+          "posicion": 7,
+          "duracion": "PT8M9S",
+          "vistas": 42,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "TGfUG__aOhw",
@@ -93,7 +125,11 @@
           "thumbnail": "https://i.ytimg.com/vi/TGfUG__aOhw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=TGfUG__aOhw",
           "publishedAt": "2025-08-14T07:58:08Z",
-          "posicion": 8
+          "posicion": 8,
+          "duracion": "PT11M11S",
+          "vistas": 31,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "m_WT3mJ0J9E",
@@ -102,7 +138,11 @@
           "thumbnail": "https://i.ytimg.com/vi/m_WT3mJ0J9E/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=m_WT3mJ0J9E",
           "publishedAt": "2025-08-14T07:59:27Z",
-          "posicion": 9
+          "posicion": 9,
+          "duracion": "PT7M18S",
+          "vistas": 28,
+          "likes": 2,
+          "comentarios": 1
         },
         {
           "id": "K2jlyUL3zK8",
@@ -111,7 +151,11 @@
           "thumbnail": "https://i.ytimg.com/vi/K2jlyUL3zK8/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=K2jlyUL3zK8",
           "publishedAt": "2025-08-15T04:59:49Z",
-          "posicion": 10
+          "posicion": 10,
+          "duracion": "PT14M39S",
+          "vistas": 52,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "uN-yP7FwIN4",
@@ -120,7 +164,11 @@
           "thumbnail": "https://i.ytimg.com/vi/uN-yP7FwIN4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=uN-yP7FwIN4",
           "publishedAt": "2025-08-15T05:02:52Z",
-          "posicion": 11
+          "posicion": 11,
+          "duracion": "PT18M17S",
+          "vistas": 136,
+          "likes": 4,
+          "comentarios": 2
         },
         {
           "id": "BQnwEe6r4Fg",
@@ -129,7 +177,11 @@
           "thumbnail": "https://i.ytimg.com/vi/BQnwEe6r4Fg/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=BQnwEe6r4Fg",
           "publishedAt": "2025-08-15T05:06:05Z",
-          "posicion": 12
+          "posicion": 12,
+          "duracion": "PT5M2S",
+          "vistas": 29,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "OTkdggNWv14",
@@ -138,7 +190,11 @@
           "thumbnail": "https://i.ytimg.com/vi/OTkdggNWv14/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=OTkdggNWv14",
           "publishedAt": "2025-08-15T05:10:50Z",
-          "posicion": 13
+          "posicion": 13,
+          "duracion": "PT6M20S",
+          "vistas": 29,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "VrvnwaTppAE",
@@ -147,7 +203,11 @@
           "thumbnail": "https://i.ytimg.com/vi/VrvnwaTppAE/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=VrvnwaTppAE",
           "publishedAt": "2025-08-15T05:13:42Z",
-          "posicion": 14
+          "posicion": 14,
+          "duracion": "PT7M15S",
+          "vistas": 22,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "JbwNhXjC16A",
@@ -156,7 +216,11 @@
           "thumbnail": "https://i.ytimg.com/vi/JbwNhXjC16A/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=JbwNhXjC16A",
           "publishedAt": "2025-08-15T09:17:06Z",
-          "posicion": 15
+          "posicion": 15,
+          "duracion": "PT6M14S",
+          "vistas": 13,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "ue5vLsIijHs",
@@ -165,7 +229,11 @@
           "thumbnail": "https://i.ytimg.com/vi/ue5vLsIijHs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ue5vLsIijHs",
           "publishedAt": "2025-08-15T09:23:28Z",
-          "posicion": 16
+          "posicion": 16,
+          "duracion": "PT3M54S",
+          "vistas": 6,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "zcOZ0IEsXHc",
@@ -174,7 +242,11 @@
           "thumbnail": "https://i.ytimg.com/vi/zcOZ0IEsXHc/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zcOZ0IEsXHc",
           "publishedAt": "2025-08-15T09:26:28Z",
-          "posicion": 17
+          "posicion": 17,
+          "duracion": "PT6M31S",
+          "vistas": 27,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "_cXvg-XPnUs",
@@ -183,7 +255,11 @@
           "thumbnail": "https://i.ytimg.com/vi/_cXvg-XPnUs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=_cXvg-XPnUs",
           "publishedAt": "2025-08-15T09:32:06Z",
-          "posicion": 18
+          "posicion": 18,
+          "duracion": "PT7M50S",
+          "vistas": 10,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "q0n48c-f4O8",
@@ -192,7 +268,11 @@
           "thumbnail": "https://i.ytimg.com/vi/q0n48c-f4O8/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=q0n48c-f4O8",
           "publishedAt": "2025-08-15T09:36:21Z",
-          "posicion": 19
+          "posicion": 19,
+          "duracion": "PT4M56S",
+          "vistas": 30,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "CrG-FruGb-k",
@@ -201,7 +281,11 @@
           "thumbnail": "https://i.ytimg.com/vi/CrG-FruGb-k/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=CrG-FruGb-k",
           "publishedAt": "2025-08-15T09:46:14Z",
-          "posicion": 20
+          "posicion": 20,
+          "duracion": "PT5M32S",
+          "vistas": 9,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "ZWi_B_rqvt4",
@@ -210,7 +294,11 @@
           "thumbnail": "https://i.ytimg.com/vi/ZWi_B_rqvt4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ZWi_B_rqvt4",
           "publishedAt": "2025-08-15T09:52:09Z",
-          "posicion": 21
+          "posicion": 21,
+          "duracion": "PT3M18S",
+          "vistas": 17,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "tIxrQnDwvx4",
@@ -219,7 +307,11 @@
           "thumbnail": "https://i.ytimg.com/vi/tIxrQnDwvx4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=tIxrQnDwvx4",
           "publishedAt": "2025-08-15T09:54:34Z",
-          "posicion": 22
+          "posicion": 22,
+          "duracion": "PT4M5S",
+          "vistas": 23,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "NQpnc4YfuQo",
@@ -228,7 +320,11 @@
           "thumbnail": "https://i.ytimg.com/vi/NQpnc4YfuQo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NQpnc4YfuQo",
           "publishedAt": "2025-08-15T09:58:19Z",
-          "posicion": 23
+          "posicion": 23,
+          "duracion": "PT9M9S",
+          "vistas": 70,
+          "likes": 4,
+          "comentarios": 0
         },
         {
           "id": "vBRiaP5NgVw",
@@ -237,16 +333,24 @@
           "thumbnail": "https://i.ytimg.com/vi/vBRiaP5NgVw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=vBRiaP5NgVw",
           "publishedAt": "2025-08-16T07:15:30Z",
-          "posicion": 24
+          "posicion": 24,
+          "duracion": "PT5M2S",
+          "vistas": 7,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "t4eZfB4XTHg",
           "titulo": "Cómo usar LOWER y UPPER para estandarizar datos | Curso de SQL BigQuery #26",
-          "descripcion": "En este capítulo revisaremos las funciones LOWER y UPPER en SQL, fundamentales para estandarizar datos de texto en BigQuery con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre LOWER y UPPER en SQL.\n✅ Cómo convertir texto a minúsculas o mayúsculas.\n✅ Ejemplos prácticos con correos electrónicos y nombres de ciudades.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos las funciones LOWER y UPPER en SQL, fundamentales para estandarizar datos de texto en BigQuery con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre LOWER y UPPER en SQL.\n✅ Cómo convertir texto a minúsculas o mayúsculas.\n✅ Ejemplos prácticos con correos electrónicos y nombres de ciudades.\n\n📌 Recursos ��tiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/t4eZfB4XTHg/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=t4eZfB4XTHg",
           "publishedAt": "2025-08-16T07:18:01Z",
-          "posicion": 25
+          "posicion": 25,
+          "duracion": "PT6M15S",
+          "vistas": 20,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "Dc98c6LPQQE",
@@ -255,7 +359,11 @@
           "thumbnail": "https://i.ytimg.com/vi/Dc98c6LPQQE/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Dc98c6LPQQE",
           "publishedAt": "2025-08-16T07:21:24Z",
-          "posicion": 26
+          "posicion": 26,
+          "duracion": "PT8M19S",
+          "vistas": 25,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "YDElIJ6jMrw",
@@ -264,7 +372,11 @@
           "thumbnail": "https://i.ytimg.com/vi/YDElIJ6jMrw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=YDElIJ6jMrw",
           "publishedAt": "2025-08-16T07:23:05Z",
-          "posicion": 27
+          "posicion": 27,
+          "duracion": "PT5M47S",
+          "vistas": 15,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "Lox4HlSibXo",
@@ -273,7 +385,11 @@
           "thumbnail": "https://i.ytimg.com/vi/Lox4HlSibXo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Lox4HlSibXo",
           "publishedAt": "2025-08-16T07:25:45Z",
-          "posicion": 28
+          "posicion": 28,
+          "duracion": "PT7M11S",
+          "vistas": 8,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "Q275enpY7bY",
@@ -282,7 +398,11 @@
           "thumbnail": "https://i.ytimg.com/vi/Q275enpY7bY/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q275enpY7bY",
           "publishedAt": "2025-08-16T07:27:54Z",
-          "posicion": 29
+          "posicion": 29,
+          "duracion": "PT5M18S",
+          "vistas": 19,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "Oswa8OkiQPs",
@@ -291,7 +411,11 @@
           "thumbnail": "https://i.ytimg.com/vi/Oswa8OkiQPs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Oswa8OkiQPs",
           "publishedAt": "2025-08-16T07:30:14Z",
-          "posicion": 30
+          "posicion": 30,
+          "duracion": "PT12M9S",
+          "vistas": 20,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "U92pTqhzxoQ",
@@ -300,7 +424,11 @@
           "thumbnail": "https://i.ytimg.com/vi/U92pTqhzxoQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=U92pTqhzxoQ",
           "publishedAt": "2025-08-16T07:32:28Z",
-          "posicion": 31
+          "posicion": 31,
+          "duracion": "PT8M59S",
+          "vistas": 31,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "vJXvL5i4OQY",
@@ -309,7 +437,11 @@
           "thumbnail": "https://i.ytimg.com/vi/vJXvL5i4OQY/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=vJXvL5i4OQY",
           "publishedAt": "2025-08-16T07:35:33Z",
-          "posicion": 32
+          "posicion": 32,
+          "duracion": "PT7M47S",
+          "vistas": 20,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "eVL3dw9BfPc",
@@ -318,7 +450,11 @@
           "thumbnail": "https://i.ytimg.com/vi/eVL3dw9BfPc/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=eVL3dw9BfPc",
           "publishedAt": "2025-08-16T07:38:44Z",
-          "posicion": 33
+          "posicion": 33,
+          "duracion": "PT13M15S",
+          "vistas": 16,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "THxGW9huLRg",
@@ -327,7 +463,11 @@
           "thumbnail": "https://i.ytimg.com/vi/THxGW9huLRg/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=THxGW9huLRg",
           "publishedAt": "2025-08-16T07:40:35Z",
-          "posicion": 34
+          "posicion": 34,
+          "duracion": "PT10M24S",
+          "vistas": 12,
+          "likes": 4,
+          "comentarios": 0
         },
         {
           "id": "nAYXMoOpNsM",
@@ -336,7 +476,11 @@
           "thumbnail": "https://i.ytimg.com/vi/nAYXMoOpNsM/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=nAYXMoOpNsM",
           "publishedAt": "2025-08-16T07:42:02Z",
-          "posicion": 35
+          "posicion": 35,
+          "duracion": "PT7M1S",
+          "vistas": 25,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "zT66rq7mEu4",
@@ -345,7 +489,11 @@
           "thumbnail": "https://i.ytimg.com/vi/zT66rq7mEu4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zT66rq7mEu4",
           "publishedAt": "2025-08-16T14:18:33Z",
-          "posicion": 36
+          "posicion": 36,
+          "duracion": "PT5M27S",
+          "vistas": 16,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "sV8nczRvPAU",
@@ -354,7 +502,11 @@
           "thumbnail": "https://i.ytimg.com/vi/sV8nczRvPAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=sV8nczRvPAU",
           "publishedAt": "2025-08-16T14:19:42Z",
-          "posicion": 37
+          "posicion": 37,
+          "duracion": "PT8M25S",
+          "vistas": 10,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "kegfG0chZHI",
@@ -363,7 +515,11 @@
           "thumbnail": "https://i.ytimg.com/vi/kegfG0chZHI/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=kegfG0chZHI",
           "publishedAt": "2025-08-16T14:22:21Z",
-          "posicion": 38
+          "posicion": 38,
+          "duracion": "PT5M26S",
+          "vistas": 18,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "5BEWVMsLsBo",
@@ -372,7 +528,11 @@
           "thumbnail": "https://i.ytimg.com/vi/5BEWVMsLsBo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=5BEWVMsLsBo",
           "publishedAt": "2025-08-16T14:24:03Z",
-          "posicion": 39
+          "posicion": 39,
+          "duracion": "PT7M58S",
+          "vistas": 161,
+          "likes": 13,
+          "comentarios": 0
         },
         {
           "id": "v1Qnd2Uxcjs",
@@ -381,7 +541,11 @@
           "thumbnail": "https://i.ytimg.com/vi/v1Qnd2Uxcjs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=v1Qnd2Uxcjs",
           "publishedAt": "2025-08-16T14:27:58Z",
-          "posicion": 40
+          "posicion": 40,
+          "duracion": "PT5M11S",
+          "vistas": 64,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "yzvzl1LBXm0",
@@ -390,7 +554,11 @@
           "thumbnail": "https://i.ytimg.com/vi/yzvzl1LBXm0/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=yzvzl1LBXm0",
           "publishedAt": "2025-08-16T14:29:48Z",
-          "posicion": 41
+          "posicion": 41,
+          "duracion": "PT6M57S",
+          "vistas": 21,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "UlDUQ9G0QHM",
@@ -399,7 +567,11 @@
           "thumbnail": "https://i.ytimg.com/vi/UlDUQ9G0QHM/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=UlDUQ9G0QHM",
           "publishedAt": "2025-08-16T14:31:42Z",
-          "posicion": 42
+          "posicion": 42,
+          "duracion": "PT5M19S",
+          "vistas": 11,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "NVwGmBS-wMw",
@@ -408,7 +580,11 @@
           "thumbnail": "https://i.ytimg.com/vi/NVwGmBS-wMw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NVwGmBS-wMw",
           "publishedAt": "2025-08-16T14:32:53Z",
-          "posicion": 43
+          "posicion": 43,
+          "duracion": "PT8M48S",
+          "vistas": 18,
+          "likes": 1,
+          "comentarios": 0
         },
         {
           "id": "P4--JGi1xH8",
@@ -417,7 +593,11 @@
           "thumbnail": "https://i.ytimg.com/vi/P4--JGi1xH8/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=P4--JGi1xH8",
           "publishedAt": "2025-08-16T14:35:00Z",
-          "posicion": 44
+          "posicion": 44,
+          "duracion": "PT4M12S",
+          "vistas": 12,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "4aUW0262vu8",
@@ -426,7 +606,11 @@
           "thumbnail": "https://i.ytimg.com/vi/4aUW0262vu8/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=4aUW0262vu8",
           "publishedAt": "2025-08-16T14:37:07Z",
-          "posicion": 45
+          "posicion": 45,
+          "duracion": "PT10M52S",
+          "vistas": 39,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "R7hA1gBrsvQ",
@@ -435,7 +619,11 @@
           "thumbnail": "https://i.ytimg.com/vi/R7hA1gBrsvQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=R7hA1gBrsvQ",
           "publishedAt": "2025-08-18T12:08:43Z",
-          "posicion": 46
+          "posicion": 46,
+          "duracion": "PT7M4S",
+          "vistas": 16,
+          "likes": 3,
+          "comentarios": 0
         },
         {
           "id": "E_MeMkTfBsk",
@@ -444,7 +632,11 @@
           "thumbnail": "https://i.ytimg.com/vi/E_MeMkTfBsk/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=E_MeMkTfBsk",
           "publishedAt": "2025-08-18T12:11:13Z",
-          "posicion": 47
+          "posicion": 47,
+          "duracion": "PT6M1S",
+          "vistas": 19,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "PLGbRoNcVL4",
@@ -453,7 +645,11 @@
           "thumbnail": "https://i.ytimg.com/vi/PLGbRoNcVL4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=PLGbRoNcVL4",
           "publishedAt": "2025-08-18T12:13:25Z",
-          "posicion": 48
+          "posicion": 48,
+          "duracion": "PT7M23S",
+          "vistas": 31,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "6lR81YOeNKs",
@@ -462,7 +658,11 @@
           "thumbnail": "https://i.ytimg.com/vi/6lR81YOeNKs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=6lR81YOeNKs",
           "publishedAt": "2025-08-18T12:15:19Z",
-          "posicion": 49
+          "posicion": 49,
+          "duracion": "PT9M40S",
+          "vistas": 23,
+          "likes": 1,
+          "comentarios": 0
         }
       ]
     },
@@ -483,7 +683,11 @@
           "thumbnail": "https://i.ytimg.com/vi/DQlkV2DmA_M/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=DQlkV2DmA_M",
           "publishedAt": "2025-10-07T08:51:06Z",
-          "posicion": 0
+          "posicion": 0,
+          "duracion": "PT5M8S",
+          "vistas": 17,
+          "likes": 2,
+          "comentarios": 0
         },
         {
           "id": "MHxjAOrdxCU",
@@ -492,7 +696,11 @@
           "thumbnail": "https://i.ytimg.com/vi/MHxjAOrdxCU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=MHxjAOrdxCU",
           "publishedAt": "2025-10-07T08:55:56Z",
-          "posicion": 1
+          "posicion": 1,
+          "duracion": "PT8M31S",
+          "vistas": 11,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "1eRuwnvwsPo",
@@ -500,7 +708,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=1eRuwnvwsPo",
           "publishedAt": "2025-10-07T08:57:09Z",
-          "posicion": 2
+          "posicion": 2,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "IIT39Xomn94",
@@ -508,7 +720,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=IIT39Xomn94",
           "publishedAt": "2025-10-07T09:00:56Z",
-          "posicion": 3
+          "posicion": 3,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "ecJm9JHj18g",
@@ -516,7 +732,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
           "publishedAt": "2025-10-07T19:53:24Z",
-          "posicion": 4
+          "posicion": 4,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "pLRAticn7NU",
@@ -524,7 +744,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
           "publishedAt": "2025-10-07T19:55:40Z",
-          "posicion": 5
+          "posicion": 5,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "t3jyABNSOno",
@@ -532,7 +756,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=t3jyABNSOno",
           "publishedAt": "2025-10-07T19:56:36Z",
-          "posicion": 6
+          "posicion": 6,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "OzgC7e3Eths",
@@ -540,7 +768,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=OzgC7e3Eths",
           "publishedAt": "2025-10-07T19:57:33Z",
-          "posicion": 7
+          "posicion": 7,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "njqE2uGyysQ",
@@ -548,7 +780,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
           "publishedAt": "2025-10-07T19:59:45Z",
-          "posicion": 8
+          "posicion": 8,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
           "id": "4JmKLgtmMBI",
@@ -556,7 +792,11 @@
           "descripcion": "This video is private.",
           "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
           "publishedAt": "2025-10-07T20:00:43Z",
-          "posicion": 9
+          "posicion": 9,
+          "duracion": null,
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         }
       ]
     }

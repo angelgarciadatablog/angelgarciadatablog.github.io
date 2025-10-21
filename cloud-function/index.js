@@ -199,6 +199,50 @@ async function fetchPlaylistVideos(apiKey, playlistId, maxResults = 50) {
 }
 
 /**
+ * Obtiene detalles de videos (duración, vistas, likes)
+ * Optimizado para obtener hasta 50 videos por llamada
+ */
+async function fetchVideosDetails(apiKey, videoIds) {
+  if (!videoIds || videoIds.length === 0) {
+    return [];
+  }
+
+  const results = [];
+  const batchSize = 50;
+
+  // Procesar en lotes de 50 videos
+  for (let i = 0; i < videoIds.length; i += batchSize) {
+    const batch = videoIds.slice(i, i + batchSize);
+    const idsParam = batch.join(',');
+
+    const url = `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${idsParam}&part=contentDetails,statistics`;
+
+    const response = await fetch(url, {
+      timeout: CONFIG.youtube.timeout * 2
+    });
+
+    if (!response.ok) {
+      throw new Error(`YouTube API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Formatear y agregar a resultados
+    data.items.forEach(item => {
+      results.push({
+        id: item.id,
+        duration: item.contentDetails.duration,
+        viewCount: parseInt(item.statistics.viewCount) || 0,
+        likeCount: parseInt(item.statistics.likeCount) || 0,
+        commentCount: parseInt(item.statistics.commentCount) || 0
+      });
+    });
+  }
+
+  return results;
+}
+
+/**
  * Cloud Function principal
  */
 exports.getYouTubeVideos = async (req, res) => {
@@ -296,6 +340,22 @@ exports.getYouTubeVideos = async (req, res) => {
       console.log(`Fetching playlist data: ${playlistId}`);
       playlistInfo = await fetchPlaylistInfo(apiKey, playlistId);
       videos = await fetchPlaylistVideos(apiKey, playlistId, maxResults);
+
+      // Obtener detalles de videos (duración, vistas, likes)
+      const videoIds = videos.map(v => v.id);
+      const videosDetails = await fetchVideosDetails(apiKey, videoIds);
+
+      // Combinar datos básicos con detalles
+      videos = videos.map(video => {
+        const details = videosDetails.find(d => d.id === video.id);
+        return {
+          ...video,
+          duration: details?.duration || null,
+          viewCount: details?.viewCount || 0,
+          likeCount: details?.likeCount || 0,
+          commentCount: details?.commentCount || 0
+        };
+      });
     } else {
       console.log('Fetching channel videos');
       const channelId = await getChannelId(apiKey);
