@@ -1,0 +1,564 @@
+{
+  "curso": "sql-bigquery",
+  "titulo": "Curso de SQL en BigQuery",
+  "descripcion": "Curso completo de SQL usando Google BigQuery",
+  "fechaActualizacion": "2025-10-21T03:46:27.228Z",
+  "modulos": [
+    {
+      "moduloId": 1,
+      "titulo": "Cláusulas Principales de SQL",
+      "descripcion": "Nivel Básico",
+      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
+      "playlistId": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
+      "totalVideos": 50,
+      "orden": 1,
+      "videos": [
+        {
+          "id": "mj_b9_nxJfw",
+          "titulo": "Curso gratuito de SQL en BigQuery (desde cero) | Curso de SQL BigQuery #1",
+          "descripcion": "Bienvenido al Curso Gratuito de SQL aplicado en BigQuery desde cero 🚀\n\nEn este primer video te explico las diferencias entre una base de datos relacional y BigQuery, y por qué esto es clave antes de empezar a escribir consultas. También conocerás los diferentes tipos de sentencias SQL (DQL, DML y DDL) que usaremos a lo largo del curso.\n\n🔍 Lo que aprenderás en este video:\n\nDiferencias entre una base de datos relacional y BigQuery.\nConceptos de llaves primarias, llaves foráneas y cómo se aplican (o no) en BigQuery.\nIntroducción a los tipos de sentencias SQL: DQL, DML y DDL.\nEstructura general del curso: nivel básico, intermedio y avanzado.\n\n��� Este curso está diseñado para:\n\nPersonas que quieren aprender SQL desde cero.\nAnalistas de datos y marketers que trabajan con Google Analytics 4 y BigQuery.\nProfesionales que buscan aplicar SQL en proyectos reales con grandes volúmenes de datos.\n\n📚 Próximos módulos:\n\nMódulo básico: SELECT, FROM, WHERE, GROUP BY, JOIN, ORDER BY\nMódulo intermedio: JOINS, subconsultas, operadores de conjunto, expresiones de tabla.\nMódulo avanzado: funciones de ventana y análisis con tablas derivadas.\n\n💡 No olvides suscribirte al canal y activar la campanita 🔔 para no perderte los próximos capítulos del curso.",
+          "thumbnail": "https://i.ytimg.com/vi/mj_b9_nxJfw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=mj_b9_nxJfw",
+          "publishedAt": "2025-09-01T08:50:36Z",
+          "posicion": 0
+        },
+        {
+          "id": "LDp0JP4L6YY",
+          "titulo": "Cómo crear cuenta en Google Cloud y activar BigQuery | Curso de SQL BigQuery #2",
+          "descripcion": "En este video aprenderemos paso a paso cómo crear tu cuenta en Google Cloud para comenzar a trabajar con BigQuery, el potente servicio de análisis de datos en la nube de Google.\n\n📌 Temas:\n✅ Qué es BigQuery y cómo funciona dentro de Google Cloud.\n✅Cómo se cobra el servicio (pago bajo demanda).\n���Cómo aprovechar el plan gratuito y los 300 USD en créditos de prueba.\n✅Cómo crear tu primer proyecto en Google Cloud.\n\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📖 Diapositivas:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
+          "thumbnail": "https://i.ytimg.com/vi/LDp0JP4L6YY/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=LDp0JP4L6YY",
+          "publishedAt": "2025-08-12T06:40:37Z",
+          "posicion": 1
+        },
+        {
+          "id": "X6JyQKV5d0E",
+          "titulo": "Estructura de proyectos y menús en Google Cloud | Curso de SQL BigQuery #3",
+          "descripcion": "En este video exploramos la estructura básica de BigQuery dentro de la plataforma de Google Cloud. Aprenderemos a diferenciar los menús de Google Cloud y BigQuery, cómo funcionan los proyectos y la cuenta de facturación para acceder a créditos gratuitos y funcionalidades avanzadas.\n\n📍Temas\n✅¿Qu�� es un proyecto en Google Cloud?\n✅ Menús esenciales para trabajar con BigQuery\n✅ Navegación por el explorador de BigQuery: conjuntos de datos y tablas\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
+          "thumbnail": "https://i.ytimg.com/vi/X6JyQKV5d0E/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=X6JyQKV5d0E",
+          "publishedAt": "2025-08-12T10:15:47Z",
+          "posicion": 2
+        },
+        {
+          "id": "aLp96mNnYA8",
+          "titulo": "De dónde sacar datos en BigQuery para hacer consultas SQL | Curso de SQL BigQuery #4",
+          "descripcion": "En este capítulo 4 del curso de BigQuery y SQL, aprenderás cómo funciona la estructura de datos en BigQuery y de dónde obtener los datos para practicar consultas SQL.\n\n📍Temas:\n✅Explicamos la jerarquía: proyectos, conjuntos de datos y tablas.\n✅Presentamos los datos públicos de Google Analytics 4 que usaremos en el curso.\n✅ Cómo acceder al conjunto de datos de prueba de comercio electrónico en BigQuery Public Data.\n\nSi estás empezando con BigQuery y quieres aprender SQL aplicado a datos reales y de prueba, este video es para ti.\n\n👉 Link a la lista de reproducción de Google Analytics básico (recomendado para principiantes)\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x&si=4kIutKWkpGsyJTjY\n👉 Link al conjunto de datos público de BigQuery usado en este curso (en la descripción)\nhttps://developers.google.com/analytics/bigquery/web-ecommerce-demo-dataset?hl=es-419\n\nNo olvides suscribirte para no perderte los próximos capítulos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #SQL #GoogleAnalytics #DataAnalytics #CursoBigQuery",
+          "thumbnail": "https://i.ytimg.com/vi/aLp96mNnYA8/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=aLp96mNnYA8",
+          "publishedAt": "2025-08-12T10:21:59Z",
+          "posicion": 3
+        },
+        {
+          "id": "v1lKqeiQFTI",
+          "titulo": "Tabla events y Tabla intraday de google analytics 4 | Curso de SQL BigQuery #5",
+          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos las diferencias entre la tabla events y la tabla intraday de google analytics 4.\n\n📌 Temas clave:\n✅ Conjunto de tabla events (tablas por día)\n✅ Esquema de la tabla events (columnas de las tablas)\n✅ En qué formato se almacena la fecha de la tabla events (AAAAMMDD)\n✅ Nombre estándar del conjunto de datos de google analytics (analytics_409893843)\n✅ Tabla events vs Tabla intraday\n✅ Vista en tiempo real de cómo llegan los datos a una tabla intraday\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/v1lKqeiQFTI/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=v1lKqeiQFTI",
+          "publishedAt": "2025-08-14T06:20:44Z",
+          "posicion": 4
+        },
+        {
+          "id": "PIOYkiA1qBw",
+          "titulo": "Cómo se registran los datos en la tabla de events | Curso de SQL BigQuery #6",
+          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos en detalle qué representa cada fila registrada en la tabla events.\n\n📌 Temas clave:\n\n✅ Explicación de la tabla events de google analytics 04\n✅ Eventos en google analytics 04\n✅ Esquema de la tabla events (columnas de la tabla)\n✅ Columnas básicas de análisis (event_date, event_timestamp, event_name, user_pseudo_id)\n\nEste capítulo es esencial para entender cómo se reciben los datos de la tabla events en BigQuery usando los datos de Google Analytics 4.\n\n👉 Link a la lista de reproducción de Google analytics 04 | nivel básico\nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n👉 Link de apoyo, eventos automáticos registrados en GA4\nhttps://support.google.com/analytics/answer/9234069?hl=es\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_timestamp #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/PIOYkiA1qBw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=PIOYkiA1qBw",
+          "publishedAt": "2025-08-14T06:24:19Z",
+          "posicion": 5
+        },
+        {
+          "id": "CHz9g2LGYlo",
+          "titulo": "Cómo entender los campos anidados de la tabla events de Google Analytics 04 | Curso SQL BigQuery #7",
+          "descripcion": "En este capítulo del curso SQL en BigQuery con datos de Google Analytics 4 (GA4) aprenderás a identificar y comprender campos anidados en la tabla events, así como la diferencia entre los campos de tipo RECORD y RECORD REPEATED.\n\n📌 Temas clave del video:\n✅ Qué son los campos anidados en BigQuery\n✅ Tipos de datos RECORD y RECORD REPEATED\n✅ Ejemplos con columnas como device, geo y event_params\n✅ Introducción a la cláusula UNNEST para acceder a datos anidados\n\nEste capítulo es fundamental para entender la estructura compleja de la tabla events en BigQuery y cómo esta enriquece la información de cada evento en Google Analytics 4.\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/CHz9g2LGYlo/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=CHz9g2LGYlo",
+          "publishedAt": "2025-08-14T06:32:16Z",
+          "posicion": 6
+        },
+        {
+          "id": "YnFvHoWdvzs",
+          "titulo": "Crea tu primera tabla plana desde events de Google Analytics 4 | Curso de SQL BigQuery #8",
+          "descripcion": "En este capítulo haremos un breve paréntesis antes de continuar con SQL, para transformar la tabla events (que no es plana) en una tabla plana y regular con la que podamos practicar las consultas básicas de SQL en BigQuery.\n\n📌 Temas clave:\n✅ Consultas de tipo DQL (Data Query Language).\n✅ Crear una tabla plana en base a la tabla events.\n✅ Cómo crear un conjunto de datos y almacenar allí tu tabla.\n✅ Cómo guardar los resultados como una tabla física en tu proyecto de BigQuery.\n��� Primeros pasos con las cláusulas SELECT y FROM.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n👉Consulta SQL: Creación de tabla prueba\nhttps://drive.google.com/file/d/1Qe8tGA9X_UAfoLjaQvUZjSR2f72WnYJ4/view?usp=sharing\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/YnFvHoWdvzs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=YnFvHoWdvzs",
+          "publishedAt": "2025-08-14T06:36:01Z",
+          "posicion": 7
+        },
+        {
+          "id": "TGfUG__aOhw",
+          "titulo": "SELECT y FROM en SQL: La base de las consultas SQL (parte 1) | Curso de SQL BigQuery #9",
+          "descripcion": "En este capítulo del curso BigQuery con datos de Google Analytics 4 aprenderás a usar las cláusulas SELECT y FROM, la base de cualquier consulta SQL.\n\nVeremos cómo escribir consultas correctas en BigQuery, cómo obtener el ID completo de una tabla, y por qué es importante seleccionar solo las columnas necesarias para optimizar costos.\n\n📍 Temas:\n✅  Estructura básica de una consulta SQL en BigQuery.\n✅  Uso correcto de las comillas invertidas ` para el nombre de la tabla.\n✅  Cómo copiar y usar el Table ID en el FROM.\n✅  Selección de columnas específicas vs. uso de SELECT *\n✅  Impacto en el costo y tamaño procesado según las columnas seleccionadas.\n✅  Diferencia entre una tabla física y el resultado de una consulta.\n\n💡 Consejo clave: evita SELECT * si no es necesario y selecciona solo lo que realmente vas a usar para ahorrar tiempo y recursos.\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/TGfUG__aOhw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=TGfUG__aOhw",
+          "publishedAt": "2025-08-14T07:58:08Z",
+          "posicion": 8
+        },
+        {
+          "id": "m_WT3mJ0J9E",
+          "titulo": "SELECT y FROM en SQL: La base de las consultas SQL (parte 2) | Curso de SQL BigQuery #10",
+          "descripcion": "En este capítulo del curso BigQuery con datos de Google Analytics 4 aprenderás a mantener un código ordenado y estandarizado al escribir consultas SQL, evitando errores y problemas a futuro.\n\nVeremos cómo indentar correctamente tu código, renombrar columnas con AS, y por qué es importante mantener un esquema de tabla fijo para evitar inconsistencias.\n\n📌 Temas:\n✅ Cómo dar formato e indentación a tus consultas para mejorar la legibilidad.\n✅ Uso de AS para cambiar nombres de columnas y adaptarlos a estándares.\n✅ Agregar columnas nuevas sin perder de vista la estructura original.\n✅ Diferencias entre la tabla física y el resultado de una consulta.\n✅ Por qué se debe establecer un esquema de la tabla resultante de la consulta.\n\n💡 Consejo: Un código limpio y un esquema fijo no solo facilitan tu trabajo, también ayudan a cualquier otra persona que utilice tu consulta más adelante.\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/m_WT3mJ0J9E/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=m_WT3mJ0J9E",
+          "publishedAt": "2025-08-14T07:59:27Z",
+          "posicion": 9
+        },
+        {
+          "id": "K2jlyUL3zK8",
+          "titulo": "Cómo guardar tus consultas como vistas | Curso de SQL BigQuery #11",
+          "descripcion": "En este capítulo del curso BigQuery con Google Analytics 4 aprenderás a guardar tus consultas y a crear vistas para reutilizarlas en futuros análisis. Veremos paso a paso cómo convertir tu código en una vista  y cuándo conviene hacerlo para ahorrar tiempo y mantener tu trabajo organizado.\n\n📌 Temas:\n✅ Cómo guardar consultas en Big Query\n✅ Cómo acceder rápidamente a tus consultas guardadas.\n✅ Qué es una vista en BigQuery y cómo crearla.\n✅ Diferencias entre guardar consultas y guardar consultas como vistas.\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/K2jlyUL3zK8/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=K2jlyUL3zK8",
+          "publishedAt": "2025-08-15T04:59:49Z",
+          "posicion": 10
+        },
+        {
+          "id": "uN-yP7FwIN4",
+          "titulo": "Cómo conectar Big Query con Looker Studio | Curso de SQL BigQuery #12",
+          "descripcion": "En este capítulo aprenderemos cómo llevar datos de BigQuery a Looker Studio para crear reportes visuales y dashboards dinámicos. Mencionaremos paso a paso cómo conectar ambas herramientas, filtrar y organizar la información, y preparar tus datos para que sean claros y fáciles de interpretar.\n\n📌 Temas clave:\n✅ Cómo conectar Big Query con Looker Studio.\n✅ Desventajas de conectar vistas de Big Query con Looker Studio.\n✅ Cuándo conviene usar vistas: para consultar datos en tiempo real\n✅ Ventajas de las tablas particionadas: procesan menos datos que las tablas normales.\n\n💡 Tip: Una buena estructura en Big Query facilita un dashboard limpio y rápido en Looker Studio.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/uN-yP7FwIN4/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=uN-yP7FwIN4",
+          "publishedAt": "2025-08-15T05:02:52Z",
+          "posicion": 11
+        },
+        {
+          "id": "BQnwEe6r4Fg",
+          "titulo": "Cláusulas básicas de SQL en Big Query | Curso de SQL BigQuery #13",
+          "descripcion": "En este capítulo del curso BigQuery con Google Analytics 4, aprenderás las cláusulas básicas de SQL y el orden real de ejecución dentro de una consulta. Revisaremos SELECT, FROM, WHERE, GROUP BY, HAVING y ORDER BY, y veremos cómo se combinan con funciones útiles para transformar y limpiar datos.\n\n📌 Temas:\n✅ Cláusulas básicas de SQL\n✅ El orden correcto de las cláusulas en SQL.\n✅ Funciones prácticas como CONCAT, SPLIT, IF, CASE WHEN y más.\n✅ Casos de uso con datos reales de Google Analytics 4.\n\n💡 Tip: Conocer el orden de ejecución en SQL te ayudará a escribir consultas más eficientes y evitar errores comunes al analizar datos en BigQuery.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/BQnwEe6r4Fg/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=BQnwEe6r4Fg",
+          "publishedAt": "2025-08-15T05:06:05Z",
+          "posicion": 12
+        },
+        {
+          "id": "OTkdggNWv14",
+          "titulo": "Cómo usar PARSE_DATE en Big Query | Convierte strings en fechas | Curso de SQL BigQuery #14",
+          "descripcion": "En este capítulo revisaremos como usar la función PARSE_DATE, fundamental para trabajar con campos de fecha que vienen en formato texto (string).\nTransformaremos el campo event_date de la tabla events de GA4 en un formato de fecha correcto, paso a paso, para que puedas realizar consultas más precisas y ordenadas.\n\n📌 Temas:\n✅ Qué es la función PARSE_DATE en Big Query.\n✅ Cómo convertir un campo string en DATE.\n✅ El formato correcto que debes usar para año, mes y día.\n✅ Buenas prácticas al trabajar con event_date en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/OTkdggNWv14/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=OTkdggNWv14",
+          "publishedAt": "2025-08-15T05:10:50Z",
+          "posicion": 13
+        },
+        {
+          "id": "VrvnwaTppAE",
+          "titulo": "Cómo usar EXTRACT en BigQuery | Extraer día, mes y año de fechas | Curso de SQL BigQuery #15",
+          "descripcion": "En este capítulo aprenderemos a usar la función EXTRACT, que permite obtener partes específicas de una fecha, como día, mes, año, trimestre o semana.\n\nVeremos ejemplos prácticos con una tabla prueba y con la tabla de events de GA4, explicando las diferencias entre trabajar con campos de tipo DATE y STRING, y cómo combinar EXTRACT con PARSE_DATE para transformar datos en Big Query.\n\n📌 Temas:\n✅  Cómo funciona la función EXTRACT en Big Query.\n✅ Extraer día, mes, año, semana y trimestre de un campo DATE.\n✅ Diferencias entre DATE, STRING, DATETIME y TIMESTAMP.\n✅ Uso de PARSE_DATE para convertir un string en fecha antes de aplicar EXTRACT.\n✅ Limitaciones: por qué no se puede extraer hora, minuto o segundo desde DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/VrvnwaTppAE/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=VrvnwaTppAE",
+          "publishedAt": "2025-08-15T05:13:42Z",
+          "posicion": 14
+        },
+        {
+          "id": "JbwNhXjC16A",
+          "titulo": "Cómo extraer hora y minuto en Big Query | Manejo de event_timestamp | Curso de SQL BigQuery #16",
+          "descripcion": "En este capítulo del curso de BigQuery con Google Analytics 4, aprenderás a extraer hora, minuto y segundo a partir del campo event_timestamp, convirtiéndolo correctamente a formato TIMESTAMP para que Big Query lo interprete bien.\n\nRevisaremos cómo usar TIMESTAMP_MICROS junto con la función EXTRACT, y cómo ajustar la información a tu zona horaria (ejemplo: América/Lima) para que tus reportes reflejen la hora real de los eventos.\n\n📌 Temas:\n✅ Cómo convertir un entero a TIMESTAMP usando TIMESTAMP_MICROS.\n✅ Uso de EXTRACT para obtener hora, minuto y segundo en BigQuery.\n✅ Ajustar la zona horaria (UTC vs. América/Lima u otra).\n✅ Alternativas usando DATETIME y consideraciones importantes.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/JbwNhXjC16A/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=JbwNhXjC16A",
+          "publishedAt": "2025-08-15T09:17:06Z",
+          "posicion": 15
+        },
+        {
+          "id": "ue5vLsIijHs",
+          "titulo": "Cómo usar FORMAT_DATE  | De DATE a STRING | Mostrar días de la semana | Curso de SQL Big Query #17",
+          "descripcion": "En este video aprenderemos a usar la función FORMAT_DATE en BigQuery, una de las expresiones más útiles para formatear y personalizar fechas en tus consultas SQL. \n\n📌 Temas:\n✅ Convertir un valor DATE en STRING (texto).\n✅ Extraer el día de la semana (Monday, Tuesday, etc.).\n✅ Crear formatos de fecha personalizados en Big Query.\n\n👉 En próximos capítulos veremos cómo pasar de resultados en inglés a español usando condicionales (CASE).\n\n#BigQuery #SQL #GoogleBigQuery #Fechas #FORMATDATE\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/ue5vLsIijHs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=ue5vLsIijHs",
+          "publishedAt": "2025-08-15T09:23:28Z",
+          "posicion": 16
+        },
+        {
+          "id": "zcOZ0IEsXHc",
+          "titulo": "Cómo usar CONCAT en SQL | Curso de SQL BigQuery #18",
+          "descripcion": "En este capítulo del curso de BigQuery aprenderás a usar la función CONCAT, muy similar a la función CONCATENAR en Excel, pero con consideraciones importantes en SQL de BigQuery.\n\n📌 Temas:\n✅ Concatenar columnas como fechas y IDs de usuario.\n✅ Insertar espacios, guiones o texto fijo al unir campos.\n✅ Manejar valores nulos con COALESCE para evitar errores en los resultados.\n✅ Alternativa al uso de CONCAT: el operador || para unir cadenas de manera simple.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/zcOZ0IEsXHc/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=zcOZ0IEsXHc",
+          "publishedAt": "2025-08-15T09:26:28Z",
+          "posicion": 17
+        },
+        {
+          "id": "_cXvg-XPnUs",
+          "titulo": "Cómo separar texto en columnas y entender arrays en Big Query | SPLIT | Curso de SQL BigQuery #19",
+          "descripcion": "En este capítulo aprenderás a usar la función SPLIT en BigQuery. Veremos cómo aplicar esta función en la tabla events de Google Analytics 4 (GA4) y entender mejor el concepto de arrays en SQL.\n\n📌  Temas:\n✅ Cómo funciona la función SPLIT en BigQuery\n✅ Ejemplo práctico separando un user_pseudo_id en dos columnas\n✅ Qué es un array y cómo interpretarlo en los resultados\n✅ Uso de OFFSET para extraer valores específicos de un array\n✅ Diferencia entre tablas planas y tablas con arrays en GA4\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/_cXvg-XPnUs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=_cXvg-XPnUs",
+          "publishedAt": "2025-08-15T09:32:06Z",
+          "posicion": 18
+        },
+        {
+          "id": "q0n48c-f4O8",
+          "titulo": "Cómo usar SUBSTRING para extraer texto en BigQuery | Curso de SQL BigQuery #20",
+          "descripcion": "En este capítulo del curso de BigQuery aprenderás a utilizar la función SUBSTRING (o SUBSTR) para extraer partes específicas de un texto a partir de una posición inicial. \n\n👉 Veremos ejemplos aplicados y cómo obtener valores antes o después de un punto dentro de una cadena. También entenderás en qué casos conviene usar SUBSTRING, especialmente cuando trabajamos con datos estándar o con longitudes fijas.\n\n📌 Temas:\n✅ Cómo extraer texto a partir de una posición específica\n✅ Cuándo usar SUBSTRING: En datos estándar\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/q0n48c-f4O8/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=q0n48c-f4O8",
+          "publishedAt": "2025-08-15T09:36:21Z",
+          "posicion": 19
+        },
+        {
+          "id": "CrG-FruGb-k",
+          "titulo": "Cómo usar INSTR y STRPOS | Encuentra la posición de caracteres | Curso de SQL BigQuery #21",
+          "descripcion": "En este capítulo exploramos las funciones INSTR y STRPOS en SQL, que nos permiten encontrar la posición de un carácter o subcadena dentro de un texto.\nVeremos ejemplos prácticos comparando su uso con otras funciones como SPLIT y SUBSTRING, para entender cómo podemos localizar posiciones y extraer datos de manera más flexible.\n\n📌 Temas:\n✅ Qué son y cómo funcionan INSTR y STRPOS en SQL\n✅ Cómo combinar INSTR con SUBSTRING para extraer valores dinámicamente\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/CrG-FruGb-k/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=CrG-FruGb-k",
+          "publishedAt": "2025-08-15T09:46:14Z",
+          "posicion": 20
+        },
+        {
+          "id": "ZWi_B_rqvt4",
+          "titulo": "Cómo usar LEFTPAD y RIGHTPAD | Rellenar valores, estandarizar longitudes | Curso de SQL BigQuery #22",
+          "descripcion": "En este capítulo exploramos las funciones LEFTPAD y RIGHTPAD en SQL, que nos permiten rellenar cadenas de texto hasta una longitud definida, a diferencia de las funciones clásicas LEFT y RIGHT, que solo extraen caracteres.\n\n📌 Temas:\n✅ Usar LEFTPAD y RIGHTPAD en SQL\n✅ Rellenar con ceros (u otros caracteres) cuando la longitud es menor a la esperada\n✅ Diferenciar entre LEFT/RIGHT (extraer) y LEFTPAD/RIGHTPAD (rellenar)\n✅ Estandarizar la longitud de los datos en columnas\n\nEstas funciones son muy útiles cuando necesitas trabajar con IDs, códigos o campos que deben tener un formato fijo.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/ZWi_B_rqvt4/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=ZWi_B_rqvt4",
+          "publishedAt": "2025-08-15T09:52:09Z",
+          "posicion": 21
+        },
+        {
+          "id": "tIxrQnDwvx4",
+          "titulo": "Cómo usar REPLACE en SQL | Cambia, limpia y estandariza valores | Curso de SQL BigQuery #23",
+          "descripcion": "En este capítulo explicamos cómo funciona la función REPLACE en SQL, ideal para reemplazar, eliminar o transformar cadenas de texto dentro de una columna.\n\n📌 Temas:\n✅ Reemplazar un valor específico por otro dentro de un campo.\n✅ Sustituir caracteres como guiones bajos por espacios.\n✅ Eliminar partes de texto reemplazándolas por vacío.\n✅ Entender la diferencia entre REPLACE y expresiones lógicas como CASE o IF.\n✅ Considerar el detalle de mayúsculas y minúsculas (case sensitive) al hacer reemplazos.\n\nEsta función es muy útil cuando necesitas limpiar datos, estandarizar formatos o traducir valores en tus consultas SQL.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/tIxrQnDwvx4/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=tIxrQnDwvx4",
+          "publishedAt": "2025-08-15T09:54:34Z",
+          "posicion": 22
+        },
+        {
+          "id": "NQpnc4YfuQo",
+          "titulo": "Cómo usar TRANSLATE en SQL | Replace vs Translate | Curso de SQL BigQuery #24",
+          "descripcion": "En este capítulo revisaremos la función TRANSLATE en SQL, entendiendo sus diferencias con la función REPLACE.\n\n📌Temas:\n✅ Diferencia entre REPLACE y TRANSLATE en SQL.\n✅ Cómo reemplazar un carácter o varios a la vez.\n✅ Ejemplos prácticos con cadenas de texto y limpieza de datos (cambiar todas la vocales)\n✅ Casos reales como normalizar correos o eliminar caracteres especiales.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/NQpnc4YfuQo/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=NQpnc4YfuQo",
+          "publishedAt": "2025-08-15T09:58:19Z",
+          "posicion": 23
+        },
+        {
+          "id": "vBRiaP5NgVw",
+          "titulo": "Uso de LENGTH y TRIM para limpiar y estandarizar texto | Curso de SQL BigQuery #25",
+          "descripcion": "En este capítulo revisaremos las funciones LENGTH y TRIM en SQL, esenciales para medir y limpiar cadenas de texto en BigQuery al trabajar con datos de Google Analytics 4.\n\n📌 Temas:\n✅ Cómo obtener la cantidad de caracteres con LENGTH.\n✅ Ejemplo práctico agregando espacios en blanco y eliminándolos con TRIM.\n✅ Diferencia entre datos limpios y datos con espacios ocultos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/vBRiaP5NgVw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=vBRiaP5NgVw",
+          "publishedAt": "2025-08-16T07:15:30Z",
+          "posicion": 24
+        },
+        {
+          "id": "t4eZfB4XTHg",
+          "titulo": "Cómo usar LOWER y UPPER para estandarizar datos | Curso de SQL BigQuery #26",
+          "descripcion": "En este capítulo revisaremos las funciones LOWER y UPPER en SQL, fundamentales para estandarizar datos de texto en BigQuery con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre LOWER y UPPER en SQL.\n✅ Cómo convertir texto a minúsculas o mayúsculas.\n✅ Ejemplos prácticos con correos electrónicos y nombres de ciudades.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/t4eZfB4XTHg/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=t4eZfB4XTHg",
+          "publishedAt": "2025-08-16T07:18:01Z",
+          "posicion": 25
+        },
+        {
+          "id": "Dc98c6LPQQE",
+          "titulo": "COALESCE en SQL: Manejo de valores nulos en SQL | Curso de SQL BigQuery #27",
+          "descripcion": "En este capítulo revisaremos la función COALESCE en SQL, una herramienta clave para manejar valores nulos en BigQuery con datos de Google Analytics 4.\n\n📌 Temas:\n✅ ¿Qué es COALESCE y cómo funciona?\n✅ Diferencias entre COALESCE e IFNULL.\n✅ Uso de argumentos dentro de COALESCE.\n✅ Consideraciones al trabajar con valores completamente nulos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/Dc98c6LPQQE/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Dc98c6LPQQE",
+          "publishedAt": "2025-08-16T07:21:24Z",
+          "posicion": 26
+        },
+        {
+          "id": "YDElIJ6jMrw",
+          "titulo": "Cómo usar EXCEPT para excluir columnas en tus consultas | Curso de SQL BigQuery #28",
+          "descripcion": "En este capítulo revisaremos la expresión EXCEPT en SQL, aprendiendo a excluir columnas directamente desde la cláusula SELECT en BigQuery con datos de Google Analytics 4.\n\n📌 Temas:\n✅ Cómo funciona EXCEPT dentro de SELECT.\n✅ Diferencia entre excluir una o varias columnas.\n✅ Ejemplo práctico quitando columnas de la tabla de eventos en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/YDElIJ6jMrw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=YDElIJ6jMrw",
+          "publishedAt": "2025-08-16T07:23:05Z",
+          "posicion": 27
+        },
+        {
+          "id": "Lox4HlSibXo",
+          "titulo": "Cómo usar SAFE_CAST para convertir tipos de datos sin errores | Curso de SQL BigQuery #29",
+          "descripcion": "En este capítulo revisaremos la función SAFE_CAST en SQL, la forma segura de convertir tipos de datos en BigQuery al trabajar con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre CAST y SAFE_CAST en SQL.\n✅ Cómo convertir texto en números (INT64 y FLOAT64).\n✅ Qué ocurre cuando la conversión no es posible (valores NULL).\n✅ Ejemplo práctico con columnas de eventos y user ID en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/Lox4HlSibXo/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Lox4HlSibXo",
+          "publishedAt": "2025-08-16T07:25:45Z",
+          "posicion": 28
+        },
+        {
+          "id": "Q275enpY7bY",
+          "titulo": "Cómo convertir fechas con CAST y PARSE_DATE en SQL | Curso de SQL BigQuery #30",
+          "descripcion": "En este capítulo revisaremos cómo manejar conversiones de fechas en SQL utilizando BigQuery con datos de Google Analytics 4. Veremos las limitaciones de CAST al convertir texto a fecha y cómo resolverlo con PARSE_DATE.\n\n📌 Temas:\n✅ Qué ocurre al convertir texto a fecha con CAST.\n✅ Requisitos de formato para que CAST funcione correctamente.\n✅ Cómo usar PARSE_DATE para transformar strings en fechas reales.\n✅ Ejemplos prácticos con columnas de GA4 (event_date).\n✅ Diferencias entre CAST, SAFE_CAST y PARSE_DATE según el tipo de dato.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/Q275enpY7bY/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Q275enpY7bY",
+          "publishedAt": "2025-08-16T07:27:54Z",
+          "posicion": 29
+        },
+        {
+          "id": "Oswa8OkiQPs",
+          "titulo": "Cómo usar la función IF en SQL (condiciones simples como en Excel | Curso de SQL BigQuery #31",
+          "descripcion": "En este capítulo revisaremos la función IF en SQL, muy parecida a la que usamos en Excel. Veremos cómo crear columnas condicionales en BigQuery usando datos de Google Analytics 4.\n\n📌  Temas:\n✅ Cómo funciona la expresión IF en SQL.\n✅ Creación de nuevas columnas basadas en condiciones.\n✅ Ejemplo práctico con valores numéricos (clientes top).\n✅ Manejo de nulos y qué ocurre si no los evaluamos.\n✅ Diferencia entre usar IF y CASE WHEN en SQL.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/Oswa8OkiQPs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Oswa8OkiQPs",
+          "publishedAt": "2025-08-16T07:30:14Z",
+          "posicion": 30
+        },
+        {
+          "id": "U92pTqhzxoQ",
+          "titulo": "Ejemplos prácticos con IF en cadenas, fechas y listas (IN) | Curso de SQL BigQuery #32",
+          "descripcion": "En este capítulo continuamos explorando la función IF en SQL, pero ahora con ejemplos más avanzados en BigQuery usando datos de Google Analytics 4. Aprenderemos a usar IF con cadenas de texto, fechas y condiciones múltiples con IN.\n\n📌 Temas:\n✅ Uso de IF con cadenas de texto (traducción de eventos).\n✅ Evaluación de fechas y conversión de string a DATE con PARSE_DATE.\n✅ Condiciones con IF + IN (ejemplo: agrupar varios eventos).\n✅ Diferencia entre usar IF y CASE WHEN en SQL.\n✅ Cuándo conviene IF y cuándo es mejor usar CASE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/U92pTqhzxoQ/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=U92pTqhzxoQ",
+          "publishedAt": "2025-08-16T07:32:28Z",
+          "posicion": 31
+        },
+        {
+          "id": "vJXvL5i4OQY",
+          "titulo": "CASE WHEN en SQL: Múltiples condiciones y crear columnas categóricas | Curso de SQL BigQuery #33",
+          "descripcion": "En este capítulo aprenderás a usar la expresión CASE WHEN en SQL, una de las más potentes para evaluar múltiples condiciones y devolver resultados personalizados en tus consultas de BigQuery con datos de Google Analytics 4.\n\n📌 Temas que veremos:\n✅ Qué es CASE WHEN y cómo funciona en SQL.\n✅ Cómo crear columnas categóricas a partir de columnas numéricas.\n✅ Ejemplo práctico: traducir valores (pending → pendiente, shipped → enviado, etc.).\n✅ Uso de LIKE y REGEXP dentro de CASE WHEN para clasificar textos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/vJXvL5i4OQY/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=vJXvL5i4OQY",
+          "publishedAt": "2025-08-16T07:35:33Z",
+          "posicion": 32
+        },
+        {
+          "id": "eVL3dw9BfPc",
+          "titulo": "CASE WHEN en SQL: Ejemplos prácticos para clasificar compras | Curso de SQL BigQuery #34",
+          "descripcion": "En este capítulo aplicaremos de manera práctica lo aprendido sobre CASE WHEN en SQL. Verás cómo usar esta expresión condicional en BigQuery para traducir eventos de Google Analytics 4 y crear columnas categóricas que te ayuden a analizar mejor tus datos.\n\n📌 Temas que veremos:\n✅ Traducción de eventos (purchase → compra, page_view → página vista, etc.).\n✅ Clasificación de compras por rangos (compra alta, media y baja).\n✅ Uso de LOWER() para controlar mayúsculas y minúsculas en condiciones.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/eVL3dw9BfPc/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=eVL3dw9BfPc",
+          "publishedAt": "2025-08-16T07:38:44Z",
+          "posicion": 33
+        },
+        {
+          "id": "THxGW9huLRg",
+          "titulo": "ROUND, CEIL y FLOOR en SQL: cómo redondear números | Curso de SQL BigQuery #35",
+          "descripcion": "En este capítulo aprenderás a usar las funciones ROUND, CEIL y FLOOR en SQL BigQuery para redondear números decimales. Veremos cómo se diferencian y en qué casos usar cada una, además de explicar por qué CAST y TRUNC no sirven para redondear sino para cortar decimales.\n\n📌  Temas que veremos:\n✅ Cómo funciona ROUND y el redondeo con punto 5.\n✅ Redondeo a número entero y a decimales específicos.\n✅ CEIL: redondear siempre hacia arriba.\n✅ FLOOR: redondear siempre hacia abajo.\n✅ Diferencia entre redondear y truncar con CAST y TRUNC.\n✅ Ejemplos prácticos con métricas de Google Analytics 4 (GA4) en BigQuery.\n\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/THxGW9huLRg/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=THxGW9huLRg",
+          "publishedAt": "2025-08-16T07:40:35Z",
+          "posicion": 34
+        },
+        {
+          "id": "nAYXMoOpNsM",
+          "titulo": "SAFE_DIVIDE en SQL: cómo evitar errores de división entre cero o nulos | Curso de SQL BigQuery #36",
+          "descripcion": "En este capítulo aprenderemos a usar la función SAFE_DIVIDE en SQL BigQuery, una forma segura de dividir números sin que tu consulta falle por divisiones entre cero o valores nulos. Veremos ejemplos prácticos con datos de Google Analytics 4 (GA4) y cómo complementar esta función con IFNULL y ROUND para mejorar la limpieza de resultados.\n\n📌 Temas que veremos:\n✅ Qué es y cómo funciona SAFE_DIVIDE en BigQuery.\n✅ Diferencia entre usar el operador / y SAFE_DIVIDE.\n✅ Cómo manejar divisiones con cero o nulos.\n✅ Uso combinado con IFNULL para reemplazar nulos por ceros.\n✅ Redondeo de resultados con ROUND.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/nAYXMoOpNsM/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=nAYXMoOpNsM",
+          "publishedAt": "2025-08-16T07:42:02Z",
+          "posicion": 35
+        },
+        {
+          "id": "zT66rq7mEu4",
+          "titulo": "DATEDIFF y CURRENT_DATE en SQL: diferencias de fechas y usos prácticos | Curso de SQL BigQuery #37",
+          "descripcion": "En este capítulo aprenderemos a usar las funciones DATEDIFF y CURRENT_DATE en SQL BigQuery, esenciales para trabajar con fechas. Veremos cómo calcular diferencias en años, meses y días, sus limitaciones al usarlas para calcular edades y casos prácticos de negocio.\n\n📌 Temas que veremos:\n✅ Qué es y cómo funciona DATEDIFF en SQL BigQuery.\n✅ Cómo obtener la fecha actual con CURRENT_DATE.\n✅ Cálculo de edades y limitaciones de YEAR en BigQuery.\n✅ Diferencia de días desde el último pedido.\n✅ Seguimiento de tiempo entre eventos (contratos, pedidos, entregas).\n✅ Buenas prácticas: uso de zonas horarias con CURRENT_DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/zT66rq7mEu4/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=zT66rq7mEu4",
+          "publishedAt": "2025-08-16T14:18:33Z",
+          "posicion": 36
+        },
+        {
+          "id": "sV8nczRvPAU",
+          "titulo": "DATEDIFF en SQL: Calcular diferencia entre fechas (años, meses, días) | Curso de SQL BigQuery #38",
+          "descripcion": "En este capítulo aprenderás a utilizar la función DATEDIFF en SQL BigQuery, que permite calcular la diferencia entre dos fechas de forma sencilla. Veremos casos prácticos con Google Analytics 4 (GA4), cómo transformar strings en fechas y las limitaciones al usarla para cálculos de edad.\n\n📌 Temas que veremos:\n✅ Qué es y cómo funciona DATEDIFF en SQL BigQuery.\n✅ Conversión de cadenas a fecha con PARSE_DATE.\n✅ Diferencia entre fechas actuales, personalizadas y campos en tablas.\n✅ Cálculo de diferencias en años, meses y días.\n✅ Limitaciones al usarlo para calcular edades reales.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/sV8nczRvPAU/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=sV8nczRvPAU",
+          "publishedAt": "2025-08-16T14:19:42Z",
+          "posicion": 37
+        },
+        {
+          "id": "kegfG0chZHI",
+          "titulo": "DATE_ADD y DATE_SUB en SQL: sumar o restar días, meses y años a una fecha | Curso de SQL BigQuery#39",
+          "descripcion": "En este capítulo aprenderás a utilizar las funciones DATE_ADD y DATE_SUB en SQL BigQuery, que permiten sumar o restar intervalos de tiempo a una fecha. Veremos ejemplos prácticos con datos de Google Analytics 4 (GA4) y casos de uso en negocios como fechas de vencimiento, entregas y programación de campañas.\n\n📌 Temas que veremos:\n✅ Qué son y cómo funcionan DATE_ADD y DATE_SUB en SQL BigQuery.\n✅ Sumar y restar días, meses o años a una fecha.\n✅ Diferencia entre DATE_ADD y DATE_SUB para mayor legibilidad.\n✅ Casos reales: vencimientos, proyecciones y fechas de entrega.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/kegfG0chZHI/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=kegfG0chZHI",
+          "publishedAt": "2025-08-16T14:22:21Z",
+          "posicion": 38
+        },
+        {
+          "id": "5BEWVMsLsBo",
+          "titulo": "WHERE en SQL: cómo usar la cláusula WHERE con ejemplos en GA4 | Curso de SQL BigQuery #40",
+          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula WHERE en SQL BigQuery, que nos permite filtrar los resultados de una tabla según una o varias condiciones. Veremos tanto la sintaxis correcta como el orden real de ejecución en SQL, además de ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Qué es la cláusula WHERE y cómo funciona en SQL BigQuery.\n✅ Diferencia entre sintaxis y orden de ejecución (FROM → WHERE → SELECT).\n✅ Filtrar por columnas de texto y valores numéricos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/5BEWVMsLsBo/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=5BEWVMsLsBo",
+          "publishedAt": "2025-08-16T14:24:03Z",
+          "posicion": 39
+        },
+        {
+          "id": "v1Qnd2Uxcjs",
+          "titulo": "Cómo usar WHERE en SQL BigQuery con textos | LOWER y UPPER | Curso de SQL BigQuery #41",
+          "descripcion": "En este capítulo aprenderemos a manejar casos especiales al utilizar la cláusula WHERE con operadores de comparación en SQL BigQuery. Veremos cómo los datos pueden venir con mayúsculas, minúsculas o formatos inconsistentes, y cómo resolverlo con funciones como LOWER y UPPER. Además, exploraremos ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Uso de la cláusula WHERE con campos de texto (ejemplo: marcas de dispositivos).\n✅ Problemas comunes con mayúsculas y minúsculas al filtrar.\n✅ Cómo estandarizar datos con las funciones LOWER y UPPER.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/v1Qnd2Uxcjs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=v1Qnd2Uxcjs",
+          "publishedAt": "2025-08-16T14:27:58Z",
+          "posicion": 40
+        },
+        {
+          "id": "yzvzl1LBXm0",
+          "titulo": "Consulta todas las fechas de la tabla de eventos en BigQuery | Curso de SQL BigQuery #42",
+          "descripcion": "En este capítulo aprenderemos a filtrar datos por fechas en SQL BigQuery usando la cláusula WHERE. Analizaremos las particularidades al trabajar con el campo event_date y cómo acceder a múltiples tablas diarias de manera eficiente. \n\n📌 Temas que veremos:\n✅ Cómo funciona el campo event_date (tipo STRING) y cómo convertirlo a fecha.\n✅ Diferencia entre consultar una sola tabla diaria y todas las tablas con *.\n✅ Impacto del tamaño de las consultas en BigQuery (ejemplos de 1.7 MB hasta 3 GB).\n✅ Importancia de optimizar consultas para no exceder los límites gratuitos o generar costos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/yzvzl1LBXm0/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=yzvzl1LBXm0",
+          "publishedAt": "2025-08-16T14:29:48Z",
+          "posicion": 41
+        },
+        {
+          "id": "UlDUQ9G0QHM",
+          "titulo": "Filtrar fechas con _TABLE_SUFFIX en la tabla de eventos en BigQuery | Curso de SQL BigQuery #43",
+          "descripcion": "En este capítulo aprenderemos a optimizar filtros de fecha en SQL BigQuery utilizando la variable especial _TABLE_SUFFIX en lugar del campo event_date. Esto nos permitirá consultar rangos de fechas específicos en la tabla events de Google Analytics 4 (GA4)\n\n📌 Temas que veremos:\n✅ Diferencia entre usar event_date y _TABLE_SUFFIX al filtrar.\n✅ Cómo reducir el peso de una consulta de 179 MB a solo 1.7 MB.\n✅ Ventajas de _TABLE_SUFFIX para trabajar con tablas particionadas por fecha.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/UlDUQ9G0QHM/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=UlDUQ9G0QHM",
+          "publishedAt": "2025-08-16T14:31:42Z",
+          "posicion": 42
+        },
+        {
+          "id": "NVwGmBS-wMw",
+          "titulo": "Cómo usar AND, OR, IN y NOT en la cláusula WHERE de SQL | Curso de SQL BigQuery #44",
+          "descripcion": "En este capítulo aprenderemos a utilizar los operadores AND, OR, IN y NOT dentro de la cláusula WHERE en SQL BigQuery. Revisaremos cómo combinar múltiples condiciones, agrupar filtros con paréntesis y simplificar consultas al trabajar con un mismo campo.\n\n📌 Temas que veremos:\n✅ Uso del operador AND para combinar condiciones.\n✅ Problemas comunes al usar OR sin paréntesis.\n✅ Cómo simplificar condiciones con IN.\n✅ Exclusión de resultados con NOT.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/NVwGmBS-wMw/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=NVwGmBS-wMw",
+          "publishedAt": "2025-08-16T14:32:53Z",
+          "posicion": 43
+        },
+        {
+          "id": "P4--JGi1xH8",
+          "titulo": "Cómo usar BETWEEN en SQL para filtrar rangos de fechas y valores | Curso de SQL BigQuery #45",
+          "descripcion": "En este capítulo aprenderemos a utilizar la expresión BETWEEN dentro de la cláusula WHERE en SQL BigQuery. Veremos cómo aplicarla tanto en rangos de fechas como en valores numéricos, y cómo combinarla con otras condiciones como AND para filtrar de manera más precisa.\n\n📌 Temas que veremos:\n✅ Uso de BETWEEN con fechas para obtener periodos completos.\n✅ Inclusión de valores iniciales y finales en el rango.\n✅ Aplicación de BETWEEN en columnas numéricas (ejemplo: ingresos de compra).\n✅ Combinación de múltiples condiciones en una misma consulta.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/P4--JGi1xH8/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=P4--JGi1xH8",
+          "publishedAt": "2025-08-16T14:35:00Z",
+          "posicion": 44
+        },
+        {
+          "id": "4aUW0262vu8",
+          "titulo": "Buscar texto con LIKE, CONTAINS_SUBSTR, STARTS_WITH y ENDS_WITH | Curso de SQL BigQuery #46",
+          "descripcion": "En este capítulo aprenderemos a buscar cadenas dentro de columnas en SQL BigQuery usando las expresiones LIKE, CONTAINS_SUBSTR, STARTS_WITH y ENDS_WITH. Veremos las diferencias de funcionamiento y rendimiento entre ellas, por qué conviene usar LOWER() para evitar problemas con mayúsculas/minúsculas y cuándo preferir cada función según la necesidad (contener, comenzar o terminar). \n\n📌 Temas que veremos:\n✅ Uso de LIKE y sus comodines para búsquedas por patrón (ej.: LOWER(geo.city) LIKE '%san%').\n✅ CONTAINS_SUBSTR(…) como alternativa más óptima para búsquedas de “contiene”.\n✅ STARTS_WITH(…) y ENDS_WITH(…) para búsquedas que comienzan o terminan con una cadena (mejor rendimiento que LIKE en esos casos).\n✅ Importancia de LOWER() para normalizar mayúsculas/minúsculas y no perder coincidencias.\n✅ Cuándo usar expresiones regulares (REGEXP_CONTAINS) para patrones complejos (tema para capítulos futuros).\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/4aUW0262vu8/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=4aUW0262vu8",
+          "publishedAt": "2025-08-16T14:37:07Z",
+          "posicion": 45
+        },
+        {
+          "id": "R7hA1gBrsvQ",
+          "titulo": "Uso de REGEXP_CONTAINS para buscar patrones avanzados en SQL | Curso de SQL BigQuery #47",
+          "descripcion": "En este capítulo aprenderemos a utilizar la expresión REGEXP_CONTAINS en SQL BigQuery, que nos permite buscar patrones avanzados de texto dentro de columnas. A diferencia de LIKE, esta función trabaja con expresiones regulares (regex), lo que abre la posibilidad de realizar búsquedas y validaciones mucho más complejas. \n\n📌 Temas que veremos:\n✅ Diferencia entre LIKE y REGEXP_CONTAINS y cuándo usar cada uno.\n✅ Sintaxis básica de REGEXP_CONTAINS\n✅ Validación de números telefónicos con prefijo internacional (+51) y longitud adecuada.\n✅ Validación de correos electrónicos mediante expresiones regulares.\n✅ Uso de REGEXP_CONTAINS dentro de SELECT con CASE para clasificar datos.\n✅ Recomendaciones para aprender regex y precauciones al usar IA para generarlos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/R7hA1gBrsvQ/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=R7hA1gBrsvQ",
+          "publishedAt": "2025-08-18T12:08:43Z",
+          "posicion": 46
+        },
+        {
+          "id": "E_MeMkTfBsk",
+          "titulo": "Uso de REGEXP_CONTAINS y REGEXP_REPLACE para clasificar y limpiar datos | Curso de SQL BigQuery #48",
+          "descripcion": "En este capítulo aprenderemos a aplicar funciones avanzadas de expresiones regulares en SQL BigQuery, no solo para filtrar información, sino también para clasificar y limpiar datos directamente desde el SELECT. Revisaremos cómo usar REGEXP_CONTAINS en combinación con CASE, cómo extraer patrones con REGEXP_EXTRACT y cómo estandarizar datos con REGEXP_REPLACE.\n\n📌 Temas que veremos:\n✅ Uso de REGEXP_CONTAINS dentro de CASE para crear columnas de clasificación.\n✅ Introducción a REGEXP_EXTRACT para extraer patrones específicos desde un campo.\n✅ Ejemplos de limpieza con REGEXP_REPLACE\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/E_MeMkTfBsk/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=E_MeMkTfBsk",
+          "publishedAt": "2025-08-18T12:11:13Z",
+          "posicion": 47
+        },
+        {
+          "id": "PLGbRoNcVL4",
+          "titulo": "Cómo usar GROUP BY en SQL BigQuery: teoría y ejemplos prácticos | Curso de SQL BigQuery #49",
+          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula GROUP BY en SQL BigQuery, entendiendo su orden de ejecución, su relación con las funciones de agregación y cómo se asemeja a las tablas dinámicas en Excel. Revisaremos ejemplos prácticos para agrupar datos con una o varias dimensiones y aplicar funciones como SUM, COUNT, AVG y más.\n\n📌 Temas que veremos:\n✅ Orden de ejecución de las cláusulas SELECT, FROM, WHERE y GROUP BY.\n✅ Diferencia entre agrupar con una columna y con múltiples columnas.\n✅ Uso de funciones de agregación: SUM, COUNT, AVG, MAX, MIN, entre otras.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/PLGbRoNcVL4/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=PLGbRoNcVL4",
+          "publishedAt": "2025-08-18T12:13:25Z",
+          "posicion": 48
+        },
+        {
+          "id": "6lR81YOeNKs",
+          "titulo": "Cómo usar GROUP BY en SQL con funciones de agregación (SUM, MAX, MIN) | Curso de SQL  BigQuery #50",
+          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula GROUP BY en SQL BigQuery para agrupar datos de eventos en Google Analytics 4 (GA4). Veremos cómo obtener eventos únicos, combinar múltiples dimensiones y aplicar funciones de agregación como SUM, MAX y MIN.\n\n📌 Temas que veremos:\n✅ Cómo funciona GROUP BY en BigQuery con eventos de GA4.\n✅ Diferencia entre agrupar dimensiones y aplicar funciones de agregación.\n✅ Ejemplo práctico con event name y device.brand.\n✅ Uso de SUM, MAX y MIN en columnas como purchase revenue.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "thumbnail": "https://i.ytimg.com/vi/6lR81YOeNKs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=6lR81YOeNKs",
+          "publishedAt": "2025-08-18T12:15:19Z",
+          "posicion": 49
+        }
+      ]
+    },
+    {
+      "moduloId": 2,
+      "titulo": "Manipulación de tablas",
+      "descripcion": "Nivel Intermedio 2.1",
+      "descripcionLarga": "Bienvenido al segundo bloque del curso de SQL, donde pasarás del análisis básico a la gestión de tablas y datos dentro de BigQuery. En este nivel intermedio aprenderás a crear tus propias tablas, insertar registros, modificar estructuras y mantener tu base de datos limpia y optimizada.\n\n💡 Todo sigue siendo gratuito y en la nube, sin instalaciones ni configuraciones complicadas. Solo necesitas tu cuenta de Google y conexión a internet para practicar de forma segura y profesional.\n\n🎯 Objetivo del módulo:\n\n-Comprender cómo se crean y administran tablas en BigQuery.\n-Aprender a insertar, actualizar y eliminar datos usando comandos DML.\n-Entender cómo optimizar costos y mantener buenas prácticas en tus proyectos.\n-Desarrollar confianza para construir tus propios datasets y gestionar su contenido.\n\n✅ Ventajas del módulo:\n\n-Ejemplos claros, con casos en BigQuery.\n-Explicaciones paso a paso sobre sentencias DDL y DML.\n-Conceptos de facturación y almacenamiento explicados con lenguaje sencillo.\n-Buenas prácticas para mantener tus datos organizados y evitar errores comunes.\n\n📚 Ideal para:\n\nQuienes ya completaron el nivel básico y quieren ir al siguiente paso.\nAnalistas, marketers o creadores que necesitan manipular datos directamente.\nEstudiantes que buscan entender cómo se administran las bases en entornos reales.\n\n🔔 Suscríbete y continúa tu ruta de aprendizaje en SQL.\nEn este bloque aprenderás no solo a consultar datos, sino a crear, modificar y gestionar tus propias tablas, como lo hacen los analistas de datos en el día a día.\n\n👨‍💻 Domina la manipulación de tablas y prepárate para el siguiente nivel: consultas avanzadas y análisis a gran escala.",
+      "playlistId": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
+      "totalVideos": 10,
+      "orden": 2,
+      "videos": [
+        {
+          "id": "DQlkV2DmA_M",
+          "titulo": "Introducción al nivel intermedio de SQL BigQuery | Curso de SQL Intermedio #1",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/DQlkV2DmA_M/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=DQlkV2DmA_M",
+          "publishedAt": "2025-10-07T08:51:06Z",
+          "posicion": 0
+        },
+        {
+          "id": "MHxjAOrdxCU",
+          "titulo": "CREATE TABLE en SQL BigQuery | Costos por almacenamiento en BigQuery | Curso de SQL Intermedio #2",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/MHxjAOrdxCU/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=MHxjAOrdxCU",
+          "publishedAt": "2025-10-07T08:55:56Z",
+          "posicion": 1
+        },
+        {
+          "id": "1eRuwnvwsPo",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=1eRuwnvwsPo",
+          "publishedAt": "2025-10-07T08:57:09Z",
+          "posicion": 2
+        },
+        {
+          "id": "IIT39Xomn94",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=IIT39Xomn94",
+          "publishedAt": "2025-10-07T09:00:56Z",
+          "posicion": 3
+        },
+        {
+          "id": "ecJm9JHj18g",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
+          "publishedAt": "2025-10-07T19:53:24Z",
+          "posicion": 4
+        },
+        {
+          "id": "pLRAticn7NU",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
+          "publishedAt": "2025-10-07T19:55:40Z",
+          "posicion": 5
+        },
+        {
+          "id": "t3jyABNSOno",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=t3jyABNSOno",
+          "publishedAt": "2025-10-07T19:56:36Z",
+          "posicion": 6
+        },
+        {
+          "id": "OzgC7e3Eths",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=OzgC7e3Eths",
+          "publishedAt": "2025-10-07T19:57:33Z",
+          "posicion": 7
+        },
+        {
+          "id": "njqE2uGyysQ",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
+          "publishedAt": "2025-10-07T19:59:45Z",
+          "posicion": 8
+        },
+        {
+          "id": "4JmKLgtmMBI",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
+          "publishedAt": "2025-10-07T20:00:43Z",
+          "posicion": 9
+        }
+      ]
+    }
+  ]
+}

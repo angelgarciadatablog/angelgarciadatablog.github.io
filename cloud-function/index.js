@@ -9,8 +9,9 @@ const fetch = require('node-fetch');
 const CONFIG = {
   // Dominios permitidos (CORS)
   allowedOrigins: [
-    'https://tudominio.com',
-    'https://www.tudominio.com',
+    'https://angelgarciadatablog.github.io',
+    'https://angelgarciadatablog.com',
+    'https://www.angelgarciadatablog.com',
     'http://localhost:3000', // Para desarrollo local
     'http://localhost:5500'  // Para Live Server
   ],
@@ -117,7 +118,7 @@ async function getChannelId(apiKey) {
 }
 
 /**
- * Obtiene videos de YouTube
+ * Obtiene videos de YouTube (canal o playlist)
  */
 async function fetchYouTubeVideos(apiKey, channelId) {
   const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&type=video&maxResults=${CONFIG.youtube.maxVideos}`;
@@ -139,6 +140,61 @@ async function fetchYouTubeVideos(apiKey, channelId) {
     thumbnail: item.snippet.thumbnails.high.url,
     publishedAt: item.snippet.publishedAt,
     description: item.snippet.description
+  }));
+}
+
+/**
+ * Obtiene información de una playlist (título, descripción)
+ */
+async function fetchPlaylistInfo(apiKey, playlistId) {
+  const url = `https://www.googleapis.com/youtube/v3/playlists?key=${apiKey}&id=${playlistId}&part=snippet`;
+
+  const response = await fetch(url, {
+    timeout: CONFIG.youtube.timeout
+  });
+
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  if (!data.items || data.items.length === 0) {
+    throw new Error('Playlist not found');
+  }
+
+  const playlist = data.items[0];
+  return {
+    title: playlist.snippet.title,
+    description: playlist.snippet.description,
+    channelTitle: playlist.snippet.channelTitle
+  };
+}
+
+/**
+ * Obtiene videos de una playlist específica
+ */
+async function fetchPlaylistVideos(apiKey, playlistId, maxResults = 50) {
+  const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=${apiKey}&playlistId=${playlistId}&part=snippet&maxResults=${maxResults}`;
+
+  const response = await fetch(url, {
+    timeout: CONFIG.youtube.timeout * 2 // Doble timeout para playlists grandes
+  });
+
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  // Formatear datos para el frontend
+  return data.items.map(item => ({
+    id: item.snippet.resourceId.videoId,
+    title: item.snippet.title,
+    thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url,
+    publishedAt: item.snippet.publishedAt,
+    description: item.snippet.description,
+    position: item.snippet.position
   }));
 }
 
@@ -172,13 +228,17 @@ exports.getYouTubeVideos = async (req, res) => {
       res.set('Access-Control-Allow-Origin', origin);
     } else {
       // En desarrollo, permitir cualquier origen local
-      if (origin && origin.includes('localhost')) {
+      if (origin && (origin.includes('localhost') || origin.includes('127.0.0.1'))) {
         res.set('Access-Control-Allow-Origin', origin);
       } else {
         console.warn(`Blocked request from unauthorized origin: ${origin}`);
         // Continuar pero registrar el intento
       }
     }
+
+    // Siempre configurar headers CORS adicionales
+    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
 
     // ===== 3. RATE LIMITING =====
     const clientIp = req.headers['x-forwarded-for'] ||
@@ -196,18 +256,28 @@ exports.getYouTubeVideos = async (req, res) => {
       });
     }
 
-    // ===== 4. VERIFICAR CACHÉ =====
-    if (isCacheValid()) {
-      console.log('Returning cached data');
+    // ===== 4. OBTENER PARÁMETROS =====
+    const playlistId = req.query.playlistId;
+    const maxResults = parseInt(req.query.maxResults) || 50;
+
+    // Generar clave de caché única por playlist
+    const cacheKey = playlistId ? `playlist_${playlistId}` : 'channel_default';
+
+    // ===== 5. VERIFICAR CACHÉ =====
+    if (isCacheValid() && videoCache.cacheKey === cacheKey) {
+      console.log('Returning cached data for:', cacheKey);
+      const cachedData = videoCache.data;
       return res.status(200).json({
         success: true,
-        data: videoCache.data,
+        data: cachedData.videos || cachedData,
+        ...(cachedData.playlistInfo && { playlistInfo: cachedData.playlistInfo }),
         cached: true,
-        cacheAge: Math.floor((Date.now() - videoCache.timestamp) / 1000)
+        cacheAge: Math.floor((Date.now() - videoCache.timestamp) / 1000),
+        totalVideos: (cachedData.videos || cachedData).length
       });
     }
 
-    // ===== 5. OBTENER API KEY DE VARIABLES DE ENTORNO =====
+    // ===== 6. OBTENER API KEY DE VARIABLES DE ENTORNO =====
     const apiKey = process.env.YOUTUBE_API_KEY;
 
     if (!apiKey) {
@@ -218,24 +288,42 @@ exports.getYouTubeVideos = async (req, res) => {
       });
     }
 
-    // ===== 6. LLAMAR A YOUTUBE API =====
-    console.log('Fetching fresh data from YouTube API');
+    // ===== 7. LLAMAR A YOUTUBE API =====
+    let videos;
+    let playlistInfo = null;
 
-    const channelId = await getChannelId(apiKey);
-    const videos = await fetchYouTubeVideos(apiKey, channelId);
+    if (playlistId) {
+      console.log(`Fetching playlist data: ${playlistId}`);
+      playlistInfo = await fetchPlaylistInfo(apiKey, playlistId);
+      videos = await fetchPlaylistVideos(apiKey, playlistId, maxResults);
+    } else {
+      console.log('Fetching channel videos');
+      const channelId = await getChannelId(apiKey);
+      videos = await fetchYouTubeVideos(apiKey, channelId);
+    }
 
-    // ===== 7. GUARDAR EN CACHÉ =====
+    // ===== 8. PREPARAR RESPUESTA =====
+    const responseData = playlistId ? {
+      videos: videos,
+      playlistInfo: playlistInfo
+    } : videos;
+
+    // ===== 9. GUARDAR EN CACHÉ =====
     videoCache = {
-      data: videos,
-      timestamp: Date.now()
+      data: responseData,
+      timestamp: Date.now(),
+      cacheKey: cacheKey
     };
 
-    // ===== 8. RETORNAR RESPUESTA =====
+    // ===== 10. RETORNAR RESPUESTA =====
     return res.status(200).json({
       success: true,
-      data: videos,
+      data: playlistId ? responseData.videos : responseData,
+      ...(playlistId && { playlistInfo: responseData.playlistInfo }),
       cached: false,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      playlistId: playlistId || null,
+      totalVideos: videos.length
     });
 
   } catch (error) {

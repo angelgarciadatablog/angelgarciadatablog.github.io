@@ -3,13 +3,456 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Curso SQL BigQuery - angelgarciadatablog</title>
-  <meta name="description" content="Aprende SQL desde cero con BigQuery. Curso gratuito completo para análisis de datos.">
+  <title>Curso de SQL en BigQuery - angelgarciadatablog</title>
+  <meta name="description" content="Curso completo de SQL usando Google BigQuery. Desde nivel básico hasta avanzado con ejemplos prácticos y datos reales.">
+  <meta name="keywords" content="SQL, BigQuery, Google Cloud, curso gratis, análisis de datos, Angel García">
+  <meta name="author" content="Angel García">
+
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/png" href="../favicon.png">
   <meta name="theme-color" content="#0a0a0a">
+
+  <style>
+    /* Estilos específicos para la página del curso */
+    .course-hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .course-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .course-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .course-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .course-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .modules-section {
+      padding: 60px 0;
+      min-height: 60vh;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .modules-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* Desktop: 2 columnas para las tarjetas de módulos */
+    @media (min-width: 1024px) {
+      .modules-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .module-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .module-card:hover {
+      border-color: var(--accent-mid);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .module-header {
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, var(--card-bg) 0%, var(--surface) 100%);
+    }
+
+    .module-header:hover {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--card-bg) 100%);
+    }
+
+    .module-info {
+      flex: 1;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .module-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .module-description {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .module-description-long {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .module-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .module-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .toggle-icon {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .module-card.expanded .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .module-content {
+      display: none;
+    }
+
+    .module-card.expanded .module-content {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .videos-grid {
+      padding: 1rem 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .video-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem;
+      position: relative;
+      min-height: 68px;
+      max-height: 88px;
+    }
+
+    .video-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateX(4px);
+    }
+
+    .video-thumbnail {
+      position: relative;
+      width: 120px;
+      min-width: 120px;
+      height: 68px;
+      background: var(--bg);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .video-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover .video-thumbnail img {
+      transform: scale(1.05);
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(124, 58, 237, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover .play-overlay {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--accent-mid);
+    }
+
+    .play-overlay svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+      margin-left: 3px;
+    }
+
+    .video-info {
+      padding: 0.5rem 2.5rem 0.5rem 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .video-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .video-position {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      background: var(--bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .loading-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-secondary);
+    }
+
+    .loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--danger);
+      border-radius: var(--radius-lg);
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    .error-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .load-more-btn {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid transparent;
+      background-image:
+        linear-gradient(var(--card-bg), var(--card-bg)),
+        linear-gradient(90deg, #2674ed 0%, #7c3aed 50%, #ec4899 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      padding: 0.875rem 2rem;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .load-more-btn:hover {
+      transform: translateY(-2px);
+      background-image:
+        linear-gradient(90deg, rgba(38, 116, 237, 0.1) 0%, rgba(124, 58, 237, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%),
+        linear-gradient(90deg, #2674ed 0%, #7c3aed 50%, #ec4899 100%);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    }
+
+    .load-more-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .course-title {
+        font-size: 2rem;
+      }
+
+      .course-subtitle {
+        font-size: 1rem;
+      }
+
+      .course-stats {
+        gap: 1rem;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .module-title {
+        font-size: 1.1rem;
+      }
+
+      .module-header {
+        padding: 0.875rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .module-toggle {
+        align-self: flex-end;
+      }
+
+      .load-more-btn {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/">Angel García</a>
@@ -17,7 +460,7 @@
         <span aria-hidden="true">☰</span>
       </button>
       <nav class="menu" id="site-menu">
-        <a class="menu-link" href="../index.html">Inicio</a>
+        <a class="menu-link" href="/">Inicio</a>
         <a class="menu-link" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer">Youtube</a>
         <a class="menu-link" href="https://github.com/angelgarciadatablog" target="_blank" rel="noopener noreferrer">Github</a>
         <a class="menu-link" href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer">Linkedin</a>
@@ -25,43 +468,320 @@
     </div>
   </header>
 
-  <main class="site-main">
-    <!-- Página de curso - Contenido próximamente -->
-    <section style="padding: 120px 0; min-height: 70vh;">
-      <div class="container">
-        <h1 class="hero-title" style="text-align: center; margin-bottom: 20px;">
-          Curso de <span class="gradient-text">SQL BigQuery</span>
+  <!-- Course Hero -->
+  <section class="course-hero">
+    <div class="container">
+      <div class="course-header">
+        <h1 class="course-title">
+          Curso de <span class="gradient-text">SQL en BigQuery</span>
         </h1>
-        <p style="text-align: center; font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
-          Contenido en desarrollo. Próximamente encontrarás aquí el curso completo de SQL con BigQuery.
+        <p class="course-subtitle">
+          Aprende SQL desde cero usando Google BigQuery con datos reales de Google Analytics 4.
+          Desde consultas básicas hasta análisis avanzado de datos.
         </p>
-        <div style="text-align: center;">
-          <a href="../index.html" class="btn-hero">Volver al inicio</a>
+        <div class="course-stats">
+          <div class="stat-item">
+            <div class="stat-number" id="total-modules">-</div>
+            <div class="stat-label">Módulos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="total-videos">-</div>
+            <div class="stat-label">Videos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Gratis</div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="social">
-        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4zM8.5 8.5h3.8v2.1h.05c.53-1 1.82-2.1 3.75-2.1 4 0 4.74 2.63 4.74 6V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V24h-4z"/></svg>
-        </a>
-        <a aria-label="Instagram" href="https://www.instagram.com/agl.garcia86/" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.25a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 18 6.25z"/></svg>
-        </a>
-        <a aria-label="YouTube" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.8 2.7 12 2.7 12 2.7h0s-5.8 0-8.6.3c-.4 0-1.4.1-2.1.9C.7 4.6.5 6.2.5 6.2S.3 8.1.3 9.9v1.7c0 1.8.2 3.7.2 3.7s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.7.3 7.7.3s5.8 0 8.6-.3c.4 0 1.4-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.8.2-3.7V9.9c0-1.8-.2-3.7-.2-3.7zM9.8 14.6V7.7l6.2 3.5-6.2 3.4z"/></svg>
-        </a>
-        <a aria-label="GitHub" href="https://github.com/angelgarciadatablog" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.4.7-4.1-1.6-4.1-1.6-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2 .7 2 .7 1.8 1.2 3.9.9 4.9.7.2-.8.7-1.2 1.2-1.5-2.7-.3-5.5-1.4-5.5-6.1 0-1.3.5-2.5 1.2-3.4-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.4 1.3 1-.3 2.2-.4 3.3-.4s2.3.2 3.3.4c2.3-1.6 3.4-1.3 3.4-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2.1 1.2 3.4 0 4.7-2.8 5.8-5.5 6.1.7.6 1.3 1.8 1.3 3.7v2.8c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
-        </a>
+  <!-- Modules Section -->
+  <section class="modules-section">
+    <div class="container">
+      <h2 class="section-title">Módulos del Curso</h2>
+
+      <div id="modules-container" class="modules-container">
+        <!-- Loading state -->
+        <div class="loading-state">
+          <div class="loading-spinner"></div>
+          <p>Cargando contenido del curso...</p>
+        </div>
       </div>
-      <p>© 2025 Angel García. Todos los derechos reservados.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 0; margin-top: 4rem;">
+    <div class="container" style="text-align: center; color: var(--text-secondary);">
+      <p style="margin-bottom: 1rem;">
+        Creado con dedicación por <a href="/" style="color: var(--accent); text-decoration: none;">Angel García</a>
+      </p>
+      <p style="font-size: 0.875rem;">
+        Todos los videos están disponibles gratuitamente en
+        <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">YouTube</a>
+      </p>
     </div>
   </footer>
 
-  <script src="../script.js"></script>
+  <script>
+    // Cargar y renderizar los módulos desde el JSON
+    async function loadCourseData() {
+      try {
+        const response = await fetch('../datos/playlists.json');
+        if (!response.ok) throw new Error('No se pudo cargar el contenido del curso');
+
+        const data = await response.json();
+        renderCourse(data);
+      } catch (error) {
+        console.error('Error cargando curso:', error);
+        showError();
+      }
+    }
+
+    // VERSION2: Configuración para paginación
+    const VIDEOS_PER_PAGE = 5;
+    const videoState = {}; // Trackear cuántos videos mostrar por módulo
+
+    function renderCourse(data) {
+      const container = document.getElementById('modules-container');
+      const { modulos } = data;
+
+      // Actualizar estadísticas
+      document.getElementById('total-modules').textContent = modulos.length;
+      const totalVideos = modulos.reduce((sum, mod) => sum + mod.totalVideos, 0);
+      document.getElementById('total-videos').textContent = totalVideos;
+
+      // Inicializar estado de videos (mostrar solo los primeros 9 por defecto)
+      modulos.forEach(mod => {
+        videoState[mod.moduloId] = {
+          showing: VIDEOS_PER_PAGE,
+          total: mod.videos.length
+        };
+      });
+
+      // Renderizar módulos
+      container.innerHTML = modulos.map((modulo, index) =>
+        renderModuleCard(modulo)
+      ).join('');
+
+      // Auto-expandir el primer módulo (comentado para que empiecen cerrados)
+      // if (modulos.length > 0) {
+      //   setTimeout(() => toggleModule(modulos[0].moduloId), 300);
+      // }
+    }
+
+    function renderModuleCard(modulo) {
+      // Extraer solo el primer párrafo de la descripción larga
+      let primerParrafo = '';
+      if (modulo.descripcionLarga) {
+        primerParrafo = modulo.descripcionLarga.split('\n\n')[0].trim();
+      }
+
+      return `
+        <div class="module-card" data-module-id="${modulo.moduloId}">
+          <div class="module-header" onclick="toggleModule(${modulo.moduloId})">
+            <div class="module-info">
+              <h3 class="module-title">
+                <span class="module-number">${modulo.moduloId}</span>
+                ${modulo.titulo}
+              </h3>
+              <p class="module-description">${modulo.descripcion}</p>
+              ${primerParrafo ? `<p class="module-description-long">${primerParrafo}</p>` : ''}
+              <div class="module-meta">
+                <span>${modulo.totalVideos} videos</span>
+                <a href="${modulo.playlistUrl}" target="_blank" rel="noopener noreferrer"
+                   onclick="event.stopPropagation()"
+                   style="color: var(--accent); text-decoration: none;">
+                  Ver playlist completa en YouTube →
+                </a>
+              </div>
+            </div>
+            <div class="module-toggle">
+              <span class="toggle-text">Ver videos</span>
+              <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div class="module-content" id="module-content-${modulo.moduloId}">
+            <!-- El contenido se renderizará dinámicamente al expandir -->
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModuleContent(modulo) {
+      const state = videoState[modulo.moduloId];
+      const videosToShow = modulo.videos.slice(0, state.showing);
+      const hasMore = state.showing < state.total;
+
+      return `
+        <div class="videos-grid" id="videos-grid-${modulo.moduloId}">
+          ${videosToShow.map(video => renderVideoCard(video, modulo.totalVideos)).join('')}
+        </div>
+        ${hasMore ? `
+          <div style="text-align: center; padding: 1.5rem;">
+            <button onclick="loadMoreVideos(${modulo.moduloId})" class="load-more-btn">
+              Cargar más videos (${state.total - state.showing} restantes)
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function renderVideoCard(video, totalVideos) {
+      return `
+        <a href="${video.url}" target="_blank" rel="noopener noreferrer" class="video-card">
+          <p class="video-position">${video.posicion + 1}/${totalVideos}</p>
+          <div class="video-thumbnail">
+            <img src="${video.thumbnail}" alt="${video.titulo}" loading="lazy">
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-info">
+            <h4 class="video-title">${video.titulo}</h4>
+          </div>
+        </a>
+      `;
+    }
+
+    function loadMoreVideos(moduleId) {
+      // Obtener datos del módulo
+      fetch('../datos/playlists.json')
+        .then(r => r.json())
+        .then(data => {
+          const modulo = data.modulos.find(m => m.moduloId === moduleId);
+          if (!modulo) return;
+
+          const state = videoState[moduleId];
+          const previousShowing = state.showing;
+
+          // Mostrar 9 videos más
+          state.showing = Math.min(state.showing + VIDEOS_PER_PAGE, state.total);
+
+          // Obtener los nuevos videos a mostrar
+          const newVideos = modulo.videos.slice(previousShowing, state.showing);
+          const grid = document.getElementById(`videos-grid-${moduleId}`);
+
+          // Agregar los nuevos videos
+          newVideos.forEach(video => {
+            const cardHTML = renderVideoCard(video, modulo.totalVideos);
+            grid.insertAdjacentHTML('beforeend', cardHTML);
+          });
+
+          // Actualizar o remover el botón "Cargar más"
+          const card = document.querySelector(`[data-module-id="${moduleId}"]`);
+          const loadMoreContainer = card.querySelector('.load-more-btn')?.parentElement;
+
+          if (state.showing >= state.total) {
+            // Ya no hay más videos, remover el botón
+            if (loadMoreContainer) loadMoreContainer.remove();
+          } else {
+            // Actualizar el contador
+            const btn = card.querySelector('.load-more-btn');
+            if (btn) {
+              btn.textContent = `Cargar más videos (${state.total - state.showing} restantes)`;
+            }
+          }
+        });
+    }
+
+    function toggleModule(moduleId) {
+      const card = document.querySelector(`[data-module-id="${moduleId}"]`);
+      if (!card) return;
+
+      const isExpanded = card.classList.contains('expanded');
+      const contentContainer = document.getElementById(`module-content-${moduleId}`);
+
+      // Cerrar otros módulos y limpiar su contenido
+      document.querySelectorAll('.module-card.expanded').forEach(c => {
+        if (c !== card) {
+          c.classList.remove('expanded');
+          const otherModuleId = c.getAttribute('data-module-id');
+          const otherContent = document.getElementById(`module-content-${otherModuleId}`);
+          if (otherContent) {
+            otherContent.innerHTML = ''; // Limpiar contenido
+          }
+          const otherToggleText = c.querySelector('.toggle-text');
+          if (otherToggleText) {
+            otherToggleText.textContent = 'Ver videos';
+          }
+        }
+      });
+
+      // Toggle actual módulo
+      if (isExpanded) {
+        // Cerrar: remover clase y limpiar contenido
+        card.classList.remove('expanded');
+        if (contentContainer) {
+          contentContainer.innerHTML = '';
+        }
+      } else {
+        // Abrir: agregar clase y renderizar contenido
+        card.classList.add('expanded');
+        if (contentContainer) {
+          // Obtener datos del módulo desde el JSON en memoria
+          fetch('../datos/playlists.json')
+            .then(r => r.json())
+            .then(data => {
+              const modulo = data.modulos.find(m => m.moduloId === moduleId);
+              if (modulo) {
+                contentContainer.innerHTML = renderModuleContent(modulo);
+              }
+            });
+        }
+      }
+
+      // Actualizar texto del módulo actual
+      const toggleText = card.querySelector('.toggle-text');
+      if (toggleText) {
+        toggleText.textContent = card.classList.contains('expanded') ? 'Ocultar videos' : 'Ver videos';
+      }
+    }
+
+    function showError() {
+      const container = document.getElementById('modules-container');
+      container.innerHTML = `
+        <div class="error-state">
+          <div class="error-icon">⚠️</div>
+          <h3 style="margin-bottom: 0.5rem; color: var(--danger);">Error al cargar el curso</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            No se pudo cargar el contenido. Por favor, intenta recargar la página.
+          </p>
+          <button onclick="location.reload()" style="
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+          ">
+            Recargar página
+          </button>
+        </div>
+      `;
+    }
+
+    // Menu toggle (del index.html)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    if (menuToggle && menu) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        menu.style.display = isExpanded ? 'none' : 'flex';
+      });
+    }
+
+    // Cargar datos al iniciar
+    loadCourseData();
+  </script>
 </body>
 </html>
