@@ -586,7 +586,7 @@
     // Cargar y renderizar los módulos desde el JSON
     async function loadCourseData() {
       try {
-        const response = await fetch('../../datos/playlists.json');
+        const response = await fetch('../../datos/sql-bigquery-playlist.json');
         if (!response.ok) throw new Error('No se pudo cargar el contenido del curso');
 
         const data = await response.json();
@@ -717,7 +717,7 @@
 
     function loadMoreVideos(moduleId) {
       // Obtener datos del módulo
-      fetch('../../datos/playlists.json')
+      fetch('../../datos/sql-bigquery-playlist.json')
         .then(r => r.json())
         .then(data => {
           const modulo = data.modulos.find(m => m.moduloId === moduleId);
@@ -791,7 +791,7 @@
         card.classList.add('expanded');
         if (contentContainer) {
           // Obtener datos del módulo desde el JSON en memoria
-          fetch('../../datos/playlists.json')
+          fetch('../../datos/sql-bigquery-playlist.json')
             .then(r => r.json())
             .then(data => {
               const modulo = data.modulos.find(m => m.moduloId === moduleId);

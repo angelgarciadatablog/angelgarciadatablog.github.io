@@ -5,7 +5,7 @@
       "id": "sql-bigquery",
       "titulo": "Curso de SQL en BigQuery",
       "descripcion": "Curso completo de SQL usando Google BigQuery",
-      "outputFile": "datos/playlists.json",
+      "outputFile": "datos/sql-bigquery-playlist.json",
       "modulos": [
         {
           "moduloId": 1,
