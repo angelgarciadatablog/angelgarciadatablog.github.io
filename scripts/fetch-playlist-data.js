@@ -152,7 +152,7 @@ async function generatePlaylistsJSON() {
     cursoData.modulos.forEach(modulo => {
       console.log(`   - ${modulo.titulo}: ${modulo.totalVideos} videos`);
     });
-    console.log(`\n💡 Próximo paso: Actualizar sql-bigquery.html para usar este JSON`);
+    console.log(`\n💡 Próximo paso: Los datos ya están disponibles en ${CONFIG.outputFile}`);
 
   } catch (error) {
     console.error('\n❌ Error:', error.message);

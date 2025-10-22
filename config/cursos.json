@@ -1,0 +1,57 @@
+{
+  "cloudFunctionUrl": "https://getyoutubevideos-35759247090.us-central1.run.app",
+  "cursos": [
+    {
+      "id": "sql-bigquery",
+      "titulo": "Curso de SQL en BigQuery",
+      "descripcion": "Curso completo de SQL usando Google BigQuery",
+      "outputFile": "datos/playlists.json",
+      "modulos": [
+        {
+          "moduloId": 1,
+          "playlistId": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
+          "titulo": "Cláusulas Principales de SQL",
+          "descripcion": "Nivel Básico",
+          "orden": 1
+        },
+        {
+          "moduloId": 2,
+          "playlistId": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
+          "titulo": "Manipulación de tablas",
+          "descripcion": "Nivel Intermedio 2.1",
+          "orden": 2
+        }
+      ]
+    },
+    {
+      "id": "power-bi",
+      "titulo": "Curso de Power BI desde Cero",
+      "descripcion": "Curso completo de Power BI con DAX básico",
+      "outputFile": "datos/power-bi-playlist.json",
+      "modulos": [
+        {
+          "moduloId": 1,
+          "playlistId": "PLV4oS06_KpqZREyUB473G07o-IsM7n-fi",
+          "titulo": "Power BI - DAX Básico",
+          "descripcion": "Conceptos básicos de DAX",
+          "orden": 1
+        }
+      ]
+    },
+    {
+      "id": "google-analytics",
+      "titulo": "Curso de Google Analytics 4 desde Cero",
+      "descripcion": "Curso completo de Google Analytics 4 desde cero",
+      "outputFile": "datos/google-analytics-playlist.json",
+      "modulos": [
+        {
+          "moduloId": 1,
+          "playlistId": "PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
+          "titulo": "Google Analytics 4 - Nivel Básico",
+          "descripcion": "Fundamentos de GA4",
+          "orden": 1
+        }
+      ]
+    }
+  ]
+}

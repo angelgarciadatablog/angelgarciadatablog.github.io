@@ -1,0 +1,17 @@
+{
+  "name": "angelgarciadatablog",
+  "version": "1.0.0",
+  "description": "Blog personal de Angel García sobre análisis de datos",
+  "scripts": {
+    "update-cursos": "node scripts/update-all-cursos.js"
+  },
+  "keywords": [
+    "data-analytics",
+    "sql",
+    "bigquery",
+    "power-bi",
+    "google-analytics"
+  ],
+  "author": "Angel García",
+  "license": "MIT"
+}

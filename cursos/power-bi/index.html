@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Curso de SQL en BigQuery - angelgarciadatablog</title>
-  <meta name="description" content="Curso completo de SQL usando Google BigQuery. Desde nivel básico hasta avanzado con ejemplos prácticos y datos reales.">
-  <meta name="keywords" content="SQL, BigQuery, Google Cloud, curso gratis, análisis de datos, Angel García">
+  <title>Curso de Power BI desde Cero - angelgarciadatablog</title>
+  <meta name="description" content="Curso completo de Power BI con DAX básico. Aprende a crear dashboards profesionales desde cero.">
+  <meta name="keywords" content="Power BI, DAX, curso gratis, dashboards, visualización de datos, Angel García">
   <meta name="author" content="Angel García">
 
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/png" href="../../favicon.png">
   <meta name="theme-color" content="#0a0a0a">
 
   <style>
@@ -29,7 +29,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+      background: radial-gradient(circle at 30% 50%, rgba(237, 179, 40, 0.1) 0%, transparent 50%);
       pointer-events: none;
     }
 
@@ -161,7 +161,7 @@
       justify-content: center;
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #d97706 0%, #edb328 100%);
       border-radius: 8px;
       font-size: 0.95rem;
       font-weight: 700;
@@ -415,7 +415,7 @@
       border: 2px solid transparent;
       background-image:
         linear-gradient(var(--card-bg), var(--card-bg)),
-        linear-gradient(90deg, #2674ed 0%, #7c3aed 50%, #ec4899 100%);
+        linear-gradient(90deg, #edb328 0%, #f59e0b 50%, #d97706 100%);
       background-origin: border-box;
       background-clip: padding-box, border-box;
       padding: 0.875rem 2rem;
@@ -429,7 +429,7 @@
 
     .load-more-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      box-shadow: 0 4px 12px rgba(237, 179, 40, 0.3);
     }
 
     .load-more-btn:active {
@@ -514,11 +514,10 @@
     <div class="container">
       <div class="course-header">
         <h1 class="course-title">
-          Curso de <span class="gradient-text">SQL en BigQuery</span>
+          Curso de <span class="gradient-text">Power BI desde Cero</span>
         </h1>
         <p class="course-subtitle">
-          Aprende SQL desde cero usando Google BigQuery con datos reales de Google Analytics 4.
-          Desde consultas básicas hasta análisis avanzado de datos.
+          Aprende Power BI desde cero con DAX básico. Crea dashboards profesionales y domina el análisis de datos.
         </p>
         <div class="course-stats">
           <div class="stat-item">
@@ -603,7 +602,7 @@
     // Cargar y renderizar los módulos desde el JSON
     async function loadCourseData() {
       try {
-        const response = await fetch('../datos/playlists.json');
+        const response = await fetch('../../datos/power-bi-playlist.json');
         if (!response.ok) throw new Error('No se pudo cargar el contenido del curso');
 
         const data = await response.json();
@@ -627,7 +626,7 @@
       const totalVideos = modulos.reduce((sum, mod) => sum + mod.totalVideos, 0);
       document.getElementById('total-videos').textContent = totalVideos;
 
-      // Inicializar estado de videos (mostrar solo los primeros 9 por defecto)
+      // Inicializar estado de videos (mostrar solo los primeros 5 por defecto)
       modulos.forEach(mod => {
         videoState[mod.moduloId] = {
           showing: VIDEOS_PER_PAGE,
@@ -639,11 +638,6 @@
       container.innerHTML = modulos.map((modulo, index) =>
         renderModuleCard(modulo)
       ).join('');
-
-      // Auto-expandir el primer módulo (comentado para que empiecen cerrados)
-      // if (modulos.length > 0) {
-      //   setTimeout(() => toggleModule(modulos[0].moduloId), 300);
-      // }
     }
 
     function renderModuleCard(modulo) {
@@ -734,7 +728,7 @@
 
     function loadMoreVideos(moduleId) {
       // Obtener datos del módulo
-      fetch('../datos/playlists.json')
+      fetch('../../datos/power-bi-playlist.json')
         .then(r => r.json())
         .then(data => {
           const modulo = data.modulos.find(m => m.moduloId === moduleId);
@@ -743,7 +737,7 @@
           const state = videoState[moduleId];
           const previousShowing = state.showing;
 
-          // Mostrar 9 videos más
+          // Mostrar 5 videos más
           state.showing = Math.min(state.showing + VIDEOS_PER_PAGE, state.total);
 
           // Obtener los nuevos videos a mostrar
@@ -808,7 +802,7 @@
         card.classList.add('expanded');
         if (contentContainer) {
           // Obtener datos del módulo desde el JSON en memoria
-          fetch('../datos/playlists.json')
+          fetch('../../datos/power-bi-playlist.json')
             .then(r => r.json())
             .then(data => {
               const modulo = data.modulos.find(m => m.moduloId === moduleId);

@@ -45,9 +45,9 @@ function getIconForCurso(nombreCurso) {
 function getCursoUrl(nombreCurso) {
   const nombre = nombreCurso.toLowerCase();
 
-  if (nombre.includes('sql') && nombre.includes('bigquery')) return 'cursos/sql-bigquery.html';
-  if (nombre.includes('power bi') || nombre.includes('powerbi')) return 'cursos/power-bi.html';
-  if (nombre.includes('google analytics') || nombre.includes('analytics')) return 'cursos/google-analytics.html';
+  if (nombre.includes('sql') && nombre.includes('bigquery')) return 'cursos/sql-bigquery';
+  if (nombre.includes('power bi') || nombre.includes('powerbi')) return 'cursos/power-bi';
+  if (nombre.includes('google analytics') || nombre.includes('analytics')) return 'cursos/google-analytics';
 
   return '#'; // fallback
 }
