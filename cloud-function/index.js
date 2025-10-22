@@ -42,6 +42,12 @@ let videoCache = {
   timestamp: null
 };
 
+// Caché separado para listado de playlists
+let playlistsCache = {
+  data: null,
+  timestamp: null
+};
+
 // ===== RATE LIMITING EN MEMORIA =====
 // NOTA: En producción, usar Redis o Firestore para persistencia
 const rateLimitStore = new Map();
@@ -76,13 +82,13 @@ function checkRateLimit(ip) {
 /**
  * Verifica si el caché es válido
  */
-function isCacheValid() {
-  if (!CONFIG.cache.enabled || !videoCache.data || !videoCache.timestamp) {
+function isCacheValid(cache) {
+  if (!CONFIG.cache.enabled || !cache.data || !cache.timestamp) {
     return false;
   }
 
   const now = Date.now();
-  return (now - videoCache.timestamp) < CONFIG.cache.duration;
+  return (now - cache.timestamp) < CONFIG.cache.duration;
 }
 
 /**
@@ -243,6 +249,36 @@ async function fetchVideosDetails(apiKey, videoIds) {
 }
 
 /**
+ * NUEVA FUNCIÓN: Obtiene TODAS las playlists del canal
+ * Solo metadata básica, sin videos individuales
+ * Costo: 1 unidad por llamada (hasta 50 playlists)
+ */
+async function fetchChannelPlaylists(apiKey, channelId, maxResults = 50) {
+  const url = `https://www.googleapis.com/youtube/v3/playlists?key=${apiKey}&channelId=${channelId}&part=snippet,contentDetails&maxResults=${maxResults}`;
+
+  const response = await fetch(url, {
+    timeout: CONFIG.youtube.timeout
+  });
+
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  // Formatear datos para el frontend
+  return data.items.map(item => ({
+    id: item.id,
+    title: item.snippet.title,
+    description: item.snippet.description,
+    thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url,
+    publishedAt: item.snippet.publishedAt,
+    videoCount: item.contentDetails.itemCount,
+    playlistUrl: `https://www.youtube.com/playlist?list=${item.id}`
+  }));
+}
+
+/**
  * Cloud Function principal
  */
 exports.getYouTubeVideos = async (req, res) => {
@@ -301,14 +337,70 @@ exports.getYouTubeVideos = async (req, res) => {
     }
 
     // ===== 4. OBTENER PARÁMETROS =====
+    const action = req.query.action; // NUEVO: para identificar el tipo de acción
     const playlistId = req.query.playlistId;
     const maxResults = parseInt(req.query.maxResults) || 50;
+
+    // ===== 5. OBTENER API KEY DE VARIABLES DE ENTORNO =====
+    const apiKey = process.env.YOUTUBE_API_KEY;
+
+    if (!apiKey) {
+      console.error('YOUTUBE_API_KEY not configured');
+      return res.status(500).json({
+        error: 'Server configuration error',
+        message: 'YouTube API key not configured'
+      });
+    }
+
+    // ===== NUEVO: MANEJO DE ACCIÓN "listPlaylists" =====
+    if (action === 'listPlaylists') {
+      console.log('Action: List all channel playlists');
+
+      // Verificar caché específico para playlists
+      if (isCacheValid(playlistsCache)) {
+        console.log('Returning cached playlists data');
+        return res.status(200).json({
+          success: true,
+          action: 'listPlaylists',
+          data: playlistsCache.data,
+          cached: true,
+          cacheAge: Math.floor((Date.now() - playlistsCache.timestamp) / 1000),
+          totalPlaylists: playlistsCache.data.length,
+          timestamp: new Date().toISOString()
+        });
+      }
+
+      // Obtener channel ID
+      const channelId = await getChannelId(apiKey);
+
+      // Obtener todas las playlists (solo metadata, sin videos)
+      const playlists = await fetchChannelPlaylists(apiKey, channelId, maxResults);
+
+      // Guardar en caché específico
+      playlistsCache = {
+        data: playlists,
+        timestamp: Date.now()
+      };
+
+      console.log(`Playlists fetched: ${playlists.length}`);
+
+      return res.status(200).json({
+        success: true,
+        action: 'listPlaylists',
+        data: playlists,
+        cached: false,
+        totalPlaylists: playlists.length,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // ===== LÓGICA ORIGINAL: Videos o Playlist específica =====
 
     // Generar clave de caché única por playlist
     const cacheKey = playlistId ? `playlist_${playlistId}` : 'channel_default';
 
-    // ===== 5. VERIFICAR CACHÉ =====
-    if (isCacheValid() && videoCache.cacheKey === cacheKey) {
+    // Verificar caché
+    if (isCacheValid(videoCache) && videoCache.cacheKey === cacheKey) {
       console.log('Returning cached data for:', cacheKey);
       const cachedData = videoCache.data;
       return res.status(200).json({
@@ -321,18 +413,7 @@ exports.getYouTubeVideos = async (req, res) => {
       });
     }
 
-    // ===== 6. OBTENER API KEY DE VARIABLES DE ENTORNO =====
-    const apiKey = process.env.YOUTUBE_API_KEY;
-
-    if (!apiKey) {
-      console.error('YOUTUBE_API_KEY not configured');
-      return res.status(500).json({
-        error: 'Server configuration error',
-        message: 'YouTube API key not configured'
-      });
-    }
-
-    // ===== 7. LLAMAR A YOUTUBE API =====
+    // Llamar a YouTube API
     let videos;
     let playlistInfo = null;
 
@@ -362,20 +443,20 @@ exports.getYouTubeVideos = async (req, res) => {
       videos = await fetchYouTubeVideos(apiKey, channelId);
     }
 
-    // ===== 8. PREPARAR RESPUESTA =====
+    // Preparar respuesta
     const responseData = playlistId ? {
       videos: videos,
       playlistInfo: playlistInfo
     } : videos;
 
-    // ===== 9. GUARDAR EN CACHÉ =====
+    // Guardar en caché
     videoCache = {
       data: responseData,
       timestamp: Date.now(),
       cacheKey: cacheKey
     };
 
-    // ===== 10. RETORNAR RESPUESTA =====
+    // Retornar respuesta
     return res.status(200).json({
       success: true,
       data: playlistId ? responseData.videos : responseData,
