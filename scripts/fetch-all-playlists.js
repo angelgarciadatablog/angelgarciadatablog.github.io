@@ -101,25 +101,21 @@ async function main() {
     // 1. Obtener todas las playlists
     const allPlaylists = await fetchAllPlaylists();
 
-    // 2. Filtrar para excluir playlists de cursos
-    const tutorialPlaylists = filterTutorialPlaylists(allPlaylists);
-
+    // 2. NO filtrar - mostrar TODAS las playlists (incluyendo cursos)
     console.log('\n📚 Resumen de playlists:');
     console.log(`   Total del canal: ${allPlaylists.length}`);
-    console.log(`   Playlists de cursos (excluidas): ${allPlaylists.length - tutorialPlaylists.length}`);
-    console.log(`   Playlists de tutoriales: ${tutorialPlaylists.length}`);
+    console.log(`   Todas las playlists serán guardadas (incluyendo cursos)`);
 
-    if (tutorialPlaylists.length === 0) {
-      console.log('\n⚠️  No hay playlists de tutoriales para guardar');
-      console.log('   Todas las playlists del canal son cursos');
+    if (allPlaylists.length === 0) {
+      console.log('\n⚠️  No hay playlists para guardar');
       return;
     }
 
-    // 3. Preparar datos para guardar
+    // 3. Preparar datos para guardar (TODAS las playlists)
     const outputData = {
       fechaActualizacion: new Date().toISOString(),
-      totalPlaylists: tutorialPlaylists.length,
-      playlists: tutorialPlaylists
+      totalPlaylists: allPlaylists.length,
+      playlists: allPlaylists
     };
 
     // 4. Guardar JSON
@@ -139,7 +135,7 @@ async function main() {
     console.log(`⏱️  Tiempo total: ${duration}s`);
 
     console.log('\n📋 Playlists guardadas:');
-    tutorialPlaylists.forEach((playlist, index) => {
+    allPlaylists.forEach((playlist, index) => {
       console.log(`   ${index + 1}. ${playlist.title} (${playlist.videoCount} videos)`);
     });
 
