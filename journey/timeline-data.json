@@ -1,0 +1,109 @@
+{
+  "milestones": [
+    {
+      "id": 1,
+      "date": "2015-03",
+      "title": "Inicio en Análisis de Datos",
+      "description": "Primer contacto con herramientas de análisis de datos",
+      "type": "career"
+    },
+    {
+      "id": 2,
+      "date": "2016-06",
+      "title": "Certificación en SQL",
+      "description": "Obtuve mi primera certificación en SQL y bases de datos",
+      "type": "achievement"
+    },
+    {
+      "id": 3,
+      "date": "2017-09",
+      "title": "Primer Proyecto BigQuery",
+      "description": "Implementé mi primer proyecto usando Google BigQuery",
+      "type": "project"
+    },
+    {
+      "id": 4,
+      "date": "2018-12",
+      "title": "Especialización en BI",
+      "description": "Comencé a especializarme en Business Intelligence y Power BI",
+      "type": "career"
+    },
+    {
+      "id": 5,
+      "date": "2019-05",
+      "title": "Google Analytics Certified",
+      "description": "Certificación oficial de Google Analytics",
+      "type": "achievement"
+    },
+    {
+      "id": 6,
+      "date": "2020-08",
+      "title": "Inicio en YouTube",
+      "description": "Lancé mi canal de YouTube sobre análisis de datos",
+      "type": "milestone"
+    },
+    {
+      "id": 7,
+      "date": "2021-03",
+      "title": "1000 Suscriptores",
+      "description": "Alcancé los primeros 1000 suscriptores en YouTube",
+      "type": "achievement"
+    },
+    {
+      "id": 8,
+      "date": "2022-01",
+      "title": "Lanzamiento del Blog",
+      "description": "Creé mi blog personal angelgarciadatablog.com",
+      "type": "milestone"
+    },
+    {
+      "id": 9,
+      "date": "2023-06",
+      "title": "Curso SQL BigQuery",
+      "description": "Publiqué mi primer curso completo de SQL en BigQuery",
+      "type": "project"
+    },
+    {
+      "id": 10,
+      "date": "2024-11",
+      "title": "Curso Power BI",
+      "description": "Lanzamiento del curso de Power BI desde cero",
+      "type": "project"
+    },
+    {
+      "id": 11,
+      "date": "2025-02",
+      "title": "Renovación del sitio web",
+      "description": "Rediseño completo del blog con URLs limpias",
+      "type": "milestone"
+    },
+    {
+      "id": 12,
+      "date": "2025-06",
+      "title": "Curso Avanzado SQL",
+      "description": "Lanzamiento del módulo avanzado de SQL",
+      "type": "future"
+    },
+    {
+      "id": 13,
+      "date": "2025-09",
+      "title": "10K Suscriptores",
+      "description": "Meta: Alcanzar 10,000 suscriptores en YouTube",
+      "type": "future"
+    },
+    {
+      "id": 14,
+      "date": "2025-12",
+      "title": "Certificación Google Cloud",
+      "description": "Obtener certificación profesional de Google Cloud",
+      "type": "future"
+    },
+    {
+      "id": 15,
+      "date": "2026-03",
+      "title": "Conferencia Internacional",
+      "description": "Participar como speaker en conferencia de Data Analytics",
+      "type": "future"
+    }
+  ]
+}
