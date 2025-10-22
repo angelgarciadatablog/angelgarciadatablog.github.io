@@ -1139,7 +1139,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -2223,6 +2223,13 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .brand-item {
+    justify-content: flex-start;
+  }
 }
 
 .brand-icon {

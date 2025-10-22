@@ -15,32 +15,6 @@
       position: relative;
     }
 
-    @media (max-width: 768px) {
-      .menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--card-bg);
-        flex-direction: column;
-        padding: 1rem;
-        border-top: 1px solid var(--border);
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-
-      .menu.active {
-        display: flex !important;
-      }
-
-      .menu-link {
-        padding: 0.75rem 1rem;
-        width: 100%;
-        text-align: left;
-      }
-    }
-
     /* Center footer content - only on mobile */
     @media (max-width: 768px) {
       .site-footer .footer-inner {
@@ -978,24 +952,9 @@
     const menu = document.querySelector('.menu');
 
     if (menuToggle && menu) {
-      menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-
-        if (isExpanded) {
-          menu.classList.remove('active');
-        } else {
-          menu.classList.add('active');
-        }
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-          menu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
       });
     }
 
