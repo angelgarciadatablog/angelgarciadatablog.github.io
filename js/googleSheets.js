@@ -10,11 +10,12 @@ const GOOGLE_SHEETS_CONFIG = {
   // Pestañas disponibles
   sheets: {
     cursosGratuitos: 'cursos-gratuitos',
-    recursosNotion: 'recursos-notion'
+    recursosNotion: 'recursos-notion',
+    videosImportantes: 'videos-importantes'
   },
 
-  // Duración del caché en milisegundos (5 minutos)
-  cacheDuration: 5 * 60 * 1000
+  // Duración del caché en milisegundos (60 minutos)
+  cacheDuration: 60 * 60 * 1000
 };
 
 // Cache en memoria (más rápido durante la sesión actual)
@@ -253,6 +254,11 @@ const GoogleSheets = {
   // Obtener recursos de Notion
   async getRecursosNotion(forceRefresh = false) {
     return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.recursosNotion, forceRefresh);
+  },
+
+  // Obtener videos importantes
+  async getVideosImportantes(forceRefresh = false) {
+    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.videosImportantes, forceRefresh);
   },
 
   // Obtener ambas pestañas para el home

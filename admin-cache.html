@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Limpiar Caché</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    .admin-container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .admin-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .admin-description {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .cache-info {
+      background: var(--surface);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .cache-info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cache-info-item:last-child {
+      border-bottom: none;
+    }
+
+    .cache-info-label {
+      color: var(--text-secondary);
+    }
+
+    .cache-info-value {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .btn-clear {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-clear:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-clear:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <h1 class="admin-title">🔧 Admin - Limpiar Caché</h1>
+    <p class="admin-description">
+      Usa esta página después de actualizar el Google Sheet para forzar que tu sitio web cargue los datos más recientes.
+    </p>
+
+    <div class="cache-info" id="cache-info">
+      <div class="cache-info-item">
+        <span class="cache-info-label">Duración del caché:</span>
+        <span class="cache-info-value" id="cache-duration">-</span>
+      </div>
+      <div class="cache-info-item">
+        <span class="cache-info-label">Pestañas en caché:</span>
+        <span class="cache-info-value" id="cached-sheets">-</span>
+      </div>
+    </div>
+
+    <button class="btn-clear" id="btn-clear" onclick="clearAllCache()">
+      🗑️ Limpiar Todo el Caché
+    </button>
+
+    <div class="success-message" id="success-message">
+      ✅ Caché limpiado exitosamente. Los usuarios verán los datos actualizados en su próxima visita.
+    </div>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+  </div>
+
+  <script src="js/googleSheets.js"></script>
+  <script>
+    // Mostrar info del caché al cargar
+    function updateCacheInfo() {
+      const info = GoogleSheets.getCacheInfo();
+      document.getElementById('cache-duration').textContent = info.cacheDuration;
+      document.getElementById('cached-sheets').textContent =
+        info.cachedSheets.length > 0
+          ? info.cachedSheets.map(s => s.sheet).join(', ')
+          : 'Ninguna';
+    }
+
+    // Limpiar todo el caché
+    function clearAllCache() {
+      const btn = document.getElementById('btn-clear');
+      const successMsg = document.getElementById('success-message');
+
+      // Deshabilitar botón
+      btn.disabled = true;
+      btn.textContent = '🔄 Limpiando...';
+
+      // Limpiar caché
+      setTimeout(() => {
+        GoogleSheets.clearCache(); // Limpia todo el caché
+
+        // Actualizar UI
+        btn.disabled = false;
+        btn.textContent = '🗑️ Limpiar Todo el Caché';
+
+        // Mostrar mensaje de éxito
+        successMsg.classList.add('show');
+        setTimeout(() => {
+          successMsg.classList.remove('show');
+        }, 5000);
+
+        // Actualizar info
+        updateCacheInfo();
+
+        console.log('✅ Caché limpiado completamente');
+      }, 500);
+    }
+
+    // Actualizar info al cargar
+    updateCacheInfo();
+  </script>
+</body>
+</html>
