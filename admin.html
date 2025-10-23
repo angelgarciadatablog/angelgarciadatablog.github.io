@@ -259,6 +259,7 @@
           </div>
         </div>
         <button class="btn-action" onclick="clearCache()">Limpiar Todo el Caché</button>
+        <button class="btn-action btn-secondary" onclick="clearTimelineCache()">Limpiar Solo Línea de Tiempo</button>
         <div class="status-message status-success" id="cache-status"></div>
       </div>
 
@@ -431,6 +432,17 @@
       GoogleSheets.clearCache();
 
       statusEl.textContent = '✅ Caché limpiado exitosamente';
+      statusEl.className = 'status-message status-success show';
+      setTimeout(() => statusEl.classList.remove('show'), 5000);
+
+      updateCacheInfo();
+    }
+
+    function clearTimelineCache() {
+      const statusEl = document.getElementById('cache-status');
+      GoogleSheets.clearCache('linea-tiempo');
+
+      statusEl.textContent = '✅ Caché de línea de tiempo limpiado';
       statusEl.className = 'status-message status-success show';
       setTimeout(() => statusEl.classList.remove('show'), 5000);
 

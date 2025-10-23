@@ -11,7 +11,8 @@ const GOOGLE_SHEETS_CONFIG = {
   sheets: {
     cursosGratuitos: 'cursos-gratuitos',
     recursosNotion: 'recursos-notion',
-    videosImportantes: 'videos-importantes'
+    videosImportantes: 'videos-importantes',
+    lineaTiempo: 'linea-tiempo'
   },
 
   // Duración del caché en milisegundos (60 minutos)
@@ -259,6 +260,11 @@ const GoogleSheets = {
   // Obtener videos importantes
   async getVideosImportantes(forceRefresh = false) {
     return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.videosImportantes, forceRefresh);
+  },
+
+  // Obtener línea de tiempo
+  async getLineaTiempo(forceRefresh = false) {
+    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.lineaTiempo, forceRefresh);
   },
 
   // Obtener ambas pestañas para el home

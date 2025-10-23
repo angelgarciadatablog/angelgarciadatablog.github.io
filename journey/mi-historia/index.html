@@ -166,28 +166,28 @@
 
     .timeline-nav-btn {
       background: var(--card-bg);
-      border: 2px solid #7c3aed;
+      border: 1px solid var(--border);
       color: var(--text);
       min-width: 140px;
       padding: 14px 28px;
       border-radius: var(--radius);
       cursor: pointer;
       transition: all 0.3s ease;
-      font-weight: 600;
+      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .timeline-nav-btn:hover {
-      border-color: #7c3aed;
-      background: #7c3aed;
-      color: white;
-      box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
-      transform: translateY(-2px);
+      border-color: var(--muted);
+      background: var(--card-bg);
+      color: var(--text);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
     }
 
     .timeline-nav-btn:active {
@@ -636,6 +636,7 @@
     </div>
   </footer>
 
+  <script src="../../js/googleSheets.js"></script>
   <script>
     // Get current date
     const currentDate = new Date();
@@ -660,13 +661,29 @@
     // Load timeline
     async function loadTimeline() {
       try {
-        const response = await fetch('../timeline-data.json');
-        if (!response.ok) throw new Error('No se pudo cargar');
+        console.log('📊 Cargando línea de tiempo desde Google Sheets...');
 
-        const data = await response.json();
-        renderTimeline(data.milestones);
+        // Obtener datos del Google Sheet (usa caché automáticamente)
+        const data = await GoogleSheets.getLineaTiempo();
+
+        if (!data || data.length === 0) {
+          throw new Error('No se obtuvieron datos de la línea de tiempo');
+        }
+
+        console.log(`✅ ${data.length} hitos cargados`);
+
+        // Transformar los datos al formato esperado
+        const milestones = data.map((row, index) => ({
+          id: parseInt(row.ID || row.id) || (index + 1),
+          date: row.Fecha || row.fecha || row.date || '',
+          title: row.Título || row.titulo || row.title || '',
+          description: row.Descripción || row.descripcion || row.description || '',
+          type: row.Tipo || row.tipo || row.type || 'milestone'
+        }));
+
+        renderTimeline(milestones);
       } catch (error) {
-        console.error('Error:', error);
+        console.error('❌ Error cargando timeline:', error);
         showError();
       }
     }

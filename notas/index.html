@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notas - angelgarciadatablog</title>
+  <meta name="description" content="Organiza tus notas y pendientes de forma simple. Todo se guarda localmente en tu navegador.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <style>
+    /* Estilos del header - copiados exactos de styles.css */
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #2a2a2a;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px !important;
+    }
+    @media (min-width: 640px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+    .brand {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .menu {
+      display: none;
+      gap: 4px;
+    }
+    @media (min-width: 768px) {
+      .menu {
+        display: flex;
+      }
+    }
+    .menu-toggle {
+      display: flex;
+      background: transparent;
+      color: #ffffff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .menu-toggle:hover {
+      background: #141414;
+    }
+    .menu-toggle:focus-visible {
+      outline: 2px solid #2674ed;
+      outline-offset: 2px;
+    }
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+    .menu-link {
+      color: #b0b0b0;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .menu-link:hover {
+      color: #ffffff;
+      background: #141414;
+    }
+    .menu-link.active {
+      color: #ffffff;
+      background: linear-gradient(90deg, #2674ed 0%, #7c3aed 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media (max-width: 767px) {
+      .header-inner {
+        position: relative;
+      }
+      .menu {
+        display: flex;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid #2a2a2a;
+        padding: 16px;
+        flex-direction: column;
+        gap: 4px;
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        pointer-events: none;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+        z-index: 9999;
+      }
+      .menu.open {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: flex !important;
+      }
+      .menu-link {
+        padding: 12px 16px;
+        width: 100%;
+        text-align: left;
+      }
+    }
+    /* Footer */
+    .site-footer {
+      border-top: none;
+      padding: 40px 0;
+      background: var(--panel);
+      margin-top: 80px;
+      position: relative;
+    }
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #2674ed 0%, #7c3aed 50%, #ec4899 100%);
+      opacity: 0.5;
+    }
+    @media (min-width: 640px) {
+      .site-footer {
+        padding: 56px 0;
+      }
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    .footer-inner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .social {
+      display: flex;
+      gap: 12px;
+    }
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .icon-link:hover,
+    .icon-link:focus-visible {
+      color: #a78bfa;
+      border-color: #a78bfa;
+      transform: translateY(-2px);
+      outline: none;
+    }
+    /* Estilos específicos de notas - exactos del original */
+    :root{
+      --bg:#000000;
+      --ink:#e5e7eb;
+      --muted:#9aa0a6;
+      --panel:#0a0a0a;
+      --border:#1a1a1a;
+      --accent:#b3c1ff;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    .wrap{
+      max-width:1200px;
+      margin:32px auto;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+    @media (max-width:900px){
+      .wrap{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:none;
+      padding:20px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:22px;
+    }
+    .textarea-wrap{
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:12px;
+      height:420px;
+      background:transparent;
+      display:flex;
+    }
+    textarea{
+      width:100%;
+      resize:none;
+      border:0;
+      outline:none;
+      font: 15px/1.7 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color:var(--ink);
+      background:transparent;
+      caret-color:var(--accent);
+    }
+    textarea::placeholder{
+      color:var(--muted);
+      opacity:0.4;
+    }
+    .actions{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:14px;
+      gap:10px;
+      align-items:center;
+    }
+    button{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--muted);
+      padding:10px 18px;
+      border-radius:10px;
+      font-weight:500;
+      cursor:pointer;
+      transition: all .15s ease;
+      font-size:14px;
+    }
+    button:hover{
+      transform: translateY(-1px);
+      border-color:var(--muted);
+      color:#fff;
+    }
+    button.primary{
+      color:#a78bfa;
+      border-color:#a78bfa;
+    }
+    button.primary:hover{
+      color:#c4b5fd;
+      border-color:#c4b5fd;
+      background:rgba(167, 139, 250, 0.1);
+    }
+    .muted{color:var(--muted); font-size:13px; margin-top:8px}
+    .history{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      max-height:520px;
+      overflow:auto;
+      padding-right:6px;
+    }
+    .history::-webkit-scrollbar {
+      width: 6px;
+    }
+    .history::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .history::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+    .history::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+    .batch{
+      position: relative;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:14px 16px;
+      background:transparent;
+    }
+    .batch h3{
+      margin:0 0 12px;
+      font-size:12px;
+      font-weight:400;
+      color:var(--muted);
+      opacity:0.6;
+      letter-spacing:0.02em;
+    }
+    .task{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:8px 0;
+      font-size:16px;
+    }
+    .task input{ width:20px; height:20px; margin-top:2px; cursor:pointer; }
+    .done{ text-decoration: line-through; color:var(--muted) }
+    .row{ display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap; }
+    .small{ font-size:12px; color:var(--muted) }
+    .fade{ opacity:.85 }
+    .toolbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .link{
+      border:0; background:none; color:#a78bfa; padding:0; cursor:pointer; font-weight:400; font-size:13px; opacity:0.7;
+    }
+    .link:hover{ color:#c4b5fd; opacity:1; }
+    .batch-actions{
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 4px;
+    }
+    .edit-btn, .delete-btn{
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    .edit-btn:hover{
+      color: #4a9eff;
+      background: rgba(74, 158, 255, 0.1);
+      transform: none;
+    }
+    .delete-btn:hover{
+      color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header minimalista -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Angel García</a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-controls="site-menu" aria-expanded="false">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <nav class="menu" id="site-menu">
+        <a class="menu-link" href="/">Inicio</a>
+        <a class="menu-link active" href="/notas">Notas</a>
+        <a class="menu-link" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer">Youtube</a>
+        <a class="menu-link" href="https://github.com/angelgarciadatablog" target="_blank" rel="noopener noreferrer">Github</a>
+        <a class="menu-link" href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Columna izquierda: Notas -->
+    <section class="card">
+      <h2>Notas</h2>
+
+      <div class="textarea-wrap">
+        <textarea id="notesInput" placeholder="Escribe tu nota aquí"></textarea>
+      </div>
+
+      <div class="actions">
+        <div class="toolbar">
+          <button id="formatNotesBtn" title="Ordenar notas">ordenar</button>
+        </div>
+        <button id="saveNotesBtn" class="primary">guardar</button>
+      </div>
+    </section>
+
+    <!-- Columna derecha: Historial de Notas -->
+    <section class="card">
+      <div class="row">
+        <h2>Historial de Notas</h2>
+        <div class="toolbar">
+          <button id="exportNotesBtn" class="link" title="Descargar .txt con tu historial de notas">exportar</button>
+          <button id="clearNotesBtn" class="link" title="Vaciar historial de notas">vaciar</button>
+        </div>
+      </div>
+      <div id="notesHistory" class="history"></div>
+    </section>
+
+    <!-- Columna izquierda: Pendientes -->
+    <section class="card">
+      <h2>Pendientes</h2>
+
+      <div class="textarea-wrap">
+        <textarea id="todoInput" placeholder="Escribe tu pendiente aquí"></textarea>
+      </div>
+
+      <div class="actions">
+        <div class="toolbar">
+          <button id="formatBtn" title="Ordenar pendientes">ordenar</button>
+        </div>
+        <button id="saveBtn" class="primary">guardar</button>
+      </div>
+    </section>
+
+    <!-- Columna derecha: Historial -->
+    <section class="card">
+      <div class="row">
+        <h2>Historial</h2>
+        <div class="toolbar">
+          <button id="exportBtn" class="link" title="Descargar .txt con tu historial">exportar</button>
+          <button id="clearBtn" class="link" title="Vaciar historial">vaciar</button>
+        </div>
+      </div>
+      <div id="history" class="history"></div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social">
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="icon-link">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4zM8.5 8.5h3.8v2.1h.05c.53-1 1.82-2.1 3.75-2.1 4 0 4.74 2.63 4.74 6V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V24h-4z"/></svg>
+        </a>
+        <a aria-label="Instagram" href="https://www.instagram.com/agl.garcia86/" target="_blank" rel="noopener noreferrer" class="icon-link">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.25a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 18 6.25z"/></svg>
+        </a>
+        <a aria-label="YouTube" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer" class="icon-link">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.8 2.7 12 2.7 12 2.7h0s-5.8 0-8.6.3c-.4 0-1.4.1-2.1.9C.7 4.6.5 6.2.5 6.2S.3 8.1.3 9.9v1.7c0 1.8.2 3.7.2 3.7s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.7.3 7.7.3s5.8 0 8.6-.3c.4 0 1.4-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.8.2-3.7V9.9c0-1.8-.2-3.7-.2-3.7zM9.8 14.6V7.7l6.2 3.5-6.2 3.4z"/></svg>
+        </a>
+        <a aria-label="GitHub" href="https://github.com/angelgarciadatablog" target="_blank" rel="noopener noreferrer" class="icon-link">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.4.7-4.1-1.6-4.1-1.6-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2 .7 2 .7 1.8 1.2 3.9.9 4.9.7.2-.8.7-1.2 1.2-1.5-2.7-.3-5.5-1.4-5.5-6.1 0-1.3.5-2.5 1.2-3.4-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.4 1.3 1-.3 2.2-.4 3.3-.4s2.3.2 3.3.4c2.3-1.6 3.4-1.3 3.4-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2.1 1.2 3.4 0 4.7-2.8 5.8-5.5 6.1.7.6 1.3 1.8 1.3 3.7v2.8c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+        </a>
+      </div>
+      <p>© 2025 Angel García. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=2"></script>
+  <script>
+    // Claves de almacenamiento
+    const KEY_CURRENT = 'pd_current_text_v1';
+    const KEY_HISTORY = 'pd_history_v1';
+    const KEY_CURRENT_NOTES = 'pd_current_notes_v1';
+    const KEY_HISTORY_NOTES = 'pd_history_notes_v1';
+
+    // Utilidades
+    const $ = s => document.querySelector(s);
+    const nowLabel = () => {
+      const d = new Date();
+      return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'2-digit' }) +
+             ' • ' +
+             d.toLocaleTimeString(undefined, { hour:'2-digit', minute:'2-digit' });
+    };
+    const uid = () => Math.random().toString(36).slice(2, 10);
+
+    // Estado
+    let historyBatches = [];
+    let notesHistoryBatches = [];
+
+    // Cargar estado inicial
+    function loadState() {
+      $('#todoInput').value = localStorage.getItem(KEY_CURRENT) || '';
+      $('#notesInput').value = localStorage.getItem(KEY_CURRENT_NOTES) || '';
+      try {
+        const raw = localStorage.getItem(KEY_HISTORY);
+        historyBatches = raw ? JSON.parse(raw) : [];
+      } catch { historyBatches = []; }
+      try {
+        const rawNotes = localStorage.getItem(KEY_HISTORY_NOTES);
+        notesHistoryBatches = rawNotes ? JSON.parse(rawNotes) : [];
+      } catch { notesHistoryBatches = []; }
+      renderHistory();
+      renderNotesHistory();
+    }
+
+    // Guardar borrador mientras se escribe
+    $('#todoInput').addEventListener('input', (e) => {
+      localStorage.setItem(KEY_CURRENT, e.target.value);
+    });
+
+    $('#notesInput').addEventListener('input', (e) => {
+      localStorage.setItem(KEY_CURRENT_NOTES, e.target.value);
+    });
+
+    // Enumerar líneas (1., 2., 3. ...)
+    function renumber(text) {
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+      return lines.map((l, i) => `${i+1}. ${l.replace(/^\d+\.\s*/, '')}`).join('\n');
+    }
+
+    $('#formatBtn').addEventListener('click', () => {
+      const ta = $('#todoInput');
+      ta.value = renumber(ta.value);
+      localStorage.setItem(KEY_CURRENT, ta.value);
+      ta.focus();
+    });
+
+    // Formatear notas (agregar viñetas)
+    function formatNotes(text) {
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+      return lines.map(l => l.startsWith('•') ? l : `• ${l}`).join('\n');
+    }
+
+    $('#formatNotesBtn').addEventListener('click', () => {
+      const ta = $('#notesInput');
+      ta.value = formatNotes(ta.value);
+      localStorage.setItem(KEY_CURRENT_NOTES, ta.value);
+      ta.focus();
+    });
+
+    // Guardar al historial
+    $('#saveBtn').addEventListener('click', () => {
+      const ta = $('#todoInput');
+      const text = ta.value;
+
+      const items = text
+        .split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(l => l.length > 0)
+        .map(l => ({
+          id: uid(),
+          text: l,
+          done: false,
+          createdAt: Date.now()
+        }));
+
+      if (items.length === 0) {
+        alert('No hay nada para guardar.');
+        return;
+      }
+
+      const batch = {
+        id: uid(),
+        label: nowLabel(),
+        items
+      };
+
+      historyBatches.unshift(batch);
+      persistHistory();
+      renderHistory();
+
+      // Limpiar borrador
+      ta.value = '';
+      localStorage.setItem(KEY_CURRENT, '');
+    });
+
+    // Guardar notas al historial
+    $('#saveNotesBtn').addEventListener('click', () => {
+      const ta = $('#notesInput');
+      const text = ta.value.trim();
+
+      if (text.length === 0) {
+        alert('No hay nada para guardar.');
+        return;
+      }
+
+      const batch = {
+        id: uid(),
+        label: nowLabel(),
+        content: text,
+        createdAt: Date.now()
+      };
+
+      notesHistoryBatches.unshift(batch);
+      persistNotesHistory();
+      renderNotesHistory();
+
+      // Limpiar borrador
+      ta.value = '';
+      localStorage.setItem(KEY_CURRENT_NOTES, '');
+    });
+
+    // Renderizar historial
+    function renderHistory() {
+      const root = $('#history');
+      root.innerHTML = '';
+
+      if (historyBatches.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'muted';
+        p.textContent = 'Aún no hay elementos en el historial.';
+        root.appendChild(p);
+        return;
+      }
+
+      for (const batch of historyBatches) {
+        const box = document.createElement('div');
+        box.className = 'batch';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = batch.label;
+        box.appendChild(h3);
+
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'batch-actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.textContent = '✎';
+        editBtn.title = 'Editar bloque';
+        editBtn.addEventListener('click', () => {
+          // Crear textarea para edición inline
+          const editArea = document.createElement('textarea');
+          editArea.className = 'edit-textarea';
+          editArea.style.cssText = 'width:100%; min-height:100px; padding:8px; margin-top:8px; font-size:14px; background:var(--panel); color:var(--ink); border:1px solid var(--border); border-radius:8px; font-family:inherit; resize:vertical;';
+          const itemsText = batch.items.map(item => item.text).join('\n');
+          editArea.value = itemsText;
+
+          // Crear botones de guardar/cancelar
+          const editActions = document.createElement('div');
+          editActions.style.cssText = 'display:flex; gap:8px; margin-top:8px; justify-content:flex-end;';
+
+          const saveBtn = document.createElement('button');
+          saveBtn.textContent = 'guardar';
+          saveBtn.className = 'primary';
+          saveBtn.style.cssText = 'padding:6px 12px; font-size:13px;';
+          saveBtn.addEventListener('click', () => {
+            const newText = editArea.value.trim();
+            if (newText) {
+              batch.items = newText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0).map(l => ({
+                id: uid(),
+                text: l,
+                done: false,
+                createdAt: Date.now()
+              }));
+              persistHistory();
+              renderHistory();
+            }
+          });
+
+          const cancelBtn = document.createElement('button');
+          cancelBtn.textContent = 'cancelar';
+          cancelBtn.style.cssText = 'padding:6px 12px; background:var(--border); color:var(--ink); border:none; border-radius:6px; cursor:pointer; font-size:13px;';
+          cancelBtn.addEventListener('click', () => {
+            renderHistory();
+          });
+
+          editActions.appendChild(cancelBtn);
+          editActions.appendChild(saveBtn);
+
+          // Ocultar items actuales y mostrar editor
+          box.querySelectorAll('.task').forEach(task => task.style.display = 'none');
+          actionsDiv.style.display = 'none';
+          box.appendChild(editArea);
+          box.appendChild(editActions);
+          editArea.focus();
+        });
+        actionsDiv.appendChild(editBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = '×';
+        deleteBtn.title = 'Eliminar bloque';
+        deleteBtn.addEventListener('click', () => {
+          if (confirm('¿Eliminar este bloque de pendientes?')) {
+            const index = historyBatches.findIndex(b => b.id === batch.id);
+            if (index > -1) {
+              historyBatches.splice(index, 1);
+              persistHistory();
+              renderHistory();
+            }
+          }
+        });
+        actionsDiv.appendChild(deleteBtn);
+
+        box.appendChild(actionsDiv);
+
+        for (const item of batch.items) {
+          const row = document.createElement('label');
+          row.className = 'task';
+
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = !!item.done;
+          cb.addEventListener('change', () => {
+            item.done = cb.checked;
+            persistHistory();
+            textSpan.className = cb.checked ? 'done' : '';
+          });
+
+          const textSpan = document.createElement('span');
+          textSpan.textContent = item.text;
+          if (item.done) textSpan.className = 'done';
+
+          row.appendChild(cb);
+          row.appendChild(textSpan);
+          box.appendChild(row);
+        }
+
+        root.appendChild(box);
+      }
+    }
+
+    function persistHistory() {
+      localStorage.setItem(KEY_HISTORY, JSON.stringify(historyBatches));
+    }
+
+    // Renderizar historial de notas
+    function renderNotesHistory() {
+      const root = $('#notesHistory');
+      root.innerHTML = '';
+
+      if (notesHistoryBatches.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'muted';
+        p.textContent = 'Aún no hay elementos en el historial de notas.';
+        root.appendChild(p);
+        return;
+      }
+
+      for (const batch of notesHistoryBatches) {
+        const box = document.createElement('div');
+        box.className = 'batch';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = batch.label;
+        box.appendChild(h3);
+
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'batch-actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.textContent = '✎';
+        editBtn.title = 'Editar nota';
+        editBtn.addEventListener('click', () => {
+          // Obtener el contentDiv antes de modificar
+          const contentDiv = box.querySelector('div[style*="white-space"]');
+
+          // Crear textarea para edición inline
+          const editArea = document.createElement('textarea');
+          editArea.className = 'edit-textarea';
+          editArea.style.cssText = 'width:100%; min-height:150px; padding:8px; margin-top:8px; font-size:14px; background:var(--panel); color:var(--ink); border:1px solid var(--border); border-radius:8px; font-family:inherit; resize:vertical; white-space:pre-wrap;';
+          editArea.value = batch.content;
+
+          // Crear botones de guardar/cancelar
+          const editActions = document.createElement('div');
+          editActions.style.cssText = 'display:flex; gap:8px; margin-top:8px; justify-content:flex-end;';
+
+          const saveBtn = document.createElement('button');
+          saveBtn.textContent = 'guardar';
+          saveBtn.className = 'primary';
+          saveBtn.style.cssText = 'padding:6px 12px; font-size:13px;';
+          saveBtn.addEventListener('click', () => {
+            const newText = editArea.value.trim();
+            if (newText) {
+              batch.content = newText;
+              persistNotesHistory();
+              renderNotesHistory();
+            }
+          });
+
+          const cancelBtn = document.createElement('button');
+          cancelBtn.textContent = 'cancelar';
+          cancelBtn.style.cssText = 'padding:6px 12px; background:var(--border); color:var(--ink); border:none; border-radius:6px; cursor:pointer; font-size:13px;';
+          cancelBtn.addEventListener('click', () => {
+            renderNotesHistory();
+          });
+
+          editActions.appendChild(cancelBtn);
+          editActions.appendChild(saveBtn);
+
+          // Ocultar contenido actual y mostrar editor
+          if (contentDiv) contentDiv.style.display = 'none';
+          actionsDiv.style.display = 'none';
+          box.appendChild(editArea);
+          box.appendChild(editActions);
+          editArea.focus();
+        });
+        actionsDiv.appendChild(editBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = '×';
+        deleteBtn.title = 'Eliminar bloque';
+        deleteBtn.addEventListener('click', () => {
+          if (confirm('¿Eliminar esta nota?')) {
+            const index = notesHistoryBatches.findIndex(b => b.id === batch.id);
+            if (index > -1) {
+              notesHistoryBatches.splice(index, 1);
+              persistNotesHistory();
+              renderNotesHistory();
+            }
+          }
+        });
+        actionsDiv.appendChild(deleteBtn);
+
+        box.appendChild(actionsDiv);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.style.cssText = 'white-space: pre-wrap; font-size: 14px; line-height: 1.6; color: var(--ink); margin-top: 8px;';
+        contentDiv.textContent = batch.content;
+        box.appendChild(contentDiv);
+
+        root.appendChild(box);
+      }
+    }
+
+    function persistNotesHistory() {
+      localStorage.setItem(KEY_HISTORY_NOTES, JSON.stringify(notesHistoryBatches));
+    }
+
+    // Exportar/Vaciar
+    $('#exportBtn').addEventListener('click', () => {
+      const lines = [];
+      lines.push(`# Historial de pendientes`);
+      lines.push(`Exportado: ${new Date().toLocaleString()}`);
+      lines.push("");
+      if (historyBatches.length === 0) {
+        lines.push("(sin elementos)");
+      } else {
+        for (const batch of historyBatches) {
+          lines.push(`== ${batch.label} ==`);
+          for (const item of batch.items) {
+            const mark = item.done ? 'x' : ' ';
+            lines.push(`[${mark}] ${item.text}`);
+          }
+          lines.push("");
+        }
+      }
+      const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'pendientes_historial.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    $('#clearBtn').addEventListener('click', () => {
+      if (!confirm('¿Vaciar todo el historial? Esta acción no se puede deshacer.')) return;
+      historyBatches = [];
+      persistHistory();
+      renderHistory();
+    });
+
+    // Exportar/Vaciar notas
+    $('#exportNotesBtn').addEventListener('click', () => {
+      const lines = [];
+      lines.push(`# Historial de notas`);
+      lines.push(`Exportado: ${new Date().toLocaleString()}`);
+      lines.push("");
+      if (notesHistoryBatches.length === 0) {
+        lines.push("(sin elementos)");
+      } else {
+        for (const batch of notesHistoryBatches) {
+          lines.push(`== ${batch.label} ==`);
+          lines.push(batch.content);
+          lines.push("");
+        }
+      }
+      const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'notas_historial.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    $('#clearNotesBtn').addEventListener('click', () => {
+      if (!confirm('¿Vaciar todo el historial de notas? Esta acción no se puede deshacer.')) return;
+      notesHistoryBatches = [];
+      persistNotesHistory();
+      renderNotesHistory();
+    });
+
+    // Inicializar
+    loadState();
+
+    // Menu hamburguesa
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('site-menu');
+
+    if (menu) {
+      menu.classList.remove('open');
+      // Limpiar estilos inline para que desktop funcione con CSS
+      if (window.innerWidth >= 768) {
+        menu.style.display = '';
+      }
+    }
+
+    // Limpiar estilos inline cuando se redimensiona la ventana
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        menu.style.display = '';
+        menu.style.position = '';
+        menu.style.top = '';
+        menu.style.left = '';
+        menu.style.right = '';
+        menu.style.zIndex = '';
+        menu.style.background = '';
+        menu.style.backdropFilter = '';
+        menu.style.webkitBackdropFilter = '';
+        menu.style.borderBottom = '';
+        menu.style.padding = '';
+        menu.style.flexDirection = '';
+        menu.style.gap = '';
+        menu.style.transform = '';
+        menu.style.opacity = '';
+        menu.style.pointerEvents = '';
+        menu.style.visibility = '';
+        menu.style.boxShadow = '';
+        menu.classList.remove('open');
+      }
+    });
+
+    if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Verificar si el menú está visible (usando display en lugar de clase)
+        const isVisible = menu.style.display === 'flex';
+
+        if (isVisible) {
+          // Cerrar menú
+          menu.classList.remove('open');
+          menu.style.display = 'none';
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          // Abrir menú - aplicar estilos inline directamente
+          menu.classList.add('open');
+          menu.style.display = 'flex';
+          menu.style.position = 'fixed';
+          menu.style.top = '64px';
+          menu.style.left = '0';
+          menu.style.right = '0';
+          menu.style.zIndex = '99999';
+          menu.style.background = 'rgba(10, 10, 10, 0.98)';
+          menu.style.backdropFilter = 'blur(12px)';
+          menu.style.webkitBackdropFilter = 'blur(12px)';
+          menu.style.borderBottom = '1px solid #2a2a2a';
+          menu.style.padding = '16px';
+          menu.style.flexDirection = 'column';
+          menu.style.gap = '4px';
+          menu.style.transform = 'translateY(0)';
+          menu.style.opacity = '1';
+          menu.style.pointerEvents = 'auto';
+          menu.style.visibility = 'visible';
+          menu.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4)';
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Cierra el menú al navegar
+      menu.addEventListener('click', (e) => {
+        if (e.target.classList.contains('menu-link')) {
+          menu.classList.remove('open');
+          menu.style.display = 'none';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
