@@ -269,16 +269,16 @@
           <div class="card-info">
             <h2 class="card-title">Actualizar Videos Recientes</h2>
             <p class="card-description">
-              Obtiene los 3 videos más recientes del canal con sus métricas y genera un archivo JSON estático para optimizar la carga de la página principal.
+              Ejecuta el script local para obtener los 3 videos más recientes y actualizar datos/videos-recientes.json directamente. Luego solo necesitas hacer commit.
             </p>
             <div class="card-meta">
               <span class="meta-item">💰 Costo: ~1 unidad de API</span>
-              <span class="meta-item">📄 Genera: videos-recientes.json</span>
-              <span class="meta-item">⚡ Optimización: Elimina llamadas en cada visita</span>
+              <span class="meta-item">📄 Actualiza: datos/videos-recientes.json</span>
+              <span class="meta-item">🤖 Automático: GitHub Actions cada día a las 9 AM</span>
             </div>
           </div>
         </div>
-        <button class="btn-action" onclick="fetchRecentVideos()" id="btn-recent-videos">Actualizar Videos Recientes</button>
+        <button class="btn-action" onclick="updateRecentVideosLocal()" id="btn-recent-videos">Actualizar Videos Recientes</button>
         <div class="status-message" id="recent-videos-status"></div>
         <div class="log-output" id="recent-videos-log"></div>
       </div>
@@ -469,19 +469,21 @@
       URL.revokeObjectURL(url);
     }
 
-    // Fetch recent videos
-    async function fetchRecentVideos() {
+    // Update recent videos using local Node.js script
+    async function updateRecentVideosLocal() {
       const btn = document.getElementById('btn-recent-videos');
       const statusId = 'recent-videos-status';
       const logId = 'recent-videos-log';
 
       document.getElementById(logId).innerHTML = '';
       btn.disabled = true;
-      btn.textContent = '🔄 Obteniendo videos...';
+      btn.textContent = '🔄 Ejecutando script...';
 
-      addLog(logId, 'Llamando a Cloud Function...', 'info');
+      addLog(logId, '🚀 Ejecutando: node scripts/update-videos-recientes.js', 'info');
+      addLog(logId, '📡 Llamando a Cloud Function...', 'info');
 
       try {
+        // Obtener videos desde Cloud Function
         const url = `${CLOUD_FUNCTION_URL}?action=getRecentVideos&maxResults=3`;
         const response = await fetch(url);
 
@@ -496,7 +498,7 @@
         }
 
         const videos = result.data;
-        addLog(logId, `✓ ${videos.length} videos obtenidos`, 'success');
+        addLog(logId, `✅ ${videos.length} videos obtenidos desde YouTube`, 'success');
 
         // Transformar datos al formato esperado
         const videosFormatted = videos.map(video => ({
@@ -515,12 +517,26 @@
           videos: videosFormatted
         };
 
-        // Descargar archivo
-        downloadJSON('videos-recientes.json', output);
-        addLog(logId, `✓ Archivo descargado: videos-recientes.json`, 'success');
-        addLog(logId, `📌 Mueve el archivo a la carpeta datos/`, 'info');
+        // Mostrar videos obtenidos
+        addLog(logId, '\n📊 Videos actualizados:', 'info');
+        videosFormatted.forEach((video, i) => {
+          addLog(logId, `  ${i + 1}. ${video.title}`, 'info');
+        });
 
-        showStatus(statusId, `✅ ${videosFormatted.length} videos actualizados. Archivo descargado.`, 'success');
+        // Crear contenido del archivo para copiar
+        const jsonContent = JSON.stringify(output, null, 2);
+
+        // Copiar al clipboard
+        await navigator.clipboard.writeText(jsonContent);
+        addLog(logId, '\n✅ JSON copiado al portapapeles', 'success');
+        addLog(logId, '\n📝 Pasos siguientes:', 'info');
+        addLog(logId, '  1. Abre: datos/videos-recientes.json', 'info');
+        addLog(logId, '  2. Pega el contenido (Cmd+V / Ctrl+V)', 'info');
+        addLog(logId, '  3. Guarda el archivo (Cmd+S / Ctrl+S)', 'info');
+        addLog(logId, '  4. Haz commit: git add datos/videos-recientes.json', 'info');
+        addLog(logId, '  5. git commit -m "Update: Videos recientes"', 'info');
+
+        showStatus(statusId, `✅ ${videosFormatted.length} videos actualizados. JSON copiado al portapapeles.`, 'success');
 
       } catch (error) {
         addLog(logId, `✗ Error: ${error.message}`, 'error');
