@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-10-23T01:04:52.352Z",
+  "fechaActualizacion": "2025-10-23T14:01:08.792Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "t3jyABNSOno",
+      "title": "DELETE FROM WHERE en SQL | Eliminar registros por alguna condición | Curso de SQL Intermedio #7",
+      "url": "https://www.youtube.com/watch?v=t3jyABNSOno",
+      "thumbnail": "https://i.ytimg.com/vi/t3jyABNSOno/hqdefault.jpg",
+      "publishedAt": "2025-10-23T12:01:45Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
+    },
     {
       "id": "ecJm9JHj18g",
       "title": "INSERT INTO VALUES en SQL | Insertar valores en una tabla |Consulta DML| Curso de SQL Intermedio #5",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
       "thumbnail": "https://i.ytimg.com/vi/pLRAticn7NU/hqdefault.jpg",
       "publishedAt": "2025-10-22T12:01:42Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "1eRuwnvwsPo",
-      "title": "CREATE OR REPLACE TABLE en SQL BigQuery | Consulta DDL | Curso de SQL Intermedio #3",
-      "url": "https://www.youtube.com/watch?v=1eRuwnvwsPo",
-      "thumbnail": "https://i.ytimg.com/vi/1eRuwnvwsPo/hqdefault.jpg",
-      "publishedAt": "2025-10-21T12:00:03Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
     }
   ]
