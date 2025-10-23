@@ -1,0 +1,30 @@
+{
+  "fechaActualizacion": "2025-01-22T19:30:00.000Z",
+  "totalVideos": 3,
+  "videos": [
+    {
+      "id": "PLACEHOLDER-1",
+      "title": "Actualiza este archivo usando admin.html",
+      "url": "https://www.youtube.com/@angelgarciadatablog/videos",
+      "thumbnail": "https://via.placeholder.com/480x360/1a1a1a/7c3aed?text=Actualizar",
+      "publishedAt": "2025-01-22T19:30:00.000Z",
+      "description": "Este es un archivo placeholder. Ve a admin.html y haz click en 'Actualizar Videos Recientes' para obtener los videos reales de tu canal."
+    },
+    {
+      "id": "PLACEHOLDER-2",
+      "title": "Panel de Administración",
+      "url": "https://www.youtube.com/@angelgarciadatablog/videos",
+      "thumbnail": "https://via.placeholder.com/480x360/1a1a1a/2674ed?text=Admin",
+      "publishedAt": "2025-01-22T19:30:00.000Z",
+      "description": "Abre admin.html en tu navegador para actualizar los videos recientes"
+    },
+    {
+      "id": "PLACEHOLDER-3",
+      "title": "Videos de YouTube",
+      "url": "https://www.youtube.com/@angelgarciadatablog/videos",
+      "thumbnail": "https://via.placeholder.com/480x360/1a1a1a/ec4899?text=YouTube",
+      "publishedAt": "2025-01-22T19:30:00.000Z",
+      "description": "Visita el canal de YouTube para ver los videos más recientes"
+    }
+  ]
+}

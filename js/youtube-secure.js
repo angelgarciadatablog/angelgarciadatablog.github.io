@@ -1,55 +1,33 @@
 /**
- * YouTube Videos Integration - Versión Segura con Cloud Function
- * Llama a Cloud Function en lugar de exponer API key en el frontend
+ * YouTube Videos Integration - Versión Optimizada con JSON Estático
+ * Lee videos desde un archivo JSON pre-generado para optimizar el rendimiento
+ * El JSON se actualiza manualmente desde el panel admin cuando sea necesario
  */
 
 const YOUTUBE_SECURE_CONFIG = {
-  // URL de tu Cloud Function
-  cloudFunctionUrl: 'https://getyoutubevideos-35759247090.us-central1.run.app',
-
-  // Para desarrollo local
-  localDevelopment: false,
-  localUrl: 'http://localhost:8080',
+  // Ruta del archivo JSON estático
+  jsonDataPath: 'datos/videos-recientes.json',
 
   // Configuración de reintentos
   retry: {
-    maxAttempts: 3,
-    delayMs: 1000
+    maxAttempts: 2,
+    delayMs: 500
   }
 };
 
 /**
- * Obtiene los videos desde la Cloud Function
+ * Obtiene los videos desde el archivo JSON estático
  * @returns {Promise<Array>} Array con los videos
  */
 async function fetchYouTubeVideosSecure() {
-  const url = YOUTUBE_SECURE_CONFIG.localDevelopment
-    ? YOUTUBE_SECURE_CONFIG.localUrl
-    : YOUTUBE_SECURE_CONFIG.cloudFunctionUrl;
-
   let lastError = null;
 
-  // Intentar con reintentos
+  // Intentar con reintentos (por si hay problemas de red)
   for (let attempt = 1; attempt <= YOUTUBE_SECURE_CONFIG.retry.maxAttempts; attempt++) {
     try {
-      console.log(`🎥 Cargando videos (intento ${attempt}/${YOUTUBE_SECURE_CONFIG.retry.maxAttempts})...`);
+      console.log(`🎥 Cargando videos desde JSON estático...`);
 
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      // Manejar rate limiting
-      if (response.status === 429) {
-        const retryAfter = response.headers.get('Retry-After') || 60;
-        console.warn(`⚠️ Rate limit alcanzado. Reintentando en ${retryAfter} segundos...`);
-
-        // Esperar y reintentar
-        await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
-        continue;
-      }
+      const response = await fetch(YOUTUBE_SECURE_CONFIG.jsonDataPath);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -57,45 +35,41 @@ async function fetchYouTubeVideosSecure() {
 
       const result = await response.json();
 
-      if (!result.success) {
-        throw new Error(result.message || 'Error al obtener videos');
-      }
-
-      // Log de caché
-      if (result.cached) {
-        console.log(`✅ Videos obtenidos desde caché (${result.cacheAge}s)`);
-      } else {
-        console.log('✅ Videos obtenidos desde YouTube API');
+      // Validar estructura del JSON
+      if (!result.videos || !Array.isArray(result.videos)) {
+        throw new Error('Formato de JSON inválido');
       }
 
       // Transformar datos al formato esperado por el frontend
-      const videos = result.data.map(video => ({
+      const videos = result.videos.map(video => ({
         id: video.id,
         title: video.title,
-        url: `https://www.youtube.com/watch?v=${video.id}`,
+        url: video.url || `https://www.youtube.com/watch?v=${video.id}`,
         thumbnail: video.thumbnail,
         publishedAt: new Date(video.publishedAt),
-        description: video.description
+        description: video.description || ''
       }));
 
-      console.log(`✅ ${videos.length} videos cargados correctamente`);
+      console.log(`✅ ${videos.length} videos cargados desde JSON estático`);
+      console.log(`📅 Última actualización: ${new Date(result.fechaActualizacion).toLocaleString('es-ES')}`);
       return videos;
 
     } catch (error) {
-      console.error(`❌ Error en intento ${attempt}:`, error.message);
+      console.error(`❌ Error cargando JSON (intento ${attempt}):`, error.message);
       lastError = error;
 
       // Si no es el último intento, esperar antes de reintentar
       if (attempt < YOUTUBE_SECURE_CONFIG.retry.maxAttempts) {
-        const delay = YOUTUBE_SECURE_CONFIG.retry.delayMs * attempt;
-        console.log(`⏳ Esperando ${delay}ms antes de reintentar...`);
+        const delay = YOUTUBE_SECURE_CONFIG.retry.delayMs;
+        console.log(`⏳ Reintentando en ${delay}ms...`);
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
   }
 
   // Si todos los intentos fallaron, usar placeholders
-  console.error('❌ Todos los intentos fallaron:', lastError);
+  console.error('❌ No se pudo cargar videos-recientes.json:', lastError);
+  console.log('💡 Usa el panel admin.html para generar el archivo videos-recientes.json');
   return getPlaceholderVideos();
 }
 

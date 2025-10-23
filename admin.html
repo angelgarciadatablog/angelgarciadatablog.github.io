@@ -262,6 +262,27 @@
         <div class="status-message status-success" id="cache-status"></div>
       </div>
 
+      <!-- Actualizar Videos Recientes -->
+      <div class="admin-card">
+        <div class="card-header">
+          <div class="card-icon">🎬</div>
+          <div class="card-info">
+            <h2 class="card-title">Actualizar Videos Recientes</h2>
+            <p class="card-description">
+              Obtiene los 3 videos más recientes del canal con sus métricas y genera un archivo JSON estático para optimizar la carga de la página principal.
+            </p>
+            <div class="card-meta">
+              <span class="meta-item">💰 Costo: ~1 unidad de API</span>
+              <span class="meta-item">📄 Genera: videos-recientes.json</span>
+              <span class="meta-item">⚡ Optimización: Elimina llamadas en cada visita</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn-action" onclick="fetchRecentVideos()" id="btn-recent-videos">Actualizar Videos Recientes</button>
+        <div class="status-message" id="recent-videos-status"></div>
+        <div class="log-output" id="recent-videos-log"></div>
+      </div>
+
       <!-- Actualizar Playlists -->
       <div class="admin-card">
         <div class="card-header">
@@ -446,6 +467,68 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+    }
+
+    // Fetch recent videos
+    async function fetchRecentVideos() {
+      const btn = document.getElementById('btn-recent-videos');
+      const statusId = 'recent-videos-status';
+      const logId = 'recent-videos-log';
+
+      document.getElementById(logId).innerHTML = '';
+      btn.disabled = true;
+      btn.textContent = '🔄 Obteniendo videos...';
+
+      addLog(logId, 'Llamando a Cloud Function...', 'info');
+
+      try {
+        const url = `${CLOUD_FUNCTION_URL}?action=getRecentVideos&maxResults=3`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.error || 'Error desconocido');
+        }
+
+        const videos = result.data;
+        addLog(logId, `✓ ${videos.length} videos obtenidos`, 'success');
+
+        // Transformar datos al formato esperado
+        const videosFormatted = videos.map(video => ({
+          id: video.id,
+          title: video.title,
+          url: `https://www.youtube.com/watch?v=${video.id}`,
+          thumbnail: video.thumbnail,
+          publishedAt: video.publishedAt,
+          description: video.description || ''
+        }));
+
+        // Preparar JSON
+        const output = {
+          fechaActualizacion: new Date().toISOString(),
+          totalVideos: videosFormatted.length,
+          videos: videosFormatted
+        };
+
+        // Descargar archivo
+        downloadJSON('videos-recientes.json', output);
+        addLog(logId, `✓ Archivo descargado: videos-recientes.json`, 'success');
+        addLog(logId, `📌 Mueve el archivo a la carpeta datos/`, 'info');
+
+        showStatus(statusId, `✅ ${videosFormatted.length} videos actualizados. Archivo descargado.`, 'success');
+
+      } catch (error) {
+        addLog(logId, `✗ Error: ${error.message}`, 'error');
+        showStatus(statusId, `❌ Error: ${error.message}`, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Actualizar Videos Recientes';
+      }
     }
 
     // Fetch all playlists
