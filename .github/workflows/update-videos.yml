@@ -1,12 +1,8 @@
 name: Actualizar Videos Recientes
 
 on:
-  # Ejecutar diariamente a las 9:00 AM (hora UTC, ajusta según tu zona horaria)
-  # Para Perú (UTC-5), 9:00 AM = 14:00 UTC
   schedule:
-    - cron: '0 14 * * *'  # 9:00 AM hora de Perú
-
-  # Permitir ejecución manual desde GitHub
+    - cron: '0 14 * * *'
   workflow_dispatch:
 
 jobs:
@@ -16,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -46,12 +40,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add datos/videos-recientes.json
-          git commit -m "Chore: Actualizar videos recientes automáticamente
-
-🤖 Actualización automática diaria de videos del canal de YouTube
-Fecha: $(date +'%Y-%m-%d %H:%M:%S %Z')
-
-[skip ci]"
+          git commit -m "Chore: Actualizar videos recientes automaticamente [skip ci]"
           git push
 
       - name: Resumen
@@ -59,5 +48,4 @@ Fecha: $(date +'%Y-%m-%d %H:%M:%S %Z')
           echo "### 📊 Resumen de Actualización" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Fecha:** $(date +'%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_STEP_SUMMARY
-          echo "- **Cambios:** ${{ steps.verify.outputs.changed == 'true' && '✅ Videos actualizados' || 'ℹ️ Sin cambios' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Archivo:** datos/videos-recientes.json" >> $GITHUB_STEP_SUMMARY
