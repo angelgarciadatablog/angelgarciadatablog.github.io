@@ -1350,16 +1350,19 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(124, 58, 237, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .scroll-dot.active {
-  background: rgba(124, 58, 237, 1);
-  width: 24px;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.5);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
 }
 
 /* === PANEL DE RECURSOS === */

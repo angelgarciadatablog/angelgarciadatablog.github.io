@@ -464,7 +464,7 @@
       }
 
       /* Right side: Title (row 2) */
-      .timeline-title-label {
+      .timeline-item .timeline-title-label {
         grid-column: 2;
         grid-row: 2;
         margin: 0;
@@ -472,13 +472,14 @@
         text-align: left;
         font-size: 1rem;
         max-width: calc(100vw - 100px);
-        font-weight: 600;
+        font-weight: 400 !important;
         line-height: 1.4;
         color: var(--text);
       }
 
       .timeline-item.future .timeline-title-label {
         color: var(--text-secondary);
+        font-weight: 400 !important;
       }
 
       /* Mobile: hide description by default, show on click */
