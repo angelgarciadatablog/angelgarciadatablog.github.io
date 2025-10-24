@@ -2,17 +2,17 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-10-22T02:38:56.224Z",
+  "fechaActualizacion": "2025-10-24T03:50:14.249Z",
   "modulos": [
     {
       "moduloId": 1,
       "titulo": "Cláusulas Principales de SQL",
       "descripcion": "Nivel Básico",
-      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en an��lisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
+      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el \"por qué\" detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
       "playlistId": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
-      "totalVideos": 50,
       "orden": 1,
+      "totalVideos": 50,
       "videos": [
         {
           "id": "mj_b9_nxJfw",
@@ -23,7 +23,7 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 325,
+          "vistas": 328,
           "likes": 15,
           "comentarios": 2
         },
@@ -36,8 +36,8 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 183,
-          "likes": 8,
+          "vistas": 189,
+          "likes": 9,
           "comentarios": 0
         },
         {
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 96,
+          "vistas": 97,
           "likes": 2,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 91,
+          "vistas": 93,
           "likes": 3,
           "comentarios": 1
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 42,
+          "vistas": 43,
           "likes": 1,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 32,
+          "vistas": 33,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 28,
+          "vistas": 30,
           "likes": 2,
           "comentarios": 1
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 52,
+          "vistas": 53,
           "likes": 1,
           "comentarios": 0
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 139,
+          "vistas": 146,
           "likes": 5,
           "comentarios": 2
         },
@@ -179,7 +179,7 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 29,
+          "vistas": 31,
           "likes": 0,
           "comentarios": 0
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2025-08-15T05:10:50Z",
           "posicion": 13,
           "duracion": "PT6M20S",
-          "vistas": 29,
+          "vistas": 30,
           "likes": 0,
           "comentarios": 0
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 22,
+          "vistas": 23,
           "likes": 1,
           "comentarios": 0
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2025-08-15T09:17:06Z",
           "posicion": 15,
           "duracion": "PT6M14S",
-          "vistas": 13,
+          "vistas": 14,
           "likes": 0,
           "comentarios": 0
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2025-08-15T09:23:28Z",
           "posicion": 16,
           "duracion": "PT3M54S",
-          "vistas": 6,
+          "vistas": 7,
           "likes": 0,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 27,
+          "vistas": 28,
           "likes": 0,
           "comentarios": 0
         },
@@ -257,7 +257,7 @@
           "publishedAt": "2025-08-15T09:32:06Z",
           "posicion": 18,
           "duracion": "PT7M50S",
-          "vistas": 10,
+          "vistas": 11,
           "likes": 0,
           "comentarios": 0
         },
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 30,
+          "vistas": 31,
           "likes": 2,
           "comentarios": 0
         },
@@ -283,7 +283,7 @@
           "publishedAt": "2025-08-15T09:46:14Z",
           "posicion": 20,
           "duracion": "PT5M32S",
-          "vistas": 9,
+          "vistas": 10,
           "likes": 0,
           "comentarios": 0
         },
@@ -342,7 +342,7 @@
         {
           "id": "t4eZfB4XTHg",
           "titulo": "Cómo usar LOWER y UPPER para estandarizar datos | Curso de SQL BigQuery #26",
-          "descripcion": "En este capítulo revisaremos las funciones LOWER y UPPER en SQL, fundamentales para estandarizar datos de texto en BigQuery con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre LOWER y UPPER en SQL.\n✅ Cómo convertir texto a minúsculas o mayúsculas.\n✅ Ejemplos prácticos con correos electrónicos y nombres de ciudades.\n\n📌 Recursos ��tiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos las funciones LOWER y UPPER en SQL, fundamentales para estandarizar datos de texto en BigQuery con información de Google Analytics 4.\n\n📌 Temas:\n✅ Diferencia entre LOWER y UPPER en SQL.\n✅ Cómo convertir texto a minúsculas o mayúsculas.\n✅ Ejemplos prácticos con correos electrónicos y nombres de ciudades.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/t4eZfB4XTHg/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=t4eZfB4XTHg",
           "publishedAt": "2025-08-16T07:18:01Z",
@@ -556,7 +556,7 @@
           "publishedAt": "2025-08-16T14:29:48Z",
           "posicion": 41,
           "duracion": "PT6M57S",
-          "vistas": 21,
+          "vistas": 22,
           "likes": 2,
           "comentarios": 0
         },
@@ -569,7 +569,7 @@
           "publishedAt": "2025-08-16T14:31:42Z",
           "posicion": 42,
           "duracion": "PT5M19S",
-          "vistas": 11,
+          "vistas": 12,
           "likes": 1,
           "comentarios": 0
         },
@@ -608,7 +608,7 @@
           "publishedAt": "2025-08-16T14:37:07Z",
           "posicion": 45,
           "duracion": "PT10M52S",
-          "vistas": 39,
+          "vistas": 40,
           "likes": 2,
           "comentarios": 0
         },
@@ -668,24 +668,24 @@
     },
     {
       "moduloId": 2,
-      "titulo": "Manipulación de tablas",
-      "descripcion": "Nivel Intermedio 2.1",
-      "descripcionLarga": "Bienvenido al segundo bloque del curso de SQL, donde pasarás del análisis básico a la gestión de tablas y datos dentro de BigQuery. En este nivel intermedio aprenderás a crear tus propias tablas, insertar registros, modificar estructuras y mantener tu base de datos limpia y optimizada.\n\n💡 Todo sigue siendo gratuito y en la nube, sin instalaciones ni configuraciones complicadas. Solo necesitas tu cuenta de Google y conexión a internet para practicar de forma segura y profesional.\n\n🎯 Objetivo del módulo:\n\n-Comprender cómo se crean y administran tablas en BigQuery.\n-Aprender a insertar, actualizar y eliminar datos usando comandos DML.\n-Entender cómo optimizar costos y mantener buenas prácticas en tus proyectos.\n-Desarrollar confianza para construir tus propios datasets y gestionar su contenido.\n\n✅ Ventajas del módulo:\n\n-Ejemplos claros, con casos en BigQuery.\n-Explicaciones paso a paso sobre sentencias DDL y DML.\n-Conceptos de facturación y almacenamiento explicados con lenguaje sencillo.\n-Buenas prácticas para mantener tus datos organizados y evitar errores comunes.\n\n📚 Ideal para:\n\nQuienes ya completaron el nivel básico y quieren ir al siguiente paso.\nAnalistas, marketers o creadores que necesitan manipular datos directamente.\nEstudiantes que buscan entender cómo se administran las bases en entornos reales.\n\n🔔 Suscríbete y continúa tu ruta de aprendizaje en SQL.\nEn este bloque aprenderás no solo a consultar datos, sino a crear, modificar y gestionar tus propias tablas, como lo hacen los analistas de datos en el día a día.\n\n👨‍💻 Domina la manipulación de tablas y prepárate para el siguiente nivel: consultas avanzadas y análisis a gran escala.",
+      "titulo": "Subconsultas y CTEs",
+      "descripcion": "Nivel Intermedio",
+      "descripcionLarga": "Módulo intermedio del curso de SQL en BigQuery",
       "playlistId": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
-      "totalVideos": 10,
       "orden": 2,
+      "totalVideos": 10,
       "videos": [
         {
           "id": "DQlkV2DmA_M",
           "titulo": "Introducción al nivel intermedio de SQL BigQuery | Curso de SQL Intermedio #1",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────��───  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/DQlkV2DmA_M/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=DQlkV2DmA_M",
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 19,
+          "vistas": 36,
           "likes": 2,
           "comentarios": 0
         },
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 3,
+          "vistas": 6,
           "likes": 1,
           "comentarios": 0
         },
@@ -730,37 +730,40 @@
         },
         {
           "id": "ecJm9JHj18g",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "INSERT INTO VALUES en SQL | Insertar valores en una tabla |Consulta DML| Curso de SQL Intermedio #5",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n───────────────────────────��──  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/ecJm9JHj18g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
           "publishedAt": "2025-10-07T19:53:24Z",
           "posicion": 4,
-          "duracion": null,
-          "vistas": 0,
-          "likes": 0,
+          "duracion": "PT4M9S",
+          "vistas": 6,
+          "likes": 1,
           "comentarios": 0
         },
         {
           "id": "pLRAticn7NU",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "TRUNCATE TABLE en SQL | Eliminar todos los registros de una tabla | Curso de SQL Intermedio #6",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/pLRAticn7NU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
           "publishedAt": "2025-10-07T19:55:40Z",
           "posicion": 5,
-          "duracion": null,
-          "vistas": 0,
-          "likes": 0,
+          "duracion": "PT4M21S",
+          "vistas": 5,
+          "likes": 1,
           "comentarios": 0
         },
         {
           "id": "t3jyABNSOno",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "DELETE FROM WHERE en SQL | Eliminar registros por alguna condición | Curso de SQL Intermedio #7",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/t3jyABNSOno/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=t3jyABNSOno",
           "publishedAt": "2025-10-07T19:56:36Z",
           "posicion": 6,
-          "duracion": null,
-          "vistas": 0,
+          "duracion": "PT5M14S",
+          "vistas": 4,
           "likes": 0,
           "comentarios": 0
         },
@@ -771,7 +774,7 @@
           "url": "https://www.youtube.com/watch?v=OzgC7e3Eths",
           "publishedAt": "2025-10-07T19:57:33Z",
           "posicion": 7,
-          "duracion": null,
+          "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,
           "comentarios": 0
@@ -783,7 +786,7 @@
           "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
           "publishedAt": "2025-10-07T19:59:45Z",
           "posicion": 8,
-          "duracion": null,
+          "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,
           "comentarios": 0
@@ -795,7 +798,7 @@
           "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
           "publishedAt": "2025-10-07T20:00:43Z",
           "posicion": 9,
-          "duracion": null,
+          "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,
           "comentarios": 0
