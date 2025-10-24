@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-10-23T14:01:08.792Z",
+  "fechaActualizacion": "2025-10-24T14:01:21.805Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "OzgC7e3Eths",
+      "title": "UPDATE SET WHERE en SQL | Actualizar registros de una tabla | Curso de SQL Intermedio #8",
+      "url": "https://www.youtube.com/watch?v=OzgC7e3Eths",
+      "thumbnail": "https://i.ytimg.com/vi/OzgC7e3Eths/hqdefault.jpg",
+      "publishedAt": "2025-10-24T12:00:51Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
+    },
     {
       "id": "t3jyABNSOno",
       "title": "DELETE FROM WHERE en SQL | Eliminar registros por alguna condición | Curso de SQL Intermedio #7",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
       "thumbnail": "https://i.ytimg.com/vi/ecJm9JHj18g/hqdefault.jpg",
       "publishedAt": "2025-10-22T12:01:25Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "pLRAticn7NU",
-      "title": "TRUNCATE TABLE en SQL | Eliminar todos los registros de una tabla | Curso de SQL Intermedio #6",
-      "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
-      "thumbnail": "https://i.ytimg.com/vi/pLRAticn7NU/hqdefault.jpg",
-      "publishedAt": "2025-10-22T12:01:42Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
     }
   ]
