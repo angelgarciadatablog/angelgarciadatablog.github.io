@@ -9,33 +9,24 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const CLOUD_FUNCTION_URL = 'https://getyoutubevideos-35759247090.us-central1.run.app';
+// Leer configuración desde config/cursos.json
+const configPath = path.join(__dirname, '..', 'config', 'cursos.json');
+const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
-// Configuración del curso
-const CURSO_CONFIG = {
-  curso: 'sql-bigquery',
-  titulo: 'Curso de SQL en BigQuery',
-  descripcion: 'Curso completo de SQL usando Google BigQuery',
-  modulos: [
-    {
-      moduloId: 1,
-      titulo: 'Cláusulas Principales de SQL',
-      descripcion: 'Nivel Básico',
-      descripcionLarga: 'Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el "por qué" detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.',
-      playlistId: 'PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl',
-      playlistUrl: 'https://www.youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl',
-      orden: 1
-    },
-    {
-      moduloId: 2,
-      titulo: 'Subconsultas y CTEs',
-      descripcion: 'Nivel Intermedio',
-      descripcionLarga: 'Módulo intermedio del curso de SQL en BigQuery',
-      playlistId: 'PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU',
-      playlistUrl: 'https://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU',
-      orden: 2
-    }
-  ]
+// Obtener configuración del curso SQL
+const sqlCurso = config.cursos.find(c => c.id === 'sql-bigquery');
+
+if (!sqlCurso) {
+  console.error('❌ No se encontró la configuración del curso sql-bigquery');
+  process.exit(1);
+}
+
+const CLOUD_FUNCTION_URL = config.cloudFunctionUrl;
+
+// Descripción larga del módulo 1 (guardada aquí porque es muy extensa)
+const DESCRIPCIONES_LARGAS = {
+  1: 'Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el "por qué" detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.',
+  2: 'Módulo intermedio del curso de SQL en BigQuery, enfocado en manipulación de tablas y técnicas avanzadas.'
 };
 
 /**
@@ -96,7 +87,13 @@ async function processModule(moduleConfig) {
     console.log(`   ✅ ${videos.length} videos obtenidos`);
 
     return {
-      ...moduleConfig,
+      moduloId: moduleConfig.moduloId,
+      titulo: moduleConfig.titulo,
+      descripcion: moduleConfig.descripcion,
+      descripcionLarga: DESCRIPCIONES_LARGAS[moduleConfig.moduloId] || moduleConfig.descripcion,
+      playlistId: moduleConfig.playlistId,
+      playlistUrl: `https://www.youtube.com/playlist?list=${moduleConfig.playlistId}`,
+      orden: moduleConfig.orden,
       totalVideos: videos.length,
       videos: videos
     };
@@ -112,27 +109,29 @@ async function processModule(moduleConfig) {
  */
 async function main() {
   console.log('🚀 Actualizando curso de SQL en BigQuery...\n');
+  console.log(`📚 Curso: ${sqlCurso.titulo}`);
+  console.log(`📦 Módulos configurados: ${sqlCurso.modulos.length}\n`);
 
   try {
     // Procesar todos los módulos
     const modulos = [];
 
-    for (const moduleConfig of CURSO_CONFIG.modulos) {
+    for (const moduleConfig of sqlCurso.modulos) {
       const modulo = await processModule(moduleConfig);
       modulos.push(modulo);
     }
 
     // Preparar JSON final
     const output = {
-      curso: CURSO_CONFIG.curso,
-      titulo: CURSO_CONFIG.titulo,
-      descripcion: CURSO_CONFIG.descripcion,
+      curso: sqlCurso.id,
+      titulo: sqlCurso.titulo,
+      descripcion: sqlCurso.descripcion,
       fechaActualizacion: new Date().toISOString(),
       modulos: modulos
     };
 
     // Guardar archivo
-    const outputPath = path.join(__dirname, '..', 'datos', 'sql-bigquery-playlist.json');
+    const outputPath = path.join(__dirname, '..', sqlCurso.outputFile);
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf8');
 
     console.log(`\n✅ Archivo actualizado: ${outputPath}`);
@@ -142,8 +141,10 @@ async function main() {
     // Mostrar resumen
     console.log('\n📋 Resumen:');
     modulos.forEach(m => {
-      console.log(`   - Módulo ${m.moduloId}: ${m.totalVideos} videos`);
+      console.log(`   - Módulo ${m.moduloId} (${m.titulo}): ${m.totalVideos} videos`);
     });
+
+    console.log('\n💡 Para agregar más módulos, edita: config/cursos.json');
 
   } catch (error) {
     console.error('\n❌ Error:', error.message);

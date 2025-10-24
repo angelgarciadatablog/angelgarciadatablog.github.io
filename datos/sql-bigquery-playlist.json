@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-10-24T03:50:14.249Z",
+  "fechaActualizacion": "2025-10-24T04:08:36.888Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -615,7 +615,7 @@
         {
           "id": "R7hA1gBrsvQ",
           "titulo": "Uso de REGEXP_CONTAINS para buscar patrones avanzados en SQL | Curso de SQL BigQuery #47",
-          "descripcion": "En este capítulo aprenderemos a utilizar la expresión REGEXP_CONTAINS en SQL BigQuery, que nos permite buscar patrones avanzados de texto dentro de columnas. A diferencia de LIKE, esta función trabaja con expresiones regulares (regex), lo que abre la posibilidad de realizar búsquedas y validaciones mucho más complejas. \n\n📌 Temas que veremos:\n✅ Diferencia entre LIKE y REGEXP_CONTAINS y cuándo usar cada uno.\n✅ Sintaxis básica de REGEXP_CONTAINS\n✅ Validación de números telefónicos con prefijo internacional (+51) y longitud adecuada.\n✅ Validación de correos electrónicos mediante expresiones regulares.\n✅ Uso de REGEXP_CONTAINS dentro de SELECT con CASE para clasificar datos.\n✅ Recomendaciones para aprender regex y precauciones al usar IA para generarlos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a utilizar la expresión REGEXP_CONTAINS en SQL BigQuery, que nos permite buscar patrones avanzados de texto dentro de columnas. A diferencia de LIKE, esta función trabaja con expresiones regulares (regex), lo que abre la posibilidad de realizar búsquedas y validaciones mucho más complejas. \n\n📌 Temas que veremos:\n✅ Diferencia entre LIKE y REGEXP_CONTAINS y cuándo usar cada uno.\n✅ Sintaxis básica de REGEXP_CONTAINS\n✅ Validación de números telefónicos con prefijo internacional (+51) y longitud adecuada.\n✅ Validación de correos electrónicos mediante expresiones regulares.\n✅ Uso de REGEXP_CONTAINS dentro de SELECT con CASE para clasificar datos.\n✅ Recomendaciones para aprender regex y precauciones al usar IA para generarlos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Ap��yame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/R7hA1gBrsvQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=R7hA1gBrsvQ",
           "publishedAt": "2025-08-18T12:08:43Z",
@@ -668,9 +668,9 @@
     },
     {
       "moduloId": 2,
-      "titulo": "Subconsultas y CTEs",
-      "descripcion": "Nivel Intermedio",
-      "descripcionLarga": "Módulo intermedio del curso de SQL en BigQuery",
+      "titulo": "Manipulación de tablas",
+      "descripcion": "Nivel Intermedio 2.1",
+      "descripcionLarga": "Módulo intermedio del curso de SQL en BigQuery, enfocado en manipulación de tablas y técnicas avanzadas.",
       "playlistId": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "orden": 2,
@@ -731,7 +731,7 @@
         {
           "id": "ecJm9JHj18g",
           "titulo": "INSERT INTO VALUES en SQL | Insertar valores en una tabla |Consulta DML| Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n───────────────────────────��──  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/ecJm9JHj18g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
           "publishedAt": "2025-10-07T19:53:24Z",
