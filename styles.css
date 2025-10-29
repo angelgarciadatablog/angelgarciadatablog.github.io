@@ -2413,7 +2413,20 @@ body {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 160px;
+}
+
+.char-counter {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: right;
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+.char-counter #char-count {
+  color: #7c3aed;
+  font-weight: 600;
 }
 
 .form-group select {
@@ -2472,9 +2485,9 @@ body {
 }
 
 .form-status.success {
-  background: rgba(133, 217, 146, 0.1);
-  color: var(--success);
-  border: 1px solid var(--success);
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
 }
 
 .form-status.error {

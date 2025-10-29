@@ -79,7 +79,13 @@ function doGet(e) {
     logSubmission(data.email, timestamp);
 
     // 📧 Enviar notificación por email
-    sendEmailNotification(sanitizedName, sanitizedEmail, sanitizedTopic, sanitizedMessage);
+    try {
+      sendEmailNotification(sanitizedName, sanitizedEmail, sanitizedTopic, sanitizedMessage);
+      Logger.log('Proceso de email completado para: ' + sanitizedEmail);
+    } catch (emailError) {
+      // Si falla el email, registramos el error pero NO fallamos el formulario
+      Logger.log('⚠️ Advertencia: No se pudo enviar email de notificación: ' + emailError.toString());
+    }
 
     return createJSONPResponse(params.callback, 'success', 'Mensaje guardado correctamente', {
       row: sheet.getLastRow()
@@ -174,6 +180,9 @@ function createJSONPResponse(callback, status, message, data = {}) {
  * Enviar notificación por email cuando llega un mensaje
  */
 function sendEmailNotification(name, email, topic, message) {
+  Logger.log('🔔 Iniciando envío de notificación por email...');
+  Logger.log('Parámetros recibidos - Nombre: ' + name + ', Email: ' + email + ', Topic: ' + topic);
+
   const subject = '📧 Nuevo mensaje desde angelgarciadatablog.com';
 
   // Mapear el topic a texto legible
@@ -201,15 +210,17 @@ Fecha: ${new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })}
   `.trim();
 
   try {
+    Logger.log('Enviando email a: ' + NOTIFICATION_EMAIL);
     MailApp.sendEmail({
       to: NOTIFICATION_EMAIL,
       subject: subject,
       body: body,
       replyTo: email
     });
-    Logger.log('Email enviado exitosamente a: ' + NOTIFICATION_EMAIL);
+    Logger.log('✅ Email enviado exitosamente a: ' + NOTIFICATION_EMAIL);
   } catch (error) {
-    Logger.log('Error enviando email: ' + error.toString());
+    Logger.log('❌ Error enviando email: ' + error.toString());
+    throw error; // Re-lanzar el error para que se capture arriba
   }
 }
 
@@ -239,4 +250,24 @@ function clearRateLimitCache() {
   const cache = CacheService.getScriptCache();
   cache.removeAll(cache.getKeys());
   Logger.log('Caché de rate limiting limpiado');
+}
+
+/**
+ * Función de prueba SOLO para email (ejecutar manualmente)
+ * Usa esta función para probar si los emails funcionan
+ */
+function testEmailOnly() {
+  try {
+    MailApp.sendEmail({
+      to: NOTIFICATION_EMAIL,
+      subject: '🧪 TEST - Email desde Apps Script',
+      body: 'Si recibes este email, las notificaciones están funcionando correctamente.\n\nFecha: ' + new Date().toString(),
+      replyTo: 'test@ejemplo.com'
+    });
+    Logger.log('✅ Test email enviado exitosamente a: ' + NOTIFICATION_EMAIL);
+    return '✅ Email enviado correctamente';
+  } catch (error) {
+    Logger.log('❌ Error enviando test email: ' + error.toString());
+    return '❌ Error: ' + error.toString();
+  }
 }

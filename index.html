@@ -323,7 +323,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="form-group">
             <label for="message">Cuéntame más detalles</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Describe tu consulta o proyecto..."></textarea>
+            <textarea id="message" name="message" rows="8" required placeholder="Describe tu consulta o proyecto..." maxlength="2000"></textarea>
+            <div class="char-counter">
+              <span id="char-count">0</span>/2000 caracteres
+            </div>
           </div>
 
           <button type="submit" class="btn-submit" id="submit-btn">

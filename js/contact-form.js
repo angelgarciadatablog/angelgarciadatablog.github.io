@@ -4,13 +4,32 @@
 
   // ⚠️ CONFIGURACIÓN REQUERIDA:
   // URL de tu Google Apps Script
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz0cPgVpcnTKAxFkyLnbA3eocL5a8RBKe4ujDPn3KBZuz5-uWCoE6RmT-eTeDX1w_c-/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9DBWHGHMQldvwLHCfWsbdUlBn_zBSF1_ouyX1QnMHH3Pk68eaQqUgS1Bkjec7dYhN/exec';
 
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
   const statusDiv = document.getElementById('form-status');
+  const messageTextarea = document.getElementById('message');
+  const charCountSpan = document.getElementById('char-count');
 
   if (!form) return;
+
+  // Contador de caracteres
+  if (messageTextarea && charCountSpan) {
+    messageTextarea.addEventListener('input', function() {
+      const currentLength = this.value.length;
+      charCountSpan.textContent = currentLength;
+
+      // Cambiar color si se acerca al límite
+      if (currentLength >= 1900) {
+        charCountSpan.style.color = '#f04438'; // Rojo
+      } else if (currentLength >= 1500) {
+        charCountSpan.style.color = '#f59e0b'; // Amarillo/naranja
+      } else {
+        charCountSpan.style.color = '#7c3aed'; // Morado
+      }
+    });
+  }
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
