@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-10-28T14:01:25.407Z",
+  "fechaActualizacion": "2025-10-29T14:01:17.247Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "dbYadcZ2uOU",
+      "title": "Relaciones entre tablas | Llave primaria y secundaria | OLTP vs OLAP | Capitulo #2",
+      "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
+      "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
+      "publishedAt": "2025-10-29T12:01:28Z",
+      "description": ""
+    },
     {
       "id": "Z4Fo5F_mLuU",
       "title": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
       "thumbnail": "https://i.ytimg.com/vi/4JmKLgtmMBI/hqdefault.jpg",
       "publishedAt": "2025-10-27T12:00:13Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "njqE2uGyysQ",
-      "title": "ALTER TABLE en SQL | Modificar la estructura de una tabla |Consulta DDL| Curso de SQL Intermedio #9",
-      "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
-      "thumbnail": "https://i.ytimg.com/vi/njqE2uGyysQ/hqdefault.jpg",
-      "publishedAt": "2025-10-27T12:01:39Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
     }
   ]
