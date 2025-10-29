@@ -96,6 +96,12 @@
       showStatus('success', '¡Mensaje enviado exitosamente! Te contactaré pronto.');
       form.reset();
 
+      // Resetear contador de caracteres
+      if (charCountSpan) {
+        charCountSpan.textContent = '0';
+        charCountSpan.style.color = '#7c3aed';
+      }
+
     } catch (error) {
       console.error('Error al enviar formulario:', error);
       showStatus('error', 'Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
