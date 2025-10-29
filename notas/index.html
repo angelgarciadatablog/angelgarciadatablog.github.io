@@ -1006,12 +1006,15 @@
         }
       });
 
-      // Cierra el menú al navegar
+      // Cierra el menú al navegar (solo en mobile)
       menu.addEventListener('click', (e) => {
         if (e.target.classList.contains('menu-link')) {
-          menu.classList.remove('open');
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
+          // Solo cerrar el menú en mobile (viewport < 768px)
+          if (window.innerWidth < 768) {
+            menu.classList.remove('open');
+            menu.style.display = 'none';
+            toggle.setAttribute('aria-expanded', 'false');
+          }
         }
       });
     }
