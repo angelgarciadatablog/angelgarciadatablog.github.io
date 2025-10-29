@@ -67,3 +67,26 @@
     setTimeout(updateIndicators, 1000);
   }
 })();
+
+// Smooth scroll para enlaces internos (como el botón "Contáctame")
+(function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+
+      // Solo procesar si hay un hash válido
+      if (href && href !== '#') {
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }
+      }
+    });
+  });
+})();

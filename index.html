@@ -33,6 +33,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Google reCAPTCHA v3 - TEMPORALMENTE DESHABILITADO -->
+  <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Lcz1PkrAAAAAHBURgTVQaGc3qo61tUd8SM_YVKM"></script> -->
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -104,8 +107,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="hero-tagline">
         Aquí comparto mi camino en el mundo del análisis de datos, aprendiendo y enseñando al mismo tiempo.
       </p>
-      <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer" class="btn-hero">
-        Contáctame/Linkedin
+      <a href="#contact-form" class="btn-hero">
+        Cuéntame tu proyecto
       </a>
     </div>
   </section>
@@ -287,6 +290,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <!-- Sección: Formulario de Contacto -->
+    <section class="contact-section">
+      <div class="container">
+        <h2>¿Necesitas Ayuda con Reportes?</h2>
+        <p class="contact-description">
+          Si necesitas asistencia con reportes de datos, análisis o tienes alguna consulta, completa el formulario y me pondré en contacto contigo.
+        </p>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">¿Cuál es tu nombre?</label>
+            <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="topic">¿Sobre qué está relacionado tu consulta?</label>
+            <select id="topic" name="topic" required>
+              <option value="">Selecciona una opción</option>
+              <option value="reportes-powerbi">Reportes en Power BI</option>
+              <option value="sql-bigquery">SQL en BigQuery</option>
+              <option value="sitio-web-portafolio">Crear sitio web/portafolio</option>
+              <option value="otros-temas">Otros temas</option>
+            </select>
+          </div>
+
+          <!-- Honeypot: campo oculto para detectar bots -->
+          <input type="text" name="website" id="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+          <div class="form-group">
+            <label for="message">Cuéntame más detalles</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Describe tu consulta o proyecto..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            Enviar Mensaje
+          </button>
+
+          <div id="form-status" class="form-status"></div>
+        </form>
+      </div>
+    </section>
+
     <!-- Sección: Sobre mí / Presentación -->
     <section class="about-section">
       <div class="container">
@@ -368,6 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="js/youtube-secure.js?v=2"></script>
   <script src="js/cursos.js?v=2"></script>
   <script src="js/recursos.js?v=2"></script>
+  <script src="js/contact-form.js?v=1"></script>
   <script src="script.js?v=2"></script>
 </body>
 </html>
