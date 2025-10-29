@@ -6,7 +6,7 @@
   // URL de tu Google Apps Script
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9DBWHGHMQldvwLHCfWsbdUlBn_zBSF1_ouyX1QnMHH3Pk68eaQqUgS1Bkjec7dYhN/exec';
 
-  const form = document.getElementById('contact-form');
+  const form = document.querySelector('.contact-form');
   const submitBtn = document.getElementById('submit-btn');
   const statusDiv = document.getElementById('form-status');
   const messageTextarea = document.getElementById('message');
