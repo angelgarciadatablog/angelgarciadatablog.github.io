@@ -3,11 +3,8 @@
   'use strict';
 
   // ⚠️ CONFIGURACIÓN REQUERIDA:
-  // 1. URL de tu Google Apps Script
+  // URL de tu Google Apps Script
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz0cPgVpcnTKAxFkyLnbA3eocL5a8RBKe4ujDPn3KBZuz5-uWCoE6RmT-eTeDX1w_c-/exec';
-
-  // 2. Tu Site Key de reCAPTCHA v3 (obtener en: https://www.google.com/recaptcha/admin)
-  const RECAPTCHA_SITE_KEY = '6Lcz1PkrAAAAAHBURgTVQaGc3qo61tUd8SM_YVKM';
 
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -125,10 +122,6 @@
         timestamp: data.timestamp,
         callback: callbackName
       });
-
-      if (data.recaptchaToken) {
-        params.append('recaptchaToken', data.recaptchaToken);
-      }
 
       // Crear script tag para hacer la petición
       const script = document.createElement('script');

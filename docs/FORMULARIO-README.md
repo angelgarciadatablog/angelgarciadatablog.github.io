@@ -8,19 +8,18 @@
   - Email
   - Tema de consulta (Power BI, SQL, Sitio web, Otros)
   - Mensaje
-- **Diseño profesional** acorde a tu tema oscuro con gradientes
+- **Diseño profesional** acorde a tu tema oscuro con botón morado
 - **JavaScript con validaciones** robustas
 
-### Seguridad (3 capas)
+### Seguridad (2 capas)
 1. **Honeypot** - Campo oculto que atrapa bots
-2. **Google reCAPTCHA v3** - Análisis invisible de comportamiento humano
-3. **Rate Limiting** - Máximo 10 envíos/hora y 20 envíos/día por email
+2. **Rate Limiting** - Máximo 10 envíos/hora y 20 envíos/día por email
 
 ### Backend (Google Apps Script)
-- Recibe datos del formulario
+- Recibe datos del formulario vía GET (JSONP)
 - Valida todo antes de guardar
 - Guarda en Google Sheets
-- (Opcional) Envía notificaciones por email
+- **Envía notificación por email** a angelgarciachanga@gmail.com
 
 ---
 
@@ -30,6 +29,7 @@
 web-angelgarciadatablog/
 ├── index.html                              ✏️ Modificado (formulario agregado)
 ├── styles.css                              ✏️ Modificado (estilos del formulario)
+├── script.js                               ✏️ Modificado (smooth scroll)
 ├── js/
 │   └── contact-form.js                     ⭐ Nuevo
 └── docs/
@@ -42,47 +42,32 @@ web-angelgarciadatablog/
 
 ## 🚀 Próximos pasos (en orden)
 
-### 1. Configurar reCAPTCHA (5 min)
-- Ve a: https://www.google.com/recaptcha/admin
-- Crea un sitio reCAPTCHA v3
-- Guarda las 2 claves: Site Key y Secret Key
-
-### 2. Crear Google Sheet (2 min)
+### 1. Crear Google Sheet (2 min)
 - Crea una hoja con encabezados: `Fecha/Hora | Nombre | Email | Tema | Mensaje`
 
-### 3. Configurar Apps Script (5 min)
+### 2. Configurar Apps Script (5 min)
 - Abre: Extensiones → Apps Script
 - Copia el código de `docs/google-apps-script-seguro.js`
-- Pega tu Secret Key de reCAPTCHA
+- Verifica que el email esté correcto en línea 9
 
-### 4. Desplegar Apps Script (3 min)
+### 3. Desplegar Apps Script (3 min)
 - Implementar → Nueva implementación → Aplicación web
 - Ejecutar como: Yo
 - Acceso: Cualquier persona
 - Copia la URL
 
-### 5. Configurar tu sitio (2 min)
-Edita estos 3 lugares:
+### 4. Configurar tu sitio (2 min)
+Edita `js/contact-form.js` línea 7:
 
-**A) `js/contact-form.js` línea 7:**
 ```javascript
 const SCRIPT_URL = 'https://script.google.com/macros/s/TU_URL/exec';
 ```
 
-**B) `js/contact-form.js` línea 10:**
-```javascript
-const RECAPTCHA_SITE_KEY = 'TU_SITE_KEY';
-```
-
-**C) `index.html` línea 38:**
-```html
-<script src="https://www.google.com/recaptcha/api.js?render=TU_SITE_KEY"></script>
-```
-
-### 6. Probar (5 min)
+### 5. Probar (5 min)
 - Abre `index.html` en tu navegador
 - Completa el formulario
 - Verifica que llegue a Google Sheets
+- Verifica que llegue el email a angelgarciachanga@gmail.com
 
 ---
 
@@ -91,11 +76,11 @@ const RECAPTCHA_SITE_KEY = 'TU_SITE_KEY';
 | Medida | Qué bloquea | Nivel |
 |--------|-------------|-------|
 | Honeypot | Bots automáticos básicos | ⭐⭐ |
-| reCAPTCHA v3 | Bots sofisticados, scripts | ⭐⭐⭐⭐ |
 | Rate Limiting | Spam masivo, abuso | ⭐⭐⭐⭐ |
 | Validaciones | Datos malformados, inyecciones | ⭐⭐⭐ |
+| Email notifications | Detectar spam rápidamente | ⭐⭐⭐ |
 
-**Nivel de protección total: ⭐⭐⭐⭐ (Muy bueno para un sitio personal)**
+**Nivel de protección total: ⭐⭐⭐ (Bueno para un sitio personal sin reCAPTCHA)**
 
 ---
 
@@ -104,13 +89,32 @@ const RECAPTCHA_SITE_KEY = 'TU_SITE_KEY';
 Todo es **100% GRATIS** para tu uso:
 
 - ✅ GitHub Pages: Gratis
-- ✅ Google reCAPTCHA: Gratis (hasta 1M requests/mes)
 - ✅ Google Apps Script: Gratis (hasta 20,000 ejecuciones/día)
 - ✅ Google Sheets: Gratis
+- ✅ Gmail (notificaciones): Gratis (hasta 100 emails/día)
 
 **Límites prácticos:**
 - ~20,000 envíos de formulario por día (más que suficiente)
-- ~1,000,000 de verificaciones de reCAPTCHA por mes
+- ~100 notificaciones por email por día
+
+---
+
+## 📧 Notificaciones por Email
+
+Cuando alguien envía el formulario:
+- Recibes un email en **angelgarciachanga@gmail.com**
+- Asunto: "📧 Nuevo mensaje desde angelgarciadatablog.com"
+- El email incluye:
+  - 👤 Nombre del remitente
+  - 📧 Email del remitente
+  - 📋 Tema de la consulta
+  - 💬 Mensaje completo
+  - ↩️ Botón "Responder" configurado para responder directamente al remitente
+
+**Ventajas:**
+- Respuesta inmediata: sabes al instante cuando alguien te contacta
+- No necesitas revisar Google Sheets constantemente
+- Puedes responder directo desde tu email
 
 ---
 
@@ -123,6 +127,7 @@ Considera migrar a Cloud Functions cuando:
 - ❌ Necesites escribir directo a BigQuery (sin Sheets intermediario)
 - ❌ Necesites autenticación por cliente (API Keys)
 - ❌ Quieras multi-tenancy (varios clientes aislados)
+- ❌ Empieces a recibir spam consistente (considera agregar reCAPTCHA primero)
 
 ---
 
@@ -141,12 +146,17 @@ Para el código de Apps Script:
 **¿El formulario no funciona?**
 1. Abre DevTools (F12) → Console
 2. Busca errores en rojo
-3. Verifica que las 3 configuraciones del Paso 5 estén correctas
+3. Verifica que la URL de Apps Script en `js/contact-form.js` sea correcta
 
 **¿Los datos no llegan a Sheets?**
 1. Apps Script → Ejecuciones
 2. Revisa los logs de la última ejecución
 3. Busca el mensaje de error específico
+
+**¿No llegan los emails?**
+1. Revisa la carpeta de spam en Gmail
+2. Verifica que el email en línea 9 de Apps Script sea correcto
+3. Revisa Apps Script → Ejecuciones para ver errores de `sendEmail`
 
 **¿Necesitas ayuda?**
 - Revisa la sección "Solución de Problemas" en SETUP-FORMULARIO.md
@@ -158,11 +168,13 @@ Para el código de Apps Script:
 
 Antes de hacer push a GitHub:
 
-- [ ] reCAPTCHA configurado
+- [ ] Google Sheet creado con encabezados
+- [ ] Apps Script configurado con tu email
 - [ ] Apps Script desplegado
-- [ ] 3 URLs/Keys configuradas en el código
+- [ ] URL de Apps Script configurada en `js/contact-form.js`
 - [ ] Formulario probado localmente
 - [ ] Datos llegando a Google Sheets
+- [ ] Email de notificación recibido
 - [ ] Protecciones funcionando (honeypot, rate limit)
 
 ---

@@ -1,17 +1,14 @@
 // ========================================
 // Google Apps Script - Formulario de Contacto SEGURO
-// Con Rate Limiting y validación de reCAPTCHA
+// Con Rate Limiting, Honeypot y Notificaciones por Email
 // ACTUALIZADO: Usa GET con JSONP para evitar CORS
 // ========================================
 
 // ⚠️ CONFIGURACIÓN:
-// 1. Tu Secret Key de reCAPTCHA v3 (obtener en: https://www.google.com/recaptcha/admin)
-const RECAPTCHA_SECRET_KEY = 'TU_SECRET_KEY_DE_RECAPTCHA_AQUI';
+// 1. Email para recibir notificaciones
+const NOTIFICATION_EMAIL = 'angelgarciachanga@gmail.com';
 
-// 2. Puntuación mínima de reCAPTCHA (0.0 = bot, 1.0 = humano)
-const RECAPTCHA_MIN_SCORE = 0.5;
-
-// 3. Configuración de Rate Limiting
+// 2. Configuración de Rate Limiting
 const RATE_LIMIT = {
   MAX_REQUESTS_PER_HOUR: 10,  // Máximo 10 envíos por hora por email
   MAX_REQUESTS_PER_DAY: 20    // Máximo 20 envíos por día por email
@@ -30,8 +27,7 @@ function doGet(e) {
       email: params.email,
       topic: params.topic,
       message: params.message,
-      timestamp: params.timestamp,
-      recaptchaToken: params.recaptchaToken || null
+      timestamp: params.timestamp
     };
 
     // 🛡️ VALIDACIÓN 1: Campos requeridos
@@ -82,8 +78,8 @@ function doGet(e) {
     // Registrar para rate limiting
     logSubmission(data.email, timestamp);
 
-    // (OPCIONAL) Enviar notificación por email
-    // sendEmailNotification(sanitizedName, sanitizedEmail, sanitizedTopic, sanitizedMessage);
+    // 📧 Enviar notificación por email
+    sendEmailNotification(sanitizedName, sanitizedEmail, sanitizedTopic, sanitizedMessage);
 
     return createJSONPResponse(params.callback, 'success', 'Mensaje guardado correctamente', {
       row: sheet.getLastRow()
@@ -175,29 +171,43 @@ function createJSONPResponse(callback, status, message, data = {}) {
 }
 
 /**
- * (OPCIONAL) Enviar notificación por email cuando llega un mensaje
+ * Enviar notificación por email cuando llega un mensaje
  */
 function sendEmailNotification(name, email, topic, message) {
-  const recipient = 'tu-email@ejemplo.com'; // ⚠️ CAMBIAR POR TU EMAIL
+  const subject = '📧 Nuevo mensaje desde angelgarciadatablog.com';
 
-  const subject = '📧 Nuevo mensaje desde el formulario de contacto';
+  // Mapear el topic a texto legible
+  const topicMap = {
+    'reportes-powerbi': 'Reportes en Power BI',
+    'sql-bigquery': 'SQL en BigQuery',
+    'sitio-web-portafolio': 'Crear sitio web/portafolio',
+    'otros-temas': 'Otros temas'
+  };
+  const topicReadable = topicMap[topic] || topic;
 
   const body = `
-Has recibido un nuevo mensaje:
+Has recibido un nuevo mensaje desde el formulario de contacto:
 
 👤 Nombre: ${name}
 📧 Email: ${email}
-📋 Tema: ${topic}
+📋 Tema: ${topicReadable}
 
 💬 Mensaje:
 ${message}
 
 ---
-Enviado desde: angelgarciadatablog.com
+Puedes responder directamente a: ${email}
+Fecha: ${new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })}
   `.trim();
 
   try {
-    MailApp.sendEmail(recipient, subject, body);
+    MailApp.sendEmail({
+      to: NOTIFICATION_EMAIL,
+      subject: subject,
+      body: body,
+      replyTo: email
+    });
+    Logger.log('Email enviado exitosamente a: ' + NOTIFICATION_EMAIL);
   } catch (error) {
     Logger.log('Error enviando email: ' + error.toString());
   }

@@ -341,6 +341,8 @@ exports.getYouTubeVideos = async (req, res) => {
     const playlistId = req.query.playlistId;
     const maxResults = parseInt(req.query.maxResults) || 50;
 
+    console.log('Request params:', { action, playlistId, maxResults });
+
     // ===== 5. OBTENER API KEY DE VARIABLES DE ENTORNO =====
     const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -390,6 +392,109 @@ exports.getYouTubeVideos = async (req, res) => {
         data: playlists,
         cached: false,
         totalPlaylists: playlists.length,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // ===== NUEVO: MANEJO DE ACCIÓN "getPlaylistWithDetails" =====
+    if (action === 'getPlaylistWithDetails') {
+      if (!playlistId) {
+        return res.status(400).json({
+          success: false,
+          error: 'Missing playlistId parameter'
+        });
+      }
+
+      console.log(`Action: Get playlist with details - ${playlistId}`);
+
+      // Obtener información de la playlist
+      const playlistInfo = await fetchPlaylistInfo(apiKey, playlistId);
+
+      // Obtener videos de la playlist
+      const playlistVideos = await fetchPlaylistVideos(apiKey, playlistId, maxResults);
+
+      // Obtener detalles de cada video (duración, vistas, likes)
+      const videoIds = playlistVideos.map(v => v.id);
+      const videosDetails = await fetchVideosDetails(apiKey, videoIds);
+
+      // Combinar datos básicos con detalles
+      const videos = playlistVideos.map((video, index) => {
+        const details = videosDetails.find(d => d.id === video.id);
+        return {
+          id: video.id,
+          titulo: video.title,
+          descripcion: video.description,
+          thumbnail: video.thumbnail,
+          url: `https://www.youtube.com/watch?v=${video.id}`,
+          publishedAt: video.publishedAt,
+          posicion: index,
+          duracion: details?.duration || 'PT0S',
+          vistas: details?.viewCount || 0,
+          likes: details?.likeCount || 0,
+          comentarios: details?.commentCount || 0
+        };
+      });
+
+      // Formato esperado por admin.html
+      const responseData = {
+        titulo: playlistInfo.title,
+        descripcion: playlistInfo.description,
+        descripcionLarga: playlistInfo.description,
+        playlistId: playlistId,
+        playlistUrl: `https://www.youtube.com/playlist?list=${playlistId}`,
+        totalVideos: videos.length,
+        orden: 1,
+        videos: videos
+      };
+
+      console.log(`Playlist details fetched: ${videos.length} videos`);
+
+      return res.status(200).json({
+        success: true,
+        action: 'getPlaylistWithDetails',
+        data: responseData,
+        cached: false,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // ===== ACCIÓN "getRecentVideos" =====
+    if (action === 'getRecentVideos') {
+      console.log('Action: Get recent videos');
+
+      // Verificar caché
+      if (isCacheValid(videoCache) && videoCache.cacheKey === 'recent_videos') {
+        console.log('Returning cached recent videos');
+        return res.status(200).json({
+          success: true,
+          action: 'getRecentVideos',
+          data: videoCache.data,
+          cached: true,
+          cacheAge: Math.floor((Date.now() - videoCache.timestamp) / 1000),
+          timestamp: new Date().toISOString()
+        });
+      }
+
+      // Obtener channel ID
+      const channelId = await getChannelId(apiKey);
+
+      // Obtener videos recientes
+      const videos = await fetchYouTubeVideos(apiKey, channelId);
+
+      // Guardar en caché
+      videoCache = {
+        data: videos,
+        timestamp: Date.now(),
+        cacheKey: 'recent_videos'
+      };
+
+      console.log(`Recent videos fetched: ${videos.length}`);
+
+      return res.status(200).json({
+        success: true,
+        action: 'getRecentVideos',
+        data: videos,
+        cached: false,
         timestamp: new Date().toISOString()
       });
     }

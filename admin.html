@@ -642,6 +642,17 @@
             throw new Error(result.error || `Error en módulo ${modulo.moduloId}`);
           }
 
+          // Verificar que result.data y result.data.videos existen
+          if (!result.data) {
+            addLog(logId, `⚠️ Respuesta: ${JSON.stringify(result)}`, 'error');
+            throw new Error(`result.data es undefined para módulo ${modulo.moduloId}`);
+          }
+
+          if (!result.data.videos) {
+            addLog(logId, `⚠️ result.data: ${JSON.stringify(result.data)}`, 'error');
+            throw new Error(`result.data.videos es undefined para módulo ${modulo.moduloId}`);
+          }
+
           modulos.push({
             moduloId: modulo.moduloId,
             ...result.data
@@ -705,6 +716,12 @@
 
             if (!result.success) {
               throw new Error(`Error en ${config.titulo} módulo ${modulo.moduloId}`);
+            }
+
+            // Verificar que result.data y result.data.videos existen
+            if (!result.data || !result.data.videos) {
+              addLog(logId, `⚠️ Datos incompletos en ${config.titulo} módulo ${modulo.moduloId}`, 'error');
+              throw new Error(`Datos incompletos para ${config.titulo} módulo ${modulo.moduloId}`);
             }
 
             modulos.push({
