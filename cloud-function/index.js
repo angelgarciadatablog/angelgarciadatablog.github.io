@@ -340,8 +340,9 @@ exports.getYouTubeVideos = async (req, res) => {
     const action = req.query.action; // NUEVO: para identificar el tipo de acción
     const playlistId = req.query.playlistId;
     const maxResults = parseInt(req.query.maxResults) || 50;
+    const clearCache = req.query.clearCache === 'true'; // NUEVO: para forzar actualización
 
-    console.log('Request params:', { action, playlistId, maxResults });
+    console.log('Request params:', { action, playlistId, maxResults, clearCache });
 
     // ===== 5. OBTENER API KEY DE VARIABLES DE ENTORNO =====
     const apiKey = process.env.YOUTUBE_API_KEY;
@@ -358,8 +359,8 @@ exports.getYouTubeVideos = async (req, res) => {
     if (action === 'listPlaylists') {
       console.log('Action: List all channel playlists');
 
-      // Verificar caché específico para playlists
-      if (isCacheValid(playlistsCache)) {
+      // Verificar caché específico para playlists (solo si no se solicita limpiar)
+      if (!clearCache && isCacheValid(playlistsCache)) {
         console.log('Returning cached playlists data');
         return res.status(200).json({
           success: true,
@@ -370,6 +371,10 @@ exports.getYouTubeVideos = async (req, res) => {
           totalPlaylists: playlistsCache.data.length,
           timestamp: new Date().toISOString()
         });
+      }
+
+      if (clearCache) {
+        console.log('Cache cleared for playlists');
       }
 
       // Obtener channel ID
@@ -462,8 +467,8 @@ exports.getYouTubeVideos = async (req, res) => {
     if (action === 'getRecentVideos') {
       console.log('Action: Get recent videos');
 
-      // Verificar caché
-      if (isCacheValid(videoCache) && videoCache.cacheKey === 'recent_videos') {
+      // Verificar caché (solo si no se solicita limpiar)
+      if (!clearCache && isCacheValid(videoCache) && videoCache.cacheKey === 'recent_videos') {
         console.log('Returning cached recent videos');
         return res.status(200).json({
           success: true,
@@ -473,6 +478,10 @@ exports.getYouTubeVideos = async (req, res) => {
           cacheAge: Math.floor((Date.now() - videoCache.timestamp) / 1000),
           timestamp: new Date().toISOString()
         });
+      }
+
+      if (clearCache) {
+        console.log('Cache cleared for recent videos');
       }
 
       // Obtener channel ID
@@ -504,8 +513,8 @@ exports.getYouTubeVideos = async (req, res) => {
     // Generar clave de caché única por playlist
     const cacheKey = playlistId ? `playlist_${playlistId}` : 'channel_default';
 
-    // Verificar caché
-    if (isCacheValid(videoCache) && videoCache.cacheKey === cacheKey) {
+    // Verificar caché (solo si no se solicita limpiar)
+    if (!clearCache && isCacheValid(videoCache) && videoCache.cacheKey === cacheKey) {
       console.log('Returning cached data for:', cacheKey);
       const cachedData = videoCache.data;
       return res.status(200).json({
@@ -516,6 +525,10 @@ exports.getYouTubeVideos = async (req, res) => {
         cacheAge: Math.floor((Date.now() - videoCache.timestamp) / 1000),
         totalVideos: (cachedData.videos || cachedData).length
       });
+    }
+
+    if (clearCache) {
+      console.log('Cache cleared for:', cacheKey);
     }
 
     // Llamar a YouTube API

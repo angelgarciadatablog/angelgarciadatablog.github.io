@@ -9,7 +9,7 @@
   <meta name="author" content="Angel García">
 
   <link rel="stylesheet" href="../../styles.css">
-  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="icon" type="image/png" href="../../img/favicon.png">
   <meta name="theme-color" content="#0a0a0a">
 
   <style>
@@ -529,7 +529,7 @@
     // Cargar y renderizar las playlists desde el JSON
     async function loadPlaylists() {
       try {
-        const response = await fetch('../../datos/tutoriales-playlists.json');
+        const response = await fetch('../../datos/listas-reproduccion-playlist.json');
         if (!response.ok) throw new Error('No se pudo cargar las playlists');
 
         const data = await response.json();
@@ -669,7 +669,7 @@
         card.classList.add('expanded');
         if (contentContainer) {
           // Obtener datos de la playlist desde el JSON en memoria
-          fetch('../../datos/tutoriales-playlists.json')
+          fetch('../../datos/listas-reproduccion-playlist.json')
             .then(r => r.json())
             .then(data => {
               const playlist = data.playlists.find(p => p.id === playlistId);

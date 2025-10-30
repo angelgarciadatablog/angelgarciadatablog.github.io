@@ -97,45 +97,38 @@ Con caché de 60 minutos (promedio 60 visitantes/hora):
 **Antes:** index.html llamaba a Cloud Function en cada visita
 **Ahora:** Lee desde JSON estático (`datos/videos-recientes.json`)
 
-### Llamadas en Admin Panel (admin.html)
+### Llamadas desde Scripts Node.js
 
-#### Llamada 1: Videos Recientes (Manual)
-- **Archivo:** `admin.html` línea 487
-- **Función:** `updateRecentVideosLocal()`
+#### Script 1: Actualizar videos recientes
+- **Archivo:** `scripts/update-videos-recientes.js`
 - **Endpoint:** `?action=getRecentVideos&maxResults=3`
-- **Frecuencia:** Manual desde admin.html
-- **Costo API:** ~1 unidad de YouTube API
-- **Resultado:** Copia JSON al portapapeles
+- **Frecuencia:** Manual o automático (GitHub Actions diario)
+- **Costo API:** ~3 unidades
+- **Resultado:** Genera `datos/videos-recientes.json`
 
-```javascript
-// admin.html:487
-const url = `${CLOUD_FUNCTION_URL}?action=getRecentVideos&maxResults=3`;
-```
-
-#### Llamada 2: Todas las Playlists (Manual)
-- **Archivo:** `admin.html` línea 563
-- **Función:** `fetchAllPlaylists()`
+#### Script 2: Actualizar listas de reproducción
+- **Archivo:** `scripts/update-listas-reproduccion.js`
 - **Endpoint:** `?action=listPlaylists&maxResults=50`
-- **Frecuencia:** Manual desde admin.html
-- **Costo API:** ~1 unidad de YouTube API
-- **Resultado:** Descarga `tutoriales-playlists.json`
+- **Frecuencia:** Manual
+- **Costo API:** ~1 unidad
+- **Resultado:** Genera `datos/listas-reproduccion-playlist.json`
 
-```javascript
-// admin.html:563
-const url = `${CLOUD_FUNCTION_URL}?action=listPlaylists&maxResults=50`;
-```
+#### Script 3: Actualizar cursos (Universal)
+- **Archivo:** `scripts/update-course.js`
+- **Endpoint:** `?playlistId=XXX&maxResults=50`
+- **Frecuencia:** Manual
+- **Parámetro:** `cursoId` (sql-bigquery, power-bi, google-analytics, etc.)
+- **Costo API:** Variable según curso:
+  - SQL BigQuery: ~7 unidades (2 módulos, ~60 videos)
+  - Power BI: ~3 unidades (1 módulo, ~17 videos)
+  - Google Analytics: ~3 unidades (1 módulo, ~12 videos)
+- **Resultado:** Genera el JSON correspondiente según `outputFile` en config
 
-#### Llamada 3-5: Actualizar Cursos (Manual)
-- **Archivo:** `admin.html` líneas 620, 685
-- **Función:** `updateCourse('sql-bigquery' | 'power-bi' | 'google-analytics')`
-- **Endpoint:** `?action=getPlaylistWithDetails&playlistId=XXX`
-- **Frecuencia:** Manual desde admin.html
-- **Costo API:** ~3-8 unidades por curso (según número de módulos)
-- **Resultado:** Descarga JSON del curso
-
-```javascript
-// admin.html:620
-const url = `${CLOUD_FUNCTION_URL}?action=getPlaylistWithDetails&playlistId=${modulo.playlistId}`;
+**Uso:**
+```bash
+node scripts/update-course.js sql-bigquery
+node scripts/update-course.js power-bi
+node scripts/update-course.js google-analytics
 ```
 
 ### Automatización GitHub Actions
@@ -262,7 +255,7 @@ Ver historial de ejecuciones diarias
 
 ### Archivos JSON Estáticos
 - **videos-recientes.json:** 3 videos más recientes
-- **tutoriales-playlists.json:** Todas las playlists del canal
+- **listas-reproduccion-playlist.json:** Todas las playlists del canal
 - **sql-bigquery-playlist.json:** Curso SQL completo
 - **power-bi-playlist.json:** Curso Power BI completo
 - **google-analytics-playlist.json:** Curso GA4 completo

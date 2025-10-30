@@ -52,10 +52,7 @@ Sitio web personal de **Ángel García**: proyectos, cursos gratuitos y recursos
 │   └── workflows/
 │       └── update-videos.yml          # GitHub Action (actualización diaria)
 ├── cloud-function/                     # Cloud Function de YouTube API
-│   ├── index.js
-│   ├── README.md
-│   ├── DEPLOYMENT-GUI.md
-│   └── GUIA-PASO-A-PASO.md
+│   └── index.js                       # Código de la función
 ├── config/
 │   └── cursos.json                    # Configuración de cursos
 ├── cursos/                            # Páginas de cursos individuales
@@ -64,7 +61,7 @@ Sitio web personal de **Ángel García**: proyectos, cursos gratuitos y recursos
 │   └── google-analytics/
 ├── datos/                             # Archivos JSON estáticos
 │   ├── videos-recientes.json          # 3 videos más recientes (auto)
-│   ├── tutoriales-playlists.json      # Todas las playlists
+│   ├── listas-reproduccion-playlist.json      # Todas las playlists
 │   ├── sql-bigquery-playlist.json
 │   ├── power-bi-playlist.json
 │   └── google-analytics-playlist.json
@@ -80,11 +77,14 @@ Sitio web personal de **Ángel García**: proyectos, cursos gratuitos y recursos
 │   └── temas-importantes/             # Videos importantes
 ├── journey/
 │   └── mi-historia/                   # Timeline personal
-├── admin.html                         # Panel de administración
+├── docs/                              # Documentación del proyecto
+│   ├── formulario/                    # Docs del formulario de contacto
+│   ├── SEGURIDAD.md                   # Análisis de seguridad
+│   ├── LLAMADAS-EXTERNAS.md          # Auditoría de APIs
+│   └── FLUJO-CURSOS.md               # Flujo de actualización de cursos
 ├── index.html                         # Página principal
 ├── styles.css                         # Estilos globales
 ├── script.js                          # JavaScript global
-├── LLAMADAS-EXTERNAS.md              # Auditoría de APIs
 └── README.md                          # Este archivo
 ```
 
@@ -139,36 +139,74 @@ node scripts/update-videos-recientes.js
 
 ---
 
-## 🎛️ Panel de Administración
+## 🔄 Actualización de Datos
 
-**URL:** `/admin.html`
+Los datos de cursos y playlists se actualizan mediante scripts de Node.js:
 
-### Funcionalidades:
+### Scripts disponibles:
 
-#### 1. Limpiar Caché de Google Sheets
-- Limpia caché de 60 minutos manualmente
-- Útil después de actualizar Google Sheets
+#### 1. Actualizar cualquier curso (Universal)
+```bash
+# Actualizar curso de SQL BigQuery
+node scripts/update-course.js sql-bigquery
 
-#### 2. Actualizar Videos Recientes
-- Obtiene 3 videos más recientes
-- Copia JSON al portapapeles
-- Pegar en `datos/videos-recientes.json`
+# Actualizar curso de Power BI
+node scripts/update-course.js power-bi
 
-#### 3. Actualizar Playlists
-- Obtiene todas las playlists del canal
-- Descarga `tutoriales-playlists.json`
-- Mover a `datos/`
+# Actualizar curso de Google Analytics 4
+node scripts/update-course.js google-analytics
 
-#### 4. Actualizar Cursos
-- SQL BigQuery (8 módulos)
-- Power BI (5 módulos)
-- Google Analytics 4 (3 módulos)
-- Descarga JSON individual por curso
+# Actualizar cualquier curso nuevo que agregues
+node scripts/update-course.js <id-del-curso>
 
+# Forzar actualización ignorando caché de 12 horas
+node scripts/update-course.js sql-bigquery --clear-cache
+```
 **Ventajas:**
-- ✅ Sin Node.js requerido
-- ✅ Interfaz visual con logs
-- ✅ Funciona desde cualquier navegador
+- ✅ Un solo script para todos los cursos
+- ✅ No necesitas crear script nuevo al agregar curso
+- ✅ Detecta automáticamente nuevos módulos
+- ✅ Opción `--clear-cache` para actualizar inmediatamente
+
+#### 2. Actualizar listado de playlists
+```bash
+node scripts/update-listas-reproduccion.js
+
+# Forzar actualización ignorando caché
+node scripts/update-listas-reproduccion.js --clear-cache
+```
+Genera: `datos/listas-reproduccion-playlist.json`
+
+#### 3. Actualizar videos recientes
+```bash
+node scripts/update-videos-recientes.js
+
+# Forzar actualización ignorando caché
+node scripts/update-videos-recientes.js --clear-cache
+```
+Genera: `datos/videos-recientes.json`
+
+**Nota:** Todos los scripts leen la configuración desde `config/cursos.json`
+
+### ⚡ Caché y Actualización Forzada
+
+**Comportamiento del caché:**
+- Cloud Function tiene caché de 12 horas para reducir uso de YouTube API
+- Si ejecutas un script normalmente, usará datos en caché si están disponibles
+
+**Cuándo usar `--clear-cache`:**
+- ✅ Acabas de modificar descripción de playlist en YouTube
+- ✅ Agregaste nuevos videos a una playlist
+- ✅ Necesitas datos actualizados inmediatamente
+- ❌ NO usar para actualizaciones de rutina (desperdicia cuota API)
+
+**Ejemplo de uso típico:**
+```bash
+# 1. Modificas descripción de playlist en YouTube
+# 2. Esperas 1-2 minutos para que YouTube actualice
+# 3. Ejecutas con --clear-cache
+node scripts/update-course.js google-analytics --clear-cache
+```
 
 ---
 
@@ -215,10 +253,14 @@ npx serve .
 | Archivo | Descripción |
 |---------|-------------|
 | `README.md` | Documentación principal (este archivo) |
-| `LLAMADAS-EXTERNAS.md` | Auditoría completa de APIs externas |
-| `cloud-function/README.md` | Documentación de Cloud Function |
-| `cloud-function/DEPLOYMENT-GUI.md` | Deploy por interfaz gráfica |
-| `cloud-function/GUIA-PASO-A-PASO.md` | Guía detallada de deployment |
+| `docs/SEGURIDAD.md` | Análisis de seguridad del proyecto |
+| `docs/LLAMADAS-EXTERNAS.md` | Auditoría completa de APIs externas |
+| `docs/FLUJO-CURSOS.md` | Flujo de actualización de cursos |
+| `docs/cloud-function/README.md` | Documentación de Cloud Function |
+| `docs/cloud-function/DEPLOYMENT-GUI.md` | Deploy por interfaz gráfica |
+| `docs/cloud-function/GUIA-PASO-A-PASO.md` | Guía detallada de deployment |
+| `docs/config/README.md` | Documentación de configuración de cursos |
+| `docs/formulario/` | Documentación del formulario de contacto |
 
 ### Recursos Externos
 

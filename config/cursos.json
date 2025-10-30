@@ -20,7 +20,15 @@
           "titulo": "Manipulación de tablas",
           "descripcion": "Nivel Intermedio 2.1",
           "orden": 2
+        },
+        {
+          "moduloId": 3,
+          "playlistId": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
+          "titulo": "Joins, Subconsultas y CTEs",
+          "descripcion": "Nivel Intermedio 2.2",
+          "orden": 3
         }
+
       ]
     },
     {

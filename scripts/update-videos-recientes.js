@@ -3,11 +3,15 @@
 /**
  * Script para actualizar videos-recientes.json
  * Se ejecuta automáticamente via GitHub Actions
+ * node scripts/update-videos-recientes.js [--clear-cache]
  */
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+
+// Obtener clearCache desde argumentos de línea de comando
+const clearCache = process.argv.includes('--clear-cache');
 
 // Configuración
 const CLOUD_FUNCTION_URL = process.env.CLOUD_FUNCTION_URL || 'https://getyoutubevideos-35759247090.us-central1.run.app';
@@ -48,7 +52,14 @@ async function main() {
 
   try {
     // Llamar a Cloud Function
-    const url = `${CLOUD_FUNCTION_URL}?action=getRecentVideos&maxResults=3`;
+    let url = `${CLOUD_FUNCTION_URL}?action=getRecentVideos&maxResults=3`;
+
+    // Agregar parámetro clearCache si se especificó
+    if (clearCache) {
+      url += '&clearCache=true';
+      console.log('🔄 Forzando actualización (ignorando caché)...');
+    }
+
     console.log(`🔗 Llamando: ${url}`);
 
     const result = await fetchJSON(url);

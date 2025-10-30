@@ -2,13 +2,13 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-10-24T04:08:36.888Z",
+  "fechaActualizacion": "2025-10-30T05:25:53.286Z",
   "modulos": [
     {
       "moduloId": 1,
       "titulo": "Cláusulas Principales de SQL",
       "descripcion": "Nivel Básico",
-      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el \"por qué\" detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
+      "descripcionLarga": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
       "playlistId": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "orden": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 328,
-          "likes": 15,
+          "vistas": 344,
+          "likes": 16,
           "comentarios": 2
         },
         {
@@ -36,7 +36,7 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 189,
+          "vistas": 212,
           "likes": 9,
           "comentarios": 0
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 97,
+          "vistas": 109,
           "likes": 2,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 93,
+          "vistas": 99,
           "likes": 3,
           "comentarios": 1
         },
@@ -75,20 +75,20 @@
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 142,
+          "vistas": 146,
           "likes": 2,
           "comentarios": 0
         },
         {
           "id": "PIOYkiA1qBw",
           "titulo": "Cómo se registran los datos en la tabla de events | Curso de SQL BigQuery #6",
-          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos en detalle qué representa cada fila registrada en la tabla events.\n\n📌 Temas clave:\n\n✅ Explicación de la tabla events de google analytics 04\n✅ Eventos en google analytics 04\n✅ Esquema de la tabla events (columnas de la tabla)\n✅ Columnas básicas de análisis (event_date, event_timestamp, event_name, user_pseudo_id)\n\nEste capítulo es esencial para entender cómo se reciben los datos de la tabla events en BigQuery usando los datos de Google Analytics 4.\n\n👉 Link a la lista de reproducción de Google analytics 04 | nivel básico\nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n👉 Link de apoyo, eventos automáticos registrados en GA4\nhttps://support.google.com/analytics/answer/9234069?hl=es\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_timestamp #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos en detalle qué representa cada fila registrada en la tabla events.\n\n📌 Temas clave:\n\n✅ Explicación de la tabla events de google analytics 04\n✅ Eventos en google analytics 04\n✅ Esquema de la tabla events (columnas de la tabla)\n✅ Columnas básicas de análisis (event_date, event_timestamp, event_name, user_pseudo_id)\n\nEste capítulo es esencial para entender cómo se reciben los datos de la tabla events en BigQuery usando los datos de Google Analytics 4.\n\n👉 Link a la lista de reproducción de Google analytics 04 | nivel básico\nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x\n\n���� Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n👉 Link de apoyo, eventos automáticos registrados en GA4\nhttps://support.google.com/analytics/answer/9234069?hl=es\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_timestamp #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/PIOYkiA1qBw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=PIOYkiA1qBw",
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 64,
+          "vistas": 67,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 263,
+          "vistas": 265,
           "likes": 11,
           "comentarios": 2
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 43,
+          "vistas": 45,
           "likes": 1,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 33,
+          "vistas": 34,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 30,
+          "vistas": 32,
           "likes": 2,
           "comentarios": 1
         },
@@ -166,8 +166,8 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 146,
-          "likes": 5,
+          "vistas": 164,
+          "likes": 7,
           "comentarios": 2
         },
         {
@@ -179,7 +179,7 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 31,
+          "vistas": 33,
           "likes": 0,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 28,
+          "vistas": 29,
           "likes": 0,
           "comentarios": 0
         },
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 31,
+          "vistas": 32,
           "likes": 2,
           "comentarios": 0
         },
@@ -283,7 +283,7 @@
           "publishedAt": "2025-08-15T09:46:14Z",
           "posicion": 20,
           "duracion": "PT5M32S",
-          "vistas": 10,
+          "vistas": 12,
           "likes": 0,
           "comentarios": 0
         },
@@ -296,20 +296,20 @@
           "publishedAt": "2025-08-15T09:52:09Z",
           "posicion": 21,
           "duracion": "PT3M18S",
-          "vistas": 17,
+          "vistas": 18,
           "likes": 0,
           "comentarios": 0
         },
         {
           "id": "tIxrQnDwvx4",
           "titulo": "Cómo usar REPLACE en SQL | Cambia, limpia y estandariza valores | Curso de SQL BigQuery #23",
-          "descripcion": "En este capítulo explicamos cómo funciona la función REPLACE en SQL, ideal para reemplazar, eliminar o transformar cadenas de texto dentro de una columna.\n\n📌 Temas:\n✅ Reemplazar un valor específico por otro dentro de un campo.\n✅ Sustituir caracteres como guiones bajos por espacios.\n✅ Eliminar partes de texto reemplazándolas por vacío.\n✅ Entender la diferencia entre REPLACE y expresiones lógicas como CASE o IF.\n✅ Considerar el detalle de mayúsculas y minúsculas (case sensitive) al hacer reemplazos.\n\nEsta función es muy útil cuando necesitas limpiar datos, estandarizar formatos o traducir valores en tus consultas SQL.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo explicamos cómo funciona la funci��n REPLACE en SQL, ideal para reemplazar, eliminar o transformar cadenas de texto dentro de una columna.\n\n📌 Temas:\n✅ Reemplazar un valor específico por otro dentro de un campo.\n✅ Sustituir caracteres como guiones bajos por espacios.\n✅ Eliminar partes de texto reemplazándolas por vacío.\n✅ Entender la diferencia entre REPLACE y expresiones lógicas como CASE o IF.\n✅ Considerar el detalle de mayúsculas y minúsculas (case sensitive) al hacer reemplazos.\n\nEsta función es muy útil cuando necesitas limpiar datos, estandarizar formatos o traducir valores en tus consultas SQL.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/tIxrQnDwvx4/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=tIxrQnDwvx4",
           "publishedAt": "2025-08-15T09:54:34Z",
           "posicion": 22,
           "duracion": "PT4M5S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -322,7 +322,7 @@
           "publishedAt": "2025-08-15T09:58:19Z",
           "posicion": 23,
           "duracion": "PT9M9S",
-          "vistas": 70,
+          "vistas": 72,
           "likes": 4,
           "comentarios": 0
         },
@@ -335,7 +335,7 @@
           "publishedAt": "2025-08-16T07:15:30Z",
           "posicion": 24,
           "duracion": "PT5M2S",
-          "vistas": 7,
+          "vistas": 8,
           "likes": 0,
           "comentarios": 0
         },
@@ -348,7 +348,7 @@
           "publishedAt": "2025-08-16T07:18:01Z",
           "posicion": 25,
           "duracion": "PT6M15S",
-          "vistas": 20,
+          "vistas": 21,
           "likes": 1,
           "comentarios": 0
         },
@@ -361,7 +361,7 @@
           "publishedAt": "2025-08-16T07:21:24Z",
           "posicion": 26,
           "duracion": "PT8M19S",
-          "vistas": 25,
+          "vistas": 28,
           "likes": 1,
           "comentarios": 0
         },
@@ -374,7 +374,7 @@
           "publishedAt": "2025-08-16T07:23:05Z",
           "posicion": 27,
           "duracion": "PT5M47S",
-          "vistas": 15,
+          "vistas": 17,
           "likes": 1,
           "comentarios": 0
         },
@@ -387,7 +387,7 @@
           "publishedAt": "2025-08-16T07:25:45Z",
           "posicion": 28,
           "duracion": "PT7M11S",
-          "vistas": 8,
+          "vistas": 9,
           "likes": 1,
           "comentarios": 0
         },
@@ -400,7 +400,7 @@
           "publishedAt": "2025-08-16T07:27:54Z",
           "posicion": 29,
           "duracion": "PT5M18S",
-          "vistas": 19,
+          "vistas": 21,
           "likes": 2,
           "comentarios": 0
         },
@@ -413,7 +413,7 @@
           "publishedAt": "2025-08-16T07:30:14Z",
           "posicion": 30,
           "duracion": "PT12M9S",
-          "vistas": 22,
+          "vistas": 23,
           "likes": 2,
           "comentarios": 0
         },
@@ -426,7 +426,7 @@
           "publishedAt": "2025-08-16T07:32:28Z",
           "posicion": 31,
           "duracion": "PT8M59S",
-          "vistas": 31,
+          "vistas": 32,
           "likes": 2,
           "comentarios": 0
         },
@@ -439,7 +439,7 @@
           "publishedAt": "2025-08-16T07:35:33Z",
           "posicion": 32,
           "duracion": "PT7M47S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 1,
           "comentarios": 0
         },
@@ -452,7 +452,7 @@
           "publishedAt": "2025-08-16T07:38:44Z",
           "posicion": 33,
           "duracion": "PT13M15S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 2,
           "comentarios": 0
         },
@@ -465,7 +465,7 @@
           "publishedAt": "2025-08-16T07:40:35Z",
           "posicion": 34,
           "duracion": "PT10M24S",
-          "vistas": 13,
+          "vistas": 14,
           "likes": 4,
           "comentarios": 0
         },
@@ -478,7 +478,7 @@
           "publishedAt": "2025-08-16T07:42:02Z",
           "posicion": 35,
           "duracion": "PT7M1S",
-          "vistas": 25,
+          "vistas": 28,
           "likes": 1,
           "comentarios": 0
         },
@@ -491,7 +491,7 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 0,
           "comentarios": 0
         },
@@ -504,7 +504,7 @@
           "publishedAt": "2025-08-16T14:19:42Z",
           "posicion": 37,
           "duracion": "PT8M25S",
-          "vistas": 10,
+          "vistas": 11,
           "likes": 0,
           "comentarios": 0
         },
@@ -517,7 +517,7 @@
           "publishedAt": "2025-08-16T14:22:21Z",
           "posicion": 38,
           "duracion": "PT5M26S",
-          "vistas": 18,
+          "vistas": 19,
           "likes": 2,
           "comentarios": 0
         },
@@ -569,7 +569,7 @@
           "publishedAt": "2025-08-16T14:31:42Z",
           "posicion": 42,
           "duracion": "PT5M19S",
-          "vistas": 12,
+          "vistas": 13,
           "likes": 1,
           "comentarios": 0
         },
@@ -582,7 +582,7 @@
           "publishedAt": "2025-08-16T14:32:53Z",
           "posicion": 43,
           "duracion": "PT8M48S",
-          "vistas": 18,
+          "vistas": 19,
           "likes": 1,
           "comentarios": 0
         },
@@ -615,13 +615,13 @@
         {
           "id": "R7hA1gBrsvQ",
           "titulo": "Uso de REGEXP_CONTAINS para buscar patrones avanzados en SQL | Curso de SQL BigQuery #47",
-          "descripcion": "En este capítulo aprenderemos a utilizar la expresión REGEXP_CONTAINS en SQL BigQuery, que nos permite buscar patrones avanzados de texto dentro de columnas. A diferencia de LIKE, esta función trabaja con expresiones regulares (regex), lo que abre la posibilidad de realizar búsquedas y validaciones mucho más complejas. \n\n📌 Temas que veremos:\n✅ Diferencia entre LIKE y REGEXP_CONTAINS y cuándo usar cada uno.\n✅ Sintaxis básica de REGEXP_CONTAINS\n✅ Validación de números telefónicos con prefijo internacional (+51) y longitud adecuada.\n✅ Validación de correos electrónicos mediante expresiones regulares.\n✅ Uso de REGEXP_CONTAINS dentro de SELECT con CASE para clasificar datos.\n✅ Recomendaciones para aprender regex y precauciones al usar IA para generarlos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Ap��yame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a utilizar la expresión REGEXP_CONTAINS en SQL BigQuery, que nos permite buscar patrones avanzados de texto dentro de columnas. A diferencia de LIKE, esta función trabaja con expresiones regulares (regex), lo que abre la posibilidad de realizar búsquedas y validaciones mucho más complejas. \n\n📌 Temas que veremos:\n✅ Diferencia entre LIKE y REGEXP_CONTAINS y cuándo usar cada uno.\n✅ Sintaxis básica de REGEXP_CONTAINS\n✅ Validación de números telefónicos con prefijo internacional (+51) y longitud adecuada.\n✅ Validación de correos electrónicos mediante expresiones regulares.\n✅ Uso de REGEXP_CONTAINS dentro de SELECT con CASE para clasificar datos.\n✅ Recomendaciones para aprender regex y precauciones al usar IA para generarlos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/R7hA1gBrsvQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=R7hA1gBrsvQ",
           "publishedAt": "2025-08-18T12:08:43Z",
           "posicion": 46,
           "duracion": "PT7M4S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 3,
           "comentarios": 0
         },
@@ -647,7 +647,7 @@
           "publishedAt": "2025-08-18T12:13:25Z",
           "posicion": 48,
           "duracion": "PT7M23S",
-          "vistas": 31,
+          "vistas": 32,
           "likes": 2,
           "comentarios": 0
         },
@@ -670,7 +670,7 @@
       "moduloId": 2,
       "titulo": "Manipulación de tablas",
       "descripcion": "Nivel Intermedio 2.1",
-      "descripcionLarga": "Módulo intermedio del curso de SQL en BigQuery, enfocado en manipulación de tablas y técnicas avanzadas.",
+      "descripcionLarga": "Bienvenido al segundo bloque del curso de SQL, donde pasarás del análisis básico a la gestión de tablas y datos dentro de BigQuery. En este nivel intermedio aprender��s a crear tus propias tablas, insertar registros, modificar estructuras y mantener tu base de datos limpia y optimizada.\n\n💡 Todo sigue siendo gratuito y en la nube, sin instalaciones ni configuraciones complicadas. Solo necesitas tu cuenta de Google y conexión a internet para practicar de forma segura y profesional.\n\n🎯 Objetivo del módulo:\n\n-Comprender cómo se crean y administran tablas en BigQuery.\n-Aprender a insertar, actualizar y eliminar datos usando comandos DML.\n-Entender cómo optimizar costos y mantener buenas prácticas en tus proyectos.\n-Desarrollar confianza para construir tus propios datasets y gestionar su contenido.\n\n✅ Ventajas del módulo:\n\n-Ejemplos claros, con casos en BigQuery.\n-Explicaciones paso a paso sobre sentencias DDL y DML.\n-Conceptos de facturación y almacenamiento explicados con lenguaje sencillo.\n-Buenas prácticas para mantener tus datos organizados y evitar errores comunes.\n\n📚 Ideal para:\n\nQuienes ya completaron el nivel básico y quieren ir al siguiente paso.\nAnalistas, marketers o creadores que necesitan manipular datos directamente.\nEstudiantes que buscan entender cómo se administran las bases en entornos reales.\n\n🔔 Suscríbete y continúa tu ruta de aprendizaje en SQL.\nEn este bloque aprenderás no solo a consultar datos, sino a crear, modificar y gestionar tus propias tablas, como lo hacen los analistas de datos en el día a día.\n\n👨‍💻 Domina la manipulación de tablas y prepárate para el siguiente nivel: consultas avanzadas y análisis a gran escala.",
       "playlistId": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "orden": 2,
@@ -685,8 +685,8 @@
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 36,
-          "likes": 2,
+          "vistas": 37,
+          "likes": 3,
           "comentarios": 0
         },
         {
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 6,
+          "vistas": 7,
           "likes": 1,
           "comentarios": 0
         },
@@ -724,7 +724,7 @@
           "publishedAt": "2025-10-07T09:00:56Z",
           "posicion": 3,
           "duracion": "PT8M23S",
-          "vistas": 7,
+          "vistas": 8,
           "likes": 1,
           "comentarios": 0
         },
@@ -737,7 +737,7 @@
           "publishedAt": "2025-10-07T19:53:24Z",
           "posicion": 4,
           "duracion": "PT4M9S",
-          "vistas": 6,
+          "vistas": 15,
           "likes": 1,
           "comentarios": 0
         },
@@ -750,7 +750,7 @@
           "publishedAt": "2025-10-07T19:55:40Z",
           "posicion": 5,
           "duracion": "PT4M21S",
-          "vistas": 5,
+          "vistas": 6,
           "likes": 1,
           "comentarios": 0
         },
@@ -763,41 +763,118 @@
           "publishedAt": "2025-10-07T19:56:36Z",
           "posicion": 6,
           "duracion": "PT5M14S",
-          "vistas": 4,
+          "vistas": 5,
           "likes": 0,
           "comentarios": 0
         },
         {
           "id": "OzgC7e3Eths",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "UPDATE SET WHERE en SQL | Actualizar registros de una tabla | Curso de SQL Intermedio #8",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulaci��n de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/OzgC7e3Eths/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=OzgC7e3Eths",
           "publishedAt": "2025-10-07T19:57:33Z",
           "posicion": 7,
-          "duracion": "PT0S",
-          "vistas": 0,
-          "likes": 0,
+          "duracion": "PT5M41S",
+          "vistas": 6,
+          "likes": 1,
           "comentarios": 0
         },
         {
           "id": "njqE2uGyysQ",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "ALTER TABLE en SQL | Modificar la estructura de una tabla |Consulta DDL| Curso de SQL Intermedio #9",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n─���────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/njqE2uGyysQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
           "publishedAt": "2025-10-07T19:59:45Z",
           "posicion": 8,
+          "duracion": "PT6M16S",
+          "vistas": 10,
+          "likes": 2,
+          "comentarios": 0
+        },
+        {
+          "id": "4JmKLgtmMBI",
+          "titulo": "ALTER TABLE SET OPTIONS en SQL | Modificar metadatos | Consulta DDL | Curso de SQL Intermedio #10",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "thumbnail": "https://i.ytimg.com/vi/4JmKLgtmMBI/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
+          "publishedAt": "2025-10-07T20:00:43Z",
+          "posicion": 9,
+          "duracion": "PT10M15S",
+          "vistas": 2,
+          "likes": 0,
+          "comentarios": 0
+        }
+      ]
+    },
+    {
+      "moduloId": 3,
+      "titulo": "Joins, Subconsultas y CTEs",
+      "descripcion": "Nivel Intermedio 2.2",
+      "descripcionLarga": "🎓 Bienvenido al tercer bloque del curso de SQL, donde darás un salto clave hacia el análisis profesional de datos. En este nivel intermedio aprenderás a combinar, transformar y relacionar información entre múltiples tablas para obtener respuestas más profundas y completas.\n\n💡 Todo sigue siendo gratuito y en la nube, dentro de BigQuery, sin instalaciones ni configuraciones. Solo necesitas tu cuenta de Google y conexión a internet para practicar como un verdadero analista.\n\n🎯 Objetivo del módulo:\n\n-Dominar los distintos tipos de JOINS para relacionar tablas de manera eficiente.\n-Comprender y aplicar subconsultas para resolver problemas complejos paso a paso.\n-Aprender a usar Common Table Expressions (CTE) para estructurar consultas limpias y reutilizables.\n-Utilizar operadores de conjunto (UNION, INTERSECT, EXCEPT) para combinar o comparar resultados.\n\n✅ Ventajas del módulo:\n\n-Ejemplos prácticos con datos dentro de BigQuery.\n-Explicaciones paso a paso para entender la lógica detrás de cada consulta.\n-Buenas prácticas para escribir SQL legible, optimizado y escalable.\n-Casos reales de uso: cómo los analistas unen información de diferentes fuentes para obtener insights.\n\n📚 Ideal para:\n\nQuienes ya dominan la creación y manipulación de tablas y quieren aprender a relacionarlas.\nAnalistas, marketers o estudiantes que buscan entender cómo se combinan y cruzan datasets en proyectos reales.\n\nQuienes desean preparar el camino hacia el siguiente nivel: consultas avanzadas y modelado de datos.\n\n👨‍💻 En este bloque aprenderás a conectar los puntos.\nPasarás de analizar tablas aisladas a comprender cómo fluye la información en un ecosistema de datos, tal como lo hacen los analistas profesionales día a día.\n\n🚀 Domina las relaciones entre tablas y prepárate para el siguiente desafío: consultas avanzadas, optimización y análisis a gran escala.",
+      "playlistId": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
+      "orden": 3,
+      "totalVideos": 5,
+      "videos": [
+        {
+          "id": "dbYadcZ2uOU",
+          "titulo": "Relaciones entre tablas | Llave primaria y secundaria | OLTP vs OLAP | Capitulo #2",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
+          "publishedAt": "2025-10-19T16:33:23Z",
+          "posicion": 0,
+          "duracion": "PT14M36S",
+          "vistas": 10,
+          "likes": 0,
+          "comentarios": 0
+        },
+        {
+          "id": "Z4Fo5F_mLuU",
+          "titulo": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Z4Fo5F_mLuU",
+          "publishedAt": "2025-10-19T16:33:20Z",
+          "posicion": 1,
+          "duracion": "PT8M12S",
+          "vistas": 14,
+          "likes": 0,
+          "comentarios": 0
+        },
+        {
+          "id": "N-7O94hPplU",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=N-7O94hPplU",
+          "publishedAt": "2025-10-19T16:33:28Z",
+          "posicion": 2,
           "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,
           "comentarios": 0
         },
         {
-          "id": "4JmKLgtmMBI",
+          "id": "i6Cfsd0CP2g",
           "titulo": "Private video",
           "descripcion": "This video is private.",
-          "url": "https://www.youtube.com/watch?v=4JmKLgtmMBI",
-          "publishedAt": "2025-10-07T20:00:43Z",
-          "posicion": 9,
+          "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
+          "publishedAt": "2025-10-19T16:33:30Z",
+          "posicion": 3,
+          "duracion": "PT0S",
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
+        },
+        {
+          "id": "Q7BvnpCsUAU",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
+          "publishedAt": "2025-10-19T16:33:34Z",
+          "posicion": 4,
           "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,

@@ -121,7 +121,7 @@ run: node scripts/update-videos-recientes.js
 |---------|--------|-------|
 | `index.html` | ✅ Seguro | Solo lee JSON estático |
 | `js/youtube-secure.js` | ✅ Seguro | Lee datos/videos-recientes.json |
-| `admin.html` | ✅ Seguro | Llama a Cloud Function (no YouTube) |
+| `scripts/*.js` | ✅ Seguro | Llaman a Cloud Function (no YouTube) |
 | `scripts/update-videos-recientes.js` | ✅ Seguro | Llama a Cloud Function |
 | `config/cursos.json` | ✅ Seguro | Solo IDs de playlists (públicos) |
 | `.github/workflows/update-videos.yml` | ✅ Seguro | Sin secrets |
@@ -157,7 +157,7 @@ config/secrets.js             # Archivos con keys hardcodeadas
 index.html                    # Frontend público
 js/*.js                       # JavaScript sin keys
 datos/*.json                  # Datos públicos
-admin.html                    # Panel admin (sin credenciales)
+scripts/*.js                  # Scripts de actualización (sin keys)
 .env.example                  # Template de ejemplo (sin keys reales)
 README.md                     # Documentación
 ```
