@@ -2,13 +2,13 @@
   "curso": "google-analytics",
   "titulo": "Curso de Google Analytics 4 desde Cero",
   "descripcion": "Curso completo de Google Analytics 4 desde cero",
-  "fechaActualizacion": "2025-10-30T01:07:57.122Z",
+  "fechaActualizacion": "2025-10-30T06:40:30.634Z",
   "modulos": [
     {
       "moduloId": 1,
       "titulo": "Google Analytics 4 - Nivel Básico",
       "descripcion": "Fundamentos de GA4",
-      "descripcionLarga": "Este curso de Google Analytics 4 (GA4) Aprenderás paso a paso cómo funciona la nueva versión de Analytics, desde su configuración inicial hasta la interpretación de los datos más importantes para tu negocio o proyecto personal. Al finalizar el curso, tendrás la confianza para analizar tus datos por ti mismo, entender el comportamiento de tus usuarios y aprovechar al máximo el potencial de Google Analytics 4 sin complicaciones técnicas.",
+      "descripcionLarga": "Aprende a medir lo que realmente importa.\nEste curso de Google Analytics 4 (GA4) Aprenderás paso a paso cómo funciona la nueva versión de Analytics, desde su configuración inicial hasta la interpretación de los datos más importantes para tu negocio o proyecto personal.\nAl finalizar el curso, tendrás la confianza para analizar tus datos por ti mismo, entender el comportamiento de tus usuarios y aprovechar al máximo el potencial de Google Analytics 4 sin complicaciones técnicas.",
       "playlistId": "PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
       "orden": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-12-23T05:24:09Z",
           "posicion": 0,
           "duracion": "PT7M35S",
-          "vistas": 344,
+          "vistas": 345,
           "likes": 5,
           "comentarios": 0
         },
