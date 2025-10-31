@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-10-30T14:21:03.607Z",
+  "fechaActualizacion": "2025-10-31T14:20:35.727Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "i6Cfsd0CP2g",
+      "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
+      "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
+      "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
+      "publishedAt": "2025-10-31T12:01:37Z",
+      "description": ""
+    },
     {
       "id": "N-7O94hPplU",
       "title": "Relaciones entre tablas | 1 a muchos | Llave primaria y secundaria | Curso de SQL Intermedio #3",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
       "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
       "publishedAt": "2025-10-29T12:01:28Z",
-      "description": ""
-    },
-    {
-      "id": "Z4Fo5F_mLuU",
-      "title": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
-      "url": "https://www.youtube.com/watch?v=Z4Fo5F_mLuU",
-      "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
-      "publishedAt": "2025-10-28T12:01:17Z",
       "description": ""
     }
   ]
