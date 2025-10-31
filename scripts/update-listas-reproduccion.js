@@ -2,7 +2,7 @@
 
 /**
  * Script para actualizar listas-reproduccion-playlist.json
- * node scripts/update-listas-reproduccion.js [--clear-cache]
+ * node scripts/update-listas-reproduccion.js --clear-cache
  * Obtiene TODAS las playlists del canal desde la Cloud Function
  */
 

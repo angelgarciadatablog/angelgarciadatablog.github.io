@@ -43,6 +43,13 @@
           "titulo": "Power BI - DAX Básico",
           "descripcion": "Conceptos básicos de DAX",
           "orden": 1
+        },
+        {
+          "moduloId": 2,
+          "playlistId": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
+          "titulo": "Power BI - Tips Variados",
+          "descripcion": "Trucos prácticos de Power BI",
+          "orden": 2
         }
       ]
     },

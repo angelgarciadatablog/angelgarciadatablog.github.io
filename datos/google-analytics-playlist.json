@@ -2,13 +2,13 @@
   "curso": "google-analytics",
   "titulo": "Curso de Google Analytics 4 desde Cero",
   "descripcion": "Curso completo de Google Analytics 4 desde cero",
-  "fechaActualizacion": "2025-10-30T06:40:30.634Z",
+  "fechaActualizacion": "2025-10-31T18:13:26.572Z",
   "modulos": [
     {
       "moduloId": 1,
       "titulo": "Google Analytics 4 - Nivel Básico",
       "descripcion": "Fundamentos de GA4",
-      "descripcionLarga": "Aprende a medir lo que realmente importa.\nEste curso de Google Analytics 4 (GA4) Aprenderás paso a paso cómo funciona la nueva versión de Analytics, desde su configuración inicial hasta la interpretación de los datos más importantes para tu negocio o proyecto personal.\nAl finalizar el curso, tendrás la confianza para analizar tus datos por ti mismo, entender el comportamiento de tus usuarios y aprovechar al máximo el potencial de Google Analytics 4 sin complicaciones técnicas.",
+      "descripcionLarga": "Aprende paso a paso a usar Google Analytics 4 desde cero. Ideal para principiantes que quieren entender cómo medir, analizar y mejorar el rendimiento de su sitio web.",
       "playlistId": "PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
       "orden": 1,
@@ -62,7 +62,7 @@
           "publishedAt": "2023-12-24T10:53:07Z",
           "posicion": 3,
           "duracion": "PT21M15S",
-          "vistas": 1065,
+          "vistas": 1070,
           "likes": 24,
           "comentarios": 8
         },
@@ -75,7 +75,7 @@
           "publishedAt": "2023-12-28T08:54:09Z",
           "posicion": 4,
           "duracion": "PT13M28S",
-          "vistas": 167,
+          "vistas": 168,
           "likes": 5,
           "comentarios": 0
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2023-12-28T09:42:38Z",
           "posicion": 5,
           "duracion": "PT13M22S",
-          "vistas": 102,
+          "vistas": 103,
           "likes": 5,
           "comentarios": 1
         },
@@ -101,8 +101,8 @@
           "publishedAt": "2025-10-02T00:51:30Z",
           "posicion": 6,
           "duracion": "PT10M20S",
-          "vistas": 221,
-          "likes": 5,
+          "vistas": 222,
+          "likes": 6,
           "comentarios": 1
         },
         {
@@ -140,7 +140,7 @@
           "publishedAt": "2025-10-02T00:52:12Z",
           "posicion": 9,
           "duracion": "PT16M50S",
-          "vistas": 508,
+          "vistas": 509,
           "likes": 14,
           "comentarios": 2
         },

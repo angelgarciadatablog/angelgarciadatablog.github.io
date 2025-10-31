@@ -8,10 +8,10 @@
  *   node scripts/update-course.js <cursoId>
  *
  * Ejemplos:
- *   node scripts/update-course.js sql-bigquery
- *   node scripts/update-course.js power-bi
- *   node scripts/update-course.js google-analytics
- *   node scripts/update-course.js mi-nuevo-curso
+ *   node scripts/update-course.js sql-bigquery --clear-cache
+ *   node scripts/update-course.js power-bi --clear-cache
+ *   node scripts/update-course.js google-analytics --clear-cache
+ *   node scripts/update-course.js mi-nuevo-curso --clear-cache
  */
 
 const fs = require('fs');

@@ -2,7 +2,7 @@
   "curso": "power-bi",
   "titulo": "Curso de Power BI desde Cero",
   "descripcion": "Curso completo de Power BI con DAX básico",
-  "fechaActualizacion": "2025-10-30T06:40:30.265Z",
+  "fechaActualizacion": "2025-10-31T18:13:19.534Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-08-14T07:17:54Z",
           "posicion": 0,
           "duracion": "PT5M56S",
-          "vistas": 8774,
+          "vistas": 8793,
           "likes": 185,
           "comentarios": 5
         },
@@ -36,8 +36,8 @@
           "publishedAt": "2023-08-10T06:48:36Z",
           "posicion": 1,
           "duracion": "PT28M38S",
-          "vistas": 9608,
-          "likes": 184,
+          "vistas": 9613,
+          "likes": 185,
           "comentarios": 13
         },
         {
@@ -49,7 +49,7 @@
           "publishedAt": "2023-08-14T04:11:39Z",
           "posicion": 2,
           "duracion": "PT7M5S",
-          "vistas": 1383,
+          "vistas": 1385,
           "likes": 27,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2023-08-11T06:07:02Z",
           "posicion": 3,
           "duracion": "PT15M10S",
-          "vistas": 11833,
+          "vistas": 11838,
           "likes": 292,
           "comentarios": 24
         },
@@ -75,7 +75,7 @@
           "publishedAt": "2023-08-14T08:51:24Z",
           "posicion": 4,
           "duracion": "PT32M49S",
-          "vistas": 10851,
+          "vistas": 10858,
           "likes": 222,
           "comentarios": 12
         },
@@ -88,20 +88,20 @@
           "publishedAt": "2023-08-17T08:34:55Z",
           "posicion": 5,
           "duracion": "PT14M49S",
-          "vistas": 5770,
+          "vistas": 5773,
           "likes": 136,
           "comentarios": 11
         },
         {
           "id": "qr6ATPTgl20",
           "titulo": "7. Operadores IN,OR,SEARCH, RIGHT, LEFT [Como crear tablas filtradas en Power BI]",
-          "descripcion": "📌CONJUNCIONES PARA LOS FILTROS:\n*(II) Conjunción O\n*(&&) Conjunción Y\n*(IN) Conjunción Y (las categorías pertenecen a una sola columna)\n*(NOT) Condición excluyente\n*(SEARCH) Busca un valor dentro de un filtro\n*(LEFT) (RIGTH) Busca un valor por posición.\n\n\n📌Archivo de Conjunciones:\nhttps://docs.google.com/document/d/1vj7MO7TxL-GaYMww6xuEQMo7lM4gMAXl/edit?usp=sharing&ouid=111287661826122127288&rtpof=true&sd=true\n\n\n📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
+          "descripcion": "📌CONJUNCIONES PARA LOS FILTROS:\n*(II) Conjunción O\n*(&&) Conjunción Y\n*(IN) Conjunci��n Y (las categorías pertenecen a una sola columna)\n*(NOT) Condición excluyente\n*(SEARCH) Busca un valor dentro de un filtro\n*(LEFT) (RIGTH) Busca un valor por posición.\n\n\n📌Archivo de Conjunciones:\nhttps://docs.google.com/document/d/1vj7MO7TxL-GaYMww6xuEQMo7lM4gMAXl/edit?usp=sharing&ouid=111287661826122127288&rtpof=true&sd=true\n\n\n📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
           "thumbnail": "https://i.ytimg.com/vi/qr6ATPTgl20/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=qr6ATPTgl20",
           "publishedAt": "2023-08-19T10:15:24Z",
           "posicion": 6,
           "duracion": "PT19M44S",
-          "vistas": 1725,
+          "vistas": 1726,
           "likes": 61,
           "comentarios": 4
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2023-08-22T09:52:11Z",
           "posicion": 8,
           "duracion": "PT26M24S",
-          "vistas": 2052,
+          "vistas": 2054,
           "likes": 82,
           "comentarios": 9
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2023-08-27T11:54:32Z",
           "posicion": 9,
           "duracion": "PT20M7S",
-          "vistas": 8620,
+          "vistas": 8623,
           "likes": 151,
           "comentarios": 12
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2023-08-23T04:22:12Z",
           "posicion": 10,
           "duracion": "PT19M8S",
-          "vistas": 7352,
+          "vistas": 7357,
           "likes": 119,
           "comentarios": 8
         },
@@ -179,7 +179,7 @@
           "publishedAt": "2023-09-10T06:00:03Z",
           "posicion": 12,
           "duracion": "PT27M21S",
-          "vistas": 2164,
+          "vistas": 2165,
           "likes": 44,
           "comentarios": 2
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2023-09-12T06:21:38Z",
           "posicion": 14,
           "duracion": "PT13M9S",
-          "vistas": 4868,
+          "vistas": 4870,
           "likes": 43,
           "comentarios": 3
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2023-09-14T09:59:13Z",
           "posicion": 15,
           "duracion": "PT18M17S",
-          "vistas": 8407,
+          "vistas": 8409,
           "likes": 57,
           "comentarios": 2
         },
@@ -234,6 +234,57 @@
           "vistas": 1555,
           "likes": 22,
           "comentarios": 3
+        }
+      ]
+    },
+    {
+      "moduloId": 2,
+      "titulo": "Power BI - Tips Variados",
+      "descripcion": "Trucos prácticos de Power BI",
+      "descripcionLarga": "Pequeños trucos y consejos prácticos para mejorar tu manejo de Power BI. Aprende a optimizar tus reportes, descubrir funciones ocultas y ahorrar tiempo en tu día a día como analista.",
+      "playlistId": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
+      "orden": 2,
+      "totalVideos": 3,
+      "videos": [
+        {
+          "id": "kJzw5JPC6AI",
+          "titulo": "Cómo agregar un grafico al pasar el cursor | Power BI | TOOLTIP",
+          "descripcion": "📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
+          "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=kJzw5JPC6AI",
+          "publishedAt": "2023-12-13T01:48:40Z",
+          "posicion": 0,
+          "duracion": "PT5M5S",
+          "vistas": 3319,
+          "likes": 57,
+          "comentarios": 6
+        },
+        {
+          "id": "Q6vUPD3f4bs",
+          "titulo": "Comparar Periodos sin usar DAX | Power BI | Editar interacciones",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/Q6vUPD3f4bs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Q6vUPD3f4bs",
+          "publishedAt": "2023-12-13T20:00:23Z",
+          "posicion": 1,
+          "duracion": "PT4M48S",
+          "vistas": 308,
+          "likes": 10,
+          "comentarios": 0
+        },
+        {
+          "id": "6rc09OdwHlk",
+          "titulo": "Como crear un menú de navegación en Power Bi [Menú interactivo] [Power Bi]",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/6rc09OdwHlk/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=6rc09OdwHlk",
+          "publishedAt": "2024-01-28T23:18:41Z",
+          "posicion": 2,
+          "duracion": "PT10M38S",
+          "vistas": 8984,
+          "likes": 113,
+          "comentarios": 2
         }
       ]
     }

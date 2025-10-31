@@ -1,12 +1,12 @@
 {
-  "fechaActualizacion": "2025-10-30T06:39:18.833Z",
+  "fechaActualizacion": "2025-10-31T18:13:36.000Z",
   "totalPlaylists": 10,
   "playlists": [
     {
       "id": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
       "title": "Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto -  Nivel Intermedio 2.2",
-      "description": "🎓 Bienvenido al tercer bloque del curso de SQL, donde darás un salto clave hacia el análisis profesional de datos. En este nivel intermedio aprenderás a combinar, transformar y relacionar información entre múltiples tablas para obtener respuestas más profundas y completas.\n\n💡 Todo sigue siendo gratuito y en la nube, dentro de BigQuery, sin instalaciones ni configuraciones. Solo necesitas tu cuenta de Google y conexión a internet para practicar como un verdadero analista.\n\n🎯 Objetivo del módulo:\n\n-Dominar los distintos tipos de JOINS para relacionar tablas de manera eficiente.\n-Comprender y aplicar subconsultas para resolver problemas complejos paso a paso.\n-Aprender a usar Common Table Expressions (CTE) para estructurar consultas limpias y reutilizables.\n-Utilizar operadores de conjunto (UNION, INTERSECT, EXCEPT) para combinar o comparar resultados.\n\n✅ Ventajas del módulo:\n\n-Ejemplos prácticos con datos dentro de BigQuery.\n-Explicaciones paso a paso para entender la lógica detrás de cada consulta.\n-Buenas prácticas para escribir SQL legible, optimizado y escalable.\n-Casos reales de uso: cómo los analistas unen información de diferentes fuentes para obtener insights.\n\n📚 Ideal para:\n\nQuienes ya dominan la creación y manipulación de tablas y quieren aprender a relacionarlas.\nAnalistas, marketers o estudiantes que buscan entender cómo se combinan y cruzan datasets en proyectos reales.\n\nQuienes desean preparar el camino hacia el siguiente nivel: consultas avanzadas y modelado de datos.\n\n👨‍💻 En este bloque aprenderás a conectar los puntos.\nPasarás de analizar tablas aisladas a comprender cómo fluye la información en un ecosistema de datos, tal como lo hacen los analistas profesionales día a día.\n\n🚀 Domina las relaciones entre tablas y prepárate para el siguiente desafío: consultas avanzadas, optimización y análisis a gran escala.",
-      "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
+      "description": "Da un salto en tu nivel de SQL aprendiendo a conectar múltiples tablas y crear consultas más potentes. Todo explicado paso a paso con casos prácticos en BigQuery.",
+      "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
       "publishedAt": "2025-10-19T16:32:18.686475Z",
       "videoCount": 5,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqahle46bX_iDjupUZLUDIad"
@@ -14,7 +14,7 @@
     {
       "id": "PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU",
       "title": "Curso gratuito de SQL en BigQuery - Manipulación de tablas -  Nivel Intermedio 2.1",
-      "description": "Bienvenido al segundo bloque del curso de SQL, donde pasarás del análisis básico a la gestión de tablas y datos dentro de BigQuery. En este nivel intermedio aprenderás a crear tus propias tablas, insertar registros, modificar estructuras y mantener tu base de datos limpia y optimizada.\n\n💡 Todo sigue siendo gratuito y en la nube, sin instalaciones ni configuraciones complicadas. Solo necesitas tu cuenta de Google y conexión a internet para practicar de forma segura y profesional.\n\n🎯 Objetivo del módulo:\n\n-Comprender cómo se crean y administran tablas en BigQuery.\n-Aprender a insertar, actualizar y eliminar datos usando comandos DML.\n-Entender cómo optimizar costos y mantener buenas prácticas en tus proyectos.\n-Desarrollar confianza para construir tus propios datasets y gestionar su contenido.\n\n✅ Ventajas del módulo:\n\n-Ejemplos claros, con casos en BigQuery.\n-Explicaciones paso a paso sobre sentencias DDL y DML.\n-Conceptos de facturación y almacenamiento explicados con lenguaje sencillo.\n-Buenas prácticas para mantener tus datos organizados y evitar errores comunes.\n\n📚 Ideal para:\n\nQuienes ya completaron el nivel básico y quieren ir al siguiente paso.\nAnalistas, marketers o creadores que necesitan manipular datos directamente.\nEstudiantes que buscan entender cómo se administran las bases en entornos reales.\n\n🔔 Suscríbete y continúa tu ruta de aprendizaje en SQL.\nEn este bloque aprenderás no solo a consultar datos, sino a crear, modificar y gestionar tus propias tablas, como lo hacen los analistas de datos en el día a día.\n\n👨‍💻 Domina la manipulación de tablas y prepárate para el siguiente nivel: consultas avanzadas y análisis a gran escala.",
+      "description": "Da el siguiente paso en SQL aprendiendo a construir y modificar tablas en BigQuery. Aquí verás sentencias DDL y DML con ejemplos prácticos explicados paso a paso.",
       "thumbnail": "https://i.ytimg.com/vi/DQlkV2DmA_M/hqdefault.jpg",
       "publishedAt": "2025-10-07T08:51:00.475667Z",
       "videoCount": 10,
@@ -23,7 +23,7 @@
     {
       "id": "PLV4oS06_KpqY5xZ2gZ8u_79cmLrVUsGNe",
       "title": "Google sheet - Básico",
-      "description": "",
+      "description": "Empieza tu camino en el análisis con hojas de cálculo. Aquí aprenderás lo esencial de Google Sheets paso a paso, con ejemplos prácticos y explicaciones simples.",
       "thumbnail": "https://i.ytimg.com/vi/aoP5EPC9Skw/hqdefault.jpg",
       "publishedAt": "2025-09-11T08:49:07.255832Z",
       "videoCount": 3,
@@ -32,7 +32,7 @@
     {
       "id": "PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl",
       "title": "Curso gratuito de SQL en BigQuery desde cero - Cláusulas Principales de SQL -  Nivel Básico",
-      "description": "Bienvenido a este curso gratuito y completo de SQL nivel básico, diseñado para que cualquier persona —sin experiencia previa— pueda aprender paso a paso a consultar, filtrar y analizar datos como un profesional.\n\n💡No necesitas instalar nada ni pagar por herramientas. Todo el curso se realiza en una plataforma gratuita y en la nube, para que puedas practicar desde cualquier dispositivo con conexión a internet. En esta lista de reproducción encontrarás lecciones explicadas de forma sencilla y progresiva.\n\n🎯 Objetivo del curso:\n\n-Entender cómo funcionan las bases de datos y las consultas SQL.\n-Aprender a obtener información útil a partir de tablas.\n-Desarrollar una base sólida para avanzar a niveles intermedios y aplicar SQL en análisis de datos, -marketing digital o cualquier entorno profesional.\n\n✅ Ventajas del curso:\n\n-100% gratuito y accesible desde el navegador.\n-Lecciones cortas, claras y en español.\n-Ejemplos prácticos que puedes adaptar a tus propios proyectos.\n-Explicaciones guiadas para que entiendas el “por qué” detrás de cada consulta.\n\n📚 Ideal para:\n\n-Principiantes absolutos.\n-Estudiantes o profesionales que quieren iniciarse en análisis de datos.\n-Emprendedores y creadores digitales que buscan entender mejor la información de sus negocios.\n\n🔔 Suscríbete al canal para no perderte los siguientes niveles del curso (intermedio y avanzado) y seguir aprendiendo herramientas de análisis de datos paso a paso.\n\n👨‍💻 Aprende a tu ritmo, sin descargas, sin complicaciones y con explicaciones pensadas para que realmente entiendas cómo funciona SQL.\nEmpieza hoy y da tu primer paso en el mundo del análisis de datos.",
+      "description": "Curso gratuito de SQL en BigQuery para empezar con bases sólidas. Domina SELECT, FROM, WHERE, GROUP BY y ORDER BY con ejemplos y explicaciones claras.",
       "thumbnail": "https://i.ytimg.com/vi/mj_b9_nxJfw/hqdefault.jpg",
       "publishedAt": "2025-08-12T06:40:31.09831Z",
       "videoCount": 57,
@@ -41,7 +41,7 @@
     {
       "id": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "title": "Power BI - Tips Variados",
-      "description": "Tutoriales cortos sobre temas de PBI",
+      "description": "Pequeños trucos y consejos prácticos para mejorar tu manejo de Power BI. Aprende a optimizar tus reportes, descubrir funciones ocultas y ahorrar tiempo en tu día a día como analista.",
       "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
       "publishedAt": "2023-12-12T20:43:06.037328Z",
       "videoCount": 3,
@@ -50,7 +50,7 @@
     {
       "id": "PLV4oS06_KpqaJurJFbLi3HGrHrlOShc_x",
       "title": "Curso de Google Analytics",
-      "description": "Aprende a medir lo que realmente importa.\nEste curso de Google Analytics 4 (GA4) Aprenderás paso a paso cómo funciona la nueva versión de Analytics, desde su configuración inicial hasta la interpretación de los datos más importantes para tu negocio o proyecto personal.\nAl finalizar el curso, tendrás la confianza para analizar tus datos por ti mismo, entender el comportamiento de tus usuarios y aprovechar al máximo el potencial de Google Analytics 4 sin complicaciones técnicas.",
+      "description": "Aprende paso a paso a usar Google Analytics 4 desde cero. Ideal para principiantes que quieren entender cómo medir, analizar y mejorar el rendimiento de su sitio web.",
       "thumbnail": "https://i.ytimg.com/vi/rSYSSOP3h2k/hqdefault.jpg",
       "publishedAt": "2023-09-25T12:21:25.767823Z",
       "videoCount": 12,
@@ -59,7 +59,7 @@
     {
       "id": "PLV4oS06_KpqacM_CdWLJq4SttTNfszK0Q",
       "title": "Matemáticas aplicadas en negocios",
-      "description": "",
+      "description": "Conceptos matemáticos explicados desde una perspectiva empresarial. Ideal para entender cómo los números guían estrategias, precios y decisiones financieras.",
       "thumbnail": "https://i.ytimg.com/vi/2W7sPgGlNqo/hqdefault.jpg",
       "publishedAt": "2023-08-23T06:22:16.191167Z",
       "videoCount": 4,
@@ -68,7 +68,7 @@
     {
       "id": "PLV4oS06_KpqYMuPNqu6S1GgnyuhMOzBaN",
       "title": "Excel - Básico",
-      "description": "",
+      "description": "Aprende desde cero a usar Excel con ejemplos simples y prácticos. Domina las funciones básicas, fórmulas y herramientas esenciales para trabajar con datos con confianza.",
       "thumbnail": "https://i.ytimg.com/vi/ee-gYMaH1Rk/hqdefault.jpg",
       "publishedAt": "2023-08-16T07:44:42.889061Z",
       "videoCount": 3,
@@ -86,7 +86,7 @@
     {
       "id": "PLV4oS06_Kpqawr6ifquiC0M_Hg2onwtJ5",
       "title": "Power Query - Básico",
-      "description": "",
+      "description": "Aprende a dominar la base del análisis de datos: Power Query. Conoce cómo importar, limpiar y transformar información paso a paso sin complicaciones.",
       "thumbnail": "https://i.ytimg.com/vi/mqLksU5um3Q/hqdefault.jpg",
       "publishedAt": "2022-12-08T10:05:08.047613Z",
       "videoCount": 4,
