@@ -1,5 +1,5 @@
 {
-  "fechaActualizacion": "2025-11-01T14:16:43.237Z",
+  "fechaActualizacion": "2025-11-02T14:16:56.484Z",
   "totalVideos": 3,
   "videos": [
     {
@@ -8,7 +8,7 @@
       "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
       "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
       "publishedAt": "2025-10-31T12:01:37Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     },
     {
       "id": "N-7O94hPplU",
@@ -16,7 +16,7 @@
       "url": "https://www.youtube.com/watch?v=N-7O94hPplU",
       "thumbnail": "https://i.ytimg.com/vi/N-7O94hPplU/hqdefault.jpg",
       "publishedAt": "2025-10-30T12:00:47Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     },
     {
       "id": "dbYadcZ2uOU",
@@ -24,7 +24,7 @@
       "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
       "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
       "publishedAt": "2025-10-29T12:01:28Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas) Diapositivas de la clase: ..."
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
 }
