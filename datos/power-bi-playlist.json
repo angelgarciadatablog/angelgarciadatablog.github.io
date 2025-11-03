@@ -2,7 +2,7 @@
   "curso": "power-bi",
   "titulo": "Curso de Power BI desde Cero",
   "descripcion": "Curso completo de Power BI con DAX básico",
-  "fechaActualizacion": "2025-10-31T18:13:19.534Z",
+  "fechaActualizacion": "2025-11-03T14:18:19.628Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-08-14T07:17:54Z",
           "posicion": 0,
           "duracion": "PT5M56S",
-          "vistas": 8793,
+          "vistas": 8814,
           "likes": 185,
           "comentarios": 5
         },
@@ -36,7 +36,7 @@
           "publishedAt": "2023-08-10T06:48:36Z",
           "posicion": 1,
           "duracion": "PT28M38S",
-          "vistas": 9613,
+          "vistas": 9625,
           "likes": 185,
           "comentarios": 13
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2023-08-14T04:11:39Z",
           "posicion": 2,
           "duracion": "PT7M5S",
-          "vistas": 1385,
+          "vistas": 1386,
           "likes": 27,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2023-08-11T06:07:02Z",
           "posicion": 3,
           "duracion": "PT15M10S",
-          "vistas": 11838,
+          "vistas": 11856,
           "likes": 292,
           "comentarios": 24
         },
@@ -75,7 +75,7 @@
           "publishedAt": "2023-08-14T08:51:24Z",
           "posicion": 4,
           "duracion": "PT32M49S",
-          "vistas": 10858,
+          "vistas": 10871,
           "likes": 222,
           "comentarios": 12
         },
@@ -88,20 +88,20 @@
           "publishedAt": "2023-08-17T08:34:55Z",
           "posicion": 5,
           "duracion": "PT14M49S",
-          "vistas": 5773,
+          "vistas": 5780,
           "likes": 136,
           "comentarios": 11
         },
         {
           "id": "qr6ATPTgl20",
           "titulo": "7. Operadores IN,OR,SEARCH, RIGHT, LEFT [Como crear tablas filtradas en Power BI]",
-          "descripcion": "📌CONJUNCIONES PARA LOS FILTROS:\n*(II) Conjunción O\n*(&&) Conjunción Y\n*(IN) Conjunci��n Y (las categorías pertenecen a una sola columna)\n*(NOT) Condición excluyente\n*(SEARCH) Busca un valor dentro de un filtro\n*(LEFT) (RIGTH) Busca un valor por posición.\n\n\n📌Archivo de Conjunciones:\nhttps://docs.google.com/document/d/1vj7MO7TxL-GaYMww6xuEQMo7lM4gMAXl/edit?usp=sharing&ouid=111287661826122127288&rtpof=true&sd=true\n\n\n📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
+          "descripcion": "📌CONJUNCIONES PARA LOS FILTROS:\n*(II) Conjunción O\n*(&&) Conjunción Y\n*(IN) Conjunción Y (las categorías pertenecen a una sola columna)\n*(NOT) Condición excluyente\n*(SEARCH) Busca un valor dentro de un filtro\n*(LEFT) (RIGTH) Busca un valor por posición.\n\n\n📌Archivo de Conjunciones:\nhttps://docs.google.com/document/d/1vj7MO7TxL-GaYMww6xuEQMo7lM4gMAXl/edit?usp=sharing&ouid=111287661826122127288&rtpof=true&sd=true\n\n\n📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
           "thumbnail": "https://i.ytimg.com/vi/qr6ATPTgl20/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=qr6ATPTgl20",
           "publishedAt": "2023-08-19T10:15:24Z",
           "posicion": 6,
           "duracion": "PT19M44S",
-          "vistas": 1726,
+          "vistas": 1731,
           "likes": 61,
           "comentarios": 4
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2023-08-21T11:07:18Z",
           "posicion": 7,
           "duracion": "PT12M14S",
-          "vistas": 2692,
+          "vistas": 2699,
           "likes": 67,
           "comentarios": 2
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2023-08-22T09:52:11Z",
           "posicion": 8,
           "duracion": "PT26M24S",
-          "vistas": 2054,
+          "vistas": 2058,
           "likes": 82,
           "comentarios": 9
         },
@@ -140,8 +140,8 @@
           "publishedAt": "2023-08-27T11:54:32Z",
           "posicion": 9,
           "duracion": "PT20M7S",
-          "vistas": 8623,
-          "likes": 151,
+          "vistas": 8631,
+          "likes": 152,
           "comentarios": 12
         },
         {
@@ -153,7 +153,7 @@
           "publishedAt": "2023-08-23T04:22:12Z",
           "posicion": 10,
           "duracion": "PT19M8S",
-          "vistas": 7357,
+          "vistas": 7363,
           "likes": 119,
           "comentarios": 8
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2023-08-24T10:07:33Z",
           "posicion": 11,
           "duracion": "PT24M20S",
-          "vistas": 1365,
+          "vistas": 1366,
           "likes": 36,
           "comentarios": 2
         },
@@ -179,7 +179,7 @@
           "publishedAt": "2023-09-10T06:00:03Z",
           "posicion": 12,
           "duracion": "PT27M21S",
-          "vistas": 2165,
+          "vistas": 2166,
           "likes": 44,
           "comentarios": 2
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2023-09-11T05:20:23Z",
           "posicion": 13,
           "duracion": "PT15M36S",
-          "vistas": 6358,
+          "vistas": 6360,
           "likes": 46,
           "comentarios": 2
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2023-09-12T06:21:38Z",
           "posicion": 14,
           "duracion": "PT13M9S",
-          "vistas": 4870,
+          "vistas": 4877,
           "likes": 43,
           "comentarios": 3
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2023-09-14T09:59:13Z",
           "posicion": 15,
           "duracion": "PT18M17S",
-          "vistas": 8409,
+          "vistas": 8412,
           "likes": 57,
           "comentarios": 2
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2023-09-14T09:52:30Z",
           "posicion": 16,
           "duracion": "PT31M56S",
-          "vistas": 1555,
+          "vistas": 1556,
           "likes": 22,
           "comentarios": 3
         }
@@ -245,7 +245,7 @@
       "playlistId": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "orden": 2,
-      "totalVideos": 3,
+      "totalVideos": 5,
       "videos": [
         {
           "id": "kJzw5JPC6AI",
@@ -256,7 +256,7 @@
           "publishedAt": "2023-12-13T01:48:40Z",
           "posicion": 0,
           "duracion": "PT5M5S",
-          "vistas": 3319,
+          "vistas": 3329,
           "likes": 57,
           "comentarios": 6
         },
@@ -282,9 +282,34 @@
           "publishedAt": "2024-01-28T23:18:41Z",
           "posicion": 2,
           "duracion": "PT10M38S",
-          "vistas": 8984,
+          "vistas": 9005,
           "likes": 113,
           "comentarios": 2
+        },
+        {
+          "id": "y_rVPdd-RNY",
+          "titulo": "Cómo crear un segmentador con medidas usando parámetros de campo en Power BI",
+          "descripcion": "📌 Puedes descargar el archivo del proyecto (.pbix) desde aquí:\nhttps://drive.google.com/drive/folders/1Bma_bAd1XMQff4R3FpgQA8pjaToMRneg?usp=sharing\n\n💬 Conecta conmigo \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog",
+          "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
+          "publishedAt": "2025-10-31T23:08:30Z",
+          "posicion": 3,
+          "duracion": "PT2M58S",
+          "vistas": 3,
+          "likes": 1,
+          "comentarios": 0
+        },
+        {
+          "id": "rvVwrHtI4gQ",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
+          "publishedAt": "2025-10-31T23:23:30Z",
+          "posicion": 4,
+          "duracion": "PT0S",
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         }
       ]
     }
