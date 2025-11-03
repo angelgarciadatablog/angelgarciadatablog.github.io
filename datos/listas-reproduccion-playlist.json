@@ -1,14 +1,14 @@
 {
-  "fechaActualizacion": "2025-10-31T18:13:36.000Z",
+  "fechaActualizacion": "2025-11-03T14:17:48.124Z",
   "totalPlaylists": 10,
   "playlists": [
     {
       "id": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
       "title": "Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto -  Nivel Intermedio 2.2",
       "description": "Da un salto en tu nivel de SQL aprendiendo a conectar múltiples tablas y crear consultas más potentes. Todo explicado paso a paso con casos prácticos en BigQuery.",
-      "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
+      "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
       "publishedAt": "2025-10-19T16:32:18.686475Z",
-      "videoCount": 5,
+      "videoCount": 8,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqahle46bX_iDjupUZLUDIad"
     },
     {
@@ -44,7 +44,7 @@
       "description": "Pequeños trucos y consejos prácticos para mejorar tu manejo de Power BI. Aprende a optimizar tus reportes, descubrir funciones ocultas y ahorrar tiempo en tu día a día como analista.",
       "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
       "publishedAt": "2023-12-12T20:43:06.037328Z",
-      "videoCount": 3,
+      "videoCount": 5,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO"
     },
     {
