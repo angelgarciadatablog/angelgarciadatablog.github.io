@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2025-11-02T14:16:56.484Z",
+  "fechaActualizacion": "2025-11-03T14:20:39.825Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "Q7BvnpCsUAU",
+      "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
+      "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
+      "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
+      "publishedAt": "2025-11-03T12:01:01Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
+    {
+      "id": "y_rVPdd-RNY",
+      "title": "Cómo crear un segmentador con medidas usando parámetros de campo en Power BI",
+      "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
+      "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
+      "publishedAt": "2025-11-03T12:01:59Z",
+      "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
+    },
     {
       "id": "i6Cfsd0CP2g",
       "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
       "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
       "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
       "publishedAt": "2025-10-31T12:01:37Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "N-7O94hPplU",
-      "title": "Relaciones entre tablas | 1 a muchos | Llave primaria y secundaria | Curso de SQL Intermedio #3",
-      "url": "https://www.youtube.com/watch?v=N-7O94hPplU",
-      "thumbnail": "https://i.ytimg.com/vi/N-7O94hPplU/hqdefault.jpg",
-      "publishedAt": "2025-10-30T12:00:47Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "dbYadcZ2uOU",
-      "title": "Relaciones entre tablas | Llave primaria y secundaria | OLTP vs OLAP | Capitulo #2",
-      "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
-      "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
-      "publishedAt": "2025-10-29T12:01:28Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
