@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2025-11-03T14:20:39.825Z",
+  "fechaActualizacion": "2025-11-04T14:21:36.571Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "rvVwrHtI4gQ",
+      "title": "Atajo de teclado para crear medidas en POWER BI",
+      "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
+      "thumbnail": "https://i.ytimg.com/vi/rvVwrHtI4gQ/hqdefault.jpg",
+      "publishedAt": "2025-11-04T12:01:48Z",
+      "description": "Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog Página web oficial: https://angelgarciadatablog.com GitHub: ..."
+    },
+    {
+      "id": "zToHhAif9Gw",
+      "title": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
+      "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
+      "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
+      "publishedAt": "2025-11-04T12:02:08Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
     {
       "id": "Q7BvnpCsUAU",
       "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
       "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
       "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
       "publishedAt": "2025-11-03T12:01:01Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "y_rVPdd-RNY",
-      "title": "Cómo crear un segmentador con medidas usando parámetros de campo en Power BI",
-      "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
-      "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
-      "publishedAt": "2025-11-03T12:01:59Z",
-      "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
-    },
-    {
-      "id": "i6Cfsd0CP2g",
-      "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
-      "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
-      "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
-      "publishedAt": "2025-10-31T12:01:37Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
