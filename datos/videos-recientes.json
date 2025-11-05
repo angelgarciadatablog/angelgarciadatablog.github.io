@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-11-04T14:21:36.571Z",
+  "fechaActualizacion": "2025-11-05T14:21:12.633Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "1Hgmt97AkBw",
+      "title": "LEFT JOIN o INNER JOIN ¿cuál usar? | Caso práctico con registros huérfanos | Curso de SQL #6",
+      "url": "https://www.youtube.com/watch?v=1Hgmt97AkBw",
+      "thumbnail": "https://i.ytimg.com/vi/1Hgmt97AkBw/hqdefault.jpg",
+      "publishedAt": "2025-11-05T12:00:05Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
     {
       "id": "rvVwrHtI4gQ",
       "title": "Atajo de teclado para crear medidas en POWER BI",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
       "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
       "publishedAt": "2025-11-04T12:02:08Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "Q7BvnpCsUAU",
-      "title": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-      "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
-      "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
-      "publishedAt": "2025-11-03T12:01:01Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
