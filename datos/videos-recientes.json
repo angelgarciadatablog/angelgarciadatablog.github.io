@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-11-05T14:21:12.633Z",
+  "fechaActualizacion": "2025-11-06T14:21:01.595Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "pHAb6YNGRl4",
+      "title": "Registros huérfanos al eliminar datos en SQL | LEFT JOIN vs INNER JOIN | Curso de SQL Intermedio #8",
+      "url": "https://www.youtube.com/watch?v=pHAb6YNGRl4",
+      "thumbnail": "https://i.ytimg.com/vi/pHAb6YNGRl4/hqdefault.jpg",
+      "publishedAt": "2025-11-06T12:01:41Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
     {
       "id": "1Hgmt97AkBw",
       "title": "LEFT JOIN o INNER JOIN ¿cuál usar? | Caso práctico con registros huérfanos | Curso de SQL #6",
@@ -17,14 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/rvVwrHtI4gQ/hqdefault.jpg",
       "publishedAt": "2025-11-04T12:01:48Z",
       "description": "Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog Página web oficial: https://angelgarciadatablog.com GitHub: ..."
-    },
-    {
-      "id": "zToHhAif9Gw",
-      "title": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
-      "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
-      "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
-      "publishedAt": "2025-11-04T12:02:08Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
 }
