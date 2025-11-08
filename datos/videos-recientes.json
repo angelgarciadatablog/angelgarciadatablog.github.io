@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-11-07T14:20:15.621Z",
+  "fechaActualizacion": "2025-11-08T14:16:51.937Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "0i8W5wucIMc",
+      "title": "Por qué no funcionan los filtros cruzados en Power BI y cómo solucionarlo paso a paso",
+      "url": "https://www.youtube.com/watch?v=0i8W5wucIMc",
+      "thumbnail": "https://i.ytimg.com/vi/0i8W5wucIMc/hqdefault.jpg",
+      "publishedAt": "2025-11-08T00:44:15Z",
+      "description": ""
+    },
     {
       "id": "pHAb6YNGRl4",
       "title": "Registros huérfanos al eliminar datos en SQL | LEFT JOIN vs INNER JOIN | Curso de SQL Intermedio #8",
@@ -17,14 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/1Hgmt97AkBw/hqdefault.jpg",
       "publishedAt": "2025-11-05T12:00:05Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "rvVwrHtI4gQ",
-      "title": "Atajo de teclado para crear medidas en POWER BI",
-      "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
-      "thumbnail": "https://i.ytimg.com/vi/rvVwrHtI4gQ/hqdefault.jpg",
-      "publishedAt": "2025-11-04T12:01:48Z",
-      "description": "Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog Página web oficial: https://angelgarciadatablog.com GitHub: ..."
     }
   ]
 }
