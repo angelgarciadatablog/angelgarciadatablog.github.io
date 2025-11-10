@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-11-09T14:16:29.203Z",
+  "fechaActualizacion": "2025-11-10T14:21:18.348Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "LXwH60B973Q",
+      "title": "Como poner power bi en modo oscturo",
+      "url": "https://www.youtube.com/watch?v=LXwH60B973Q",
+      "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
+      "publishedAt": "2025-11-10T12:00:44Z",
+      "description": ""
+    },
     {
       "id": "0i8W5wucIMc",
       "title": "Por qué no funcionan los filtros cruzados en Power BI y cómo solucionarlo paso a paso",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=pHAb6YNGRl4",
       "thumbnail": "https://i.ytimg.com/vi/pHAb6YNGRl4/hqdefault.jpg",
       "publishedAt": "2025-11-06T12:01:41Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "1Hgmt97AkBw",
-      "title": "LEFT JOIN o INNER JOIN ¿cuál usar? | Caso práctico con registros huérfanos | Curso de SQL #6",
-      "url": "https://www.youtube.com/watch?v=1Hgmt97AkBw",
-      "thumbnail": "https://i.ytimg.com/vi/1Hgmt97AkBw/hqdefault.jpg",
-      "publishedAt": "2025-11-05T12:00:05Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
