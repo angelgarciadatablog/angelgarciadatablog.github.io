@@ -2,7 +2,7 @@
   "curso": "google-analytics",
   "titulo": "Curso de Google Analytics 4 desde Cero",
   "descripcion": "Curso completo de Google Analytics 4 desde cero",
-  "fechaActualizacion": "2025-11-03T14:18:20.133Z",
+  "fechaActualizacion": "2025-11-10T14:18:47.890Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2023-12-23T05:24:09Z",
           "posicion": 0,
           "duracion": "PT7M35S",
-          "vistas": 345,
-          "likes": 5,
+          "vistas": 351,
+          "likes": 6,
           "comentarios": 0
         },
         {
@@ -36,7 +36,7 @@
           "publishedAt": "2023-12-23T05:25:25Z",
           "posicion": 1,
           "duracion": "PT21M",
-          "vistas": 403,
+          "vistas": 404,
           "likes": 7,
           "comentarios": 6
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2023-12-23T09:05:06Z",
           "posicion": 2,
           "duracion": "PT20M16S",
-          "vistas": 222,
+          "vistas": 223,
           "likes": 6,
           "comentarios": 2
         },
@@ -62,8 +62,8 @@
           "publishedAt": "2023-12-24T10:53:07Z",
           "posicion": 3,
           "duracion": "PT21M15S",
-          "vistas": 1071,
-          "likes": 24,
+          "vistas": 1078,
+          "likes": 25,
           "comentarios": 8
         },
         {
@@ -101,7 +101,7 @@
           "publishedAt": "2025-10-02T00:51:30Z",
           "posicion": 6,
           "duracion": "PT10M20S",
-          "vistas": 222,
+          "vistas": 223,
           "likes": 6,
           "comentarios": 1
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-10-02T00:51:48Z",
           "posicion": 7,
           "duracion": "PT11M9S",
-          "vistas": 121,
+          "vistas": 122,
           "likes": 0,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-10-02T00:51:59Z",
           "posicion": 8,
           "duracion": "PT18M8S",
-          "vistas": 79,
+          "vistas": 80,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-10-02T00:52:12Z",
           "posicion": 9,
           "duracion": "PT16M50S",
-          "vistas": 509,
+          "vistas": 513,
           "likes": 14,
           "comentarios": 2
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-10-02T00:52:24Z",
           "posicion": 10,
           "duracion": "PT9M58S",
-          "vistas": 592,
+          "vistas": 593,
           "likes": 8,
           "comentarios": 0
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2025-10-02T00:52:35Z",
           "posicion": 11,
           "duracion": "PT11M23S",
-          "vistas": 189,
+          "vistas": 191,
           "likes": 5,
           "comentarios": 0
         }

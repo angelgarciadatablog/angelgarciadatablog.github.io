@@ -2,7 +2,7 @@
   "curso": "power-bi",
   "titulo": "Curso de Power BI desde Cero",
   "descripcion": "Curso completo de Power BI con DAX básico",
-  "fechaActualizacion": "2025-11-03T14:18:19.628Z",
+  "fechaActualizacion": "2025-11-10T14:18:47.450Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2023-08-14T07:17:54Z",
           "posicion": 0,
           "duracion": "PT5M56S",
-          "vistas": 8814,
-          "likes": 185,
+          "vistas": 8887,
+          "likes": 186,
           "comentarios": 5
         },
         {
@@ -36,7 +36,7 @@
           "publishedAt": "2023-08-10T06:48:36Z",
           "posicion": 1,
           "duracion": "PT28M38S",
-          "vistas": 9625,
+          "vistas": 9656,
           "likes": 185,
           "comentarios": 13
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2023-08-14T04:11:39Z",
           "posicion": 2,
           "duracion": "PT7M5S",
-          "vistas": 1386,
+          "vistas": 1390,
           "likes": 27,
           "comentarios": 2
         },
@@ -62,8 +62,8 @@
           "publishedAt": "2023-08-11T06:07:02Z",
           "posicion": 3,
           "duracion": "PT15M10S",
-          "vistas": 11856,
-          "likes": 292,
+          "vistas": 11899,
+          "likes": 293,
           "comentarios": 24
         },
         {
@@ -75,8 +75,8 @@
           "publishedAt": "2023-08-14T08:51:24Z",
           "posicion": 4,
           "duracion": "PT32M49S",
-          "vistas": 10871,
-          "likes": 222,
+          "vistas": 10911,
+          "likes": 224,
           "comentarios": 12
         },
         {
@@ -88,8 +88,8 @@
           "publishedAt": "2023-08-17T08:34:55Z",
           "posicion": 5,
           "duracion": "PT14M49S",
-          "vistas": 5780,
-          "likes": 136,
+          "vistas": 5799,
+          "likes": 137,
           "comentarios": 11
         },
         {
@@ -101,8 +101,8 @@
           "publishedAt": "2023-08-19T10:15:24Z",
           "posicion": 6,
           "duracion": "PT19M44S",
-          "vistas": 1731,
-          "likes": 61,
+          "vistas": 1738,
+          "likes": 62,
           "comentarios": 4
         },
         {
@@ -114,8 +114,8 @@
           "publishedAt": "2023-08-21T11:07:18Z",
           "posicion": 7,
           "duracion": "PT12M14S",
-          "vistas": 2699,
-          "likes": 67,
+          "vistas": 2712,
+          "likes": 68,
           "comentarios": 2
         },
         {
@@ -127,8 +127,8 @@
           "publishedAt": "2023-08-22T09:52:11Z",
           "posicion": 8,
           "duracion": "PT26M24S",
-          "vistas": 2058,
-          "likes": 82,
+          "vistas": 2072,
+          "likes": 84,
           "comentarios": 9
         },
         {
@@ -140,7 +140,7 @@
           "publishedAt": "2023-08-27T11:54:32Z",
           "posicion": 9,
           "duracion": "PT20M7S",
-          "vistas": 8631,
+          "vistas": 8651,
           "likes": 152,
           "comentarios": 12
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2023-08-23T04:22:12Z",
           "posicion": 10,
           "duracion": "PT19M8S",
-          "vistas": 7363,
+          "vistas": 7385,
           "likes": 119,
           "comentarios": 8
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2023-08-24T10:07:33Z",
           "posicion": 11,
           "duracion": "PT24M20S",
-          "vistas": 1366,
+          "vistas": 1373,
           "likes": 36,
           "comentarios": 2
         },
@@ -179,7 +179,7 @@
           "publishedAt": "2023-09-10T06:00:03Z",
           "posicion": 12,
           "duracion": "PT27M21S",
-          "vistas": 2166,
+          "vistas": 2171,
           "likes": 44,
           "comentarios": 2
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2023-09-11T05:20:23Z",
           "posicion": 13,
           "duracion": "PT15M36S",
-          "vistas": 6360,
+          "vistas": 6372,
           "likes": 46,
           "comentarios": 2
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2023-09-12T06:21:38Z",
           "posicion": 14,
           "duracion": "PT13M9S",
-          "vistas": 4877,
+          "vistas": 4923,
           "likes": 43,
           "comentarios": 3
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2023-09-14T09:59:13Z",
           "posicion": 15,
           "duracion": "PT18M17S",
-          "vistas": 8412,
+          "vistas": 8440,
           "likes": 57,
           "comentarios": 2
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2023-09-14T09:52:30Z",
           "posicion": 16,
           "duracion": "PT31M56S",
-          "vistas": 1556,
+          "vistas": 1564,
           "likes": 22,
           "comentarios": 3
         }
@@ -245,32 +245,70 @@
       "playlistId": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "orden": 2,
-      "totalVideos": 5,
+      "totalVideos": 8,
       "videos": [
         {
-          "id": "kJzw5JPC6AI",
-          "titulo": "Cómo agregar un grafico al pasar el cursor | Power BI | TOOLTIP",
-          "descripcion": "📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
-          "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
-          "url": "https://www.youtube.com/watch?v=kJzw5JPC6AI",
-          "publishedAt": "2023-12-13T01:48:40Z",
+          "id": "4CeoapJCCoE",
+          "titulo": "Private video",
+          "descripcion": "This video is private.",
+          "url": "https://www.youtube.com/watch?v=4CeoapJCCoE",
+          "publishedAt": "2025-11-09T07:05:09Z",
           "posicion": 0,
-          "duracion": "PT5M5S",
-          "vistas": 3329,
-          "likes": 57,
-          "comentarios": 6
+          "duracion": "PT0S",
+          "vistas": 0,
+          "likes": 0,
+          "comentarios": 0
         },
         {
-          "id": "Q6vUPD3f4bs",
-          "titulo": "Comparar Periodos sin usar DAX | Power BI | Editar interacciones",
+          "id": "LXwH60B973Q",
+          "titulo": "Como poner power bi en modo oscturo",
           "descripcion": "",
-          "thumbnail": "https://i.ytimg.com/vi/Q6vUPD3f4bs/hqdefault.jpg",
-          "url": "https://www.youtube.com/watch?v=Q6vUPD3f4bs",
-          "publishedAt": "2023-12-13T20:00:23Z",
+          "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=LXwH60B973Q",
+          "publishedAt": "2025-11-09T07:01:38Z",
           "posicion": 1,
-          "duracion": "PT4M48S",
-          "vistas": 308,
-          "likes": 10,
+          "duracion": "PT2M41S",
+          "vistas": 3,
+          "likes": 1,
+          "comentarios": 0
+        },
+        {
+          "id": "0i8W5wucIMc",
+          "titulo": "Por qué no funcionan los filtros cruzados en Power BI y cómo solucionarlo paso a paso",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/0i8W5wucIMc/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=0i8W5wucIMc",
+          "publishedAt": "2025-11-08T00:43:35Z",
+          "posicion": 2,
+          "duracion": "PT1M52S",
+          "vistas": 20,
+          "likes": 2,
+          "comentarios": 1
+        },
+        {
+          "id": "rvVwrHtI4gQ",
+          "titulo": "Atajo de teclado para crear medidas en POWER BI",
+          "descripcion": "📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog \n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog",
+          "thumbnail": "https://i.ytimg.com/vi/rvVwrHtI4gQ/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
+          "publishedAt": "2025-10-31T23:23:30Z",
+          "posicion": 3,
+          "duracion": "PT5M23S",
+          "vistas": 16,
+          "likes": 3,
+          "comentarios": 0
+        },
+        {
+          "id": "y_rVPdd-RNY",
+          "titulo": "Cómo crear un segmentador con medidas usando parámetros de campo en Power BI",
+          "descripcion": "📌 Puedes descargar el archivo del proyecto (.pbix) desde aquí:\nhttps://drive.google.com/drive/folders/1Bma_bAd1XMQff4R3FpgQA8pjaToMRneg?usp=sharing\n\n💬 Conecta conmigo \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog",
+          "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
+          "publishedAt": "2025-10-31T23:08:30Z",
+          "posicion": 4,
+          "duracion": "PT2M58S",
+          "vistas": 20,
+          "likes": 2,
           "comentarios": 0
         },
         {
@@ -280,36 +318,37 @@
           "thumbnail": "https://i.ytimg.com/vi/6rc09OdwHlk/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=6rc09OdwHlk",
           "publishedAt": "2024-01-28T23:18:41Z",
-          "posicion": 2,
+          "posicion": 5,
           "duracion": "PT10M38S",
-          "vistas": 9005,
-          "likes": 113,
+          "vistas": 9063,
+          "likes": 114,
           "comentarios": 2
         },
         {
-          "id": "y_rVPdd-RNY",
-          "titulo": "Cómo crear un segmentador con medidas usando parámetros de campo en Power BI",
-          "descripcion": "📌 Puedes descargar el archivo del proyecto (.pbix) desde aquí:\nhttps://drive.google.com/drive/folders/1Bma_bAd1XMQff4R3FpgQA8pjaToMRneg?usp=sharing\n\n💬 Conecta conmigo \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog",
-          "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
-          "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
-          "publishedAt": "2025-10-31T23:08:30Z",
-          "posicion": 3,
-          "duracion": "PT2M58S",
-          "vistas": 3,
-          "likes": 1,
+          "id": "Q6vUPD3f4bs",
+          "titulo": "Comparar Periodos sin usar DAX | Power BI | Editar interacciones",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/Q6vUPD3f4bs/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Q6vUPD3f4bs",
+          "publishedAt": "2023-12-13T20:00:23Z",
+          "posicion": 6,
+          "duracion": "PT4M48S",
+          "vistas": 310,
+          "likes": 10,
           "comentarios": 0
         },
         {
-          "id": "rvVwrHtI4gQ",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
-          "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
-          "publishedAt": "2025-10-31T23:23:30Z",
-          "posicion": 4,
-          "duracion": "PT0S",
-          "vistas": 0,
-          "likes": 0,
-          "comentarios": 0
+          "id": "kJzw5JPC6AI",
+          "titulo": "Cómo agregar un grafico al pasar el cursor | Power BI | TOOLTIP",
+          "descripcion": "📌Descarga de Archivos:\nhttps://drive.google.com/drive/folders/1w41Ka4vgTT46tNDuMlNLU4n0OosLNDD0?usp=sharing",
+          "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=kJzw5JPC6AI",
+          "publishedAt": "2023-12-13T01:48:40Z",
+          "posicion": 7,
+          "duracion": "PT5M5S",
+          "vistas": 3358,
+          "likes": 57,
+          "comentarios": 6
         }
       ]
     }
