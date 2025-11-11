@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2025-11-10T14:21:18.348Z",
+  "fechaActualizacion": "2025-11-11T14:21:22.848Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "4CeoapJCCoE",
+      "title": "Como ordenar medidas de Power Bi en carpetas",
+      "url": "https://www.youtube.com/watch?v=4CeoapJCCoE",
+      "thumbnail": "https://i.ytimg.com/vi/4CeoapJCCoE/hqdefault.jpg",
+      "publishedAt": "2025-11-11T12:00:09Z",
+      "description": ""
+    },
     {
       "id": "LXwH60B973Q",
       "title": "Como poner power bi en modo oscturo",
@@ -17,14 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/0i8W5wucIMc/hqdefault.jpg",
       "publishedAt": "2025-11-08T00:44:15Z",
       "description": ""
-    },
-    {
-      "id": "pHAb6YNGRl4",
-      "title": "Registros huérfanos al eliminar datos en SQL | LEFT JOIN vs INNER JOIN | Curso de SQL Intermedio #8",
-      "url": "https://www.youtube.com/watch?v=pHAb6YNGRl4",
-      "thumbnail": "https://i.ytimg.com/vi/pHAb6YNGRl4/hqdefault.jpg",
-      "publishedAt": "2025-11-06T12:01:41Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
     }
   ]
 }
