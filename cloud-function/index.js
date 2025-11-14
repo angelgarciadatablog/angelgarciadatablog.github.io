@@ -490,19 +490,24 @@ exports.getYouTubeVideos = async (req, res) => {
       // Obtener videos recientes
       const videos = await fetchYouTubeVideos(apiKey, channelId);
 
+      // Programación defensiva: Limitar al número solicitado
+      // Aunque YouTube API devuelva más videos de los solicitados,
+      // garantizamos que solo se devuelvan los primeros CONFIG.youtube.maxVideos
+      const limitedVideos = videos.slice(0, CONFIG.youtube.maxVideos);
+
       // Guardar en caché
       videoCache = {
-        data: videos,
+        data: limitedVideos,
         timestamp: Date.now(),
         cacheKey: 'recent_videos'
       };
 
-      console.log(`Recent videos fetched: ${videos.length}`);
+      console.log(`Recent videos fetched: ${limitedVideos.length}`);
 
       return res.status(200).json({
         success: true,
         action: 'getRecentVideos',
-        data: videos,
+        data: limitedVideos,
         cached: false,
         timestamp: new Date().toISOString()
       });
