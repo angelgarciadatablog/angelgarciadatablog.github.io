@@ -1,15 +1,7 @@
 {
-  "fechaActualizacion": "2025-11-14T17:40:01.661Z",
+  "fechaActualizacion": "2025-11-15T14:17:21.056Z",
   "totalVideos": 3,
   "videos": [
-    {
-      "id": "jjSc5_qsHT0",
-      "title": "Crear una tabla filtrada por la columna de otra tabla en Power BI - FILTER y CALCULATE",
-      "url": "https://www.youtube.com/watch?v=jjSc5_qsHT0",
-      "thumbnail": "https://i.ytimg.com/vi/jjSc5_qsHT0/hqdefault.jpg",
-      "publishedAt": "2025-11-14T12:01:54Z",
-      "description": ""
-    },
     {
       "id": "qytf-g55XFE",
       "title": "Comparar Ventas Año vs Año en Power BI | SAMEPERIODLASTYEAR | parte 2",
@@ -25,6 +17,14 @@
       "thumbnail": "https://i.ytimg.com/vi/Q3olnvgueTQ/hqdefault.jpg",
       "publishedAt": "2025-11-13T14:37:05Z",
       "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
+    },
+    {
+      "id": "LXwH60B973Q",
+      "title": "Como poner power bi en modo oscturo",
+      "url": "https://www.youtube.com/watch?v=LXwH60B973Q",
+      "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
+      "publishedAt": "2025-11-10T12:00:44Z",
+      "description": ""
     }
   ]
 }
