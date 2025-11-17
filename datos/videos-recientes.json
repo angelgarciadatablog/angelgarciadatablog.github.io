@@ -1,7 +1,23 @@
 {
-  "fechaActualizacion": "2025-11-16T14:17:46.014Z",
+  "fechaActualizacion": "2025-11-17T14:21:15.807Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "f144Cg6EGxE",
+      "title": "Power BI + Visual Studio Code: Accede a tablas y medidas",
+      "url": "https://www.youtube.com/watch?v=f144Cg6EGxE",
+      "thumbnail": "https://i.ytimg.com/vi/f144Cg6EGxE/hqdefault.jpg",
+      "publishedAt": "2025-11-17T12:01:24Z",
+      "description": ""
+    },
+    {
+      "id": "8_fVq-UewMc",
+      "title": "Documenta todas tus Medidas de Power BI en 1 Minuto",
+      "url": "https://www.youtube.com/watch?v=8_fVq-UewMc",
+      "thumbnail": "https://i.ytimg.com/vi/8_fVq-UewMc/hqdefault.jpg",
+      "publishedAt": "2025-11-17T12:00:14Z",
+      "description": ""
+    },
     {
       "id": "qytf-g55XFE",
       "title": "Comparar Ventas Año vs Año en Power BI | SAMEPERIODLASTYEAR | parte 2",
@@ -9,22 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/qytf-g55XFE/hqdefault.jpg",
       "publishedAt": "2025-11-13T14:38:09Z",
       "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
-    },
-    {
-      "id": "Q3olnvgueTQ",
-      "title": "Comparar Ventas Año vs Año en Power BI | SAMEPERIODLASTYEAR | parte 1",
-      "url": "https://www.youtube.com/watch?v=Q3olnvgueTQ",
-      "thumbnail": "https://i.ytimg.com/vi/Q3olnvgueTQ/hqdefault.jpg",
-      "publishedAt": "2025-11-13T14:37:05Z",
-      "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
-    },
-    {
-      "id": "LXwH60B973Q",
-      "title": "Como poner power bi en modo oscturo",
-      "url": "https://www.youtube.com/watch?v=LXwH60B973Q",
-      "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
-      "publishedAt": "2025-11-10T12:00:44Z",
-      "description": ""
     }
   ]
 }
