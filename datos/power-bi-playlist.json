@@ -2,7 +2,7 @@
   "curso": "power-bi",
   "titulo": "Curso de Power BI desde Cero",
   "descripcion": "Curso completo de Power BI con DAX básico",
-  "fechaActualizacion": "2025-11-10T14:18:47.450Z",
+  "fechaActualizacion": "2025-11-17T14:18:42.715Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-08-14T07:17:54Z",
           "posicion": 0,
           "duracion": "PT5M56S",
-          "vistas": 8887,
+          "vistas": 8948,
           "likes": 186,
           "comentarios": 5
         },
@@ -36,7 +36,7 @@
           "publishedAt": "2023-08-10T06:48:36Z",
           "posicion": 1,
           "duracion": "PT28M38S",
-          "vistas": 9656,
+          "vistas": 9691,
           "likes": 185,
           "comentarios": 13
         },
@@ -49,8 +49,8 @@
           "publishedAt": "2023-08-14T04:11:39Z",
           "posicion": 2,
           "duracion": "PT7M5S",
-          "vistas": 1390,
-          "likes": 27,
+          "vistas": 1398,
+          "likes": 28,
           "comentarios": 2
         },
         {
@@ -62,8 +62,8 @@
           "publishedAt": "2023-08-11T06:07:02Z",
           "posicion": 3,
           "duracion": "PT15M10S",
-          "vistas": 11899,
-          "likes": 293,
+          "vistas": 11960,
+          "likes": 295,
           "comentarios": 24
         },
         {
@@ -75,7 +75,7 @@
           "publishedAt": "2023-08-14T08:51:24Z",
           "posicion": 4,
           "duracion": "PT32M49S",
-          "vistas": 10911,
+          "vistas": 10961,
           "likes": 224,
           "comentarios": 12
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2023-08-17T08:34:55Z",
           "posicion": 5,
           "duracion": "PT14M49S",
-          "vistas": 5799,
+          "vistas": 5819,
           "likes": 137,
           "comentarios": 11
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2023-08-19T10:15:24Z",
           "posicion": 6,
           "duracion": "PT19M44S",
-          "vistas": 1738,
+          "vistas": 1746,
           "likes": 62,
           "comentarios": 4
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2023-08-21T11:07:18Z",
           "posicion": 7,
           "duracion": "PT12M14S",
-          "vistas": 2712,
+          "vistas": 2722,
           "likes": 68,
           "comentarios": 2
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2023-08-22T09:52:11Z",
           "posicion": 8,
           "duracion": "PT26M24S",
-          "vistas": 2072,
+          "vistas": 2088,
           "likes": 84,
           "comentarios": 9
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2023-08-27T11:54:32Z",
           "posicion": 9,
           "duracion": "PT20M7S",
-          "vistas": 8651,
+          "vistas": 8668,
           "likes": 152,
           "comentarios": 12
         },
@@ -153,8 +153,8 @@
           "publishedAt": "2023-08-23T04:22:12Z",
           "posicion": 10,
           "duracion": "PT19M8S",
-          "vistas": 7385,
-          "likes": 119,
+          "vistas": 7415,
+          "likes": 121,
           "comentarios": 8
         },
         {
@@ -179,7 +179,7 @@
           "publishedAt": "2023-09-10T06:00:03Z",
           "posicion": 12,
           "duracion": "PT27M21S",
-          "vistas": 2171,
+          "vistas": 2174,
           "likes": 44,
           "comentarios": 2
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2023-09-11T05:20:23Z",
           "posicion": 13,
           "duracion": "PT15M36S",
-          "vistas": 6372,
+          "vistas": 6379,
           "likes": 46,
           "comentarios": 2
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2023-09-12T06:21:38Z",
           "posicion": 14,
           "duracion": "PT13M9S",
-          "vistas": 4923,
+          "vistas": 4962,
           "likes": 43,
           "comentarios": 3
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2023-09-14T09:59:13Z",
           "posicion": 15,
           "duracion": "PT18M17S",
-          "vistas": 8440,
+          "vistas": 8481,
           "likes": 57,
           "comentarios": 2
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2023-09-14T09:52:30Z",
           "posicion": 16,
           "duracion": "PT31M56S",
-          "vistas": 1564,
+          "vistas": 1568,
           "likes": 22,
           "comentarios": 3
         }
@@ -245,15 +245,41 @@
       "playlistId": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "orden": 2,
-      "totalVideos": 8,
+      "totalVideos": 10,
       "videos": [
         {
+          "id": "8_fVq-UewMc",
+          "titulo": "Documenta todas tus Medidas de Power BI en 1 Minuto",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/8_fVq-UewMc/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=8_fVq-UewMc",
+          "publishedAt": "2025-11-16T09:32:46Z",
+          "posicion": 0,
+          "duracion": "PT11M8S",
+          "vistas": 16,
+          "likes": 4,
+          "comentarios": 0
+        },
+        {
+          "id": "f144Cg6EGxE",
+          "titulo": "Power BI + Visual Studio Code: Accede a tablas y medidas",
+          "descripcion": "",
+          "thumbnail": "https://i.ytimg.com/vi/f144Cg6EGxE/hqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=f144Cg6EGxE",
+          "publishedAt": "2025-11-16T08:58:50Z",
+          "posicion": 1,
+          "duracion": "PT8M5S",
+          "vistas": 3,
+          "likes": 1,
+          "comentarios": 0
+        },
+        {
           "id": "4CeoapJCCoE",
-          "titulo": "Private video",
-          "descripcion": "This video is private.",
+          "titulo": "Deleted video",
+          "descripcion": "This video is unavailable.",
           "url": "https://www.youtube.com/watch?v=4CeoapJCCoE",
           "publishedAt": "2025-11-09T07:05:09Z",
-          "posicion": 0,
+          "posicion": 2,
           "duracion": "PT0S",
           "vistas": 0,
           "likes": 0,
@@ -266,9 +292,9 @@
           "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=LXwH60B973Q",
           "publishedAt": "2025-11-09T07:01:38Z",
-          "posicion": 1,
+          "posicion": 3,
           "duracion": "PT2M41S",
-          "vistas": 3,
+          "vistas": 11,
           "likes": 1,
           "comentarios": 0
         },
@@ -279,9 +305,9 @@
           "thumbnail": "https://i.ytimg.com/vi/0i8W5wucIMc/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=0i8W5wucIMc",
           "publishedAt": "2025-11-08T00:43:35Z",
-          "posicion": 2,
+          "posicion": 4,
           "duracion": "PT1M52S",
-          "vistas": 20,
+          "vistas": 24,
           "likes": 2,
           "comentarios": 1
         },
@@ -292,9 +318,9 @@
           "thumbnail": "https://i.ytimg.com/vi/rvVwrHtI4gQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=rvVwrHtI4gQ",
           "publishedAt": "2025-10-31T23:23:30Z",
-          "posicion": 3,
+          "posicion": 5,
           "duracion": "PT5M23S",
-          "vistas": 16,
+          "vistas": 18,
           "likes": 3,
           "comentarios": 0
         },
@@ -305,9 +331,9 @@
           "thumbnail": "https://i.ytimg.com/vi/y_rVPdd-RNY/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=y_rVPdd-RNY",
           "publishedAt": "2025-10-31T23:08:30Z",
-          "posicion": 4,
+          "posicion": 6,
           "duracion": "PT2M58S",
-          "vistas": 20,
+          "vistas": 21,
           "likes": 2,
           "comentarios": 0
         },
@@ -318,10 +344,10 @@
           "thumbnail": "https://i.ytimg.com/vi/6rc09OdwHlk/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=6rc09OdwHlk",
           "publishedAt": "2024-01-28T23:18:41Z",
-          "posicion": 5,
+          "posicion": 7,
           "duracion": "PT10M38S",
-          "vistas": 9063,
-          "likes": 114,
+          "vistas": 9119,
+          "likes": 115,
           "comentarios": 2
         },
         {
@@ -331,7 +357,7 @@
           "thumbnail": "https://i.ytimg.com/vi/Q6vUPD3f4bs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q6vUPD3f4bs",
           "publishedAt": "2023-12-13T20:00:23Z",
-          "posicion": 6,
+          "posicion": 8,
           "duracion": "PT4M48S",
           "vistas": 310,
           "likes": 10,
@@ -344,9 +370,9 @@
           "thumbnail": "https://i.ytimg.com/vi/kJzw5JPC6AI/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=kJzw5JPC6AI",
           "publishedAt": "2023-12-13T01:48:40Z",
-          "posicion": 7,
+          "posicion": 9,
           "duracion": "PT5M5S",
-          "vistas": 3358,
+          "vistas": 3389,
           "likes": 57,
           "comentarios": 6
         }

@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-11-10T14:18:46.753Z",
+  "fechaActualizacion": "2025-11-17T14:18:42.120Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 396,
-          "likes": 17,
+          "vistas": 410,
+          "likes": 18,
           "comentarios": 2
         },
         {
@@ -36,7 +36,7 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 237,
+          "vistas": 261,
           "likes": 9,
           "comentarios": 0
         },
@@ -49,8 +49,8 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 128,
-          "likes": 2,
+          "vistas": 135,
+          "likes": 4,
           "comentarios": 2
         },
         {
@@ -62,8 +62,8 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 116,
-          "likes": 3,
+          "vistas": 123,
+          "likes": 4,
           "comentarios": 1
         },
         {
@@ -75,8 +75,8 @@
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 162,
-          "likes": 2,
+          "vistas": 168,
+          "likes": 3,
           "comentarios": 0
         },
         {
@@ -88,7 +88,7 @@
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 79,
+          "vistas": 82,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,8 +101,8 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 277,
-          "likes": 12,
+          "vistas": 281,
+          "likes": 13,
           "comentarios": 2
         },
         {
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 55,
+          "vistas": 57,
           "likes": 1,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 42,
+          "vistas": 45,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 35,
+          "vistas": 38,
           "likes": 2,
           "comentarios": 1
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 58,
+          "vistas": 59,
           "likes": 2,
           "comentarios": 0
         },
@@ -166,21 +166,21 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 215,
-          "likes": 7,
+          "vistas": 237,
+          "likes": 11,
           "comentarios": 2
         },
         {
           "id": "BQnwEe6r4Fg",
           "titulo": "Cláusulas básicas de SQL en Big Query | Curso de SQL BigQuery #13",
-          "descripcion": "En este capítulo del curso BigQuery con Google Analytics 4, aprenderás las cláusulas básicas de SQL y el orden real de ejecución dentro de una consulta. Revisaremos SELECT, FROM, WHERE, GROUP BY, HAVING y ORDER BY, y veremos cómo se combinan con funciones útiles para transformar y limpiar datos.\n\n📌 Temas:\n✅ Cláusulas básicas de SQL\n✅ El orden correcto de las cláusulas en SQL.\n✅ Funciones prácticas como CONCAT, SPLIT, IF, CASE WHEN y más.\n✅ Casos de uso con datos reales de Google Analytics 4.\n\n💡 Tip: Conocer el orden de ejecución en SQL te ayudará a escribir consultas más eficientes y evitar errores comunes al analizar datos en BigQuery.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n��� Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo del curso BigQuery con Google Analytics 4, aprenderás las cláusulas básicas de SQL y el orden real de ejecución dentro de una consulta. Revisaremos SELECT, FROM, WHERE, GROUP BY, HAVING y ORDER BY, y veremos cómo se combinan con funciones útiles para transformar y limpiar datos.\n\n📌 Temas:\n✅ Cláusulas básicas de SQL\n✅ El orden correcto de las cláusulas en SQL.\n✅ Funciones prácticas como CONCAT, SPLIT, IF, CASE WHEN y más.\n✅ Casos de uso con datos reales de Google Analytics 4.\n\n💡 Tip: Conocer el orden de ejecución en SQL te ayudará a escribir consultas más eficientes y evitar errores comunes al analizar datos en BigQuery.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/BQnwEe6r4Fg/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=BQnwEe6r4Fg",
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 40,
-          "likes": 0,
+          "vistas": 45,
+          "likes": 2,
           "comentarios": 0
         },
         {
@@ -192,7 +192,7 @@
           "publishedAt": "2025-08-15T05:10:50Z",
           "posicion": 13,
           "duracion": "PT6M20S",
-          "vistas": 35,
+          "vistas": 36,
           "likes": 0,
           "comentarios": 0
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 27,
+          "vistas": 29,
           "likes": 1,
           "comentarios": 0
         },
@@ -218,8 +218,8 @@
           "publishedAt": "2025-08-15T09:17:06Z",
           "posicion": 15,
           "duracion": "PT6M14S",
-          "vistas": 18,
-          "likes": 0,
+          "vistas": 19,
+          "likes": 1,
           "comentarios": 0
         },
         {
@@ -231,7 +231,7 @@
           "publishedAt": "2025-08-15T09:23:28Z",
           "posicion": 16,
           "duracion": "PT3M54S",
-          "vistas": 11,
+          "vistas": 12,
           "likes": 0,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 35,
+          "vistas": 37,
           "likes": 0,
           "comentarios": 0
         },
@@ -316,7 +316,7 @@
         {
           "id": "NQpnc4YfuQo",
           "titulo": "Cómo usar TRANSLATE en SQL | Replace vs Translate | Curso de SQL BigQuery #24",
-          "descripcion": "En este capítulo revisaremos la función TRANSLATE en SQL, entendiendo sus diferencias con la función REPLACE.\n\n📌Temas:\n✅ Diferencia entre REPLACE y TRANSLATE en SQL.\n✅ Cómo reemplazar un carácter o varios a la vez.\n✅ Ejemplos prácticos con cadenas de texto y limpieza de datos (cambiar todas la vocales)\n✅ Casos reales como normalizar correos o eliminar caracteres especiales.\n\n�� Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos la función TRANSLATE en SQL, entendiendo sus diferencias con la función REPLACE.\n\n📌Temas:\n✅ Diferencia entre REPLACE y TRANSLATE en SQL.\n✅ Cómo reemplazar un carácter o varios a la vez.\n✅ Ejemplos prácticos con cadenas de texto y limpieza de datos (cambiar todas la vocales)\n✅ Casos reales como normalizar correos o eliminar caracteres especiales.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/NQpnc4YfuQo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NQpnc4YfuQo",
           "publishedAt": "2025-08-15T09:58:19Z",
@@ -361,7 +361,7 @@
           "publishedAt": "2025-08-16T07:21:24Z",
           "posicion": 26,
           "duracion": "PT8M19S",
-          "vistas": 31,
+          "vistas": 32,
           "likes": 2,
           "comentarios": 0
         },
@@ -439,7 +439,7 @@
           "publishedAt": "2025-08-16T07:35:33Z",
           "posicion": 32,
           "duracion": "PT7M47S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -478,7 +478,7 @@
           "publishedAt": "2025-08-16T07:42:02Z",
           "posicion": 35,
           "duracion": "PT7M1S",
-          "vistas": 33,
+          "vistas": 36,
           "likes": 1,
           "comentarios": 0
         },
@@ -491,7 +491,7 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 22,
+          "vistas": 25,
           "likes": 0,
           "comentarios": 0
         },
@@ -524,7 +524,7 @@
         {
           "id": "5BEWVMsLsBo",
           "titulo": "WHERE en SQL: cómo usar la cláusula WHERE con ejemplos en GA4 | Curso de SQL BigQuery #40",
-          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula WHERE en SQL BigQuery, que nos permite filtrar los resultados de una tabla según una o varias condiciones. Veremos tanto la sintaxis correcta como el orden real de ejecución en SQL, además de ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Qué es la cláusula WHERE y cómo funciona en SQL BigQuery.\n✅ Diferencia entre sintaxis y orden de ejecuci��n (FROM → WHERE → SELECT).\n✅ Filtrar por columnas de texto y valores numéricos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula WHERE en SQL BigQuery, que nos permite filtrar los resultados de una tabla según una o varias condiciones. Veremos tanto la sintaxis correcta como el orden real de ejecución en SQL, además de ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Qué es la cláusula WHERE y cómo funciona en SQL BigQuery.\n✅ Diferencia entre sintaxis y orden de ejecución (FROM → WHERE → SELECT).\n✅ Filtrar por columnas de texto y valores numéricos.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/5BEWVMsLsBo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=5BEWVMsLsBo",
           "publishedAt": "2025-08-16T14:24:03Z",
@@ -608,7 +608,7 @@
           "publishedAt": "2025-08-16T14:37:07Z",
           "posicion": 45,
           "duracion": "PT10M52S",
-          "vistas": 48,
+          "vistas": 49,
           "likes": 2,
           "comentarios": 0
         },
@@ -634,7 +634,7 @@
           "publishedAt": "2025-08-18T12:11:13Z",
           "posicion": 47,
           "duracion": "PT6M1S",
-          "vistas": 22,
+          "vistas": 24,
           "likes": 3,
           "comentarios": 0
         },
@@ -685,7 +685,7 @@
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 46,
+          "vistas": 48,
           "likes": 3,
           "comentarios": 0
         },
@@ -698,7 +698,7 @@
           "publishedAt": "2025-10-07T08:55:56Z",
           "posicion": 1,
           "duracion": "PT8M31S",
-          "vistas": 14,
+          "vistas": 20,
           "likes": 0,
           "comentarios": 0
         },
@@ -783,7 +783,7 @@
         {
           "id": "njqE2uGyysQ",
           "titulo": "ALTER TABLE en SQL | Modificar la estructura de una tabla |Consulta DDL| Curso de SQL Intermedio #9",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n────────────────────────────��─  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/njqE2uGyysQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
           "publishedAt": "2025-10-07T19:59:45Z",
@@ -827,7 +827,7 @@
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-          "vistas": 20,
+          "vistas": 23,
           "likes": 0,
           "comentarios": 0
         },
@@ -853,46 +853,46 @@
           "publishedAt": "2025-10-19T16:33:28Z",
           "posicion": 2,
           "duracion": "PT5M54S",
-          "vistas": 13,
+          "vistas": 15,
           "likes": 2,
           "comentarios": 0
         },
         {
           "id": "i6Cfsd0CP2g",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n────────────────────────���─────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
-          "vistas": 22,
+          "vistas": 26,
           "likes": 1,
           "comentarios": 2
         },
         {
           "id": "Q7BvnpCsUAU",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────��───────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n�� Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
           "publishedAt": "2025-10-19T16:33:34Z",
           "posicion": 4,
           "duracion": "PT12M8S",
-          "vistas": 13,
+          "vistas": 14,
           "likes": 1,
           "comentarios": 0
         },
         {
           "id": "zToHhAif9Gw",
           "titulo": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n─────────────────────���────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
           "publishedAt": "2025-11-02T07:01:04Z",
           "posicion": 5,
           "duracion": "PT15M51S",
-          "vistas": 14,
+          "vistas": 15,
           "likes": 2,
           "comentarios": 0
         },
@@ -918,7 +918,7 @@
           "publishedAt": "2025-11-02T07:05:32Z",
           "posicion": 7,
           "duracion": "PT13M35S",
-          "vistas": 8,
+          "vistas": 11,
           "likes": 2,
           "comentarios": 0
         }
