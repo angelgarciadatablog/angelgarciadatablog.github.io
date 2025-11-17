@@ -1,7 +1,34 @@
 {
-  "fechaActualizacion": "2025-11-10T14:17:51.031Z",
-  "totalPlaylists": 10,
+  "fechaActualizacion": "2025-11-17T14:17:52.503Z",
+  "totalPlaylists": 13,
   "playlists": [
+    {
+      "id": "PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi",
+      "title": "Power Bi - Ejercicios",
+      "description": "Ejercicios prácticos de Power BI para reforzar conceptos clave, mejorar el análisis y aplicar técnicas paso a paso en situaciones reales",
+      "thumbnail": "https://i.ytimg.com/img/no_thumbnail.jpg",
+      "publishedAt": "2025-11-14T19:58:40.555568Z",
+      "videoCount": 0,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi"
+    },
+    {
+      "id": "PLV4oS06_KpqYRtYRoQHo_F_KsEjmqcDK7",
+      "title": "Power Bi - Dax Avanzado",
+      "description": "Aprende funciones DAX avanzadas aplicadas a casos reales en Power BI, explicadas de forma práctica y directa. Ideal para llevar tu modelado y tus análisis al siguiente nivel",
+      "thumbnail": "https://i.ytimg.com/img/no_thumbnail.jpg",
+      "publishedAt": "2025-11-14T07:55:25.117707Z",
+      "videoCount": 5,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqYRtYRoQHo_F_KsEjmqcDK7"
+    },
+    {
+      "id": "PLV4oS06_KpqZo5tENEyKr-Ha1wR4DZuHM",
+      "title": "Power Bi - Inteligencia de tiempo",
+      "description": "Aprende a analizar y visualizar datos temporales en Power BI: tendencias, comparaciones y periodos personalizados",
+      "thumbnail": "https://i.ytimg.com/vi/qytf-g55XFE/hqdefault.jpg",
+      "publishedAt": "2025-11-13T11:32:34.001662Z",
+      "videoCount": 2,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqZo5tENEyKr-Ha1wR4DZuHM"
+    },
     {
       "id": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
       "title": "Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto -  Nivel Intermedio 2.2",
@@ -42,9 +69,9 @@
       "id": "PLV4oS06_KpqamcyNZQTeta_OyuILoCavO",
       "title": "Power BI - Tips Variados",
       "description": "Pequeños trucos y consejos prácticos para mejorar tu manejo de Power BI. Aprende a optimizar tus reportes, descubrir funciones ocultas y ahorrar tiempo en tu día a día como analista.",
-      "thumbnail": "https://i.ytimg.com/vi/LXwH60B973Q/hqdefault.jpg",
+      "thumbnail": "https://i.ytimg.com/vi/8_fVq-UewMc/hqdefault.jpg",
       "publishedAt": "2023-12-12T20:43:06.037328Z",
-      "videoCount": 8,
+      "videoCount": 10,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqamcyNZQTeta_OyuILoCavO"
     },
     {
