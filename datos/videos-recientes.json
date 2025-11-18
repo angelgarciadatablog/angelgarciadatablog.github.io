@@ -1,7 +1,23 @@
 {
-  "fechaActualizacion": "2025-11-17T14:21:15.807Z",
+  "fechaActualizacion": "2025-11-18T14:21:26.450Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "8AMwesfk-DM",
+      "title": "Cómo usar FILTER y CALCULATE en Power BI - Ejemplo práctico 1 paso a paso",
+      "url": "https://www.youtube.com/watch?v=8AMwesfk-DM",
+      "thumbnail": "https://i.ytimg.com/vi/8AMwesfk-DM/hqdefault.jpg",
+      "publishedAt": "2025-11-18T12:00:28Z",
+      "description": ""
+    },
+    {
+      "id": "ffCLLOraLFA",
+      "title": "Cómo usar FILTER y CALCULATE en Power BI - Ejemplo práctico 2 paso a paso",
+      "url": "https://www.youtube.com/watch?v=ffCLLOraLFA",
+      "thumbnail": "https://i.ytimg.com/vi/ffCLLOraLFA/hqdefault.jpg",
+      "publishedAt": "2025-11-18T12:01:22Z",
+      "description": ""
+    },
     {
       "id": "f144Cg6EGxE",
       "title": "Power BI + Visual Studio Code: Accede a tablas y medidas",
@@ -9,22 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/f144Cg6EGxE/hqdefault.jpg",
       "publishedAt": "2025-11-17T12:01:24Z",
       "description": ""
-    },
-    {
-      "id": "8_fVq-UewMc",
-      "title": "Documenta todas tus Medidas de Power BI en 1 Minuto",
-      "url": "https://www.youtube.com/watch?v=8_fVq-UewMc",
-      "thumbnail": "https://i.ytimg.com/vi/8_fVq-UewMc/hqdefault.jpg",
-      "publishedAt": "2025-11-17T12:00:14Z",
-      "description": ""
-    },
-    {
-      "id": "qytf-g55XFE",
-      "title": "Comparar Ventas Año vs Año en Power BI | SAMEPERIODLASTYEAR | parte 2",
-      "url": "https://www.youtube.com/watch?v=qytf-g55XFE",
-      "thumbnail": "https://i.ytimg.com/vi/qytf-g55XFE/hqdefault.jpg",
-      "publishedAt": "2025-11-13T14:38:09Z",
-      "description": "Puedes descargar el archivo del proyecto (.pbix) desde aquí: ..."
     }
   ]
 }
