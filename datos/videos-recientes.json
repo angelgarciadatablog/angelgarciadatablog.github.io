@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2025-11-20T14:21:08.974Z",
+  "fechaActualizacion": "2025-11-21T14:20:25.583Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "J0GOADsEp4E",
+      "title": "Identifica qué clientes compran más con FILTER + CALCULATE (parte 2)",
+      "url": "https://www.youtube.com/watch?v=J0GOADsEp4E",
+      "thumbnail": "https://i.ytimg.com/vi/J0GOADsEp4E/hqdefault.jpg",
+      "publishedAt": "2025-11-21T12:00:42Z",
+      "description": ""
+    },
+    {
+      "id": "4v5Vv8fsR-g",
+      "title": "Identifica qué clientes compran más con FILTER + CALCULATE",
+      "url": "https://www.youtube.com/watch?v=4v5Vv8fsR-g",
+      "thumbnail": "https://i.ytimg.com/vi/4v5Vv8fsR-g/hqdefault.jpg",
+      "publishedAt": "2025-11-21T12:00:19Z",
+      "description": ""
+    },
     {
       "id": "8AMwesfk-DM",
       "title": "Cómo usar FILTER y CALCULATE en Power BI - Ejemplo práctico 1 paso a paso",
       "url": "https://www.youtube.com/watch?v=8AMwesfk-DM",
       "thumbnail": "https://i.ytimg.com/vi/8AMwesfk-DM/hqdefault.jpg",
       "publishedAt": "2025-11-18T12:00:28Z",
-      "description": ""
-    },
-    {
-      "id": "ffCLLOraLFA",
-      "title": "Cómo usar FILTER y CALCULATE en Power BI - Ejemplo práctico 2 paso a paso",
-      "url": "https://www.youtube.com/watch?v=ffCLLOraLFA",
-      "thumbnail": "https://i.ytimg.com/vi/ffCLLOraLFA/hqdefault.jpg",
-      "publishedAt": "2025-11-18T12:01:22Z",
-      "description": ""
-    },
-    {
-      "id": "f144Cg6EGxE",
-      "title": "Power BI + Visual Studio Code: Accede a tablas y medidas",
-      "url": "https://www.youtube.com/watch?v=f144Cg6EGxE",
-      "thumbnail": "https://i.ytimg.com/vi/f144Cg6EGxE/hqdefault.jpg",
-      "publishedAt": "2025-11-17T12:01:24Z",
       "description": ""
     }
   ]
