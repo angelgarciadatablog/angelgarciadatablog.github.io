@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-11-24T14:19:07.346Z",
+  "fechaActualizacion": "2025-12-01T14:20:23.913Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 435,
+          "vistas": 454,
           "likes": 19,
           "comentarios": 2
         },
@@ -36,7 +36,7 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 272,
+          "vistas": 286,
           "likes": 9,
           "comentarios": 0
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 143,
+          "vistas": 150,
           "likes": 4,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 129,
+          "vistas": 134,
           "likes": 4,
           "comentarios": 1
         },
@@ -75,7 +75,7 @@
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 173,
+          "vistas": 178,
           "likes": 3,
           "comentarios": 0
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 87,
+          "vistas": 89,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 284,
+          "vistas": 286,
           "likes": 13,
           "comentarios": 2
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 60,
+          "vistas": 62,
           "likes": 1,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 47,
+          "vistas": 48,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 40,
+          "vistas": 41,
           "likes": 2,
           "comentarios": 1
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 65,
+          "vistas": 67,
           "likes": 2,
           "comentarios": 0
         },
@@ -166,8 +166,8 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 253,
-          "likes": 11,
+          "vistas": 278,
+          "likes": 13,
           "comentarios": 2
         },
         {
@@ -179,7 +179,7 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 47,
+          "vistas": 49,
           "likes": 2,
           "comentarios": 0
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 30,
+          "vistas": 31,
           "likes": 1,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 39,
+          "vistas": 40,
           "likes": 0,
           "comentarios": 0
         },
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 36,
+          "vistas": 37,
           "likes": 2,
           "comentarios": 0
         },
@@ -400,7 +400,7 @@
           "publishedAt": "2025-08-16T07:27:54Z",
           "posicion": 29,
           "duracion": "PT5M18S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 2,
           "comentarios": 0
         },
@@ -465,7 +465,7 @@
           "publishedAt": "2025-08-16T07:40:35Z",
           "posicion": 34,
           "duracion": "PT10M24S",
-          "vistas": 18,
+          "vistas": 20,
           "likes": 4,
           "comentarios": 0
         },
@@ -491,7 +491,7 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 25,
+          "vistas": 26,
           "likes": 0,
           "comentarios": 0
         },
@@ -504,7 +504,7 @@
           "publishedAt": "2025-08-16T14:19:42Z",
           "posicion": 37,
           "duracion": "PT8M25S",
-          "vistas": 12,
+          "vistas": 15,
           "likes": 0,
           "comentarios": 0
         },
@@ -517,7 +517,7 @@
           "publishedAt": "2025-08-16T14:22:21Z",
           "posicion": 38,
           "duracion": "PT5M26S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 2,
           "comentarios": 0
         },
@@ -530,7 +530,7 @@
           "publishedAt": "2025-08-16T14:24:03Z",
           "posicion": 39,
           "duracion": "PT7M58S",
-          "vistas": 164,
+          "vistas": 165,
           "likes": 13,
           "comentarios": 0
         },
@@ -634,7 +634,7 @@
           "publishedAt": "2025-08-18T12:11:13Z",
           "posicion": 47,
           "duracion": "PT6M1S",
-          "vistas": 24,
+          "vistas": 25,
           "likes": 3,
           "comentarios": 0
         },
@@ -698,7 +698,7 @@
           "publishedAt": "2025-10-07T08:55:56Z",
           "posicion": 1,
           "duracion": "PT8M31S",
-          "vistas": 21,
+          "vistas": 23,
           "likes": 0,
           "comentarios": 0
         },
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 13,
+          "vistas": 14,
           "likes": 1,
           "comentarios": 0
         },
@@ -789,7 +789,7 @@
           "publishedAt": "2025-10-07T19:59:45Z",
           "posicion": 8,
           "duracion": "PT6M16S",
-          "vistas": 11,
+          "vistas": 12,
           "likes": 2,
           "comentarios": 0
         },
@@ -802,7 +802,7 @@
           "publishedAt": "2025-10-07T20:00:43Z",
           "posicion": 9,
           "duracion": "PT10M15S",
-          "vistas": 4,
+          "vistas": 5,
           "likes": 0,
           "comentarios": 0
         }
@@ -827,7 +827,7 @@
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 0,
           "comentarios": 0
         },
@@ -840,7 +840,7 @@
           "publishedAt": "2025-10-19T16:33:23Z",
           "posicion": 1,
           "duracion": "PT14M36S",
-          "vistas": 15,
+          "vistas": 16,
           "likes": 0,
           "comentarios": 0
         },
@@ -866,7 +866,7 @@
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
-          "vistas": 29,
+          "vistas": 32,
           "likes": 1,
           "comentarios": 2
         },
