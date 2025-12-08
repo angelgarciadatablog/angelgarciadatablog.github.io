@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2025-12-01T14:20:23.913Z",
+  "fechaActualizacion": "2025-12-08T14:20:53.792Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 454,
+          "vistas": 489,
           "likes": 19,
           "comentarios": 2
         },
@@ -36,8 +36,8 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 286,
-          "likes": 9,
+          "vistas": 313,
+          "likes": 10,
           "comentarios": 0
         },
         {
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 150,
+          "vistas": 165,
           "likes": 4,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 134,
+          "vistas": 152,
           "likes": 4,
           "comentarios": 1
         },
@@ -75,8 +75,8 @@
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 178,
-          "likes": 3,
+          "vistas": 192,
+          "likes": 4,
           "comentarios": 0
         },
         {
@@ -88,7 +88,7 @@
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 89,
+          "vistas": 95,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 286,
+          "vistas": 289,
           "likes": 13,
           "comentarios": 2
         },
@@ -114,8 +114,8 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 62,
-          "likes": 1,
+          "vistas": 65,
+          "likes": 2,
           "comentarios": 0
         },
         {
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 48,
+          "vistas": 54,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 41,
+          "vistas": 43,
           "likes": 2,
           "comentarios": 1
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 67,
+          "vistas": 71,
           "likes": 2,
           "comentarios": 0
         },
@@ -166,8 +166,8 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 278,
-          "likes": 13,
+          "vistas": 299,
+          "likes": 14,
           "comentarios": 2
         },
         {
@@ -179,7 +179,7 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 49,
+          "vistas": 52,
           "likes": 2,
           "comentarios": 0
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2025-08-15T05:10:50Z",
           "posicion": 13,
           "duracion": "PT6M20S",
-          "vistas": 39,
+          "vistas": 42,
           "likes": 0,
           "comentarios": 0
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 31,
+          "vistas": 34,
           "likes": 1,
           "comentarios": 0
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2025-08-15T09:17:06Z",
           "posicion": 15,
           "duracion": "PT6M14S",
-          "vistas": 20,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2025-08-15T09:23:28Z",
           "posicion": 16,
           "duracion": "PT3M54S",
-          "vistas": 14,
+          "vistas": 17,
           "likes": 0,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 40,
+          "vistas": 42,
           "likes": 0,
           "comentarios": 0
         },
@@ -257,7 +257,7 @@
           "publishedAt": "2025-08-15T09:32:06Z",
           "posicion": 18,
           "duracion": "PT7M50S",
-          "vistas": 15,
+          "vistas": 17,
           "likes": 0,
           "comentarios": 0
         },
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 37,
+          "vistas": 41,
           "likes": 2,
           "comentarios": 0
         },
@@ -283,7 +283,7 @@
           "publishedAt": "2025-08-15T09:46:14Z",
           "posicion": 20,
           "duracion": "PT5M32S",
-          "vistas": 15,
+          "vistas": 18,
           "likes": 0,
           "comentarios": 0
         },
@@ -296,7 +296,7 @@
           "publishedAt": "2025-08-15T09:52:09Z",
           "posicion": 21,
           "duracion": "PT3M18S",
-          "vistas": 22,
+          "vistas": 24,
           "likes": 0,
           "comentarios": 0
         },
@@ -309,7 +309,7 @@
           "publishedAt": "2025-08-15T09:54:34Z",
           "posicion": 22,
           "duracion": "PT4M5S",
-          "vistas": 27,
+          "vistas": 28,
           "likes": 1,
           "comentarios": 0
         },
@@ -322,7 +322,7 @@
           "publishedAt": "2025-08-15T09:58:19Z",
           "posicion": 23,
           "duracion": "PT9M9S",
-          "vistas": 76,
+          "vistas": 77,
           "likes": 4,
           "comentarios": 0
         },
@@ -335,7 +335,7 @@
           "publishedAt": "2025-08-16T07:15:30Z",
           "posicion": 24,
           "duracion": "PT5M2S",
-          "vistas": 14,
+          "vistas": 15,
           "likes": 0,
           "comentarios": 0
         },
@@ -361,7 +361,7 @@
           "publishedAt": "2025-08-16T07:21:24Z",
           "posicion": 26,
           "duracion": "PT8M19S",
-          "vistas": 35,
+          "vistas": 36,
           "likes": 2,
           "comentarios": 0
         },
@@ -374,7 +374,7 @@
           "publishedAt": "2025-08-16T07:23:05Z",
           "posicion": 27,
           "duracion": "PT5M47S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -465,7 +465,7 @@
           "publishedAt": "2025-08-16T07:40:35Z",
           "posicion": 34,
           "duracion": "PT10M24S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 4,
           "comentarios": 0
         },
@@ -491,7 +491,7 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 26,
+          "vistas": 28,
           "likes": 0,
           "comentarios": 0
         },
@@ -504,9 +504,9 @@
           "publishedAt": "2025-08-16T14:19:42Z",
           "posicion": 37,
           "duracion": "PT8M25S",
-          "vistas": 15,
-          "likes": 0,
-          "comentarios": 0
+          "vistas": 17,
+          "likes": 1,
+          "comentarios": 1
         },
         {
           "id": "kegfG0chZHI",
@@ -530,7 +530,7 @@
           "publishedAt": "2025-08-16T14:24:03Z",
           "posicion": 39,
           "duracion": "PT7M58S",
-          "vistas": 165,
+          "vistas": 166,
           "likes": 13,
           "comentarios": 0
         },
@@ -556,7 +556,7 @@
           "publishedAt": "2025-08-16T14:29:48Z",
           "posicion": 41,
           "duracion": "PT6M57S",
-          "vistas": 24,
+          "vistas": 25,
           "likes": 2,
           "comentarios": 0
         },
@@ -569,7 +569,7 @@
           "publishedAt": "2025-08-16T14:31:42Z",
           "posicion": 42,
           "duracion": "PT5M19S",
-          "vistas": 14,
+          "vistas": 15,
           "likes": 1,
           "comentarios": 0
         },
@@ -595,7 +595,7 @@
           "publishedAt": "2025-08-16T14:35:00Z",
           "posicion": 44,
           "duracion": "PT4M12S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 2,
           "comentarios": 0
         },
@@ -608,7 +608,7 @@
           "publishedAt": "2025-08-16T14:37:07Z",
           "posicion": 45,
           "duracion": "PT10M52S",
-          "vistas": 51,
+          "vistas": 52,
           "likes": 2,
           "comentarios": 0
         },
@@ -621,7 +621,7 @@
           "publishedAt": "2025-08-18T12:08:43Z",
           "posicion": 46,
           "duracion": "PT7M4S",
-          "vistas": 18,
+          "vistas": 19,
           "likes": 3,
           "comentarios": 0
         },
@@ -647,20 +647,20 @@
           "publishedAt": "2025-08-18T12:13:25Z",
           "posicion": 48,
           "duracion": "PT7M23S",
-          "vistas": 32,
+          "vistas": 33,
           "likes": 2,
           "comentarios": 0
         },
         {
           "id": "6lR81YOeNKs",
           "titulo": "Cómo usar GROUP BY en SQL con funciones de agregación (SUM, MAX, MIN) | Curso de SQL  BigQuery #50",
-          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula GROUP BY en SQL BigQuery para agrupar datos de eventos en Google Analytics 4 (GA4). Veremos cómo obtener eventos únicos, combinar múltiples dimensiones y aplicar funciones de agregación como SUM, MAX y MIN.\n\n📌 Temas que veremos:\n✅ Cómo funciona GROUP BY en BigQuery con eventos de GA4.\n✅ Diferencia entre agrupar dimensiones y aplicar funciones de agregación.\n✅ Ejemplo práctico con event name y device.brand.\n✅ Uso de SUM, MAX y MIN en columnas como purchase revenue.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a utilizar la cláusula GROUP BY en SQL BigQuery para agrupar datos de eventos en Google Analytics 4 (GA4). Veremos cómo obtener eventos únicos, combinar múltiples dimensiones y aplicar funciones de agregación como SUM, MAX y MIN.\n\n�� Temas que veremos:\n✅ Cómo funciona GROUP BY en BigQuery con eventos de GA4.\n✅ Diferencia entre agrupar dimensiones y aplicar funciones de agregación.\n✅ Ejemplo práctico con event name y device.brand.\n✅ Uso de SUM, MAX y MIN en columnas como purchase revenue.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/6lR81YOeNKs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=6lR81YOeNKs",
           "publishedAt": "2025-08-18T12:15:19Z",
           "posicion": 49,
           "duracion": "PT9M40S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         }
@@ -685,7 +685,7 @@
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 54,
+          "vistas": 58,
           "likes": 3,
           "comentarios": 0
         },
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 14,
+          "vistas": 15,
           "likes": 1,
           "comentarios": 0
         },
@@ -776,7 +776,7 @@
           "publishedAt": "2025-10-07T19:57:33Z",
           "posicion": 7,
           "duracion": "PT5M41S",
-          "vistas": 8,
+          "vistas": 9,
           "likes": 1,
           "comentarios": 0
         },
@@ -827,7 +827,7 @@
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-          "vistas": 24,
+          "vistas": 26,
           "likes": 0,
           "comentarios": 0
         },
@@ -840,7 +840,7 @@
           "publishedAt": "2025-10-19T16:33:23Z",
           "posicion": 1,
           "duracion": "PT14M36S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 0,
           "comentarios": 0
         },
@@ -853,40 +853,40 @@
           "publishedAt": "2025-10-19T16:33:28Z",
           "posicion": 2,
           "duracion": "PT5M54S",
-          "vistas": 15,
+          "vistas": 16,
           "likes": 2,
           "comentarios": 0
         },
         {
           "id": "i6Cfsd0CP2g",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n────────────────────────���─────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
-          "vistas": 32,
-          "likes": 1,
+          "vistas": 37,
+          "likes": 2,
           "comentarios": 2
         },
         {
           "id": "Q7BvnpCsUAU",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n�� Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────��───────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
           "publishedAt": "2025-10-19T16:33:34Z",
           "posicion": 4,
           "duracion": "PT12M8S",
-          "vistas": 16,
-          "likes": 1,
+          "vistas": 21,
+          "likes": 2,
           "comentarios": 0
         },
         {
           "id": "zToHhAif9Gw",
           "titulo": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n─────────────────────���────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
           "publishedAt": "2025-11-02T07:01:04Z",
@@ -918,7 +918,7 @@
           "publishedAt": "2025-11-02T07:05:32Z",
           "posicion": 7,
           "duracion": "PT13M35S",
-          "vistas": 16,
+          "vistas": 17,
           "likes": 2,
           "comentarios": 0
         }

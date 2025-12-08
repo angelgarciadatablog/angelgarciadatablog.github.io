@@ -2,7 +2,7 @@
   "curso": "google-analytics",
   "titulo": "Curso de Google Analytics 4 desde Cero",
   "descripcion": "Curso completo de Google Analytics 4 desde cero",
-  "fechaActualizacion": "2025-12-01T14:20:25.168Z",
+  "fechaActualizacion": "2025-12-08T14:20:54.817Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-12-23T05:24:09Z",
           "posicion": 0,
           "duracion": "PT7M35S",
-          "vistas": 369,
+          "vistas": 373,
           "likes": 6,
           "comentarios": 0
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2023-12-24T10:53:07Z",
           "posicion": 3,
           "duracion": "PT21M15S",
-          "vistas": 1100,
+          "vistas": 1113,
           "likes": 26,
           "comentarios": 8
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2025-10-02T00:51:30Z",
           "posicion": 6,
           "duracion": "PT10M20S",
-          "vistas": 237,
+          "vistas": 242,
           "likes": 8,
           "comentarios": 1
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-10-02T00:51:48Z",
           "posicion": 7,
           "duracion": "PT11M9S",
-          "vistas": 130,
+          "vistas": 131,
           "likes": 0,
           "comentarios": 0
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-10-02T00:52:24Z",
           "posicion": 10,
           "duracion": "PT9M58S",
-          "vistas": 621,
+          "vistas": 625,
           "likes": 8,
           "comentarios": 0
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2025-10-02T00:52:35Z",
           "posicion": 11,
           "duracion": "PT11M23S",
-          "vistas": 193,
+          "vistas": 194,
           "likes": 5,
           "comentarios": 0
         }
