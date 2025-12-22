@@ -2,7 +2,7 @@
   "curso": "google-analytics",
   "titulo": "Curso de Google Analytics 4 desde Cero",
   "descripcion": "Curso completo de Google Analytics 4 desde cero",
-  "fechaActualizacion": "2025-12-15T14:23:46.592Z",
+  "fechaActualizacion": "2025-12-22T14:19:49.605Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2023-12-23T05:24:09Z",
           "posicion": 0,
           "duracion": "PT7M35S",
-          "vistas": 376,
+          "vistas": 382,
           "likes": 6,
           "comentarios": 0
         },
@@ -36,7 +36,7 @@
           "publishedAt": "2023-12-23T05:25:25Z",
           "posicion": 1,
           "duracion": "PT21M",
-          "vistas": 424,
+          "vistas": 426,
           "likes": 6,
           "comentarios": 6
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2023-12-24T10:53:07Z",
           "posicion": 3,
           "duracion": "PT21M15S",
-          "vistas": 1117,
+          "vistas": 1119,
           "likes": 26,
           "comentarios": 8
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-10-02T00:51:59Z",
           "posicion": 8,
           "duracion": "PT18M8S",
-          "vistas": 84,
+          "vistas": 85,
           "likes": 0,
           "comentarios": 0
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-10-02T00:52:12Z",
           "posicion": 9,
           "duracion": "PT16M50S",
-          "vistas": 523,
+          "vistas": 527,
           "likes": 14,
           "comentarios": 2
         },
