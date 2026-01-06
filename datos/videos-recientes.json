@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2026-01-05T14:07:50.251Z",
+  "fechaActualizacion": "2026-01-06T14:07:02.497Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "DebaxM_8EO0",
+      "title": "Multiples Joins en una consulta SQL",
+      "url": "https://www.youtube.com/watch?v=DebaxM_8EO0",
+      "thumbnail": "https://i.ytimg.com/vi/DebaxM_8EO0/hqdefault.jpg",
+      "publishedAt": "2026-01-06T00:54:28Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
+    {
+      "id": "ddB92jjDOVs",
+      "title": "Uso de Coalesce en Joins",
+      "url": "https://www.youtube.com/watch?v=ddB92jjDOVs",
+      "thumbnail": "https://i.ytimg.com/vi/ddB92jjDOVs/hqdefault.jpg",
+      "publishedAt": "2026-01-06T00:48:50Z",
+      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
+    },
     {
       "id": "J0GOADsEp4E",
       "title": "Identifica qué clientes compran más con FILTER + CALCULATE (parte 2)",
       "url": "https://www.youtube.com/watch?v=J0GOADsEp4E",
       "thumbnail": "https://i.ytimg.com/vi/J0GOADsEp4E/hqdefault.jpg",
       "publishedAt": "2025-11-21T12:00:42Z",
-      "description": ""
-    },
-    {
-      "id": "4v5Vv8fsR-g",
-      "title": "Identifica qué clientes compran más con FILTER + CALCULATE",
-      "url": "https://www.youtube.com/watch?v=4v5Vv8fsR-g",
-      "thumbnail": "https://i.ytimg.com/vi/4v5Vv8fsR-g/hqdefault.jpg",
-      "publishedAt": "2025-11-21T12:00:19Z",
-      "description": ""
-    },
-    {
-      "id": "8AMwesfk-DM",
-      "title": "Cómo usar FILTER y CALCULATE en Power BI - Ejemplo práctico 1 paso a paso",
-      "url": "https://www.youtube.com/watch?v=8AMwesfk-DM",
-      "thumbnail": "https://i.ytimg.com/vi/8AMwesfk-DM/hqdefault.jpg",
-      "publishedAt": "2025-11-18T12:00:28Z",
       "description": ""
     }
   ]
