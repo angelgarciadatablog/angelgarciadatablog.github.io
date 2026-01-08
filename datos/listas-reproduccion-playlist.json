@@ -1,7 +1,16 @@
 {
-  "fechaActualizacion": "2026-01-05T14:22:09.139Z",
-  "totalPlaylists": 13,
+  "fechaActualizacion": "2026-01-08T02:50:17.337Z",
+  "totalPlaylists": 14,
   "playlists": [
+    {
+      "id": "PLV4oS06_KpqYpHH_inn8Isb8XQnbod6Co",
+      "title": "Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1",
+      "description": "Aprende a realizar cálculos avanzados en SQL sin perder el detalle por fila. En este módulo conocerás funciones de ventana en BigQuery como ROW_NUMBER, RANK y LAG para crear rankings, acumulados y comparaciones entre filas, explicadas paso a paso con ejemplos prácticos.",
+      "thumbnail": "https://i.ytimg.com/vi/Cz9osSyqYXI/hqdefault.jpg",
+      "publishedAt": "2026-01-08T01:14:03.759094Z",
+      "videoCount": 2,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqYpHH_inn8Isb8XQnbod6Co"
+    },
     {
       "id": "PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi",
       "title": "Power Bi - Ejercicios",
@@ -35,7 +44,7 @@
       "description": "Da un salto en tu nivel de SQL aprendiendo a conectar múltiples tablas y crear consultas más potentes. Todo explicado paso a paso con casos prácticos en BigQuery.",
       "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
       "publishedAt": "2025-10-19T16:32:18.686475Z",
-      "videoCount": 8,
+      "videoCount": 10,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqahle46bX_iDjupUZLUDIad"
     },
     {
