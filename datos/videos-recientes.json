@@ -1,7 +1,23 @@
 {
-  "fechaActualizacion": "2026-01-07T14:07:36.035Z",
+  "fechaActualizacion": "2026-01-08T14:08:17.102Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "Cz9osSyqYXI",
+      "title": "ROW_NUMBER ( ) - Funciones de ventana en SQL - BigQuery",
+      "url": "https://www.youtube.com/watch?v=Cz9osSyqYXI",
+      "thumbnail": "https://i.ytimg.com/vi/Cz9osSyqYXI/hqdefault.jpg",
+      "publishedAt": "2026-01-08T01:57:33Z",
+      "description": "Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana) Diapositivas de la clase: ..."
+    },
+    {
+      "id": "XHnA-a5rivU",
+      "title": "Funciones de ventana de agregación - over y partition by",
+      "url": "https://www.youtube.com/watch?v=XHnA-a5rivU",
+      "thumbnail": "https://i.ytimg.com/vi/XHnA-a5rivU/hqdefault.jpg",
+      "publishedAt": "2026-01-08T01:37:10Z",
+      "description": "Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana) Diapositivas de la clase: ..."
+    },
     {
       "id": "DebaxM_8EO0",
       "title": "Multiples Joins en una consulta SQL",
@@ -9,22 +25,6 @@
       "thumbnail": "https://i.ytimg.com/vi/DebaxM_8EO0/hqdefault.jpg",
       "publishedAt": "2026-01-06T00:54:28Z",
       "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "ddB92jjDOVs",
-      "title": "Uso de Coalesce en Joins",
-      "url": "https://www.youtube.com/watch?v=ddB92jjDOVs",
-      "thumbnail": "https://i.ytimg.com/vi/ddB92jjDOVs/hqdefault.jpg",
-      "publishedAt": "2026-01-06T00:48:50Z",
-      "description": "Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE) Diapositivas de la clase: ..."
-    },
-    {
-      "id": "J0GOADsEp4E",
-      "title": "Identifica qué clientes compran más con FILTER + CALCULATE (parte 2)",
-      "url": "https://www.youtube.com/watch?v=J0GOADsEp4E",
-      "thumbnail": "https://i.ytimg.com/vi/J0GOADsEp4E/hqdefault.jpg",
-      "publishedAt": "2025-11-21T12:00:42Z",
-      "description": ""
     }
   ]
 }
