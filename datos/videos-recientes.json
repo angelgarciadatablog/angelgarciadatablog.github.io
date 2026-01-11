@@ -1,30 +1,30 @@
 {
-  "fechaActualizacion": "2026-01-10T14:05:36.402Z",
+  "fechaActualizacion": "2026-01-11T14:05:49.077Z",
   "totalVideos": 3,
   "videos": [
     {
-      "id": "M4Q186h3zHA",
-      "title": "Qualify en SQL BigQuery - Filtrar los resultados de una función de ventana de ranking",
-      "url": "https://www.youtube.com/watch?v=M4Q186h3zHA",
-      "thumbnail": "https://i.ytimg.com/vi/M4Q186h3zHA/hqdefault.jpg",
-      "publishedAt": "2026-01-09T02:57:13Z",
-      "description": "Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana) Diapositivas de la clase: ..."
+      "id": "dnLOQnSM8W8",
+      "title": "2. Áreas de git - Staging Area",
+      "url": "https://www.youtube.com/watch?v=dnLOQnSM8W8",
+      "thumbnail": "https://i.ytimg.com/vi/dnLOQnSM8W8/hqdefault.jpg",
+      "publishedAt": "2026-01-11T10:30:22Z",
+      "description": ""
     },
     {
-      "id": "thQUAzH5d2o",
-      "title": "Filtrar los resultados de una función de ventana de ranking - No se usa Where - BigQuery",
-      "url": "https://www.youtube.com/watch?v=thQUAzH5d2o",
-      "thumbnail": "https://i.ytimg.com/vi/thQUAzH5d2o/hqdefault.jpg",
-      "publishedAt": "2026-01-09T00:21:05Z",
-      "description": "Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana) Diapositivas de la clase: ..."
+      "id": "GLJffh1QDM4",
+      "title": "1. Qué es un repositorio",
+      "url": "https://www.youtube.com/watch?v=GLJffh1QDM4",
+      "thumbnail": "https://i.ytimg.com/vi/GLJffh1QDM4/hqdefault.jpg",
+      "publishedAt": "2026-01-11T10:17:42Z",
+      "description": ""
     },
     {
-      "id": "GgunOaMm_-g",
-      "title": "Diferencia entre Row Number, Rank y Dense Rank en SQL - Funciones de Ventana - BigQuery",
-      "url": "https://www.youtube.com/watch?v=GgunOaMm_-g",
-      "thumbnail": "https://i.ytimg.com/vi/GgunOaMm_-g/hqdefault.jpg",
-      "publishedAt": "2026-01-09T00:14:24Z",
-      "description": "Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana) Diapositivas de la clase: ..."
+      "id": "Gcigj916zyE",
+      "title": "3. Estados de Git - git add",
+      "url": "https://www.youtube.com/watch?v=Gcigj916zyE",
+      "thumbnail": "https://i.ytimg.com/vi/Gcigj916zyE/hqdefault.jpg",
+      "publishedAt": "2026-01-11T10:13:56Z",
+      "description": ""
     }
   ]
 }
