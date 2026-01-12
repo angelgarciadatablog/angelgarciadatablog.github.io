@@ -1,15 +1,33 @@
 {
-  "fechaActualizacion": "2026-01-08T02:50:17.337Z",
-  "totalPlaylists": 14,
+  "fechaActualizacion": "2026-01-12T14:07:23.311Z",
+  "totalPlaylists": 16,
   "playlists": [
     {
-      "id": "PLV4oS06_KpqYpHH_inn8Isb8XQnbod6Co",
-      "title": "Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1",
-      "description": "Aprende a realizar cálculos avanzados en SQL sin perder el detalle por fila. En este módulo conocerás funciones de ventana en BigQuery como ROW_NUMBER, RANK y LAG para crear rankings, acumulados y comparaciones entre filas, explicadas paso a paso con ejemplos prácticos.",
-      "thumbnail": "https://i.ytimg.com/vi/Cz9osSyqYXI/hqdefault.jpg",
-      "publishedAt": "2026-01-08T01:14:03.759094Z",
+      "id": "PLV4oS06_KpqZGwOHo-tsdIiaZts7qaqql",
+      "title": "Python - Repaso",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/RiYjYfMTGvw/hqdefault.jpg",
+      "publishedAt": "2026-01-11T23:05:18.079131Z",
       "videoCount": 2,
-      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqYpHH_inn8Isb8XQnbod6Co"
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqZGwOHo-tsdIiaZts7qaqql"
+    },
+    {
+      "id": "PLV4oS06_KpqaqyS9x6h5ys3REiUfUDOgy",
+      "title": "Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1 (new)",
+      "description": "Aprende a realizar cálculos avanzados en SQL sin perder el detalle por fila. \n\nEn este módulo conocerás funciones de ventana en BigQuery como ROW_NUMBER, RANK y LAG para crear rankings, acumulados y comparaciones entre filas, explicadas paso a paso con ejemplos prácticos.",
+      "thumbnail": "https://i.ytimg.com/vi/XHnA-a5rivU/hqdefault.jpg",
+      "publishedAt": "2026-01-11T22:39:38.064293Z",
+      "videoCount": 5,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqaqyS9x6h5ys3REiUfUDOgy"
+    },
+    {
+      "id": "PLV4oS06_KpqbhnVieDd19KJczH_BlBArN",
+      "title": "Git - Repaso",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/GLJffh1QDM4/hqdefault.jpg",
+      "publishedAt": "2026-01-11T10:10:50.096597Z",
+      "videoCount": 3,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbhnVieDd19KJczH_BlBArN"
     },
     {
       "id": "PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi",
