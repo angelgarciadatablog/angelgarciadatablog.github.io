@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2026-01-11T14:05:49.077Z",
+  "fechaActualizacion": "2026-01-12T14:08:55.528Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "RiYjYfMTGvw",
+      "title": "2. Qué es el PATH en la instalación de python",
+      "url": "https://www.youtube.com/watch?v=RiYjYfMTGvw",
+      "thumbnail": "https://i.ytimg.com/vi/RiYjYfMTGvw/hqdefault.jpg",
+      "publishedAt": "2026-01-11T23:25:57Z",
+      "description": ""
+    },
+    {
+      "id": "0VmI47XeOuE",
+      "title": "1. ¿Mi Mac tiene Python instalado de fábrica?",
+      "url": "https://www.youtube.com/watch?v=0VmI47XeOuE",
+      "thumbnail": "https://i.ytimg.com/vi/0VmI47XeOuE/hqdefault.jpg",
+      "publishedAt": "2026-01-11T23:07:39Z",
+      "description": ""
+    },
     {
       "id": "dnLOQnSM8W8",
       "title": "2. Áreas de git - Staging Area",
       "url": "https://www.youtube.com/watch?v=dnLOQnSM8W8",
       "thumbnail": "https://i.ytimg.com/vi/dnLOQnSM8W8/hqdefault.jpg",
       "publishedAt": "2026-01-11T10:30:22Z",
-      "description": ""
-    },
-    {
-      "id": "GLJffh1QDM4",
-      "title": "1. Qué es un repositorio",
-      "url": "https://www.youtube.com/watch?v=GLJffh1QDM4",
-      "thumbnail": "https://i.ytimg.com/vi/GLJffh1QDM4/hqdefault.jpg",
-      "publishedAt": "2026-01-11T10:17:42Z",
-      "description": ""
-    },
-    {
-      "id": "Gcigj916zyE",
-      "title": "3. Estados de Git - git add",
-      "url": "https://www.youtube.com/watch?v=Gcigj916zyE",
-      "thumbnail": "https://i.ytimg.com/vi/Gcigj916zyE/hqdefault.jpg",
-      "publishedAt": "2026-01-11T10:13:56Z",
       "description": ""
     }
   ]
