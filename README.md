@@ -28,7 +28,7 @@ Sitio web personal de **Ángel García**: proyectos, cursos gratuitos y recursos
 - Actualización **automática diaria** vía GitHub Actions (9 AM hora Perú)
 - Sin llamadas a APIs en producción
 
-### 📚 Cursos Gratuitos
+### 📚 Bloque de Cursos Gratuitos que están en el home
 - **SQL en BigQuery** - Completo
 - **Power BI** - Completo
 - **Google Analytics 4** - Completo
