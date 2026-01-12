@@ -2,11 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-<<<<<<< HEAD
-  "fechaActualizacion": "2026-01-11T22:00:07.633Z",
-=======
-  "fechaActualizacion": "2026-01-12T06:49:39.330Z",
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
+  "fechaActualizacion": "2026-01-12T08:06:55.793Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -27,11 +23,7 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-<<<<<<< HEAD
-          "vistas": 612,
-=======
           "vistas": 616,
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "likes": 21,
           "comentarios": 2
         },
@@ -44,18 +36,14 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-<<<<<<< HEAD
-          "vistas": 438,
-=======
           "vistas": 441,
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "likes": 15,
           "comentarios": 3
         },
         {
           "id": "X6JyQKV5d0E",
           "titulo": "Estructura de proyectos y menús en Google Cloud | Curso de SQL BigQuery #3",
-          "descripcion": "En este video exploramos la estructura básica de BigQuery dentro de la plataforma de Google Cloud. Aprenderemos a diferenciar los menús de Google Cloud y BigQuery, cómo funcionan los proyectos y la cuenta de facturación para acceder a créditos gratuitos y funcionalidades avanzadas.\n\n📍Temas\n✅¿Qué es un proyecto en Google Cloud?\n✅ Menús esenciales para trabajar con BigQuery\n✅ Navegación por el explorador de BigQuery: conjuntos de datos y tablas\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
+          "descripcion": "En este video exploramos la estructura básica de BigQuery dentro de la plataforma de Google Cloud. Aprenderemos a diferenciar los menús de Google Cloud y BigQuery, cómo funcionan los proyectos y la cuenta de facturación para acceder a créditos gratuitos y funcionalidades avanzadas.\n\n📍Temas\n✅¿Qué es un proyecto en Google Cloud?\n✅ Menús esenciales para trabajar con BigQuery\n✅ Navegación por el explorador de BigQuery: conjuntos de datos y tablas\n\n��� Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU\n\n#BigQuery #GoogleCloud #SQL #AnalisisDeDatos #CursoGratis #DataAnalytics",
           "thumbnail": "https://i.ytimg.com/vi/X6JyQKV5d0E/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=X6JyQKV5d0E",
           "publishedAt": "2025-08-12T10:15:47Z",
@@ -74,11 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-<<<<<<< HEAD
-          "vistas": 206,
-=======
           "vistas": 207,
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "likes": 5,
           "comentarios": 1
         },
@@ -747,7 +731,7 @@
         {
           "id": "ecJm9JHj18g",
           "titulo": "INSERT INTO VALUES en SQL | Insertar valores en una tabla |Consulta DML| Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n────────���─────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/ecJm9JHj18g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ecJm9JHj18g",
           "publishedAt": "2025-10-07T19:53:24Z",
@@ -760,7 +744,7 @@
         {
           "id": "pLRAticn7NU",
           "titulo": "TRUNCATE TABLE en SQL | Eliminar todos los registros de una tabla | Curso de SQL Intermedio #6",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────��───────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/pLRAticn7NU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=pLRAticn7NU",
           "publishedAt": "2025-10-07T19:55:40Z",
@@ -837,24 +821,20 @@
         {
           "id": "Z4Fo5F_mLuU",
           "titulo": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n��� GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Z4Fo5F_mLuU",
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-<<<<<<< HEAD
-          "vistas": 39,
-=======
           "vistas": 40,
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "likes": 0,
           "comentarios": 0
         },
         {
           "id": "dbYadcZ2uOU",
           "titulo": "Relaciones entre tablas | Llave primaria y secundaria | OLTP vs OLAP | Capitulo #2",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n��� Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/dbYadcZ2uOU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=dbYadcZ2uOU",
           "publishedAt": "2025-10-19T16:33:23Z",
@@ -880,32 +860,20 @@
         {
           "id": "i6Cfsd0CP2g",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
-<<<<<<< HEAD
           "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
-=======
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────���───────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
           "vistas": 52,
-<<<<<<< HEAD
-          "likes": 4,
-=======
           "likes": 5,
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "comentarios": 2
         },
         {
           "id": "Q7BvnpCsUAU",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-<<<<<<< HEAD
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n�� Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
-=======
           "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
           "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
           "publishedAt": "2025-10-19T16:33:34Z",
@@ -918,11 +886,7 @@
         {
           "id": "zToHhAif9Gw",
           "titulo": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
-<<<<<<< HEAD
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n─────────────────────���────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
-=======
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Ap��yame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
           "publishedAt": "2025-11-02T07:01:04Z",
@@ -956,35 +920,6 @@
           "duracion": "PT13M35S",
           "vistas": 29,
           "likes": 3,
-<<<<<<< HEAD
-          "comentarios": 0
-        },
-        {
-          "id": "ddB92jjDOVs",
-          "titulo": "Uso de Coalesce en Joins",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
-          "thumbnail": "https://i.ytimg.com/vi/ddB92jjDOVs/hqdefault.jpg",
-          "url": "https://www.youtube.com/watch?v=ddB92jjDOVs",
-          "publishedAt": "2026-01-06T00:47:56Z",
-          "posicion": 8,
-          "duracion": "PT9M10S",
-          "vistas": 10,
-          "likes": 1,
-          "comentarios": 0
-        },
-        {
-          "id": "DebaxM_8EO0",
-          "titulo": "Multiples Joins en una consulta SQL",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
-          "thumbnail": "https://i.ytimg.com/vi/DebaxM_8EO0/hqdefault.jpg",
-          "url": "https://www.youtube.com/watch?v=DebaxM_8EO0",
-          "publishedAt": "2026-01-06T00:51:18Z",
-          "posicion": 9,
-          "duracion": "PT26M53S",
-          "vistas": 41,
-          "likes": 9,
-          "comentarios": 1
-=======
           "comentarios": 0
         },
         {
@@ -1028,7 +963,7 @@
         {
           "id": "XHnA-a5rivU",
           "titulo": "1. Funciones de ventana de agregación - over y partition by",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n──────────────────────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n────────────────��─────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/XHnA-a5rivU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=XHnA-a5rivU",
           "publishedAt": "2026-01-11T22:39:37Z",
@@ -1073,8 +1008,8 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 3,
           "duracion": "PT14M34S",
-          "vistas": 11,
-          "likes": 2,
+          "vistas": 13,
+          "likes": 3,
           "comentarios": 0
         },
         {
@@ -1089,7 +1024,6 @@
           "vistas": 21,
           "likes": 2,
           "comentarios": 2
->>>>>>> 14c0d51 (Se agregó un nuevo módulo al curso de sql, el nuevo módulo trata sobre las funciones de ventana, actualmente solo con 5 videos)
         }
       ]
     }
