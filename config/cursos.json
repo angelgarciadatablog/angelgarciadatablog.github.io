@@ -27,6 +27,13 @@
           "titulo": "Joins, Subconsultas y CTEs",
           "descripcion": "Nivel Intermedio 2.2",
           "orden": 3
+        },
+        {
+          "moduloId": 4,
+          "playlistId": "PLV4oS06_KpqaqyS9x6h5ys3REiUfUDOgy",
+          "titulo": "Funciones de ventana en SQL",
+          "descripcion": "Nivel Avanzado",
+          "orden": 4
         }
 
       ]

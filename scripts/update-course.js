@@ -7,7 +7,7 @@
  * Uso:
  *   node scripts/update-course.js <cursoId>
  *
- * Ejemplos:
+ * SCRIPS DE ACTUALIZACIÓN DE CURSOS DISPONIBLES:
  *   node scripts/update-course.js sql-bigquery --clear-cache
  *   node scripts/update-course.js power-bi --clear-cache
  *   node scripts/update-course.js google-analytics --clear-cache
