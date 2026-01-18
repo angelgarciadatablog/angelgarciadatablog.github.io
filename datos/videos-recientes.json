@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2026-01-17T14:06:03.341Z",
+  "fechaActualizacion": "2026-01-18T14:05:55.895Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "Zj6uiqMvFOU",
+      "title": "3. Cómo funciona el bucle For en python - Repaso ejercicios 1",
+      "url": "https://www.youtube.com/watch?v=Zj6uiqMvFOU",
+      "thumbnail": "https://i.ytimg.com/vi/Zj6uiqMvFOU/hqdefault.jpg",
+      "publishedAt": "2026-01-17T20:07:55Z",
+      "description": ""
+    },
     {
       "id": "RiYjYfMTGvw",
       "title": "2. Qué es el PATH en la instalación de python",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=0VmI47XeOuE",
       "thumbnail": "https://i.ytimg.com/vi/0VmI47XeOuE/hqdefault.jpg",
       "publishedAt": "2026-01-11T23:07:39Z",
-      "description": ""
-    },
-    {
-      "id": "dnLOQnSM8W8",
-      "title": "2. Áreas de git - Staging Area",
-      "url": "https://www.youtube.com/watch?v=dnLOQnSM8W8",
-      "thumbnail": "https://i.ytimg.com/vi/dnLOQnSM8W8/hqdefault.jpg",
-      "publishedAt": "2026-01-11T10:30:22Z",
       "description": ""
     }
   ]
