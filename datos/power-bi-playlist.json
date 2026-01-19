@@ -2,7 +2,7 @@
   "curso": "power-bi",
   "titulo": "Curso de Power BI desde Cero",
   "descripcion": "Curso completo de Power BI con DAX básico",
-  "fechaActualizacion": "2026-01-12T14:07:43.869Z",
+  "fechaActualizacion": "2026-01-19T14:09:28.694Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2023-08-14T07:17:54Z",
           "posicion": 0,
           "duracion": "PT5M56S",
-          "vistas": 9426,
-          "likes": 197,
+          "vistas": 9486,
+          "likes": 198,
           "comentarios": 6
         },
         {
@@ -36,8 +36,8 @@
           "publishedAt": "2023-08-10T06:48:36Z",
           "posicion": 1,
           "duracion": "PT28M38S",
-          "vistas": 9880,
-          "likes": 190,
+          "vistas": 9914,
+          "likes": 191,
           "comentarios": 13
         },
         {
@@ -49,7 +49,7 @@
           "publishedAt": "2023-08-14T04:11:39Z",
           "posicion": 2,
           "duracion": "PT7M5S",
-          "vistas": 1425,
+          "vistas": 1431,
           "likes": 30,
           "comentarios": 2
         },
@@ -62,8 +62,8 @@
           "publishedAt": "2023-08-11T06:07:02Z",
           "posicion": 3,
           "duracion": "PT15M10S",
-          "vistas": 12243,
-          "likes": 306,
+          "vistas": 12289,
+          "likes": 307,
           "comentarios": 25
         },
         {
@@ -75,7 +75,7 @@
           "publishedAt": "2023-08-14T08:51:24Z",
           "posicion": 4,
           "duracion": "PT32M49S",
-          "vistas": 11165,
+          "vistas": 11180,
           "likes": 229,
           "comentarios": 12
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2023-08-17T08:34:55Z",
           "posicion": 5,
           "duracion": "PT14M49S",
-          "vistas": 5881,
+          "vistas": 5896,
           "likes": 138,
           "comentarios": 11
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2023-08-21T11:07:18Z",
           "posicion": 7,
           "duracion": "PT12M14S",
-          "vistas": 2765,
+          "vistas": 2771,
           "likes": 69,
           "comentarios": 2
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2023-08-22T09:52:11Z",
           "posicion": 8,
           "duracion": "PT26M24S",
-          "vistas": 2174,
+          "vistas": 2186,
           "likes": 91,
           "comentarios": 9
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2023-08-27T11:54:32Z",
           "posicion": 9,
           "duracion": "PT20M7S",
-          "vistas": 8768,
+          "vistas": 8776,
           "likes": 155,
           "comentarios": 12
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2023-08-23T04:22:12Z",
           "posicion": 10,
           "duracion": "PT19M8S",
-          "vistas": 7546,
+          "vistas": 7571,
           "likes": 123,
           "comentarios": 8
         },
@@ -166,8 +166,8 @@
           "publishedAt": "2023-08-24T10:07:33Z",
           "posicion": 11,
           "duracion": "PT24M20S",
-          "vistas": 1387,
-          "likes": 38,
+          "vistas": 1389,
+          "likes": 39,
           "comentarios": 2
         },
         {
@@ -179,7 +179,7 @@
           "publishedAt": "2023-09-10T06:00:03Z",
           "posicion": 12,
           "duracion": "PT27M21S",
-          "vistas": 2202,
+          "vistas": 2203,
           "likes": 44,
           "comentarios": 2
         },
@@ -192,7 +192,7 @@
           "publishedAt": "2023-09-11T05:20:23Z",
           "posicion": 13,
           "duracion": "PT15M36S",
-          "vistas": 6444,
+          "vistas": 6449,
           "likes": 46,
           "comentarios": 2
         },
@@ -205,7 +205,7 @@
           "publishedAt": "2023-09-12T06:21:38Z",
           "posicion": 14,
           "duracion": "PT13M9S",
-          "vistas": 5094,
+          "vistas": 5106,
           "likes": 43,
           "comentarios": 3
         },
@@ -218,8 +218,8 @@
           "publishedAt": "2023-09-14T09:59:13Z",
           "posicion": 15,
           "duracion": "PT18M17S",
-          "vistas": 8699,
-          "likes": 59,
+          "vistas": 8723,
+          "likes": 60,
           "comentarios": 2
         },
         {
@@ -231,7 +231,7 @@
           "publishedAt": "2023-09-14T09:52:30Z",
           "posicion": 16,
           "duracion": "PT31M56S",
-          "vistas": 1587,
+          "vistas": 1588,
           "likes": 23,
           "comentarios": 3
         }
@@ -256,7 +256,7 @@
           "publishedAt": "2025-11-16T09:32:46Z",
           "posicion": 0,
           "duracion": "PT11M8S",
-          "vistas": 1344,
+          "vistas": 1352,
           "likes": 74,
           "comentarios": 2
         },
@@ -269,7 +269,7 @@
           "publishedAt": "2025-11-16T08:58:50Z",
           "posicion": 1,
           "duracion": "PT8M5S",
-          "vistas": 222,
+          "vistas": 249,
           "likes": 8,
           "comentarios": 0
         },
@@ -282,7 +282,7 @@
           "publishedAt": "2025-11-09T07:01:38Z",
           "posicion": 2,
           "duracion": "PT2M41S",
-          "vistas": 25,
+          "vistas": 26,
           "likes": 1,
           "comentarios": 0
         },
@@ -295,7 +295,7 @@
           "publishedAt": "2025-11-08T00:43:35Z",
           "posicion": 3,
           "duracion": "PT1M52S",
-          "vistas": 38,
+          "vistas": 42,
           "likes": 2,
           "comentarios": 1
         },
@@ -334,7 +334,7 @@
           "publishedAt": "2024-01-28T23:18:41Z",
           "posicion": 6,
           "duracion": "PT10M38S",
-          "vistas": 9506,
+          "vistas": 9558,
           "likes": 118,
           "comentarios": 2
         },
@@ -347,7 +347,7 @@
           "publishedAt": "2023-12-13T20:00:23Z",
           "posicion": 7,
           "duracion": "PT4M48S",
-          "vistas": 319,
+          "vistas": 321,
           "likes": 10,
           "comentarios": 0
         },
@@ -360,8 +360,8 @@
           "publishedAt": "2023-12-13T01:48:40Z",
           "posicion": 8,
           "duracion": "PT5M5S",
-          "vistas": 3565,
-          "likes": 60,
+          "vistas": 3600,
+          "likes": 61,
           "comentarios": 6
         }
       ]
