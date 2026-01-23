@@ -1,29 +1,29 @@
 {
-  "fechaActualizacion": "2026-01-22T14:13:29.209Z",
+  "fechaActualizacion": "2026-01-23T14:09:00.418Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "7bwkNrRpgw0",
+      "title": "Modo oscuro - Big query - Google Cloud",
+      "url": "https://www.youtube.com/watch?v=7bwkNrRpgw0",
+      "thumbnail": "https://i.ytimg.com/vi/7bwkNrRpgw0/hqdefault.jpg",
+      "publishedAt": "2026-01-23T06:52:23Z",
+      "description": ""
+    },
+    {
+      "id": "HDyKUodeuNw",
+      "title": "Como seleccionar valores iguales en SQL",
+      "url": "https://www.youtube.com/watch?v=HDyKUodeuNw",
+      "thumbnail": "https://i.ytimg.com/vi/HDyKUodeuNw/hqdefault.jpg",
+      "publishedAt": "2026-01-23T06:43:39Z",
+      "description": ""
+    },
     {
       "id": "Zj6uiqMvFOU",
       "title": "3. Cómo funciona el bucle For en python - Repaso ejercicios 1",
       "url": "https://www.youtube.com/watch?v=Zj6uiqMvFOU",
       "thumbnail": "https://i.ytimg.com/vi/Zj6uiqMvFOU/hqdefault.jpg",
       "publishedAt": "2026-01-17T20:07:55Z",
-      "description": ""
-    },
-    {
-      "id": "RiYjYfMTGvw",
-      "title": "2. Qué es el PATH en la instalación de python",
-      "url": "https://www.youtube.com/watch?v=RiYjYfMTGvw",
-      "thumbnail": "https://i.ytimg.com/vi/RiYjYfMTGvw/hqdefault.jpg",
-      "publishedAt": "2026-01-11T23:25:57Z",
-      "description": ""
-    },
-    {
-      "id": "0VmI47XeOuE",
-      "title": "1. ¿Mi Mac tiene Python instalado de fábrica?",
-      "url": "https://www.youtube.com/watch?v=0VmI47XeOuE",
-      "thumbnail": "https://i.ytimg.com/vi/0VmI47XeOuE/hqdefault.jpg",
-      "publishedAt": "2026-01-11T23:07:39Z",
       "description": ""
     }
   ]
