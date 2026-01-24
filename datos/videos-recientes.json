@@ -1,7 +1,15 @@
 {
-  "fechaActualizacion": "2026-01-23T14:09:00.418Z",
+  "fechaActualizacion": "2026-01-24T14:06:14.044Z",
   "totalVideos": 3,
   "videos": [
+    {
+      "id": "xB4ecIksJSY",
+      "title": "4. Git Push - Actualizar cambios de un repositorio local a remoto",
+      "url": "https://www.youtube.com/watch?v=xB4ecIksJSY",
+      "thumbnail": "https://i.ytimg.com/vi/xB4ecIksJSY/hqdefault.jpg",
+      "publishedAt": "2026-01-24T12:04:21Z",
+      "description": ""
+    },
     {
       "id": "7bwkNrRpgw0",
       "title": "Modo oscuro - Big query - Google Cloud",
@@ -16,14 +24,6 @@
       "url": "https://www.youtube.com/watch?v=HDyKUodeuNw",
       "thumbnail": "https://i.ytimg.com/vi/HDyKUodeuNw/hqdefault.jpg",
       "publishedAt": "2026-01-23T06:43:39Z",
-      "description": ""
-    },
-    {
-      "id": "Zj6uiqMvFOU",
-      "title": "3. Cómo funciona el bucle For en python - Repaso ejercicios 1",
-      "url": "https://www.youtube.com/watch?v=Zj6uiqMvFOU",
-      "thumbnail": "https://i.ytimg.com/vi/Zj6uiqMvFOU/hqdefault.jpg",
-      "publishedAt": "2026-01-17T20:07:55Z",
       "description": ""
     }
   ]
