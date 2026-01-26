@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2026-01-19T14:09:28.140Z",
+  "fechaActualizacion": "2026-01-26T14:09:56.160Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,7 +23,7 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 659,
+          "vistas": 696,
           "likes": 22,
           "comentarios": 2
         },
@@ -36,8 +36,8 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 458,
-          "likes": 16,
+          "vistas": 477,
+          "likes": 17,
           "comentarios": 3
         },
         {
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 242,
+          "vistas": 253,
           "likes": 5,
           "comentarios": 2
         },
@@ -62,20 +62,20 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 221,
+          "vistas": 232,
           "likes": 5,
           "comentarios": 1
         },
         {
           "id": "v1lKqeiQFTI",
           "titulo": "Tabla events y Tabla intraday de google analytics 4 | Curso de SQL BigQuery #5",
-          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos las diferencias entre la tabla events y la tabla intraday de google analytics 4.\n\n📌 Temas clave:\n✅ Conjunto de tabla events (tablas por día)\n✅ Esquema de la tabla events (columnas de las tablas)\n✅ En qué formato se almacena la fecha de la tabla events (AAAAMMDD)\n✅ Nombre estándar del conjunto de datos de google analytics (analytics_409893843)\n✅ Tabla events vs Tabla intraday\n✅ Vista en tiempo real de cómo llegan los datos a una tabla intraday\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n��� GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo del curso de SQL en BigQuery con datos de Google Analytics 4 (GA4), exploramos las diferencias entre la tabla events y la tabla intraday de google analytics 4.\n\n📌 Temas clave:\n✅ Conjunto de tabla events (tablas por día)\n✅ Esquema de la tabla events (columnas de las tablas)\n✅ En qué formato se almacena la fecha de la tabla events (AAAAMMDD)\n✅ Nombre estándar del conjunto de datos de google analytics (analytics_409893843)\n✅ Tabla events vs Tabla intraday\n✅ Vista en tiempo real de cómo llegan los datos a una tabla intraday\n\n👉 Link a la lista de reproducción de Big Query y Analytics\nhttps://youtube.com/playlist?list=PLV4oS06_KpqaZWu2b-GR-2w2g11pxgDaz&si=quLmxGmJay-ckd_N\n\n#BigQuery #GoogleAnalytics4 #SQL #GA4 #DataAnalytics #event_date #AnalisisDeDatos\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/v1lKqeiQFTI/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=v1lKqeiQFTI",
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 251,
+          "vistas": 266,
           "likes": 6,
           "comentarios": 0
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 128,
+          "vistas": 135,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,8 +101,8 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 317,
-          "likes": 13,
+          "vistas": 326,
+          "likes": 14,
           "comentarios": 2
         },
         {
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 101,
+          "vistas": 109,
           "likes": 3,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 92,
+          "vistas": 97,
           "likes": 2,
           "comentarios": 1
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 73,
+          "vistas": 79,
           "likes": 4,
           "comentarios": 2
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 100,
+          "vistas": 106,
           "likes": 3,
           "comentarios": 0
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 432,
+          "vistas": 469,
           "likes": 16,
           "comentarios": 2
         },
@@ -179,33 +179,33 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 92,
+          "vistas": 102,
           "likes": 3,
           "comentarios": 0
         },
         {
           "id": "OTkdggNWv14",
           "titulo": "Cómo usar PARSE_DATE en Big Query | Convierte strings en fechas | Curso de SQL BigQuery #14",
-          "descripcion": "En este capítulo revisaremos como usar la función PARSE_DATE, fundamental para trabajar con campos de fecha que vienen en formato texto (string).\nTransformaremos el campo event_date de la tabla events de GA4 en un formato de fecha correcto, paso a paso, para que puedas realizar consultas más precisas y ordenadas.\n\n📌 Temas:\n✅ Qué es la función PARSE_DATE en Big Query.\n✅ Cómo convertir un campo string en DATE.\n✅ El formato correcto que debes usar para año, mes y día.\n�� Buenas prácticas al trabajar con event_date en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos como usar la función PARSE_DATE, fundamental para trabajar con campos de fecha que vienen en formato texto (string).\nTransformaremos el campo event_date de la tabla events de GA4 en un formato de fecha correcto, paso a paso, para que puedas realizar consultas más precisas y ordenadas.\n\n📌 Temas:\n✅ Qué es la función PARSE_DATE en Big Query.\n✅ Cómo convertir un campo string en DATE.\n✅ El formato correcto que debes usar para año, mes y día.\n✅ Buenas prácticas al trabajar con event_date en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/OTkdggNWv14/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=OTkdggNWv14",
           "publishedAt": "2025-08-15T05:10:50Z",
           "posicion": 13,
           "duracion": "PT6M20S",
-          "vistas": 65,
+          "vistas": 76,
           "likes": 1,
           "comentarios": 0
         },
         {
           "id": "VrvnwaTppAE",
           "titulo": "Cómo usar EXTRACT en BigQuery | Extraer día, mes y año de fechas | Curso de SQL BigQuery #15",
-          "descripcion": "En este capítulo aprenderemos a usar la función EXTRACT, que permite obtener partes específicas de una fecha, como día, mes, año, trimestre o semana.\n\nVeremos ejemplos prácticos con una tabla prueba y con la tabla de events de GA4, explicando las diferencias entre trabajar con campos de tipo DATE y STRING, y cómo combinar EXTRACT con PARSE_DATE para transformar datos en Big Query.\n\n📌 Temas:\n✅  Cómo funciona la función EXTRACT en Big Query.\n✅ Extraer día, mes, año, semana y trimestre de un campo DATE.\n✅ Diferencias entre DATE, STRING, DATETIME y TIMESTAMP.\n✅ Uso de PARSE_DATE para convertir un string en fecha antes de aplicar EXTRACT.\n✅ Limitaciones: por qué no se puede extraer hora, minuto o segundo desde DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este cap��tulo aprenderemos a usar la función EXTRACT, que permite obtener partes específicas de una fecha, como día, mes, año, trimestre o semana.\n\nVeremos ejemplos prácticos con una tabla prueba y con la tabla de events de GA4, explicando las diferencias entre trabajar con campos de tipo DATE y STRING, y cómo combinar EXTRACT con PARSE_DATE para transformar datos en Big Query.\n\n📌 Temas:\n✅  Cómo funciona la función EXTRACT en Big Query.\n✅ Extraer día, mes, año, semana y trimestre de un campo DATE.\n✅ Diferencias entre DATE, STRING, DATETIME y TIMESTAMP.\n✅ Uso de PARSE_DATE para convertir un string en fecha antes de aplicar EXTRACT.\n✅ Limitaciones: por qué no se puede extraer hora, minuto o segundo desde DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/VrvnwaTppAE/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=VrvnwaTppAE",
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 56,
+          "vistas": 64,
           "likes": 1,
           "comentarios": 0
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2025-08-15T09:17:06Z",
           "posicion": 15,
           "duracion": "PT6M14S",
-          "vistas": 41,
+          "vistas": 49,
           "likes": 1,
           "comentarios": 0
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2025-08-15T09:23:28Z",
           "posicion": 16,
           "duracion": "PT3M54S",
-          "vistas": 31,
+          "vistas": 35,
           "likes": 0,
           "comentarios": 0
         },
@@ -244,7 +244,7 @@
           "publishedAt": "2025-08-15T09:26:28Z",
           "posicion": 17,
           "duracion": "PT6M31S",
-          "vistas": 56,
+          "vistas": 58,
           "likes": 1,
           "comentarios": 0
         },
@@ -257,7 +257,7 @@
           "publishedAt": "2025-08-15T09:32:06Z",
           "posicion": 18,
           "duracion": "PT7M50S",
-          "vistas": 36,
+          "vistas": 38,
           "likes": 0,
           "comentarios": 0
         },
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 52,
+          "vistas": 54,
           "likes": 2,
           "comentarios": 0
         },
@@ -283,7 +283,7 @@
           "publishedAt": "2025-08-15T09:46:14Z",
           "posicion": 20,
           "duracion": "PT5M32S",
-          "vistas": 30,
+          "vistas": 31,
           "likes": 0,
           "comentarios": 0
         },
@@ -296,7 +296,7 @@
           "publishedAt": "2025-08-15T09:52:09Z",
           "posicion": 21,
           "duracion": "PT3M18S",
-          "vistas": 35,
+          "vistas": 36,
           "likes": 0,
           "comentarios": 0
         },
@@ -322,7 +322,7 @@
           "publishedAt": "2025-08-15T09:58:19Z",
           "posicion": 23,
           "duracion": "PT9M9S",
-          "vistas": 86,
+          "vistas": 87,
           "likes": 4,
           "comentarios": 0
         },
@@ -335,7 +335,7 @@
           "publishedAt": "2025-08-16T07:15:30Z",
           "posicion": 24,
           "duracion": "PT5M2S",
-          "vistas": 24,
+          "vistas": 26,
           "likes": 0,
           "comentarios": 0
         },
@@ -348,7 +348,7 @@
           "publishedAt": "2025-08-16T07:18:01Z",
           "posicion": 25,
           "duracion": "PT6M15S",
-          "vistas": 34,
+          "vistas": 37,
           "likes": 1,
           "comentarios": 0
         },
@@ -361,7 +361,7 @@
           "publishedAt": "2025-08-16T07:21:24Z",
           "posicion": 26,
           "duracion": "PT8M19S",
-          "vistas": 52,
+          "vistas": 53,
           "likes": 2,
           "comentarios": 0
         },
@@ -374,7 +374,7 @@
           "publishedAt": "2025-08-16T07:23:05Z",
           "posicion": 27,
           "duracion": "PT5M47S",
-          "vistas": 34,
+          "vistas": 35,
           "likes": 1,
           "comentarios": 0
         },
@@ -387,7 +387,7 @@
           "publishedAt": "2025-08-16T07:25:45Z",
           "posicion": 28,
           "duracion": "PT7M11S",
-          "vistas": 22,
+          "vistas": 23,
           "likes": 2,
           "comentarios": 0
         },
@@ -400,7 +400,7 @@
           "publishedAt": "2025-08-16T07:27:54Z",
           "posicion": 29,
           "duracion": "PT5M18S",
-          "vistas": 36,
+          "vistas": 38,
           "likes": 2,
           "comentarios": 0
         },
@@ -413,7 +413,7 @@
           "publishedAt": "2025-08-16T07:30:14Z",
           "posicion": 30,
           "duracion": "PT12M9S",
-          "vistas": 40,
+          "vistas": 41,
           "likes": 2,
           "comentarios": 0
         },
@@ -426,7 +426,7 @@
           "publishedAt": "2025-08-16T07:32:28Z",
           "posicion": 31,
           "duracion": "PT8M59S",
-          "vistas": 40,
+          "vistas": 41,
           "likes": 2,
           "comentarios": 0
         },
@@ -439,7 +439,7 @@
           "publishedAt": "2025-08-16T07:35:33Z",
           "posicion": 32,
           "duracion": "PT7M47S",
-          "vistas": 32,
+          "vistas": 33,
           "likes": 1,
           "comentarios": 0
         },
@@ -452,7 +452,7 @@
           "publishedAt": "2025-08-16T07:38:44Z",
           "posicion": 33,
           "duracion": "PT13M15S",
-          "vistas": 26,
+          "vistas": 30,
           "likes": 2,
           "comentarios": 0
         },
@@ -465,7 +465,7 @@
           "publishedAt": "2025-08-16T07:40:35Z",
           "posicion": 34,
           "duracion": "PT10M24S",
-          "vistas": 31,
+          "vistas": 33,
           "likes": 4,
           "comentarios": 0
         },
@@ -478,7 +478,7 @@
           "publishedAt": "2025-08-16T07:42:02Z",
           "posicion": 35,
           "duracion": "PT7M1S",
-          "vistas": 44,
+          "vistas": 46,
           "likes": 1,
           "comentarios": 0
         },
@@ -491,7 +491,7 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 37,
+          "vistas": 41,
           "likes": 0,
           "comentarios": 0
         },
@@ -504,7 +504,7 @@
           "publishedAt": "2025-08-16T14:19:42Z",
           "posicion": 37,
           "duracion": "PT8M25S",
-          "vistas": 24,
+          "vistas": 27,
           "likes": 2,
           "comentarios": 2
         },
@@ -517,7 +517,7 @@
           "publishedAt": "2025-08-16T14:22:21Z",
           "posicion": 38,
           "duracion": "PT5M26S",
-          "vistas": 28,
+          "vistas": 30,
           "likes": 2,
           "comentarios": 0
         },
@@ -530,20 +530,20 @@
           "publishedAt": "2025-08-16T14:24:03Z",
           "posicion": 39,
           "duracion": "PT7M58S",
-          "vistas": 170,
+          "vistas": 174,
           "likes": 13,
           "comentarios": 0
         },
         {
           "id": "v1Qnd2Uxcjs",
           "titulo": "Cómo usar WHERE en SQL BigQuery con textos | LOWER y UPPER | Curso de SQL BigQuery #41",
-          "descripcion": "En este capítulo aprenderemos a manejar casos especiales al utilizar la cláusula WHERE con operadores de comparación en SQL BigQuery. Veremos cómo los datos pueden venir con mayúsculas, minúsculas o formatos inconsistentes, y cómo resolverlo con funciones como LOWER y UPPER. Además, exploraremos ejemplos pr��cticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Uso de la cláusula WHERE con campos de texto (ejemplo: marcas de dispositivos).\n✅ Problemas comunes con mayúsculas y minúsculas al filtrar.\n✅ Cómo estandarizar datos con las funciones LOWER y UPPER.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a manejar casos especiales al utilizar la cláusula WHERE con operadores de comparación en SQL BigQuery. Veremos cómo los datos pueden venir con mayúsculas, minúsculas o formatos inconsistentes, y cómo resolverlo con funciones como LOWER y UPPER. Además, exploraremos ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Uso de la cláusula WHERE con campos de texto (ejemplo: marcas de dispositivos).\n✅ Problemas comunes con mayúsculas y minúsculas al filtrar.\n✅ Cómo estandarizar datos con las funciones LOWER y UPPER.\n\n📌 Recursos útiles:\n��� GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/v1Qnd2Uxcjs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=v1Qnd2Uxcjs",
           "publishedAt": "2025-08-16T14:27:58Z",
           "posicion": 40,
           "duracion": "PT5M11S",
-          "vistas": 69,
+          "vistas": 71,
           "likes": 2,
           "comentarios": 0
         },
@@ -556,7 +556,7 @@
           "publishedAt": "2025-08-16T14:29:48Z",
           "posicion": 41,
           "duracion": "PT6M57S",
-          "vistas": 30,
+          "vistas": 33,
           "likes": 2,
           "comentarios": 0
         },
@@ -569,7 +569,7 @@
           "publishedAt": "2025-08-16T14:31:42Z",
           "posicion": 42,
           "duracion": "PT5M19S",
-          "vistas": 19,
+          "vistas": 22,
           "likes": 1,
           "comentarios": 0
         },
@@ -582,7 +582,7 @@
           "publishedAt": "2025-08-16T14:32:53Z",
           "posicion": 43,
           "duracion": "PT8M48S",
-          "vistas": 22,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -595,7 +595,7 @@
           "publishedAt": "2025-08-16T14:35:00Z",
           "posicion": 44,
           "duracion": "PT4M12S",
-          "vistas": 19,
+          "vistas": 23,
           "likes": 2,
           "comentarios": 0
         },
@@ -608,7 +608,7 @@
           "publishedAt": "2025-08-16T14:37:07Z",
           "posicion": 45,
           "duracion": "PT10M52S",
-          "vistas": 54,
+          "vistas": 57,
           "likes": 2,
           "comentarios": 0
         },
@@ -621,8 +621,8 @@
           "publishedAt": "2025-08-18T12:08:43Z",
           "posicion": 46,
           "duracion": "PT7M4S",
-          "vistas": 20,
-          "likes": 3,
+          "vistas": 22,
+          "likes": 2,
           "comentarios": 0
         },
         {
@@ -634,7 +634,7 @@
           "publishedAt": "2025-08-18T12:11:13Z",
           "posicion": 47,
           "duracion": "PT6M1S",
-          "vistas": 28,
+          "vistas": 30,
           "likes": 3,
           "comentarios": 0
         },
@@ -647,7 +647,7 @@
           "publishedAt": "2025-08-18T12:13:25Z",
           "posicion": 48,
           "duracion": "PT7M23S",
-          "vistas": 35,
+          "vistas": 38,
           "likes": 2,
           "comentarios": 0
         },
@@ -660,7 +660,7 @@
           "publishedAt": "2025-08-18T12:15:19Z",
           "posicion": 49,
           "duracion": "PT9M40S",
-          "vistas": 29,
+          "vistas": 32,
           "likes": 1,
           "comentarios": 0
         }
@@ -685,8 +685,8 @@
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 71,
-          "likes": 3,
+          "vistas": 82,
+          "likes": 4,
           "comentarios": 0
         },
         {
@@ -698,7 +698,7 @@
           "publishedAt": "2025-10-07T08:55:56Z",
           "posicion": 1,
           "duracion": "PT8M31S",
-          "vistas": 28,
+          "vistas": 36,
           "likes": 0,
           "comentarios": 0
         },
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 19,
+          "vistas": 27,
           "likes": 1,
           "comentarios": 0
         },
@@ -724,7 +724,7 @@
           "publishedAt": "2025-10-07T09:00:56Z",
           "posicion": 3,
           "duracion": "PT8M23S",
-          "vistas": 14,
+          "vistas": 23,
           "likes": 1,
           "comentarios": 0
         },
@@ -737,7 +737,7 @@
           "publishedAt": "2025-10-07T19:53:24Z",
           "posicion": 4,
           "duracion": "PT4M9S",
-          "vistas": 21,
+          "vistas": 28,
           "likes": 1,
           "comentarios": 0
         },
@@ -750,7 +750,7 @@
           "publishedAt": "2025-10-07T19:55:40Z",
           "posicion": 5,
           "duracion": "PT4M21S",
-          "vistas": 9,
+          "vistas": 13,
           "likes": 1,
           "comentarios": 0
         },
@@ -763,7 +763,7 @@
           "publishedAt": "2025-10-07T19:56:36Z",
           "posicion": 6,
           "duracion": "PT5M14S",
-          "vistas": 12,
+          "vistas": 14,
           "likes": 0,
           "comentarios": 0
         },
@@ -776,20 +776,20 @@
           "publishedAt": "2025-10-07T19:57:33Z",
           "posicion": 7,
           "duracion": "PT5M41S",
-          "vistas": 11,
+          "vistas": 13,
           "likes": 1,
           "comentarios": 0
         },
         {
           "id": "njqE2uGyysQ",
           "titulo": "ALTER TABLE en SQL | Modificar la estructura de una tabla |Consulta DDL| Curso de SQL Intermedio #9",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n───────────────���──────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Manipulación de tablas)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM \n\n🎓 Lista completa del curso SQL Intermedio:  \nhttps://www.youtube.com/playlist?list=PLV4oS06_KpqY-NCxlYCYMPENL0EUTLNuU  \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a manipular tablas paso a paso usando ejemplos reales.  \n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/njqE2uGyysQ/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=njqE2uGyysQ",
           "publishedAt": "2025-10-07T19:59:45Z",
           "posicion": 8,
           "duracion": "PT6M16S",
-          "vistas": 14,
+          "vistas": 16,
           "likes": 2,
           "comentarios": 0
         },
@@ -802,7 +802,7 @@
           "publishedAt": "2025-10-07T20:00:43Z",
           "posicion": 9,
           "duracion": "PT10M15S",
-          "vistas": 7,
+          "vistas": 9,
           "likes": 0,
           "comentarios": 0
         }
@@ -821,13 +821,13 @@
         {
           "id": "Z4Fo5F_mLuU",
           "titulo": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n─────────────���────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Z4Fo5F_mLuU",
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-          "vistas": 40,
+          "vistas": 44,
           "likes": 0,
           "comentarios": 0
         },
@@ -860,20 +860,20 @@
         {
           "id": "i6Cfsd0CP2g",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP | Curso de SQL Intermedio #4",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n────────────────────────���─────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/i6Cfsd0CP2g/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=i6Cfsd0CP2g",
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
-          "vistas": 58,
-          "likes": 5,
+          "vistas": 62,
+          "likes": 6,
           "comentarios": 2
         },
         {
           "id": "Q7BvnpCsUAU",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────��───────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
           "publishedAt": "2025-10-19T16:33:34Z",
@@ -905,7 +905,7 @@
           "publishedAt": "2025-11-02T07:04:09Z",
           "posicion": 6,
           "duracion": "PT17M38S",
-          "vistas": 17,
+          "vistas": 18,
           "likes": 0,
           "comentarios": 0
         },
@@ -918,13 +918,13 @@
           "publishedAt": "2025-11-02T07:05:32Z",
           "posicion": 7,
           "duracion": "PT13M35S",
-          "vistas": 29,
+          "vistas": 30,
           "likes": 3,
           "comentarios": 0
         },
         {
           "id": "ddB92jjDOVs",
-          "titulo": "Uso de Coalesce en Joins",
+          "titulo": "Uso de Coalesce en Joins | Curso de SQL Intermedio #9",
           "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/ddB92jjDOVs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ddB92jjDOVs",
@@ -937,14 +937,14 @@
         },
         {
           "id": "DebaxM_8EO0",
-          "titulo": "Multiples Joins en una consulta SQL",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "titulo": "Multiples Joins en una consulta SQL | Curso de SQL Intermedio #10",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────��───────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/DebaxM_8EO0/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=DebaxM_8EO0",
           "publishedAt": "2026-01-06T00:51:18Z",
           "posicion": 9,
           "duracion": "PT26M53S",
-          "vistas": 44,
+          "vistas": 47,
           "likes": 9,
           "comentarios": 1
         }
@@ -969,7 +969,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 0,
           "duracion": "PT13M31S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 1,
           "comentarios": 0
         },
@@ -982,7 +982,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 1,
           "duracion": "PT12M52S",
-          "vistas": 18,
+          "vistas": 20,
           "likes": 1,
           "comentarios": 0
         },
@@ -995,7 +995,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 2,
           "duracion": "PT15M32S",
-          "vistas": 6,
+          "vistas": 7,
           "likes": 0,
           "comentarios": 0
         },
@@ -1008,20 +1008,20 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 3,
           "duracion": "PT14M34S",
-          "vistas": 26,
+          "vistas": 27,
           "likes": 3,
           "comentarios": 0
         },
         {
           "id": "M4Q186h3zHA",
           "titulo": "5. Qualify en SQL BigQuery - Filtrar los resultados de una función de ventana de ranking",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n──────────────────────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n────────��─────────────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/M4Q186h3zHA/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=M4Q186h3zHA",
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 4,
           "duracion": "PT6M1S",
-          "vistas": 26,
+          "vistas": 28,
           "likes": 2,
           "comentarios": 2
         }
