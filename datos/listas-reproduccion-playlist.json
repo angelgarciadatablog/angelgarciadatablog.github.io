@@ -1,7 +1,16 @@
 {
-  "fechaActualizacion": "2026-01-19T14:09:17.498Z",
-  "totalPlaylists": 16,
+  "fechaActualizacion": "2026-01-26T14:09:18.050Z",
+  "totalPlaylists": 17,
   "playlists": [
+    {
+      "id": "PLV4oS06_KpqbsY_I8iR4HRvb6w3vXUBIM",
+      "title": "SQL - Repaso",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/7bwkNrRpgw0/hqdefault.jpg",
+      "publishedAt": "2026-01-23T05:43:30.512825Z",
+      "videoCount": 2,
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbsY_I8iR4HRvb6w3vXUBIM"
+    },
     {
       "id": "PLV4oS06_KpqZGwOHo-tsdIiaZts7qaqql",
       "title": "Python - Repaso",
@@ -26,12 +35,12 @@
       "description": "",
       "thumbnail": "https://i.ytimg.com/vi/GLJffh1QDM4/hqdefault.jpg",
       "publishedAt": "2026-01-11T10:10:50.096597Z",
-      "videoCount": 3,
+      "videoCount": 4,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbhnVieDd19KJczH_BlBArN"
     },
     {
       "id": "PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi",
-      "title": "Power Bi - Ejercicios",
+      "title": "Power Bi - Repaso",
       "description": "Ejercicios prácticos de Power BI para reforzar conceptos clave, mejorar el análisis y aplicar técnicas paso a paso en situaciones reales",
       "thumbnail": "https://i.ytimg.com/img/no_thumbnail.jpg",
       "publishedAt": "2025-11-14T19:58:40.555568Z",
