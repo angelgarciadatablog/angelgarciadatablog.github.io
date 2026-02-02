@@ -2,7 +2,7 @@
   "curso": "sql-bigquery",
   "titulo": "Curso de SQL en BigQuery",
   "descripcion": "Curso completo de SQL usando Google BigQuery",
-  "fechaActualizacion": "2026-01-26T14:09:56.160Z",
+  "fechaActualizacion": "2026-02-02T14:17:54.102Z",
   "modulos": [
     {
       "moduloId": 1,
@@ -23,8 +23,8 @@
           "publishedAt": "2025-09-01T08:50:36Z",
           "posicion": 0,
           "duracion": "PT3M57S",
-          "vistas": 696,
-          "likes": 22,
+          "vistas": 720,
+          "likes": 24,
           "comentarios": 2
         },
         {
@@ -36,7 +36,7 @@
           "publishedAt": "2025-08-12T06:40:37Z",
           "posicion": 1,
           "duracion": "PT6M37S",
-          "vistas": 477,
+          "vistas": 505,
           "likes": 17,
           "comentarios": 3
         },
@@ -49,7 +49,7 @@
           "publishedAt": "2025-08-12T10:15:47Z",
           "posicion": 2,
           "duracion": "PT5M19S",
-          "vistas": 253,
+          "vistas": 272,
           "likes": 5,
           "comentarios": 2
         },
@@ -62,7 +62,7 @@
           "publishedAt": "2025-08-12T10:21:59Z",
           "posicion": 3,
           "duracion": "PT6M36S",
-          "vistas": 232,
+          "vistas": 250,
           "likes": 5,
           "comentarios": 1
         },
@@ -75,7 +75,7 @@
           "publishedAt": "2025-08-14T06:20:44Z",
           "posicion": 4,
           "duracion": "PT11M10S",
-          "vistas": 266,
+          "vistas": 279,
           "likes": 6,
           "comentarios": 0
         },
@@ -88,7 +88,7 @@
           "publishedAt": "2025-08-14T06:24:19Z",
           "posicion": 5,
           "duracion": "PT10M33S",
-          "vistas": 135,
+          "vistas": 137,
           "likes": 0,
           "comentarios": 0
         },
@@ -101,7 +101,7 @@
           "publishedAt": "2025-08-14T06:32:16Z",
           "posicion": 6,
           "duracion": "PT10M48S",
-          "vistas": 326,
+          "vistas": 330,
           "likes": 14,
           "comentarios": 2
         },
@@ -114,7 +114,7 @@
           "publishedAt": "2025-08-14T06:36:01Z",
           "posicion": 7,
           "duracion": "PT8M9S",
-          "vistas": 109,
+          "vistas": 110,
           "likes": 3,
           "comentarios": 0
         },
@@ -127,7 +127,7 @@
           "publishedAt": "2025-08-14T07:58:08Z",
           "posicion": 8,
           "duracion": "PT11M11S",
-          "vistas": 97,
+          "vistas": 99,
           "likes": 2,
           "comentarios": 1
         },
@@ -140,7 +140,7 @@
           "publishedAt": "2025-08-14T07:59:27Z",
           "posicion": 9,
           "duracion": "PT7M18S",
-          "vistas": 79,
+          "vistas": 80,
           "likes": 4,
           "comentarios": 2
         },
@@ -153,7 +153,7 @@
           "publishedAt": "2025-08-15T04:59:49Z",
           "posicion": 10,
           "duracion": "PT14M39S",
-          "vistas": 106,
+          "vistas": 111,
           "likes": 3,
           "comentarios": 0
         },
@@ -166,7 +166,7 @@
           "publishedAt": "2025-08-15T05:02:52Z",
           "posicion": 11,
           "duracion": "PT18M17S",
-          "vistas": 469,
+          "vistas": 493,
           "likes": 16,
           "comentarios": 2
         },
@@ -179,7 +179,7 @@
           "publishedAt": "2025-08-15T05:06:05Z",
           "posicion": 12,
           "duracion": "PT5M2S",
-          "vistas": 102,
+          "vistas": 106,
           "likes": 3,
           "comentarios": 0
         },
@@ -192,20 +192,20 @@
           "publishedAt": "2025-08-15T05:10:50Z",
           "posicion": 13,
           "duracion": "PT6M20S",
-          "vistas": 76,
+          "vistas": 77,
           "likes": 1,
           "comentarios": 0
         },
         {
           "id": "VrvnwaTppAE",
           "titulo": "Cómo usar EXTRACT en BigQuery | Extraer día, mes y año de fechas | Curso de SQL BigQuery #15",
-          "descripcion": "En este cap��tulo aprenderemos a usar la función EXTRACT, que permite obtener partes específicas de una fecha, como día, mes, año, trimestre o semana.\n\nVeremos ejemplos prácticos con una tabla prueba y con la tabla de events de GA4, explicando las diferencias entre trabajar con campos de tipo DATE y STRING, y cómo combinar EXTRACT con PARSE_DATE para transformar datos en Big Query.\n\n📌 Temas:\n✅  Cómo funciona la función EXTRACT en Big Query.\n✅ Extraer día, mes, año, semana y trimestre de un campo DATE.\n✅ Diferencias entre DATE, STRING, DATETIME y TIMESTAMP.\n✅ Uso de PARSE_DATE para convertir un string en fecha antes de aplicar EXTRACT.\n✅ Limitaciones: por qué no se puede extraer hora, minuto o segundo desde DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a usar la función EXTRACT, que permite obtener partes específicas de una fecha, como día, mes, año, trimestre o semana.\n\nVeremos ejemplos prácticos con una tabla prueba y con la tabla de events de GA4, explicando las diferencias entre trabajar con campos de tipo DATE y STRING, y cómo combinar EXTRACT con PARSE_DATE para transformar datos en Big Query.\n\n📌 Temas:\n✅  Cómo funciona la función EXTRACT en Big Query.\n✅ Extraer día, mes, año, semana y trimestre de un campo DATE.\n✅ Diferencias entre DATE, STRING, DATETIME y TIMESTAMP.\n✅ Uso de PARSE_DATE para convertir un string en fecha antes de aplicar EXTRACT.\n✅ Limitaciones: por qué no se puede extraer hora, minuto o segundo desde DATE.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/VrvnwaTppAE/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=VrvnwaTppAE",
           "publishedAt": "2025-08-15T05:13:42Z",
           "posicion": 14,
           "duracion": "PT7M15S",
-          "vistas": 64,
+          "vistas": 65,
           "likes": 1,
           "comentarios": 0
         },
@@ -218,7 +218,7 @@
           "publishedAt": "2025-08-15T09:17:06Z",
           "posicion": 15,
           "duracion": "PT6M14S",
-          "vistas": 49,
+          "vistas": 52,
           "likes": 1,
           "comentarios": 0
         },
@@ -231,7 +231,7 @@
           "publishedAt": "2025-08-15T09:23:28Z",
           "posicion": 16,
           "duracion": "PT3M54S",
-          "vistas": 35,
+          "vistas": 39,
           "likes": 0,
           "comentarios": 0
         },
@@ -251,7 +251,7 @@
         {
           "id": "_cXvg-XPnUs",
           "titulo": "Cómo separar texto en columnas y entender arrays en Big Query | SPLIT | Curso de SQL BigQuery #19",
-          "descripcion": "En este capítulo aprenderás a usar la función SPLIT en BigQuery. Veremos cómo aplicar esta función en la tabla events de Google Analytics 4 (GA4) y entender mejor el concepto de arrays en SQL.\n\n📌  Temas:\n✅ Cómo funciona la función SPLIT en BigQuery\n✅ Ejemplo práctico separando un user_pseudo_id en dos columnas\n✅ Qué es un array y cómo interpretarlo en los resultados\n✅ Uso de OFFSET para extraer valores específicos de un array\n✅ Diferencia entre tablas planas y tablas con arrays en GA4\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderás a usar la función SPLIT en BigQuery. Veremos cómo aplicar esta función en la tabla events de Google Analytics 4 (GA4) y entender mejor el concepto de arrays en SQL.\n\n📌  Temas:\n✅ Cómo funciona la función SPLIT en BigQuery\n✅ Ejemplo práctico separando un user_pseudo_id en dos columnas\n✅ Qué es un array y cómo interpretarlo en los resultados\n✅ Uso de OFFSET para extraer valores específicos de un array\n✅ Diferencia entre tablas planas y tablas con arrays en GA4\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame v��a PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/_cXvg-XPnUs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=_cXvg-XPnUs",
           "publishedAt": "2025-08-15T09:32:06Z",
@@ -270,7 +270,7 @@
           "publishedAt": "2025-08-15T09:36:21Z",
           "posicion": 19,
           "duracion": "PT4M56S",
-          "vistas": 54,
+          "vistas": 55,
           "likes": 2,
           "comentarios": 0
         },
@@ -283,7 +283,7 @@
           "publishedAt": "2025-08-15T09:46:14Z",
           "posicion": 20,
           "duracion": "PT5M32S",
-          "vistas": 31,
+          "vistas": 33,
           "likes": 0,
           "comentarios": 0
         },
@@ -316,7 +316,7 @@
         {
           "id": "NQpnc4YfuQo",
           "titulo": "Cómo usar TRANSLATE en SQL | Replace vs Translate | Curso de SQL BigQuery #24",
-          "descripcion": "En este capítulo revisaremos la función TRANSLATE en SQL, entendiendo sus diferencias con la función REPLACE.\n\n📌Temas:\n✅ Diferencia entre REPLACE y TRANSLATE en SQL.\n✅ Cómo reemplazar un carácter o varios a la vez.\n✅ Ejemplos prácticos con cadenas de texto y limpieza de datos (cambiar todas la vocales)\n✅ Casos reales como normalizar correos o eliminar caracteres especiales.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos la función TRANSLATE en SQL, entendiendo sus diferencias con la función REPLACE.\n\n��Temas:\n✅ Diferencia entre REPLACE y TRANSLATE en SQL.\n✅ Cómo reemplazar un carácter o varios a la vez.\n✅ Ejemplos prácticos con cadenas de texto y limpieza de datos (cambiar todas la vocales)\n✅ Casos reales como normalizar correos o eliminar caracteres especiales.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/NQpnc4YfuQo/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NQpnc4YfuQo",
           "publishedAt": "2025-08-15T09:58:19Z",
@@ -361,20 +361,20 @@
           "publishedAt": "2025-08-16T07:21:24Z",
           "posicion": 26,
           "duracion": "PT8M19S",
-          "vistas": 53,
+          "vistas": 54,
           "likes": 2,
           "comentarios": 0
         },
         {
           "id": "YDElIJ6jMrw",
           "titulo": "Cómo usar EXCEPT para excluir columnas en tus consultas | Curso de SQL BigQuery #28",
-          "descripcion": "En este capítulo revisaremos la expresión EXCEPT en SQL, aprendiendo a excluir columnas directamente desde la cláusula SELECT en BigQuery con datos de Google Analytics 4.\n\n📌 Temas:\n✅ Cómo funciona EXCEPT dentro de SELECT.\n✅ Diferencia entre excluir una o varias columnas.\n✅ Ejemplo práctico quitando columnas de la tabla de eventos en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo revisaremos la expresión EXCEPT en SQL, aprendiendo a excluir columnas directamente desde la cláusula SELECT en BigQuery con datos de Google Analytics 4.\n\n📌 Temas:\n✅ C��mo funciona EXCEPT dentro de SELECT.\n✅ Diferencia entre excluir una o varias columnas.\n✅ Ejemplo práctico quitando columnas de la tabla de eventos en GA4.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/YDElIJ6jMrw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=YDElIJ6jMrw",
           "publishedAt": "2025-08-16T07:23:05Z",
           "posicion": 27,
           "duracion": "PT5M47S",
-          "vistas": 35,
+          "vistas": 38,
           "likes": 1,
           "comentarios": 0
         },
@@ -465,7 +465,7 @@
           "publishedAt": "2025-08-16T07:40:35Z",
           "posicion": 34,
           "duracion": "PT10M24S",
-          "vistas": 33,
+          "vistas": 34,
           "likes": 4,
           "comentarios": 0
         },
@@ -491,8 +491,8 @@
           "publishedAt": "2025-08-16T14:18:33Z",
           "posicion": 36,
           "duracion": "PT5M27S",
-          "vistas": 41,
-          "likes": 0,
+          "vistas": 42,
+          "likes": 1,
           "comentarios": 0
         },
         {
@@ -504,7 +504,7 @@
           "publishedAt": "2025-08-16T14:19:42Z",
           "posicion": 37,
           "duracion": "PT8M25S",
-          "vistas": 27,
+          "vistas": 31,
           "likes": 2,
           "comentarios": 2
         },
@@ -517,7 +517,7 @@
           "publishedAt": "2025-08-16T14:22:21Z",
           "posicion": 38,
           "duracion": "PT5M26S",
-          "vistas": 30,
+          "vistas": 31,
           "likes": 2,
           "comentarios": 0
         },
@@ -537,7 +537,7 @@
         {
           "id": "v1Qnd2Uxcjs",
           "titulo": "Cómo usar WHERE en SQL BigQuery con textos | LOWER y UPPER | Curso de SQL BigQuery #41",
-          "descripcion": "En este capítulo aprenderemos a manejar casos especiales al utilizar la cláusula WHERE con operadores de comparación en SQL BigQuery. Veremos cómo los datos pueden venir con mayúsculas, minúsculas o formatos inconsistentes, y cómo resolverlo con funciones como LOWER y UPPER. Además, exploraremos ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Uso de la cláusula WHERE con campos de texto (ejemplo: marcas de dispositivos).\n✅ Problemas comunes con mayúsculas y minúsculas al filtrar.\n✅ Cómo estandarizar datos con las funciones LOWER y UPPER.\n\n📌 Recursos útiles:\n��� GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
+          "descripcion": "En este capítulo aprenderemos a manejar casos especiales al utilizar la cláusula WHERE con operadores de comparación en SQL BigQuery. Veremos cómo los datos pueden venir con mayúsculas, minúsculas o formatos inconsistentes, y cómo resolverlo con funciones como LOWER y UPPER. Además, exploraremos ejemplos prácticos con datos de Google Analytics 4 (GA4).\n\n📌 Temas que veremos:\n✅ Uso de la cláusula WHERE con campos de texto (ejemplo: marcas de dispositivos).\n✅ Problemas comunes con mayúsculas y minúsculas al filtrar.\n✅ Cómo estandarizar datos con las funciones LOWER y UPPER.\n\n📌 Recursos útiles:\n🔗 GitHub: https://github.com/angelgarciadatablog\n🌐 Página web: https://angelgarciadatablog.com\n💙 Apóyame vía PayPal: https://paypal.me/angeldatablog\n\n📚 Lista de reproducción completa del curso:\nhttps://youtube.com/playlist?list=PLV4oS06_KpqbnahoXdN-A8Ql9zVblYUJl&si=yenYawVlOri5L-SU",
           "thumbnail": "https://i.ytimg.com/vi/v1Qnd2Uxcjs/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=v1Qnd2Uxcjs",
           "publishedAt": "2025-08-16T14:27:58Z",
@@ -647,7 +647,7 @@
           "publishedAt": "2025-08-18T12:13:25Z",
           "posicion": 48,
           "duracion": "PT7M23S",
-          "vistas": 38,
+          "vistas": 39,
           "likes": 2,
           "comentarios": 0
         },
@@ -660,7 +660,7 @@
           "publishedAt": "2025-08-18T12:15:19Z",
           "posicion": 49,
           "duracion": "PT9M40S",
-          "vistas": 32,
+          "vistas": 33,
           "likes": 1,
           "comentarios": 0
         }
@@ -685,7 +685,7 @@
           "publishedAt": "2025-10-07T08:51:06Z",
           "posicion": 0,
           "duracion": "PT5M8S",
-          "vistas": 82,
+          "vistas": 84,
           "likes": 4,
           "comentarios": 0
         },
@@ -698,7 +698,7 @@
           "publishedAt": "2025-10-07T08:55:56Z",
           "posicion": 1,
           "duracion": "PT8M31S",
-          "vistas": 36,
+          "vistas": 37,
           "likes": 0,
           "comentarios": 0
         },
@@ -711,7 +711,7 @@
           "publishedAt": "2025-10-07T08:57:09Z",
           "posicion": 2,
           "duracion": "PT14M14S",
-          "vistas": 27,
+          "vistas": 28,
           "likes": 1,
           "comentarios": 0
         },
@@ -724,7 +724,7 @@
           "publishedAt": "2025-10-07T09:00:56Z",
           "posicion": 3,
           "duracion": "PT8M23S",
-          "vistas": 23,
+          "vistas": 24,
           "likes": 1,
           "comentarios": 0
         },
@@ -821,13 +821,13 @@
         {
           "id": "Z4Fo5F_mLuU",
           "titulo": "Introducción al Nivel Intermedio y Temas Principales |  Curso de SQL Intermedio en BigQuery #1",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n─────────────���────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Z4Fo5F_mLuU",
           "publishedAt": "2025-10-19T16:33:20Z",
           "posicion": 0,
           "duracion": "PT8M12S",
-          "vistas": 44,
+          "vistas": 47,
           "likes": 0,
           "comentarios": 0
         },
@@ -840,7 +840,7 @@
           "publishedAt": "2025-10-19T16:33:23Z",
           "posicion": 1,
           "duracion": "PT14M36S",
-          "vistas": 20,
+          "vistas": 23,
           "likes": 0,
           "comentarios": 0
         },
@@ -853,7 +853,7 @@
           "publishedAt": "2025-10-19T16:33:28Z",
           "posicion": 2,
           "duracion": "PT5M54S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 2,
           "comentarios": 0
         },
@@ -866,33 +866,33 @@
           "publishedAt": "2025-10-19T16:33:30Z",
           "posicion": 3,
           "duracion": "PT11M42S",
-          "vistas": 62,
-          "likes": 6,
+          "vistas": 68,
+          "likes": 7,
           "comentarios": 2
         },
         {
           "id": "Q7BvnpCsUAU",
           "titulo": "Relaciones de muchos a muchos | Tabla intermedia | Sistema OLTP vs OLAP | Curso de SQL Intermedio #5",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n�� Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/Q7BvnpCsUAU/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Q7BvnpCsUAU",
           "publishedAt": "2025-10-19T16:33:34Z",
           "posicion": 4,
           "duracion": "PT12M8S",
-          "vistas": 34,
-          "likes": 2,
+          "vistas": 35,
+          "likes": 3,
           "comentarios": 0
         },
         {
           "id": "zToHhAif9Gw",
           "titulo": "Qué es un JOIN en SQL | Aprende a relacionar tablas paso a paso | Curso de SQL Intermedio #6",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n─────────────────────���────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/zToHhAif9Gw/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=zToHhAif9Gw",
           "publishedAt": "2025-11-02T07:01:04Z",
           "posicion": 5,
           "duracion": "PT15M51S",
-          "vistas": 28,
+          "vistas": 30,
           "likes": 2,
           "comentarios": 0
         },
@@ -905,7 +905,7 @@
           "publishedAt": "2025-11-02T07:04:09Z",
           "posicion": 6,
           "duracion": "PT17M38S",
-          "vistas": 18,
+          "vistas": 19,
           "likes": 0,
           "comentarios": 0
         },
@@ -918,7 +918,7 @@
           "publishedAt": "2025-11-02T07:05:32Z",
           "posicion": 7,
           "duracion": "PT13M35S",
-          "vistas": 30,
+          "vistas": 32,
           "likes": 3,
           "comentarios": 0
         },
@@ -931,20 +931,20 @@
           "publishedAt": "2026-01-06T00:47:56Z",
           "posicion": 8,
           "duracion": "PT9M10S",
-          "vistas": 12,
+          "vistas": 14,
           "likes": 1,
           "comentarios": 0
         },
         {
           "id": "DebaxM_8EO0",
           "titulo": "Multiples Joins en una consulta SQL | Curso de SQL Intermedio #10",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────��───────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Intermedio (Joins - Subconsultas - CTE)\n\n📖 Diapositivas de la clase:  \nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit\n\n🎓 Lista completa del curso SQL Intermedio:  \n   • Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto \n\n🌐 Página web oficial: https://angelgarciadatablog.com \n🔗 GitHub: https://github.com/angelgarciadatablog   \n💙 Apóyame en PayPal: https://paypal.me/angeldatablog  \n\n\n──────────────────────────────  \n📚 Sobre el curso  \nEste curso gratuito de SQL nivel intermedio está diseñado para que aprendas a combinar tablas y generar consultas más complejas.\n\nIdeal si ya completaste el curso básico y quieres avanzar hacia un nivel más profesional de análisis de datos.  \n\n──────────────────────────────  \n💬 Conecta conmigo  \n📸 Instagram / LinkedIn / Tik Tok→ @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/DebaxM_8EO0/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=DebaxM_8EO0",
           "publishedAt": "2026-01-06T00:51:18Z",
           "posicion": 9,
           "duracion": "PT26M53S",
-          "vistas": 47,
+          "vistas": 51,
           "likes": 9,
           "comentarios": 1
         }
@@ -969,7 +969,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 0,
           "duracion": "PT13M31S",
-          "vistas": 22,
+          "vistas": 29,
           "likes": 1,
           "comentarios": 0
         },
@@ -982,7 +982,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 1,
           "duracion": "PT12M52S",
-          "vistas": 20,
+          "vistas": 22,
           "likes": 1,
           "comentarios": 0
         },
@@ -995,7 +995,7 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 2,
           "duracion": "PT15M32S",
-          "vistas": 7,
+          "vistas": 8,
           "likes": 0,
           "comentarios": 0
         },
@@ -1008,20 +1008,20 @@
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 3,
           "duracion": "PT14M34S",
-          "vistas": 27,
+          "vistas": 28,
           "likes": 3,
           "comentarios": 0
         },
         {
           "id": "M4Q186h3zHA",
           "titulo": "5. Qualify en SQL BigQuery - Filtrar los resultados de una función de ventana de ranking",
-          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n────────��─────────────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
+          "descripcion": "📌 Recursos útiles para este curso de SQL Avanzado 1 (Funciones de ventana)\n\n📖 Diapositivas de la clase:\nhttps://docs.google.com/presentation/d/1iKkBdqz0caPJjqq3t4Q8EMUIHEBg2DSaFh7yWxE2HDM/edit?slide=id.g369c9bc9744_0_21#slide=id.g369c9bc9744_0_21\n\n🎓 Lista completa del curso SQL Avanzado 1:\n• Curso gratuito de SQL en BigQuery | Funciones de ventana -  Nivel avanzado 1\n\n🌐 Página web oficial: https://angelgarciadatablog.com\n🔗 GitHub: https://github.com/angelgarciadatablog\n💙 Apóyame en PayPal: https://paypal.me/angeldatablog\n\n──────────────────────────────\n📚 Sobre el curso\nEste curso gratuito de SQL nivel avanzado está enfocado en el uso práctico de funciones de ventana en BigQuery, explicadas paso a paso y con ejemplos claros.\n\nEstá pensado para quienes ya dominan SELECT, JOINs y subconsultas, y buscan entender cómo realizar análisis más avanzados como rankings, acumulados y comparaciones entre filas.\n\n──────────────────────────────\n💬 Conecta conmigo\n📸 Instagram / LinkedIn / Tik Tok → @angelgarciadatablog",
           "thumbnail": "https://i.ytimg.com/vi/M4Q186h3zHA/hqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=M4Q186h3zHA",
           "publishedAt": "2026-01-11T22:39:37Z",
           "posicion": 4,
           "duracion": "PT6M1S",
-          "vistas": 28,
+          "vistas": 29,
           "likes": 2,
           "comentarios": 2
         }
