@@ -1,6 +1,6 @@
 {
-  "fechaActualizacion": "2026-02-09T14:24:53.298Z",
-  "totalPlaylists": 17,
+  "fechaActualizacion": "2026-02-11T01:34:56.949Z",
+  "totalPlaylists": 16,
   "playlists": [
     {
       "id": "PLV4oS06_KpqbsY_I8iR4HRvb6w3vXUBIM",
@@ -39,21 +39,12 @@
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqbhnVieDd19KJczH_BlBArN"
     },
     {
-      "id": "PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi",
-      "title": "Power Bi - Repaso",
-      "description": "Ejercicios prácticos de Power BI para reforzar conceptos clave, mejorar el análisis y aplicar técnicas paso a paso en situaciones reales",
-      "thumbnail": "https://i.ytimg.com/img/no_thumbnail.jpg",
-      "publishedAt": "2025-11-14T19:58:40.555568Z",
-      "videoCount": 0,
-      "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_Kpqa8GH9cDIMGnGQX9zPNj3gi"
-    },
-    {
       "id": "PLV4oS06_KpqYRtYRoQHo_F_KsEjmqcDK7",
-      "title": "Power Bi - Dax Avanzado",
+      "title": "Power Bi - Repaso",
       "description": "Aprende funciones DAX avanzadas aplicadas a casos reales en Power BI, explicadas de forma práctica y directa. Ideal para llevar tu modelado y tus análisis al siguiente nivel",
       "thumbnail": "https://i.ytimg.com/vi/J0GOADsEp4E/hqdefault.jpg",
       "publishedAt": "2025-11-14T07:55:25.117707Z",
-      "videoCount": 4,
+      "videoCount": 14,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqYRtYRoQHo_F_KsEjmqcDK7"
     },
     {
@@ -62,7 +53,7 @@
       "description": "Aprende a analizar y visualizar datos temporales en Power BI: tendencias, comparaciones y periodos personalizados",
       "thumbnail": "https://i.ytimg.com/vi/qytf-g55XFE/hqdefault.jpg",
       "publishedAt": "2025-11-13T11:32:34.001662Z",
-      "videoCount": 2,
+      "videoCount": 8,
       "playlistUrl": "https://www.youtube.com/playlist?list=PLV4oS06_KpqZo5tENEyKr-Ha1wR4DZuHM"
     },
     {
