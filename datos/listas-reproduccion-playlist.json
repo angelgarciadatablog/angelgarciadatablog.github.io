@@ -1,5 +1,5 @@
 {
-  "fechaActualizacion": "2026-02-11T01:34:56.949Z",
+  "fechaActualizacion": "2026-02-16T14:19:42.085Z",
   "totalPlaylists": 16,
   "playlists": [
     {
@@ -59,7 +59,7 @@
     {
       "id": "PLV4oS06_Kpqahle46bX_iDjupUZLUDIad",
       "title": "Curso gratuito de SQL en BigQuery | Joins, subconsultas, CTE's, operadores de conjunto -  Nivel Intermedio 2.2",
-      "description": "Da un salto en tu nivel de SQL aprendiendo a conectar múltiples tablas y crear consultas más potentes. Todo explicado paso a paso con casos prácticos en BigQuery.",
+      "description": "Da un salto en tu nivel de SQL aprendiendo a conectar múltiples tablas y crear consultas m��s potentes. Todo explicado paso a paso con casos prácticos en BigQuery.",
       "thumbnail": "https://i.ytimg.com/vi/Z4Fo5F_mLuU/hqdefault.jpg",
       "publishedAt": "2025-10-19T16:32:18.686475Z",
       "videoCount": 10,
