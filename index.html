@@ -47,10 +47,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span aria-hidden="true">☰</span>
       </button>
       <nav class="menu" id="site-menu">
-        <a class="menu-link" href="/notas">Notas</a>
+        <a class="menu-link" href="/portafolio">Portafolio</a>
         <a class="menu-link" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer">Youtube</a>
-        <a class="menu-link" href="https://github.com/angelgarciadatablog" target="_blank" rel="noopener noreferrer">Github</a>
-        <a class="menu-link" href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+        <a class="menu-link" href="/blog">Blog</a>
+        <a class="menu-link menu-link--contact" href="/#contact-form">Contacto</a>
       </nav>
     </div>
   </header>
@@ -98,15 +98,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="container hero-content">
       <h1 class="hero-title">
-        Bienvenido a mi <span class="gradient-text">Sitio Web</span><br>
-        angelgarciadatablog
+        Bienvenido a mi Sitio Web<br>
+        <span class="gradient-text">angelgarciadatablog</span>
       </h1>
-      </p>
       <p class="hero-tagline">
         Aquí comparto mi camino en el mundo del análisis de datos, aprendiendo y enseñando al mismo tiempo.
       </p>
       <a href="#contact-form" class="btn-hero">
-        Cuéntame tu proyecto
+        Iniciar conversación
       </a>
     </div>
   </section>
@@ -165,45 +164,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <!-- Sección: Cursos Gratuitos -->
-    <section class="cursos-gratuitos">
-      <div class="container">
-        <h2>CURSOS GRATUITOS</h2>
-        <div class="cursos-grid" id="cursos-grid">
-          <!-- Aquí se inyectarán los cursos desde Google Sheets -->
-          <div class="curso-card loading">
-            <div class="curso-icon-skeleton"></div>
-            <div class="curso-info-skeleton"></div>
-          </div>
-          <div class="curso-card loading">
-            <div class="curso-icon-skeleton"></div>
-            <div class="curso-info-skeleton"></div>
-          </div>
-          <div class="curso-card loading">
-            <div class="curso-icon-skeleton"></div>
-            <div class="curso-info-skeleton"></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Sección: Tutoriales Variados -->
+    <!-- Sección: Tutoriales en Youtube -->
     <section class="tutoriales-variados">
       <div class="container">
-        <h2>TUTORIALES VARIADOS</h2>
+        <h2>TUTORIALES EN YOUTUBE</h2>
         <p class="tutoriales-description">
           Una colección de videos prácticos sobre análisis de datos y temas relacionados, creados para compartir lo que aprendo y hacerlo más accesible para todos.
         </p>
         <div class="tutoriales-buttons">
-          <a href="tutoriales/temas-importantes" class="btn-tutoriales">Temas importantes</a>
-          <a href="tutoriales/listas-reproduccion" class="btn-tutoriales">Listas de reproducción</a>
+          <a href="tutoriales/listas-reproduccion" class="btn-tutoriales">Ver las listas de reproducción</a>
         </div>
       </div>
     </section>
 
-    <!-- Sección: Recursos en Notion -->
+    <!-- Sección: Blog de Aprendizaje -->
     <section class="recursos-notion">
       <div class="container">
-        <h2>RECURSOS EN NOTION</h2>
+        <h2>BLOG DE APRENDIZAJE</h2>
         <p class="recursos-description">
           Mis apuntes y materiales en Notion. Una forma de documentar, organizar y compartir mi camino en el mundo del análisis de datos.
         </p>
@@ -291,9 +269,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Sección: Formulario de Contacto -->
     <section class="contact-section" id="contact-form">
       <div class="container">
-        <h2>¿Necesitas Ayuda con Reportes?</h2>
+        <h2>Agenda una reunión</h2>
         <p class="contact-description">
-          Si necesitas asistencia con reportes de datos, análisis o tienes alguna consulta, completa el formulario y me pondré en contacto contigo.
+          Si tienes dudas sobre análisis de datos o estás trabajando en un proyecto, agenda una breve reunión gratuita y revisamos tu caso juntos.
         </p>
 
         <form class="contact-form">
@@ -309,13 +287,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="form-group">
             <label for="topic">¿Sobre qué está relacionado tu consulta?</label>
-            <select id="topic" name="topic" required>
-              <option value="">Selecciona una opción</option>
-              <option value="reportes-powerbi">Reportes en Power BI</option>
-              <option value="sql-bigquery">SQL en BigQuery</option>
-              <option value="sitio-web-portafolio">Crear sitio web/portafolio</option>
-              <option value="otros-temas">Otros temas</option>
-            </select>
+            
+            <input type="text" id="topic" name="topic" required placeholder="Ej: análisis de datos, Power BI, SQL...">
           </div>
 
           <!-- Honeypot: campo oculto para detectar bots -->
@@ -417,7 +390,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script src="js/googleSheets.js?v=2"></script>
   <script src="js/youtube-secure.js?v=2"></script>
-  <script src="js/cursos.js?v=2"></script>
   <script src="js/recursos.js?v=2"></script>
   <script src="js/contact-form.js?v=1"></script>
   <script src="script.js?v=2"></script>

@@ -9,9 +9,7 @@ const GOOGLE_SHEETS_CONFIG = {
 
   // Pestañas disponibles
   sheets: {
-    cursosGratuitos: 'cursos-gratuitos',
     recursosNotion: 'recursos-notion',
-    videosImportantes: 'videos-importantes',
     lineaTiempo: 'linea-tiempo'
   },
 
@@ -247,19 +245,9 @@ async function fetchMultipleSheets(sheetNames, forceRefresh = false) {
  * Funciones específicas para cada pestaña
  */
 const GoogleSheets = {
-  // Obtener cursos gratuitos
-  async getCursosGratuitos(forceRefresh = false) {
-    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.cursosGratuitos, forceRefresh);
-  },
-
   // Obtener recursos de Notion
   async getRecursosNotion(forceRefresh = false) {
     return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.recursosNotion, forceRefresh);
-  },
-
-  // Obtener videos importantes
-  async getVideosImportantes(forceRefresh = false) {
-    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.videosImportantes, forceRefresh);
   },
 
   // Obtener línea de tiempo
@@ -267,12 +255,9 @@ const GoogleSheets = {
     return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.lineaTiempo, forceRefresh);
   },
 
-  // Obtener ambas pestañas para el home
+  // Obtener datos para el home
   async getHomeData(forceRefresh = false) {
-    return await fetchMultipleSheets([
-      GOOGLE_SHEETS_CONFIG.sheets.cursosGratuitos,
-      GOOGLE_SHEETS_CONFIG.sheets.recursosNotion
-    ], forceRefresh);
+    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.recursosNotion, forceRefresh);
   },
 
   // Limpiar caché (para forzar actualización manual)

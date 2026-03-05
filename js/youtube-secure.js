@@ -1,14 +1,11 @@
 /**
- * YouTube Videos Integration - Versión Optimizada con JSON Estático
- * Lee videos desde un archivo JSON pre-generado para optimizar el rendimiento
- * El JSON se actualiza manualmente desde el panel admin cuando sea necesario
+ * YouTube Videos Integration
+ * Lee videos desde Google Cloud Storage (actualización diaria automática)
  */
 
 const YOUTUBE_SECURE_CONFIG = {
-  // Ruta del archivo JSON estático
-  jsonDataPath: 'datos/videos-recientes.json',
-
-  // Configuración de reintentos
+  jsonDataUrl: 'https://storage.googleapis.com/angelgarciadatablog-analytics/daily/latest_videos_current.json',
+  maxVideos: 5,
   retry: {
     maxAttempts: 2,
     delayMs: 500
@@ -16,18 +13,16 @@ const YOUTUBE_SECURE_CONFIG = {
 };
 
 /**
- * Obtiene los videos desde el archivo JSON estático
- * @returns {Promise<Array>} Array con los videos
+ * Obtiene los videos desde el JSON en Cloud Storage
  */
 async function fetchYouTubeVideosSecure() {
   let lastError = null;
 
-  // Intentar con reintentos (por si hay problemas de red)
   for (let attempt = 1; attempt <= YOUTUBE_SECURE_CONFIG.retry.maxAttempts; attempt++) {
     try {
-      console.log(`🎥 Cargando videos desde JSON estático...`);
+      console.log('Cargando videos desde Cloud Storage...');
 
-      const response = await fetch(YOUTUBE_SECURE_CONFIG.jsonDataPath);
+      const response = await fetch(YOUTUBE_SECURE_CONFIG.jsonDataUrl);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -35,103 +30,98 @@ async function fetchYouTubeVideosSecure() {
 
       const result = await response.json();
 
-      // Validar estructura del JSON
-      if (!result.videos || !Array.isArray(result.videos)) {
-        throw new Error('Formato de JSON inválido');
+      if (!Array.isArray(result) || result.length === 0) {
+        throw new Error('Formato de JSON invalido o vacio');
       }
 
-      // Transformar datos al formato esperado por el frontend
-      const videos = result.videos.map(video => ({
-        id: video.id,
+      const videos = result.slice(0, YOUTUBE_SECURE_CONFIG.maxVideos).map(video => ({
+        id: video.video_id,
         title: video.title,
-        url: video.url || `https://www.youtube.com/watch?v=${video.id}`,
-        thumbnail: video.thumbnail,
-        publishedAt: new Date(video.publishedAt),
-        description: video.description || ''
+        url: video.video_url,
+        thumbnail: video.thumbnail_url,
+        publishedAt: new Date(video.published_at),
+        viewCount: video.view_count || 0,
+        likeCount: video.like_count || 0,
+        commentCount: video.comment_count || 0
       }));
 
-      console.log(`✅ ${videos.length} videos cargados desde JSON estático`);
-      console.log(`📅 Última actualización: ${new Date(result.fechaActualizacion).toLocaleString('es-ES')}`);
+      console.log(`${videos.length} videos cargados`);
       return videos;
 
     } catch (error) {
-      console.error(`❌ Error cargando JSON (intento ${attempt}):`, error.message);
+      console.error(`Error cargando videos (intento ${attempt}):`, error.message);
       lastError = error;
 
-      // Si no es el último intento, esperar antes de reintentar
       if (attempt < YOUTUBE_SECURE_CONFIG.retry.maxAttempts) {
-        const delay = YOUTUBE_SECURE_CONFIG.retry.delayMs;
-        console.log(`⏳ Reintentando en ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise(resolve => setTimeout(resolve, YOUTUBE_SECURE_CONFIG.retry.delayMs));
       }
     }
   }
 
-  // Si todos los intentos fallaron, usar placeholders
-  console.error('❌ No se pudo cargar videos-recientes.json:', lastError);
-  console.log('💡 Usa el panel admin.html para generar el archivo videos-recientes.json');
+  console.error('No se pudo cargar videos:', lastError);
   return getPlaceholderVideos();
 }
 
 /**
+ * Formatea numeros grandes (1200 -> 1.2K, 1500000 -> 1.5M)
+ */
+function formatNumber(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.0', '') + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1).replace('.0', '') + 'K';
+  return n.toString();
+}
+
+/**
  * Retorna videos placeholder cuando falla la carga
- * @returns {Array} Videos placeholder
  */
 function getPlaceholderVideos() {
-  console.log('📦 Usando videos placeholder');
   return [
     {
       id: 'placeholder-1',
-      title: 'Visita mi canal de YouTube para ver los últimos videos',
+      title: 'Visita mi canal de YouTube para ver los ultimos videos',
       url: 'https://www.youtube.com/@angelgarciadatablog/videos',
       thumbnail: 'https://via.placeholder.com/480x360/1a1a1a/7c3aed?text=Ver+Canal',
-      publishedAt: new Date()
+      publishedAt: new Date(),
+      viewCount: 0, likeCount: 0, commentCount: 0
     },
     {
       id: 'placeholder-2',
-      title: 'Contenido sobre Análisis de Datos y Programación',
+      title: 'Contenido sobre Analisis de Datos y Programacion',
       url: 'https://www.youtube.com/@angelgarciadatablog/videos',
       thumbnail: 'https://via.placeholder.com/480x360/1a1a1a/2674ed?text=YouTube',
-      publishedAt: new Date()
+      publishedAt: new Date(),
+      viewCount: 0, likeCount: 0, commentCount: 0
     },
     {
       id: 'placeholder-3',
-      title: 'Tutoriales de SQL, Power BI, Python y más',
+      title: 'Tutoriales de SQL, Power BI, Python y mas',
       url: 'https://www.youtube.com/@angelgarciadatablog/videos',
-      thumbnail: 'https://via.placeholder.com/480x360/1a1a1a/ec4899?text=Suscríbete',
-      publishedAt: new Date()
+      thumbnail: 'https://via.placeholder.com/480x360/1a1a1a/ec4899?text=Suscribete',
+      publishedAt: new Date(),
+      viewCount: 0, likeCount: 0, commentCount: 0
     }
   ];
 }
 
 /**
  * Renderiza los videos en el DOM
- * @param {Array} videos - Array de videos
  */
 function renderYouTubeVideos(videos) {
   const container = document.getElementById('youtube-videos');
-  if (!container) {
-    console.warn('⚠️ Contenedor #youtube-videos no encontrado');
-    return;
-  }
+  if (!container) return;
 
-  // Limpiar contenedor
   container.innerHTML = '';
 
-  // Si no hay videos, mostrar mensaje
   if (videos.length === 0) {
     container.innerHTML = `
       <div class="video-card">
-        <p class="video-preview">No se pudieron cargar los videos. Visita el canal directamente.</p>
-        <a href="https://www.youtube.com/@angelgarciadatablog" class="video-link" target="_blank" rel="noopener noreferrer">
-          Ver Canal →
-        </a>
+        <p>No se pudieron cargar los videos.</p>
+        <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener noreferrer">Ver Canal</a>
       </div>
     `;
     return;
   }
 
-  // Crear tarjetas de video
   videos.forEach(video => {
     const card = document.createElement('a');
     card.className = 'video-card';
@@ -151,33 +141,41 @@ function renderYouTubeVideos(videos) {
       <div class="video-info">
         <h3 class="video-title">${video.title}</h3>
         <p class="video-date">${formatDate(video.publishedAt)}</p>
+        <div class="video-stats">
+          <span class="video-stat">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            ${formatNumber(video.viewCount)}
+          </span>
+          <span class="video-stat">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+            ${formatNumber(video.likeCount)}
+          </span>
+          <span class="video-stat">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/></svg>
+            ${formatNumber(video.commentCount)}
+          </span>
+        </div>
       </div>
     `;
 
     container.appendChild(card);
   });
 
-  // Actualizar indicadores de scroll
   updateVideoScrollIndicators(videos.length);
 }
 
 /**
- * Formatea la fecha de publicación
- * @param {Date} date - Fecha a formatear
- * @returns {string} Fecha formateada
+ * Formatea la fecha de publicacion
  */
 function formatDate(date) {
-  if (!(date instanceof Date) || isNaN(date)) {
-    return 'Reciente';
-  }
+  if (!(date instanceof Date) || isNaN(date)) return 'Reciente';
 
   const now = new Date();
-  const diffTime = Math.abs(now - date);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const diffDays = Math.ceil(Math.abs(now - date) / (1000 * 60 * 60 * 24));
 
   if (diffDays === 0) return 'Hoy';
-  if (diffDays === 1) return 'Hace 1 día';
-  if (diffDays < 7) return `Hace ${diffDays} días`;
+  if (diffDays === 1) return 'Hace 1 dia';
+  if (diffDays < 7) return `Hace ${diffDays} dias`;
   if (diffDays < 30) return `Hace ${Math.floor(diffDays / 7)} semanas`;
   if (diffDays < 365) return `Hace ${Math.floor(diffDays / 30)} meses`;
   return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -185,7 +183,6 @@ function formatDate(date) {
 
 /**
  * Actualiza los indicadores de scroll
- * @param {number} count - Número de videos
  */
 function updateVideoScrollIndicators(count) {
   const indicatorsContainer = document.getElementById('videos-indicators');
@@ -199,23 +196,17 @@ function updateVideoScrollIndicators(count) {
   }
 }
 
-/**
- * Inicializa la carga de videos de YouTube
- */
 async function initYouTubeVideos() {
-  console.log('🚀 Inicializando carga segura de videos de YouTube...');
   const videos = await fetchYouTubeVideosSecure();
   renderYouTubeVideos(videos);
 }
 
-// Exportar para uso global
 window.YouTubeVideos = {
   init: initYouTubeVideos,
   fetch: fetchYouTubeVideosSecure,
   config: YOUTUBE_SECURE_CONFIG
 };
 
-// Auto-inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initYouTubeVideos);
 } else {
