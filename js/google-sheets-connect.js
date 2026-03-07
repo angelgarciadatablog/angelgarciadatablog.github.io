@@ -10,7 +10,8 @@ const GOOGLE_SHEETS_CONFIG = {
   // Pestañas disponibles
   sheets: {
     recursosNotion: 'recursos-notion',
-    lineaTiempo: 'linea-tiempo'
+    lineaTiempo: 'linea-tiempo',
+    portafolio: 'portafolio'
   },
 
   // Duración del caché en milisegundos (60 minutos)
@@ -258,6 +259,11 @@ const GoogleSheets = {
   // Obtener datos para el home
   async getHomeData(forceRefresh = false) {
     return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.recursosNotion, forceRefresh);
+  },
+
+  // Obtener proyectos del portafolio
+  async getPortafolio(forceRefresh = false) {
+    return await fetchSheetData(GOOGLE_SHEETS_CONFIG.sheets.portafolio, forceRefresh);
   },
 
   // Limpiar caché (para forzar actualización manual)

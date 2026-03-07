@@ -2477,3 +2477,102 @@ body {
     font-size: 16px; /* Evita zoom en iOS */
   }
 }
+/* ========================================
+   Portafolio Preview (Home)
+   ======================================== */
+.portafolio-preview-section {
+  padding: 60px 0;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.ver-todos-link {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ver-todos-link:hover {
+  color: var(--text);
+}
+
+.portafolio-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.portafolio-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.portafolio-preview-card:hover {
+  border-color: var(--border-light);
+  background: var(--surface);
+}
+
+.portafolio-preview-fecha {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.portafolio-preview-nombre {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.portafolio-preview-desc {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.portafolio-preview-skeleton {
+  height: 110px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes portafolio-shimmer {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.portafolio-preview-skeleton {
+  animation: portafolio-shimmer 1.5s infinite;
+}
+
+@media (max-width: 768px) {
+  .portafolio-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portafolio-preview-section {
+    padding: 40px 0;
+  }
+}
