@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angel García — Data Analyst</title>
-  <meta name="description" content="Analista de datos. Aprendo y enseño en público." />
+  <title>{{titulo}} · Angel García</title>
+  <meta name="description" content="{{descripcion}}" />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <link rel="stylesheet" href="/assets/home.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
 </head>
 <body>
 
@@ -20,6 +21,7 @@
     <a class="topnav-logo" href="/">Angel García</a>
   </div>
   <div class="topnav-links">
+    <a href="/">Inicio</a>
     <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
     <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
   </div>
@@ -35,21 +37,34 @@
   <nav id="sidebarNav"></nav>
 </aside>
 
-<!-- CONTENIDO -->
-<div class="home-layout">
-  <main class="home-content">
-    <h1 class="home-titulo">Datablog</h1>
-    <div class="cat-grid" id="catGrid"></div>
-    <div class="posts-header">
-      <div class="posts-titulo" id="postsTitulo">Posts recientes</div>
-      <div class="posts-reset" id="postsReset" onclick="resetCategoria()">← Todas</div>
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">{{categoria}}</span>
+      <span>Actualizado: {{updated}}</span>
     </div>
-    <div class="posts-lista" id="postsList"></div>
-  </main>
+    <h1 class="post-titulo">{{titulo}}</h1>
+    <div class="post-tags">{{tags}}</div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body">{{contenido}}</div>
+    {{video_youtube}}
+    {{temas_relacionados}}
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = '{{slug}}';</script>
 <script src="/assets/sidebar.js"></script>
-<script src="/assets/home.js"></script>
+<script src="/assets/post.js"></script>
 
 </body>
 </html>

@@ -31,6 +31,9 @@ package-lock.json
 dist/
 build/
 
+# Python virtual environment
+venv/
+
 # IDE
 .idea/
 *.swp

@@ -1,0 +1,220 @@
+:root {
+  --color-fondo: #0f0f0f;
+  --color-superficie: #1a1a1a;
+  --color-borde: #2a2a2a;
+  --color-texto: #e8e8e8;
+  --color-texto-suave: #888888;
+  --color-acento: #2563eb;
+  --color-acento-hover: #1d4ed8;
+  --fuente: 'Inter', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* SCROLLBAR */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #444444;
+}
+
+a {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-acento-hover);
+}
+
+/* SIDEBAR FIJO */
+#sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-borde);
+  padding: 20px 16px;
+  background-color: var(--color-fondo);
+}
+
+.search-box input {
+  width: 100%;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--color-texto);
+  outline: none;
+  margin-bottom: 16px;
+}
+
+.search-box input::placeholder { color: var(--color-texto-suave); }
+.search-box input:focus { border-color: var(--color-acento); }
+
+.sidebar-inicio {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  padding: 4px 0;
+  margin-bottom: 12px;
+}
+
+.sidebar-inicio:hover,
+.sidebar-inicio.activo { color: var(--color-texto); }
+
+.sidebar-cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 5px 0;
+  margin-top: 4px;
+}
+
+.sidebar-cat-nombre {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+.sidebar-cat-chevron {
+  font-size: 10px;
+  color: var(--color-texto-suave);
+  transition: transform 0.15s;
+}
+
+.sidebar-cat-header.expandido .sidebar-cat-chevron {
+  transform: rotate(90deg);
+}
+
+.sidebar-cat-posts {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+
+.sidebar-cat-posts.visible { display: flex; }
+
+.sidebar-post-link {
+  display: block;
+  font-size: 13px;
+  color: var(--color-texto-suave);
+  padding: 4px 0 4px 10px;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-post-link:hover { color: var(--color-texto); }
+
+.sidebar-post-link.activo {
+  color: var(--color-texto);
+  border-left-color: var(--color-acento);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 100;
+  }
+
+  #sidebar.abierto { transform: translateX(0); }
+
+  .topnav-links a:not(:first-child) { display: none; }
+}
+
+/* OVERLAY MÓVIL */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+
+.sidebar-overlay.visible { display: block; }
+
+/* HAMBURGUESA */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-texto);
+  padding: 4px;
+  margin-right: 12px;
+}
+
+/* NAV */
+nav.topnav {
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topnav-logo {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-texto);
+}
+
+.topnav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--color-texto-suave);
+}
+
+.topnav-links a {
+  color: var(--color-texto-suave);
+}
+
+.topnav-links a:hover {
+  color: var(--color-texto);
+}
