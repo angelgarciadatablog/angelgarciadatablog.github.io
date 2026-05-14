@@ -122,6 +122,11 @@ for meta in posts_a_publicar:
     else:
         relacionados_html = ""
 
+    # Sistema operativo
+    so = meta.get("sistema-operativo", "")
+    so_labels = {"mac": "Mac", "windows": "Windows", "mac-windows": "Mac & Windows"}
+    so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
+
     # Rellenar template
     html = template
     html = html.replace("{{slug}}", slug)
@@ -130,6 +135,7 @@ for meta in posts_a_publicar:
     html = html.replace("{{categoria}}", meta.get("categoria", ""))
     html = html.replace("{{updated}}", str(meta.get("updated", "")))
     html = html.replace("{{tags}}", tags_html)
+    html = html.replace("{{sistema_operativo}}", so_html)
     html = html.replace("{{contenido}}", contenido_html)
     html = html.replace("{{video_youtube}}", video_html)
     html = html.replace("{{temas_relacionados}}", relacionados_html)
@@ -149,6 +155,7 @@ for meta in posts_a_publicar:
         "updated": str(meta.get("updated", "")),
         "temas-relacionados": relacionados_raw,
         "video-youtube": video_url or "",
+        "sistema-operativo": meta.get("sistema-operativo", ""),
     })
 
 # ─── ACTUALIZAR posts.json ────────────────────────────────────────────────────

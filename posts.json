@@ -1,5 +1,18 @@
 [
   {
+    "titulo": "Aprende SQL fácil y rápido desde cero",
+    "slug": "aprende-sql-facil-y-rapido-desde-cero",
+    "categoria": "sql",
+    "tags": [
+      "datablog",
+      "sql"
+    ],
+    "updated": "2026-05-14",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac"
+  },
+  {
     "titulo": "HTML Fundamentos",
     "slug": "html-fundamentos",
     "categoria": "portafolio-web",

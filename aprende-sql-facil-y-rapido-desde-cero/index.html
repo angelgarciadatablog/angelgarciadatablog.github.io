@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aprende SQL fácil y rápido desde cero · Angel García</title>
+  <meta name="description" content="Aprende SQL fácil y rápido desde cero" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">sql</span>
+      <span class="post-so">Mac</span>
+      <span>Actualizado: 2026-05-14</span>
+    </div>
+    <h1 class="post-titulo">Aprende SQL fácil y rápido desde cero</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sql</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>Aprende SQL fácil y rápido desde cero</h1>
+<h2>1. Para qué sirve SQL</h2>
+<p>SQL (Structured Query Language) sirve para <strong>consultar datos de una tabla o de un conjunto de tablas</strong>.</p>
+<h2>2. Dónde se usa SQL</h2>
+<p>SQL no vive en un solo lugar — es un lenguaje que aparece en múltiples herramientas.</p>
+<h3>2.1 Bases de datos transaccionales (OLTP)</h3>
+<p>PostgreSQL, MySQL, SQL Server. Son las bases de datos de las aplicaciones: aquí se registra un usuario nuevo, se guarda un pedido, se actualiza un pago. Muchas operaciones pequeñas en tiempo real. Aquí vive el mundo del desarrollo de software.</p>
+<h3>2.2 Bases de datos analíticas (OLAP)</h3>
+<p>BigQuery (Google), Snowflake, Redshift (AWS). Son las bases de datos del análisis de datos. Aquí no hay operaciones individuales — hay millones de filas históricas que necesitas consultar para entender tendencias, comportamientos, métricas. Aquí vive el mundo del analista de datos.</p>
+<h3>2.3 Herramientas de BI</h3>
+<p>Power BI, Looker, Metabase. Aunque no lo parezca visualmente, por debajo están corriendo SQL. En Power BI incluso puedes escribirlo directamente si sabes cómo.</p>
+<h3>2.4 Python y código</h3>
+<p>Si trabajas con datos en Python, tarde o temprano vas a conectarte a una base de datos y vas a escribir SQL desde tu script para traer los datos que necesitas.</p>
+<h3>2.5 Google Sheets</h3>
+<p>La función <code>QUERY()</code> de Sheets usa una sintaxis prácticamente idéntica a SQL. Si ya la usas, tienes más base de la que crees.</p>
+<h3>2.6 dbt (data build tool)</h3>
+<p>No es una base de datos — es una capa que corre encima de warehouses como BigQuery y te permite organizar toda tu lógica SQL en modelos reutilizables. Muy común en equipos de datos modernos.</p>
+<h3>2.7 OLTP vs OLAP — La diferencia que más importa</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>OLTP</th>
+<th>OLAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ejemplos</td>
+<td>PostgreSQL, MySQL</td>
+<td>BigQuery, Snowflake</td>
+</tr>
+<tr>
+<td>Operación dominante</td>
+<td>Escritura y lectura pequeña</td>
+<td>Lectura masiva</td>
+</tr>
+<tr>
+<td>Volumen típico</td>
+<td>Miles de filas</td>
+<td>Millones / miles de millones</td>
+</tr>
+<tr>
+<td>Quién lo usa</td>
+<td>Desarrolladores backend</td>
+<td>Analistas de datos</td>
+</tr>
+</tbody>
+</table>
+<h3>2.8 Los dialectos: SQL no es igual en todos lados</h3>
+<p>SQL tiene una base común, pero cada herramienta tiene su propia variante. BigQuery usa GoogleSQL, PostgreSQL tiene sus propias funciones, MySQL difiere en manejo de fechas y texto. La lógica es la misma, pero hay funciones que funcionan en uno y no en otro.</p>
+<h2>3. Dónde ejecutar tus primeras queries</h2>
+<p>Hay muchos lugares donde puedes escribir y correr SQL:</p>
+<ol>
+<li>Herramientas online sin instalación: <code>sqliteonline.com</code>, <code>db-fiddle.com</code></li>
+<li>BigQuery console (Google Cloud)</li>
+<li>DBeaver (cliente universal de escritorio)</li>
+<li>pgAdmin (específico para PostgreSQL)</li>
+<li>MySQL Workbench (específico para MySQL)</li>
+<li>Power BI, Metabase, Looker (dentro de herramientas de BI)</li>
+<li>Jupyter notebooks con Python</li>
+</ol>
+<h3>3.1 BigQuery</h3>
+<p>Es la herramienta de Google Cloud para consultar datos a escala. Tiene una consola web donde puedes escribir SQL directamente sin instalar nada. El free tier incluye 1TB de consultas por mes, lo que es más que suficiente para aprender.</p>
+<p>Lo más valioso para practicar: BigQuery tiene <strong>datasets públicos</strong> — datos reales de taxis de NY, Wikipedia, GitHub, COVID, entre otros — que puedes consultar desde el primer día sin tener que cargar nada.</p>
+<h3>3.2 DBeaver</h3>
+<p>Es un cliente de escritorio gratuito que se conecta a prácticamente cualquier base de datos: PostgreSQL, MySQL, SQL Server, BigQuery, SQLite, y más. Es la navaja suiza del analista de datos.</p>
+<p>Lo usas cuando trabajas con bases de datos que no tienen su propia interfaz web o cuando quieres un entorno más completo que una consola en el browser.</p>
+<h2>4. El dataset de práctica</h2>
+<p>Para todos los ejemplos de este post voy a usar un dataset público que creé con datos reales de mi canal de YouTube. Puedes consultarlo directamente desde BigQuery sin necesidad de cargar nada.</p>
+<p><strong>Dataset:</strong> <code>youtube-datasets-360.angelgarciadatablog</code></p>
+<p>Para acceder necesitas:</p>
+<ol>
+<li>Tener una cuenta de Google</li>
+<li>Crear un proyecto en <a href="https://console.cloud.google.com">Google Cloud Console</a> — puede ser cualquier nombre, es solo para tener acceso a BigQuery</li>
+<li>Ir a BigQuery y buscar el dataset <code>youtube-datasets-360.angelgarciadatablog</code> en el explorador</li>
+</ol>
+<h2>5. Cómo entender una tabla antes de escribir una query</h2>
+<p>Antes de escribir cualquier query hay que conocer la tabla. El primer paso es consultar el schema:</p>
+<pre><code class="language-sql">SELECT field_path, data_type, description
+FROM `youtube-datasets-360.region-us`.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS
+WHERE table_schema = 'angelgarciadatablog'
+  AND table_name = 'videos_static'
+</code></pre>
+<p>Esto devuelve el nombre de cada columna, su tipo de dato y su descripción. Si <code>description</code> sale <code>NULL</code>, el schema no está documentado — más común de lo que parece en entornos reales.</p>
+<blockquote>
+<p><strong>Gotcha de región:</strong> si te sale <code>Dataset was not found in location US</code>, usa la sintaxis con <code>region-us</code> en lugar del nombre del dataset y agrega <code>WHERE table_schema = 'nombre_dataset'</code>.</p>
+<p><strong>Gotcha de permisos:</strong> <code>COLUMN_FIELD_PATHS</code> solo funciona cuando eres dueño del dataset. Desde un proyecto externo usa <code>INFORMATION_SCHEMA.COLUMNS</code> — siempre accesible con permisos de lectura, pero sin el campo <code>description</code>.</p>
+</blockquote>
+<p>Con el schema en mano, recorre este checklist:</p>
+<h3>4.1 Checklist de exploración inicial</h3>
+<p><strong>1. Granularidad</strong> — ¿Qué representa una fila?
+Es la pregunta más importante. En <code>videos_static</code> una fila = un video. En <code>videos_snapshot</code> una fila = un video en una fecha específica. Confundir la granularidad genera errores difíciles de detectar porque los números salen, pero están mal.</p>
+<p><strong>2. Entidad principal</strong> — ¿Qué ID identifica de forma única cada fila?
+El ID que hace que esa fila sea irrepetible. En ventas sería <code>order_id</code>, aquí <code>video_id</code>.</p>
+<p><strong>3. IDs secundarios</strong> — ¿Qué otras entidades están presentes?
+Son tus relaciones implícitas. <code>channel_id</code> en <code>videos_static</code> te dice que puedes cruzarla con <code>channels_static</code>.</p>
+<p><strong>4. Dimensión temporal</strong> — ¿Cómo vive el tiempo en esta tabla?</p>
+<p>Hay dos patrones principales:
+- <strong>Write Truncate</strong>: la tabla siempre refleja el estado actual. Cada carga borra y reescribe todo. No hay historia — solo el presente.
+- <strong>Write Append</strong>: la tabla acumula registros en el tiempo. Tiene una columna de fecha que marca cada carga. Si no filtras por esa fecha, estás agregando todos los snapshots históricos como si fueran uno solo.</p>
+<p>También existen <strong>Upsert/Merge</strong> (actualiza si existe, inserta si no) y <strong>Partition Overwrite</strong> (reescribe solo la partición del día), pero los dos anteriores cubren la mayoría de los casos.</p>
+<p><strong>5. Frecuencia de actualización</strong> — ¿Cada cuánto se refresca el dato?
+No es lo mismo analizar una tabla que se actualiza en tiempo real que una que carga una vez al día. Cambia cómo interpretas los resultados.</p>
+<p><strong>6. Métricas disponibles</strong> — ¿Qué números puedes agregar?
+<code>view_count</code>, <code>duration_seconds</code>, <code>subscriber_count</code> — los números que vas a sumar, promediar o comparar.</p>
+<p><strong>7. Calidad del dato</strong> — ¿Hay NULLs? ¿Hay duplicados en el ID principal?</p>
+<p><strong>8. Cardinalidad de las dimensiones</strong> — ¿Cuántos valores únicos tiene cada columna?</p>
+<p>Las dimensiones con pocos valores distintos son las que vas a usar en filtros, agrupaciones y gráficos. El flujo para identificarlas:</p>
+<p>Paso 1 — contar valores únicos por columna:</p>
+<pre><code class="language-sql">SELECT
+  COUNT(DISTINCT channel_id)       AS channel_id,
+  COUNT(DISTINCT category_id)      AS category_id,
+  COUNT(DISTINCT title)            AS title,
+  COUNT(DISTINCT duration_seconds) AS duration_seconds,
+  COUNT(DISTINCT video_id)         AS video_id
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+</code></pre>
+<p>Paso 2 — para las columnas con cardinalidad baja (menos de ~20 valores), ver sus valores reales:</p>
+<pre><code class="language-sql">SELECT DISTINCT category_id, channel_id
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+ORDER BY category_id
+</code></pre>
+<p>Este flujo manual es lo que hace cualquier analista cuando llega a un dataset sin documentación. Lo que lo hace más eficiente no son las queries sino tener el schema documentado desde el principio.</p>
+<h2>6. SQL con una sola tabla</h2>
+<p>Para responder consultas básicas de negocio con una sola tabla, solo necesitas las cláusulas principales de SQL. Si vienes de Excel, ya tienes el modelo mental — solo cambia la sintaxis.</p>
+<h3>6.1 Preguntas de negocio</h3>
+<p>Antes de escribir una sola query, definimos qué queremos saber. Sobre <code>videos_static</code>:</p>
+<ol>
+<li>¿Cuántos videos tengo publicados?</li>
+<li>¿Cuál es la duración promedio de mis videos?</li>
+<li>¿Cuántos videos tengo por categoría?</li>
+<li>¿Cuáles son mis videos más largos?</li>
+<li>¿Qué videos duran más de 10 minutos?</li>
+<li>¿En qué meses publiqué más de 5 videos?</li>
+</ol>
+<h3>6.2 Las cláusulas esenciales</h3>
+<h4>6.2.1 SELECT</h4>
+<p>Elige qué columnas quieres ver. Como mostrar u ocultar columnas en Excel.</p>
+<pre><code class="language-sql">SELECT title, duration_seconds
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+</code></pre>
+<p><code>*</code> devuelve todas las columnas. Úsalo solo para explorar — en producción siempre especifica las columnas que necesitas.</p>
+<pre><code class="language-sql">SELECT *
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+</code></pre>
+<h4>6.2.2 WHERE</h4>
+<p>Filtra filas. Como el filtro de Excel pero escrito como condición.</p>
+<pre><code class="language-sql">SELECT title, duration_seconds
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+WHERE duration_seconds &gt; 600
+</code></pre>
+<p>Operadores disponibles: <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>IN</code>, <code>LIKE</code>, <code>IS NULL</code>, <code>BETWEEN</code>.</p>
+<h4>6.2.3 GROUP BY y funciones de agregación</h4>
+<p>Agrupa filas y calcula algo sobre cada grupo. Como crear una tabla dinámica en Excel.</p>
+<p>Sin GROUP BY no puedes usar funciones de agregación sobre subconjuntos del dato:</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COUNT(*)</code></td>
+<td>Cuenta filas</td>
+</tr>
+<tr>
+<td><code>SUM(columna)</code></td>
+<td>Suma valores</td>
+</tr>
+<tr>
+<td><code>AVG(columna)</code></td>
+<td>Promedia valores</td>
+</tr>
+<tr>
+<td><code>MIN(columna)</code></td>
+<td>Valor mínimo</td>
+</tr>
+<tr>
+<td><code>MAX(columna)</code></td>
+<td>Valor máximo</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">SELECT category_id, COUNT(*) as total
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+GROUP BY category_id
+</code></pre>
+<h4>6.2.4 HAVING</h4>
+<p>Filtra los resultados de un GROUP BY. Como filtrar en una tabla dinámica de Excel.</p>
+<p>La diferencia con WHERE: WHERE filtra filas antes de agrupar, HAVING filtra grupos después de agrupar. Por eso no puedes usar WHERE con una función de agregación — WHERE se ejecuta antes de que existan los grupos.</p>
+<pre><code class="language-sql">SELECT category_id, COUNT(*) as total
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+GROUP BY category_id
+HAVING total &gt; 5
+</code></pre>
+<h4>6.2.5 ORDER BY</h4>
+<p>Ordena los resultados. Como ordenar una columna en Excel.</p>
+<pre><code class="language-sql">SELECT title, duration_seconds
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+ORDER BY duration_seconds DESC
+</code></pre>
+<p><code>DESC</code> ordena de mayor a menor. <code>ASC</code> de menor a mayor (es el default).</p>
+<h4>6.2.6 CASE WHEN</h4>
+<p>No es una cláusula principal, pero es tan útil que merece estar aquí. Permite crear categorías personalizadas a partir de los valores de una columna.</p>
+<p>El problema concreto: <code>category_id</code> en <code>videos_static</code> solo tiene los valores 22 y 27 — los IDs de categoría de YouTube, que no dicen nada útil. Con CASE podemos crear nuestras propias categorías evaluando el título del video:</p>
+<pre><code class="language-sql">SELECT 
+  CASE 
+    WHEN LOWER(title) LIKE '%sql%' THEN 'sql'
+    WHEN LOWER(title) LIKE '%power bi%' THEN 'power-bi'
+    WHEN LOWER(title) LIKE '%python%' THEN 'python'
+    WHEN LOWER(title) LIKE '%git%' THEN 'git'
+    WHEN LOWER(title) LIKE '%bigquery%' OR LOWER(title) LIKE '%big query%' OR LOWER(title) LIKE '%google cloud%' THEN 'google-cloud'
+    WHEN LOWER(title) LIKE '%bash%' OR LOWER(title) LIKE '%shell%' THEN 'bash-shell'
+    WHEN LOWER(title) LIKE '%api%' THEN 'apis'
+    WHEN LOWER(title) LIKE '%excel%' OR LOWER(title) LIKE '%sheets%' THEN 'hojas-de-calculo'
+    WHEN LOWER(title) LIKE '%google analytics%' OR LOWER(title) LIKE '%ga4%' THEN 'google-analytics'
+    WHEN LOWER(title) LIKE '%html%' OR LOWER(title) LIKE '%css%' OR LOWER(title) LIKE '%web%' THEN 'portafolio-web'
+    WHEN LOWER(title) LIKE '%claude%' THEN 'claude-code'
+    ELSE 'sin-categoria'
+  END AS categoria,
+  COUNT(*) as total
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+GROUP BY categoria
+ORDER BY total DESC
+</code></pre>
+<p>Resultado:</p>
+<table>
+<thead>
+<tr>
+<th>categoria</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sql</td>
+<td>88</td>
+</tr>
+<tr>
+<td>power-bi</td>
+<td>51</td>
+</tr>
+<tr>
+<td>sin-categoria</td>
+<td>19</td>
+</tr>
+<tr>
+<td>google-analytics</td>
+<td>12</td>
+</tr>
+<tr>
+<td>google-cloud</td>
+<td>8</td>
+</tr>
+<tr>
+<td>hojas-de-calculo</td>
+<td>8</td>
+</tr>
+<tr>
+<td>python</td>
+<td>5</td>
+</tr>
+<tr>
+<td>git</td>
+<td>4</td>
+</tr>
+<tr>
+<td>apis</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>La lógica de CASE es secuencial — evalúa cada condición en orden y asigna el primer valor que se cumple. Si ninguna condición aplica, cae en <code>ELSE</code>.</p>
+<p>Lo pusimos en SELECT porque queremos <strong>crear una nueva columna</strong> en el resultado — eso es exactamente lo que hace SELECT: define qué columnas vas a ver y cómo se calculan.</p>
+<p>Pero CASE puede ir en otros lugares también:</p>
+<ul>
+<li><strong>GROUP BY</strong> — para agrupar por una expresión condicional</li>
+<li><strong>ORDER BY</strong> — para definir un orden personalizado</li>
+<li><strong>HAVING</strong> — para filtrar grupos con lógica condicional</li>
+</ul>
+<p>En BigQuery puedes referenciar el alias directamente en GROUP BY y ORDER BY (como en el ejemplo anterior con <code>GROUP BY categoria</code>), así evitas repetir todo el CASE.</p>
+<h4>6.2.7 Orden de ejecución</h4>
+<p>SQL no se ejecuta en el orden en que se escribe. El orden real es:</p>
+<pre><code>1. FROM       → de qué tabla traer los datos
+2. WHERE      → filtrar filas
+3. GROUP BY   → agrupar
+4. HAVING     → filtrar grupos
+5. SELECT     → elegir columnas (aquí se evalúa el CASE)
+6. ORDER BY   → ordenar
+</code></pre>
+<p>Esto explica por qué no puedes usar un alias definido en SELECT dentro de un WHERE — SELECT se ejecuta después de WHERE, así que el alias todavía no existe. HAVING viene después de GROUP BY, por eso puede filtrar valores agregados como COUNT() y WHERE no puede.</p>
+<h3>6.3 Respondiendo las preguntas</h3>
+<p><strong>1. ¿Cuántos videos tengo publicados?</strong></p>
+<pre><code class="language-sql">SELECT COUNT(*) as total_videos
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+</code></pre>
+<p>→ 196 videos</p>
+<p><strong>2. ¿Cuál es la duración promedio de mis videos?</strong></p>
+<pre><code class="language-sql">SELECT ROUND(AVG(duration_seconds / 60), 1) as duracion_promedio_minutos
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+</code></pre>
+<p>→ 12.8 minutos</p>
+<p><strong>3. ¿Cuántos videos tengo por categoría?</strong></p>
+<pre><code class="language-sql">SELECT category_id, COUNT(*) as total
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+GROUP BY category_id
+ORDER BY total DESC
+</code></pre>
+<p>→ categoría 27: 194 videos / categoría 22: 2 videos</p>
+<p><strong>4. ¿Cuáles son mis videos más largos?</strong></p>
+<pre><code class="language-sql">SELECT title, ROUND(duration_seconds / 60, 1) as minutos
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+ORDER BY duration_seconds DESC
+</code></pre>
+<p><strong>5. ¿Qué videos duran más de 10 minutos?</strong></p>
+<pre><code class="language-sql">SELECT title, ROUND(duration_seconds / 60, 1) as minutos
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+WHERE duration_seconds &gt; 600
+ORDER BY duration_seconds DESC
+</code></pre>
+<p><strong>6. ¿En qué meses publiqué más de 5 videos?</strong></p>
+<pre><code class="language-sql">SELECT FORMAT_TIMESTAMP('%Y-%m', published_at) as mes, COUNT(*) as total
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+GROUP BY mes
+HAVING total &gt; 5
+ORDER BY mes DESC
+</code></pre>
+<p>→ Los meses más activos fueron septiembre y octubre 2025 con 37 y 35 videos.</p>
+<h2>7. Más allá de lo básico: CTEs y funciones de ventana</h2>
+<h3>7.1 CTEs — tablas temporales de consulta</h3>
+<p>Un CTE (Common Table Expression) es un resultado intermedio que defines antes de la query principal. Existe solo durante la ejecución — no se guarda en ningún lado. Se declara con <code>WITH</code>.</p>
+<p>Lo más útil de los CTEs es que puedes encadenarlos: cada uno puede usar al anterior como fuente. Eso permite construir queries complejas en pasos legibles:</p>
+<pre><code class="language-sql">WITH por_anio AS (
+  SELECT EXTRACT(YEAR FROM published_at) AS anio, COUNT(*) AS total
+  FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+  GROUP BY anio
+),
+anios_activos AS (
+  SELECT anio, total
+  FROM por_anio
+  WHERE total &gt; 10
+),
+resumen AS (
+  SELECT COUNT(*) AS anios_activos, SUM(total) AS total_videos, ROUND(AVG(total), 1) AS promedio_por_anio
+  FROM anios_activos
+)
+SELECT * FROM resumen
+</code></pre>
+<ol>
+<li><code>por_anio</code> — agrupa videos por año con GROUP BY</li>
+<li><code>anios_activos</code> — filtra solo los años con más de 10 videos</li>
+<li><code>resumen</code> — saca el total y promedio de esos años</li>
+</ol>
+<p>Sin CTEs, esta lógica viviría en subqueries anidadas que son difíciles de leer. Con CTEs cada paso tiene nombre y se puede razonar por separado.</p>
+<h3>7.2 Funciones de ventana</h3>
+<p>Una función de ventana hace un cálculo sobre un conjunto de filas relacionadas <strong>sin colapsar el resultado</strong>. Esa es la diferencia clave con GROUP BY: GROUP BY te da una fila por grupo, una función de ventana agrega el cálculo como columna nueva manteniendo todas las filas.</p>
+<p>La más básica y usada es <code>ROW_NUMBER()</code> — numera cada fila dentro de una partición según un orden definido:</p>
+<pre><code class="language-sql">SELECT 
+  title,
+  EXTRACT(YEAR FROM published_at) AS anio,
+  ROUND(duration_seconds/60,1) AS minutos,
+  ROW_NUMBER() OVER (PARTITION BY EXTRACT(YEAR FROM published_at) ORDER BY duration_seconds DESC) AS ranking_del_anio
+FROM `youtube-datasets-360.angelgarciadatablog.videos_static`
+ORDER BY anio DESC, ranking_del_anio
+</code></pre>
+<ul>
+<li><code>PARTITION BY</code> — define los grupos (aquí: cada año es una partición)</li>
+<li><code>ORDER BY</code> — define el criterio de numeración dentro del grupo (aquí: duración descendente)</li>
+</ul>
+<p>El resultado: dentro de cada año, tus videos numerados del más largo al más corto. El que tiene <code>ranking_del_anio = 1</code> es el video más largo de ese año.</p>
+<h2>8. Mi conclusión</h2>
+<p>Si vienes de Excel, SQL no es tan diferente como parece. Un filtro es un WHERE, una tabla dinámica es un GROUP BY, ordenar una columna es un ORDER BY. La lógica es la misma — solo cambia la sintaxis.</p>
+<p>Lo que cambia de verdad es la escala y el poder. Con una sola tabla y las herramientas de este post puedes filtrar millones de filas en segundos, crear categorías personalizadas con CASE, encadenar transformaciones con CTEs y calcular rankings dentro de grupos con funciones de ventana — cosas que en Excel requerirían fórmulas complejas o simplemente no serían posibles.</p>
+<p>Y esto es solo con una tabla. Cuando empezamos a cruzar tablas con JOINs, el salto es aún mayor.</p>
+<h2>9. Pendientes</h2>
+<p><em>(sección interna — se elimina antes de publicar)</em>
+- [ ] Grabar video: cómo empezar a usar BigQuery desde cero para principiantes — creación de proyecto en Google Cloud Console, navegación de la consola, primer query. Va referenciado en la sección 4.
+- [ ] Post + video especial sobre CASE WHEN: cubrir todos los contextos donde se puede usar — SELECT, GROUP BY, ORDER BY, HAVING — con ejemplos prácticos para cada uno.</p>
+<h2>10. Recursos</h2>
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax">Documentación de GoogleSQL (BigQuery)</a></li>
+<li><a href="https://www.postgresql.org/docs/">PostgreSQL docs</a></li>
+</ul></div>
+    
+    
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'aprende-sql-facil-y-rapido-desde-cero';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

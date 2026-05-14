@@ -10,6 +10,7 @@ const CATEGORIAS = {
   'portafolio-web': 'Portafolio web',
   'power-bi':       'Power BI',
   'google-analytics': 'Google Analytics',
+  'hojas-de-calculo': 'Hojas de cálculo',
 };
 
 let _todosLosPosts = [];

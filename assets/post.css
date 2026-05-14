@@ -64,6 +64,15 @@
   font-size: 12px;
 }
 
+.post-so {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: var(--color-texto-suave);
+}
+
 .post-titulo {
   font-size: 36px;
   font-weight: 700;
