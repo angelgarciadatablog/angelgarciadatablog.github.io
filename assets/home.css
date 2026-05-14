@@ -141,7 +141,7 @@
 
 @media (max-width: 480px) {
   .cat-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .post-fila {
