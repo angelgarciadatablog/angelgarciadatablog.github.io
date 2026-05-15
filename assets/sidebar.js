@@ -118,6 +118,7 @@ function renderSidebar(query) {
       const a = document.createElement('a');
       a.href = '/' + p.slug + '/';
       a.className = 'sidebar-post-link' + (p.slug === _slugActivo ? ' activo' : '');
+      a.title = p.titulo;
       a.textContent = p.titulo;
       postsEl.appendChild(a);
     });
