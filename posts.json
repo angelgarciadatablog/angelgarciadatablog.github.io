@@ -1,5 +1,18 @@
 [
   {
+    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
+    "slug": "api-github-extraer-datos-publicos-privados-postman",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-15",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows"
+  },
+  {
     "titulo": "Aprende SQL fácil y rápido desde cero",
     "slug": "aprende-sql-facil-y-rapido-desde-cero",
     "categoria": "sql",

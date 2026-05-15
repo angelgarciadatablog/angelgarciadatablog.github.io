@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API de GitHub: cómo extraer datos públicos y privados con Postman · Angel García</title>
+  <meta name="description" content="API de GitHub: cómo extraer datos públicos y privados con Postman" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">apis</span>
+      <span class="post-so">Mac & Windows</span>
+      <span>Actualizado: 2026-05-15</span>
+    </div>
+    <h1 class="post-titulo">API de GitHub: cómo extraer datos públicos y privados con Postman</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>API de GitHub: cómo extraer datos públicos y privados con Postman</h1>
+<h2>1. El concepto</h2>
+<p>La API de GitHub tiene dos tipos de endpoints: <strong>públicos</strong> (accesibles sin autenticación, datos visibles para cualquiera) y <strong>privados</strong> (requieren un token, devuelven datos de tu cuenta personal como emails, repos privados, notificaciones).</p>
+<p>Como analista, esto define qué puedes extraer y cómo: para datos públicos solo necesitas la URL correcta. Para datos privados necesitas identificarte con un token.</p>
+<hr />
+<h2>2. Qué tipo de API es GitHub</h2>
+<p>GitHub expone una <strong>API REST</strong>. REST (Representational State Transfer) no es una tecnología — es un estilo de diseño que define cómo debe comportarse una API para ser predecible:</p>
+<ul>
+<li>Cada URL representa un <strong>recurso</strong>: un usuario, un repo, un commit</li>
+<li>El <strong>método HTTP</strong> define qué haces con ese recurso (leer, crear, modificar, borrar)</li>
+<li>Las respuestas siempre vienen en <strong>JSON</strong> — un formato de texto estructurado legible por cualquier lenguaje de programación</li>
+</ul>
+<p>La URL base de toda la API de GitHub es <code>https://api.github.com</code>. A partir de ahí se construyen los endpoints añadiendo el recurso:</p>
+<pre><code>https://api.github.com/users/{username}       → perfil de un usuario
+https://api.github.com/users/{username}/repos  → repos de un usuario
+https://api.github.com/user                    → tu propio perfil (autenticado)
+</code></pre>
+<hr />
+<h2>3. Anatomía de una petición</h2>
+<p>Toda petición a una API tiene cuatro componentes. En Postman los ves visualmente — en Python los escribes en código.</p>
+<h3>3.1 Método HTTP</h3>
+<p>Define qué operación haces sobre el recurso:</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Acción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>Leer datos</td>
+<td>Obtener el perfil de un usuario</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Crear algo nuevo</td>
+<td>Crear un repositorio</td>
+</tr>
+<tr>
+<td><code>PUT</code> / <code>PATCH</code></td>
+<td>Actualizar algo existente</td>
+<td>Editar la descripción de un repo</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>Borrar algo</td>
+<td>Eliminar un repositorio</td>
+</tr>
+</tbody>
+</table>
+<p>En este post usamos solo <code>GET</code> — como analista que extrae datos, es el método que más usarás.</p>
+<h3>3.2 Headers</h3>
+<p>Metadatos que viajan junto a la petición — no son los datos que pides, sino información sobre cómo hacer la petición. Se escriben como pares clave-valor.</p>
+<p>El más importante para autenticación:</p>
+<pre><code>Authorization: Bearer &lt;tu_token&gt;
+</code></pre>
+<p>Otros headers comunes:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Qué indica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>Quién hace la petición (token, credenciales)</td>
+</tr>
+<tr>
+<td><code>Content-Type</code></td>
+<td>En qué formato van los datos que envías (generalmente <code>application/json</code>)</td>
+</tr>
+<tr>
+<td><code>Accept</code></td>
+<td>En qué formato quieres recibir la respuesta</td>
+</tr>
+</tbody>
+</table>
+<p>En Postman los headers van en la pestaña <strong>Headers</strong>. El token que configuramos en <strong>Authorization → Bearer Token</strong> es exactamente esto — Postman lo convierte en el header <code>Authorization: Bearer &lt;token&gt;</code> automáticamente.</p>
+<h3>3.3 Body</h3>
+<p>Los datos que envías junto a la petición. Solo existe en métodos que crean o modifican: <code>POST</code>, <code>PUT</code>, <code>PATCH</code>. Los <code>GET</code> no tienen body — solo pides, no envías datos.</p>
+<p>Ejemplo de body en un <code>POST</code> para crear un repo:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;mi-nuevo-repo&quot;,
+  &quot;description&quot;: &quot;Repositorio de prueba&quot;,
+  &quot;private&quot;: false
+}
+</code></pre>
+<h3>3.4 Status code</h3>
+<p>El código numérico que la API devuelve para indicar si la petición funcionó. Siempre está en la respuesta — en Postman lo ves arriba a la derecha del panel de respuesta.</p>
+<table>
+<thead>
+<tr>
+<th>Rango</th>
+<th>Significado</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2xx</code></td>
+<td>Éxito</td>
+<td><code>200 OK</code>, <code>201 Created</code></td>
+</tr>
+<tr>
+<td><code>4xx</code></td>
+<td>Error del cliente</td>
+<td><code>401 Unauthorized</code>, <code>403 Forbidden</code>, <code>404 Not Found</code>, <code>429 Too Many Requests</code></td>
+</tr>
+<tr>
+<td><code>5xx</code></td>
+<td>Error del servidor</td>
+<td><code>500 Internal Server Error</code></td>
+</tr>
+</tbody>
+</table>
+<p>Los más importantes para un analista:
+- <code>401</code> → el token no existe, está mal escrito o expiró
+- <code>403</code> → el token existe pero no tiene permiso para ese recurso (scope incorrecto)
+- <code>404</code> → el endpoint o el recurso no existe
+- <code>429</code> → superaste el rate limit — demasiadas peticiones en poco tiempo</p>
+<hr />
+<h2>4. Datos públicos — sin autenticación</h2>
+<h3>4.1 Perfil de un usuario</h3>
+<p>Sin configurar nada en Postman — solo método y URL:</p>
+<ul>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>URL</strong>: <code>https://api.github.com/users/{username}</code></li>
+</ul>
+<p><strong>Respuesta</strong>: un objeto <code>{}</code> con los datos públicos del perfil — nombre, ubicación, cantidad de repos públicos, fechas de creación y actualización.</p>
+<p>Lo que no es obvio: la respuesta incluye URLs que son a su vez otros endpoints de la API:</p>
+<pre><code class="language-json">&quot;repos_url&quot;: &quot;https://api.github.com/users/angelgarciadatablog/repos&quot;,
+&quot;followers_url&quot;: &quot;https://api.github.com/users/angelgarciadatablog/followers&quot;
+</code></pre>
+<p>Esto es una característica de las APIs REST bien diseñadas: <strong>la respuesta te dice a dónde ir después</strong>. No hay que adivinar cómo se construye la siguiente URL — la API la entrega directamente.</p>
+<h3>4.2 Repositorios públicos de un usuario</h3>
+<ul>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>URL</strong>: <code>https://api.github.com/users/{username}/repos</code></li>
+</ul>
+<p><strong>Respuesta</strong>: un array <code>[]</code> de objetos — uno por cada repo público. El campo <code>"private": false</code> en todos los resultados confirma que este endpoint solo devuelve repos públicos. Para ver repos privados se necesita autenticación.</p>
+<p><strong>Campos útiles para un analista</strong> (el resto son URLs internas de navegación):</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Nombre del repositorio</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>Lenguaje principal detectado por GitHub</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>Fecha de creación</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>Última actualización de metadata</td>
+</tr>
+<tr>
+<td><code>pushed_at</code></td>
+<td>Último commit</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Tamaño en KB</td>
+</tr>
+<tr>
+<td><code>visibility</code></td>
+<td><code>public</code> o <code>private</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Diferencia clave entre endpoints:</strong>
+- <code>/users/{username}</code> → devuelve un objeto <code>{}</code> — un solo perfil
+- <code>/users/{username}/repos</code> → devuelve un array <code>[]</code> — lista de repos</p>
+<p>Esa diferencia importa al procesar los datos en Python: un objeto se lee directamente, un array requiere iterar.</p>
+<hr />
+<h2>5. Datos privados — con Personal Access Token</h2>
+<h3>5.1 Scopes disponibles en GitHub</h3>
+<p>Al generar un token en GitHub se piden <strong>scopes</strong> — permisos específicos que define qué puede hacer ese token. Cada scope abre acceso a un grupo de endpoints.</p>
+<p>Los más relevantes para un analista:</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Qué permite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repo</code></td>
+<td>Leer y escribir repos privados. Incluye código, commits, issues, pull requests</td>
+</tr>
+<tr>
+<td><code>public_repo</code></td>
+<td>Solo repos públicos — sin acceso a nada privado</td>
+</tr>
+<tr>
+<td><code>read:user</code></td>
+<td>Leer el perfil completo del usuario (incluyendo email privado)</td>
+</tr>
+<tr>
+<td><code>user:email</code></td>
+<td>Leer solo el email del usuario</td>
+</tr>
+<tr>
+<td><code>notifications</code></td>
+<td>Leer notificaciones</td>
+</tr>
+<tr>
+<td><code>gist</code></td>
+<td>Crear y leer gists</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regla práctica</strong>: pedir solo el scope mínimo necesario. Si solo necesitas leer repos públicos → <code>public_repo</code>. Si necesitas repos privados → <code>repo</code>. Nunca marcar todo por comodidad.</p>
+<p>Los scopes de GitHub son diferentes a los de otras APIs (Notion, Google, Spotify). Cada plataforma define los suyos según sus recursos.</p>
+<h3>5.2 Generar el token</h3>
+<ol>
+<li>GitHub → <strong>Settings</strong> (avatar arriba a la derecha)</li>
+<li><strong>Developer settings</strong> (al final del menú izquierdo)</li>
+<li><strong>Personal access tokens → Tokens (classic)</strong></li>
+<li><strong>Generate new token (classic)</strong></li>
+<li><em>Note</em>: nombre descriptivo del uso (<code>postman-prueba-apis</code>)</li>
+<li><em>Expiration</em>: 7 días para pruebas; en producción definir según el caso</li>
+<li><em>Scope</em>: marcar solo lo necesario — para este ejercicio: <code>repo</code></li>
+<li><strong>Generate token</strong> — copiarlo inmediatamente, GitHub solo lo muestra una vez</li>
+</ol>
+<h3>5.3 Configurar el token en Postman</h3>
+<ol>
+<li>Nueva petición → pestaña <strong>Authorization</strong></li>
+<li><em>Type</em>: <strong>Bearer Token</strong></li>
+<li>Pegar el token en el campo</li>
+</ol>
+<p>Postman puede mostrar una alerta de "sensitive value" — es una advertencia de seguridad sugiriendo guardar el token como variable de entorno. Para pruebas se puede ignorar con <strong>Keep</strong>.</p>
+<p>Lo que hace Postman internamente es agregar este header a la petición:</p>
+<pre><code>Authorization: Bearer &lt;tu_token&gt;
+</code></pre>
+<h3>5.4 Bearer Token vs OAuth — cuándo usar cada uno con GitHub</h3>
+<p>GitHub soporta ambos mecanismos. La diferencia es quién autoriza y para quién:</p>
+<table>
+<thead>
+<tr>
+<th>Escenario</th>
+<th>Mecanismo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Escribes un script para analizar <strong>tus propios</strong> repos</td>
+<td>Personal Access Token (Bearer Token)</td>
+</tr>
+<tr>
+<td>Construyes una app que otros usuarios conectan con <strong>su propia</strong> cuenta de GitHub</td>
+<td>OAuth</td>
+</tr>
+</tbody>
+</table>
+<p>El Personal Access Token es más simple: lo generas tú, lo usas tú. OAuth entra cuando necesitas que otra persona autorice el acceso a su cuenta — el flujo requiere que esa persona haga login en GitHub y apruebe los permisos.</p>
+<p>Para extraer datos propios como analista: siempre Personal Access Token.</p>
+<h3>5.5 Perfil autenticado vs público</h3>
+<ul>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>URL</strong>: <code>https://api.github.com/user</code> (sin <code>s</code>, sin <code>/{username}</code>)</li>
+</ul>
+<p>La diferencia con el endpoint público no siempre es visible en los datos (depende de qué hayas configurado en tu perfil), pero sí es visible en los headers de la respuesta.</p>
+<h3>5.6 Rate limiting — la diferencia más importante para un analista</h3>
+<p>En la pestaña <strong>Headers</strong> de la respuesta en Postman:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Sin token</th>
+<th>Con token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-RateLimit-Limit</code></td>
+<td><code>60</code></td>
+<td><code>5000</code></td>
+</tr>
+<tr>
+<td><code>X-RateLimit-Remaining</code></td>
+<td>decrece desde 60</td>
+<td>decrece desde 5000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>60 peticiones por hora sin autenticación. 5000 con token.</strong></p>
+<p>Autenticarse no es solo para acceder a datos privados — es para tener 83 veces más capacidad de extracción. Sin token, cualquier script real se bloquea en minutos.</p>
+<hr />
+<h2>6. Más allá de Postman — extraer datos a Excel con Python</h2>
+<p>Postman sirve para explorar y entender la API. Python es donde la extracción se convierte en algo útil: un archivo Excel que puedes analizar.</p>
+<h3>6.1 Librerías necesarias</h3>
+<p>Antes de ejecutar el script hay que instalar tres librerías. En la terminal:</p>
+<pre><code class="language-bash">pip install requests pandas openpyxl
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Librería</th>
+<th>Para qué se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requests</code></td>
+<td>Hacer peticiones HTTP — es el equivalente de Postman pero en código</td>
+</tr>
+<tr>
+<td><code>pandas</code></td>
+<td>Convertir el JSON en una tabla (DataFrame) y exportarla</td>
+</tr>
+<tr>
+<td><code>openpyxl</code></td>
+<td>Motor que pandas necesita para escribir archivos <code>.xlsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 El script</h3>
+<pre><code class="language-python">import requests
+import pandas as pd
+import os
+
+# 1. Leer el token desde una variable de entorno
+token = os.environ.get(&quot;GITHUB_TOKEN&quot;)
+
+# 2. Construir los headers — equivalente a la pestaña Authorization en Postman
+headers = {
+    &quot;Authorization&quot;: f&quot;Bearer {token}&quot;
+}
+
+# 3. Hacer la petición GET a la API de GitHub
+url = &quot;https://api.github.com/user/repos&quot;
+response = requests.get(url, headers=headers)
+
+# 4. Convertir la respuesta JSON en una lista de diccionarios Python
+repos = response.json()
+
+# 5. Convertir la lista en una tabla (DataFrame)
+df = pd.DataFrame(repos)
+
+# 6. Quedarse solo con los campos útiles
+columnas = [&quot;name&quot;, &quot;language&quot;, &quot;created_at&quot;, &quot;updated_at&quot;, &quot;pushed_at&quot;, &quot;size&quot;, &quot;visibility&quot;]
+df = df[columnas]
+
+# 7. Exportar a Excel
+df.to_excel(&quot;repos_github.xlsx&quot;, index=False)
+print(f&quot;Exportados {len(df)} repositorios&quot;)
+</code></pre>
+<h3>6.3 Qué hace cada línea</h3>
+<p><strong>Línea 1-3 — <code>import</code></strong>
+Cargar las librerías instaladas. Python no las carga automáticamente — hay que pedirlas explícitamente al inicio del script.</p>
+<p><strong>Línea 5-6 — <code>os.environ.get("GITHUB_TOKEN")</code></strong>
+Leer el token desde las variables de entorno del sistema, no desde el código. Si el token estuviera escrito directo en el script y subieras ese archivo a GitHub, cualquiera podría verlo. Las variables de entorno son la forma estándar de manejar credenciales.</p>
+<p>Para configurar la variable en Mac, antes de ejecutar el script:</p>
+<pre><code class="language-bash">export GITHUB_TOKEN=&quot;pega_tu_token_aqui&quot;
+</code></pre>
+<p><strong>Línea 8-10 — <code>headers</code></strong>
+Un diccionario Python con los mismos headers que configuraste en Postman. <code>f"Bearer {token}"</code> inserta el valor de la variable <code>token</code> dentro del texto.</p>
+<p><strong>Línea 12-14 — <code>requests.get()</code></strong>
+La petición GET a la API. <code>response</code> guarda todo lo que devuelve el servidor: los datos, el status code, los headers de respuesta.</p>
+<p><strong>Línea 16 — <code>.json()</code></strong>
+Convierte el texto JSON de la respuesta en una estructura Python. Dado que el endpoint de repos devuelve un array <code>[]</code>, el resultado es una <strong>lista de diccionarios</strong> — uno por cada repo.</p>
+<p><strong>Línea 18 — <code>pd.DataFrame(repos)</code></strong>
+Convierte esa lista de diccionarios en una tabla. pandas infiere automáticamente que cada diccionario es una fila y cada clave es una columna.</p>
+<p><strong>Línea 20-21 — <code>df[columnas]</code></strong>
+Filtrar solo las columnas que interesan. La respuesta de GitHub tiene más de 80 campos por repo — la mayoría son URLs internas que no sirven para análisis.</p>
+<p><strong>Línea 23-24 — <code>.to_excel()</code></strong>
+Exportar el DataFrame como archivo Excel en la carpeta donde se ejecuta el script. <code>index=False</code> evita que pandas agregue una columna extra de números al inicio.</p>
+<h3>6.4 Qué pasa internamente</h3>
+<pre><code>Script Python
+    → requests.get() construye la petición HTTP
+    → La envía a api.github.com
+    → GitHub valida el token y devuelve el JSON
+    → .json() lo convierte en lista Python
+    → pd.DataFrame() lo convierte en tabla
+    → .to_excel() lo escribe en disco
+</code></pre>
+<p>Es el mismo flujo que hiciste en Postman — pero automatizado y con el resultado en un archivo que puedes abrir en Excel.</p>
+<h3>6.5 Destinos de los datos</h3>
+<p>El script en este post exporta a Excel, pero Excel es solo un destino de exploración. Hay tres opciones reales según el contexto:</p>
+<p><strong>Opción 1 — Python → CSV → Power BI</strong>
+El script guarda los datos en un CSV. Power BI lee ese archivo. Simple y sin intermediarios. El problema: cada vez que quieres datos frescos hay que re-ejecutar el script manualmente.</p>
+<p><strong>Opción 2 — Power Query M directo en Power BI</strong>
+Power BI tiene su propio lenguaje de transformación (M) que puede llamar APIs con headers personalizados, sin Python. Todo ocurre dentro de Power BI. El problema: el token queda guardado dentro del archivo, lo que representa un riesgo de seguridad si el archivo se comparte.</p>
+<p><strong>Opción 3 — Python → Base de datos → Power BI</strong>
+El script carga los datos en una base de datos. Power BI se conecta a la base de datos. Es el enfoque profesional: datos siempre disponibles, actualizables de forma programada, sin exponer el token en ningún archivo. Requiere tener una base de datos configurada.</p>
+<p>Para empezar: <strong>Opción 1</strong>. Cuando haya más contexto de bases de datos, la Opción 3 es el camino natural.</p>
+<blockquote>
+<p><strong>Nota</strong>: no es posible conectar este endpoint directamente con el "Conectar web" de Power BI. Ese conector está pensado para HTML o fuentes simples, no para JSON autenticado que requiere enviar un Bearer Token en los headers.</p>
+</blockquote>
+<hr />
+<h2>7. Mi conclusión</h2>
+<p>La API de GitHub es REST, devuelve JSON y usa Bearer Token — tres conceptos que se repiten en la mayoría de APIs modernas. Lo específico de GitHub son sus endpoints y sus scopes.</p>
+<p>El flujo que cubre este post — explorar en Postman, autenticarse con token, extraer con Python, exportar a Excel — es el mismo que aplica para cualquier otra API. Lo que cambia entre una API y otra es dónde generas el token, qué scopes existen y cómo están organizados los endpoints. La estructura de fondo es siempre la misma.</p>
+<h2>8. Recursos</h2>
+<ul>
+<li><a href="https://docs.github.com/en/rest">GitHub REST API — documentación oficial</a></li>
+<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Personal Access Tokens — cómo generarlos</a></li>
+<li><a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps">Scopes disponibles en GitHub</a></li>
+<li><a href="https://requests.readthedocs.io/en/latest/">Librería requests de Python</a></li>
+</ul>
+<h2>Pendientes</h2>
+<p><em>(sección interna — se elimina antes de publicar)</em>
+- [ ] Grabar video siguiendo los pasos documentados
+- [ ] Revisar que todos los endpoints siguen activos antes de publicar
+- [ ] Agregar caso equivalente con Notion API (post separado)</p></div>
+    
+    
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'api-github-extraer-datos-publicos-privados-postman';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
