@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción a APIs para analistas de datos · Angel García</title>
+  <meta name="description" content="Introducción a APIs para analistas de datos" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">apis</span>
+      <span class="post-so">Mac & Windows</span>
+      <span>Actualizado: 2026-05-16</span>
+    </div>
+    <h1 class="post-titulo">Introducción a APIs para analistas de datos</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>Introducción a APIs para analistas de datos</h1>
+<h2>1. El concepto</h2>
+<p>Una API es un contrato entre dos sistemas: define qué se puede pedir, cómo pedirlo y qué se recibirá a cambio. No es un archivo ni un servidor — es un conjunto de reglas.</p>
+<p>Como analistas, nuestro rol es consumir APIs para extraer datos. No las construimos ni las integramos entre sistemas — las usamos para pedir datos, almacenarlos y analizarlos. Ese es el punto de partida.</p>
+<h3>¿A qué datos puedo acceder?</h3>
+<p>Antes de hacer cualquier petición hay que saber si la API existe y cómo conseguir acceso. Depende de a quién pertenecen los datos:</p>
+<ol>
+<li><strong>Datos de empresa</strong> — SAP, Oracle, Azure, GCP, AWS. Los controla la organización. Necesitas que alguien interno (IT o desarrollo) te dé acceso.</li>
+<li><strong>Datos propios</strong> — Google Workspace, Notion, GitHub. Son tuyos. Puedes generar las credenciales directamente desde el panel de la plataforma.</li>
+<li><strong>Datos de prueba</strong> — entornos sandbox que la plataforma ofrece para desarrollo. Stripe, Salesforce Developer Edition, HubSpot. No son datos reales — sirven para aprender y probar.</li>
+</ol>
+<h3>Cómo hacer una petición</h3>
+<p>Para hacer una petición necesitas tres cosas:</p>
+<ol>
+<li><strong>Una herramienta</strong> — no siempre es código. El navegador funciona con APIs públicas o las que exponen el API key en la URL. Postman es ideal para explorar sin código. Python con <code>requests</code> es para cuando ya sabes qué pedir y quieres automatizarlo.</li>
+<li><strong>La documentación</strong> — el manual que te dice qué endpoints existen, qué parámetros acepta cada uno y qué te devuelve. Sin ella estás adivinando.</li>
+<li><strong>El método correcto</strong> — GET para pedir datos (el más común), POST para crear o enviar parámetros complejos, PUT/PATCH para actualizar, DELETE para eliminar.</li>
+</ol>
+<h3>Autenticación</h3>
+<p>Antes de recibir datos, la API necesita saber quién eres. Los mecanismos principales:</p>
+<ul>
+<li><strong>API Key</strong> — credencial estática que alguien genera y te pasa directamente. Permanente hasta revocación manual. Algunas plataformas permiten configurar permisos, otras no.</li>
+<li><strong>OAuth 2.0</strong> — protocolo estándar que siempre requiere una aplicación registrada en la plataforma. Genera tokens temporales que expiran. Tiene dos flujos: con usuario (el usuario autoriza en pantalla) y sin usuario — Client Credentials (máquina a máquina, sin login).</li>
+<li><strong>Otros</strong> — Basic Auth, Bearer Token, JWT, HMAC. Menos frecuentes pero presentes en sistemas legacy o empresariales.</li>
+</ul>
+<p>La diferencia clave entre API Key y OAuth no está en los permisos — ambos pueden tenerlos. Está en la permanencia (API Key es estática, OAuth genera tokens que expiran) y en la identidad (API Key es una credencial suelta, OAuth siempre tiene una aplicación registrada detrás).</p>
+<h3>Qué devuelve una API</h3>
+<p>Toda respuesta tiene dos partes:</p>
+<ol>
+<li><strong>Status code</strong> — el número que dice si funcionó o no. <code>200</code> es éxito, <code>401</code> es sin autenticación, <code>403</code> es sin permiso, <code>404</code> es endpoint inexistente, <code>429</code> es rate limit superado, <code>500</code> es error del servidor.</li>
+<li><strong>Cuerpo</strong> — los datos en sí, casi siempre en JSON. Algunas APIs devuelven XML o CSV.</li>
+</ol>
+<hr />
+<h2>2. Ejemplo práctico</h2>
+<p>La API de GitHub es el mejor punto de partida para entender todo esto en acción. Tiene endpoints públicos (sin autenticación) y privados (con token), devuelve JSON y su documentación es clara.</p>
+<p>En este post lo trabajamos paso a paso con Postman:</p>
+<p>→ <a href="https://www.angelgarciadatablog.com/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a></p>
+<hr />
+<h2>3. Mi conclusión</h2>
+<p>Las APIs no nacieron para analistas — nacieron para conectar sistemas de software. Pero casi todas las permiten consumir para extraer datos. Entender eso cambia cómo te posicionas: no eres el caso principal, eres un caso tolerado. Por eso el rate limiting duele más al analista que a cualquier otro usuario.</p>
+<p>Lo que sí es tuyo es el flujo: identificar si la API existe, conseguir acceso, leer la documentación, autenticarte y hacer la petición. Ese flujo es el mismo independientemente de la plataforma.</p>
+<hr />
+<h2>4. Recursos</h2>
+<ul>
+<li><a href="https://oauth.net/2/">OAuth 2.0 — RFC oficial</a></li>
+<li><a href="https://developers.google.com/identity/protocols/oauth2">Google Identity — OAuth 2.0</a></li>
+<li><a href="https://shopify.dev/docs/apps/build/authentication-authorization">Shopify API authentication</a></li>
+</ul>
+<hr />
+<h2>5. Pendientes</h2>
+<ul>
+<li>[ ] Referenciar más ejemplo de apis que haya explorado en otros post</li>
+</ul></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a>
+
+  </div>
+</div>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'introduccion-apis-para-analistas';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

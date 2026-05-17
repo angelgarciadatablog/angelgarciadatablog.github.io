@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API de Notion: cómo leer páginas y tablas con Postman · Angel García</title>
+  <meta name="description" content="API de Notion: cómo leer páginas y tablas con Postman" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">apis</span>
+      <span class="post-so">Mac & Windows</span>
+      <span>Actualizado: 2026-05-16</span>
+    </div>
+    <h1 class="post-titulo">API de Notion: cómo leer páginas y tablas con Postman</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>API de Notion: cómo leer páginas y tablas con Postman</h1>
+<h2>1. El concepto</h2>
+<p>La API de Notion te permite leer y escribir el contenido de tu workspace desde código. A diferencia de otras APIs como la de GitHub, <strong>no existe acceso público</strong> — todo requiere autenticación, hasta la petición más simple.</p>
+<p>Como analista, esto define el punto de partida: antes de hacer cualquier petición, necesitas crear una <strong>Integration</strong> en Notion y darle acceso explícito a las páginas que quieres consultar.</p>
+<hr />
+<h2>2. Qué tipo de API es Notion</h2>
+<p>Notion expone una <strong>API REST</strong>. El mismo estilo que GitHub: cada URL representa un recurso, el método HTTP define la operación, y las respuestas vienen en JSON.</p>
+<p>La URL base de toda la API es <code>https://api.notion.com/v1</code>. A partir de ahí se construyen los endpoints:</p>
+<pre><code>https://api.notion.com/v1/search                      → buscar páginas y databases
+https://api.notion.com/v1/blocks/{block_id}/children  → leer el contenido de una página
+https://api.notion.com/v1/databases/{database_id}/query → consultar una database
+</code></pre>
+<p><strong>Una diferencia importante con GitHub</strong>: Notion exige un header adicional en cada petición que no existe en otras APIs:</p>
+<pre><code>Notion-Version: 2026-03-11
+</code></pre>
+<p>Este header indica qué versión del contrato de la API quieres usar. Sin él, la petición falla. Es obligatorio siempre.</p>
+<hr />
+<h2>3. Endpoints disponibles</h2>
+<p>La API de Notion está organizada por tipo de objeto. Cada objeto tiene sus propios endpoints y métodos:</p>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Endpoint</th>
+<th>Método</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Search</strong></td>
+<td><code>/search</code></td>
+<td><code>POST</code></td>
+<td>Buscar páginas y databases accesibles</td>
+</tr>
+<tr>
+<td><strong>Pages</strong></td>
+<td><code>/pages</code></td>
+<td><code>POST</code></td>
+<td>Crear una página nueva</td>
+</tr>
+<tr>
+<td><strong>Pages</strong></td>
+<td><code>/pages/{id}</code></td>
+<td><code>GET</code></td>
+<td>Leer metadatos de una página</td>
+</tr>
+<tr>
+<td><strong>Pages</strong></td>
+<td><code>/pages/{id}</code></td>
+<td><code>PATCH</code></td>
+<td>Actualizar propiedades de una página</td>
+</tr>
+<tr>
+<td><strong>Databases</strong></td>
+<td><code>/databases/{id}</code></td>
+<td><code>GET</code></td>
+<td>Leer estructura de una database</td>
+</tr>
+<tr>
+<td><strong>Databases</strong></td>
+<td><code>/databases/{id}/query</code></td>
+<td><code>POST</code></td>
+<td>Consultar entradas de una database con filtros</td>
+</tr>
+<tr>
+<td><strong>Blocks</strong></td>
+<td><code>/blocks/{id}/children</code></td>
+<td><code>GET</code></td>
+<td>Leer el contenido de una página o bloque</td>
+</tr>
+<tr>
+<td><strong>Blocks</strong></td>
+<td><code>/blocks/{id}</code></td>
+<td><code>PATCH</code></td>
+<td>Editar un bloque existente</td>
+</tr>
+<tr>
+<td><strong>Blocks</strong></td>
+<td><code>/blocks/{id}</code></td>
+<td><code>DELETE</code></td>
+<td>Archivar un bloque</td>
+</tr>
+<tr>
+<td><strong>Users</strong></td>
+<td><code>/users/me</code></td>
+<td><code>GET</code></td>
+<td>Ver el usuario autenticado</td>
+</tr>
+<tr>
+<td><strong>Comments</strong></td>
+<td><code>/comments</code></td>
+<td><code>GET</code></td>
+<td>Leer comentarios</td>
+</tr>
+</tbody>
+</table>
+<p>En esta sesión usamos tres: <code>POST /search</code>, <code>GET /blocks/{page_id}/children</code> y <code>GET /blocks/{table_id}/children</code>.</p>
+<h3>Por qué algunos endpoints de lectura usan POST</h3>
+<p>En REST la convención es usar <code>GET</code> para leer. Pero <code>GET</code> transfiere sus parámetros en la URL — lo que funciona bien para identificadores simples, pero se vuelve engorroso con estructuras complejas.</p>
+<p>Notion usa <code>POST</code> en los endpoints de lectura que aceptan filtros. Por ejemplo, <code>/databases/{id}/query</code> permite enviar esto en el body:</p>
+<pre><code class="language-json">{
+  &quot;filter&quot;: {
+    &quot;property&quot;: &quot;Estado&quot;,
+    &quot;select&quot;: { &quot;equals&quot;: &quot;Comprado&quot; }
+  },
+  &quot;sorts&quot;: [
+    { &quot;property&quot;: &quot;Precio&quot;, &quot;direction&quot;: &quot;descending&quot; }
+  ]
+}
+</code></pre>
+<p>Ese mismo filtro en la URL sería ilegible e inmanejable. El body de un <code>POST</code> es la forma práctica de enviar parámetros de consulta complejos.</p>
+<p><strong>La regla en Notion:</strong>
+- Lectura simple por ID → <code>GET</code>
+- Lectura con filtros opcionales → <code>POST</code>
+- Crear → <code>POST</code>
+- Editar → <code>PATCH</code>
+- Archivar → <code>DELETE</code></p>
+<h3>Headers</h3>
+<p>Los dos headers obligatorios en cada petición de Notion:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td><code>Bearer &lt;tu_token&gt;</code></td>
+</tr>
+<tr>
+<td><code>Notion-Version</code></td>
+<td><code>2026-03-11</code></td>
+</tr>
+</tbody>
+</table>
+<p>En Postman: <code>Authorization</code> se configura en la pestaña <strong>Authorization → Bearer Token</strong>. <code>Notion-Version</code> va en la pestaña <strong>Headers</strong> como un par clave-valor.</p>
+<h3>Body</h3>
+<p>Solo en métodos que envían datos: <code>POST</code>, <code>PATCH</code>. En el caso de <code>/search</code> con body vacío <code>{}</code>, la API devuelve todo lo accesible para la Integration.</p>
+<h3>Status code</h3>
+<p>Los más importantes para trabajar con Notion:</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200 OK</code></td>
+<td>Petición exitosa</td>
+</tr>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td>Error en el body o parámetros enviados</td>
+</tr>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td>Token inválido o ausente</td>
+</tr>
+<tr>
+<td><code>403 Forbidden</code></td>
+<td>El token existe pero no tiene acceso al recurso</td>
+</tr>
+<tr>
+<td><code>404 Not Found</code></td>
+<td>El recurso no existe o no fue compartido con la Integration</td>
+</tr>
+<tr>
+<td><code>429 Too Many Requests</code></td>
+<td>Rate limit superado (3 peticiones por segundo)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Autenticación — Integration Token</h2>
+<h3>Crear la Integration</h3>
+<p>Notion no usa Personal Access Tokens como GitHub. Usa <strong>Integrations</strong> — aplicaciones registradas en tu workspace que reciben un token propio.</p>
+<ol>
+<li>Ir a <code>https://www.notion.so/my-integrations</code></li>
+<li>Clic en <strong>New integration</strong></li>
+<li>Asignar un nombre descriptivo (ej: <code>postman-prueba-api</code>)</li>
+<li>Seleccionar el workspace donde va a operar</li>
+<li>Copiar el <strong>Internal Integration Token</strong> — solo se muestra una vez completo, aunque después es visible en la configuración</li>
+</ol>
+<h3>Capabilities — los scopes de Notion</h3>
+<p>Al crear o configurar la Integration, Notion pide definir qué puede hacer. Son el equivalente a los scopes de GitHub, pero presentados como checkboxes visuales:</p>
+<table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>Permiso</th>
+<th>Qué permite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content</td>
+<td>Read content</td>
+<td>Ver páginas y entradas de databases</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Update content</td>
+<td>Editar páginas y entradas existentes</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Insert content</td>
+<td>Crear páginas y entradas nuevas</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Read comments</td>
+<td>Ver comentarios en páginas y bloques</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Insert comments</td>
+<td>Agregar comentarios</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>No user information</td>
+<td>Sin acceso a datos de usuario</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>Read user info without email</td>
+<td>Perfiles básicos, sin email</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>Read user info with email</td>
+<td>Perfiles completos con email</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regla práctica</strong>: pedir solo lo necesario. Para leer datos como analista: solo <strong>Read content</strong>.</p>
+<h3>Dar acceso a páginas</h3>
+<p>Aquí está la diferencia más importante con GitHub: el token existe, pero <strong>no puede leer nada</strong> hasta que explícitamente le des acceso a páginas.</p>
+<p>Desde la configuración de la Integration, en la sección <strong>Content access</strong>, puedes seleccionar las páginas padre de tu workspace. La Integration tendrá acceso a esas páginas y todo su contenido anidado.</p>
+<hr />
+<h2>5. Tu workspace desde la API — <code>/search</code></h2>
+<p>Con el token configurado en Postman, la primera petición útil es <code>/search</code>. Devuelve todas las páginas y databases que la Integration puede ver.</p>
+<ul>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>URL</strong>: <code>https://api.notion.com/v1/search</code></li>
+<li><strong>Body</strong>: <code>{}</code></li>
+</ul>
+<p><strong>La respuesta</strong>:</p>
+<pre><code class="language-json">{
+    &quot;object&quot;: &quot;list&quot;,
+    &quot;results&quot;: [ ... ],
+    &quot;next_cursor&quot;: null,
+    &quot;has_more&quot;: false,
+    &quot;type&quot;: &quot;page_or_data_source&quot;
+}
+</code></pre>
+<p>La estructura raíz tiene tres campos importantes para un analista:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Qué indica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results</code></td>
+<td>Array con las páginas y databases encontrados</td>
+</tr>
+<tr>
+<td><code>next_cursor</code></td>
+<td>Si hay más resultados, este valor se pasa en la siguiente petición para continuar</td>
+</tr>
+<tr>
+<td><code>has_more</code></td>
+<td><code>true</code> si existen más resultados que no caben en esta respuesta</td>
+</tr>
+</tbody>
+</table>
+<p>Esto es la <strong>paginación por cursor</strong> — distinta a la de GitHub, que usaba el header <code>Link</code> en la respuesta. Notion devuelve la información de paginación dentro del JSON.</p>
+<p><strong>Dentro de cada página devuelta:</strong></p>
+<pre><code class="language-json">{
+    &quot;object&quot;: &quot;page&quot;,
+    &quot;id&quot;: &quot;295477bc-d0eb-80c3-...&quot;,
+    &quot;created_time&quot;: &quot;2025-10-23T01:56:00.000Z&quot;,
+    &quot;last_edited_time&quot;: &quot;2026-05-17T02:41:00.000Z&quot;,
+    &quot;parent&quot;: { &quot;type&quot;: &quot;workspace&quot;, &quot;workspace&quot;: true },
+    &quot;in_trash&quot;: false,
+    &quot;is_archived&quot;: false,
+    &quot;is_locked&quot;: false,
+    &quot;properties&quot;: {
+        &quot;title&quot;: { &quot;title&quot;: [{ &quot;plain_text&quot;: &quot;Compras&quot; }] }
+    }
+}
+</code></pre>
+<p>Campos útiles:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>El identificador único de la página — se usa en peticiones siguientes</td>
+</tr>
+<tr>
+<td><code>created_time</code> / <code>last_edited_time</code></td>
+<td>Fechas en formato ISO 8601</td>
+</tr>
+<tr>
+<td><code>parent.workspace: true</code></td>
+<td>La página está en el nivel raíz del workspace</td>
+</tr>
+<tr>
+<td><code>in_trash</code> / <code>is_archived</code></td>
+<td>Estado de la página</td>
+</tr>
+<tr>
+<td><code>properties.title</code></td>
+<td>El título de la página</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. El contenido de una página — <code>/blocks/{id}/children</code></h2>
+<p><code>/search</code> solo devuelve metadatos. Para leer el contenido real de una página — sus párrafos, tablas, imágenes — se usa un endpoint diferente:</p>
+<ul>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>URL</strong>: <code>https://api.notion.com/v1/blocks/{page_id}/children</code></li>
+</ul>
+<p>Donde <code>{page_id}</code> es el <code>id</code> obtenido en la respuesta de <code>/search</code>.</p>
+<p><strong>La respuesta</strong> es otra lista, pero ahora de <strong>bloques</strong>:</p>
+<pre><code class="language-json">{
+    &quot;object&quot;: &quot;list&quot;,
+    &quot;results&quot;: [
+        { &quot;object&quot;: &quot;block&quot;, &quot;type&quot;: &quot;paragraph&quot;, ... },
+        { &quot;object&quot;: &quot;block&quot;, &quot;type&quot;: &quot;table&quot;, ... },
+        { &quot;object&quot;: &quot;block&quot;, &quot;type&quot;: &quot;divider&quot;, ... }
+    ]
+}
+</code></pre>
+<hr />
+<h2>7. El modelo de bloques — la diferencia estructural de Notion</h2>
+<p>Este es el concepto más importante de la API de Notion y el que más diferencia tiene con GitHub.</p>
+<p><strong>En Notion, todo el contenido es un bloque.</strong> Un párrafo es un bloque. Una tabla es un bloque. Un separador, una imagen, un bloque de código — todos son bloques. Y cada bloque tiene la misma estructura base:</p>
+<pre><code class="language-json">{
+    &quot;object&quot;: &quot;block&quot;,
+    &quot;id&quot;: &quot;...&quot;,
+    &quot;type&quot;: &quot;&lt;tipo&gt;&quot;,
+    &quot;&lt;tipo&gt;&quot;: { ... }   ← el contenido real va aquí, bajo la clave del mismo nombre
+}
+</code></pre>
+<h3>Tipos de bloque y su contenido</h3>
+<table>
+<thead>
+<tr>
+<th><code>type</code></th>
+<th>Qué es en Notion</th>
+<th>Dónde está el contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paragraph</code></td>
+<td>Párrafo de texto</td>
+<td><code>paragraph.rich_text[]</code></td>
+</tr>
+<tr>
+<td><code>heading_1</code> / <code>heading_2</code> / <code>heading_3</code></td>
+<td>Títulos</td>
+<td><code>heading_1.rich_text[]</code></td>
+</tr>
+<tr>
+<td><code>table</code></td>
+<td>Tabla</td>
+<td>Solo metadatos — las filas son hijos</td>
+</tr>
+<tr>
+<td><code>table_row</code></td>
+<td>Fila de una tabla</td>
+<td><code>table_row.cells[][]</code></td>
+</tr>
+<tr>
+<td><code>divider</code></td>
+<td>Línea horizontal <code>---</code></td>
+<td><code>divider: {}</code> — sin contenido</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>Bloque de código</td>
+<td><code>code.rich_text[]</code> + <code>code.language</code></td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>Imagen</td>
+<td><code>image.external.url</code> o <code>image.file.url</code></td>
+</tr>
+<tr>
+<td><code>bulleted_list_item</code></td>
+<td>Ítem de lista</td>
+<td><code>bulleted_list_item.rich_text[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3>El <code>rich_text</code> — cómo Notion representa texto</h3>
+<p>El texto nunca es solo un string. Siempre es un array de objetos, aunque el párrafo sea texto plano sin formato:</p>
+<pre><code class="language-json">&quot;rich_text&quot;: [
+    {
+        &quot;plain_text&quot;: &quot;Para guardar fotos&quot;,
+        &quot;annotations&quot;: {
+            &quot;bold&quot;: false,
+            &quot;italic&quot;: false,
+            &quot;strikethrough&quot;: false,
+            &quot;color&quot;: &quot;default&quot;
+        }
+    }
+]
+</code></pre>
+<p>Esto permite que un solo párrafo mezcle texto normal, negrita, itálica y color en segmentos distintos — cada segmento es un elemento del array. Para extraer el texto en Python, hay que iterar sobre el array y concatenar los <code>plain_text</code>.</p>
+<p>Un párrafo vacío (línea en blanco en Notion) devuelve <code>"rich_text": []</code>.</p>
+<h3>Tablas y recursividad — el caso más importante</h3>
+<p>Una tabla no devuelve sus filas directamente. Solo devuelve metadatos:</p>
+<pre><code class="language-json">{
+    &quot;type&quot;: &quot;table&quot;,
+    &quot;has_children&quot;: true,
+    &quot;table&quot;: {
+        &quot;table_width&quot;: 4,
+        &quot;has_column_header&quot;: false,
+        &quot;has_row_header&quot;: false
+    }
+}
+</code></pre>
+<p>El campo <code>has_children: true</code> indica que hay contenido anidado. Para leerlo, se necesita <strong>otra petición</strong> usando el ID de la tabla:</p>
+<pre><code>GET https://api.notion.com/v1/blocks/{table_id}/children
+</code></pre>
+<p>Esa petición devuelve los <code>table_row</code>, donde cada fila tiene un array <code>cells</code> — uno por columna:</p>
+<pre><code class="language-json">&quot;table_row&quot;: {
+    &quot;cells&quot;: [
+        [{ &quot;plain_text&quot;: &quot;Adaptador HDMI&quot; }],
+        [{ &quot;plain_text&quot;: &quot;Para conectar el Mac a una pantalla&quot; }],
+        [{ &quot;plain_text&quot;: &quot;1150&quot; }],
+        [{ &quot;plain_text&quot;: &quot;Comprado&quot; }]
+    ]
+}
+</code></pre>
+<p>Las celdas vacías son <code>[]</code>.</p>
+<h3>El árbol de peticiones</h3>
+<p>Leer una página completa con tablas requiere tres niveles de petición encadenada:</p>
+<pre><code>POST /search
+  → GET /blocks/{page_id}/children      → obtienes los bloques de la página
+    → GET /blocks/{table_id}/children   → obtienes las filas de cada tabla
+</code></pre>
+<p>Esto es muy distinto a GitHub, donde una sola petición GET devolvía todos los datos del recurso. En Notion, el contenido es un árbol — y para recorrerlo hay que seguir los <code>has_children: true</code> con peticiones adicionales.</p>
+<hr />
+<h2>8. Mi conclusión</h2>
+<p>La API de Notion tiene la misma base que cualquier API REST — métodos HTTP, headers, JSON — pero introduce dos conceptos que no existen en otras APIs:</p>
+<ol>
+<li><strong>El header <code>Notion-Version</code></strong>: obligatorio en cada petición. Sin él, la API rechaza la llamada.</li>
+<li><strong>El modelo de bloques</strong>: el contenido no es plano. Es un árbol. Leer una página compleja puede requerir múltiples peticiones encadenadas siguiendo los <code>has_children: true</code>.</li>
+</ol>
+<p>Para un analista, el flujo básico ya es útil: <code>/search</code> para descubrir qué páginas están disponibles, <code>/blocks/{id}/children</code> para leer el contenido. El siguiente paso natural es trabajar con <strong>databases</strong> — el objeto más potente de Notion para datos estructurados, con su propio endpoint de consulta con filtros y ordenamiento.</p>
+<hr />
+<h2>9. Recursos</h2>
+<ul>
+<li><a href="https://developers.notion.com">Notion API — documentación oficial</a></li>
+<li><a href="https://developers.notion.com/reference/block">Referencia de tipos de bloque</a></li>
+<li><a href="https://www.notion.so/my-integrations">Crear una Integration</a></li>
+<li><a href="https://developers.notion.com/reference/versioning">Versionado de la API</a></li>
+</ul>
+<hr />
+<h2>10. Pendientes</h2>
+<p><em>(sección interna — se elimina antes de publicar)</em>
+- [ ] Grabar video siguiendo los pasos documentados
+- [ ] Revisar que todos los endpoints siguen activos antes de publicar
+- [ ] Post siguiente: databases — <code>POST /databases/{id}/query</code> con filtros y ordenamiento
+- [ ] Post siguiente: páginas dentro de páginas — recursividad real y cómo manejarla en Python
+- [ ] Agregar sección de Python — extraer tabla de Notion a Excel con requests + pandas</p></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a>
+<a class="relacionado-item" href="/introduccion-apis-para-analistas">Introducción a APIs para analistas de datos</a>
+
+  </div>
+</div>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'api-notion-extraer-paginas-tablas-postman';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
