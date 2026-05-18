@@ -358,23 +358,16 @@ El flujo es idéntico — cambia solo que ahora cualquier persona en internet pu
 <p><strong>Cloud Function vs Cloud Run</strong> — las dos ejecutan código en respuesta a palmaditas HTTP, pero la diferencia es quién resuelve el HTTP. En Cloud Function lo resuelve Google con su propio framework (<code>@functions_framework.http</code>) — solo necesitas <code>main.py</code> y <code>requirements.txt</code>. En Cloud Run lo resuelves tú con FastAPI + uvicorn + Dockerfile. Más trabajo, más control. Para una función simple, Cloud Function es más rápido; Cloud Run vale cuando tienes varios endpoints o necesitas controlar el entorno.</p>
 </li>
 <li>
-<p>El servidor debe escuchar en <code>0.0.0.0</code>, nunca en <code>localhost</code> — si no, Cloud Run no puede alcanzarlo. En local uvicorn escucha solo en <code>127.0.0.1</code>; con <code>0.0.0.0</code> acepta conexiones desde cualquier origen, necesario porque en Cloud Run las palmaditas vienen de afuera del contenedor</p>
+<p>Cloud Run apaga el contenedor cuando no hay tráfico — no es un servidor permanente, se "despierta" con cada petición</p>
 </li>
-<li>Cloud Run apaga el contenedor cuando no hay tráfico — no es un servidor permanente, se "despierta" con cada petición</li>
+<li>Los espacios en el URL se convierten automáticamente a <code>%20</code> — es la forma estándar de representar espacios en HTTP. FastAPI los decodifica solo, la función recibe el texto normal:</li>
+<li>
+<p>Abuso de endpoints públicos: Si alguien encuentra el URL y lo llama miles de veces, el script se ejecuta miles de veces — generando costos o saturando el servicio. El rate limiting por IP no es suficiente porque se puede evadir con proxies. La primera línea de defensa real es la autenticación. Para protección adicional sin depender del proveedor de nube, Cloudflare actúa como intermediario (<code>usuario → Cloudflare → Cloud Run</code>) y filtra tráfico abusivo antes de que llegue al servicio.</p>
+</li>
+<li>
+<p>Puertos: local vs Cloud Run</p>
+</li>
 </ul>
-<h3>Espacios en URLs</h3>
-<p>Los espacios en el URL se convierten automáticamente a <code>%20</code> — es la forma estándar de representar espacios en HTTP. FastAPI los decodifica solo, la función recibe el texto normal. curl rechaza espacios directos — usar <code>--data-urlencode</code> o <code>%20</code> manual:</p>
-<pre><code class="language-bash">curl -G &quot;http://localhost:8000/contar-palabras&quot; --data-urlencode &quot;texto=hola mundo&quot;
-</code></pre>
-<h3>Abuso de endpoints públicos</h3>
-<p>Si alguien encuentra el URL y lo llama miles de veces, el script se ejecuta miles de veces — generando costos o saturando el servicio. El rate limiting por IP no es suficiente porque se puede evadir con proxies. La primera línea de defensa real es la autenticación. Para protección adicional sin depender del proveedor de nube, Cloudflare actúa como intermediario (<code>usuario → Cloudflare → Cloud Run</code>) y filtra tráfico abusivo antes de que llegue al servicio.</p>
-<h3>Puertos: local vs Cloud Run</h3>
-<ul>
-<li><strong>En local</strong> — uvicorn usa 8000 por defecto</li>
-<li><strong>En Cloud Run</strong> — Cloud Run inyecta el puerto via la variable <code>PORT</code>. Lo correcto es leerla dinámicamente:</li>
-</ul>
-<pre><code class="language-python">port = int(os.environ.get(&quot;PORT&quot;, 8080))
-</code></pre>
 <h2>Referencia oficial</h2>
 <ul>
 <li><a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-python-service">Cloud Run — Quickstart</a></li>
