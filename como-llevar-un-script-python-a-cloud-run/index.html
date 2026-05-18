@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo llevar un script Python a Cloud Run · Angel García</title>
+  <meta name="description" content="Cómo llevar un script Python a Cloud Run" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">google-cloud</span>
+      <span class="post-so">Mac</span>
+      <span>Actualizado: 2026-05-17</span>
+    </div>
+    <h1 class="post-titulo">Cómo llevar un script Python a Cloud Run</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-cloud</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>Cómo llevar un script Python a Cloud Run</h1>
+<h2>1. Qué es</h2>
+<p>Cloud Run es un servicio de Google Cloud que toma un script local, lo empaqueta y lo sube a la nube. A cambio te da un URL. Cada vez que alguien llama ese URL, tu script se ejecuta.</p>
+<p>El único requisito es que el script "hable HTTP" — o sea, que tenga un servidor que esté escuchando y sepa recibir peticiones.</p>
+<h2>2. El script base (solo lógica, sin HTTP)</h2>
+<p>Punto de partida: un script Python que hace algo y devuelve un resultado. En la práctica usamos <code>contar_palabras.py</code> — recibe un texto y devuelve cuántas palabras tiene.</p>
+<pre><code class="language-python">def contar_palabras(texto: str) -&gt; int:
+    return len(texto.split())
+
+
+if __name__ == &quot;__main__&quot;:
+    texto = input(&quot;Ingresa un texto: &quot;)
+    resultado = contar_palabras(texto)
+    print(f&quot;El texto tiene {resultado} palabras&quot;)
+</code></pre>
+<p>Se puede probar directamente desde la terminal:</p>
+<pre><code class="language-bash">cd ~/scripts-datablog/google-cloud/script-python-a-cloud-run
+python3 -m venv venv &amp;&amp; source venv/bin/activate
+python contar_palabras.py
+</code></pre>
+<p>Esto funciona perfecto en local. El problema es que Cloud Run no puede activarlo porque no tiene forma de llamarlo desde afuera.</p>
+<h2>3. La diferencia entre local y la nube</h2>
+<p>En local y en la nube el script hace lo mismo, pero el canal para pasarle los datos es completamente distinto:</p>
+<p><strong>En local:</strong>
+- Tú arrancas el script manualmente: <code>python contar_palabras.py</code>
+- El script te pregunta: <code>Ingresa un texto:</code>
+- Tú escribes en la terminal y el script responde
+- El canal es la terminal</p>
+<p><strong>En la nube:</strong>
+- Nadie arranca el script manualmente — Cloud Run lo despierta cuando llega una palmadita HTTP
+- No hay terminal donde escribir
+- El usuario manda los datos dentro del URL
+- El canal es la petición HTTP</p>
+<pre><code># en local
+python contar_palabras.py
+→ Ingresa un texto: hola mundo
+
+# en la nube
+GET https://mi-script.run.app/contar-palabras?texto=hola mundo
+</code></pre>
+<p>El <code>input()</code> desaparece. El texto ya no lo escribe nadie en una terminal — viaja dentro del URL. Para que el script sepa recibir eso, necesita hablar HTTP. Eso es lo que resuelve FastAPI.</p>
+<h2>4. Hacer que el script hable HTTP en local</h2>
+<pre><code>palmadita HTTP → uvicorn (servidor local) → FastAPI (intermediario) → tu función Python
+</code></pre>
+<p>La palmadita no le llega al script directamente — le llega al servidor. El servidor la recibe y llama al script. El script solo ejecuta lógica, no sabe nada de HTTP.</p>
+<ul>
+<li><strong>uvicorn</strong> — abre el canal y recibe la palmadita</li>
+<li><strong>FastAPI</strong> — lee la palmadita y decide qué función ejecutar. Sin FastAPI, uvicorn recibiría la palmadita y no sabría qué hacer con ella. FastAPI es el que tiene las instrucciones: a qué ruta llegó, qué método es, qué datos trae y qué función ejecutar con eso</li>
+<li><strong>tu función</strong> — ejecuta la lógica y devuelve el resultado</li>
+</ul>
+<p>Las opciones más usadas de framework en Python son Flask y FastAPI. En este tema usamos FastAPI.</p>
+<h3>Levantar un servidor en local</h3>
+<p>Antes de subir a Cloud Run, se prueba todo en local levantando un servidor — es decir, abrir un canal en tu Mac que quede esperando palmaditas. Es el equivalente a <code>npm run dev</code> en JavaScript.</p>
+<p>uvicorn no se instala por separado — viene incluido en <code>requirements.txt</code>. Al correr <code>pip install -r requirements.txt</code> se instalan tanto <code>fastapi</code> como <code>uvicorn</code> juntos.</p>
+<pre><code class="language-bash"># primera vez
+source venv/bin/activate
+pip install -r requirements.txt
+
+# siguientes veces
+source venv/bin/activate
+uvicorn main:app --reload
+</code></pre>
+<p>Mientras ese comando está corriendo en la terminal, tu Mac escucha en <code>http://localhost:8000</code>. Esa es la base — el host más el puerto. Los endpoints son rutas que se agregan encima:</p>
+<pre><code>http://localhost:8000        →  la base (no es un endpoint en sí)
+http://localhost:8000/       →  endpoint raíz, definido con @app.get(&quot;/&quot;)
+http://localhost:8000/contar-palabras →  otro endpoint, definido con @app.get(&quot;/contar-palabras&quot;)
+</code></pre>
+<p>Cuando escribes <code>http://localhost:8000</code> en el navegador, estás llamando al endpoint <code>/</code> — la barra final está implícita. Cada endpoint responde de forma independiente.</p>
+<h2>5. Modificar el script para que hable HTTP</h2>
+<p>El script base <code>contar_palabras.py</code> solo tiene lógica — no sabe nada de HTTP. Para exponerlo como endpoint creamos un segundo archivo <code>main.py</code> que actúa como puente: importa la función y le dice a FastAPI qué hacer cuando llega una palmadita.</p>
+<p>La convención para nombres de endpoints es <strong>kebab-case</strong>: palabras en minúsculas separadas por guiones (<code>/contar-palabras</code>). El endpoint <code>/</code> se reserva para el health check — confirma que el servicio está vivo sin ejecutar lógica de negocio.</p>
+<pre><code class="language-python">from fastapi import FastAPI
+from contar_palabras import contar_palabras
+
+app = FastAPI()
+
+@app.get(&quot;/&quot;)
+def root():
+    return {&quot;status&quot;: &quot;ok&quot;}
+
+@app.get(&quot;/contar-palabras&quot;)
+def contar(texto: str):
+    resultado = contar_palabras(texto)
+    return {&quot;texto&quot;: texto, &quot;palabras&quot;: resultado}
+</code></pre>
+<p>Lo que hace cada línea:
+- <code>from contar_palabras import contar_palabras</code> — trae la función del otro archivo
+- <code>FastAPI()</code> — crea el intermediario que define qué hacer con cada palmadita
+- <code>@app.get("/")</code> — health check: responde <code>{"status": "ok"}</code> sin parámetros ni lógica
+- <code>@app.get("/contar-palabras")</code> — el endpoint real, nombrado en kebab-case
+- <code>texto: str</code> — recibe el texto desde el URL como parámetro (<code>?texto=hola mundo</code>)
+- <code>return {...}</code> — lo que devuelve se convierte automáticamente en JSON</p>
+<h3>Qué responde cada endpoint</h3>
+<p><strong><code>/</code> — health check:</strong></p>
+<pre><code class="language-bash">curl &quot;http://localhost:8000/&quot;
+# {&quot;status&quot;:&quot;ok&quot;}
+</code></pre>
+<p><strong><code>/contar-palabras</code> sin parámetro:</strong></p>
+<pre><code class="language-bash">curl -i &quot;http://localhost:8000/contar-palabras&quot;
+# HTTP/1.1 422 Unprocessable Entity
+# {&quot;detail&quot;:[{&quot;type&quot;:&quot;missing&quot;,&quot;loc&quot;:[&quot;query&quot;,&quot;texto&quot;],&quot;msg&quot;:&quot;Field required&quot;,&quot;input&quot;:null}]}
+</code></pre>
+<p>FastAPI valida que todos los parámetros requeridos lleguen antes de ejecutar la función. Como <code>texto: str</code> es obligatorio y no llegó, responde 422 sin ejecutar la lógica.</p>
+<p><strong><code>/contar-palabras</code> con parámetro:</strong></p>
+<p>Desde el navegador — los espacios se codifican con <code>%20</code>:</p>
+<pre><code>http://localhost:8000/contar-palabras?texto=esto%20es%20una%20prueba
+→ {&quot;texto&quot;:&quot;esto es una prueba&quot;,&quot;palabras&quot;:4}
+</code></pre>
+<p>Desde curl — dos formas equivalentes:</p>
+<pre><code class="language-bash"># curl rechaza espacios directos en el URL — usar --data-urlencode para que los codifique solo
+curl -G &quot;http://localhost:8000/contar-palabras&quot; --data-urlencode &quot;texto=hola mundo esto es una prueba magica&quot;
+# {&quot;texto&quot;:&quot;hola mundo esto es una prueba magica&quot;,&quot;palabras&quot;:7}
+
+# alternativa: codificar los espacios manualmente con %20
+curl &quot;http://localhost:8000/contar-palabras?texto=hola%20mundo%20esto%20es%20una%20prueba%20magica&quot;
+# {&quot;texto&quot;:&quot;hola mundo esto es una prueba magica&quot;,&quot;palabras&quot;:7}
+</code></pre>
+<p><strong>Endpoint que no existe:</strong></p>
+<pre><code class="language-bash">curl &quot;http://localhost:8000/ruta-inventada&quot;
+# {&quot;detail&quot;:&quot;Not Found&quot;}
+</code></pre>
+<p>FastAPI responde 404 automáticamente para cualquier ruta que no esté definida en <code>main.py</code>.</p>
+<hr />
+<h2>Resumen — hasta aquí</h2>
+<p>Con los pasos 1 al 5 ya se tiene un script Python funcionando como API REST en local:</p>
+<ol>
+<li><strong>Script base</strong> (<code>contar_palabras.py</code>) — contiene solo la lógica, sin saber nada de HTTP</li>
+<li><strong><code>main.py</code></strong> — actúa como puente: importa la función y define los endpoints con FastAPI</li>
+<li><strong>uvicorn</strong> — levanta el servidor y abre el canal en <code>http://localhost:8000</code></li>
+<li><strong>FastAPI</strong> — recibe cada palmadita y la dirige al endpoint correcto según la ruta</li>
+</ol>
+<p>Los endpoints definidos y sus respuestas:</p>
+<table>
+<thead>
+<tr>
+<th>Llamada</th>
+<th>Respuesta</th>
+<th>Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /</code></td>
+<td><code>{"status":"ok"}</code></td>
+<td>Health check — confirma que el servicio está vivo</td>
+</tr>
+<tr>
+<td><code>GET /contar-palabras?texto=hola</code></td>
+<td><code>{"texto":"hola","palabras":1}</code></td>
+<td>Ejecuta la lógica</td>
+</tr>
+<tr>
+<td><code>GET /contar-palabras</code> (sin parámetro)</td>
+<td><code>422 Unprocessable Entity</code></td>
+<td>FastAPI detecta que falta <code>texto</code></td>
+</tr>
+<tr>
+<td><code>GET /ruta-inventada</code></td>
+<td><code>404 Not Found</code></td>
+<td>La ruta no está definida en <code>main.py</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Limitación actual</strong>: el servidor solo recibe palmaditas desde la misma Mac. Para que cualquiera en internet pueda llamarlo hay que empaquetarlo y subirlo a Cloud Run — eso es lo que hacen los pasos siguientes.</p>
+<hr />
+<h2>6. Empaquetarlo en Docker</h2>
+<p>Empaquetar significa meter el script junto con todo lo que necesita para funcionar — Python, dependencias, archivos — en una "caja" estandarizada llamada contenedor Docker. Cloud Run recibe esa caja y la ejecuta sin necesidad de instalar nada.</p>
+<p>El problema sin empaquetar es este: tu script funciona en tu Mac porque tienes Python instalado, las dependencias instaladas y el sistema operativo correcto. Pero Cloud Run no sabe nada de eso — es una máquina en blanco.</p>
+<p>El contenedor resuelve eso:</p>
+<pre><code>tu Mac                        contenedor Docker
+──────────────────            ──────────────────────────
+Python 3.12 instalado    →    Python 3.12 incluido adentro
+fastapi instalado        →    fastapi incluido adentro
+uvicorn instalado        →    uvicorn incluido adentro
+contar_palabras.py       →    contar_palabras.py adentro
+main.py                  →    main.py adentro
+</code></pre>
+<p>El <code>Dockerfile</code> es la receta que le dice a Docker cómo construir esa caja. Independientemente de cómo se suba el código a Cloud Run — por CLI o por interfaz — Google Cloud lee el <code>Dockerfile</code> y construye el contenedor en sus propios servidores. No hace falta tener Docker instalado en local.</p>
+<pre><code>sin Docker local:   escribes la receta → Google Cloud cocina → Cloud Run sirve
+con Docker local:   escribes la receta → tú cocinas y pruebas → Google Cloud cocina → Cloud Run sirve
+</code></pre>
+<p>Docker local sirve para detectar errores en el contenedor antes de subirlo. Para aprendizaje, con dejar que Google Cloud cocine es suficiente.</p>
+<p>El <code>Dockerfile</code> no reemplaza al <code>requirements.txt</code> — los dos cumplen roles distintos:</p>
+<ul>
+<li><strong><code>requirements.txt</code></strong> — lista qué dependencias instalar (<code>fastapi</code>, <code>uvicorn</code>)</li>
+<li><strong><code>Dockerfile</code></strong> — orquesta todo: qué sistema base usar, dónde meter los archivos, cómo instalar las dependencias y cómo arrancar el servidor</li>
+</ul>
+<p>El Dockerfile usa su propio lenguaje — no es Python ni bash. Sus instrucciones son específicas de Docker y cada una representa un paso en la construcción del contenedor:</p>
+<pre><code class="language-dockerfile">FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8080&quot;]
+</code></pre>
+<p>Lo que hace cada línea:
+- <code>FROM python:3.12-slim</code> — parte de una caja base que ya tiene Python 3.12 instalado
+- <code>WORKDIR /app</code> — dentro de la caja, trabaja en la carpeta <code>/app</code>
+- <code>COPY requirements.txt .</code> — copia el <code>requirements.txt</code> de tu Mac a la caja
+- <code>RUN pip install -r requirements.txt</code> — instala las dependencias dentro de la caja
+- <code>COPY . .</code> — copia todo lo demás: <code>contar_palabras.py</code>, <code>main.py</code>, etc.
+- <code>CMD [...]</code> — cuando arranque el contenedor, ejecuta uvicorn automáticamente</p>
+<p>El <code>CMD</code> usa flags distintos a los del servidor local:
+- <code>--host 0.0.0.0</code> — en local uvicorn escucha solo en <code>127.0.0.1</code>. Con <code>0.0.0.0</code> escucha en todas las interfaces, necesario para que Cloud Run pueda alcanzarlo
+- <code>--port 8080</code> — Cloud Run espera que el contenedor escuche en el 8080</p>
+<h2>7. Evolución de archivos del proyecto</h2>
+<p>El proyecto fue creciendo en tres etapas según lo que necesitábamos:</p>
+<p><strong>Etapa 1 — script local puro</strong> (solo lógica, se ejecuta desde la terminal):</p>
+<pre><code>script-python-a-cloud-run/
+├── contar_palabras.py    → la lógica
+└── requirements.txt      → las dependencias
+</code></pre>
+<p><strong>Etapa 2 — script que habla HTTP</strong> (funciona como API en local):</p>
+<pre><code>script-python-a-cloud-run/
+├── contar_palabras.py    → la lógica
+├── main.py               → el puente HTTP (endpoints, FastAPI)
+└── requirements.txt      → las dependencias
+</code></pre>
+<p><strong>Etapa 3 — listo para Cloud Run</strong> (empaquetado, deployable a la nube):</p>
+<pre><code>script-python-a-cloud-run/
+├── contar_palabras.py    → la lógica
+├── main.py               → el puente HTTP (endpoints, FastAPI)
+├── requirements.txt      → las dependencias
+└── Dockerfile            → la receta del contenedor
+</code></pre>
+<h2>8. Subirlo a Cloud Run</h2>
+<p>Para poder ejecutar este comando hay que conocer primero los siguientes temas:</p>
+<ol>
+<li>Google Cloud CLI — LINK PENDIENTE</li>
+<li>Proyectos en Google Cloud — LINK PENDIENTE</li>
+<li>APIs en Google Cloud — LINK PENDIENTE</li>
+</ol>
+<pre><code class="language-bash">gcloud run deploy mi-script \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated
+</code></pre>
+<p><code>--source .</code> le dice a gcloud que construya la imagen Docker desde la carpeta actual y la suba directo. Al terminar, devuelve un URL.</p>
+<h2>9. ¿Cómo quedaría en Cloud Run?</h2>
+<pre><code>tú → GET https://mi-script-abc123-uc.a.run.app
+        ↓
+   Cloud Run despierta el contenedor
+        ↓
+   FastAPI recibe la petición
+        ↓
+   Se ejecuta tu función Python
+        ↓
+   Devuelve JSON como respuesta
+</code></pre>
+<p><strong>Diferencia con local:</strong>
+El flujo es idéntico — cambia solo que ahora cualquier persona en internet puede hacer palmaditas, no solo tu Mac.</p>
+<p><strong>Riesgos:</strong>
+- Cualquiera puede hacer una palmadita a tu endpoint siempre — con o sin restricciones. Lo que cambia con <code>--allow-unauthenticated</code> es que cualquiera recibe la respuesta completa sin necesidad de identificarse
+- Si alguien encuentra el URL y lo llama miles de veces, tu script se ejecuta miles de veces — esto puede generar costos inesperados o saturar el servicio. Esto se controla con rate limiting (máximo N llamadas por minuto), autenticación (token requerido) o Cloudflare como intermediario. El rate limiting por IP solo no es suficiente — se puede evadir con proxies</p>
+<p><strong>Costos:</strong>
+- Cloud Run cobra por tiempo de ejecución — cada vez que llega una palmadita y el contenedor se activa
+- Tiene una capa gratuita generosa (2 millones de solicitudes al mes), suficiente para aprendizaje
+- Si nadie llama el URL, no hay costo — el contenedor está apagado</p>
+<h2>10. Hasta dónde puedes llegar con Cloud Run</h2>
+<p>Cloud Run no es solo para scripts simples. La palmadita (petición HTTP) puede desencadenar cosas cada vez más complejas:</p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué hace</th>
+<th>Método</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Script simple — un URL, una función, una respuesta</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Varios endpoints en un mismo Cloud Run</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Recibe datos más complejos en el body</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Conecta con otra API externa (OpenAI, Gemini, etc.)</td>
+<td>GET / POST</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Lee o escribe en una base de datos</td>
+<td>GET / POST</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Aplicación web completa — devuelve HTML en vez de JSON</td>
+<td>GET, POST, DELETE</td>
+</tr>
+</tbody>
+</table>
+<p>Estamos en el nivel 1. Cada nivel siguiente agrega una capa de complejidad pero el principio es siempre el mismo: palmadita → Cloud Run despierta → hace algo → devuelve respuesta.</p>
+<h2>Gotchas</h2>
+<ul>
+<li>El servidor debe escuchar en <code>0.0.0.0</code>, nunca en <code>localhost</code> — si no, Cloud Run no puede alcanzarlo. En local uvicorn escucha solo en <code>127.0.0.1</code>; con <code>0.0.0.0</code> acepta conexiones desde cualquier origen, necesario porque en Cloud Run las palmaditas vienen de afuera del contenedor</li>
+<li>Cloud Run apaga el contenedor cuando no hay tráfico — no es un servidor permanente, se "despierta" con cada petición</li>
+</ul>
+<h3>Espacios en URLs</h3>
+<p>Los espacios en el URL se convierten automáticamente a <code>%20</code> — es la forma estándar de representar espacios en HTTP. FastAPI los decodifica solo, la función recibe el texto normal. curl rechaza espacios directos — usar <code>--data-urlencode</code> o <code>%20</code> manual:</p>
+<pre><code class="language-bash">curl -G &quot;http://localhost:8000/contar-palabras&quot; --data-urlencode &quot;texto=hola mundo&quot;
+</code></pre>
+<h3>Abuso de endpoints públicos</h3>
+<p>Si alguien encuentra el URL y lo llama miles de veces, el script se ejecuta miles de veces — generando costos o saturando el servicio. El rate limiting por IP no es suficiente porque se puede evadir con proxies. La primera línea de defensa real es la autenticación. Para protección adicional sin depender del proveedor de nube, Cloudflare actúa como intermediario (<code>usuario → Cloudflare → Cloud Run</code>) y filtra tráfico abusivo antes de que llegue al servicio.</p>
+<h3>Puertos: local vs Cloud Run</h3>
+<ul>
+<li><strong>En local</strong> — uvicorn usa 8000 por defecto</li>
+<li><strong>En Cloud Run</strong> — Cloud Run inyecta el puerto via la variable <code>PORT</code>. Lo correcto es leerla dinámicamente:</li>
+</ul>
+<pre><code class="language-python">port = int(os.environ.get(&quot;PORT&quot;, 8080))
+</code></pre>
+<h2>Referencia oficial</h2>
+<ul>
+<li><a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-python-service">Cloud Run — Quickstart</a></li>
+<li><a href="https://fastapi.tiangolo.com">FastAPI — documentación oficial</a></li>
+</ul></div>
+    
+    
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'como-llevar-un-script-python-a-cloud-run';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

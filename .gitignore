@@ -33,6 +33,7 @@ build/
 
 # Python virtual environment
 venv/
+.venv/
 
 # IDE
 .idea/

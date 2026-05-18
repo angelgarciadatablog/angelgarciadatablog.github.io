@@ -1,5 +1,18 @@
 [
   {
+    "titulo": "Cómo llevar un script Python a Cloud Run",
+    "slug": "como-llevar-un-script-python-a-cloud-run",
+    "categoria": "google-cloud",
+    "tags": [
+      "datablog",
+      "google-cloud"
+    ],
+    "updated": "2026-05-17",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac"
+  },
+  {
     "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
     "slug": "api-notion-extraer-paginas-tablas-postman",
     "categoria": "apis",

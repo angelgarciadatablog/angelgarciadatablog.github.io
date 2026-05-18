@@ -1,5 +1,6 @@
 const CATEGORIAS = {
   'google-cloud':   'Google Cloud',
+  'aws':            'AWS',
   'git':            'Git',
   'claude-code':    'Claude Code',
   'bash-shell':     'Bash & Shell',
