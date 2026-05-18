@@ -73,16 +73,20 @@ python contar_palabras.py
 <p>Esto funciona perfecto en local. El problema es que Cloud Run no puede activarlo porque no tiene forma de llamarlo desde afuera.</p>
 <h2>3. La diferencia entre local y la nube</h2>
 <p>En local y en la nube el script hace lo mismo, pero el canal para pasarle los datos es completamente distinto:</p>
-<p><strong>En local:</strong>
-- Tú arrancas el script manualmente: <code>python contar_palabras.py</code>
-- El script te pregunta: <code>Ingresa un texto:</code>
-- Tú escribes en la terminal y el script responde
-- El canal es la terminal</p>
-<p><strong>En la nube:</strong>
-- Nadie arranca el script manualmente — Cloud Run lo despierta cuando llega una palmadita HTTP
-- No hay terminal donde escribir
-- El usuario manda los datos dentro del URL
-- El canal es la petición HTTP</p>
+<p><strong>En local:</strong></p>
+<ul>
+<li>Tú arrancas el script manualmente: <code>python contar_palabras.py</code></li>
+<li>El script te pregunta: <code>Ingresa un texto:</code></li>
+<li>Tú escribes en la terminal y el script responde</li>
+<li>El canal es la terminal</li>
+</ul>
+<p><strong>En la nube:</strong></p>
+<ul>
+<li>Nadie arranca el script manualmente — Cloud Run lo despierta cuando llega una palmadita HTTP</li>
+<li>No hay terminal donde escribir</li>
+<li>El usuario manda los datos dentro del URL</li>
+<li>El canal es la petición HTTP</li>
+</ul>
 <pre><code># en local
 python contar_palabras.py
 → Ingresa un texto: hola mundo
@@ -135,13 +139,15 @@ def contar(texto: str):
     resultado = contar_palabras(texto)
     return {&quot;texto&quot;: texto, &quot;palabras&quot;: resultado}
 </code></pre>
-<p>Lo que hace cada línea:
-- <code>from contar_palabras import contar_palabras</code> — trae la función del otro archivo
-- <code>FastAPI()</code> — crea el intermediario que define qué hacer con cada palmadita
-- <code>@app.get("/")</code> — health check: responde <code>{"status": "ok"}</code> sin parámetros ni lógica
-- <code>@app.get("/contar-palabras")</code> — el endpoint real, nombrado en kebab-case
-- <code>texto: str</code> — recibe el texto desde el URL como parámetro (<code>?texto=hola mundo</code>)
-- <code>return {...}</code> — lo que devuelve se convierte automáticamente en JSON</p>
+<p>Lo que hace cada línea:</p>
+<ul>
+<li><code>from contar_palabras import contar_palabras</code> — trae la función del otro archivo</li>
+<li><code>FastAPI()</code> — crea el intermediario que define qué hacer con cada palmadita</li>
+<li><code>@app.get("/")</code> — health check: responde <code>{"status": "ok"}</code> sin parámetros ni lógica</li>
+<li><code>@app.get("/contar-palabras")</code> — el endpoint real, nombrado en kebab-case</li>
+<li><code>texto: str</code> — recibe el texto desde el URL como parámetro (<code>?texto=hola mundo</code>)</li>
+<li><code>return {...}</code> — lo que devuelve se convierte automáticamente en JSON</li>
+</ul>
 <h3>5.1 Qué responde cada endpoint</h3>
 <p><strong><code>/</code> — health check:</strong></p>
 <pre><code class="language-bash">curl &quot;http://localhost:8000/&quot;
@@ -216,8 +222,8 @@ curl &quot;http://localhost:8000/contar-palabras?texto=hola%20mundo%20esto%20es%
 <p><strong>Limitación actual</strong>: el servidor solo recibe palmaditas desde la misma Mac. Para que cualquiera en internet pueda llamarlo hay que empaquetarlo y subirlo a Cloud Run — eso es lo que hacen los pasos siguientes.</p>
 <hr />
 <h2>6. Empaquetarlo en Docker</h2>
-<p>Empaquetar significa meter el script junto con todo lo que necesita para funcionar — Python, dependencias, archivos — en una "caja" estandarizada llamada contenedor Docker. Cloud Run recibe esa caja y la ejecuta sin necesidad de instalar nada.</p>
 <p>El problema sin empaquetar es este: tu script funciona en tu Mac porque tienes Python instalado, las dependencias instaladas y el sistema operativo correcto. Pero Cloud Run no sabe nada de eso — es una máquina en blanco.</p>
+<p>Empaquetar significa meter el script junto con todo lo que necesita para funcionar — Python, dependencias, archivos — en una "caja" estandarizada llamada contenedor Docker. Cloud Run recibe esa caja y la ejecuta sin necesidad de instalar nada.</p>
 <p>El contenedor resuelve eso:</p>
 <pre><code>tu Mac                        contenedor Docker
 ──────────────────            ──────────────────────────
@@ -237,6 +243,10 @@ con Docker local:   escribes la receta → tú cocinas y pruebas → Google Clou
 <li><strong><code>requirements.txt</code></strong> — lista qué dependencias instalar (<code>fastapi</code>, <code>uvicorn</code>)</li>
 <li><strong><code>Dockerfile</code></strong> — orquesta todo: qué sistema base usar, dónde meter los archivos, cómo instalar las dependencias y cómo arrancar el servidor</li>
 </ul>
+<p>El <code>Dockerfile</code> en realidad <em>usa</em> el <code>requirements.txt</code> en uno de sus pasos:</p>
+<pre><code class="language-dockerfile">RUN pip install -r requirements.txt  ← aquí lee el requirements.txt
+</code></pre>
+<p>Cloud Run no recibe los archivos <code>.py</code> directamente — necesita el contenedor completo. El <code>Dockerfile</code> le dice cómo construirlo.</p>
 <p>El Dockerfile usa su propio lenguaje — no es Python ni bash. Sus instrucciones son específicas de Docker y cada una representa un paso en la construcción del contenedor:</p>
 <pre><code class="language-dockerfile">FROM python:3.12-slim
 WORKDIR /app
@@ -245,16 +255,18 @@ RUN pip install -r requirements.txt
 COPY . .
 CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8080&quot;]
 </code></pre>
-<p>Lo que hace cada línea:
-- <code>FROM python:3.12-slim</code> — parte de una caja base que ya tiene Python 3.12 instalado
-- <code>WORKDIR /app</code> — dentro de la caja, trabaja en la carpeta <code>/app</code>
-- <code>COPY requirements.txt .</code> — copia el <code>requirements.txt</code> de tu Mac a la caja
-- <code>RUN pip install -r requirements.txt</code> — instala las dependencias dentro de la caja
-- <code>COPY . .</code> — copia todo lo demás: <code>contar_palabras.py</code>, <code>main.py</code>, etc.
-- <code>CMD [...]</code> — cuando arranque el contenedor, ejecuta uvicorn automáticamente</p>
-<p>El <code>CMD</code> usa flags distintos a los del servidor local:
-- <code>--host 0.0.0.0</code> — en local uvicorn escucha solo en <code>127.0.0.1</code>. Con <code>0.0.0.0</code> escucha en todas las interfaces, necesario para que Cloud Run pueda alcanzarlo
-- <code>--port 8080</code> — Cloud Run espera que el contenedor escuche en el 8080</p>
+<p>Lo que hace cada línea:</p>
+<ul>
+<li><code>FROM python:3.12-slim</code> — parte de una caja base que ya tiene Python 3.12 instalado. Docker tiene una biblioteca de cajas base, no hay que instalar Python desde cero</li>
+<li><code>WORKDIR /app</code> — dentro de la caja, trabaja en la carpeta <code>/app</code>. Es como hacer <code>cd /app</code> — todos los comandos siguientes se ejecutan desde ahí</li>
+<li><code>COPY requirements.txt .</code> — copia el <code>requirements.txt</code> de tu Mac a la carpeta <code>/app</code> de la caja</li>
+<li><code>RUN pip install -r requirements.txt</code> — instala las dependencias dentro de la caja. Aquí es donde fastapi y uvicorn quedan instalados adentro del contenedor</li>
+<li><code>COPY . .</code> — copia todo lo demás de tu carpeta a la caja: <code>contar_palabras.py</code>, <code>main.py</code>, etc.</li>
+<li><code>CMD [...]</code> — cuando alguien encienda esta caja, ejecuta este comando. Es el equivalente a escribir <code>uvicorn main:app</code> en la terminal, pero se ejecuta automáticamente al arrancar el contenedor en Cloud Run</li>
+</ul>
+<p>El <code>CMD</code> usa flags distintos a los del servidor local porque en Cloud Run las palmaditas vienen de afuera del contenedor:
+- <code>--host 0.0.0.0</code> — en local uvicorn escucha solo en <code>127.0.0.1</code> (tu Mac). Con <code>0.0.0.0</code> escucha en todas las interfaces
+- <code>--port 8080</code> — en local uvicorn usa el puerto 8000. Cloud Run espera que el contenedor escuche en el 8080</p>
 <h2>7. Evolución de archivos del proyecto</h2>
 <p>El proyecto fue creciendo en tres etapas según lo que necesitábamos:</p>
 <p><strong>Etapa 1 — script local puro</strong> (solo lógica, se ejecuta desde la terminal):</p>
@@ -276,18 +288,18 @@ CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.
 └── Dockerfile            → la receta del contenedor
 </code></pre>
 <h2>8. Subirlo a Cloud Run</h2>
-<p>Para poder ejecutar este comando hay que conocer primero los siguientes temas:</p>
-<ol>
-<li>Google Cloud CLI — LINK PENDIENTE</li>
-<li>Proyectos en Google Cloud — LINK PENDIENTE</li>
-<li>APIs en Google Cloud — LINK PENDIENTE</li>
-</ol>
 <pre><code class="language-bash">gcloud run deploy mi-script \
   --source . \
   --region us-central1 \
   --allow-unauthenticated
 </code></pre>
 <p><code>--source .</code> le dice a gcloud que construya la imagen Docker desde la carpeta actual y la suba directo. Al terminar, devuelve un URL.</p>
+<p>Para poder ejecutar este comando hay que conocer primero los siguientes temas:</p>
+<ol>
+<li>Google Cloud CLI — LINK PENDIENTE</li>
+<li>Proyectos en Google Cloud — LINK PENDIENTE</li>
+<li>APIs en Google Cloud (Cloud Run y Cloud Build ) — LINK PENDIENTE</li>
+</ol>
 <h2>9. ¿Cómo quedaría en Cloud Run?</h2>
 <pre><code>tú → GET https://mi-script-abc123-uc.a.run.app
         ↓
@@ -301,13 +313,17 @@ CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.
 </code></pre>
 <p><strong>Diferencia con local:</strong>
 El flujo es idéntico — cambia solo que ahora cualquier persona en internet puede hacer palmaditas, no solo tu Mac.</p>
-<p><strong>Riesgos:</strong>
-- Cualquiera puede hacer una palmadita a tu endpoint siempre — con o sin restricciones. Lo que cambia con <code>--allow-unauthenticated</code> es que cualquiera recibe la respuesta completa sin necesidad de identificarse
-- Si alguien encuentra el URL y lo llama miles de veces, tu script se ejecuta miles de veces — esto puede generar costos inesperados o saturar el servicio. Esto se controla con rate limiting (máximo N llamadas por minuto), autenticación (token requerido) o Cloudflare como intermediario. El rate limiting por IP solo no es suficiente — se puede evadir con proxies</p>
-<p><strong>Costos:</strong>
-- Cloud Run cobra por tiempo de ejecución — cada vez que llega una palmadita y el contenedor se activa
-- Tiene una capa gratuita generosa (2 millones de solicitudes al mes), suficiente para aprendizaje
-- Si nadie llama el URL, no hay costo — el contenedor está apagado</p>
+<p><strong>Riesgos:</strong></p>
+<ul>
+<li>Cualquiera puede hacer una palmadita a tu endpoint siempre — con o sin restricciones. Lo que cambia con <code>--allow-unauthenticated</code> es que cualquiera recibe la respuesta completa sin necesidad de identificarse</li>
+<li>Si alguien encuentra el URL y lo llama miles de veces, tu script se ejecuta miles de veces — esto puede generar costos inesperados o saturar el servicio. Esto se controla con rate limiting (máximo N llamadas por minuto), autenticación (token requerido) o Cloudflare como intermediario. El rate limiting por IP solo no es suficiente — se puede evadir con proxies</li>
+</ul>
+<p><strong>Costos:</strong></p>
+<ul>
+<li>Cloud Run cobra por tiempo de ejecución — cada vez que llega una palmadita y el contenedor se activa</li>
+<li>Tiene una capa gratuita generosa (2 millones de solicitudes al mes), suficiente para aprendizaje</li>
+<li>Si nadie llama el URL, no hay costo — el contenedor está apagado</li>
+</ul>
 <h2>10. Hasta dónde puedes llegar con Cloud Run</h2>
 <p>Cloud Run no es solo para scripts simples. La palmadita (petición HTTP) puede desencadenar cosas cada vez más complejas:</p>
 <table>
@@ -354,19 +370,10 @@ El flujo es idéntico — cambia solo que ahora cualquier persona en internet pu
 <p>Estamos en el nivel 1. Cada nivel siguiente agrega una capa de complejidad pero el principio es siempre el mismo: palmadita → Cloud Run despierta → hace algo → devuelve respuesta.</p>
 <h2>Gotchas</h2>
 <ul>
-<li>
-<p><strong>Cloud Function vs Cloud Run</strong> — las dos ejecutan código en respuesta a palmaditas HTTP, pero la diferencia es quién resuelve el HTTP. En Cloud Function lo resuelve Google con su propio framework (<code>@functions_framework.http</code>) — solo necesitas <code>main.py</code> y <code>requirements.txt</code>. En Cloud Run lo resuelves tú con FastAPI + uvicorn + Dockerfile. Más trabajo, más control. Para una función simple, Cloud Function es más rápido; Cloud Run vale cuando tienes varios endpoints o necesitas controlar el entorno.</p>
-</li>
-<li>
-<p>Cloud Run apaga el contenedor cuando no hay tráfico — no es un servidor permanente, se "despierta" con cada petición</p>
-</li>
+<li><strong>Cloud Function vs Cloud Run</strong> — las dos ejecutan código en respuesta a palmaditas HTTP, pero la diferencia es quién resuelve el HTTP. En Cloud Function lo resuelve Google con su propio framework (<code>@functions_framework.http</code>) — solo necesitas <code>main.py</code> y <code>requirements.txt</code>. En Cloud Run lo resuelves tú con FastAPI + uvicorn + Dockerfile. Más trabajo, más control. Para una función simple, Cloud Function es más rápido; Cloud Run vale cuando tienes varios endpoints o necesitas controlar el entorno.</li>
+<li>Cloud Run apaga el contenedor cuando no hay tráfico — no es un servidor permanente, se "despierta" con cada petición</li>
 <li>Los espacios en el URL se convierten automáticamente a <code>%20</code> — es la forma estándar de representar espacios en HTTP. FastAPI los decodifica solo, la función recibe el texto normal:</li>
-<li>
-<p>Abuso de endpoints públicos: Si alguien encuentra el URL y lo llama miles de veces, el script se ejecuta miles de veces — generando costos o saturando el servicio. El rate limiting por IP no es suficiente porque se puede evadir con proxies. La primera línea de defensa real es la autenticación. Para protección adicional sin depender del proveedor de nube, Cloudflare actúa como intermediario (<code>usuario → Cloudflare → Cloud Run</code>) y filtra tráfico abusivo antes de que llegue al servicio.</p>
-</li>
-<li>
-<p>Puertos: local vs Cloud Run</p>
-</li>
+<li>Abuso de endpoints públicos: Si alguien encuentra el URL y lo llama miles de veces, el script se ejecuta miles de veces — generando costos o saturando el servicio. El rate limiting por IP no es suficiente porque se puede evadir con proxies. La primera línea de defensa real es la autenticación. Para protección adicional sin depender del proveedor de nube, Cloudflare actúa como intermediario (<code>usuario → Cloudflare → Cloud Run</code>) y filtra tráfico abusivo antes de que llegue al servicio.</li>
 </ul>
 <h2>Referencia oficial</h2>
 <ul>
