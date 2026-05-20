@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API de Notion: cómo leer páginas y tablas con Postman · Angel García</title>
-  <meta name="description" content="API de Notion: cómo leer páginas y tablas con Postman" />
+  <meta name="description" content="Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales." />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
@@ -162,12 +162,14 @@ https://api.notion.com/v1/databases/{database_id}/query → consultar una databa
 }
 </code></pre>
 <p>Ese mismo filtro en la URL sería ilegible e inmanejable. El body de un <code>POST</code> es la forma práctica de enviar parámetros de consulta complejos.</p>
-<p><strong>La regla en Notion:</strong>
-- Lectura simple por ID → <code>GET</code>
-- Lectura con filtros opcionales → <code>POST</code>
-- Crear → <code>POST</code>
-- Editar → <code>PATCH</code>
-- Archivar → <code>DELETE</code></p>
+<p><strong>La regla en Notion:</strong></p>
+<ul>
+<li>Lectura simple por ID → <code>GET</code></li>
+<li>Lectura con filtros opcionales → <code>POST</code></li>
+<li>Crear → <code>POST</code></li>
+<li>Editar → <code>PATCH</code></li>
+<li>Archivar → <code>DELETE</code></li>
+</ul>
 <h3>Headers</h3>
 <p>Los dos headers obligatorios en cada petición de Notion:</p>
 <table>

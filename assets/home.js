@@ -5,7 +5,14 @@ async function init() {
   await cargarSidebar('__inicio__');
   todosLosPosts = _todosLosPosts;
   renderCatGrid();
-  renderPosts(todosLosPosts);
+  renderPosts(getPostsFiltrados());
+}
+
+function getPostsFiltrados() {
+  const base = categoriaActiva
+    ? todosLosPosts.filter(p => p.categoria === categoriaActiva)
+    : todosLosPosts;
+  return base.filter(postMatchOS);
 }
 
 // ─── GRID DE CATEGORÍAS ───────────────────────────────────────────────────────
@@ -14,7 +21,7 @@ function renderCatGrid() {
   grid.innerHTML = '';
 
   Object.entries(CATEGORIAS).forEach(([slug, nombre]) => {
-    const count = todosLosPosts.filter(p => p.categoria === slug).length;
+    const count = todosLosPosts.filter(p => p.categoria === slug && postMatchOS(p)).length;
 
     const card = document.createElement('div');
     card.className = 'cat-card' + (categoriaActiva === slug ? ' activo' : '');
@@ -60,19 +67,14 @@ function renderPosts(posts) {
 // ─── FILTROS ──────────────────────────────────────────────────────────────────
 function seleccionarCategoria(slug) {
   categoriaActiva = categoriaActiva === slug ? null : slug;
-  const filtrados = categoriaActiva
-    ? todosLosPosts.filter(p => p.categoria === categoriaActiva)
-    : todosLosPosts;
-  renderSidebar();
   renderCatGrid();
-  renderPosts(filtrados);
+  renderPosts(getPostsFiltrados());
 }
 
 function resetCategoria() {
   categoriaActiva = null;
-  renderSidebar();
   renderCatGrid();
-  renderPosts(todosLosPosts);
+  renderPosts(getPostsFiltrados());
 }
 
 function filtrarPosts(query) {
@@ -86,7 +88,15 @@ function filtrarPosts(query) {
         (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
       )
     : base;
-  renderPosts(filtrados);
+  renderPosts(filtrados.filter(postMatchOS));
 }
+
+// Re-renderiza home cuando cambia el OS (sidebar llama cambiarOS desde los botones)
+const _cambiarOSSidebar = cambiarOS;
+window.cambiarOS = function(os) {
+  _cambiarOSSidebar(os);
+  renderCatGrid();
+  renderPosts(getPostsFiltrados());
+};
 
 init();

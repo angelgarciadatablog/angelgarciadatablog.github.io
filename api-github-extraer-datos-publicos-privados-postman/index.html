@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API de GitHub: cómo extraer datos públicos y privados con Postman · Angel García</title>
-  <meta name="description" content="API de GitHub: cómo extraer datos públicos y privados con Postman" />
+  <meta name="description" content="Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON." />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
@@ -170,11 +170,13 @@ https://api.github.com/user                    → tu propio perfil (autenticado
 </tr>
 </tbody>
 </table>
-<p>Los más importantes para un analista:
-- <code>401</code> → el token no existe, está mal escrito o expiró
-- <code>403</code> → el token existe pero no tiene permiso para ese recurso (scope incorrecto)
-- <code>404</code> → el endpoint o el recurso no existe
-- <code>429</code> → superaste el rate limit — demasiadas peticiones en poco tiempo</p>
+<p>Los más importantes para un analista: </p>
+<ul>
+<li><code>401</code> → el token no existe, está mal escrito o expiró</li>
+<li><code>403</code> → el token existe pero no tiene permiso para ese recurso (scope incorrecto)</li>
+<li><code>404</code> → el endpoint o el recurso no existe</li>
+<li><code>429</code> → superaste el rate limit — demasiadas peticiones en poco tiempo</li>
+</ul>
 <hr />
 <h2>4. Datos públicos — sin autenticación</h2>
 <h3>4.1 Perfil de un usuario</h3>

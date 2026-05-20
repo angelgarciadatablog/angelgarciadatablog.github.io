@@ -10,7 +10,9 @@
     "updated": "2026-05-17",
     "temas-relacionados": [],
     "video-youtube": "",
-    "sistema-operativo": "mac"
+    "sistema-operativo": "mac",
+    "repositorio": "~/scripts-datablog/google-cloud/script-python-a-cloud-run",
+    "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales."
   },
   {
     "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
@@ -26,7 +28,9 @@
       "introduccion-apis-para-analistas"
     ],
     "video-youtube": "",
-    "sistema-operativo": "mac-windows"
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales."
   },
   {
     "titulo": "Introducción a APIs para analistas de datos",
@@ -41,7 +45,9 @@
       "api-github-extraer-datos-publicos-privados-postman"
     ],
     "video-youtube": "",
-    "sistema-operativo": "mac-windows"
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman."
   },
   {
     "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
@@ -54,7 +60,9 @@
     "updated": "2026-05-15",
     "temas-relacionados": [],
     "video-youtube": "",
-    "sistema-operativo": "mac-windows"
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON."
   },
   {
     "titulo": "Aprende SQL fácil y rápido desde cero",
@@ -67,18 +75,8 @@
     "updated": "2026-05-14",
     "temas-relacionados": [],
     "video-youtube": "",
-    "sistema-operativo": "mac-windows"
-  },
-  {
-    "titulo": "HTML Fundamentos",
-    "slug": "html-fundamentos",
-    "categoria": "portafolio-web",
-    "tags": [
-      "datablog",
-      "portafolio-web"
-    ],
-    "updated": "2026-05-12",
-    "temas-relacionados": [],
-    "video-youtube": ""
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos."
   }
 ]

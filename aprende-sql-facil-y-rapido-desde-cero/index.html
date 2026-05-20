@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aprende SQL fácil y rápido desde cero · Angel García</title>
-  <meta name="description" content="Aprende SQL fácil y rápido desde cero" />
+  <meta name="description" content="Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos." />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
@@ -148,9 +148,11 @@ El ID que hace que esa fila sea irrepetible. En ventas sería <code>order_id</co
 <p><strong>3. IDs secundarios</strong> — ¿Qué otras entidades están presentes?
 Son tus relaciones implícitas. <code>channel_id</code> en <code>videos_static</code> te dice que puedes cruzarla con <code>channels_static</code>.</p>
 <p><strong>4. Dimensión temporal</strong> — ¿Cómo vive el tiempo en esta tabla?</p>
-<p>Hay dos patrones principales:
-- <strong>Write Truncate</strong>: la tabla siempre refleja el estado actual. Cada carga borra y reescribe todo. No hay historia — solo el presente.
-- <strong>Write Append</strong>: la tabla acumula registros en el tiempo. Tiene una columna de fecha que marca cada carga. Si no filtras por esa fecha, estás agregando todos los snapshots históricos como si fueran uno solo.</p>
+<p>Hay dos patrones principales: </p>
+<ul>
+<li><strong>Write Truncate</strong>: la tabla siempre refleja el estado actual. Cada carga borra y reescribe todo. No hay historia — solo el presente.</li>
+<li><strong>Write Append</strong>: la tabla acumula registros en el tiempo. Tiene una columna de fecha que marca cada carga. Si no filtras por esa fecha, estás agregando todos los snapshots históricos como si fueran uno solo.</li>
+</ul>
 <p>También existen <strong>Upsert/Merge</strong> (actualiza si existe, inserta si no) y <strong>Partition Overwrite</strong> (reescribe solo la partición del día), pero los dos anteriores cubren la mayoría de los casos.</p>
 <p><strong>5. Frecuencia de actualización</strong> — ¿Cada cuánto se refresca el dato?
 No es lo mismo analizar una tabla que se actualiza en tiempo real que una que carga una vez al día. Cambia cómo interpretas los resultados.</p>

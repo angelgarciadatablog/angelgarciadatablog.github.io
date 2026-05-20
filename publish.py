@@ -131,7 +131,7 @@ for meta in posts_a_publicar:
     html = template
     html = html.replace("{{slug}}", slug)
     html = html.replace("{{titulo}}", meta.get("titulo", ""))
-    html = html.replace("{{descripcion}}", meta.get("titulo", ""))
+    html = html.replace("{{descripcion}}", meta.get("descripcion", "") or meta.get("titulo", ""))
     html = html.replace("{{categoria}}", meta.get("categoria", ""))
     html = html.replace("{{updated}}", str(meta.get("updated", "")))
     html = html.replace("{{tags}}", tags_html)
@@ -156,6 +156,8 @@ for meta in posts_a_publicar:
         "temas-relacionados": relacionados_raw,
         "video-youtube": video_url or "",
         "sistema-operativo": meta.get("sistema-operativo", ""),
+        "repositorio": meta.get("repositorio", "") or "",
+        "descripcion": meta.get("descripcion", "") or "",
     })
 
 # ─── ACTUALIZAR posts.json ────────────────────────────────────────────────────
