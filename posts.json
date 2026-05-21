@@ -1,5 +1,23 @@
 [
   {
+    "titulo": "Introducción a APIs para analistas de datos",
+    "slug": "introduccion-apis-para-analistas",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-20",
+    "temas-relacionados": [
+      "api-github-extraer-datos-publicos-privados-postman",
+      "api-notion-extraer-paginas-tablas-postman"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman."
+  },
+  {
     "titulo": "Cómo llevar un script Python a Cloud Run",
     "slug": "como-llevar-un-script-python-a-cloud-run",
     "categoria": "google-cloud",
@@ -31,23 +49,6 @@
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales."
-  },
-  {
-    "titulo": "Introducción a APIs para analistas de datos",
-    "slug": "introduccion-apis-para-analistas",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-16",
-    "temas-relacionados": [
-      "api-github-extraer-datos-publicos-privados-postman"
-    ],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman."
   },
   {
     "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",

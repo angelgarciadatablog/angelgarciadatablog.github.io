@@ -45,63 +45,166 @@
     <div class="post-meta">
       <span class="post-categoria">apis</span>
       <span class="post-so">Mac & Windows</span>
-      <span>Actualizado: 2026-05-16</span>
+      <span>Actualizado: 2026-05-20</span>
     </div>
     <h1 class="post-titulo">Introducción a APIs para analistas de datos</h1>
     <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
     <hr class="post-divider" />
-    <div class="post-body" id="post-body"><h1>Introducción a APIs para analistas de datos</h1>
-<h2>1. El concepto</h2>
-<p>Una API es un contrato entre dos sistemas: define qué se puede pedir, cómo pedirlo y qué se recibirá a cambio. No es un archivo ni un servidor — es un conjunto de reglas.</p>
-<p>Como analistas, nuestro rol es consumir APIs para extraer datos. No las construimos ni las integramos entre sistemas — las usamos para pedir datos, almacenarlos y analizarlos. Ese es el punto de partida.</p>
-<h3>¿A qué datos puedo acceder?</h3>
-<p>Antes de hacer cualquier petición hay que saber si la API existe y cómo conseguir acceso. Depende de a quién pertenecen los datos:</p>
-<ol>
-<li><strong>Datos de empresa</strong> — SAP, Oracle, Azure, GCP, AWS. Los controla la organización. Necesitas que alguien interno (IT o desarrollo) te dé acceso.</li>
-<li><strong>Datos propios</strong> — Google Workspace, Notion, GitHub. Son tuyos. Puedes generar las credenciales directamente desde el panel de la plataforma.</li>
-<li><strong>Datos de prueba</strong> — entornos sandbox que la plataforma ofrece para desarrollo. Stripe, Salesforce Developer Edition, HubSpot. No son datos reales — sirven para aprender y probar.</li>
-</ol>
-<h3>Cómo hacer una petición</h3>
-<p>Para hacer una petición necesitas tres cosas:</p>
-<ol>
-<li><strong>Una herramienta</strong> — no siempre es código. El navegador funciona con APIs públicas o las que exponen el API key en la URL. Postman es ideal para explorar sin código. Python con <code>requests</code> es para cuando ya sabes qué pedir y quieres automatizarlo.</li>
-<li><strong>La documentación</strong> — el manual que te dice qué endpoints existen, qué parámetros acepta cada uno y qué te devuelve. Sin ella estás adivinando.</li>
-<li><strong>El método correcto</strong> — GET para pedir datos (el más común), POST para crear o enviar parámetros complejos, PUT/PATCH para actualizar, DELETE para eliminar.</li>
-</ol>
-<h3>Autenticación</h3>
-<p>Antes de recibir datos, la API necesita saber quién eres. Los mecanismos principales:</p>
+    <div class="post-body" id="post-body"><h1>Introducción a APIs</h1>
+<h2>1. Qué es</h2>
+<p>Una API (Application Programming Interface) es un contrato que define cómo dos sistemas de software se comunican entre sí. No es un archivo ni un servidor — es un conjunto de reglas que establece qué se puede pedir, cómo pedirlo y qué se recibirá a cambio.</p>
+<p>Cuando te conectas a la API de Shopify, estás enviando una petición estructurada a los servidores de Shopify siguiendo las reglas que ellos definieron. Si cumples el contrato, recibes los datos.</p>
+<hr />
+<h2>2. Entornos de uso (de mayor a menor volumen)</h2>
+<p>Las APIs no nacieron para que los analistas pidieran datos. Nacieron para resolver un problema de <strong>arquitectura de software</strong>: ¿cómo hace una app para que su interfaz (lo que ves) hable con sus datos (lo que no ves) sin que ambas cosas sean un solo bloque imposible de mantener?</p>
+<p>Imagina Instagram. Cuando abres la app en tu celular, el celular no tiene acceso a la base de datos de Instagram — alguien tiene que ser el intermediario. Ese intermediario es la API. <strong>Eso pasa millones de veces por segundo, en cada app que usas.</strong></p>
+<h3>2.1. Frontend ↔ Backend (la función principal)</h3>
+<p>Cada vez que tocas un botón en una app — abrir Instagram, hacer un pedido en Rappi, enviar un mensaje en WhatsApp — estás disparando llamadas a una API. Es la columna vertebral de todo el software moderno. El frontend (lo visual) nunca toca la base de datos. Siempre habla con la API.</p>
+<h3>2.2. Sistema A ↔ Sistema B (integraciones entre empresas)</h3>
+<p>Una tienda en Shopify recibe un pedido → automáticamente se crea una orden en el ERP → se notifica al almacén → se genera la factura en el sistema contable. Todo eso sin intervención humana. Cada flecha es una llamada de API. Es el uso más común en el mundo empresarial: conectar sistemas que antes eran islas.</p>
+<h3>2.3. APIs como producto (plataformas)</h3>
+<p>Algunas empresas construyen su negocio vendiendo acceso a su API:</p>
 <ul>
-<li><strong>API Key</strong> — credencial estática que alguien genera y te pasa directamente. Permanente hasta revocación manual. Algunas plataformas permiten configurar permisos, otras no.</li>
-<li><strong>OAuth 2.0</strong> — protocolo estándar que siempre requiere una aplicación registrada en la plataforma. Genera tokens temporales que expiran. Tiene dos flujos: con usuario (el usuario autoriza en pantalla) y sin usuario — Client Credentials (máquina a máquina, sin login).</li>
-<li><strong>Otros</strong> — Basic Auth, Bearer Token, JWT, HMAC. Menos frecuentes pero presentes en sistemas legacy o empresariales.</li>
+<li><strong>Stripe</strong>: su producto <em>es</em> su API de pagos. No tienen app para usuarios finales.</li>
+<li><strong>Google Maps</strong>: cualquier app que muestra un mapa está pagando por llamadas a su API.</li>
+<li><strong>Twilio</strong>: envío de SMS vía API. El desarrollador paga por cada mensaje.</li>
 </ul>
-<p>La diferencia clave entre API Key y OAuth no está en los permisos — ambos pueden tenerlos. Está en la permanencia (API Key es estática, OAuth genera tokens que expiran) y en la identidad (API Key es una credencial suelta, OAuth siempre tiene una aplicación registrada detrás).</p>
-<h3>Qué devuelve una API</h3>
-<p>Toda respuesta tiene dos partes:</p>
+<p>Aquí la API no es una pieza interna — es el producto que se vende.</p>
+<h3>2.4. Automatizaciones y workflows</h3>
+<p>Zapier, Make, n8n. Cuando dices <em>"si llega un email con adjunto, guárdalo en Drive y avísame por Slack"</em> — eso es una cadena de llamadas a APIs de Gmail, Drive y Slack orquestadas por una herramienta.</p>
+<h3>2.5. Extracción de datos para análisis (el caso del analista)</h3>
+<p>Es el último en la lista — no porque sea menos válido, sino porque es el menos frecuente en volumen. No es para lo que la mayoría de APIs fueron diseñadas, pero casi todas lo permiten.</p>
+<p><strong>Por qué el caso del analista es distinto:</strong> los primeros cuatro usos son <strong>transaccionales y en tiempo real</strong> — responden en milisegundos y lo hacen miles de veces por segundo. El uso como analista es <strong>batch y exploratorio</strong>: pides muchos datos de una vez, los almacenas y los analizas con calma. Por eso el <strong>rate limiting</strong> (límite de peticiones por minuto) duele más al analista — esa restricción existe para proteger el servidor de los casos 1 y 2. El analista es un efecto colateral bien tolerado.</p>
+<hr />
+<h2>3. La API desde el lado del analista</h2>
+<p>De los cinco entornos de uso, el nuestro es el último: <strong>extracción de datos para análisis</strong>. No construimos APIs ni las integramos entre sistemas — las consumimos para pedir datos, almacenarlos y analizarlos.</p>
+<p>Eso define todo lo que sigue en este documento: cómo autenticarse, cómo hacer una petición, cómo manejar los límites que imponen las plataformas. Todo aplica a ese contexto — el analista que necesita datos que viven en un sistema externo.</p>
+<h3>3.1 . ¿A qué datos puedo acceder?</h3>
+<p>Antes de hacer cualquier petición, hay que saber si la API existe y cómo conseguir acceso. Eso depende de a quién pertenecen los datos:</p>
+<h4>1. Datos de empresa</h4>
+<p>SAP, Oracle, Azure, GCP, AWS. Los controla la organización. Necesitas que alguien interno (IT o desarrollo) te dé acceso. No puedes solicitarlo solo.</p>
+<h4>2. Datos propios</h4>
+<p>Google Workspace, Notion, GitHub. Son tuyos. Puedes generar las credenciales directamente desde el panel de la plataforma sin depender de nadie.</p>
+<h4>3. Datos de prueba</h4>
+<p>Entornos sandbox que la plataforma ofrece para desarrollo. Stripe, Salesforce Developer Edition, HubSpot. No son datos reales — sirven para aprender y probar sin consecuencias.</p>
+<hr />
+<h2>4. Cómo hacer una petición</h2>
+<p>Para hacer una petición a una API necesitas tres cosas en orden:</p>
+<h3>4.1. Una herramienta</h3>
+<p>No todas las APIs requieren código. Hay tres niveles:</p>
+<ul>
+<li><strong>Navegador</strong> — solo funciona con APIs públicas o las que exponen el API key en la URL (ej: Windsor.ai)</li>
+<li><strong>Postman</strong> — interfaz visual, sin código. Ideal para explorar una API nueva</li>
+<li><strong>Python con <code>requests</code></strong> — desde un script, cuando ya sabes qué pedir y quieres automatizarlo</li>
+</ul>
+<h3>4.2. La documentación</h3>
+<p>Es el manual que te dice qué puedes pedir. Sin ella estás adivinando. Especifica los endpoints disponibles, los parámetros que acepta cada uno, cómo autenticarte y qué te devuelve.</p>
+<h3>4.3. Método de petición</h3>
+<p>No siempre es GET. Los cuatro métodos principales:</p>
+<ul>
+<li><strong>GET</strong> — pedir datos. El más común para el analista.</li>
+<li><strong>POST</strong> — enviar datos para crear algo nuevo. También se usa para consultas complejas cuyos parámetros no caben en la URL.</li>
+<li><strong>PUT/PATCH</strong> — actualizar algo existente.</li>
+<li><strong>DELETE</strong> — eliminar algo.</li>
+</ul>
+<p>Como analistas casi siempre usamos GET, pero hay casos donde POST se usa no para crear sino para enviar parámetros de consulta complejos.</p>
+<h3>4.4. Autenticación</h3>
+<p>Antes de recibir datos, la API necesita saber quién eres. Aquí es donde entran los mecanismos — API Key y OAuth — que se cubren en la siguiente sección.</p>
+<hr />
+<h2>5. Autenticación</h2>
+<h3>5.1. API Key</h3>
+<p>Credencial estática que el administrador genera desde la plataforma y comparte directamente por email, WhatsApp, etc. Tu script la incluye en cada petición.</p>
+<ul>
+<li>Se gestiona manualmente: alguien la genera, la copia y te la pasa</li>
+<li>Es permanente hasta que se revoque a mano — si alguien la roba, tiene acceso indefinido</li>
+<li>Algunas plataformas permiten configurar permisos (Google, Shopify), otras no</li>
+</ul>
+<p>Algunas plataformas la exponen en la URL como parámetro (ej: Windsor.ai). Es funcional pero mala práctica — la key queda visible en el historial del navegador y en los logs del servidor.</p>
+<h3>5.2. OAuth 2.0</h3>
+<p>Protocolo estándar de autorización. Siempre requiere una aplicación registrada en la plataforma — esa aplicación tiene un <code>client_id</code> (identificador público, siempre presente) y en algunos casos un <code>client_secret</code> (solo en aplicaciones de servidor, nunca en apps móviles o frontend porque no hay forma segura de guardarlo).</p>
+<h3>5.3. Otros mecanismos</h3>
+<ul>
+<li><strong>Basic Auth</strong> — usuario y contraseña en cada petición. Simple, antiguo, presente en sistemas legacy.</li>
+<li><strong>Bearer Token</strong> — token en el header de la petición. OAuth lo usa pero también existe de forma independiente.</li>
+<li><strong>JWT</strong> — token con información codificada dentro. Común en APIs modernas.</li>
+<li><strong>HMAC</strong> — firma criptográfica de cada petición. Usado por AWS entre otros.</li>
+</ul>
+<h3>5.4. Diferencia clave entre API Key y OAuth 2.0</h3>
+<p>La diferencia no está en los permisos — ambos pueden tenerlos. Está en dos cosas:</p>
 <ol>
-<li><strong>Status code</strong> — el número que dice si funcionó o no. <code>200</code> es éxito, <code>401</code> es sin autenticación, <code>403</code> es sin permiso, <code>404</code> es endpoint inexistente, <code>429</code> es rate limit superado, <code>500</code> es error del servidor.</li>
-<li><strong>Cuerpo</strong> — los datos en sí, casi siempre en JSON. Algunas APIs devuelven XML o CSV.</li>
+<li><strong>Permanencia</strong> — API Key es estática hasta revocación manual. OAuth siempre genera tokens temporales que expiran.</li>
+<li><strong>Identidad</strong> — API Key es una credencial suelta. OAuth siempre tiene una aplicación registrada con identidad propia en la plataforma.</li>
 </ol>
 <hr />
-<h2>2. Ejemplo práctico</h2>
-<p>La API de GitHub es el mejor punto de partida para entender todo esto en acción. Tiene endpoints públicos (sin autenticación) y privados (con token), devuelve JSON y su documentación es clara.</p>
-<p>En este post lo trabajamos paso a paso con Postman:</p>
-<p>→ <a href="https://www.angelgarciadatablog.com/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a></p>
+<h2>6. Qué devuelve una API</h2>
+<p>Cuando una petición es exitosa, la API devuelve dos cosas:</p>
+<h3>6.1. Status code</h3>
+<p>Número que indica si la petición funcionó o no. Es lo primero que mirar cuando algo falla.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td>Éxito</td>
+</tr>
+<tr>
+<td><code>201</code></td>
+<td>Creado correctamente (respuesta a POST)</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Error en tu petición — parámetro mal escrito o faltante</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>No estás autenticado</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Autenticado pero sin permiso</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>El endpoint no existe</td>
+</tr>
+<tr>
+<td><code>429</code></td>
+<td>Superaste el rate limit</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Error del servidor, no tuyo</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2. Cuerpo de la respuesta</h3>
+<p>Los datos en sí. Casi siempre en formato JSON — un diccionario de clave-valor. Algunas APIs devuelven XML (más antiguo) o CSV.</p>
 <hr />
-<h2>3. Mi conclusión</h2>
-<p>Las APIs no nacieron para analistas — nacieron para conectar sistemas de software. Pero casi todas las permiten consumir para extraer datos. Entender eso cambia cómo te posicionas: no eres el caso principal, eres un caso tolerado. Por eso el rate limiting duele más al analista que a cualquier otro usuario.</p>
-<p>Lo que sí es tuyo es el flujo: identificar si la API existe, conseguir acceso, leer la documentación, autenticarte y hacer la petición. Ese flujo es el mismo independientemente de la plataforma.</p>
+<h2>7. Ejemplos de peticiones reales</h2>
+<p>Los conceptos de este tema se aplican en práctica en los siguientes posts:</p>
+<ol>
+<li><strong>API de GitHub con Postman</strong> — endpoints públicos y privados, autenticación con Bearer Token, rate limiting, extracción a Excel con Python. → <a href="https://www.angelgarciadatablog.com/api-github-extraer-datos-publicos-privados-postman">Ver post publicado</a></li>
+<li><strong>API de Notion con Postman</strong> — cómo leer páginas y tablas, autenticación con Integration Token, estructura de bloques y propiedades. → <a href="https://www.angelgarciadatablog.com/api-notion-extraer-paginas-tablas-postman">Ver post publicado</a></li>
+</ol>
 <hr />
-<h2>4. Recursos</h2>
+<h2>8. Gotchas</h2>
+<ul>
+<li><strong>Nunca compartir credenciales en el código</strong>: API Keys y tokens van en variables de entorno o archivos <code>.env</code> no versionados. Una credencial en un repo público es una brecha inmediata.</li>
+<li><strong>OAuth protege contra interceptación de credenciales, no contra acceso físico al dispositivo</strong>: si alguien tiene tu ordenador desbloqueado puede usar las sesiones activas. Son capas de seguridad distintas — OAuth resuelve una, el bloqueo de pantalla resuelve la otra.</li>
+<li><strong>El <code>access_token</code> de OAuth expira</strong>: a diferencia de una API Key, hay que manejar el <code>refresh_token</code> para renovarlo automáticamente.</li>
+<li><strong>OAuth requiere que ambas partes estén registradas en la misma plataforma</strong>: si la plataforma no conoce tu app (<code>client_id</code>), el flujo no puede completarse.</li>
+</ul>
+<hr />
+<h2>9. Referencia oficial</h2>
 <ul>
 <li><a href="https://oauth.net/2/">OAuth 2.0 — RFC oficial</a></li>
 <li><a href="https://developers.google.com/identity/protocols/oauth2">Google Identity — OAuth 2.0</a></li>
 <li><a href="https://shopify.dev/docs/apps/build/authentication-authorization">Shopify API authentication</a></li>
-</ul>
-<hr />
-<h2>5. Pendientes</h2>
-<ul>
-<li>[ ] Referenciar más ejemplo de apis que haya explorado en otros post</li>
 </ul></div>
     
     
@@ -109,6 +212,7 @@
   <div class="post-relacionados-titulo">Posts relacionados</div>
   <div class="relacionados-lista">
     <a class="relacionado-item" href="/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a>
+<a class="relacionado-item" href="/api-notion-extraer-paginas-tablas-postman">API de Notion: cómo leer páginas y tablas con Postman</a>
 
   </div>
 </div>
