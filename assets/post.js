@@ -22,6 +22,13 @@ function generarTOC() {
   headings.forEach(h => observer.observe(h));
 }
 
+// ─── DESCARGAR PDF ────────────────────────────────────────────────────────────
+function descargarPDF() {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'descarga_post' });
+  window.print();
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 cargarSidebar(CURRENT_SLUG);
 generarTOC();

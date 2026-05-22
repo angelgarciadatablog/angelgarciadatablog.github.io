@@ -242,3 +242,50 @@
   .post-titulo { font-size: 22px; }
   .post-tags { margin-bottom: 24px; }
 }
+
+/* BOTÓN DESCARGAR PDF */
+.btn-descargar {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--color-borde);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--color-texto-suave);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-descargar:hover {
+  color: var(--color-texto);
+  border-color: var(--color-texto-suave);
+}
+
+/* ESTILOS DE IMPRESIÓN */
+@media print {
+  .topnav,
+  #sidebar,
+  .sidebar-overlay,
+  .sidebar-der,
+  .btn-descargar,
+  .post-video,
+  .post-tags { display: none !important; }
+
+  .post-layout {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .post-body pre {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .post-body pre code {
+    color: #333 !important;
+    background: none !important;
+  }
+}
