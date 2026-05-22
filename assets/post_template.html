@@ -55,16 +55,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <article class="post-content">
     <div class="post-meta">
-      <span class="post-categoria">{{categoria}}</span>
-      {{sistema_operativo}}
-      <span>Actualizado: {{updated}}</span>
+      <div class="post-meta-chips">
+        <span class="post-categoria">{{categoria}}</span>
+        {{sistema_operativo}}
+      </div>
+    </div>
+    <h1 class="post-titulo">{{titulo}}</h1>
+    <div class="post-tags-row">
+      <div class="post-tags">{{tags}}</div>
+      <span class="post-updated">Actualizado: {{updated}}</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
       </button>
     </div>
-    <h1 class="post-titulo">{{titulo}}</h1>
-    <div class="post-tags">{{tags}}</div>
     <hr class="post-divider" />
     <div class="post-body" id="post-body">{{contenido}}</div>
     {{video_youtube}}

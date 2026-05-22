@@ -58,16 +58,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <article class="post-content">
     <div class="post-meta">
-      <span class="post-categoria">google-analytics</span>
-      <span class="post-so">Mac & Windows</span>
-      <span>Actualizado: 2026-05-22</span>
+      <div class="post-meta-chips">
+        <span class="post-categoria">google-analytics</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Google Tag Manager — Fundamentos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-analytics</span></div>
+      <span class="post-updated">Actualizado: 2026-05-22</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
       </button>
     </div>
-    <h1 class="post-titulo">Google Tag Manager — Fundamentos</h1>
-    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-analytics</span></div>
     <hr class="post-divider" />
     <div class="post-body" id="post-body"><h1>Google Tag Manager — Fundamentos</h1>
 <h2>1. Qué es</h2>
@@ -294,6 +298,12 @@ cada post generado tiene el snippet — repetido, pero correcto
 </li>
 <li>
 <p><strong>Preview mode no es live</strong> — GTM tiene un modo de previsualización para probar cambios. Lo que ves en preview solo lo ves tú — los visitantes reales siguen viendo la versión publicada anterior. Mucha gente prueba en preview y asume que ya está en producción.</p>
+</li>
+<li>
+<p><strong>El dataLayer se reinicia al navegar a otra página</strong> — el dataLayer vive en la memoria del navegador. Cada vez que el usuario carga una URL nueva, esa memoria se borra. En un sitio estático (GitHub Pages, HTML independientes) cada página empieza con un dataLayer limpio. En una SPA (React, Vue) el dataLayer persiste porque el navegador nunca recarga. Esto afecta cómo diseñas tus pushes — en un sitio estático no puedes asumir que los datos de la página anterior siguen disponibles.</p>
+</li>
+<li>
+<p><strong>Verificar el dataLayer después de recargar borra todo</strong> — al hacer hard refresh para "limpiar caché" antes de verificar, borras exactamente lo que querías ver. El flujo correcto: hard refresh una vez → ejecutar la acción → revisar <code>window.dataLayer</code> sin volver a recargar.</p>
 </li>
 </ol>
 <h2>14. Referencia oficial</h2>
