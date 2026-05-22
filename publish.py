@@ -127,8 +127,21 @@ for meta in posts_a_publicar:
     so_labels = {"mac": "Mac", "windows": "Windows", "mac-windows": "Mac & Windows"}
     so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
 
+    # DataLayer push — metadatos del post para GTM
+    datalayer_data = {
+        "titulo": meta.get("titulo", ""),
+        "categoria": meta.get("categoria", ""),
+        "slug": slug,
+        "sistema_operativo": meta.get("sistema-operativo", ""),
+        "fecha_publicacion": str(meta.get("created", "")),
+        "video_youtube": video_url or "",
+    }
+    datalayer_json = json.dumps(datalayer_data, ensure_ascii=False)
+    datalayer_push = f"<script>\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({datalayer_json});\n</script>"
+
     # Rellenar template
     html = template
+    html = html.replace("{{datalayer_push}}", datalayer_push)
     html = html.replace("{{slug}}", slug)
     html = html.replace("{{titulo}}", meta.get("titulo", ""))
     html = html.replace("{{descripcion}}", meta.get("descripcion", "") or meta.get("titulo", ""))
