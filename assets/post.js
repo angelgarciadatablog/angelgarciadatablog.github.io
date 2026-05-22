@@ -22,10 +22,19 @@ function generarTOC() {
   headings.forEach(h => observer.observe(h));
 }
 
+// ─── SCROLL TRACKING ─────────────────────────────────────────────────────────
+let max_scroll = 0;
+window.addEventListener('scroll', () => {
+  const pct = Math.round(
+    (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+  );
+  if (pct > max_scroll) max_scroll = pct;
+});
+
 // ─── DESCARGAR PDF ────────────────────────────────────────────────────────────
 function descargarPDF() {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: 'descarga_post' });
+  window.dataLayer.push({ event: 'descarga_post', scroll_maximo: max_scroll });
   window.print();
 }
 
