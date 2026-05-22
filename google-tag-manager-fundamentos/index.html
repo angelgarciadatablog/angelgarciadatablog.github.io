@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Tag Manager — Fundamentos · Angel García</title>
+  <meta name="description" content="Google Tag Manager — Fundamentos" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <span class="post-categoria">google-analytics</span>
+      <span class="post-so">Mac & Windows</span>
+      <span>Actualizado: 2026-05-22</span>
+    </div>
+    <h1 class="post-titulo">Google Tag Manager — Fundamentos</h1>
+    <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-analytics</span></div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>Google Tag Manager — Fundamentos</h1>
+<h2>1. Qué es</h2>
+<p>Antes de explicar el concepto, tenemos que tener en cuenta que vamos a necesitar una web para poder entender la parte práctica — GitHub Pages, WordPress son las más comunes. En otros temas del blog explico con más detalle cómo tener tu propia web en GitHub Pages. Por ahora pasemos con la definición.</p>
+<p><strong>Google Tag Manager (GTM)</strong> es una plataforma que te permite gestionar fragmentos de código en tu sitio web sin tener que tocar el código fuente cada vez.</p>
+<p>Esos fragmentos de código se llaman <strong>etiquetas</strong>. Cada etiqueta es el código de una herramienta externa corriendo dentro de tu web — GA4 tiene la suya, Facebook Pixel tiene la suya, Google Ads tiene la suya. Sin GTM, tendrías que pegar cada uno de esos códigos directamente en tu HTML. Con GTM, los configuras desde su interfaz y el sitio no se toca.</p>
+<p>Pero una etiqueta sola no hace nada. Necesita saber cuándo ejecutarse — y ahí entra el <strong>activador</strong>. El activador es la condición que le dice a GTM en qué momento debe correr una etiqueta: cuando alguien carga una página, cuando hace click en un botón, cuando envía un formulario. Sin activador, la etiqueta existe pero nunca se dispara.</p>
+<p>Etiqueta + activador es la unidad mínima que funciona en GTM. Una sin la otra no sirve.</p>
+<p>Un <strong>contenedor</strong> GTM agrupa todas las etiquetas y activadores de un sitio web. Cada contenedor tiene un ID único (<code>GTM-XXXXXXX</code>).</p>
+<h2>2. El punto de entrada: el snippet</h2>
+<p>GTM llega a un sitio web a través de un snippet — un fragmento de código que se pega una sola vez en el HTML. Ese snippet es un script de JavaScript.</p>
+<pre><code class="language-html">&lt;!-- en &lt;head&gt; --&gt;
+&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');
+&lt;/script&gt;
+
+&lt;!-- en &lt;body&gt; --&gt;
+&lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&quot;
+height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+</code></pre>
+<h2>3. Dónde va el snippet según la arquitectura del sitio</h2>
+<p>"Se pega una vez en el HTML" es una simplificación. Lo que significa en realidad es: <strong>se pega una vez en la fuente que genera todos los HTMLs</strong>. Cómo se hace eso depende de la arquitectura del sitio.</p>
+<h3>WordPress (lo más común)</h3>
+<p>WordPress tiene un archivo <code>header.php</code> que se incluye automáticamente en todas las páginas del sitio. El snippet va ahí una sola vez y WordPress lo inyecta en cada página al renderizarla.</p>
+<pre><code>header.php  ←  snippet aquí una vez
+    ↓
+WordPress lo inyecta en cada página al servirse
+</code></pre>
+<p>Por eso la mayoría de tutoriales dicen "pégalo una vez" — están pensando en WordPress.</p>
+<h3>SPA — Single Page Application (React, Vue, Angular)</h3>
+<p>Una SPA tiene un único <code>index.html</code>. El framework renderiza todas las "páginas" dinámicamente con JavaScript sin recargar el navegador. El snippet va en ese único <code>index.html</code>.</p>
+<pre><code>index.html  ←  snippet aquí, una sola vez, un solo archivo
+</code></pre>
+<p>Pero hay un gotcha importante: como el navegador nunca recarga la página al navegar entre secciones, los activadores de pageview de GTM no se disparan solos. Hay que configurar un activador especial de "cambio de historial" o hacer pushes manuales al dataLayer en cada cambio de ruta.</p>
+<h3>Sitio estático en GitHub Pages con flujo de publicación por post</h3>
+<p>En este caso el sitio vive en GitHub Pages — un hosting estático sin servidor. Cada post tiene su propia carpeta con su propio <code>index.html</code>:</p>
+<pre><code>web/
+  index.html                        ← homepage
+  aprende-sql-facil-y-rapido/
+    index.html                      ← post generado
+  como-llevar-un-script-a-cloud-run/
+    index.html                      ← post generado
+</code></pre>
+<p>El contenido de los posts se escribe como Markdown en una carpeta separada. Un script Python (<code>publish.py</code>) lee cada Markdown, lo convierte a HTML usando una plantilla (<code>post_template.html</code>), y genera el <code>index.html</code> de ese post.</p>
+<p>El snippet de GTM va en <code>post_template.html</code> — la plantilla que <code>publish.py</code> usa para todos los posts. La homepage tiene su propio <code>index.html</code> donde el snippet también está.</p>
+<pre><code>post_template.html  ←  snippet aquí una vez (fuente)
+    ↓
+publish.py lee cada .md y genera un index.html por post
+    ↓
+cada post generado tiene el snippet — repetido, pero correcto
+</code></pre>
+<p>El snippet está repetido en cada HTML generado — eso es el output esperado, no un problema. Si mañana cambia el ID de GTM, se edita en un solo lugar (<code>post_template.html</code>) y se relanza <code>publish.py</code>.</p>
+<h3>Resumen</h3>
+<table>
+<thead>
+<tr>
+<th>Arquitectura</th>
+<th>Fuente del snippet</th>
+<th>HTMLs con snippet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WordPress</td>
+<td><code>header.php</code></td>
+<td>Todos (inyectado al servir)</td>
+</tr>
+<tr>
+<td>SPA</td>
+<td><code>index.html</code></td>
+<td>Uno solo</td>
+</tr>
+<tr>
+<td>Estático en GitHub Pages con publish.py</td>
+<td><code>post_template.html</code></td>
+<td>Todos (generados por publish.py)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Qué hace el snippet exactamente</h2>
+<p>Al ejecutarse, el snippet hace tres cosas en orden:</p>
+<ol>
+<li>
+<p><strong>Crea el dataLayer</strong> — inicializa <code>window.dataLayer = []</code> si no existe. Es el buzón de comunicación entre el sitio y GTM.</p>
+</li>
+<li>
+<p><strong>Hace un push al dataLayer</strong> — mete la marca de tiempo y el evento <code>gtm.js</code> para marcar el momento en que GTM arrancó:
+   <code>javascript
+   window.dataLayer.push({ event: 'gtm.js', 'gtm.start': 1234567890 })</code></p>
+</li>
+<li>
+<p><strong>Va a buscar el motor real de GTM</strong> — el snippet que pegas en el HTML no es GTM completo, es solo el arranque. El snippet descarga el script completo de GTM desde los servidores de Google. Hasta que ese script llega, GTM no existe en la página.</p>
+</li>
+</ol>
+<p>El snippet es la llave que abre la puerta. Lo que entra por esa puerta es GTM de verdad. Una vez que llega, empieza a escuchar el dataLayer para disparar etiquetas.</p>
+<h2>6. El dataLayer</h2>
+<p>Imagina que tu sitio web es una oficina y las herramientas externas son departamentos distintos que necesitan ser informados cuando algo importante sucede. El dataLayer es el tablón de anuncios de esa oficina — un lugar central y estandarizado donde se publican los mensajes.</p>
+<p>Técnicamente es un array en la memoria del navegador (<code>window.dataLayer</code>).</p>
+<h3><strong>Por qué existe:</strong></h3>
+<p>Con dataLayer, el sitio y las herramientas no se hablan directamente. El sitio solo publica información en el tablón. Las herramientas la leen a través de GTM. Añadir o quitar una herramienta no requiere tocar el código del sitio — solo configurarlo en GTM. </p>
+<h3><strong>Qué herramientas lo consumen:</strong></h3>
+<p>Solo herramientas client-side — las que corren en el navegador:</p>
+<ul>
+<li><strong>Analítica:</strong> Google Analytics, Adobe Analytics, Matomo</li>
+<li><strong>Publicidad y retargeting:</strong> Facebook Pixel, Google Ads, TikTok Pixel, LinkedIn Insight Tag</li>
+<li><strong>Mapas de calor:</strong> Hotjar, Crazy Egg</li>
+<li><strong>Chat y soporte:</strong> Intercom, Drift</li>
+<li><strong>CRM con componente client-side:</strong> HubSpot tracking code, Salesforce Pardot</li>
+</ul>
+<h2>7. push()</h2>
+<p><code>push()</code> es la acción de meter un objeto dentro del dataLayer. Es la única forma de agregar información al array.</p>
+<pre><code class="language-javascript">window.dataLayer.push({
+    'categoria': 'sql',
+    'slug': 'aprende-sql-desde-cero'
+})
+</code></pre>
+<p>Cada vez que se llama, añade un objeto nuevo al final del array. El dataLayer acumula todos los objetos que se han pusheado desde que se cargó la página.</p>
+<h2>8. Diferencia entre dataLayer y push()</h2>
+<p>Son dos cosas distintas que se confunden porque siempre aparecen juntas:</p>
+<ul>
+<li><strong>dataLayer</strong> — el contenedor. El tablón de anuncios. Un array que vive en la memoria del navegador y acumula información.</li>
+<li><strong>push()</strong> — la acción. Colgar una nota en ese tablón. El método que añade un objeto al array.</li>
+</ul>
+<p>No son intercambiables: el dataLayer existe aunque nunca se haga un push. Y push() no tiene sentido sin un dataLayer donde meter la información.</p>
+<h2>9. Los eventos</h2>
+<p>En GTM, un "evento" no es cualquier push al dataLayer — es específicamente un push que lleva el campo <code>event</code>:</p>
+<pre><code class="language-javascript">window.dataLayer.push({
+    'event': 'login',       // esto convierte el push en un evento
+    'new_client': 'true'
+})
+</code></pre>
+<p>El campo <code>event</code> es la señal que GTM usa para actuar. Cuando GTM detecta un push con <code>event</code>, revisa todos sus activadores buscando uno que coincida con ese nombre. Si lo encuentra, dispara la etiqueta asociada.</p>
+<p>Sin el campo <code>event</code>, GTM recibe los datos y los acumula en el dataLayer — pero no dispara nada.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de push</th>
+<th>Tiene <code>event</code></th>
+<th>GTM actúa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push de datos</td>
+<td>No</td>
+<td>No — solo acumula</td>
+</tr>
+<tr>
+<td>Push de evento</td>
+<td>Sí</td>
+<td>Sí — revisa activadores</td>
+</tr>
+</tbody>
+</table>
+<h2>10. Lo que GTM puede medir solo — y dónde aparece el límite</h2>
+<p>Con GTM instalado y una configuración básica ya puedes medir cuántas personas vieron cada página. GTM detecta la carga de página automáticamente — no necesitas escribir nada extra. Si tienes 12 posts, puedes ver cuántas visitas tuvo cada uno individualmente.</p>
+<p>Eso funciona bien hasta que suceden ciertos casos específicos:</p>
+<h2>11. El problema: quiero medir por categoría</h2>
+<p>Supón que tienes 12 posts organizados en 3 categorías: Google Cloud, Google Analytics y Power BI. Quieres saber cuántas personas vieron posts de cada categoría — no post por post, sino agrupado.</p>
+<p>Ahí GTM se queda sin respuesta. Cuando alguien visita un post, GTM solo sabe la URL — por ejemplo <code>/aprende-sql-facil-y-rapido-desde-cero/</code>. No sabe a qué categoría pertenece ese post. Esa información no está en la URL, no está en el título, no está en ningún lugar del HTML que GTM pueda leer solo.</p>
+<p>La categoría vive en el frontmatter del Markdown (los metadatos al momento de crear el archivo) — una fuente que existe antes de que el HTML se genere, pero que no llega al navegador a menos que alguien la ponga ahí explícitamente.</p>
+<p>Ese es el límite: <strong>GTM puede leer lo que está en el navegador. Lo que no llega al navegador, no puede leerlo.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Qué trackear</th>
+<th>GTM lo lee solo</th>
+<th>Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitas por página</td>
+<td>Sí</td>
+<td>La URL siempre está disponible</td>
+</tr>
+<tr>
+<td>Clicks en links</td>
+<td>Sí</td>
+<td>El navegador expone los clicks nativamente</td>
+</tr>
+<tr>
+<td>Profundidad de scroll</td>
+<td>Sí</td>
+<td>El navegador expone la posición de scroll</td>
+</tr>
+<tr>
+<td>Categoría del post</td>
+<td><strong>No</strong></td>
+<td>Vive en el frontmatter, no llega al navegador por defecto</td>
+</tr>
+<tr>
+<td>Slug o título del post</td>
+<td><strong>No</strong></td>
+<td>Mismo motivo</td>
+</tr>
+</tbody>
+</table>
+<h2>12. La solución: pasar los datos del frontmatter al dataLayer</h2>
+<p>Si <code>publish.py</code> conoce la categoría al generar cada post — porque la lee del frontmatter — puede embeberla directamente en el HTML como un push al dataLayer, antes del snippet de GTM:</p>
+<pre><code class="language-javascript">window.dataLayer.push({
+    'titulo': 'Aprende SQL fácil y rápido desde cero',  // título del post
+    'categoria': 'sql',                                  // categoría — lo que queremos agrupar
+    'slug': 'aprende-sql-facil-y-rapido-desde-cero',    // identificador único del post
+    'sistema_operativo': 'mac-windows'                   // OS del contenido
+})
+</code></pre>
+<p>Cuando GTM se inicializa, ya encuentra esos datos en el dataLayer. Puede leerlos como variables y adjuntarlos como parámetros a cualquier evento — incluyendo el pageview.</p>
+<p>Resultado: ahora sí puedes medir cuántas personas vieron posts de cada categoría, sin tocar el código del sitio manualmente. <code>publish.py</code> genera ese bloque automáticamente para cada post desde el frontmatter.</p>
+<h2>13. Gotchas</h2>
+<ol>
+<li>
+<p><strong>Olvidar publicar el contenedor</strong> — los cambios en la interfaz de GTM no van en vivo hasta que presionas "Publicar". Puedes pasar horas configurando etiquetas en borrador y creer que están activas — no lo están.</p>
+</li>
+<li>
+<p><strong>El orden del dataLayer importa</strong> — el push de metadatos de <code>publish.py</code> tiene que ir antes del snippet en el HTML. Si va después, GTM ya procesó el pageview sin esos datos y no los incluye en el evento. No hay error visible, solo datos incompletos.</p>
+</li>
+<li>
+<p><strong>Los bloqueadores de anuncios bloquean GTM</strong> — Brave, uBlock, Firefox en modo estricto tratan GTM como herramienta de tracking y lo bloquean antes de que cargue. Tus datos de analytics nunca van a ser 100% completos. No hay solución sencilla, solo hay que saberlo.</p>
+</li>
+<li>
+<p><strong>Preview mode no es live</strong> — GTM tiene un modo de previsualización para probar cambios. Lo que ves en preview solo lo ves tú — los visitantes reales siguen viendo la versión publicada anterior. Mucha gente prueba en preview y asume que ya está en producción.</p>
+</li>
+</ol>
+<h2>14. Referencia oficial</h2>
+<ul>
+<li>https://support.google.com/tagmanager</li>
+</ul></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/configurar-gtm-y-ga4-en-github-pages">configurar-gtm-y-ga4-en-github-pages</a>
+<a class="relacionado-item" href="/anatomia-de-una-peticion-http">anatomia-de-una-peticion-http</a>
+
+  </div>
+</div>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'google-tag-manager-fundamentos';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

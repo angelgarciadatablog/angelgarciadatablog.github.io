@@ -1,5 +1,23 @@
 [
   {
+    "titulo": "Google Tag Manager — Fundamentos",
+    "slug": "google-tag-manager-fundamentos",
+    "categoria": "google-analytics",
+    "tags": [
+      "datablog",
+      "google-analytics"
+    ],
+    "updated": "2026-05-22",
+    "temas-relacionados": [
+      "configurar-gtm-y-ga4-en-github-pages",
+      "anatomia-de-una-peticion-http"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": ""
+  },
+  {
     "titulo": "Introducción a APIs para analistas de datos",
     "slug": "introduccion-apis-para-analistas",
     "categoria": "apis",
