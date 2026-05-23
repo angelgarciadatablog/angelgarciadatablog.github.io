@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Google Tag Manager — Fundamentos</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-analytics</span></div>
-      <span class="post-updated">Actualizado: 2026-05-22</span>
+      <span class="post-updated">Actualizado: 2026-05-23</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -174,9 +174,21 @@ cada post generado tiene el snippet — repetido, pero correcto
 <h2>6. El dataLayer</h2>
 <p>Imagina que tu sitio web es una oficina y las herramientas externas son departamentos distintos que necesitan ser informados cuando algo importante sucede. El dataLayer es el tablón de anuncios de esa oficina — un lugar central y estandarizado donde se publican los mensajes.</p>
 <p>Técnicamente es un array en la memoria del navegador (<code>window.dataLayer</code>).</p>
-<h3><strong>Por qué existe:</strong></h3>
+<h3><strong>6.1 Quién puede crearlo:</strong></h3>
+<p>Cuando en la sección anterior decíamos que el snippet "crea el dataLayer", hablábamos de la inicialización técnica: el snippet escribe <code>window.dataLayer = []</code> en el navegador — el tablón vacío.</p>
+<p>Pero hay dos actores que pueden meter información en ese tablón:</p>
+<ol>
+<li>
+<p><strong>El desarrollador del sitio</strong> — escribe pushes personalizados directamente en el código: en la plantilla HTML, en el JavaScript de la página, o generados por un script como <code>publish.py</code>. Estos pushes llevan datos que GTM no puede inferir solo: la categoría de un post, el ID de usuario, el precio de un producto.</p>
+</li>
+<li>
+<p><strong>GTM</strong> — una vez cargado, también hace sus propios pushes automáticos (pageview, DOM listo, window cargado). Pero solo puede pushear lo que ya es visible en el navegador.</p>
+</li>
+</ol>
+<p>Si el único actor fuera el snippet, el dataLayer contendría únicamente la marca de tiempo de arranque — y GTM solo podría trabajar con lo que él mismo detecta: URLs y clicks. Todo lo que importa en analytics (categorías, usuarios, productos, estados de sesión) lo tienen que poner los desarrolladores de forma explícita.</p>
+<h3><strong>6.2 Por qué existe:</strong></h3>
 <p>Con dataLayer, el sitio y las herramientas no se hablan directamente. El sitio solo publica información en el tablón. Las herramientas la leen a través de GTM. Añadir o quitar una herramienta no requiere tocar el código del sitio — solo configurarlo en GTM. </p>
-<h3><strong>Qué herramientas lo consumen:</strong></h3>
+<h3><strong>6.3 Qué herramientas lo consumen:</strong></h3>
 <p>Solo herramientas client-side — las que corren en el navegador:</p>
 <ul>
 <li><strong>Analítica:</strong> Google Analytics, Adobe Analytics, Matomo</li>
@@ -187,6 +199,20 @@ cada post generado tiene el snippet — repetido, pero correcto
 </ul>
 <h2>7. push()</h2>
 <p><code>push()</code> es la acción de meter un objeto dentro del dataLayer. Es la única forma de agregar información al array.</p>
+<h3>7.1 Quién hace los pushes</h3>
+<p>El desarrollador del sitio — no el snippet, no GTM. Los pushes son código JavaScript que el desarrollador escribe explícitamente: en la plantilla HTML, en scripts de la página, o generados por herramientas como <code>publish.py</code>.</p>
+<p>GTM también hace algunos pushes internos automáticos (pageview, DOM listo, window cargado), pero los pushes que llevan datos de negocio son siempre responsabilidad del desarrollador.</p>
+<h3>7.2 Cuántos pushes puede tener una página</h3>
+<p>Tantos como necesite el desarrollador. No hay límite técnico. Lo habitual es tener:</p>
+<ol>
+<li><strong>Al cargar la página</strong> — datos estáticos: categoría, slug, tipo de contenido.</li>
+<li><strong>Por acción del usuario</strong> — click en botón, envío de formulario, scroll hasta el final.</li>
+<li><strong>Por evento de negocio</strong> — compra completada, producto añadido al carrito.</li>
+</ol>
+<p>Una página compleja puede tener decenas de pushes distintos.</p>
+<h3>7.3 Cuándo se ejecuta un push</h3>
+<p>Un push se ejecuta cuando el JavaScript que lo contiene se ejecuta — no antes, no después. Si el push está en el HTML de la página, se lanza al cargar. Si está dentro de un listener de click, se lanza cuando el usuario hace click.</p>
+<p>Si un push está en la plantilla de todos los posts, se lanza en cada post, siempre — aunque la información que contiene esté vacía. El push no evalúa si los datos son válidos antes de ejecutarse. GTM recibe el push con los campos que tenga; si algún campo no tiene valor, llega vacío o <code>undefined</code>. No hay error visible, solo dato vacío.</p>
 <pre><code class="language-javascript">window.dataLayer.push({
     'categoria': 'sql',
     'slug': 'aprende-sql-desde-cero'
@@ -200,14 +226,19 @@ cada post generado tiene el snippet — repetido, pero correcto
 <li><strong>push()</strong> — la acción. Colgar una nota en ese tablón. El método que añade un objeto al array.</li>
 </ul>
 <p>No son intercambiables: el dataLayer existe aunque nunca se haga un push. Y push() no tiene sentido sin un dataLayer donde meter la información.</p>
-<h2>9. Los eventos</h2>
-<p>En GTM, un "evento" no es cualquier push al dataLayer — es específicamente un push que lleva el campo <code>event</code>:</p>
+<h2>9. Los eventos — un push con el campo event</h2>
+<p>No todos los pushes tienen el mismo efecto. La diferencia clave está en si el objeto incluye o no el campo <code>event</code>:</p>
+<ul>
+<li><strong>Sin <code>event</code></strong> — lleva información al dataLayer sin disparar nada. GTM la acumula.</li>
+<li><strong>Con <code>event</code></strong> — es la señal que GTM usa para actuar.</li>
+</ul>
+<p>En GTM, un "evento" es específicamente un push que incluye ese campo:</p>
 <pre><code class="language-javascript">window.dataLayer.push({
     'event': 'login',       // esto convierte el push en un evento
     'new_client': 'true'
 })
 </code></pre>
-<p>El campo <code>event</code> es la señal que GTM usa para actuar. Cuando GTM detecta un push con <code>event</code>, revisa todos sus activadores buscando uno que coincida con ese nombre. Si lo encuentra, dispara la etiqueta asociada.</p>
+<p>El campo <code>event</code> es la señal que GTM usa para actuar. Cuando GTM detecta un push con <code>event</code>, revisa todos sus activadores buscando uno que coincida con ese nombre. Si lo encuentra, dispara la etiqueta asociada (esto lo explicaremos cuando veamos más a fondo etiquetas).</p>
 <p>Sin el campo <code>event</code>, GTM recibe los datos y los acumula en el dataLayer — pero no dispara nada.</p>
 <table>
 <thead>
@@ -231,13 +262,14 @@ cada post generado tiene el snippet — repetido, pero correcto
 </tbody>
 </table>
 <h2>10. Lo que GTM puede medir solo — y dónde aparece el límite</h2>
-<p>Con GTM instalado y una configuración básica ya puedes medir cuántas personas vieron cada página. GTM detecta la carga de página automáticamente — no necesitas escribir nada extra. Si tienes 12 posts, puedes ver cuántas visitas tuvo cada uno individualmente.</p>
+<p>Con GTM instalado y una configuración básica ya puedes medir cuántas personas vieron cada página. GTM hace sus propios pushes automáticos al cargar — el desarrollador no tiene que escribir nada. Esos pushes internos son suficientes para saber cuántas visitas tuvo cada post individualmente.</p>
 <p>Eso funciona bien hasta que suceden ciertos casos específicos:</p>
 <h2>11. El problema: quiero medir por categoría</h2>
 <p>Supón que tienes 12 posts organizados en 3 categorías: Google Cloud, Google Analytics y Power BI. Quieres saber cuántas personas vieron posts de cada categoría — no post por post, sino agrupado.</p>
-<p>Ahí GTM se queda sin respuesta. Cuando alguien visita un post, GTM solo sabe la URL — por ejemplo <code>/aprende-sql-facil-y-rapido-desde-cero/</code>. No sabe a qué categoría pertenece ese post. Esa información no está en la URL, no está en el título, no está en ningún lugar del HTML que GTM pueda leer solo.</p>
-<p>La categoría vive en el frontmatter del Markdown (los metadatos al momento de crear el archivo) — una fuente que existe antes de que el HTML se genere, pero que no llega al navegador a menos que alguien la ponga ahí explícitamente.</p>
+<p>Ahí GTM se queda sin respuesta. Sus pushes automáticos al cargar la página capturan lo que el navegador expone: la URL, el título, el referrer. Cuando alguien visita un post, GTM solo sabe la URL — por ejemplo <code>/aprende-sql-facil-y-rapido-desde-cero/</code>. No sabe a qué categoría pertenece ese post. Esa información no está en la URL, no está en el título, no está en ningún lugar del HTML que GTM pueda leer solo.</p>
+<p>La categoría vive en el frontmatter del Markdown (los metadatos) — una fuente que existe antes de que el HTML se genere, pero que no llega al navegador a menos que alguien la ponga ahí explícitamente.</p>
 <p>Ese es el límite: <strong>GTM puede leer lo que está en el navegador. Lo que no llega al navegador, no puede leerlo.</strong></p>
+<p>Para que GTM pueda leerlo, alguien tiene que ponerlo en el navegador explícitamente — y ese alguien es el desarrollador, a través de un push al dataLayer.</p>
 <table>
 <thead>
 <tr>
@@ -265,7 +297,7 @@ cada post generado tiene el snippet — repetido, pero correcto
 <tr>
 <td>Categoría del post</td>
 <td><strong>No</strong></td>
-<td>Vive en el frontmatter, no llega al navegador por defecto</td>
+<td>Vive en los metadatos, no llega al navegador por defecto</td>
 </tr>
 <tr>
 <td>Slug o título del post</td>
@@ -275,7 +307,15 @@ cada post generado tiene el snippet — repetido, pero correcto
 </tbody>
 </table>
 <h2>12. La solución: pasar los datos del frontmatter al dataLayer</h2>
-<p>Si <code>publish.py</code> conoce la categoría al generar cada post — porque la lee del frontmatter — puede embeberla directamente en el HTML como un push al dataLayer, antes del snippet de GTM:</p>
+<p>El frontmatter es una capa de etiquetas que utilizo en mi blog para parametrizar un post, por ejemplo:</p>
+<pre><code class="language-yaml">---
+titulo: &quot;Aprende SQL fácil y rápido desde cero&quot;
+categoria: sql
+slug: aprende-sql-facil-y-rapido-desde-cero
+sistema-operativo: mac-windows
+---
+</code></pre>
+<p><code>publish.py</code> , que es el script de python que utilizo para publicar mis post, lee ese frontmatter al generar el HTML de cada post — tiene toda esa información disponible en el momento de construcción. El problema es que no llega al navegador por defecto. La solución es que <code>publish.py</code> la embeba directamente en el HTML como un push al dataLayer, antes del snippet de GTM:</p>
 <pre><code class="language-javascript">window.dataLayer.push({
     'titulo': 'Aprende SQL fácil y rápido desde cero',  // título del post
     'categoria': 'sql',                                  // categoría — lo que queremos agrupar
@@ -301,9 +341,6 @@ cada post generado tiene el snippet — repetido, pero correcto
 </li>
 <li>
 <p><strong>El dataLayer se reinicia al navegar a otra página</strong> — el dataLayer vive en la memoria del navegador. Cada vez que el usuario carga una URL nueva, esa memoria se borra. En un sitio estático (GitHub Pages, HTML independientes) cada página empieza con un dataLayer limpio. En una SPA (React, Vue) el dataLayer persiste porque el navegador nunca recarga. Esto afecta cómo diseñas tus pushes — en un sitio estático no puedes asumir que los datos de la página anterior siguen disponibles.</p>
-</li>
-<li>
-<p><strong>Verificar el dataLayer después de recargar borra todo</strong> — al hacer hard refresh para "limpiar caché" antes de verificar, borras exactamente lo que querías ver. El flujo correcto: hard refresh una vez → ejecutar la acción → revisar <code>window.dataLayer</code> sin volver a recargar.</p>
 </li>
 </ol>
 <h2>14. Referencia oficial</h2>
