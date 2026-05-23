@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anatomía de una petición HTTP · Angel García</title>
+  <meta name="description" content="Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body." />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Anatomía de una petición HTTP", "categoria": "apis", "subcategoria": "fundamentos-http", "slug": "anatomia-de-una-peticion-http", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-17", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">apis</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Anatomía de una petición HTTP</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
+      <span class="post-updated">Actualizado: 2026-05-23</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h1>Anatomía de una petición HTTP</h1>
+<h2>1. Qué es</h2>
+<p>Una petición HTTP es la "palmadita" — un mensaje que alguien le manda a una máquina diciéndole <em>"haz algo"</em>. Es la forma en que internet se comunica.</p>
+<p>Todo lo que pasa en internet es una petición HTTP: cargar una página, enviar un formulario, llamar un URL de Cloud Run, hacer click en un botón.</p>
+<h2>2. Las partes de una petición</h2>
+<p>Toda petición HTTP tiene dos partes obligatorias:</p>
+<ol>
+<li><strong>A quién le hablas</strong> — el URL: <code>https://mi-script.run.app</code></li>
+<li><strong>Qué le pides</strong> — el método</li>
+</ol>
+<p>Y dos partes opcionales:</p>
+<ol>
+<li><strong>Headers</strong> — metadatos de la petición (quién eres, qué formato envías, etc.)</li>
+<li><strong>Body</strong> — datos adicionales que envías (solo en POST, PUT)</li>
+</ol>
+<blockquote>
+<p>Técnicamente, la URL y el método viajan juntos en la misma línea — la <strong>línea de inicio</strong> (<code>GET /posts/1 HTTP/1.1</code>). Los separamos aquí para entenderlos mejor.</p>
+</blockquote>
+<h2>3. Los métodos — tipos de palmadita</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué significa</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>"dame información"</td>
+<td>buscar, consultar, cargar una página</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>"toma esto y procésalo"</td>
+<td>enviar datos, crear algo nuevo</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td>"reemplaza esto"</td>
+<td>actualizar algo existente</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>"borra esto"</td>
+<td>eliminar algo</td>
+</tr>
+</tbody>
+</table>
+<p>El más común al principio es <code>GET</code>. Cuando escribes un URL en el navegador estás haciendo un <code>GET</code>.</p>
+<h2>4. Desde dónde se pueden hacer palmaditas</h2>
+<ul>
+<li><strong>Navegador</strong> — escribes el URL y das enter (siempre es GET)</li>
+<li><strong>Terminal</strong> — con <code>curl "http://localhost:8000/?texto=hola"</code></li>
+<li><strong>Código Python</strong> — con la librería <code>requests</code></li>
+<li><strong>Postman</strong> — herramienta visual para probar APIs, útil para POST</li>
+</ul>
+<p>En este post solo cubrimos el navegador y curl. Python con <code>requests</code> y Postman los vemos en temas propios.</p>
+<h2>5. Tu primera palmadita GET consciente</h2>
+<p>Ya sabes que el navegador y curl hacen lo mismo — un GET. La diferencia es lo que te muestran.</p>
+<p>Empieza por el navegador. Abre esta URL:</p>
+<pre><code>https://jsonplaceholder.typicode.com/posts/1
+</code></pre>
+<p>Verás el body directamente — el navegador esconde todo lo demás. </p>
+<pre><code class="language-JSON">{
+  &quot;userId&quot;: 1,
+  &quot;id&quot;: 1,
+  &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+  &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+}
+</code></pre>
+<p>Ahora haz lo mismo desde la terminal:</p>
+<pre><code class="language-bash">curl &quot;https://jsonplaceholder.typicode.com/posts/1&quot;
+</code></pre>
+<p>Mismo resultado: solo el body. Curl y el navegador hicieron exactamente el mismo GET — la petición fue idéntica.</p>
+<p>Ahora agrega <code>-i</code>:</p>
+<pre><code class="language-bash">curl -i &quot;https://jsonplaceholder.typicode.com/posts/1&quot;
+</code></pre>
+<p>Y verás algo que el navegador nunca te muestra — los headers antes del body:</p>
+<pre><code>HTTP/2 200
+content-type: application/json; charset=utf-8
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+...
+
+{ &quot;userId&quot;: 1, &quot;id&quot;: 1, &quot;title&quot;: &quot;sunt aut facere...&quot; }
+</code></pre>
+<p><strong>Para verlos en el navegador:</strong> DevTools (<code>Cmd + Option + I</code>) → pestaña <strong>Red</strong> → click en cualquier petición → pestaña <strong>Headers</strong>.</p>
+<p>La diferencia: sin <code>-i</code> curl se comporta igual que el navegador — te da solo el contenido. Con <code>-i</code> le dices "muéstrame también los metadatos del viaje". Ambas partes viajaron siempre — <code>-i</code> solo las hace visibles.</p>
+<p>Eso que acabas de ver es exactamente lo que exploramos en la siguiente sección.</p>
+<h2>6. Headers</h2>
+<h3>6.1 Headers de petición — lo que el cliente envía</h3>
+<p>Cuando abres una URL en el navegador o ejecutas un <code>curl</code>, no solo estás enviando el método y la URL — también estás enviando headers de forma automática, sin escribirlos tú. El navegador y curl los añaden solos. Una petición típica lleva entre 8 y 15:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Qué dice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user-agent</code></td>
+<td>Quién hace la petición — Chrome en Mac, curl, un script de Python</td>
+</tr>
+<tr>
+<td><code>accept</code></td>
+<td>Qué formatos acepta el cliente (<code>application/json</code>, <code>text/html</code>)</td>
+</tr>
+<tr>
+<td><code>accept-language</code></td>
+<td>Idioma preferido del cliente</td>
+</tr>
+<tr>
+<td><code>if-none-match</code></td>
+<td>El etag guardado — pregunta al servidor "¿cambió desde la última vez?"</td>
+</tr>
+<tr>
+<td><code>cache-control: max-age=0</code></td>
+<td>"No uses caché, dame la versión fresca"</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Headers de respuesta — los más importantes</h3>
+<p>El servidor responde con sus propios headers. No hay límite universal — cada servidor fija el suyo. Una respuesta típica lleva entre 5 y 10. Hay headers estándar (casi todos los servidores los envían) y personalizados (prefijo <code>x-</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Qué dice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content-type</code></td>
+<td>Qué formato tiene el body (<code>application/json</code>, <code>text/html</code>)</td>
+</tr>
+<tr>
+<td><code>content-length</code></td>
+<td>Cuántos bytes pesa la respuesta</td>
+</tr>
+<tr>
+<td><code>cache-control: max-age=N</code></td>
+<td>Cuántos segundos puede el navegador usar la respuesta sin preguntar de nuevo</td>
+</tr>
+<tr>
+<td><code>etag</code></td>
+<td>Huella digital del contenido — el navegador la guarda para preguntar si cambió</td>
+</tr>
+<tr>
+<td><code>x-ratelimit-limit</code></td>
+<td>Máximo de peticiones permitidas en el período</td>
+</tr>
+<tr>
+<td><code>x-ratelimit-remaining</code></td>
+<td>Cuántas quedan antes del bloqueo</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>Qué software usa el servidor (cloudflare, nginx, etc.)</td>
+</tr>
+</tbody>
+</table>
+<h2>7. Las 3 partes de una respuesta</h2>
+<p>Ya conoces los headers de respuesta — los vimos en la sección 6. Pero una respuesta completa tiene 3 partes, y ya las viste todas en la sección 5 con <code>curl -i</code>:</p>
+<pre><code>HTTP/2 200                        ← 1. Línea de estado
+content-type: application/json    ← 2. Headers
+x-ratelimit-limit: 1000
+                                  ← línea en blanco
+{ &quot;userId&quot;: 1, &quot;id&quot;: 1, ... }    ← 3. Body
+</code></pre>
+<h3>7.1 Línea de estado</h3>
+<p>La primera línea de toda respuesta. Contiene la versión del protocolo y el status code — un número que dice cómo fue:</p>
+<ul>
+<li><code>200</code> — ok</li>
+<li><code>304</code> — no modificado (el navegador tiene la versión en caché)</li>
+<li><code>400</code> — petición mal formada</li>
+<li><code>401</code> — no autenticado (falta credencial)</li>
+<li><code>403</code> — prohibido (tienes credencial pero no permiso)</li>
+<li><code>404</code> — no encontrado</li>
+<li><code>422</code> — datos faltantes u inválidos (FastAPI lo usa cuando falta un parámetro obligatorio)</li>
+<li><code>500</code> — error interno del servidor</li>
+</ul>
+<h3>7.2 Body</h3>
+<p>El body existe en dos direcciones:</p>
+<p><strong>Body de respuesta</strong> — lo que el servidor te manda de vuelta. No todas las respuestas lo tienen (un <code>204</code> no lleva body):</p>
+<ul>
+<li>JSON: <code>{"userId": 1, "id": 1, ...}</code> — cuando es una API</li>
+<li>HTML: <code>&lt;html&gt;...&lt;/html&gt;</code> — cuando es una página web</li>
+</ul>
+<p><strong>Body de petición</strong> — lo que tú envías al servidor en un POST o PUT:</p>
+<ul>
+<li>Solo existe en métodos que mandan datos — GET no tiene body de petición</li>
+<li>Viaja oculto, no aparece en la URL</li>
+<li>Generalmente JSON: <code>{"nombre": "Ángel", "email": "..."}</code></li>
+</ul>
+<p>En el GET que hiciste anteriormente no había body de petición — solo línea de inicio y headers. El body de petición aparece cuando un formulario manda tus datos o cuando un script envía información a una API.</p>
+<h2>8. Qué sigue</h2>
+<p>Ya entiendes cómo funciona una petición GET — la más simple. Sabes que tiene una línea de inicio, headers y un body de respuesta, y que el navegador y curl hacen lo mismo aunque te muestren cosas distintas.</p>
+<p>El siguiente paso es hacer un POST: enviar datos tú mismo y autenticarte en una API real. Ahí aparece el body de petición en la práctica, y entenderás por qué la mayoría de APIs requieren credenciales y cómo se envían.</p>
+<h2>Referencia oficial</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods">MDN — Métodos HTTP</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Status">MDN — Códigos de estado HTTP</a></li>
+</ul></div>
+    
+    
+    
+<div class="post-navegacion-serie">
+  <a class="nav-siguiente" href="/peticion-post-con-autenticacion">
+    <span class="nav-label">Siguiente en la serie</span>
+    <span class="nav-titulo">Tu primera palmadita POST: cómo enviar datos y autenticarte en una API →</span>
+  </a>
+</div>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'anatomia-de-una-peticion-http';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

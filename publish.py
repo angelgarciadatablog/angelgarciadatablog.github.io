@@ -127,10 +127,25 @@ for meta in posts_a_publicar:
     so_labels = {"mac": "Mac", "windows": "Windows", "mac-windows": "Mac & Windows"}
     so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
 
+    # Navegación de serie
+    parte_siguiente = meta.get("parte-siguiente", "")
+    if parte_siguiente:
+        titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
+        navegacion_serie_html = f"""
+<div class="post-navegacion-serie">
+  <a class="nav-siguiente" href="/{parte_siguiente}">
+    <span class="nav-label">Siguiente en la serie</span>
+    <span class="nav-titulo">{titulo_siguiente} →</span>
+  </a>
+</div>"""
+    else:
+        navegacion_serie_html = ""
+
     # DataLayer push — metadatos del post para GTM
     datalayer_data = {
         "titulo": meta.get("titulo", ""),
         "categoria": meta.get("categoria", ""),
+        "subcategoria": meta.get("subcategoria", "") or "",
         "slug": slug,
         "sistema_operativo": meta.get("sistema-operativo", ""),
         "fecha_publicacion": str(meta.get("created", "")),
@@ -152,6 +167,7 @@ for meta in posts_a_publicar:
     html = html.replace("{{contenido}}", contenido_html)
     html = html.replace("{{video_youtube}}", video_html)
     html = html.replace("{{temas_relacionados}}", relacionados_html)
+    html = html.replace("{{navegacion_serie}}", navegacion_serie_html)
 
     # Escribir archivo
     output_dir = WEB_ROOT / slug
@@ -171,6 +187,9 @@ for meta in posts_a_publicar:
         "sistema-operativo": meta.get("sistema-operativo", ""),
         "repositorio": meta.get("repositorio", "") or "",
         "descripcion": meta.get("descripcion", "") or "",
+        "subcategoria": meta.get("subcategoria", "") or "",
+        "parte-anterior": meta.get("parte-anterior", "") or "",
+        "parte-siguiente": meta.get("parte-siguiente", "") or "",
     })
 
 # ─── ACTUALIZAR posts.json ────────────────────────────────────────────────────

@@ -1,5 +1,41 @@
 [
   {
+    "titulo": "Anatomía de una petición HTTP",
+    "slug": "anatomia-de-una-peticion-http",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-23",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
+    "subcategoria": "fundamentos-http",
+    "parte-anterior": "",
+    "parte-siguiente": "peticion-post-con-autenticacion"
+  },
+  {
+    "titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API",
+    "slug": "peticion-post-con-autenticacion",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-23",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "",
+    "subcategoria": "fundamentos-http",
+    "parte-anterior": "anatomia-de-una-peticion-http",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Google Tag Manager — Fundamentos",
     "slug": "google-tag-manager-fundamentos",
     "categoria": "google-analytics",
@@ -15,7 +51,10 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría."
+    "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "Introducción a APIs para analistas de datos",
@@ -33,7 +72,10 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman."
+    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "Cómo llevar un script Python a Cloud Run",
@@ -48,7 +90,10 @@
     "video-youtube": "",
     "sistema-operativo": "mac",
     "repositorio": "~/scripts-datablog/google-cloud/script-python-a-cloud-run",
-    "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales."
+    "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
@@ -66,7 +111,10 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales."
+    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
@@ -81,7 +129,10 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON."
+    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "Aprende SQL fácil y rápido desde cero",
@@ -96,6 +147,9 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos."
+    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos.",
+    "subcategoria": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   }
 ]

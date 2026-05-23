@@ -245,6 +245,35 @@
 
 .relacionado-item:hover { color: var(--color-acento-hover); }
 
+/* NAVEGACIÓN DE SERIE */
+.post-navegacion-serie {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.nav-siguiente {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.nav-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-titulo {
+  font-size: 15px;
+  color: var(--color-acento);
+}
+
+.nav-siguiente:hover .nav-titulo { color: var(--color-acento-hover); }
+
 @media (max-width: 1100px) {
   .sidebar-der { display: none; }
 }
