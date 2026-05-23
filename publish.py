@@ -86,8 +86,9 @@ for meta in posts_a_publicar:
                 break
 
     post = frontmatter.load(md_file)
+    body = re.sub(r'^\s*#[^#][^\n]*\n?', '', post.content, count=1)
     md_converter.reset()
-    contenido_html = md_converter.convert(post.content)
+    contenido_html = md_converter.convert(body)
 
     # Tags
     tags_raw = meta.get("tags", [])

@@ -18,6 +18,24 @@
     "parte-siguiente": "peticion-post-con-autenticacion"
   },
   {
+    "titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API",
+    "slug": "peticion-post-con-autenticacion",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-23",
+    "temas-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo hacer tu primer POST, qué es el body de petición, por qué Content-Type es obligatorio, y la diferencia entre una API de prueba y una API real.",
+    "subcategoria": "fundamentos-http",
+    "parte-anterior": "anatomia-de-una-peticion-http",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Google Tag Manager — Fundamentos",
     "slug": "google-tag-manager-fundamentos",
     "categoria": "google-analytics",
@@ -36,24 +54,6 @@
     "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría.",
     "subcategoria": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API",
-    "slug": "peticion-post-con-autenticacion",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-23",
-    "temas-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Cómo hacer tu primer POST, qué es el body de petición, por qué Content-Type es obligatorio, y la diferencia entre una API de prueba y una API real.",
-    "subcategoria": "fundamentos-http",
-    "parte-anterior": "anatomia-de-una-peticion-http",
     "parte-siguiente": ""
   },
   {
