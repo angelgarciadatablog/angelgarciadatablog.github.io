@@ -128,16 +128,17 @@ for meta in posts_a_publicar:
     so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
 
     # Navegación de serie
+    parte_anterior = meta.get("parte-anterior", "")
     parte_siguiente = meta.get("parte-siguiente", "")
-    if parte_siguiente:
-        titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
-        navegacion_serie_html = f"""
-<div class="post-navegacion-serie">
-  <a class="nav-siguiente" href="/{parte_siguiente}">
-    <span class="nav-label">Siguiente en la serie</span>
-    <span class="nav-titulo">{titulo_siguiente} →</span>
-  </a>
-</div>"""
+    if parte_anterior or parte_siguiente:
+        nav_items = ""
+        if parte_anterior:
+            titulo_anterior = slug_a_titulo.get(parte_anterior, parte_anterior)
+            nav_items += f'  <a class="nav-anterior" href="/{parte_anterior}"><span class="nav-label">Anterior en la serie</span><span class="nav-titulo">← {titulo_anterior}</span></a>\n'
+        if parte_siguiente:
+            titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
+            nav_items += f'  <a class="nav-siguiente" href="/{parte_siguiente}"><span class="nav-label">Siguiente en la serie</span><span class="nav-titulo">{titulo_siguiente} →</span></a>\n'
+        navegacion_serie_html = f'\n<div class="post-navegacion-serie">\n{nav_items}</div>'
     else:
         navegacion_serie_html = ""
 
