@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tu primera palmadita POST: cómo enviar datos y autenticarte en una API · Angel García</title>
-  <meta name="description" content="Tu primera palmadita POST: cómo enviar datos y autenticarte en una API" />
+  <meta name="description" content="Cómo hacer tu primer POST, qué es el body de petición, por qué Content-Type es obligatorio, y la diferencia entre una API de prueba y una API real." />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
@@ -73,7 +73,141 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
     <hr class="post-divider" />
-    <div class="post-body" id="post-body"><h1>Tu primera palmadita POST: cómo enviar datos y autenticarte en una API</h1></div>
+    <div class="post-body" id="post-body"><h1>Tu primera palmadita POST: cómo enviar datos y autenticarte en una API</h1>
+<h2>1. Tu primer POST</h2>
+<p>En el post anterior hicimos GET — le pedimos algo al servidor. El POST es lo contrario: le enviamos algo.</p>
+<p>Antes de ver el comando, los flags de curl que vamos a usar:</p>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Flag</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Método</td>
+<td><code>-X</code></td>
+<td><code>-X POST</code></td>
+</tr>
+<tr>
+<td>URL</td>
+<td>(sin flag)</td>
+<td><code>"https://..."</code></td>
+</tr>
+<tr>
+<td>Header</td>
+<td><code>-H</code></td>
+<td><code>-H "Content-Type: application/json"</code></td>
+</tr>
+<tr>
+<td>Body</td>
+<td><code>-d</code></td>
+<td><code>-d '{"clave": "valor"}'</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>-H</code> viene de Header — puedes poner varios en un mismo comando, uno por cada header. 
+<code>-d</code> viene de Data — es el body de la petición.</p>
+<pre><code class="language-bash">curl -X POST &quot;https://jsonplaceholder.typicode.com/posts&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;titulo&quot;: &quot;mi primer post&quot;, &quot;cuerpo&quot;: &quot;hola mundo&quot;, &quot;usuarioId&quot;: 1}'
+</code></pre>
+<p>Respuesta del servidor:</p>
+<pre><code class="language-json">{
+  &quot;titulo&quot;: &quot;mi primer post&quot;,
+  &quot;cuerpo&quot;: &quot;hola mundo&quot;,
+  &quot;usuarioId&quot;: 1,
+  &quot;id&quot;: 101
+}
+</code></pre>
+<p>El servidor recibió los datos, les asignó un <code>id</code> y los devolvió como confirmación.</p>
+<h3>Diferencias con GET</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headers</td>
+<td>Se envían automáticamente; en un GET básico no necesitas añadir ninguno tú (aunque puedes)</td>
+<td>Se envían automáticamente, pero debes añadir <code>Content-Type</code> tú mismo cuando envías un body</td>
+</tr>
+<tr>
+<td>Tienes body de petición</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Tienes body de respuesta</td>
+<td>Sí (los datos que pediste)</td>
+<td>Sí (confirmación de lo que creaste)</td>
+</tr>
+<tr>
+<td>Los datos van en la URL</td>
+<td>Sí (<code>?texto=hola</code>)</td>
+<td>No — van dentro del mensaje</td>
+</tr>
+</tbody>
+</table>
+<h3>El status code de un POST exitoso</h3>
+<p>Agrega <code>-i</code> al comando para ver los headers completos:</p>
+<pre><code class="language-bash">curl -i -X POST &quot;https://jsonplaceholder.typicode.com/posts&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;titulo&quot;: &quot;mi primer post&quot;, &quot;cuerpo&quot;: &quot;hola mundo&quot;, &quot;usuarioId&quot;: 1}'
+</code></pre>
+<pre><code>HTTP/2 201
+location: https://jsonplaceholder.typicode.com/posts/101
+cache-control: no-cache
+...
+</code></pre>
+<p>Tres cosas para notar:</p>
+<ol>
+<li><strong><code>201 Created</code></strong> — no es un <code>200</code>. El servidor te dice específicamente "lo creé". El <code>200</code> es "aquí tienes lo que pediste"; el <code>201</code> es "lo creé y aquí está".</li>
+<li><strong><code>location</code></strong> — aparece solo en respuestas de creación. El servidor te dice dónde vive el recurso que acabas de crear. En una API REST bien diseñada, un GET a esa URL siempre devuelve lo que creaste — ese es el contrato. Dos excepciones: si el recurso es privado necesitas autenticación (sin ella obtienes <code>401</code> o <code>403</code>), y hay APIs mal diseñadas donde el endpoint GET no está implementado aunque devuelvan <code>location</code>.</li>
+<li><strong><code>cache-control: no-cache</code></strong> — en un POST no hay nada que cachear. El servidor lo deja explícito con tres headers: <code>cache-control: no-cache</code>, <code>expires: -1</code> y <code>pragma: no-cache</code>.</li>
+</ol>
+<h2>2. El body de petición</h2>
+<p>El body de petición es lo que viaja dentro del mensaje cuando haces un POST. No aparece en la URL — va oculto adentro.</p>
+<p>El flag <code>-d</code> en curl es el body:</p>
+<h3>Por qué el header Content-Type es obligatorio</h3>
+<p>El servidor recibe el body como bytes. Sin el header <code>Content-Type</code> no sabe en qué formato vienen esos bytes — si es JSON, un formulario HTML, texto plano u otra cosa.</p>
+<p>Sin <code>Content-Type</code>:</p>
+<pre><code class="language-bash">curl -X POST &quot;https://jsonplaceholder.typicode.com/posts&quot; \
+  -d '{&quot;titulo&quot;: &quot;mi primer post&quot;, &quot;cuerpo&quot;: &quot;hola mundo&quot;, &quot;usuarioId&quot;: 1}'
+</code></pre>
+<p>Respuesta: <code>{}</code></p>
+<p>El body llegó igual — pero el servidor no pudo parsearlo y devolvió un objeto vacío. El <code>-H "Content-Type: application/json"</code> es lo que le dice "lo que te envío es JSON, trátalo como tal".</p>
+<h2>3. API de prueba vs API real</h2>
+<p>Después de hacer el POST, lo lógico es hacer un GET al recurso que "creamos":</p>
+<pre><code class="language-bash">curl &quot;https://jsonplaceholder.typicode.com/posts/101&quot;
+</code></pre>
+<p>Respuesta: <code>{}</code></p>
+<p>No encontró nada. JSONPlaceholder es una <strong>API falsa</strong>: simula el comportamiento de un POST real — devuelve <code>201</code>, asigna un id, incluye el header <code>location</code> — pero no guarda nada en ninguna base de datos. Existe para aprender el mecanismo de HTTP sin necesitar infraestructura real.</p>
+<p>En una API real el flujo sería:</p>
+<pre><code>1. POST /posts   → servidor guarda en base de datos → status 201 + id: 42
+2. GET /posts/42 → servidor busca en base de datos  → status 200 + datos del post 42
+</code></pre>
+<p>JSONPlaceholder tiene 100 posts pre-cargados (del 1 al 100). Cualquier GET a esos IDs funciona. Cualquier cosa "creada" con POST no persiste.</p>
+<h2>4. Por qué las APIs requieren autenticación</h2>
+<p><em>(pendiente)</em></p>
+<h2>5. Los métodos más comunes de autenticación</h2>
+<p><em>(pendiente)</em></p>
+<h2>6. POST autenticado desde curl</h2>
+<p><em>(pendiente)</em></p>
+<h2>7. POST autenticado desde Python</h2>
+<p><em>(pendiente)</em></p>
+<h2>Referencia oficial</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/POST">MDN — POST</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">MDN — Content-Type</a></li>
+<li><a href="https://jsonplaceholder.typicode.com">JSONPlaceholder</a></li>
+</ul></div>
     
     
     
