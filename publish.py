@@ -161,9 +161,14 @@ for meta in posts_a_publicar:
     datalayer_push = f"<script>\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({datalayer_json});\n</script>"
 
     # Rellenar template
+    canonical_url = f"https://www.angelgarciadatablog.com/{slug}/"
+    og_image = "https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png"
+
     html = template
     html = html.replace("{{datalayer_push}}", datalayer_push)
     html = html.replace("{{slug}}", slug)
+    html = html.replace("{{canonical_url}}", canonical_url)
+    html = html.replace("{{og_image}}", og_image)
     html = html.replace("{{titulo}}", meta.get("titulo", ""))
     html = html.replace("{{descripcion}}", meta.get("descripcion", "") or meta.get("titulo", ""))
     html = html.replace("{{categoria}}", meta.get("categoria", ""))
@@ -211,3 +216,17 @@ if POSTS_JSON.exists():
 indice.sort(key=lambda p: p["updated"], reverse=True)
 POSTS_JSON.write_text(json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8")
 print(f"✓ posts.json actualizado ({len(indice)} posts)")
+
+# ─── GENERAR sitemap.xml ──────────────────────────────────────────────────────
+BASE_URL = "https://www.angelgarciadatablog.com"
+urls = [f'  <url>\n    <loc>{BASE_URL}/</loc>\n  </url>']
+for p in indice:
+    urls.append(f'  <url>\n    <loc>{BASE_URL}/{p["slug"]}/</loc>\n    <lastmod>{p["updated"]}</lastmod>\n  </url>')
+
+sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
+sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+sitemap += "\n".join(urls) + "\n"
+sitemap += "</urlset>\n"
+
+(WEB_ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+print(f"✓ sitemap.xml actualizado ({len(indice) + 1} URLs)")

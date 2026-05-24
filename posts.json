@@ -38,25 +38,6 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
-    "slug": "api-github-extraer-datos-publicos-privados-postman",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-24",
-    "posts-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
-    "serie": "apis-para-analistas",
-    "series-relacionadas": "fundamentos-http",
-    "parte-anterior": "introduccion-apis-para-analistas",
-    "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
-  },
-  {
     "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
     "slug": "primeros-pasos-en-azure",
     "categoria": "azure",
@@ -74,6 +55,25 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
+  },
+  {
+    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
+    "slug": "api-github-extraer-datos-publicos-privados-postman",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-24",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "fundamentos-http",
+    "parte-anterior": "introduccion-apis-para-analistas",
+    "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
   },
   {
     "titulo": "Anatomía de una petición HTTP",
