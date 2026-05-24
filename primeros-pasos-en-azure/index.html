@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Primeros pasos en Azure: cuenta gratuita y usuario organizacional · Angel García</title>
+  <meta name="description" content="Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service." />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional", "categoria": "azure", "serie": "", "series_relacionadas": "", "slug": "primeros-pasos-en-azure", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">azure</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Primeros pasos en Azure: cuenta gratuita y usuario organizacional</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
+      <span class="post-updated">Actualizado: 2026-05-24</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. Qué es</h2>
+<p>La cuenta gratuita de Azure es el punto de entrada al ecosistema de Microsoft Cloud. No es solo una cuenta de prueba — al crearla se generan automáticamente dos cosas:</p>
+<ol>
+<li><strong>Una suscripción de Azure</strong> con créditos y servicios gratuitos</li>
+<li><strong>Un tenant de Microsoft Entra ID</strong> — tu "organización" en el ecosistema Microsoft, equivalente a un proyecto en GCP</li>
+</ol>
+<p>El tenant es lo más importante a largo plazo: es la identidad organizacional desde la que se gestionan usuarios, permisos y acceso a servicios como Microsoft Fabric, Power BI Service o Azure DevOps.</p>
+<h2>2. Qué incluye</h2>
+<table>
+<thead>
+<tr>
+<th>Beneficio</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crédito inicial</strong></td>
+<td>USD $200 para usar en los primeros 30 días</td>
+</tr>
+<tr>
+<td><strong>Servicios gratuitos 12 meses</strong></td>
+<td>Azure Blob Storage, Azure Functions, Container Instances, y más</td>
+</tr>
+<tr>
+<td><strong>Servicios siempre gratuitos</strong></td>
+<td>+65 servicios sin límite de tiempo (Azure Functions 1M ejecuciones/mes, etc.)</td>
+</tr>
+<tr>
+<td><strong>Entra ID Free</strong></td>
+<td>Tenant organizacional permanente para gestión de identidad</td>
+</tr>
+<tr>
+<td><strong>Protección de gasto</strong></td>
+<td>No se cobra automáticamente al vencer el crédito — requiere upgrade manual</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Requisitos para crearla</h2>
+<ul>
+<li>Cuenta Microsoft personal (Outlook, Hotmail) o cuenta de trabajo/escuela</li>
+<li>Tarjeta de crédito (solo verificación de identidad — no se cobra)</li>
+<li>Número de teléfono</li>
+<li>Autenticación multifactor (MFA) — obligatorio, se configura durante el registro</li>
+</ul>
+<h2>4. Proceso de creación</h2>
+<ol>
+<li>Ir a <code>azure.microsoft.com/free</code></li>
+<li>Hacer clic en "Start free"</li>
+<li>Iniciar sesión con cuenta Microsoft (Outlook funciona)</li>
+<li>Ingresar datos personales y de tarjeta</li>
+<li>Configurar MFA — recomendado con la app Microsoft Authenticator en iPhone</li>
+<li>Al terminar: llega directo al Azure Portal</li>
+</ol>
+<p>El proceso toma entre 3 y 5 minutos.</p>
+<h2>5. El tenant de Entra ID</h2>
+<p>Al crear la cuenta, Azure genera automáticamente un tenant con dominio:</p>
+<pre><code>&lt;nombre-derivado-de-tu-cuenta&gt;.onmicrosoft.com
+</code></pre>
+<p>El nombre del dominio no se elige durante el registro — Azure lo construye a partir del email o nombre usados al crear la cuenta. No es editable después sin verificar un dominio propio.</p>
+<p>Microsoft Entra ID es el directorio de identidades de toda la organización en Microsoft — gestiona usuarios, grupos, aplicaciones, dispositivos y permisos sobre todos los servicios de Azure. Es el equivalente a IAM en GCP, pero más central porque también administra las identidades en sí.</p>
+<h3>La distinción más importante en el ecosistema Microsoft</h3>
+<p>Existen tres conceptos completamente distintos:</p>
+<ul>
+<li><code>angelgarciadatablog@outlook.com</code> — cuenta personal Microsoft (consumidor)</li>
+<li><code>angelgarciadatablogoutlook.onmicrosoft.com</code> — tenant (la "organización", no es un usuario)</li>
+<li><code>angeldev@angelgarciadatablogoutlook.onmicrosoft.com</code> — usuario creado dentro del tenant (no existe por defecto, hay que crearlo manualmente — lo haremos en la sección siguiente)</li>
+</ul>
+<p>El tenant es el contenedor — la "empresa" en el ecosistema Microsoft. No es un correo ni una cuenta con la que puedas iniciar sesión. Para interactuar con servicios como Fabric o Power BI Service, hay que crear usuarios dentro del tenant. Esos usuarios sí son cuentas con las que se puede iniciar sesión.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Cuenta personal (Outlook/Hotmail)</th>
+<th>Tenant (Entra ID)</th>
+<th>Usuario del tenant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué es</strong></td>
+<td>Cuenta de consumidor</td>
+<td>Contenedor organizacional</td>
+<td>Cuenta usuario</td>
+</tr>
+<tr>
+<td><strong>Ejemplo</strong></td>
+<td><code>angel@outlook.com</code></td>
+<td><code>miorg.onmicrosoft.com</code></td>
+<td><code>angeldev@miorg.onmicrosoft.com</code></td>
+</tr>
+<tr>
+<td><strong>Se puede iniciar sesión con esto</strong></td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Fabric / Power BI Service</strong></td>
+<td>✗</td>
+<td>—</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Quién lo crea</strong></td>
+<td>Tú en outlook.com</td>
+<td>Azure automáticamente</td>
+<td>El admin en Entra ID</td>
+</tr>
+</tbody>
+</table>
+<p>La cuenta de Outlook personal queda como <strong>administrador externo</strong> del tenant, pero no es un usuario organizacional dentro de él. Para acceder a servicios empresariales de Microsoft (Fabric, Power BI Service, Azure DevOps, entre otros), hay que crear un usuario organizacional dentro del tenant desde el Azure Portal → Microsoft Entra ID → Usuarios → Nuevo usuario → Crear usuario.</p>
+<h2>6. ¿Y ahora qué?</h2>
+<p>Con Azure Free Account, un tenant de Entra ID y un usuario organizacional creado, tienes la base completa para moverse en el ecosistema Microsoft. Las posibilidades se dividen según lo que quieras explorar:</p>
+<table>
+<thead>
+<tr>
+<th>Si quieres...</th>
+<th>Por dónde ir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analizar datos, hacer pipelines y reportes</td>
+<td>Microsoft Fabric (<code>app.fabric.microsoft.com</code>)</td>
+</tr>
+<tr>
+<td>Desplegar una API o app en containers</td>
+<td>Azure Container Apps</td>
+</tr>
+<tr>
+<td>Automatizar tareas con código Python</td>
+<td>Azure Functions</td>
+</tr>
+<tr>
+<td>Explorar IA generativa con API</td>
+<td>Azure OpenAI</td>
+</tr>
+<tr>
+<td>Practicar SQL en la nube</td>
+<td>Fabric Warehouse o Azure SQL Database</td>
+</tr>
+<tr>
+<td>Entender el ecosistema completo primero</td>
+<td>Ver tema: mapa-de-azure</td>
+</tr>
+</tbody>
+</table>
+<p>No hay un único camino — depende del proyecto que tengas en mente. El tenant y el usuario organizacional son la llave que abre cualquiera de estas puertas.</p>
+<h2>7. Costos y protección contra cobros inesperados</h2>
+<h3>La tarjeta no es una trampa</h3>
+<p>Al crear la cuenta se ingresa una tarjeta de crédito, pero <strong>solo es para verificación de identidad</strong>. Azure tiene "Protección de gasto" — cuando el crédito de $200 se agota o vencen los 30 días, Azure no cobra automáticamente. Simplemente restringe el acceso a servicios de pago. Para que haya cobros reales hay que ir activamente al portal y hacer upgrade a "Pay-As-You-Go".</p>
+<h3>Las tres capas de gratuidad</h3>
+<p><strong>1. Siempre gratis — sin fecha de expiración</strong></p>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Límite gratuito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure Functions</td>
+<td>1 millón de ejecuciones/mes</td>
+</tr>
+<tr>
+<td>Azure SQL Database</td>
+<td>Tier básico con límite de uso</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID</td>
+<td>Completamente gratis siempre</td>
+</tr>
+<tr>
+<td>Microsoft Fabric free</td>
+<td>Capa propia, independiente de los $200 de Azure</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Gratis por 12 meses — luego cobra</strong></p>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Límite gratuito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure Virtual Machines</td>
+<td>750 horas/mes (VM más pequeña)</td>
+</tr>
+<tr>
+<td>Azure Blob Storage</td>
+<td>5 GB</td>
+</tr>
+<tr>
+<td>Azure SQL Database</td>
+<td>Nivel S0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Crédito de $200 — válido 30 días</strong></p>
+<p>Para probar servicios que cobran desde el primer uso: Azure OpenAI, VMs grandes, servicios de IA, etc. Una vez agotado o vencido, sin upgrade no hay cobros.</p>
+<h3>Si no haces nada, no hay cobros</h3>
+<p>Explorar el portal, crear usuarios en Entra ID, navegar Fabric free — todo esto genera $0. Los cobros solo aparecen cuando se consumen recursos de cómputo o almacenamiento más allá del free tier.</p>
+<h3>Qué SÍ puede generar costos al avanzar</h3>
+<ul>
+<li><strong>Azure OpenAI</strong> — cobra por tokens desde el primer uso (usa el crédito de $200)</li>
+<li><strong>Azure Data Lake Storage</strong> — gratis los primeros 5 GB / 12 meses, luego ~$0.018/GB/mes</li>
+<li><strong>VMs corriendo 24/7</strong> — las 750 horas gratuitas se agotan en un mes si la VM no se apaga</li>
+<li><strong>Data transfer saliente</strong> — 15 GB gratis/mes, luego cobra</li>
+</ul>
+<h2>8. Gotchas</h2>
+<ul>
+<li><strong>Los servicios empresariales de Microsoft rechazan cuentas personales de Outlook</strong> — aunque la cuenta Outlook sea la que creó el Azure account, servicios como Fabric, Power BI Service o Azure DevOps no la aceptan directamente. Se necesita el usuario organizacional del tenant.</li>
+<li><strong>El dominio <code>.onmicrosoft.com</code> no se elige</strong> — Azure lo genera automáticamente. No es editable sin verificar un dominio propio.</li>
+<li><strong>El crédito de $200 es independiente del trial de Fabric</strong> — Microsoft Fabric tiene su propio free trial de 60 días. No consumes el crédito de Azure al activar Fabric.</li>
+<li><strong>MFA obligatorio desde el inicio</strong> — no es opcional. Si no lo configuras no puedes completar el registro.</li>
+</ul>
+<h2>9. Referencia oficial</h2>
+<ul>
+<li><a href="https://azure.microsoft.com/free">Azure Free Account</a></li>
+<li><a href="https://azure.microsoft.com/pricing/free-services">Servicios siempre gratuitos</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/microsoft-entra-id-free">Microsoft Entra ID Free</a></li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'primeros-pasos-en-azure';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

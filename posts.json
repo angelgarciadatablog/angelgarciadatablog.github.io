@@ -57,6 +57,25 @@
     "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
   },
   {
+    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
+    "slug": "primeros-pasos-en-azure",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-05-24",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Anatomía de una petición HTTP",
     "slug": "anatomia-de-una-peticion-http",
     "categoria": "apis",
