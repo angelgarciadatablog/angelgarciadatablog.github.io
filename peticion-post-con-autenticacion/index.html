@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API", "categoria": "apis", "subcategoria": "fundamentos-http", "slug": "peticion-post-con-autenticacion", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
+window.dataLayer.push({"titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API", "categoria": "apis", "serie": "fundamentos-http", "series_relacionadas": "apis-para-analistas", "slug": "peticion-post-con-autenticacion", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Tu primera palmadita POST: cómo enviar datos y autenticarte en una API</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
-      <span class="post-updated">Actualizado: 2026-05-23</span>
+      <span class="post-updated">Actualizado: 2026-05-24</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -193,14 +193,52 @@ cache-control: no-cache
 2. GET /posts/42 → servidor busca en base de datos  → status 200 + datos del post 42
 </code></pre>
 <p>JSONPlaceholder tiene 100 posts pre-cargados (del 1 al 100). Cualquier GET a esos IDs funciona. Cualquier cosa "creada" con POST no persiste.</p>
-<h2>4. Por qué las APIs requieren autenticación</h2>
-<p><em>(pendiente)</em></p>
-<h2>5. Los métodos más comunes de autenticación</h2>
-<p><em>(pendiente)</em></p>
-<h2>6. POST autenticado desde curl</h2>
-<p><em>(pendiente)</em></p>
-<h2>7. POST autenticado desde Python</h2>
-<p><em>(pendiente)</em></p>
+<h2>4. Peticiones con y sin autenticación (GET/POST/DELETE/PUT)</h2>
+<p>Hasta aquí trabajamos exclusivamente con POST, pero la autenticación no es exclusiva de ningún método — un GET, un DELETE, un PUT también pueden requerirla. A partir de esta sección ya no hablamos solo de POST: hablamos de cómo cualquier petición HTTP cambia cuando una API requiere que te identifiques.</p>
+<p>La diferencia es concreta: un header adicional.</p>
+<p>Sin autenticación — lo que hiciste en las secciones anteriores:</p>
+<pre><code class="language-bash">curl -X POST &quot;https://jsonplaceholder.typicode.com/posts&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;titulo&quot;: &quot;mi primer post&quot;}'
+</code></pre>
+<p>Con autenticación:</p>
+<pre><code class="language-bash">curl -X POST &quot;https://api.ejemplo.com/posts&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Authorization: Bearer eyJhbGci...&quot; \
+  -d '{&quot;titulo&quot;: &quot;mi primer post&quot;}'
+</code></pre>
+<p>El body, el método y el Content-Type son idénticos. Lo único que cambia es el header <code>Authorization</code>. Sin él, el servidor responde <code>401 Unauthorized</code> y no procesa nada. Con él, te identifica y ejecuta la petición igual que antes.</p>
+<h3>4.1 Por qué las APIs requieren ese header de authorization</h3>
+<p>Cuando hiciste el POST a JSONPlaceholder, cualquier persona en el mundo puede hacer exactamente lo mismo — no hay nada que los detenga. Eso funciona para una API de prueba, pero en una API real el servidor necesita responder dos preguntas antes de procesar cualquier petición:</p>
+<ol>
+<li><strong>¿Quién eres?</strong> — identidad</li>
+<li><strong>¿Qué puedes hacer?</strong> — permisos</li>
+</ol>
+<p>Sin esa respuesta, no puede distinguir entre tú y cualquier otra persona que conozca la URL.</p>
+<p>Una analogía: una API sin autenticación es como un edificio sin recepción — cualquiera entra a cualquier piso. La autenticación es la recepción que te pide el nombre y te da solo las llaves que te corresponden.</p>
+<h3>4.2 Cómo funciona la API key</h3>
+<p>El concepto es uno: una credencial estática que generas desde el panel del servicio, la copias y la incluyes en cada petición. No expira automáticamente y no requiere ningún proceso de login programático.</p>
+<p>Lo que varía entre APIs es el header que usan para recibirla. Los tres formatos más comunes:</p>
+<p><strong><code>Authorization: Bearer &lt;credencial&gt;</code></strong> — el más extendido. Lo usan GitHub (Personal Access Token), Notion (Integration Token) y OpenAI (API key). Aunque cada servicio tiene su propio nombre para la credencial, todas viajan en el mismo header.</p>
+<pre><code class="language-bash">curl -X GET &quot;https://api.ejemplo.com/datos&quot; \
+  -H &quot;Authorization: Bearer mi-credencial&quot;
+</code></pre>
+<p><strong><code>x-api-key: &lt;clave&gt;</code></strong> — formato alternativo que usan servicios como AWS API Gateway. También puede viajar como query param (<code>?api_key=&lt;clave&gt;</code>), lo que lo hace fácil de probar en el navegador pero menos seguro: la clave queda visible en los logs del servidor y en el historial.</p>
+<pre><code class="language-bash">curl -X GET &quot;https://api.ejemplo.com/datos&quot; \
+  -H &quot;x-api-key: mi-clave&quot;
+</code></pre>
+<p><strong>Header propio del servicio</strong> — algunos servicios definen su propio header. Shopify, por ejemplo, usa <code>X-Shopify-Access-Token</code>.</p>
+<pre><code class="language-bash">curl -X GET &quot;https://tu-tienda.myshopify.com/admin/api/2024-01/products.json&quot; \
+  -H &quot;X-Shopify-Access-Token: mi-token&quot;
+</code></pre>
+<p>La regla práctica: antes de hacer tu primera petición, ve a la sección de autenticación de la documentación del servicio. Ahí te dirá exactamente qué header usar y cómo generar la credencial.</p>
+<h4>Características comunes</h4>
+<ol>
+<li><strong>Son estáticos</strong> — no expiran automáticamente. Viven hasta que los revoques desde el panel.</li>
+<li><strong>No hay login programático</strong> — los tienes listos antes de hacer cualquier petición.</li>
+<li><strong>Son independientes del método HTTP</strong> — funcionan igual en un GET, POST, DELETE o cualquier otro.</li>
+</ol>
+<p>Existe un patrón diferente donde la credencial se obtiene programáticamente a través de un flujo de autenticación — es la base de OAuth. Lo cubriremos en un post separado.</p>
 <h2>Referencia oficial</h2>
 <ul>
 <li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/POST">MDN — POST</a></li>
@@ -211,7 +249,9 @@ cache-control: no-cache
     
     
 <div class="post-navegacion-serie">
+  <div class="serie-label">fundamentos-http</div>
   <a class="nav-anterior" href="/anatomia-de-una-peticion-http"><span class="nav-label">Anterior en la serie</span><span class="nav-titulo">← Anatomía de una petición HTTP</span></a>
+  <a class="serie-relacionada" href="/introduccion-apis-para-analistas">También: serie <strong>apis-para-analistas</strong></a>
 </div>
   </article>
 

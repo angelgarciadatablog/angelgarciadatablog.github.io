@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman", "categoria": "apis", "subcategoria": "", "slug": "api-github-extraer-datos-publicos-privados-postman", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-15", "video_youtube": ""});
+window.dataLayer.push({"titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman", "categoria": "apis", "serie": "apis-para-analistas", "series_relacionadas": "fundamentos-http", "slug": "api-github-extraer-datos-publicos-privados-postman", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-15", "video_youtube": ""});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">API de GitHub: cómo extraer datos públicos y privados con Postman</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
-      <span class="post-updated">Actualizado: 2026-05-15</span>
+      <span class="post-updated">Actualizado: 2026-05-24</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -324,28 +324,7 @@ https://api.github.com/user                    → tu propio perfil (autenticado
 <p>Lo que hace Postman internamente es agregar este header a la petición:</p>
 <pre><code>Authorization: Bearer &lt;tu_token&gt;
 </code></pre>
-<h3>5.4 Bearer Token vs OAuth — cuándo usar cada uno con GitHub</h3>
-<p>GitHub soporta ambos mecanismos. La diferencia es quién autoriza y para quién:</p>
-<table>
-<thead>
-<tr>
-<th>Escenario</th>
-<th>Mecanismo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Escribes un script para analizar <strong>tus propios</strong> repos</td>
-<td>Personal Access Token (Bearer Token)</td>
-</tr>
-<tr>
-<td>Construyes una app que otros usuarios conectan con <strong>su propia</strong> cuenta de GitHub</td>
-<td>OAuth</td>
-</tr>
-</tbody>
-</table>
-<p>El Personal Access Token es más simple: lo generas tú, lo usas tú. OAuth entra cuando necesitas que otra persona autorice el acceso a su cuenta — el flujo requiere que esa persona haga login en GitHub y apruebe los permisos.</p>
-<p>Para extraer datos propios como analista: siempre Personal Access Token.</p>
+<p><strong>Una aclaración sobre el nombre</strong>: el Personal Access Token de GitHub es un <strong>Bearer Token estático</strong> — usa el header <code>Authorization: Bearer</code> y se genera manualmente desde la web, sin POST de login. Postman llama al campo "Bearer Token" porque ese es el formato del header. Lo que lo distingue de un Bearer Token dinámico es que es estático: no expira automáticamente y no hay que renovarlo con ninguna petición programática.</p>
 <h3>5.5 Perfil autenticado vs público</h3>
 <ul>
 <li><strong>Método</strong>: <code>GET</code></li>
@@ -481,7 +460,7 @@ El script carga los datos en una base de datos. Power BI se conecta a la base de
 </blockquote>
 <hr />
 <h2>7. Mi conclusión</h2>
-<p>La API de GitHub es REST, devuelve JSON y usa Bearer Token — tres conceptos que se repiten en la mayoría de APIs modernas. Lo específico de GitHub son sus endpoints y sus scopes.</p>
+<p>La API de GitHub es REST, devuelve JSON y usa Personal Access Token (un Bearer Token estático) para autenticación — tres conceptos que se repiten en la mayoría de APIs modernas. Lo específico de GitHub son sus endpoints y sus scopes.</p>
 <p>El flujo que cubre este post — explorar en Postman, autenticarse con token, extraer con Python, exportar a Excel — es el mismo que aplica para cualquier otra API. Lo que cambia entre una API y otra es dónde generas el token, qué scopes existen y cómo están organizados los endpoints. La estructura de fondo es siempre la misma.</p>
 <p>En este post solo usamos los endpoints de usuarios y repositorios. GitHub tiene muchos más — issues, pull requests, commits, organizaciones, entre otros — pero eso lo exploraremos cuando profundicemos más en GitHub.</p>
 <h2>8. Recursos</h2>
@@ -499,6 +478,12 @@ El script carga los datos en una base de datos. Power BI se conecta a la base de
     
     
     
+<div class="post-navegacion-serie">
+  <div class="serie-label">apis-para-analistas</div>
+  <a class="nav-anterior" href="/introduccion-apis-para-analistas"><span class="nav-label">Anterior en la serie</span><span class="nav-titulo">← Introducción a APIs para analistas de datos</span></a>
+  <a class="nav-siguiente" href="/api-notion-extraer-paginas-tablas-postman"><span class="nav-label">Siguiente en la serie</span><span class="nav-titulo">API de Notion: cómo leer páginas y tablas con Postman →</span></a>
+  <a class="serie-relacionada" href="/anatomia-de-una-peticion-http">También: serie <strong>fundamentos-http</strong></a>
+</div>
   </article>
 
   <!-- TOC DERECHO -->

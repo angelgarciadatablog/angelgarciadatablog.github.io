@@ -1,21 +1,22 @@
 [
   {
-    "titulo": "Anatomía de una petición HTTP",
-    "slug": "anatomia-de-una-peticion-http",
+    "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
+    "slug": "api-notion-extraer-paginas-tablas-postman",
     "categoria": "apis",
     "tags": [
       "datablog",
       "apis"
     ],
-    "updated": "2026-05-23",
-    "temas-relacionados": [],
+    "updated": "2026-05-24",
+    "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
-    "subcategoria": "fundamentos-http",
-    "parte-anterior": "",
-    "parte-siguiente": "peticion-post-con-autenticacion"
+    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "fundamentos-http",
+    "parte-anterior": "api-github-extraer-datos-publicos-privados-postman",
+    "parte-siguiente": ""
   },
   {
     "titulo": "Tu primera palmadita POST: cómo enviar datos y autenticarte en una API",
@@ -25,15 +26,54 @@
       "datablog",
       "apis"
     ],
-    "updated": "2026-05-23",
-    "temas-relacionados": [],
+    "updated": "2026-05-24",
+    "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo hacer tu primer POST, qué es el body de petición, por qué Content-Type es obligatorio, y la diferencia entre una API de prueba y una API real.",
-    "subcategoria": "fundamentos-http",
+    "serie": "fundamentos-http",
+    "series-relacionadas": "apis-para-analistas",
     "parte-anterior": "anatomia-de-una-peticion-http",
     "parte-siguiente": ""
+  },
+  {
+    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
+    "slug": "api-github-extraer-datos-publicos-privados-postman",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-24",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "fundamentos-http",
+    "parte-anterior": "introduccion-apis-para-analistas",
+    "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
+  },
+  {
+    "titulo": "Anatomía de una petición HTTP",
+    "slug": "anatomia-de-una-peticion-http",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-23",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
+    "serie": "fundamentos-http",
+    "series-relacionadas": "apis-para-analistas",
+    "parte-anterior": "",
+    "parte-siguiente": "peticion-post-con-autenticacion"
   },
   {
     "titulo": "Google Tag Manager — Fundamentos",
@@ -44,15 +84,15 @@
       "google-analytics"
     ],
     "updated": "2026-05-23",
-    "temas-relacionados": [
-      "configurar-gtm-en-github-pages",
+    "posts-relacionados": [
       "anatomia-de-una-peticion-http"
     ],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría.",
-    "subcategoria": "",
+    "serie": "",
+    "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
   },
@@ -65,17 +105,15 @@
       "apis"
     ],
     "updated": "2026-05-20",
-    "temas-relacionados": [
-      "api-github-extraer-datos-publicos-privados-postman",
-      "api-notion-extraer-paginas-tablas-postman"
-    ],
+    "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman.",
-    "subcategoria": "",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "fundamentos-http",
     "parte-anterior": "",
-    "parte-siguiente": ""
+    "parte-siguiente": "api-github-extraer-datos-publicos-privados-postman"
   },
   {
     "titulo": "Cómo llevar un script Python a Cloud Run",
@@ -86,51 +124,13 @@
       "google-cloud"
     ],
     "updated": "2026-05-17",
-    "temas-relacionados": [],
+    "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac",
     "repositorio": "~/scripts-datablog/google-cloud/script-python-a-cloud-run",
     "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales.",
-    "subcategoria": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
-    "slug": "api-notion-extraer-paginas-tablas-postman",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-16",
-    "temas-relacionados": [
-      "api-github-extraer-datos-publicos-privados-postman",
-      "introduccion-apis-para-analistas"
-    ],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",
-    "subcategoria": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
-    "slug": "api-github-extraer-datos-publicos-privados-postman",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-15",
-    "temas-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
-    "subcategoria": "",
+    "serie": "",
+    "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
   },
@@ -143,12 +143,13 @@
       "sql"
     ],
     "updated": "2026-05-14",
-    "temas-relacionados": [],
+    "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos.",
-    "subcategoria": "",
+    "serie": "",
+    "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
   }

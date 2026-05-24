@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Introducción a APIs para analistas de datos", "categoria": "apis", "subcategoria": "", "slug": "introduccion-apis-para-analistas", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-16", "video_youtube": ""});
+window.dataLayer.push({"titulo": "Introducción a APIs para analistas de datos", "categoria": "apis", "serie": "apis-para-analistas", "series_relacionadas": "fundamentos-http", "slug": "introduccion-apis-para-analistas", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-16", "video_youtube": ""});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -207,14 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3>6.2. Cuerpo de la respuesta</h3>
 <p>Los datos en sí. Casi siempre en formato JSON — un diccionario de clave-valor. Algunas APIs devuelven XML (más antiguo) o CSV.</p>
 <hr />
-<h2>7. Ejemplos de peticiones reales</h2>
-<p>Los conceptos de este tema se aplican en práctica en los siguientes posts:</p>
-<ol>
-<li><strong>API de GitHub con Postman</strong> — endpoints públicos y privados, autenticación con Bearer Token, rate limiting, extracción a Excel con Python. → <a href="https://www.angelgarciadatablog.com/api-github-extraer-datos-publicos-privados-postman">Ver post publicado</a></li>
-<li><strong>API de Notion con Postman</strong> — cómo leer páginas y tablas, autenticación con Integration Token, estructura de bloques y propiedades. → <a href="https://www.angelgarciadatablog.com/api-notion-extraer-paginas-tablas-postman">Ver post publicado</a></li>
-</ol>
-<hr />
-<h2>8. Gotchas</h2>
+<h2>7. Gotchas</h2>
 <ul>
 <li><strong>Nunca compartir credenciales en el código</strong>: API Keys y tokens van en variables de entorno o archivos <code>.env</code> no versionados. Una credencial en un repo público es una brecha inmediata.</li>
 <li><strong>OAuth protege contra interceptación de credenciales, no contra acceso físico al dispositivo</strong>: si alguien tiene tu ordenador desbloqueado puede usar las sesiones activas. Son capas de seguridad distintas — OAuth resuelve una, el bloqueo de pantalla resuelve la otra.</li>
@@ -222,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>OAuth requiere que ambas partes estén registradas en la misma plataforma</strong>: si la plataforma no conoce tu app (<code>client_id</code>), el flujo no puede completarse.</li>
 </ul>
 <hr />
-<h2>9. Referencia oficial</h2>
+<h2>8. Referencia oficial</h2>
 <ul>
 <li><a href="https://oauth.net/2/">OAuth 2.0 — RFC oficial</a></li>
 <li><a href="https://developers.google.com/identity/protocols/oauth2">Google Identity — OAuth 2.0</a></li>
@@ -230,15 +223,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul></div>
     
     
-<div class="post-relacionados">
-  <div class="post-relacionados-titulo">Posts relacionados</div>
-  <div class="relacionados-lista">
-    <a class="relacionado-item" href="/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a>
-<a class="relacionado-item" href="/api-notion-extraer-paginas-tablas-postman">API de Notion: cómo leer páginas y tablas con Postman</a>
-
-  </div>
-</div>
     
+<div class="post-navegacion-serie">
+  <div class="serie-label">apis-para-analistas</div>
+  <a class="nav-siguiente" href="/api-github-extraer-datos-publicos-privados-postman"><span class="nav-label">Siguiente en la serie</span><span class="nav-titulo">API de GitHub: cómo extraer datos públicos y privados con Postman →</span></a>
+  <a class="serie-relacionada" href="/anatomia-de-una-peticion-http">También: serie <strong>fundamentos-http</strong></a>
+</div>
   </article>
 
   <!-- TOC DERECHO -->

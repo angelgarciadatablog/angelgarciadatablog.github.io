@@ -106,8 +106,8 @@ for meta in posts_a_publicar:
     else:
         video_html = ""
 
-    # Temas relacionados
-    relacionados_raw = meta.get("temas-relacionados") or []
+    # Posts relacionados
+    relacionados_raw = meta.get("posts-relacionados") or []
     if relacionados_raw:
         items = ""
         for s in relacionados_raw:
@@ -129,16 +129,27 @@ for meta in posts_a_publicar:
     so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
 
     # Navegación de serie
-    parte_anterior = meta.get("parte-anterior", "")
-    parte_siguiente = meta.get("parte-siguiente", "")
-    if parte_anterior or parte_siguiente:
+    serie = meta.get("serie", "") or ""
+    parte_anterior = meta.get("parte-anterior", "") or ""
+    parte_siguiente = meta.get("parte-siguiente", "") or ""
+    series_relacionadas = meta.get("series-relacionadas", "") or ""
+    if serie or parte_anterior or parte_siguiente or series_relacionadas:
         nav_items = ""
+        if serie:
+            nav_items += f'  <div class="serie-label">{serie}</div>\n'
         if parte_anterior:
             titulo_anterior = slug_a_titulo.get(parte_anterior, parte_anterior)
             nav_items += f'  <a class="nav-anterior" href="/{parte_anterior}"><span class="nav-label">Anterior en la serie</span><span class="nav-titulo">← {titulo_anterior}</span></a>\n'
         if parte_siguiente:
             titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
             nav_items += f'  <a class="nav-siguiente" href="/{parte_siguiente}"><span class="nav-label">Siguiente en la serie</span><span class="nav-titulo">{titulo_siguiente} →</span></a>\n'
+        if series_relacionadas:
+            primer_post_rel = next(
+                (p for p in todos_los_posts if p.get("serie") == series_relacionadas and not p.get("parte-anterior")),
+                None
+            )
+            href_rel = f'/{primer_post_rel["slug"]}' if primer_post_rel else "#"
+            nav_items += f'  <a class="serie-relacionada" href="{href_rel}">También: serie <strong>{series_relacionadas}</strong></a>\n'
         navegacion_serie_html = f'\n<div class="post-navegacion-serie">\n{nav_items}</div>'
     else:
         navegacion_serie_html = ""
@@ -147,7 +158,8 @@ for meta in posts_a_publicar:
     datalayer_data = {
         "titulo": meta.get("titulo", ""),
         "categoria": meta.get("categoria", ""),
-        "subcategoria": meta.get("subcategoria", "") or "",
+        "serie": serie,
+        "series_relacionadas": series_relacionadas,
         "slug": slug,
         "sistema_operativo": meta.get("sistema-operativo", ""),
         "fecha_publicacion": str(meta.get("created", "")),
@@ -168,7 +180,7 @@ for meta in posts_a_publicar:
     html = html.replace("{{sistema_operativo}}", so_html)
     html = html.replace("{{contenido}}", contenido_html)
     html = html.replace("{{video_youtube}}", video_html)
-    html = html.replace("{{temas_relacionados}}", relacionados_html)
+    html = html.replace("{{posts_relacionados}}", relacionados_html)
     html = html.replace("{{navegacion_serie}}", navegacion_serie_html)
 
     # Escribir archivo
@@ -184,14 +196,15 @@ for meta in posts_a_publicar:
         "categoria": meta.get("categoria", ""),
         "tags": tags_raw,
         "updated": str(meta.get("updated", "")),
-        "temas-relacionados": relacionados_raw,
+        "posts-relacionados": relacionados_raw,
         "video-youtube": video_url or "",
         "sistema-operativo": meta.get("sistema-operativo", ""),
         "repositorio": meta.get("repositorio", "") or "",
         "descripcion": meta.get("descripcion", "") or "",
-        "subcategoria": meta.get("subcategoria", "") or "",
-        "parte-anterior": meta.get("parte-anterior", "") or "",
-        "parte-siguiente": meta.get("parte-siguiente", "") or "",
+        "serie": serie,
+        "series-relacionadas": series_relacionadas,
+        "parte-anterior": parte_anterior,
+        "parte-siguiente": parte_siguiente,
     })
 
 # ─── ACTUALIZAR posts.json ────────────────────────────────────────────────────
