@@ -128,31 +128,23 @@ for meta in posts_a_publicar:
     so_labels = {"mac": "Mac", "windows": "Windows", "mac-windows": "Mac & Windows"}
     so_html = f'<span class="post-so">{so_labels.get(so, so)}</span>' if so else ""
 
-    # Navegación de serie
+    # Navegación prev/next
     serie = meta.get("serie", "") or ""
     parte_anterior = meta.get("parte-anterior", "") or ""
     parte_siguiente = meta.get("parte-siguiente", "") or ""
     series_relacionadas = meta.get("series-relacionadas", "") or ""
-    if serie or parte_anterior or parte_siguiente or series_relacionadas:
-        nav_items = ""
-        if serie:
-            nav_items += f'  <div class="serie-label">{serie}</div>\n'
-        if parte_anterior:
-            titulo_anterior = slug_a_titulo.get(parte_anterior, parte_anterior)
-            nav_items += f'  <a class="nav-anterior" href="/{parte_anterior}"><span class="nav-label">Anterior en la serie</span><span class="nav-titulo">← {titulo_anterior}</span></a>\n'
-        if parte_siguiente:
-            titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
-            nav_items += f'  <a class="nav-siguiente" href="/{parte_siguiente}"><span class="nav-label">Siguiente en la serie</span><span class="nav-titulo">{titulo_siguiente} →</span></a>\n'
-        if series_relacionadas:
-            primer_post_rel = next(
-                (p for p in todos_los_posts if p.get("serie") == series_relacionadas and not p.get("parte-anterior")),
-                None
-            )
-            href_rel = f'/{primer_post_rel["slug"]}' if primer_post_rel else "#"
-            nav_items += f'  <a class="serie-relacionada" href="{href_rel}">También: serie <strong>{series_relacionadas}</strong></a>\n'
-        navegacion_serie_html = f'\n<div class="post-navegacion-serie">\n{nav_items}</div>'
+
+    if parte_anterior:
+        titulo_anterior = slug_a_titulo.get(parte_anterior, parte_anterior)
+        nav_anterior_html = f'<a class="nav-anterior" href="/{parte_anterior}"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">{titulo_anterior}</span></a>'
     else:
-        navegacion_serie_html = ""
+        nav_anterior_html = ""
+
+    if parte_siguiente:
+        titulo_siguiente = slug_a_titulo.get(parte_siguiente, parte_siguiente)
+        nav_siguiente_html = f'<a class="nav-siguiente" href="/{parte_siguiente}"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">{titulo_siguiente}</span></a>'
+    else:
+        nav_siguiente_html = ""
 
     # DataLayer push — metadatos del post para GTM
     datalayer_data = {
@@ -181,7 +173,8 @@ for meta in posts_a_publicar:
     html = html.replace("{{contenido}}", contenido_html)
     html = html.replace("{{video_youtube}}", video_html)
     html = html.replace("{{posts_relacionados}}", relacionados_html)
-    html = html.replace("{{navegacion_serie}}", navegacion_serie_html)
+    html = html.replace("{{nav_anterior}}", nav_anterior_html)
+    html = html.replace("{{nav_siguiente}}", nav_siguiente_html)
 
     # Escribir archivo
     output_dir = WEB_ROOT / slug
