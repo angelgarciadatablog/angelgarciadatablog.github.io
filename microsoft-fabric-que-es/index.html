@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Fabric — qué es y cómo se organiza · Angel García</title>
+  <meta name="description" content="Qué es Microsoft Fabric, cómo acceder, qué tipos de licencia existen, cómo está organizado y por qué es la apuesta de Microsoft para unificar toda la plataforma de datos." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/microsoft-fabric-que-es/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Microsoft Fabric — qué es y cómo se organiza" />
+  <meta property="og:description" content="Qué es Microsoft Fabric, cómo acceder, qué tipos de licencia existen, cómo está organizado y por qué es la apuesta de Microsoft para unificar toda la plataforma de datos." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/microsoft-fabric-que-es/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Microsoft Fabric — qué es y cómo se organiza", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "microsoft-fabric-que-es", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">azure</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Microsoft Fabric — qué es y cómo se organiza</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
+      <span class="post-updated">Actualizado: 2026-05-25</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. Qué es</h2>
+<p>Microsoft Fabric es una plataforma unificada de datos y analytics lanzada en 2023. La idea central es simple: en lugar de conectar múltiples servicios de Azure por separado (un data lake aquí, un warehouse allá, notebooks en otro lado, visualización en otro), Fabric los integra todos en una sola interfaz con un solo modelo de storage compartido.</p>
+<p>Es la apuesta de Microsoft por competir directamente con lo que Google está haciendo con BigQuery + Looker + Vertex AI integrados.</p>
+<h2>2. El problema que resuelve</h2>
+<p>Antes de Fabric, construir un pipeline de datos en Azure se veía así:</p>
+<pre><code>ADLS Gen2 (storage)
+  → Azure Data Factory (ETL)
+    → Azure Synapse Analytics (SQL)
+      → Power BI (visualización)
+</code></pre>
+<p>Cada servicio con su propia configuración, sus propias credenciales, su propio modelo de costos y su propia interfaz. Mover datos entre ellos requería configuración explícita.</p>
+<p>Con Fabric:</p>
+<pre><code>OneLake (storage unificado)
+  ← todos los workloads leen y escriben aquí directamente
+</code></pre>
+<p>Un Notebook de Spark, un pipeline de Data Factory y un reporte de Power BI acceden al mismo dato sin moverlo ni copiarlo.</p>
+<h2>3. Cómo acceder</h2>
+<ul>
+<li><strong>URL:</strong> <a href="https://app.fabric.microsoft.com">app.fabric.microsoft.com</a></li>
+<li><strong>En Mac:</strong> todo desde el navegador, no hay app de escritorio</li>
+</ul>
+<h3>3.1 Las tres cuentas de Microsoft</h3>
+<p>Fabric no acepta cuentas personales de Outlook directamente, pero sí las necesitas como punto de partida. Son tres conceptos distintos que trabajan juntos:</p>
+<table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>Para qué sirve</th>
+<th>Entra a Fabric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cuenta personal de Outlook</strong></td>
+<td>Registrarse en Azure Free Account</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Tenant de Entra ID</strong></td>
+<td>Contenedor organizacional creado automáticamente al activar Azure</td>
+<td>No es un login</td>
+</tr>
+<tr>
+<td><strong>Usuario organizacional</strong></td>
+<td>Se crea dentro del tenant (<code>tuusuario@tudominio.onmicrosoft.com</code>)</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<p>El flujo es lineal:</p>
+<ol>
+<li>Crear <a href="https://azure.microsoft.com/free/">Azure Free Account</a> con la cuenta personal de Outlook — piden tarjeta de crédito para verificar identidad, pero no realizan ningún cargo automático</li>
+<li>Azure genera automáticamente un tenant de Entra ID</li>
+<li>Crear un usuario organizacional dentro del tenant</li>
+<li>Ese usuario organizacional es el que entra a Fabric</li>
+</ol>
+<p>Para el proceso completo de creación, ver: primeros-pasos-en-azure.</p>
+<h3>3.2 Si el navegador propone una cuenta equivocada</h3>
+<p>El navegador puede recordar una sesión de Outlook u otra cuenta corporativa. Si el login falla o abre la cuenta incorrecta:</p>
+<ol>
+<li>En la pantalla de login de Microsoft, hacer clic en <strong>"Usar otra cuenta"</strong></li>
+<li>Ingresar el usuario organizacional del tenant de Entra ID (<code>tuusuario@tudominio.onmicrosoft.com</code>)</li>
+<li>Si el problema persiste, abrir una ventana privada — fuerza un login limpio</li>
+</ol>
+<p>Para crear el usuario organizacional, ver: primeros-pasos-en-azure.</p>
+<h3>3.3 Niveles de licencia</h3>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué da</th>
+<th>Duración</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fabric Free</strong></td>
+<td>Acceso a la plataforma, capacidad compartida limitada, Power BI básico</td>
+<td>Permanente</td>
+</tr>
+<tr>
+<td><strong>Trial 60 días</strong></td>
+<td>Capacidad de cómputo completa (equivalente a plan de pago F64)</td>
+<td>60 días, sin cargo al vencer</td>
+</tr>
+<tr>
+<td><strong>Fabric capacity (pago)</strong></td>
+<td>Capacidad dedicada, SLA, para producción</td>
+<td>Mensual</td>
+</tr>
+</tbody>
+</table>
+<p>Para aprender: el trial de 60 días da la cancha completa sin compromisos.</p>
+<h3>3.4 Cómo activar el trial de 60 días</h3>
+<p>El trial da acceso completo a capacidad de cómputo (equivalente al plan F64 de pago) sin datos de pago:</p>
+<ol>
+<li>Ingresar a <a href="https://app.fabric.microsoft.com">app.fabric.microsoft.com</a></li>
+<li>En la esquina inferior izquierda, hacer clic en el ícono de cuenta/usuario</li>
+<li>Seleccionar <strong>"Start trial"</strong></li>
+<li>Confirmar — se activa en segundos</li>
+</ol>
+<p>Al vencer los 60 días la capacidad se reduce al free tier — no se cobra automáticamente.</p>
+<h3>3.5 Qué desbloquea cada nivel de trial</h3>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Qué ves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sin trial</td>
+<td>Solo Power BI, sin switcher</td>
+</tr>
+<tr>
+<td>Trial de Power BI activado</td>
+<td>Switcher disponible, vista de Fabric accesible</td>
+</tr>
+<tr>
+<td>Trial de Fabric capacity activado</td>
+<td>Todos los workloads desbloqueados (Data Engineering, Data Warehouse, Data Factory, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p>El trial de Power BI y el de Fabric capacity son dos cosas distintas — es posible tener uno sin el otro, como ocurre en tenants nuevos donde el de Fabric capacity puede fallar (ver sección anterior).</p>
+<h4>Gotcha: el trial puede fallar en tenants nuevos</h4>
+<p>Al intentar activar el trial en un tenant recién creado puede pasar esto:</p>
+<blockquote>
+<p><em>"No se puede crear una capacidad de evaluación gratuita de Microsoft Fabric en este inquilino."</em></p>
+</blockquote>
+<p>Lo que ocurre en ese caso: el <strong>trial de Power BI sí se activa</strong> (acceso a Power BI Pro por 60 días), pero la <strong>Fabric capacity no se crea</strong>. Microsoft verifica tenants nuevos antes de habilitar capacidades de cómputo. La solución es esperar 2-3 días y reintentar desde el menú de perfil.</p>
+<h3>3.6 ¿Puedo usar mi cuenta de universidad?</h3>
+<p>Sí, técnicamente califica — una cuenta universitaria es una cuenta organizacional y Fabric la acepta. <a href="https://azure.microsoft.com/free/students/">Azure for Students</a> además da $100 de crédito sin pedir tarjeta de crédito.</p>
+<p>El problema real es otro: cuando usas una cuenta universitaria, estás dentro del <strong>tenant de la universidad</strong>, no del tuyo. Eso significa que el admin de IT de la institución controla qué funciones están habilitadas. En la práctica es muy común encontrarse con esto al intentar activar el trial o crear un lakehouse:</p>
+<blockquote>
+<p><em>"Para realizar esta acción, contactá al administrador de la organización."</em></p>
+</blockquote>
+<p>Para aprender en serio y armar portafolio, tener tu propio tenant (el camino descrito arriba) es mejor a largo plazo: control total, sin depender de decisiones de otro admin, y el acceso es permanente.</p>
+<h2>4. La interfaz de Fabric — qué ves al entrar</h2>
+<h3>Lo primero que aparece: Power BI</h3>
+<p>Al ingresar a <code>app.fabric.microsoft.com</code> la experiencia por defecto es <strong>Power BI</strong> — la URL lo confirma con <code>?experience=power-bi</code>. Esto es intencional: Fabric absorbió Power BI cuando se lanzó en 2023, y la mayoría de usuarios vienen de ahí.</p>
+<p>Si solo ves Power BI y no encontrarás los otros workloads, es normal.</p>
+<h3>Cómo cambiar a la vista general de Fabric</h3>
+<p>El switcher entre experiencias no está disponible desde el principio — aparece solo después de activar al menos el <strong>trial de Power BI</strong>. Sin ningún trial activo, la interfaz muestra únicamente la experiencia de Power BI sin opción de cambiar.</p>
+<p>Una vez activado el trial, en la barra lateral izquierda al fondo aparece el switcher con dos opciones:</p>
+<ul>
+<li><strong>Power BI</strong> — la experiencia enfocada en reportes y dashboards</li>
+<li><strong>Fabric</strong> — la vista unificada donde viven todos los workloads</li>
+</ul>
+<p>Seleccionar <strong>Fabric</strong> lleva a la home general con acceso a las herramientas disponibles.</p>
+<h2>5. Cómo está organizado Fabric | Workspace</h2>
+<p>La unidad central de Fabric es el <strong>Workspace</strong> — es lo primero que creas y lo primero que ves al entrar. Es un contenedor con nombre propio donde viven todos tus elementos de datos: lakehouses, notebooks, pipelines, reportes.</p>
+<pre><code>Tu cuenta en Fabric
+└── Workspace: &quot;aprendizaje-fabric&quot;
+    ├── Lakehouse: mi_primer_lakehouse
+    ├── Notebook: transformaciones
+    ├── Pipeline: carga_diaria
+    └── Reporte: dashboard_ventas
+</code></pre>
+<p>Dentro de un workspace creas <strong>elementos</strong> — cada elemento tiene un tipo específico según lo que hace: un Lakehouse almacena datos, un Notebook los procesa, un Pipeline los mueve, un Reporte los visualiza.</p>
+<p>Esos tipos de elemento están agrupados en <strong>workloads</strong> — categorías de herramientas que no ves como un menú separado, sino que determinan qué puedes crear. Al hacer clic en "Nuevo elemento" dentro de un workspace, los elementos aparecen agrupados por workload: Data Engineering, Data Factory, Data Warehouse, Power BI, etc.</p>
+<p>Lo que no vas a ver en ningún menú, pero que explica por qué todo esto funciona, es <strong>OneLake</strong>: el storage compartido donde todos los elementos guardan sus datos físicamente. Cuando subes un archivo a un Lakehouse, ese archivo vive en OneLake. Cuando un Notebook procesa una tabla, lee de OneLake. Cuando un Reporte visualiza datos, los lee del mismo lugar. No hay copias, no hay movimiento de datos entre herramientas — todas apuntan al mismo sitio.</p>
+<h2>Gotchas</h2>
+<ul>
+<li><strong>Fabric Free tiene throttling</strong> — las operaciones de cómputo pesadas (Spark, pipelines grandes) se quedan en cola o fallan sin el trial/capacidad de pago</li>
+<li><strong>Fabric y Azure son facturaciones distintas</strong> — el trial de Fabric no consume los $200 de crédito de Azure Free Account</li>
+<li><strong>OneLake no es infinito en el free tier</strong> — hay límite de storage en el tier gratuito, aunque suficiente para practicar</li>
+<li><strong>Power BI en Fabric ≠ Power BI Desktop</strong> — Power BI Desktop es una app de Windows. En Fabric usas Power BI desde el navegador. Mismas capacidades de visualización, distinta experiencia de autoría</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/fabric/">Microsoft Fabric documentation</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial">Fabric free trial</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview">OneLake overview</a></li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      
+      <a class="nav-siguiente" href="/fabric-primer-pipeline"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'microsoft-fabric-que-es';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

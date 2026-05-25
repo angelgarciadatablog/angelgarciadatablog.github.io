@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable · Angel García</title>
+  <meta name="description" content="Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/fabric-primer-pipeline/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable" />
+  <meta property="og:description" content="Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/fabric-primer-pipeline/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-primer-pipeline", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">azure</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
+      <span class="post-updated">Actualizado: 2026-05-25</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. Qué es un Workspace</h2>
+<p>Un workspace (área de trabajo) es el contenedor principal de Fabric. Todo lo que creas en Fabric vive dentro de un workspace: lakehouses, notebooks, warehouses, pipelines, reportes.</p>
+<pre><code>Fabric tenant
+└── Workspace: aprendizaje-fabric
+    ├── Lakehouse: mi_primer_lakehouse
+    ├── Notebook: transformaciones.ipynb
+    ├── Warehouse: analytics_db
+    └── Reporte Power BI: dashboard_ventas
+</code></pre>
+<p>Un mismo tenant puede tener múltiples workspaces — uno por proyecto, entorno o equipo.</p>
+<h3>Tipos de workspace</h3>
+<p>El tipo de workspace determina qué puedes crear dentro y qué capacidad lo respalda:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Capacidad</th>
+<th>Soporta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Power BI Pro</strong></td>
+<td>Shared de Microsoft</td>
+<td>Solo elementos de Power BI</td>
+</tr>
+<tr>
+<td><strong>Prueba de Fabric</strong></td>
+<td>Trial capacity (60 días)</td>
+<td>Todos los workloads de Fabric</td>
+</tr>
+<tr>
+<td><strong>Fabric</strong></td>
+<td>Capacity F-SKU (pago)</td>
+<td>Todos los workloads de Fabric</td>
+</tr>
+<tr>
+<td><strong>Power BI Premium</strong></td>
+<td>Capacity P-SKU (retirado)</td>
+<td>Power BI + algunas capacidades avanzadas</td>
+</tr>
+</tbody>
+</table>
+<p>Para crear un workspace de Prueba de Fabric o Fabric, la Fabric capacity debe estar activa en el tenant — sin ella, esos tipos aparecen deshabilitados en el formulario de creación.</p>
+<h3>Qué hay dentro de un workspace vacío</h3>
+<p>Al crear un workspace, la interfaz muestra:
+- <strong>Nuevo elemento</strong> — crea cualquier tipo de elemento (Lakehouse, Notebook, Pipeline, etc.)
+- <strong>Flujos de tareas prediseñados</strong> — guías paso a paso para escenarios específicos (ver: fabric-flujos-de-tareas-prediseñados)
+- <strong>Importar / Migrar</strong> — para traer elementos desde fuera de Fabric</p>
+<hr />
+<p>Dentro de un workspace puedes crear muchos tipos de elementos: notebooks, pipelines, warehouses, reportes. Pero si quieres ir más allá de consumir dashboards y entender cómo se construyen los datos que hay detrás, el primer elemento que necesitas conocer es el <strong>Lakehouse</strong>. 
+Es el corazón de cualquier proyecto de datos en Fabric: donde los datos llegan, se transforman y quedan disponibles para que todo lo demás los consuma. Los notebooks los procesan, los pipelines los cargan, los reportes los visualizan. Todo orbita alrededor del Lakehouse.</p>
+<h2>2. Qué es un Lakehouse</h2>
+<p>Un Lakehouse es el elemento central de Data Engineering en Fabric. Combina lo mejor de un data lake (almacenamiento flexible de archivos) con lo mejor de un data warehouse (tablas consultables con SQL).</p>
+<h3>Las dos vistas</h3>
+<p>Al abrir un Lakehouse se muestran dos secciones en la barra lateral:</p>
+<ul>
+<li><strong>Files</strong> → almacenamiento libre de archivos. Acepta cualquier formato: CSV, JSON, Parquet, imágenes, etc. Es el lado "lago de datos" — sin estructura impuesta.</li>
+<li><strong>Tables</strong> → tablas Delta consultables con SQL. Es el lado "warehouse" — datos estructurados, con esquema definido.</li>
+</ul>
+<p>El mismo dato puede llegar como archivo crudo a Files y luego procesarse para convertirse en una tabla en Tables.</p>
+<h3>Los tres puntos de conexión</h3>
+<p>Un Lakehouse no es solo una interfaz visual — expone tres formas de conectarse a sus datos desde otros workloads:</p>
+<table>
+<thead>
+<tr>
+<th>Punto de conexión</th>
+<th>Para qué sirve</th>
+<th>Workload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notebook</strong></td>
+<td>Procesar datos con Python/Spark</td>
+<td>Data Engineering</td>
+</tr>
+<tr>
+<td><strong>Punto de conexión de análisis SQL</strong></td>
+<td>Consultar tablas con SQL (lectura)</td>
+<td>Data Warehouse</td>
+</tr>
+<tr>
+<td><strong>Punto de conexión del centro de eventos</strong></td>
+<td>Conectar con datos en streaming</td>
+<td>Real-Time Intelligence</td>
+</tr>
+</tbody>
+</table>
+<p>Esto es OneLake en acción: el mismo dato físico, accesible desde tres workloads distintos sin moverlo ni copiarlo.</p>
+<h3>Qué cubre la capacidad — modelo de costos</h3>
+<p>La capacidad (F-SKU) no es solo para Gen2 ni para Spark. Es un <strong>pool compartido</strong> que todos los workloads de Fabric consumen:</p>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Qué incluye</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Engineering</strong></td>
+<td>Notebooks Spark, Spark Job Definitions, Lakehouses</td>
+</tr>
+<tr>
+<td><strong>Data Factory</strong></td>
+<td>Dataflow Gen2, Pipelines, Copy Activity</td>
+</tr>
+<tr>
+<td><strong>Data Warehouse</strong></td>
+<td>Warehouse, SQL Analytics Endpoint</td>
+</tr>
+<tr>
+<td><strong>Data Science</strong></td>
+<td>Notebooks ML, Experimentos, Modelos</td>
+</tr>
+<tr>
+<td><strong>Real-Time Intelligence</strong></td>
+<td>Eventstream, Eventhouse, KQL Database</td>
+</tr>
+<tr>
+<td><strong>Power BI</strong></td>
+<td>Reportes, Dashboards, Modelos Semánticos</td>
+</tr>
+<tr>
+<td><strong>Databases</strong></td>
+<td>SQL Database</td>
+</tr>
+</tbody>
+</table>
+<p>Pagas la capacidad encendida por tiempo — no por query ni por volumen procesado. Cinco queries de 100M filas cuestan lo mismo que cinco queries de 100 filas si las corres en el mismo rango de tiempo. Es predecible pero requiere disciplina: dejar la capacidad encendida sin usar consume igual.</p>
+<p><strong>Comparación con BigQuery:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Fabric (F-SKU)</th>
+<th>BigQuery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo</td>
+<td>Pago por tiempo encendido</td>
+<td>Pago por datos escaneados</td>
+</tr>
+<tr>
+<td>Predecibilidad</td>
+<td>Alta — precio fijo</td>
+<td>Variable — depende del volumen</td>
+</tr>
+<tr>
+<td>Riesgo</td>
+<td>Capacidad ociosa encendida</td>
+<td>Query mal escrita que escanea TBs</td>
+</tr>
+<tr>
+<td>Ideal para</td>
+<td>Workloads constantes y predecibles</td>
+<td>Workloads esporádicos o impredecibles</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo elegir el SKU correcto — el criterio es paralelismo y tiempo:</strong></p>
+<p>El tamaño del dataset no determina el SKU. Lo determina cuántos trabajos necesitas correr al mismo tiempo y en qué ventana de tiempo.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>SKU recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 Dataflows grandes pero con tiempo suficiente</td>
+<td>F2 con scheduling por turnos</td>
+</tr>
+<tr>
+<td>100 Dataflows que deben terminar antes de las 8am</td>
+<td>F16 o F32 para correrlos en paralelo</td>
+</tr>
+<tr>
+<td>Workloads esporádicos, uso puntual</td>
+<td>F2 o F4, pausar cuando no se usa</td>
+</tr>
+</tbody>
+</table>
+<p>Con una F2 y scheduling bien organizado, los trabajos corren en cola uno por uno. Cuesta mucho menos pero requiere planificar los turnos manualmente. Es la estrategia de equipos pequeños con presupuesto ajustado.</p>
+<p><strong>Cómo se configura el scheduler:</strong></p>
+<p>Desde el workspace, en los tres puntos del Dataflow Gen2 → <strong>Programar actualización</strong>. Se define frecuencia (horaria, diaria, semanal), hora exacta y zona horaria — idéntico al scheduler de Power BI Service.</p>
+<p>La diferencia clave con Power BI Pro:</p>
+<pre><code>Power BI Pro:
+Fuente → [scheduler] → Modelo Power BI → Reporte
+
+Fabric:
+API/DB → [scheduler] → Lakehouse (tabla Delta) → Modelo semántico → Reporte
+                                                 → Notebook
+                                                 → Warehouse
+                                                 → Otro Dataflow
+</code></pre>
+<p>En Power BI Pro el scheduler actualiza el modelo del reporte. En Fabric actualiza la <strong>tabla en el Lakehouse</strong> — la fuente misma. Todo lo que consume esa tabla recibe los datos frescos automáticamente, sin configurar nada más en cada reporte.</p>
+<h3>El Lakehouse en perspectiva — equivalencias con GCP y AWS</h3>
+<p>Si vienes de otros clouds, el Lakehouse colapsa dos servicios en uno:</p>
+<table>
+<thead>
+<tr>
+<th>GCP</th>
+<th>AWS</th>
+<th>Fabric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud Storage</td>
+<td>S3</td>
+<td>OneLake (archivos Parquet)</td>
+</tr>
+<tr>
+<td>BigQuery</td>
+<td>Athena</td>
+<td>SQL Analytics Endpoint</td>
+</tr>
+<tr>
+<td><strong>Cloud Storage + BigQuery</strong></td>
+<td><strong>S3 + Athena</strong></td>
+<td><strong>Lakehouse</strong></td>
+</tr>
+</tbody>
+</table>
+<p>El storage (archivos Parquet) y el motor SQL viven juntos, sin configurar permisos entre servicios ni pagar transferencia de datos entre ellos.</p>
+<p>La diferencia filosófica con BigQuery: BigQuery es serverless puro — no ves los archivos debajo. En Fabric el Lakehouse te hace consciente de que hay Parquet físico en OneLake. Más transparente, más control, más complejidad.</p>
+<h3>Acciones disponibles dentro del Lakehouse</h3>
+<p>Desde la barra de herramientas del Lakehouse:</p>
+<ul>
+<li><strong>Obtener datos</strong> — importar datos desde fuentes externas (CSV, base de datos, API, etc.)</li>
+<li><strong>Nuevo modelo semántico</strong> — crear una capa semántica sobre las tablas para usar en Power BI</li>
+<li><strong>Abrir cuaderno</strong> — abrir un Notebook Spark ya conectado a este Lakehouse</li>
+<li><strong>Agregar al agente de datos</strong> — exponer los datos del Lakehouse a un agente de IA</li>
+<li><strong>Administrar la seguridad de OneLake</strong> — controlar permisos de acceso al nivel de OneLake</li>
+</ul>
+<h2>3. Pipeline opción A — Notebook (requiere F8 o superior)</h2>
+<p>El camino más directo para cargar datos de una API al Lakehouse es un Notebook de Spark. El código es Python estándar: llamas la API, conviertes la respuesta a un DataFrame y lo escribes como tabla Delta con una línea.</p>
+<blockquote>
+<p><strong>Nota:</strong> Este código no se pudo ejecutar en el trial FTL4 (equivalente a F4, 8 VCores). Spark necesita mínimo 2 nodos Medium (16 VCores) para arrancar una sesión. Con F8 o superior funciona sin modificaciones.</p>
+</blockquote>
+<pre><code class="language-python"># NOTA: Este código requiere F8 o superior (mínimo 16 VCores).
+# Con el trial FTL4 (F4, 8 VCores) falla al arrancar la sesión Spark
+# antes de ejecutar cualquier línea — error 430 TooManyRequestsForCapacity.
+
+import requests
+import pandas as pd
+
+username = &quot;torvalds&quot;
+url = f&quot;https://api.github.com/users/{username}/repos&quot;
+
+response = requests.get(url)
+repos = response.json()
+
+columnas = [&quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;language&quot;,
+            &quot;stargazers_count&quot;, &quot;forks_count&quot;,
+            &quot;created_at&quot;, &quot;updated_at&quot;]
+
+df = pd.DataFrame(repos)[columnas]
+print(f&quot;Repositorios encontrados: {len(df)}&quot;)
+
+# spark está disponible como global en cualquier Notebook de Fabric
+# saveAsTable escribe la tabla en el Lakehouse conectado (visible en Tables)
+df_spark = spark.createDataFrame(df)
+df_spark.write.mode(&quot;overwrite&quot;).saveAsTable(&quot;repos_github&quot;)
+</code></pre>
+<hr />
+<h2>4. Pipeline opción B — Dataflow Gen2 (funciona con trial F4)</h2>
+<p>Dataflow Gen2 es la alternativa sin Spark. Usa Power Query como motor — el mismo que hay detrás de Excel y Power BI — y tiene su propio compute independiente de la capacidad Spark.</p>
+<h3>4.1 Crear el Dataflow Gen2</h3>
+<p>Desde el workspace, hacer clic en <strong>Nuevo elemento → Flujo de datos Gen2</strong>. Nombrar la consulta de forma descriptiva — el nombre que le des a la consulta será el nombre de la tabla en el Lakehouse.</p>
+<p>En este caso: <code>repo_github_torvalds</code></p>
+<h3>4.2 Conectar a la API de GitHub</h3>
+<p>Al abrir el editor, seleccionar <strong>Obtener datos → Web API</strong> y pegar la URL:</p>
+<pre><code>https://api.github.com/users/torvalds/repos
+</code></pre>
+<p>Credenciales: <strong>Anónimo</strong>. La API pública de GitHub no requiere autenticación para leer repos públicos.</p>
+<p>Dataflow carga la respuesta y muestra una tabla con 11 filas — una por repositorio — y decenas de columnas (todos los campos que devuelve la API).</p>
+<h3>4.3 Limpiar las columnas</h3>
+<p>Seleccionar solo las columnas relevantes y aplicar <strong>Quitar otras columnas</strong>:</p>
+<ul>
+<li><code>id</code></li>
+<li><code>name</code></li>
+<li><code>description</code></li>
+<li><code>language</code></li>
+<li><code>stargazers_count</code></li>
+<li><code>forks_count</code></li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+</ul>
+<h3>4.4 Configurar el destino</h3>
+<p>En el panel inferior, hacer clic en <strong>Agregar destino de datos → Lakehouse</strong> y seleccionar <code>aprendizaje-fabric</code> → <code>mi_primer_lakehouse</code>.</p>
+<p>Modo de actualización: <strong>Reemplazar</strong> — cada vez que el Dataflow corre, sobreescribe la tabla completa.</p>
+<h3>4.5 Publicar y ejecutar</h3>
+<p>Hacer clic en <strong>Guardar y ejecutar</strong>. En segundos el Dataflow procesa la respuesta y escribe la tabla en el Lakehouse.</p>
+<h3>4.6 Verificar la tabla</h3>
+<p>Al volver al Lakehouse, la tabla <code>repo_github_torvalds</code> aparece bajo <strong>Tables</strong>. Desde el <strong>Punto de conexión de análisis SQL</strong>, se puede consultar directamente:</p>
+<pre><code class="language-sql">SELECT name, language, stargazers_count, forks_count
+FROM repo_github_torvalds
+ORDER BY stargazers_count DESC;
+</code></pre>
+<p>Resultado: 11 repos de Linus Torvalds ordenados por stars. <code>linux</code> encabeza la lista con 234,348 stars — el kernel del sistema operativo más usado del mundo.</p>
+<hr />
+<h2>Gotchas</h2>
+<ul>
+<li><strong>El trial no siempre es F64</strong> — el SKU <code>FTL4</code> equivale a F4: solo 4 CUs y 8 Spark VCores. Un Notebook al arrancar consume prácticamente toda esa capacidad, causando error 430 (<code>TooManyRequestsForCapacity</code>) de forma casi garantizada. Verificar el tamaño real en Portal de administración → capacidad antes de asumir que se tiene F64.</li>
+<li><strong>El trial no tiene cola ni burst</strong> — cuando la capacidad Spark está ocupada, los jobs se rechazan directamente. En F64 de pago hay burst hasta 384 VCores y cola automática. En el trial no hay ninguno de los dos.</li>
+<li><strong>Fabric es un producto enterprise, no un producto para aprender</strong> — un F4 (~$527/mes) ya es limitado para aprender; un F64 cuesta ~$5,000/mes en reserva. El trial es una demo del producto, no una capa gratuita optimizada para developers individuales. BigQuery free tier está pensado para ese caso de uso; Fabric trial no.</li>
+<li><strong>Cualquier Notebook requiere inicializar un cluster Spark</strong> — incluso <code>print("hola")</code> consume VCores desde el arranque porque Fabric levanta un cluster distribuido antes de ejecutar cualquier código. No hay modo "Python ligero" en notebooks conectados al Lakehouse.</li>
+<li><strong>El throttling se recupera solo</strong> — si el trial queda throttled por intentos fallidos, dejarlo quieto 15-20 minutos sin abrir el Notebook suele liberar la capacidad.</li>
+</ul>
+<h2>Pendientes</h2>
+<ul>
+<li>[ ] Probar el pipeline completo (Notebook → GitHub API → tabla Delta) con capacidad F8 o F16 al terminar el trial de 60 días. Con F4 los VCores no alcanzan para arrancar un Notebook con la configuración por defecto.</li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/microsoft-fabric-que-es"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Microsoft Fabric — qué es y cómo se organiza</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'fabric-primer-pipeline';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

@@ -1,5 +1,43 @@
 [
   {
+    "titulo": "Microsoft Fabric — qué es y cómo se organiza",
+    "slug": "microsoft-fabric-que-es",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-05-25",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es Microsoft Fabric, cómo acceder, qué tipos de licencia existen, cómo está organizado y por qué es la apuesta de Microsoft para unificar toda la plataforma de datos.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": "fabric-primer-pipeline"
+  },
+  {
+    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable",
+    "slug": "fabric-primer-pipeline",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-05-25",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "microsoft-fabric-que-es",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
     "slug": "api-notion-extraer-paginas-tablas-postman",
     "categoria": "apis",
