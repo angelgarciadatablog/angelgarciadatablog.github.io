@@ -13,6 +13,7 @@ const CATEGORIAS = {
   'power-bi':       'Power BI',
   'google-analytics': 'Google Analytics',
   'hojas-de-calculo': 'Hojas de cálculo',
+  'formacion':        'Formación',
 };
 
 let _todosLosPosts = [];

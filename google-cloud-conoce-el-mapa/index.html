@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas · Angel García</title>
+  <meta name="description" content="Qué es Google Cloud, cómo está organizado, qué perfiles trabajan en él y qué servicios existen. El mapa completo para entender GCP sin perderte." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/google-cloud-conoce-el-mapa/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas" />
+  <meta property="og:description" content="Qué es Google Cloud, cómo está organizado, qué perfiles trabajan en él y qué servicios existen. El mapa completo para entender GCP sin perderte." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/google-cloud-conoce-el-mapa/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas", "categoria": "google-cloud", "serie": "", "series_relacionadas": "", "slug": "google-cloud-conoce-el-mapa", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-16", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">google-cloud</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">google-cloud</span></div>
+      <span class="post-updated">Actualizado: 2026-06-08</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. Por qué GCP como punto de partida</h2>
+<p>No aprendí Google Cloud tomando un curso. Lo aprendí porque necesitaba resolver algo: automatizar una carga de datos, programar un job, desplegar un script. Cada vez que aparecía un problema, GCP tenía un servicio que lo resolvía — y eso me fue mostrando un mapa de lo que existe.</p>
+<p>Ese es el valor real: <strong>saber que algo existe es saber que es posible</strong>. No necesitas dominar Cloud Run para decidir usarlo. Necesitas saber que existe y para qué sirve. Cuando lo necesites, lo aprendes.</p>
+<p>GCP es un buen punto de partida porque democratiza el acceso a herramientas que normalmente solo ves dentro de una empresa. Un data warehouse a escala, un sistema de mensajería asíncrona, un scheduler en la nube — todo disponible desde una cuenta personal, sin esperar a que una empresa te dé acceso.</p>
+<p>La idea no es aprenderlo todo. Es <strong>conocer el mapa para poder especializarte</strong> — y tener suficiente contexto para saber qué hacen los perfiles que trabajan a tu lado.</p>
+<hr />
+<h3>El mercado de cloud</h3>
+<p>Google Cloud no es el único jugador. A Q1 2026 (fuente: Synergy Research Group):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Cloud</th>
+<th>Cuota de mercado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AWS (Amazon)</td>
+<td>~28%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Azure (Microsoft)</td>
+<td>~21%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Google Cloud</td>
+<td>~14%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Alibaba Cloud</td>
+<td>dígito bajo</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Oracle Cloud</td>
+<td>dígito bajo</td>
+</tr>
+</tbody>
+</table>
+<p>Los tres grandes juntos suman ~63% del mercado. Aunque AWS lidera, <strong>Google Cloud es el que crece más rápido</strong> (~28% YoY en 2025, vs 25% Azure vs 18% AWS).</p>
+<p>GCP es la opción más fuerte en <strong>análisis de datos y machine learning</strong>, y tiene ventaja natural para proyectos que ya usan herramientas de Google (Workspace, YouTube, Analytics). Una vez que entiendes GCP, los conceptos se transfieren directamente a AWS y Azure — los servicios cambian de nombre, la lógica es la misma.</p>
+<hr />
+<h2>2. Cómo está organizado GCP</h2>
+<p>La jerarquía de recursos en GCP funciona de arriba hacia abajo:</p>
+<ol>
+<li><strong>Organización</strong> — nivel raíz opcional, asociado a un dominio de Google Workspace o Cloud Identity</li>
+<li><strong>Proyectos</strong> — unidad fundamental de trabajo. Toda configuración y recurso vive dentro de un proyecto</li>
+<li><strong>Recursos</strong> — los servicios concretos (una base de datos, un bucket, una función, etc.)</li>
+</ol>
+<blockquote>
+<p><strong>Importante:</strong> la Organización no es obligatoria. Con una cuenta personal de Google (gmail.com) puedes crear proyectos directamente sin tener una Organización. Esto es diferente a Azure, donde siempre existe un tenant de Azure Active Directory detrás, incluso con cuentas personales.</p>
+</blockquote>
+<p>Cada proyecto tiene:
+- Un <strong>Project ID</strong> único e inmutable
+- Un <strong>número de proyecto</strong> interno
+- Un <strong>billing account</strong> asociado para los costos</p>
+<hr />
+<h2>3. Quién trabaja en la nube — los perfiles</h2>
+<p>Antes de ver el mapa de servicios, conviene entender quién usa qué. La nube no es territorio de un solo perfil — es más parecida a un hospital: cada especialista tiene su área, a veces comparten salas, pero cada uno está formado para resolver un problema distinto.</p>
+<p>Formalmente, la mayoría de estos roles piden una carrera técnica: Ingeniería de Sistemas, Ingeniería de Software, Ciencias de la Computación, Matemáticas o Estadística. Son las carreras que construyen las bases que estos perfiles usan a diario — algoritmos, estructuras de datos, redes, sistemas operativos.</p>
+<p>Dicho eso, en la práctica también entran profesionales de otras carreras cuando tienen conocimiento técnico demostrable. En esos casos, un portfolio de proyectos reales es lo que abre la puerta.</p>
+<hr />
+<h3>3.1 Perfiles que operan la nube directamente</h3>
+<p><strong>Backend Developer / Software Engineer</strong>
+Construye las aplicaciones y APIs que los usuarios usan. En GCP vive en Compute (Cloud Run, Cloud Functions), bases de datos operacionales (Cloud SQL, Firestore, Memorystore) e IAM para dar permisos a sus servicios. Es quien más despliega lógica de negocio y quien más se cruza con todos los otros perfiles.</p>
+<p><strong>DevOps Engineer / SRE</strong>
+Mantiene todo funcionando, desplegado y monitoreado. Su territorio natural son las Redes (VPC, Load Balancing), CI/CD (Cloud Build, Artifact Registry), Monitoreo (Cloud Logging, Cloud Monitoring) y la capa de infraestructura de Compute (GKE, Compute Engine). El SRE (Site Reliability Engineer) es la variante que nació en Google — mismo perfil pero con foco más fuerte en confiabilidad, on-call y presupuestos de error.</p>
+<p><strong>Cloud / Infrastructure Engineer</strong>
+Diseña cómo está construida la arquitectura completa. Define las VPCs, decide qué región va en qué zona, gestiona costos y diseña la seguridad a nivel de organización. Se confunde con DevOps pero es más estratégico — no opera el día a día, diseña la estructura sobre la que todos los demás trabajan.</p>
+<p><strong>Security Engineer</strong>
+Se especializa en IAM a fondo, Cloud KMS, políticas de organización y compliance. En muchas empresas es quien aprueba qué roles se pueden crear y quién tiene acceso a qué. Trabaja transversalmente con todos los perfiles — cualquier servicio que se despliega pasa por sus decisiones de acceso.</p>
+<p><strong>Data Engineer</strong>
+Mueve, transforma y sirve datos. Su territorio en GCP es Cloud Storage (como zona de aterrizaje), BigQuery (el warehouse), Pub/Sub (ingestión en tiempo real), Dataflow (transformaciones a escala) y Cloud Composer (orquestación de pipelines complejos). Es el perfil que conecta las fuentes de datos con quienes los analizan.</p>
+<p><strong>Analytics Engineer</strong>
+Un rol más reciente que aparece entre el Data Engineer y el Analyst. No construye pipelines de ingestión pero sí transforma los datos dentro del warehouse para que sean usables. Su herramienta principal es dbt sobre BigQuery. Toca menos infraestructura GCP directamente pero vive en BigQuery todos los días.</p>
+<p><strong>Data Analyst</strong>
+Consulta datos y construye dashboards para que el negocio tome decisiones. En GCP su mundo es BigQuery y Looker Studio. Rara vez necesita saber de redes o compute, pero sí necesita entender IAM para solicitar los permisos correctos a los datasets que necesita.</p>
+<p><strong>ML Engineer / Data Scientist</strong>
+Entrena y despliega modelos de machine learning. Su territorio en GCP es Vertex AI, BigQuery ML y Dataflow para preparar features. Depende del Data Engineer para que los datos lleguen limpios y estructurados antes de poder modelar.</p>
+<p><strong>DBA (Database Administrator)</strong>
+Gestiona bases de datos relacionales — Cloud SQL, Cloud Spanner. En muchos equipos modernos este rol se está fusionando con el Data Engineer o el Backend Developer, especialmente en empresas que migraron todo a la nube.</p>
+<p><strong>Sysadmin (System Administrator)</strong>
+Administra servidores, sistemas operativos, cuentas de usuario y software instalado. En GCP su territorio natural es Compute Engine (VMs), gestión de usuarios en IAM y Cloud Logging para monitorear el estado del sistema. En muchas empresas este perfil está en transición hacia DevOps o Cloud Engineer, especialmente en organizaciones que están migrando de infraestructura on-premise a la nube.</p>
+<p><strong>Network Engineer</strong>
+Diseña y gestiona redes: routers, switches, firewalls, VPNs. En GCP su casa es la sección de Redes — VPC, Cloud Load Balancing, Cloud DNS, Cloud CDN, Cloud Armor. También toca IAM para políticas de seguridad a nivel de red.</p>
+<hr />
+<h3>3.2 Perfiles que no tocan la nube (o casi no)</h3>
+<p><strong>Frontend Developer</strong>
+Construye lo que el usuario ve: HTML, CSS, JavaScript. Su "nube" suele ser un CDN o un servicio de hosting estático (Vercel, Netlify, Firebase Hosting) — se configura una vez y no se vuelve a pensar en ello. Sin embargo, conocer que existe Cloud Run o Cloud Functions le permite tener conversaciones más ricas con su equipo backend.</p>
+<p><strong>Mobile Developer</strong>
+Construye apps iOS o Android. Consume las APIs que construyó el Backend Developer pero no configura nada en la infraestructura detrás.</p>
+<p><strong>UX / UI Designer</strong>
+Diseña interfaces y flujos de usuario. Sin contacto directo con la nube.</p>
+<p><strong>Analista de negocio tradicional</strong>
+Trabaja con Power BI, Tableau o Excel. Las herramientas abstraen completamente la capa de infraestructura. Puede pasar años analizando datos que viven en BigQuery sin saber nunca que BigQuery existe.</p>
+<hr />
+<h2>4. Categorías de servicios — el mapa grande</h2>
+<p>GCP organiza sus servicios en grandes bloques. Este es el mapa completo de categorías:</p>
+<h3>4.1 Compute (ejecución de código)</h3>
+<p><em>Perfil: Backend Developer, DevOps Engineer, Data Engineer, Sysadmin</em>
+- Cloud Run — ejecutar contenedores sin gestionar servidores
+- Cloud Functions — funciones serverless por evento
+- Compute Engine — máquinas virtuales clásicas (IaaS)
+- Google Kubernetes Engine (GKE) — orquestación de contenedores con Kubernetes
+- App Engine — plataforma PaaS para apps web</p>
+<h3>4.2 Storage (almacenamiento de objetos y archivos)</h3>
+<p><em>Perfil: Data Engineer, Backend Developer, DevOps Engineer</em>
+- Cloud Storage — objetos/archivos en buckets (como S3 en AWS)
+- Persistent Disk — discos para VMs
+- Filestore — sistema de archivos compartido NFS</p>
+<h3>4.3 Bases de datos</h3>
+<p><em>Perfil: Backend Developer, Data Engineer, DBA</em>
+- BigQuery — data warehouse columnar para análisis a escala
+- Cloud SQL — bases de datos relacionales gestionadas (MySQL, PostgreSQL, SQL Server)
+- Firestore — base de datos NoSQL documental en tiempo real
+- Cloud Bigtable — NoSQL columnar para cargas de alta escritura
+- Cloud Spanner — relacional distribuida globalmente (muy cara, muy potente)
+- Memorystore — Redis o Memcached gestionado</p>
+<h3>4.4 Redes</h3>
+<p><em>Perfil: Network Engineer, Cloud / Infrastructure Engineer, DevOps Engineer, Security Engineer</em>
+- VPC (Virtual Private Cloud) — red privada virtual para aislar recursos
+- Cloud Load Balancing — balanceador de carga global
+- Cloud CDN — distribución de contenido en borde
+- Cloud DNS — gestión de nombres de dominio
+- Cloud Armor — WAF y protección DDoS</p>
+<h3>4.5 IAM y seguridad</h3>
+<p><em>Perfil: Security Engineer, DevOps Engineer, Network Engineer, Sysadmin — todos los perfiles lo tocan en menor medida</em>
+- IAM (Identity and Access Management) — control de quién puede hacer qué
+- Secret Manager — almacenamiento seguro de secretos y API keys
+- Cloud KMS — gestión de claves de cifrado
+- Cloud Identity — gestión de usuarios y grupos</p>
+<h3>4.6 Eventos, colas y orquestación</h3>
+<p><em>Perfil: Data Engineer, Backend Developer</em>
+- Cloud Scheduler — cron jobs en la nube
+- Pub/Sub — mensajería asíncrona publicar/suscribir
+- Cloud Tasks — gestión de colas de tareas
+- Eventarc — routing de eventos entre servicios
+- Cloud Composer — Airflow gestionado para pipelines complejos</p>
+<h3>4.7 Datos y análisis</h3>
+<p><em>Perfil: Data Engineer, Analytics Engineer, Data Analyst, Data Scientist</em>
+- BigQuery — el hub central del ecosistema de datos en GCP
+- Dataflow — procesamiento de datos en streaming y batch (Apache Beam)
+- Dataproc — Spark y Hadoop gestionados
+- Looker / Looker Studio — visualización y BI
+- Dataplex — gobernanza de datos</p>
+<h3>4.8 AI y Machine Learning</h3>
+<p><em>Perfil: ML Engineer, Data Scientist — Backend Developer para las APIs preconstruidas</em>
+- Vertex AI — plataforma unificada de ML (entrenar, desplegar, monitorear modelos)
+- Gemini API — acceso a los modelos de lenguaje de Google
+- AutoML — entrenar modelos sin escribir código
+- Document AI — procesamiento inteligente de documentos
+- Vision / Speech / Translation API — APIs de IA preconstruidas</p>
+<h3>4.9 DevOps y CI/CD</h3>
+<p><em>Perfil: DevOps Engineer, Cloud / Infrastructure Engineer</em>
+- Cloud Build — pipelines de CI/CD
+- Artifact Registry — registro de imágenes Docker y paquetes
+- Cloud Deploy — despliegue continuo hacia GKE, Cloud Run
+- Source Repositories — repositorios git (aunque se usa más GitHub)</p>
+<h3>4.10 Monitoreo y observabilidad</h3>
+<p><em>Perfil: DevOps Engineer / SRE — también Data Engineer para monitorear pipelines</em>
+- Cloud Monitoring — métricas, dashboards, alertas
+- Cloud Logging — logs centralizados de todos los servicios
+- Error Reporting — agrupación automática de errores
+- Cloud Trace — trazabilidad de peticiones distribuidas</p>
+<hr />
+<h2>5. Lo indispensable para empezar como analista en GCP</h2>
+<p>No necesitas conocer todo el mapa para trabajar como analista. Estos son los productos con los que vas a interactuar desde el primer día:</p>
+<h3>BigQuery</h3>
+<p>El data warehouse donde viven y se consultan los datos. Es tu herramienta central.
+- Crear datasets y tablas
+- Escribir consultas SQL sobre datos a escala
+- Cargar datos desde archivos (CSV, JSON) y desde Cloud Storage
+- Programar consultas automáticas (scheduled queries)
+- Uso básico de particionado para optimizar consultas</p>
+<h3>Cloud Storage</h3>
+<p>El sistema de almacenamiento de archivos en la nube. Antes de que los datos lleguen a BigQuery, generalmente pasan por aquí.
+- Crear y navegar buckets
+- Subir y descargar archivos (consola y gcloud CLI)
+- Entender cómo se conecta con BigQuery como fuente de datos</p>
+<h3>IAM (Identity and Access Management)</h3>
+<p>El sistema de permisos de GCP. No lo vas a configurar tú, pero sí necesitas entenderlo para saber por qué no tienes acceso a un dataset y a quién pedirle el permiso correcto.
+- Qué es un rol y cómo se asigna
+- Diferencia entre usuario, grupo y service account
+- Cómo solicitar acceso a un dataset en BigQuery</p>
+<h3>Billing</h3>
+<p>El centro de costos de GCP. Como analista necesitas entenderlo para no generar gastos inesperados — una consulta mal escrita sobre una tabla grande puede procesar terabytes sin que te des cuenta.
+- Cómo está estructurada la facturación por proyecto
+- Cómo ver cuánto está costando cada servicio
+- Configurar alertas de presupuesto</p>
+<h3>Cloud Run <em>(opcional)</em></h3>
+<p>Servicio para ejecutar contenedores sin gestionar servidores. No es indispensable desde el primer día, pero entender qué hace te permite colaborar con el equipo técnico cuando automatizan cargas de datos o despliegan scripts.
+- Qué es y para qué sirve en el contexto de datos
+- Cómo un analista puede triggear o monitorear un job desplegado en Cloud Run</p>
+<hr />
+<h2>6. Hoja de ruta: de GCP a Azure y AWS</h2>
+<p>El objetivo es tener bases sólidas en los tres grandes clouds. GCP primero porque es el más fuerte en datos y ML, y porque los conceptos se transfieren directamente:</p>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>GCP</th>
+<th>AWS</th>
+<th>Azure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objetos/archivos</td>
+<td>Cloud Storage</td>
+<td>S3</td>
+<td>Blob Storage</td>
+</tr>
+<tr>
+<td>Serverless funciones</td>
+<td>Cloud Functions</td>
+<td>Lambda</td>
+<td>Azure Functions</td>
+</tr>
+<tr>
+<td>Contenedores sin server</td>
+<td>Cloud Run</td>
+<td>Fargate / App Runner</td>
+<td>Container Apps</td>
+</tr>
+<tr>
+<td>Data warehouse</td>
+<td>BigQuery</td>
+<td>Redshift</td>
+<td>Synapse Analytics</td>
+</tr>
+<tr>
+<td>Cron jobs</td>
+<td>Cloud Scheduler</td>
+<td>EventBridge Scheduler</td>
+<td>Logic Apps / Functions</td>
+</tr>
+<tr>
+<td>Mensajería</td>
+<td>Pub/Sub</td>
+<td>SQS / SNS</td>
+<td>Service Bus</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Cloud IAM</td>
+<td>IAM</td>
+<td>Azure AD / RBAC</td>
+</tr>
+<tr>
+<td>Secretos</td>
+<td>Secret Manager</td>
+<td>Secrets Manager</td>
+<td>Key Vault</td>
+</tr>
+<tr>
+<td>Orquestación containers</td>
+<td>GKE</td>
+<td>EKS</td>
+<td>AKS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Referencia oficial</h2>
+<ul>
+<li>Documentación: https://cloud.google.com/docs</li>
+<li>Consola: https://console.cloud.google.com</li>
+<li>Calculadora de costos: https://cloud.google.com/products/calculator</li>
+<li>Comparativa de productos GCP vs AWS vs Azure: https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison</li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'google-cloud-conoce-el-mapa';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

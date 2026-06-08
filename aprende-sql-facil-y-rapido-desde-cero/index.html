@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aprende SQL fácil y rápido desde cero · Angel García</title>
-  <meta name="description" content="Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos." />
+  <meta name="description" content="Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar datos reales con ejemplos claros y sin rodeos." />
   <link rel="canonical" href="https://www.angelgarciadatablog.com/aprende-sql-facil-y-rapido-desde-cero/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Aprende SQL fácil y rápido desde cero" />
-  <meta property="og:description" content="Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos." />
+  <meta property="og:description" content="Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar datos reales con ejemplos claros y sin rodeos." />
   <meta property="og:url" content="https://www.angelgarciadatablog.com/aprende-sql-facil-y-rapido-desde-cero/" />
   <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
@@ -93,9 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Si trabajas con datos en Python, tarde o temprano vas a conectarte a una base de datos y vas a escribir SQL desde tu script para traer los datos que necesitas.</p>
 <h3>2.5 Google Sheets</h3>
 <p>La función <code>QUERY()</code> de Sheets usa una sintaxis prácticamente idéntica a SQL. Si ya la usas, tienes más base de la que crees.</p>
-<h3>2.6 dbt (data build tool)</h3>
-<p>No es una base de datos — es una capa que corre encima de warehouses como BigQuery y te permite organizar toda tu lógica SQL en modelos reutilizables. Muy común en equipos de datos modernos.</p>
-<h3>2.7 OLTP vs OLAP — La diferencia que más importa</h3>
+<h3>2.6 OLTP vs OLAP — La diferencia que más importa</h3>
 <table>
 <thead>
 <tr>
@@ -127,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tr>
 </tbody>
 </table>
-<h3>2.8 Los dialectos: SQL no es igual en todos lados</h3>
+<h3>2.7 Los dialectos: SQL no es igual en todos lados</h3>
 <p>SQL tiene una base común, pero cada herramienta tiene su propia variante. BigQuery usa GoogleSQL, PostgreSQL tiene sus propias funciones, MySQL difiere en manejo de fechas y texto. La lógica es la misma, pero hay funciones que funcionan en uno y no en otro.</p>
 <h2>3. Dónde ejecutar tus primeras queries</h2>
 <p>Hay muchos lugares donde puedes escribir y correr SQL:</p>
@@ -146,7 +144,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3>3.2 DBeaver</h3>
 <p>Es un cliente de escritorio gratuito que se conecta a prácticamente cualquier base de datos: PostgreSQL, MySQL, SQL Server, BigQuery, SQLite, y más. Es la navaja suiza del analista de datos.</p>
 <p>Lo usas cuando trabajas con bases de datos que no tienen su propia interfaz web o cuando quieres un entorno más completo que una consola en el browser.</p>
-<h2>4. El dataset de práctica</h2>
+<h2>4. El dataset de práctica lo veremos en Big Query</h2>
+<p>Big query no es una base de datos relaciona, es un Datawhare house que permite almacenar tablas con miles de filas y hacer consultas SQL. Está enfocado principalmente para almacenar datos de análisis (OLAP), es decir, datos que no se usan en tiempo real en una aplicación (en algunos casos hay excepciones sobre este punto) y que sirven mayormente para análisis.  </p>
 <p>Para todos los ejemplos de este post voy a usar un dataset público que creé con datos reales de mi canal de YouTube. Puedes consultarlo directamente desde BigQuery sin necesidad de cargar nada.</p>
 <p><strong>Dataset:</strong> <code>youtube-datasets-360.angelgarciadatablog</code></p>
 <p>Para acceder necesitas:</p>
@@ -458,9 +457,10 @@ ORDER BY anio DESC, ranking_del_anio
 <p>Lo que cambia de verdad es la escala y el poder. Con una sola tabla y las herramientas de este post puedes filtrar millones de filas en segundos, crear categorías personalizadas con CASE, encadenar transformaciones con CTEs y calcular rankings dentro de grupos con funciones de ventana — cosas que en Excel requerirían fórmulas complejas o simplemente no serían posibles.</p>
 <p>Y esto es solo con una tabla. Cuando empezamos a cruzar tablas con JOINs, el salto es aún mayor.</p>
 <h2>9. Pendientes</h2>
-<p><em>(sección interna — se elimina antes de publicar)</em>
-- [ ] Grabar video: cómo empezar a usar BigQuery desde cero para principiantes — creación de proyecto en Google Cloud Console, navegación de la consola, primer query. Va referenciado en la sección 4.
-- [ ] Post + video especial sobre CASE WHEN: cubrir todos los contextos donde se puede usar — SELECT, GROUP BY, ORDER BY, HAVING — con ejemplos prácticos para cada uno.</p>
+<ul>
+<li>[ ] Grabar video: cómo empezar a usar BigQuery desde cero para principiantes — creación de proyecto en Google Cloud Console, navegación de la consola, primer query. Va referenciado en la sección 4.</li>
+<li>[ ] Post + video especial sobre CASE WHEN: cubrir todos los contextos donde se puede usar — SELECT, GROUP BY, ORDER BY, HAVING — con ejemplos prácticos para cada uno.</li>
+</ul>
 <h2>10. Recursos</h2>
 <ul>
 <li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax">Documentación de GoogleSQL (BigQuery)</a></li>

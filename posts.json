@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas",
+    "slug": "google-cloud-conoce-el-mapa",
+    "categoria": "google-cloud",
+    "tags": [
+      "datablog",
+      "google-cloud"
+    ],
+    "updated": "2026-06-08",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es Google Cloud, cómo está organizado, qué perfiles trabajan en él y qué servicios existen. El mapa completo para entender GCP sin perderte.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Microsoft Fabric — qué es y cómo se organiza",
     "slug": "microsoft-fabric-que-es",
     "categoria": "azure",
@@ -204,7 +223,7 @@
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar bases de datos reales con ejemplos claros y sin rodeos.",
+    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar datos reales con ejemplos claros y sin rodeos.",
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
