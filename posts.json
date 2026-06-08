@@ -19,6 +19,27 @@
     "parte-siguiente": ""
   },
   {
+    "titulo": "Ruta del analista de datos",
+    "slug": "ruta-analista-datos",
+    "categoria": "formacion",
+    "tags": [
+      "datablog",
+      "formacion"
+    ],
+    "updated": "2026-06-08",
+    "posts-relacionados": [
+      "google-cloud-conoce-el-mapa"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Microsoft Fabric — qué es y cómo se organiza",
     "slug": "microsoft-fabric-que-es",
     "categoria": "azure",
@@ -95,25 +116,6 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
-    "slug": "primeros-pasos-en-azure",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-05-24",
-    "posts-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
     "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
     "slug": "api-github-extraer-datos-publicos-privados-postman",
     "categoria": "apis",
@@ -133,23 +135,23 @@
     "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
   },
   {
-    "titulo": "Anatomía de una petición HTTP",
-    "slug": "anatomia-de-una-peticion-http",
-    "categoria": "apis",
+    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
+    "slug": "primeros-pasos-en-azure",
+    "categoria": "azure",
     "tags": [
       "datablog",
-      "apis"
+      "azure"
     ],
-    "updated": "2026-05-23",
+    "updated": "2026-05-24",
     "posts-relacionados": [],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
-    "serie": "fundamentos-http",
-    "series-relacionadas": "apis-para-analistas",
+    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
+    "serie": "",
+    "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": "peticion-post-con-autenticacion"
+    "parte-siguiente": ""
   },
   {
     "titulo": "Google Tag Manager — Fundamentos",
@@ -171,6 +173,25 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
+  },
+  {
+    "titulo": "Anatomía de una petición HTTP",
+    "slug": "anatomia-de-una-peticion-http",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-05-23",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
+    "serie": "fundamentos-http",
+    "series-relacionadas": "apis-para-analistas",
+    "parte-anterior": "",
+    "parte-siguiente": "peticion-post-con-autenticacion"
   },
   {
     "titulo": "Introducción a APIs para analistas de datos",

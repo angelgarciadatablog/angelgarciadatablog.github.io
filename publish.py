@@ -40,7 +40,7 @@ def extraer_video_id(url):
 template = TEMPLATE_PATH.read_text(encoding="utf-8")
 
 # ─── LEER TODOS LOS POSTS ─────────────────────────────────────────────────────
-md_files = [f for f in VAULT_DATABLOG.glob("*.md") if f.name != "00-index.md"]
+md_files = [f for f in VAULT_DATABLOG.glob("**/*.md") if f.name != "00-index.md"]
 
 todos_los_posts = []
 for md_file in md_files:
@@ -79,7 +79,7 @@ for meta in posts_a_publicar:
     md_file = VAULT_DATABLOG / f"{slug}.md"
     if not md_file.exists():
         # Buscar por nombre de archivo que tenga ese slug en el frontmatter
-        for f in VAULT_DATABLOG.glob("*.md"):
+        for f in VAULT_DATABLOG.glob("**/*.md"):
             p = frontmatter.load(f)
             if p.metadata.get("slug") == slug:
                 md_file = f

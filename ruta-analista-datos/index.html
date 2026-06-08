@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruta del analista de datos · Angel García</title>
+  <meta name="description" content="Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/ruta-analista-datos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Ruta del analista de datos" />
+  <meta property="og:description" content="Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/ruta-analista-datos/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Ruta del analista de datos", "categoria": "formacion", "serie": "", "series_relacionadas": "", "slug": "ruta-analista-datos", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-06-08", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">formacion</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Ruta del analista de datos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">formacion</span></div>
+      <span class="post-updated">Actualizado: 2026-06-08</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>Empieza aquí</h2>
+<p>La base de todo análisis de datos son las tablas. El 70% de lo que hace un analista se reduce a eso: consultar tablas, cruzarlas, filtrarlas y extraer algo útil de ellas.</p>
+<p>Pero antes de llegar a la tabla hay preguntas que pocos se hacen desde el principio:</p>
+<ol>
+<li>¿Dónde viven esos datos?</li>
+<li>¿Cómo llego a ellos?</li>
+<li>¿Cómo manejo grandes volúmenes sin que todo colapse?</li>
+<li>¿Qué herramienta uso para mostrar los datos?</li>
+<li>¿Cómo uso la inteligencia artificial para analizar datos?</li>
+</ol>
+<p>Esta ruta responde esas preguntas en orden. No es un curso de definiciones — es un camino con entregables. Cada módulo existe porque resuelve un problema real que vas a enfrentar como analista.</p>
+<p>Vamos a trabajar con <strong>Google Cloud y BigQuery</strong> como plataforma central, <strong>SQL</strong> como lenguaje de consulta, <strong>APIs</strong> para cargar datos externos y <strong>Python</strong> para automatizar lo que no tiene sentido hacer a mano.</p>
+<p>Antes de arrancar, completa el cuestionario de nivel. Son preguntas cortas — no hay respuestas incorrectas. El objetivo es identificar desde dónde partes para no perder tiempo explicando cosas que ya sabes.</p>
+<blockquote>
+<p><strong>Formulario:</strong> https://docs.google.com/forms/d/e/1FAIpQLSfSX9F_mfdNygByWqnL9pQA9lnuAu4W9S99KNvvfkf02awg1Q/viewform</p>
+</blockquote>
+<hr />
+<h2>Google Cloud y BigQuery</h2>
+<ul>
+<li><a href="https://www.angelgarciadatablog.com/google-cloud-conoce-el-mapa">Conoce el mapa de Google Cloud</a></li>
+</ul></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/google-cloud-conoce-el-mapa">GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'ruta-analista-datos';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
