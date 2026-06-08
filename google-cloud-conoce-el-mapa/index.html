@@ -147,38 +147,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Dicho eso, en la práctica también entran profesionales de otras carreras cuando tienen conocimiento técnico demostrable. En esos casos, un portfolio de proyectos reales es lo que abre la puerta.</p>
 <hr />
 <h3>3.1 Perfiles que operan la nube directamente</h3>
-<p><strong>Backend Developer / Software Engineer</strong>
-Construye las aplicaciones y APIs que los usuarios usan. En GCP vive en Compute (Cloud Run, Cloud Functions), bases de datos operacionales (Cloud SQL, Firestore, Memorystore) e IAM para dar permisos a sus servicios. Es quien más despliega lógica de negocio y quien más se cruza con todos los otros perfiles.</p>
-<p><strong>DevOps Engineer / SRE</strong>
-Mantiene todo funcionando, desplegado y monitoreado. Su territorio natural son las Redes (VPC, Load Balancing), CI/CD (Cloud Build, Artifact Registry), Monitoreo (Cloud Logging, Cloud Monitoring) y la capa de infraestructura de Compute (GKE, Compute Engine). El SRE (Site Reliability Engineer) es la variante que nació en Google — mismo perfil pero con foco más fuerte en confiabilidad, on-call y presupuestos de error.</p>
-<p><strong>Cloud / Infrastructure Engineer</strong>
-Diseña cómo está construida la arquitectura completa. Define las VPCs, decide qué región va en qué zona, gestiona costos y diseña la seguridad a nivel de organización. Se confunde con DevOps pero es más estratégico — no opera el día a día, diseña la estructura sobre la que todos los demás trabajan.</p>
-<p><strong>Security Engineer</strong>
-Se especializa en IAM a fondo, Cloud KMS, políticas de organización y compliance. En muchas empresas es quien aprueba qué roles se pueden crear y quién tiene acceso a qué. Trabaja transversalmente con todos los perfiles — cualquier servicio que se despliega pasa por sus decisiones de acceso.</p>
-<p><strong>Data Engineer</strong>
-Mueve, transforma y sirve datos. Su territorio en GCP es Cloud Storage (como zona de aterrizaje), BigQuery (el warehouse), Pub/Sub (ingestión en tiempo real), Dataflow (transformaciones a escala) y Cloud Composer (orquestación de pipelines complejos). Es el perfil que conecta las fuentes de datos con quienes los analizan.</p>
-<p><strong>Analytics Engineer</strong>
-Un rol más reciente que aparece entre el Data Engineer y el Analyst. No construye pipelines de ingestión pero sí transforma los datos dentro del warehouse para que sean usables. Su herramienta principal es dbt sobre BigQuery. Toca menos infraestructura GCP directamente pero vive en BigQuery todos los días.</p>
-<p><strong>Data Analyst</strong>
-Consulta datos y construye dashboards para que el negocio tome decisiones. En GCP su mundo es BigQuery y Looker Studio. Rara vez necesita saber de redes o compute, pero sí necesita entender IAM para solicitar los permisos correctos a los datasets que necesita.</p>
-<p><strong>ML Engineer / Data Scientist</strong>
-Entrena y despliega modelos de machine learning. Su territorio en GCP es Vertex AI, BigQuery ML y Dataflow para preparar features. Depende del Data Engineer para que los datos lleguen limpios y estructurados antes de poder modelar.</p>
-<p><strong>DBA (Database Administrator)</strong>
-Gestiona bases de datos relacionales — Cloud SQL, Cloud Spanner. En muchos equipos modernos este rol se está fusionando con el Data Engineer o el Backend Developer, especialmente en empresas que migraron todo a la nube.</p>
-<p><strong>Sysadmin (System Administrator)</strong>
-Administra servidores, sistemas operativos, cuentas de usuario y software instalado. En GCP su territorio natural es Compute Engine (VMs), gestión de usuarios en IAM y Cloud Logging para monitorear el estado del sistema. En muchas empresas este perfil está en transición hacia DevOps o Cloud Engineer, especialmente en organizaciones que están migrando de infraestructura on-premise a la nube.</p>
-<p><strong>Network Engineer</strong>
-Diseña y gestiona redes: routers, switches, firewalls, VPNs. En GCP su casa es la sección de Redes — VPC, Cloud Load Balancing, Cloud DNS, Cloud CDN, Cloud Armor. También toca IAM para políticas de seguridad a nivel de red.</p>
+<ol>
+<li>
+<p><strong>Backend Developer / Software Engineer</strong>: Construye las aplicaciones y APIs que los usuarios usan. En GCP vive en Compute (Cloud Run, Cloud Functions), bases de datos operacionales (Cloud SQL, Firestore, Memorystore) e IAM para dar permisos a sus servicios. Es quien más despliega lógica de negocio y quien más se cruza con todos los otros perfiles.</p>
+</li>
+<li>
+<p><strong>DevOps Engineer / SRE</strong>: Mantiene todo funcionando, desplegado y monitoreado. Su territorio natural son las Redes (VPC, Load Balancing), CI/CD (Cloud Build, Artifact Registry), Monitoreo (Cloud Logging, Cloud Monitoring) y la capa de infraestructura de Compute (GKE, Compute Engine). El SRE es la variante que nació en Google — mismo perfil pero con foco más fuerte en confiabilidad, on-call y presupuestos de error.</p>
+</li>
+<li>
+<p><strong>Cloud / Infrastructure Engineer</strong>: Diseña cómo está construida la arquitectura completa. Define las VPCs, decide qué región va en qué zona, gestiona costos y diseña la seguridad a nivel de organización. Se confunde con DevOps pero es más estratégico — no opera el día a día, diseña la estructura sobre la que todos los demás trabajan.</p>
+</li>
+<li>
+<p><strong>Security Engineer</strong>: Se especializa en IAM a fondo, Cloud KMS, políticas de organización y compliance. En muchas empresas es quien aprueba qué roles se pueden crear y quién tiene acceso a qué. Trabaja transversalmente con todos los perfiles — cualquier servicio que se despliega pasa por sus decisiones de acceso.</p>
+</li>
+<li>
+<p><strong>Data Engineer</strong>: Mueve, transforma y sirve datos. Su territorio en GCP es Cloud Storage (como zona de aterrizaje), BigQuery (el warehouse), Pub/Sub (ingestión en tiempo real), Dataflow (transformaciones a escala) y Cloud Composer (orquestación de pipelines complejos). Es el perfil que conecta las fuentes de datos con quienes los analizan.</p>
+</li>
+<li>
+<p><strong>Analytics Engineer</strong>: Un rol más reciente que aparece entre el Data Engineer y el Analyst. No construye pipelines de ingestión pero sí transforma los datos dentro del warehouse para que sean usables. Su herramienta principal es dbt sobre BigQuery. Toca menos infraestructura GCP directamente pero vive en BigQuery todos los días.</p>
+</li>
+<li>
+<p><strong>Data Analyst</strong>: Consulta datos y construye dashboards para que el negocio tome decisiones. En GCP su mundo es BigQuery y Looker Studio. Rara vez necesita saber de redes o compute, pero sí necesita entender IAM para solicitar los permisos correctos a los datasets que necesita.</p>
+</li>
+<li>
+<p><strong>ML Engineer / Data Scientist</strong>: Entrena y despliega modelos de machine learning. Su territorio en GCP es Vertex AI, BigQuery ML y Dataflow para preparar features. Depende del Data Engineer para que los datos lleguen limpios y estructurados antes de poder modelar.</p>
+</li>
+<li>
+<p><strong>DBA (Database Administrator)</strong>: Gestiona bases de datos relacionales — Cloud SQL, Cloud Spanner. En muchos equipos modernos este rol se está fusionando con el Data Engineer o el Backend Developer, especialmente en empresas que migraron todo a la nube.</p>
+</li>
+<li>
+<p><strong>Sysadmin (System Administrator)</strong>: Administra servidores, sistemas operativos, cuentas de usuario y software instalado. En GCP su territorio natural es Compute Engine (VMs), gestión de usuarios en IAM y Cloud Logging para monitorear el estado del sistema. En muchas empresas este perfil está en transición hacia DevOps o Cloud Engineer.</p>
+</li>
+<li>
+<p><strong>Network Engineer</strong>: Diseña y gestiona redes: routers, switches, firewalls, VPNs. En GCP su casa es la sección de Redes — VPC, Cloud Load Balancing, Cloud DNS, Cloud CDN, Cloud Armor. También toca IAM para políticas de seguridad a nivel de red.</p>
+</li>
+</ol>
 <hr />
 <h3>3.2 Perfiles que no tocan la nube (o casi no)</h3>
-<p><strong>Frontend Developer</strong>
-Construye lo que el usuario ve: HTML, CSS, JavaScript. Su "nube" suele ser un CDN o un servicio de hosting estático (Vercel, Netlify, Firebase Hosting) — se configura una vez y no se vuelve a pensar en ello. Sin embargo, conocer que existe Cloud Run o Cloud Functions le permite tener conversaciones más ricas con su equipo backend.</p>
-<p><strong>Mobile Developer</strong>
-Construye apps iOS o Android. Consume las APIs que construyó el Backend Developer pero no configura nada en la infraestructura detrás.</p>
-<p><strong>UX / UI Designer</strong>
-Diseña interfaces y flujos de usuario. Sin contacto directo con la nube.</p>
-<p><strong>Analista de negocio tradicional</strong>
-Trabaja con Power BI, Tableau o Excel. Las herramientas abstraen completamente la capa de infraestructura. Puede pasar años analizando datos que viven en BigQuery sin saber nunca que BigQuery existe.</p>
+<ol>
+<li>
+<p><strong>Frontend Developer</strong>: Construye lo que el usuario ve: HTML, CSS, JavaScript. Su "nube" suele ser un CDN o un servicio de hosting estático (Vercel, Netlify, Firebase Hosting) — se configura una vez y no se vuelve a pensar en ello. Sin embargo, conocer que existe Cloud Run o Cloud Functions le permite tener conversaciones más ricas con su equipo backend.</p>
+</li>
+<li>
+<p><strong>Mobile Developer</strong>: Construye apps iOS o Android. Consume las APIs que construyó el Backend Developer pero no configura nada en la infraestructura detrás.</p>
+</li>
+<li>
+<p><strong>UX / UI Designer</strong>: Diseña interfaces y flujos de usuario. Sin contacto directo con la nube.</p>
+</li>
+<li>
+<p><strong>Analista de negocio tradicional</strong>: Trabaja con Power BI, Tableau o Excel. Las herramientas abstraen completamente la capa de infraestructura. Puede pasar años analizando datos que viven en BigQuery sin saber nunca que BigQuery existe.</p>
+</li>
+</ol>
 <hr />
 <h2>4. Categorías de servicios — el mapa grande</h2>
 <p>GCP organiza sus servicios en grandes bloques. Este es el mapa completo de categorías:</p>
