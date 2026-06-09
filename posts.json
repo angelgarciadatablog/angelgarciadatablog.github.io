@@ -1,6 +1,67 @@
 [
   {
-    "titulo": "GCP me enseñó qué es posible — y eso cambió cómo pienso los problemas",
+    "titulo": "Ruta del analista de datos",
+    "slug": "ruta-analista-datos",
+    "categoria": "formacion",
+    "tags": [
+      "datablog",
+      "formacion"
+    ],
+    "updated": "2026-06-09",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "Cómo ejecutar Claude Code por primera vez",
+    "slug": "como-ejecutar-claude-code-por-primera-vez",
+    "categoria": "claude-code",
+    "tags": [
+      "datablog",
+      "claude-code"
+    ],
+    "updated": "2026-06-09",
+    "posts-relacionados": [
+      "como-instalar-claude-code-en-mac"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Cómo autenticarte con Claude Code por primera vez, configurar el workspace y entender los conceptos clave: sesión, CLAUDE.md y auto memory.",
+    "serie": "introduccion-claude-code-mac",
+    "series-relacionadas": "",
+    "parte-anterior": "como-instalar-claude-code-en-mac",
+    "parte-siguiente": "estructura-archivos-claude-code-mac"
+  },
+  {
+    "titulo": "Introducción a Claude Code en Mac",
+    "slug": "como-instalar-claude-code-en-mac",
+    "categoria": "claude-code",
+    "tags": [
+      "datablog",
+      "claude-code"
+    ],
+    "updated": "2026-06-09",
+    "posts-relacionados": [
+      "como-ejecutar-claude-code-por-primera-vez"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Cómo instalar Claude Code en Mac con el instalador oficial curl, configurar el PATH y entender su runtime autónomo.",
+    "serie": "introduccion-claude-code-mac",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": "como-ejecutar-claude-code-por-primera-vez"
+  },
+  {
+    "titulo": "El mapa de Google Cloud para analistas de datos",
     "slug": "google-cloud-conoce-el-mapa",
     "categoria": "google-cloud",
     "tags": [
@@ -13,25 +74,6 @@
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es Google Cloud, cómo está organizado, qué perfiles trabajan en él y qué servicios existen. El mapa completo para entender GCP sin perderte.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Ruta del analista de datos",
-    "slug": "ruta-analista-datos",
-    "categoria": "formacion",
-    "tags": [
-      "datablog",
-      "formacion"
-    ],
-    "updated": "2026-06-08",
-    "posts-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",

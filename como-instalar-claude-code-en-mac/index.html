@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción a Claude Code en Mac · Angel García</title>
+  <meta name="description" content="Cómo instalar Claude Code en Mac con el instalador oficial curl, configurar el PATH y entender su runtime autónomo." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/como-instalar-claude-code-en-mac/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Introducción a Claude Code en Mac" />
+  <meta property="og:description" content="Cómo instalar Claude Code en Mac con el instalador oficial curl, configurar el PATH y entender su runtime autónomo." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/como-instalar-claude-code-en-mac/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Introducción a Claude Code en Mac", "categoria": "claude-code", "serie": "introduccion-claude-code-mac", "series_relacionadas": "", "slug": "como-instalar-claude-code-en-mac", "sistema_operativo": "mac", "fecha_publicacion": "2026-06-08", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">claude-code</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Introducción a Claude Code en Mac</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">claude-code</span></div>
+      <span class="post-updated">Actualizado: 2026-06-09</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. Formas de utilizar Claude</h2>
+<table>
+<thead>
+<tr>
+<th>Forma</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>claude.ai</strong></td>
+<td>Chat en el navegador, uso diario, exploración</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>Integrar Claude en tus apps y scripts</td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>Trabajar con Claude directo en tu terminal y proyectos</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Qué es Claude Code</h2>
+<p>Claude Code es el CLI oficial de Anthropic. Te permite trabajar con Claude <strong>directamente desde tu terminal</strong>, dentro de tus proyectos reales. No es solo un chat — Claude puede leer tus archivos, escribir código, ejecutar comandos y entender el contexto de tu proyecto completo.</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Precio</th>
+<th>Claude Code</th>
+<th>Para quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Free</strong></td>
+<td>Gratis</td>
+<td>No incluido</td>
+<td>Explorar claude.ai</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>~$20/mes</td>
+<td>Incluido</td>
+<td>Uso intensivo, devs</td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td>~$100/mes</td>
+<td>Incluido</td>
+<td>Uso muy intensivo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Importante:</strong> El plan gratuito no incluye acceso a Claude Code. Necesitas mínimo el plan Pro para usarlo.</p>
+<h2>3. Verificar si ya lo tienes instalado</h2>
+<pre><code class="language-bash">claude --version
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muestra una versión (ej: <code>2.1.81</code>)</td>
+<td>Ya lo tienes</td>
+</tr>
+<tr>
+<td><code>command not found</code></td>
+<td>Hay que instalarlo</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Instalación</h2>
+<pre><code class="language-bash">curl -fsSL https://claude.ai/install.sh | bash
+</code></pre>
+<p>Este comando siempre instala la versión más reciente. No hay versión hardcodeada.</p>
+<p>Respuesta esperada:</p>
+<pre><code class="language-bash">Setting up Claude Code...
+
+✔ Claude Code successfully installed!
+
+  Version: 2.1.91
+
+  Location: ~/.local/bin/claude
+
+  Next: Run claude --help to get started
+
+⚠ Setup notes:
+  • Native installation exists but ~/.local/bin is not in your PATH. Run:
+
+  echo 'export PATH=&quot;$HOME/.local/bin:$PATH&quot;' &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc
+
+✅ Installation complete!
+</code></pre>
+<p>Una vez instalado, Claude Code se guarda en:</p>
+<pre><code class="language-bash">~/.local/bin/claude
+</code></pre>
+<p>Esto importa porque explica directamente el comando de PATH que viene después. Si el instalador dejó el binario en <code>~/.local/bin/</code>, entonces esa carpeta es la que hay que agregar al PATH. Si lo hubiera instalado en otro lugar, el comando sería distinto.</p>
+<p>Antes de la versión 2.1.15, Claude Code se instalaba con npm y dependía del Node.js del sistema. Desde esa versión el método fue deprecado — el nuevo instalador <code>curl</code> empaqueta su propio runtime, por lo que Claude Code es <strong>autónomo</strong> y no depende de la versión de Node.js que tengas instalada.</p>
+<h3>Advertencia post-instalación: PATH no configurado</h3>
+<p>Es posible que al terminar la instalación veas este mensaje:</p>
+<pre><code class="language-bash">~/.local/bin is not in your PATH
+</code></pre>
+<p>Esto significa que aunque Claude Code está instalado, tu terminal aún no sabe dónde encontrarlo. Para resolverlo:</p>
+<pre><code class="language-bash">echo 'export PATH=&quot;$HOME/.local/bin:$PATH&quot;' &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc
+</code></pre>
+<p>Este comando resuelve dos cosas distintas:</p>
+<ol>
+<li><strong><code>echo ... &gt;&gt; ~/.zshrc</code></strong> — no modifica el PATH en este momento. Escribe la instrucción en <code>.zshrc</code>, que es el archivo que se ejecuta cada vez que abres una terminal. Así el PATH queda configurado de forma permanente para todas las sesiones futuras.</li>
+<li><strong><code>source ~/.zshrc</code></strong> — aplica ese cambio ahora mismo en la sesión actual, sin cerrar y volver a abrir la terminal.</li>
+</ol>
+<p>Si solo corrieras <code>export PATH="$HOME/.local/bin:$PATH"</code> directo en la terminal — sin escribirlo en <code>.zshrc</code> — funcionaría en esa sesión pero se perdería al cerrarla.</p>
+<p>Luego verifica que quedó bien:</p>
+<pre><code class="language-bash">claude --version
+</code></pre>
+<h3>4.1 ¿Claude Code instala Node.js en mi sistema?</h3>
+<p>No. Antes de la versión 2.1.15, Claude Code se instalaba con npm y dependía del Node.js del sistema. Desde esa versión el método fue deprecado — el nuevo instalador <code>curl</code> empaqueta su propio runtime, por lo que Claude Code es <strong>autónomo</strong> y no depende de la versión de Node.js que tengas instalada.</p>
+<p>Ese runtime no queda disponible para el sistema ni para otras herramientas.</p>
+<pre><code>Claude Code → runtime interno propio → solo lo usa él
+n8n         → necesita Node.js de nvm → son completamente independientes
+</code></pre>
+<p>Si necesitas Node.js para otras herramientas como n8n, debes instalarlo por separado con nvm. La instalación de Claude Code no te lo proporciona.</p>
+<h3>4.2 ¿Qué pasa si hay varios usuarios en la misma Mac?</h3>
+<p>Claude Code se instala en el directorio home de cada usuario. Cada usuario debe instalarlo de forma independiente:</p>
+<pre><code>Tu Mac
+├── Usuario 1 (angel)
+│   └── ~/.local/bin/claude  ✅ tiene Claude Code
+│
+└── Usuario 2
+    └── ~/.local/bin/        ❌ no existe, debe instalarlo por su cuenta
+</code></pre>
+<p>Misma lógica que nvm — cada usuario tiene su propio entorno aislado.</p>
+<pre><code>Usuario 1 → ~/.local/share/claude ≈ 544MB
+           → ~/.claude            ≈ crece según uso
+
+Usuario 2 → ~/.local/share/claude ≈ 544MB
+           → ~/.claude            ≈ crece según uso
+
+Total base ≈ ~1GB solo en binarios
+</code></pre>
+<h3>4.3 Desinstalación</h3>
+<pre><code class="language-bash"># Eliminar el binario
+rm -f ~/.local/bin/claude
+
+# Eliminar archivos de versión
+rm -rf ~/.local/share/claude
+
+# Eliminar configuración e historial (opcional)
+rm -rf ~/.claude
+rm ~/.claude.json
+</code></pre>
+<p>El último bloque elimina toda la configuración: herramientas permitidas, servidores MCP e historial de sesiones. Omitirlo si solo se quiere reinstalar.</p>
+<h3>4.4 Espacio en disco</h3>
+<pre><code class="language-bash"># Ver cuánto pesa el binario
+du -sh ~/.local/bin/claude
+
+# Ver cuánto pesa el runtime
+du -sh ~/.local/share/claude
+
+# Ver cuánto pesa la configuración
+du -sh ~/.claude
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Ruta</th>
+<th>Peso aprox.</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~/.local/bin/claude</code></td>
+<td>0B</td>
+<td>Symlink (acceso directo al binario real)</td>
+</tr>
+<tr>
+<td><code>~/.local/share/claude</code></td>
+<td>~544MB</td>
+<td>Binario real + runtime interno</td>
+</tr>
+<tr>
+<td><code>~/.claude</code></td>
+<td>~68MB inicial</td>
+<td>Configuración, historial, caché</td>
+</tr>
+</tbody>
+</table>
+<p><code>~/.local/bin/claude</code> pesa 0B porque no es el archivo real sino un symlink que apunta a <code>~/.local/share/claude</code>. El peso real está en los 544MB.</p>
+<p>El directorio <code>~/.claude</code> crece con el uso:</p>
+<table>
+<thead>
+<tr>
+<th>Qué agregas</th>
+<th>Dónde crece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skills</td>
+<td><code>~/.claude</code></td>
+</tr>
+<tr>
+<td>Configuración de agentes</td>
+<td><code>~/.claude</code></td>
+</tr>
+<tr>
+<td>Servidores MCP</td>
+<td><code>~/.claude</code></td>
+</tr>
+<tr>
+<td>Historial de sesiones</td>
+<td><code>~/.claude</code></td>
+</tr>
+<tr>
+<td>Actualizaciones de Claude Code</td>
+<td><code>~/.local/share/claude</code></td>
+</tr>
+</tbody>
+</table>
+<h2>5. Siguiente paso</h2>
+<p>Con Claude Code instalado y el PATH configurado, el siguiente paso es ejecutarlo por primera vez. Hay conceptos importantes que entender antes de hacerlo — los cubrimos en el siguiente post.</p>
+<h2>Gotchas</h2>
+<ul>
+<li><strong>El PATH no se configura solo.</strong> Si después de instalar el comando <code>claude</code> no funciona, ejecutar el comando de PATH de la sección 4 y recargar la terminal.</li>
+<li><strong>No requiere Node.js.</strong> Claude Code trae su propio runtime. No instalar Node.js como prerequisito.</li>
+<li><strong>Un usuario, una instalación.</strong> En Mac con varios usuarios, cada uno debe instalar Claude Code en su propio home.</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li>Documentación: https://docs.anthropic.com/es/docs/claude-code/getting-started</li>
+</ul></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/como-ejecutar-claude-code-por-primera-vez">Cómo ejecutar Claude Code por primera vez</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      
+      <a class="nav-siguiente" href="/como-ejecutar-claude-code-por-primera-vez"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Cómo ejecutar Claude Code por primera vez</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'como-instalar-claude-code-en-mac';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo ejecutar Claude Code por primera vez · Angel García</title>
+  <meta name="description" content="Cómo autenticarte con Claude Code por primera vez, configurar el workspace y entender los conceptos clave: sesión, CLAUDE.md y auto memory." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/como-ejecutar-claude-code-por-primera-vez/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo ejecutar Claude Code por primera vez" />
+  <meta property="og:description" content="Cómo autenticarte con Claude Code por primera vez, configurar el workspace y entender los conceptos clave: sesión, CLAUDE.md y auto memory." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/como-ejecutar-claude-code-por-primera-vez/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Cómo ejecutar Claude Code por primera vez", "categoria": "claude-code", "serie": "introduccion-claude-code-mac", "series_relacionadas": "", "slug": "como-ejecutar-claude-code-por-primera-vez", "sistema_operativo": "mac", "fecha_publicacion": "2026-06-09", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">claude-code</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Cómo ejecutar Claude Code por primera vez</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">claude-code</span></div>
+      <span class="post-updated">Actualizado: 2026-06-09</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><h2>1. ¿Desde dónde ejecutar <code>claude</code>?</h2>
+<p>Cuando ejecutas <code>claude</code>, Claude Code tiene acceso al directorio desde el que lo lanzaste y todo lo que hay dentro. Eso define cuánto puede ver y tocar sin que se lo pidas explícitamente.</p>
+<p><strong>Si lo ejecutas desde tu directorio home (<code>~</code>):</strong>
+Claude tiene acceso implícito a todo tu usuario — documentos, descargas, proyectos, configuraciones, todo. Puede leer, editar y ejecutar cualquier archivo sin que se lo indiques en medio de una sesión si lo cree conveniente.</p>
+<p><strong>Si lo ejecutas desde una carpeta específica:</strong>
+Solo puede navegar dentro de esa carpeta. Si necesita buscar en otro lugar, tienes que decírselo explícitamente.</p>
+<pre><code class="language-bash"># ❌ Desde el home — acceso implícito a todo tu usuario
+cd ~
+claude
+
+# ✅ Desde una carpeta específica — acceso limitado a esa carpeta
+cd ~/proyectos/mi-proyecto
+claude
+</code></pre>
+<p><strong>Recomendación personal:</strong> siempre ejecuta Claude Code desde la misma carpeta fija, independientemente del proyecto en el que estés trabajando. Aunque tu proyecto esté en la carpeta F, lanza Claude siempre desde la carpeta A. Los beneficios de hacer esto — relacionados con tener a Claude como un agente con memoria entre sesiones — los cubrimos más adelante en esta serie.</p>
+<h2>2. Primera vez que ejecutas <code>claude</code></h2>
+<p>Claude Code usa tu cuenta de Anthropic para autenticarse. <strong>Necesitas mínimo el plan Pro</strong> — el plan gratuito no incluye acceso a Claude Code. No tienes que configurar nada manualmente — el proceso es automático vía navegador.</p>
+<pre><code class="language-bash"># Navega a tu carpeta de lanzamiento
+cd ~/tu-carpeta
+
+# Ejecuta claude
+claude
+</code></pre>
+<p>Lo que ocurre en orden:</p>
+<ol>
+<li>Claude Code detecta que no hay sesión activa</li>
+<li>Se abre tu navegador automáticamente</li>
+<li>Inicias sesión con tu cuenta de Anthropic</li>
+<li>Autorizas el acceso</li>
+<li>El navegador te confirma que puedes cerrar la pestaña</li>
+<li>Tu terminal muestra la confirmación de seguridad del workspace:</li>
+</ol>
+<pre><code class="language-bash">Accessing workspace:
+/Users/tu_usuario/tu-carpeta
+
+Quick safety check: Is this a project you created or one you trust?
+Claude Code'll be able to read, edit, and execute files here.
+
+❯ 1. Yes, I trust this folder
+  2. No, exit
+</code></pre>
+<p>Confirmas con <code>1</code> y Claude Code queda listo para usar.</p>
+<blockquote>
+<p>⚠️ La autenticación con Anthropic solo ocurre <strong>una vez</strong>. Queda guardada en <code>~/.claude</code> y no te la pedirá de nuevo aunque cierres la terminal o reinicies la Mac.</p>
+</blockquote>
+<h2>3. Las siguientes veces que ejecutas <code>claude</code></h2>
+<p>La autenticación ya está guardada. Lo único que ocurre es la confirmación del workspace si es un directorio nuevo:</p>
+<p><strong>En un directorio ya confiado → entra directo:</strong></p>
+<pre><code class="language-bash">cd ~/tu-carpeta
+claude
+# Entra directamente sin preguntas
+</code></pre>
+<p><strong>En un directorio nuevo → te pregunta si confías:</strong></p>
+<pre><code class="language-bash">cd ~/nuevo-directorio
+claude
+# Muestra la confirmación de seguridad del workspace
+</code></pre>
+<blockquote>
+<p>La confirmación de seguridad aparece <strong>una vez por directorio</strong>. Una vez que confirmas, Claude Code recuerda ese directorio.</p>
+</blockquote>
+<h2>4. La pantalla de inicio de Claude Code</h2>
+<p>Una vez autenticado y dentro de un directorio, verás esta pantalla:</p>
+<pre><code class="language-bash">╭─── Claude Code v2.1.81 ──────────────────────────────────────────╮
+│                                        │ Tips for getting started │
+│         Welcome back Angel!            │ Run /init to create a    │
+│                                        │ CLAUDE.md file           │
+│   Sonnet 4.6 · Claude Pro ·            │                          │
+│   tu@gmail.com's Organization          │ Recent activity          │
+│   /Users/tu_usuario                    │ ...                      │
+╰──────────────────────────────────────────────────────────────────╯
+❯
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Welcome back</code></td>
+<td>Ya estás autenticado</td>
+</tr>
+<tr>
+<td><code>Sonnet 4.6 · Claude Pro</code></td>
+<td>Modelo y plan activos</td>
+</tr>
+<tr>
+<td><code>tu@gmail.com's Organization</code></td>
+<td>Cuenta vinculada</td>
+</tr>
+<tr>
+<td><code>/Users/tu_usuario</code></td>
+<td>Directorio donde está operando</td>
+</tr>
+<tr>
+<td><code>Recent activity</code></td>
+<td>Últimas sesiones, puedes retomarlas con <code>/resume</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Advertencia de directorio home</h3>
+<p>Si ejecutaste <code>claude</code> desde tu directorio home verás este aviso:</p>
+<pre><code>Note: You have launched claude in your home directory. For the best experience...
+</code></pre>
+<blockquote>
+<p>⚠️ Claude Code mismo te está advirtiendo que no es la mejor práctica. Sal con <code>/exit</code> y vuelve a entrar desde tu carpeta de lanzamiento habitual.</p>
+<p>⚠️ Para Claude Code, proyecto = ruta exacta. Siempre entra desde la raíz de tu carpeta de lanzamiento, no desde un subdirectorio. De lo contrario se crearán sesiones separadas aunque sea el mismo proyecto.</p>
+</blockquote>
+<h3>Salir de Claude Code</h3>
+<pre><code class="language-bash"># Opción 1 — comando
+/exit
+
+# Opción 2 — atajo de teclado
+Ctrl + C
+</code></pre>
+<h2>5. Conceptos clave antes de continuar</h2>
+<h3>5.1 Sesión</h3>
+<p>Una sesión es una conversación con Claude en un directorio específico. Cada vez que ejecutas <code>claude</code> en una carpeta, estás iniciando o retomando una sesión de ese directorio. Se guarda automáticamente en <code>~/.claude/projects/</code> — no dentro de tu proyecto real.</p>
+<pre><code>~/.claude/projects/
+└── Users-angel-mi-proyecto/     ← carpeta que representa tu proyecto
+    └── *.jsonl                  ← archivos de sesión en formato JSON Lines
+</code></pre>
+<p>Lo que guarda cada <code>.jsonl</code> no es una transcripción literal — es un registro estructurado que incluye los mensajes, las modificaciones de archivos realizadas y metadatos como timestamp y directorio. Es lo que Claude Code usa para retomar una sesión anterior con <code>/resume</code>.</p>
+<p>Las sesiones se guardan automáticamente. No hay una acción explícita de "guardar" — ocurre sin que lo decidas.</p>
+<blockquote>
+<p>⚠️ Las sesiones crecen con el tiempo. Revisa periódicamente cuánto ocupa <code>~/.claude/projects/</code> — puede ser considerable con el uso.</p>
+</blockquote>
+<h3>5.2 Archivos que se cargan al iniciar una sesión</h3>
+<p>Cuando ejecutas <code>claude</code>, antes de que puedas escribir nada, Claude ya cargó automáticamente un conjunto de archivos de contexto. Los principales son:</p>
+<ul>
+<li><strong><code>CLAUDE.md</code></strong> — instrucciones persistentes para Claude (global y de proyecto)</li>
+<li><strong><code>settings.json</code></strong> — configuración de permisos y comportamiento (global y de proyecto)</li>
+<li><strong>Archivos de auto memory</strong> — notas acumuladas de sesiones anteriores</li>
+</ul>
+<blockquote>
+<p>Es posible que existan otros archivos que se carguen al inicio de sesión. Lo que está confirmado son estos tres. Cada uno tiene su propio post en esta serie.</p>
+</blockquote>
+<h3>5.3 CLAUDE.md</h3>
+<p>Es el archivo más importante de los tres. Le da a Claude instrucciones persistentes que aplican en cada sesión — sin necesidad de repetirlas cada vez. Existe en dos niveles:</p>
+<p><strong>Nivel usuario (<code>~/.claude/CLAUDE.md</code>):</strong>
+Instrucciones globales. Se cargan en cualquier proyecto que abras con Claude Code.</p>
+<p><strong>Nivel proyecto (<code>~/mi-proyecto/.claude/CLAUDE.md</code>):</strong>
+Instrucciones específicas de ese proyecto. Tienen precedencia sobre las globales cuando hay conflicto.</p>
+<h3>5.4 Auto memory</h3>
+<p>Notas que Claude escribe solo sobre tus preferencias y patrones de trabajo a medida que interactúas con él. Se guardan en <code>~/.claude/projects/&lt;proyecto&gt;/memory/</code> y se cargan automáticamente al iniciar una sesión en ese proyecto.</p>
+<p>A diferencia de <code>CLAUDE.md</code> — que tú escribes — el auto memory lo genera Claude sin que se lo pidas.</p>
+<h2>6. Verificar que estás autenticado</h2>
+<pre><code class="language-bash">claude doctor
+</code></pre>
+<p>Busca esta línea en el output:</p>
+<pre><code>✓ Logged in as: tu@email.com
+</code></pre>
+<h2>7. Cerrar sesión</h2>
+<pre><code class="language-bash">claude logout
+</code></pre>
+<blockquote>
+<p>Útil si necesitas cambiar de cuenta o si alguien más va a usar Claude Code en el mismo usuario de Mac.</p>
+</blockquote>
+<h2>Gotchas</h2>
+<ul>
+<li><strong>Ejecutar <code>claude</code> desde el home directory le da acceso implícito a todo tu usuario.</strong> Siempre usar una carpeta fija de lanzamiento.</li>
+<li><strong>Proyecto = ruta exacta.</strong> Entrar desde un subdirectorio crea una sesión separada aunque sea el mismo proyecto. Siempre desde la raíz.</li>
+<li><strong>Las sesiones crecen con el uso.</strong> Revisar periódicamente el tamaño de <code>~/.claude/projects/</code> — puede ocupar espacio considerable con el tiempo.</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li>Documentación: https://docs.anthropic.com/es/docs/claude-code/getting-started</li>
+</ul></div>
+    
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/como-instalar-claude-code-en-mac">Introducción a Claude Code en Mac</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/como-instalar-claude-code-en-mac"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Introducción a Claude Code en Mac</span></a>
+      <a class="nav-siguiente" href="/estructura-archivos-claude-code-mac"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">estructura-archivos-claude-code-mac</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'como-ejecutar-claude-code-por-primera-vez';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
