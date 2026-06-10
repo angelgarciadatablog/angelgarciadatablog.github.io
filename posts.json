@@ -19,6 +19,25 @@
     "parte-siguiente": ""
   },
   {
+    "titulo": "Cómo convertir a Claude en tu agente con memoria",
+    "slug": "como-convertir-claude-en-tu-agente-con-memoria",
+    "categoria": "claude-code",
+    "tags": [
+      "datablog",
+      "claude-code"
+    ],
+    "updated": "2026-06-10",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Claude no recuerda nada entre sesiones. Cómo darle memoria de verdad ordenando la carpeta .claude — los dos archivos CLAUDE.md, la auto-memoria y los protocolos que hacen que tu agente trabaje a tu manera.",
+    "serie": "introduccion-claude-code",
+    "series-relacionadas": "",
+    "parte-anterior": "como-ejecutar-claude-code-por-primera-vez",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Cómo empezar con Claude Code",
     "slug": "como-ejecutar-claude-code-por-primera-vez",
     "categoria": "claude-code",
@@ -35,7 +54,7 @@
     "serie": "introduccion-claude-code",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
+    "parte-siguiente": "como-convertir-claude-en-tu-agente-con-memoria"
   },
   {
     "titulo": "El mapa de Google Cloud para analistas de datos",

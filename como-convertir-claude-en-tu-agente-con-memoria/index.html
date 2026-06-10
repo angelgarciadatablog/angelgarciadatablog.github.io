@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo convertir a Claude en tu agente con memoria · Angel García</title>
+  <meta name="description" content="Claude no recuerda nada entre sesiones. Cómo darle memoria de verdad ordenando la carpeta .claude — los dos archivos CLAUDE.md, la auto-memoria y los protocolos que hacen que tu agente trabaje a tu manera." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/como-convertir-claude-en-tu-agente-con-memoria/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo convertir a Claude en tu agente con memoria" />
+  <meta property="og:description" content="Claude no recuerda nada entre sesiones. Cómo darle memoria de verdad ordenando la carpeta .claude — los dos archivos CLAUDE.md, la auto-memoria y los protocolos que hacen que tu agente trabaje a tu manera." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/como-convertir-claude-en-tu-agente-con-memoria/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Cómo convertir a Claude en tu agente con memoria", "categoria": "claude-code", "serie": "introduccion-claude-code", "series_relacionadas": "", "slug": "como-convertir-claude-en-tu-agente-con-memoria", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-06-10", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">claude-code</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Cómo convertir a Claude en tu agente con memoria</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">claude-code</span></div>
+      <span class="post-updated">Actualizado: 2026-06-10</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><p>En el post anterior te dejé con una regla y una deuda. La regla: usa siempre la misma carpeta. La deuda: explicarte <em>por qué</em> esa carpeta convierte a Claude en un agente con memoria. Este post paga la deuda —y te muestra cómo lo tengo montado yo.</p>
+<h2>1. Claude ya es un agente, no un chat</h2>
+<p>Conviene recordar dónde quedamos. En el chat, Claude solo puede <em>hablarte</em>. En Claude Code, Claude <em>trabaja</em>: lee tus archivos, escribe, ejecuta comandos, organiza carpetas. Eso ya es un agente —alguien que hace cosas, no solo alguien que responde.</p>
+<p>Pero todo agente tiene un límite, y el de Claude conviene mirarlo de frente antes de resolverlo.</p>
+<h2>2. El límite real: la memoria muere al cerrar la sesión</h2>
+<p>Aquí está la verdad incómoda: <strong>cada vez que abres una sesión nueva, Claude empieza prácticamente en blanco.</strong> No recuerda la conversación de ayer, ni en qué proyecto andabas, ni qué decidiste la semana pasada. Cierras la ventana y, para efectos prácticos, ese Claude deja de existir.</p>
+<p>Digo <em>prácticamente</em> y no <em>totalmente</em> en blanco por honestidad: Claude Code guarda por su cuenta una pequeña <strong>auto-memoria</strong> —la veremos en detalle más adelante— donde anota algunas cosas que cree que vale la pena conservar. Pero ojo con apoyarte en ella: es <strong>parcial e impredecible</strong>. De una conversación de mil palabras puede que solo quede guardado un párrafo de tres líneas, y tú rara vez sabes con certeza qué se guardó y qué se perdió. Ayuda, pero no puedes construir tu trabajo sobre algo que no controlas.</p>
+<p>Y hay un detalle que vuelve este olvido aún más llamativo: solo ocurre <em>entre</em> sesiones. Dentro de <em>una misma</em> conversación, Claude parece tener una memoria excelente —le explicas algo al inicio y lo sigue usando horas después—. El problema aparece justo en el corte, al cerrar la ventana. Por eso la conclusión cae por su propio peso: la memoria entre sesiones no es algo que Claude <em>tenga</em> de fábrica, es algo que <strong>tú construyes</strong> —de forma deliberada, no dejándola al azar de lo que se guarde solo.</p>
+<p>Sí, puedes decirle "recuerda esto" en medio de una conversación, y con el tiempo Claude se va acomodando a tu forma de trabajar. Pero ese camino es frágil: el control lo tiene él, no tú. Si quieres control de verdad sobre tu agente, necesitas dos cosas:</p>
+<ol>
+<li>Mapear una <strong>carpeta única</strong> para todas tus sesiones (la regla del post anterior).</li>
+<li>Conocer los <strong>archivos</strong> que definen cómo se comporta Claude.</li>
+</ol>
+<h2>3. La solución no es magia, es orden: la carpeta <code>.claude</code></h2>
+<p>Toda la "memoria" de tu agente empieza en una carpeta con un nombre fácil de pasar por alto: <code>.claude</code>. Ese punto al inicio la convierte en una <strong>carpeta oculta</strong> —no la ves a simple vista a menos que la hagas visible a propósito— pero ahí dentro viven las instrucciones que definen a tu agente.</p>
+<p>Y aquí viene lo importante: esa carpeta <code>.claude</code> no existe en un solo lugar, existe en <strong>dos</strong>, y entender la diferencia entre ambos es la clave de todo.</p>
+<h2>4. Los dos <code>CLAUDE.md</code>: un mismo nombre, dos trabajos distintos</h2>
+<p>Dentro de esas carpetas <code>.claude</code> hay un archivo que se llama exactamente igual en los dos sitios: <code>CLAUDE.md</code>. Es un simple archivo de texto donde escribes, en español normal, las instrucciones que Claude lee al empezar cada sesión.</p>
+<p>Que tengan el mismo nombre confunde al principio. La diferencia no está en el nombre —está en <strong>dónde vive cada uno</strong> y en <strong>qué responsabilidad tiene</strong>.</p>
+<h3>4.1 El <code>CLAUDE.md</code> de usuario: <em>quién es tu agente</em></h3>
+<p>Vive aquí:</p>
+<pre><code>~/.claude/CLAUDE.md
+</code></pre>
+<p>Esa <code>.claude</code> es la de <strong>tu usuario</strong> del ordenador, no la de ningún proyecto. Por eso este archivo es especial: <strong>aplica siempre, en cualquier carpeta que abras</strong>. Es la definición transversal de tu agente.</p>
+<p>Aquí defines <em>quién es</em> Claude para ti. En mi caso, este archivo arranca diciendo:</p>
+<blockquote>
+<p><em>Eres mi agente de inteligencia artificial que me ayuda en mi día a día con mi aprendizaje. Tu objetivo es ser mi compañero de estudio: alguien que interactúa, debate, ejemplifica y documenta conmigo.</em></p>
+</blockquote>
+<p>No hay rutas técnicas ni reglas de proyecto —hay <strong>identidad y misión</strong>. Es lo que hace que Claude sea <em>mi</em> Claude y no un asistente genérico, sin importar en qué carpeta lo abra.</p>
+<h3>4.2 El <code>CLAUDE.md</code> de proyecto: <em>cómo se trabaja en esta carpeta</em></h3>
+<p>Vive aquí (suponiendo que tu carpeta de agente se llame <code>agente-claude</code>):</p>
+<pre><code>agente-claude/.claude/CLAUDE.md
+</code></pre>
+<p>Este archivo está <strong>dentro de tu carpeta de agente</strong>, y por eso solo aplica cuando abres Claude <em>ahí dentro</em>. Aquí no defines quién es Claude —eso ya lo hiciste arriba— sino <strong>cómo se trabaja en este proyecto concreto</strong>: qué archivos consultar, cómo nombrar las cosas, qué hacer al empezar y al cerrar una sesión.</p>
+<p>Es el <strong>manual de operaciones</strong> de esa carpeta específica.</p>
+<h3>4.3 La regla de oro: definiciones claras e independientes</h3>
+<p>La forma más simple de no confundirlos:</p>
+<ul>
+<li>El de <strong>usuario</strong> responde <em>"¿quién es mi agente?"</em> → identidad, misión, comportamiento general. Te sigue a todas partes.</li>
+<li>El de <strong>proyecto</strong> responde <em>"¿cómo se trabaja en esta carpeta?"</em> → rutas, reglas y protocolos de esa carpeta concreta. Vive pegado a la carpeta.</li>
+</ul>
+<p>Cada uno con su responsabilidad, sin pisarse. Uno viaja contigo; el otro se queda en casa.</p>
+<h3>4.4 Cuándo conviene duplicar a propósito</h3>
+<p>Hay una excepción que parece un error y en realidad es una decisión de diseño. En mi setup, el <strong>protocolo de inicio</strong> (las primeras cosas que Claude lee al arrancar) lo tengo escrito en <strong>los dos archivos a la vez</strong>.</p>
+<p>¿Por qué duplicarlo? Por un seguro: si algún día abro Claude por error en una carpeta que <em>no</em> es la de siempre, quiero que <strong>siga siendo el mismo agente</strong> —que no pierda su esencia ni sus reglas básicas. Como el archivo de usuario aplica en todas partes y apunta a mi carpeta por su ruta completa, el contexto se carga igual aunque me equivoque de carpeta.</p>
+<p>El único costo es que, si cambio ese protocolo, lo tengo que actualizar en los dos sitios. A cambio, garantizo que mi agente nunca pierde la identidad. La lección general: <strong>la pregunta no es solo "dónde va esto", sino "dónde quiero que aplique"</strong>. Si quieres que algo te acompañe a toda carpeta, va en el de usuario —aunque eso implique duplicar.</p>
+<h2>5. La tercera capa: el cuaderno que gestiona Claude</h2>
+<p>Hasta aquí hablamos de los dos archivos que <strong>tú</strong> redactas. Pero hay una tercera capa que conviene conocer: un cuaderno que vive del lado de Claude.</p>
+<p>Claude Code guarda, en una carpeta aparte de tu ordenador, una <strong>auto-memoria</strong>: un sitio donde se anota lo que conviene recordar entre sesiones —una preferencia tuya, una corrección que le hiciste, un dato del proyecto— y que se vuelve a cargar al inicio de cada sesión. La mayor parte la escribe Claude <strong>por iniciativa propia</strong>, pero no es terreno cerrado para ti: si le dices <em>"recuerda que…"</em> o <em>"guarda esto en tu memory"</em>, lo anota ahí; e incluso puedes abrir y editar esos archivos tú mismo con el comando <code>/memory</code>.</p>
+<p>La diferencia real con los <code>CLAUDE.md</code> no es <em>quién puede escribir</em> —en los tres puede haber mano tuya—, sino <strong>de quién es el archivo y para qué sirve</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>De quién es</th>
+<th>Dónde vive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLAUDE.md</code> de usuario</td>
+<td><strong>Tuyo</strong></td>
+<td>Carpeta oculta de tu usuario</td>
+</tr>
+<tr>
+<td><code>CLAUDE.md</code> de proyecto</td>
+<td><strong>Tuyo</strong></td>
+<td>Dentro de tu carpeta de agente</td>
+</tr>
+<tr>
+<td>Auto-memoria</td>
+<td><strong>De Claude</strong> (puedes pedirle que guarde, o editarla con <code>/memory</code>)</td>
+<td>Fuera de tu carpeta, en el ordenador</td>
+</tr>
+</tbody>
+</table>
+<p>Los dos <code>CLAUDE.md</code> son <strong>tu fuente de instrucciones</strong>: los redactas tú, viven en tu carpeta y viajan con ella si la respaldas en la nube o en un repositorio. La auto-memoria es <strong>el cuaderno de apuntes de Claude</strong>: él lo gestiona, vive fuera de tu carpeta y no viaja con tu repo. Puedes consultarlo y editarlo cuando quieras, pero no es donde pones tus reglas deliberadas —esas van en los <code>CLAUDE.md</code>, que controlas tú.</p>
+<p>Yo prefiero apoyarme sobre todo en los <code>CLAUDE.md</code>, porque me dan control explícito sobre cómo trabaja mi agente. La auto-memoria es un buen complemento —deja que Claude recuerde detalles que yo no alcanzo a escribir— pero las reglas que de verdad importan las defino yo, a mano, en los archivos que controlo.</p>
+<h2>6. Protocolos: que el agente trabaje a tu manera</h2>
+<p>Aquí está la parte que convierte una carpeta ordenada en un agente que de verdad trabaja como tú quieres. Dentro del <code>CLAUDE.md</code> de proyecto puedes escribir <strong>protocolos</strong>: instrucciones estándar que Claude sigue de forma consistente, sin que tengas que recordárselas cada vez.</p>
+<p>Dos ejemplos de los que yo uso a diario:</p>
+<ul>
+<li><strong>Protocolo de inicio</strong>: al abrir cualquier sesión, antes de responderme, Claude lee ciertos archivos de mi carpeta para recuperar el contexto —mis preferencias, el mapa de carpetas, en qué proyecto estoy. Así nunca arranca "frío".</li>
+<li><strong>Protocolo de cierre</strong>: cuando le digo que terminamos por hoy, Claude guarda un <strong>resumen estructurado</strong> de la sesión —qué tratamos, qué aprendí, qué quedó pendiente— en un archivo con un formato fijo. Eso convierte cada conversación en memoria consultable a futuro.</li>
+</ul>
+<p>Fíjate en lo que logra el protocolo de cierre: ya no es solo "Claude lee mis instrucciones", es "Claude <strong>escribe</strong> memoria por mí, a mi manera, cada vez que cerramos". Ahí la carpeta deja de ser un almacén y se vuelve una memoria viva.</p>
+<p>No vamos a entrar al detalle de cómo se escribe cada protocolo —eso merece su propio post—. Por ahora quédate con la idea: <strong>los protocolos son las reglas estándar que escribes una vez para que tu agente se comporte igual siempre.</strong></p>
+<blockquote>
+<p><strong>⚠️ Para no crear una expectativa equivocada:</strong> esto <strong>no</strong> es un "agente autónomo" al estilo de Google Antigravity, donde le das un objetivo y el agente decide y ejecuta cada paso solo mientras tú supervisas. Lo que armamos aquí es lo contrario, y a propósito: un agente que trabaja <strong>bajo tu dirección</strong>, con la memoria y los protocolos al servicio de la consistencia, no de la autonomía total. (Claude Code <em>puede</em> operar de forma más autónoma con subagentes y permisos amplios, pero ese es otro camino, no el de esta serie.)</p>
+</blockquote>
+<h2>7. Así se ve funcionando</h2>
+<p>Todo esto no es teoría. Yo tengo una carpeta de agente —la llamo <code>infinity-memory</code>— que abro en cada sesión. Dentro vive el <code>CLAUDE.md</code> de proyecto con mis protocolos; en mi usuario vive el <code>CLAUDE.md</code> que define quién es mi agente; y por debajo, Claude alimenta su auto-memoria. Las tres capas trabajando juntas hacen que, cada vez que abro Claude, no empiece de cero: sabe quién es, sabe cómo trabajo y recuerda dónde lo dejamos.</p>
+<p>Eso es, en concreto, convertir a Claude en un agente con memoria: <strong>no un truco, sino orden</strong> —archivos claros, cada uno con su trabajo, y protocolos que hacen el resto.</p>
+<h2>8. Lo que viene</h2>
+<p>Ya tienes el mapa completo: por qué Claude olvida, los dos <code>CLAUDE.md</code> y para qué sirve cada uno, la auto-memoria y el papel de los protocolos.</p>
+<p>En el próximo post abrimos el capó: vamos a <strong>escribir protocolos en detalle</strong> —empezando por el de cierre y su template de sesión— para que veas exactamente cómo se le enseña a un agente a guardar memoria a tu manera.</p>
+<h2>9. Recursos</h2>
+<ul>
+<li><a href="https://www.angelgarciadatablog.com/como-ejecutar-claude-code-por-primera-vez">Cómo empezar con Claude Code</a> — el post anterior de la serie</li>
+<li><a href="https://claude.com/product/claude-code">Página oficial de Claude Code</a></li>
+<li><a href="https://docs.claude.com/en/docs/claude-code/overview">Documentación de Claude Code</a></li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/como-ejecutar-claude-code-por-primera-vez"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Cómo empezar con Claude Code</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'como-convertir-claude-en-tu-agente-con-memoria';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
