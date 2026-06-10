@@ -19,7 +19,7 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "Cómo empezar con Claude Code en Mac",
+    "titulo": "Cómo empezar con Claude Code",
     "slug": "como-ejecutar-claude-code-por-primera-vez",
     "categoria": "claude-code",
     "tags": [
@@ -29,10 +29,10 @@
     "updated": "2026-06-10",
     "posts-relacionados": [],
     "video-youtube": "",
-    "sistema-operativo": "mac",
+    "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Claude Code es mucho más que el chat de Claude. Qué necesitas para empezar en Mac, por qué elegir la app de escritorio y la regla de la carpeta única.",
-    "serie": "introduccion-claude-code-mac",
+    "serie": "introduccion-claude-code",
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
