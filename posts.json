@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "Ruta del analista de datos",
+    "slug": "ruta-analista-datos",
+    "categoria": "formacion",
+    "tags": [
+      "datablog",
+      "formacion"
+    ],
+    "updated": "2026-06-10",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Cómo empezar con Claude Code en Mac",
     "slug": "como-ejecutar-claude-code-por-primera-vez",
     "categoria": "claude-code",
@@ -14,25 +33,6 @@
     "repositorio": "",
     "descripcion": "Claude Code es mucho más que el chat de Claude. Qué necesitas para empezar en Mac, por qué elegir la app de escritorio y la regla de la carpeta única.",
     "serie": "introduccion-claude-code-mac",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Ruta del analista de datos",
-    "slug": "ruta-analista-datos",
-    "categoria": "formacion",
-    "tags": [
-      "datablog",
-      "formacion"
-    ],
-    "updated": "2026-06-09",
-    "posts-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
-    "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
