@@ -12,6 +12,7 @@ import json
 import re
 import argparse
 from pathlib import Path
+from datetime import date
 
 import frontmatter
 import markdown
@@ -20,8 +21,11 @@ import markdown
 VAULT_DATABLOG = Path.home() / "infinity-memory" / "vault" / "datablog"
 WEB_ROOT = Path(__file__).parent
 TEMPLATE_PATH = WEB_ROOT / "assets" / "post_template.html"
+TOMBSTONE_TEMPLATE_PATH = WEB_ROOT / "assets" / "tombstone_template.html"
 POSTS_JSON = WEB_ROOT / "posts.json"
+LINKS_PERDIDOS = WEB_ROOT / "links-perdidos.json"
 
+BASE_URL = "https://www.angelgarciadatablog.com"
 STATUS_PUBLICABLES = {"listo", "publicado"}
 
 # ─── ARGUMENTOS ───────────────────────────────────────────────────────────────
@@ -35,6 +39,36 @@ def extraer_video_id(url):
     """Extrae el video ID de una URL de YouTube."""
     match = re.search(r"(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})", url)
     return match.group(1) if match else url
+
+
+def escribir_lapida(slug):
+    """Genera una página-lápida estética para un slug borrado (link perdido).
+
+    Política (ver vault/proyectos/web-angelgarciadatablog.md → 'Política de borrado'):
+    la URL vieja nunca hace 404 ni redirect silencioso; muestra una lápida visible
+    con un botón manual hacia el home.
+    """
+    tpl = TOMBSTONE_TEMPLATE_PATH.read_text(encoding="utf-8")
+
+    datalayer = {"event": "tombstone_view", "slug_retirado": slug}
+    datalayer_push = ("<script>\nwindow.dataLayer = window.dataLayer || [];\n"
+                      f"window.dataLayer.push({json.dumps(datalayer, ensure_ascii=False)});\n</script>")
+
+    html = tpl
+    html = html.replace("{{titulo_pagina}}", "Contenido no disponible")
+    html = html.replace("{{head_extra}}", '<meta name="robots" content="noindex, follow" />')
+    html = html.replace("{{datalayer_push}}", datalayer_push)
+    html = html.replace("{{icono}}", "○")
+    html = html.replace("{{mensaje_titulo}}", "Este contenido cambió de lugar")
+    html = html.replace("{{mensaje_texto}}",
+                        "La página que buscabas se actualizó o se movió. "
+                        "Te invitamos a seguir explorando desde el inicio.")
+    html = html.replace("{{boton_url}}", "/")
+    html = html.replace("{{boton_texto}}", "Ir al inicio")
+
+    out_dir = WEB_ROOT / slug
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "index.html").write_text(html, encoding="utf-8")
 
 # ─── CARGAR TEMPLATE ──────────────────────────────────────────────────────────
 template = TEMPLATE_PATH.read_text(encoding="utf-8")
@@ -53,6 +87,33 @@ for md_file in md_files:
 # Índice slug → titulo para resolver temas-relacionados
 slug_a_titulo = {p["slug"]: p.get("titulo", p["slug"]) for p in todos_los_posts}
 
+# ─── REGISTRO DE LINKS PERDIDOS (slugs borrados) ──────────────────────────────
+# Un slug que estuvo publicado (posts.json) pero ya no existe en el vault es un
+# "link perdido". Se registra en links-perdidos.json (memoria persistente + reporte
+# para Ángel). Su URL mostrará una lápida estética hacia el home, nunca un 404.
+# No se edita a mano: el script lo mantiene solo.
+vault_slugs = {p["slug"] for p in todos_los_posts}
+
+links_perdidos = []
+if LINKS_PERDIDOS.exists():
+    links_perdidos = json.loads(LINKS_PERDIDOS.read_text(encoding="utf-8"))
+registrados = {e["slug"] for e in links_perdidos}
+
+publicados_antes = set()
+if POSTS_JSON.exists():
+    publicados_antes = {p["slug"] for p in json.loads(POSTS_JSON.read_text(encoding="utf-8"))}
+
+nuevos_perdidos = publicados_antes - vault_slugs - registrados
+if nuevos_perdidos:
+    hoy = date.today().isoformat()
+    for s in sorted(nuevos_perdidos):
+        links_perdidos.append({"slug": s, "url": f"{BASE_URL}/{s}", "detectado": hoy})
+        print(f"🔗 link perdido nuevo: {s}  → registrado en links-perdidos.json")
+    LINKS_PERDIDOS.write_text(json.dumps(links_perdidos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+# Memoria completa de slugs retirados (regenera su lápida en cada corrida)
+retired_slugs = {e["slug"] for e in links_perdidos}
+
 # ─── FILTRAR LOS QUE SE PUBLICAN ──────────────────────────────────────────────
 def debe_publicar(meta):
     status = meta.get("status", "")
@@ -64,8 +125,8 @@ def debe_publicar(meta):
 
 posts_a_publicar = [p for p in todos_los_posts if debe_publicar(p)]
 
-if not posts_a_publicar:
-    print("No hay posts para publicar.")
+if not posts_a_publicar and not retired_slugs:
+    print("No hay posts para publicar ni lápidas que generar.")
     exit()
 
 # ─── GENERAR HTML POR POST ────────────────────────────────────────────────────
@@ -213,12 +274,26 @@ if POSTS_JSON.exists():
     existentes = [p for p in existentes if p["slug"] not in slugs_nuevos]
     indice = existentes + indice
 
+# ─── GENERAR LÁPIDAS (links perdidos) ─────────────────────────────────────────
+for s in sorted(retired_slugs):
+    escribir_lapida(s)
+    print(f"🪦 lápida: {s}/ → home")
+# Los slugs retirados no deben listarse en la home ni indexarse en el sitemap
+indice = [p for p in indice if p["slug"] not in retired_slugs]
+# Limpiar referencias colgantes a slugs retirados en los posts que quedan
+for p in indice:
+    if p.get("posts-relacionados"):
+        p["posts-relacionados"] = [s for s in p["posts-relacionados"] if s not in retired_slugs]
+    if p.get("parte-anterior") in retired_slugs:
+        p["parte-anterior"] = ""
+    if p.get("parte-siguiente") in retired_slugs:
+        p["parte-siguiente"] = ""
+
 indice.sort(key=lambda p: p["updated"], reverse=True)
 POSTS_JSON.write_text(json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8")
 print(f"✓ posts.json actualizado ({len(indice)} posts)")
 
 # ─── GENERAR sitemap.xml ──────────────────────────────────────────────────────
-BASE_URL = "https://www.angelgarciadatablog.com"
 urls = [f'  <url>\n    <loc>{BASE_URL}/</loc>\n  </url>']
 for p in indice:
     urls.append(f'  <url>\n    <loc>{BASE_URL}/{p["slug"]}/</loc>\n    <lastmod>{p["updated"]}</lastmod>\n  </url>')

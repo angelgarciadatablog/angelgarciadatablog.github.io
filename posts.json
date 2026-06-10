@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "Cómo empezar con Claude Code en Mac",
+    "slug": "como-ejecutar-claude-code-por-primera-vez",
+    "categoria": "claude-code",
+    "tags": [
+      "datablog",
+      "claude-code"
+    ],
+    "updated": "2026-06-10",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Claude Code es mucho más que el chat de Claude. Qué necesitas para empezar en Mac, por qué elegir la app de escritorio y la regla de la carpeta única.",
+    "serie": "introduccion-claude-code-mac",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Ruta del analista de datos",
     "slug": "ruta-analista-datos",
     "categoria": "formacion",
@@ -17,48 +36,6 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": ""
-  },
-  {
-    "titulo": "Cómo ejecutar Claude Code por primera vez",
-    "slug": "como-ejecutar-claude-code-por-primera-vez",
-    "categoria": "claude-code",
-    "tags": [
-      "datablog",
-      "claude-code"
-    ],
-    "updated": "2026-06-09",
-    "posts-relacionados": [
-      "como-instalar-claude-code-en-mac"
-    ],
-    "video-youtube": "",
-    "sistema-operativo": "mac",
-    "repositorio": "",
-    "descripcion": "Cómo autenticarte con Claude Code por primera vez, configurar el workspace y entender los conceptos clave: sesión, CLAUDE.md y auto memory.",
-    "serie": "introduccion-claude-code-mac",
-    "series-relacionadas": "",
-    "parte-anterior": "como-instalar-claude-code-en-mac",
-    "parte-siguiente": "estructura-archivos-claude-code-mac"
-  },
-  {
-    "titulo": "Introducción a Claude Code en Mac",
-    "slug": "como-instalar-claude-code-en-mac",
-    "categoria": "claude-code",
-    "tags": [
-      "datablog",
-      "claude-code"
-    ],
-    "updated": "2026-06-09",
-    "posts-relacionados": [
-      "como-ejecutar-claude-code-por-primera-vez"
-    ],
-    "video-youtube": "",
-    "sistema-operativo": "mac",
-    "repositorio": "",
-    "descripcion": "Cómo instalar Claude Code en Mac con el instalador oficial curl, configurar el PATH y entender su runtime autónomo.",
-    "serie": "introduccion-claude-code-mac",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": "como-ejecutar-claude-code-por-primera-vez"
   },
   {
     "titulo": "El mapa de Google Cloud para analistas de datos",

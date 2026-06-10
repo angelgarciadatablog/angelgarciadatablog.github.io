@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contenido no disponible · Angel García</title>
-  <meta name="robots" content="noindex, follow" />
+  <title>{{titulo_pagina}} · Angel García</title>
+  {{head_extra}}
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <script>
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"event": "tombstone_view", "slug_retirado": "como-instalar-claude-code-en-mac"});
-</script>
+  {{datalayer_push}}
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -48,10 +45,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="tombstone-wrap">
   <div class="tombstone-card">
-    <div class="tombstone-icon">○</div>
-    <h1>Este contenido cambió de lugar</h1>
-    <p>La página que buscabas se actualizó o se movió. Te invitamos a seguir explorando desde el inicio.</p>
-    <a class="tombstone-btn" href="/">Ir al inicio</a>
+    <div class="tombstone-icon">{{icono}}</div>
+    <h1>{{mensaje_titulo}}</h1>
+    <p>{{mensaje_texto}}</p>
+    <a class="tombstone-btn" href="{{boton_url}}">{{boton_texto}}</a>
   </div>
 </div>
 
