@@ -141,13 +141,13 @@
 }
 
 .post-body p {
-  color: var(--color-texto-suave);
+  color: var(--color-texto-cuerpo);
   margin-bottom: 16px;
 }
 
 .post-body ul,
 .post-body ol {
-  color: var(--color-texto-suave);
+  color: var(--color-texto-cuerpo);
   padding-left: 20px;
   margin-bottom: 16px;
 }
