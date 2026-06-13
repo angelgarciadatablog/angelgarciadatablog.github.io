@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "Configurar atajos en la terminal de Mac",
+    "slug": "configurar-atajos-terminal-mac",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-06-12",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Hay un archivo en tu Mac que se ejecuta cada vez que abres la terminal. Aprende a usarlo para no volver a escribir la misma ruta larga nunca más.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Ruta del analista de datos",
     "slug": "ruta-analista-datos",
     "categoria": "formacion",

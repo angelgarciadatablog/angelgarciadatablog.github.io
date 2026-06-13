@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configurar atajos en la terminal de Mac · Angel García</title>
+  <meta name="description" content="Hay un archivo en tu Mac que se ejecuta cada vez que abres la terminal. Aprende a usarlo para no volver a escribir la misma ruta larga nunca más." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/configurar-atajos-terminal-mac/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Configurar atajos en la terminal de Mac" />
+  <meta property="og:description" content="Hay un archivo en tu Mac que se ejecuta cada vez que abres la terminal. Aprende a usarlo para no volver a escribir la misma ruta larga nunca más." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/configurar-atajos-terminal-mac/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Configurar atajos en la terminal de Mac", "categoria": "bash-shell", "serie": "", "series_relacionadas": "", "slug": "configurar-atajos-terminal-mac", "sistema_operativo": "mac", "fecha_publicacion": "2026-06-12", "video_youtube": ""});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Configurar atajos en la terminal de Mac</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-06-12</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    <div class="post-body" id="post-body"><p>¿Cuántas veces al día escribes el mismo comando largo en la terminal? Esa ruta interminable para llegar a tu carpeta de trabajo, ese script que ejecutas siempre igual. Yo lo hacía a diario hasta que descubrí que en mi Mac hay un archivo escondido cuyo único trabajo es ahorrarme exactamente eso. En este post te lo presento y te enseño a darle tu primer atajo.</p>
+<h2>1. El archivo que se ejecuta solo: <code>.zshrc</code></h2>
+<p>Empecemos por lo principal, porque casi nadie te lo explica claro: en tu Mac existe un archivo llamado <strong><code>.zshrc</code></strong> que vive en tu carpeta de usuario. No es una carpeta ni un programa —es un simple archivo de texto.</p>
+<p>Lo que lo hace especial es <strong>cuándo se ejecuta</strong>: cada vez que abres una ventana nueva de la terminal, tu Mac lee ese archivo de arriba a abajo y ejecuta todo lo que haya dentro, <em>antes</em> de darte el control. Piénsalo como las instrucciones de arranque de tu terminal: lo que pongas ahí "ya está listo" cada vez que empiezas a trabajar.</p>
+<p>Dos detalles del nombre, para que no te confunda:</p>
+<ul>
+<li>El <strong><code>~</code></strong> (que verás siempre que se hable de este archivo) es la forma corta de referirse a tu carpeta de usuario. La ruta completa es <code>~/.zshrc</code>.</li>
+<li>El <strong>punto</strong> al inicio (<code>.zshrc</code>) hace que el archivo esté <strong>oculto</strong>. Por eso no lo ves normalmente en Finder —pero ahí está.</li>
+</ul>
+<blockquote>
+<p>¿Por qué "zsh"? Porque es el nombre del programa que interpreta tus comandos en la terminal de Mac (se llama <em>Z shell</em>, o <em>zsh</em>). El <code>.zshrc</code> es su archivo de configuración. En Macs antiguas el programa era otro (<em>bash</em>) y el archivo se llamaba <code>.bashrc</code> —si ves ese nombre por ahí, es lo mismo pero de la era anterior.</p>
+</blockquote>
+<h2>2. Ejemplo práctico: un atajo para tu carpeta de siempre</h2>
+<p>Vamos con el caso más útil y más fácil de entender: tienes una carpeta a la que entras todos los días, y estás cansado de escribir la ruta completa. La vamos a convertir en una sola palabra.</p>
+<p>Imagina que cada día haces esto para llegar a la carpeta de tu proyecto:</p>
+<pre><code class="language-bash">cd ~/Documents/proyectos/dashboard-ventas
+</code></pre>
+<p>Eso sí que se vuelve tedioso: carpetas anidadas, varios niveles de profundidad, y la tienes que escribir entera cada mañana (o pelear con el autocompletado). Lo que queremos es escribir una palabra fácil de recordar —digamos <code>hola-proyecto</code>— y que la terminal nos lleve sola hasta allá.</p>
+<p>Para lograrlo, abrimos el <code>.zshrc</code> y le agregamos una <strong>función</strong>:</p>
+<pre><code class="language-bash">hola-proyecto() {
+  cd ~/Documents/proyectos/dashboard-ventas
+}
+</code></pre>
+<p>Te traduzco línea por línea:</p>
+<ul>
+<li><code>hola-proyecto()</code> — le da nombre a tu atajo. Lo que escribas aquí es lo que vas a teclear en la terminal después.</li>
+<li>Las llaves <code>{ }</code> envuelven las instrucciones que se ejecutarán cuando llames al atajo.</li>
+<li><code>cd ~/Documents/proyectos/dashboard-ventas</code> — el comando real que quieres ahorrarte. <code>cd</code> significa <em>change directory</em> (cambiar de carpeta).</li>
+</ul>
+<p>Hay un último paso que mucha gente olvida y por eso cree que "no funcionó": el <code>.zshrc</code> solo se lee al abrir una terminal <strong>nueva</strong>. Si lo editas en una terminal que ya está abierta, tienes que pedirle que vuelva a leer el archivo:</p>
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+<p>A partir de ahí, en cualquier terminal solo escribes <code>hola-proyecto</code> y apareces en la carpeta del proyecto. Lo escribiste una vez; lo usas para siempre.</p>
+<h2>3. Funciones y "alias": dos formas del mismo atajo</h2>
+<p>El ejemplo de arriba es una <strong>función</strong>. Pero existe un primo más simple llamado <strong>alias</strong>, y conviene que conozcas la diferencia para elegir bien:</p>
+<ul>
+<li>Un <strong>alias</strong> solo cambia una palabra por un comando. Es para atajos de un único comando fijo. Por ejemplo: <code>alias gs="git status"</code> —escribes <code>gs</code> y se ejecuta <code>git status</code>. Punto.</li>
+<li>Una <strong>función</strong> puede hacer varias cosas, encadenar comandos y recibir información extra. Es para cuando el atajo necesita más de un paso.</li>
+</ul>
+<p>Regla simple para no dudar: <strong>¿es un solo comando que nunca cambia?</strong> → alias. <strong>¿necesitas varios pasos o algo de lógica?</strong> → función. Para empezar, con cualquiera de los dos resuelves el 90% de tus necesidades.</p>
+<h2>4. Todo lo demás que ese archivo puede hacer</h2>
+<p>El atajo de carpeta es apenas la punta del iceberg. Para que tengas el panorama completo, esto es lo que cabe dentro de un <code>.zshrc</code> —no te preocupes por dominarlo ahora, solo quiero que sepas que existe:</p>
+<ul>
+<li><strong>Aliases y funciones</strong> — los atajos que ya vimos. Lo que más usarás al principio.</li>
+<li><strong>Variables de entorno</strong> — datos que tus programas leen al arrancar (por ejemplo, cuál es tu editor de texto por defecto).</li>
+<li><strong>Modificar el <code>PATH</code></strong> — la lista de carpetas donde la terminal busca programas. Si alguna vez instalaste algo y te dijo "command not found", esto suele ser la causa.</li>
+<li><strong>Personalizar el prompt</strong> — cambiar cómo se ve tu línea de comandos: colores, o mostrar en qué rama de Git estás parado.</li>
+<li><strong>Inicializar herramientas</strong> — preparar programas como gestores de versiones de Python o Node cada vez que abres la terminal.</li>
+</ul>
+<p>La idea de fondo es siempre la misma: <strong>lo que repites a diario, lo dejas listo una vez aquí.</strong></p>
+<h2>5. ¿Cuándo vale la pena? El único contra a tener en cuenta</h2>
+<p>Podrías pensar "entonces lleno el archivo de atajos y listo". Cuidado, porque hay un costo: <strong>cada línea del <code>.zshrc</code> se ejecuta al abrir la terminal</strong>. Si lo llenas de cosas pesadas, cada ventana nueva tarda un poco más en estar lista. En la práctica, con atajos sencillos como los de este post, ni lo notas —el problema aparece cuando cargas herramientas grandes sin necesidad.</p>
+<p>Mi criterio para decidir qué merece un atajo:</p>
+<ol>
+<li><strong>Rutas que navego siempre.</strong> Si entro a la misma carpeta cada día, eso es un atajo seguro.</li>
+<li><strong>Comandos largos que repito tal cual.</strong> Si tecleo lo mismo por tercera vez, es candidato.</li>
+<li><strong>Lo que NO tiene sentido como atajo:</strong> comandos que uso una vez al mes, o atajos tan crípticos que en un mes no recordaré qué hacen.</li>
+</ol>
+<p>En resumen: no se trata de llenar el archivo, sino de quitarte de encima lo que repites sin pensar. Empieza pequeño y agrega un atajo solo cuando notes el patrón.</p>
+<blockquote>
+<p>Una advertencia importante: <strong>nunca guardes contraseñas, tokens ni claves de API dentro del <code>.zshrc</code>.</strong> No es el lugar para secretos. Para eso existen otros mecanismos —tema para otro post.</p>
+</blockquote>
+<h2>6. Mi conclusión</h2>
+<p>El <code>.zshrc</code> es de esas cosas que, una vez que las entiendes, te preguntas cómo trabajabas sin ellas. No necesitas saber programar ni convertirte en experto de la terminal: con entender que es "un archivo que se ejecuta al abrir la terminal" y saber meterle una función, ya le ganas horas al mes a las rutas largas. Mi recomendación es que empieces hoy con un solo atajo —la carpeta donde más entras— y dejes que el archivo crezca solo, al ritmo de lo que de verdad repites.</p>
+<h2>7. Recursos</h2>
+<ul>
+<li><a href="https://zsh.sourceforge.io/Doc/">Documentación oficial de Zsh</a></li>
+<li><a href="https://zsh.sourceforge.io/Guide/">Guía de inicio de Zsh (Z shell)</a></li>
+</ul>
+<h2>8. Pendientes</h2>
+<ul>
+<li>[ ] Rastrear durante unos días qué comandos uso realmente más en la terminal (revisar el historial con <code>history</code>) y convertir los más frecuentes en atajos para una segunda parte de este post.</li>
+</ul></div>
+    
+    
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'configurar-atajos-terminal-mac';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
