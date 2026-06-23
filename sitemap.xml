@@ -4,12 +4,16 @@
     <loc>https://www.angelgarciadatablog.com/</loc>
   </url>
   <url>
-    <loc>https://www.angelgarciadatablog.com/configurar-atajos-terminal-mac/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://www.angelgarciadatablog.com/introduccion-apis-para-analistas/</loc>
+    <lastmod>2026-06-23</lastmod>
   </url>
   <url>
     <loc>https://www.angelgarciadatablog.com/ruta-analista-datos/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
+  </url>
+  <url>
+    <loc>https://www.angelgarciadatablog.com/configurar-atajos-terminal-mac/</loc>
+    <lastmod>2026-06-12</lastmod>
   </url>
   <url>
     <loc>https://www.angelgarciadatablog.com/como-convertir-claude-en-tu-agente-con-memoria/</loc>
@@ -54,10 +58,6 @@
   <url>
     <loc>https://www.angelgarciadatablog.com/anatomia-de-una-peticion-http/</loc>
     <lastmod>2026-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://www.angelgarciadatablog.com/introduccion-apis-para-analistas/</loc>
-    <lastmod>2026-05-20</lastmod>
   </url>
   <url>
     <loc>https://www.angelgarciadatablog.com/como-llevar-un-script-python-a-cloud-run/</loc>
