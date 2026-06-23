@@ -1,7 +1,7 @@
 /* LAYOUT POST */
 .post-layout {
   display: flex;
-  margin-left: 240px;
+  margin-left: var(--sidebar-width);
   padding: 40px 48px;
   gap: 48px;
   max-width: 1200px;

@@ -153,3 +153,62 @@ function cerrarSidebar() {
   document.getElementById('sidebar').classList.remove('abierto');
   document.getElementById('sidebarOverlay').classList.remove('visible');
 }
+
+// ─── REDIMENSIONAR SIDEBAR (arrastrar el borde) ──────────────────────────────
+const SIDEBAR_MIN = 240;   // ancho por defecto, no se reduce más
+const SIDEBAR_MAX = 440;   // tope al expandir
+const SIDEBAR_KEY = 'sidebar-width';
+
+// Restaurar el ancho guardado cuanto antes (evita el parpadeo al cargar)
+(function restaurarAnchoSidebar() {
+  const guardado = parseInt(localStorage.getItem(SIDEBAR_KEY), 10);
+  if (guardado >= SIDEBAR_MIN && guardado <= SIDEBAR_MAX) {
+    document.documentElement.style.setProperty('--sidebar-width', guardado + 'px');
+  }
+})();
+
+function initSidebarResize() {
+  if (document.querySelector('.sidebar-resizer')) return; // evitar duplicados
+
+  const resizer = document.createElement('div');
+  resizer.className = 'sidebar-resizer';
+  resizer.title = 'Arrastra para ajustar el ancho · doble clic para restablecer';
+  document.body.appendChild(resizer);
+
+  let arrastrando = false;
+
+  resizer.addEventListener('mousedown', (e) => {
+    arrastrando = true;
+    resizer.classList.add('arrastrando');
+    document.body.classList.add('sidebar-resizing');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!arrastrando) return;
+    let ancho = Math.min(SIDEBAR_MAX, Math.max(SIDEBAR_MIN, e.clientX));
+    document.documentElement.style.setProperty('--sidebar-width', ancho + 'px');
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!arrastrando) return;
+    arrastrando = false;
+    resizer.classList.remove('arrastrando');
+    document.body.classList.remove('sidebar-resizing');
+    const actual = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--sidebar-width'), 10);
+    localStorage.setItem(SIDEBAR_KEY, actual);
+  });
+
+  // Doble clic en la manija → volver al ancho por defecto
+  resizer.addEventListener('dblclick', () => {
+    document.documentElement.style.setProperty('--sidebar-width', SIDEBAR_MIN + 'px');
+    localStorage.setItem(SIDEBAR_KEY, SIDEBAR_MIN);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSidebarResize);
+} else {
+  initSidebarResize();
+}

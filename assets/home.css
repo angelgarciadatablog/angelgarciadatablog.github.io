@@ -1,6 +1,6 @@
 /* LAYOUT HOME */
 .home-layout {
-  margin-left: 240px;
+  margin-left: var(--sidebar-width);
   padding: 40px 48px;
   max-width: 960px;
 }
