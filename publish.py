@@ -84,8 +84,13 @@ for md_file in md_files:
         continue
     todos_los_posts.append(meta)
 
-# Índice slug → titulo para resolver temas-relacionados
+# Índice slug → titulo para resolver posts-relacionados y navegación de serie
 slug_a_titulo = {p["slug"]: p.get("titulo", p["slug"]) for p in todos_los_posts}
+
+# Slugs que tendrán página publicada (status listo/publicado). Un post-relacionado
+# que no esté aquí (tema aún no publicado, o borrador) NO se renderiza, para evitar
+# generar un enlace a una URL inexistente (404 que la lápida no cubre).
+slugs_publicables = {p["slug"] for p in todos_los_posts if p.get("status") in STATUS_PUBLICABLES}
 
 # ─── REGISTRO DE LINKS PERDIDOS (slugs borrados) ──────────────────────────────
 # Un slug que estuvo publicado (posts.json) pero ya no existe en el vault es un
@@ -167,13 +172,15 @@ for meta in posts_a_publicar:
     else:
         video_html = ""
 
-    # Posts relacionados
+    # Posts relacionados (solo los que tendrán página publicada — el resto se omite)
     relacionados_raw = meta.get("posts-relacionados") or []
-    if relacionados_raw:
-        items = ""
-        for s in relacionados_raw:
-            titulo_rel = slug_a_titulo.get(s, s)
-            items += f'<a class="relacionado-item" href="/{s}">{titulo_rel}</a>\n'
+    items = ""
+    for s in relacionados_raw:
+        if s not in slugs_publicables:
+            continue
+        titulo_rel = slug_a_titulo.get(s, s)
+        items += f'<a class="relacionado-item" href="/{s}">{titulo_rel}</a>\n'
+    if items:
         relacionados_html = f"""
 <div class="post-relacionados">
   <div class="post-relacionados-titulo">Posts relacionados</div>
