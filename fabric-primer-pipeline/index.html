@@ -128,10 +128,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Desde la barra lateral de Fabric → <strong>Áreas de trabajo → + Nueva área de trabajo</strong>, ponle un nombre (ej. <code>aprendizaje-fabric</code>) y, en las opciones avanzadas, sección <strong>Tipo de área de trabajo</strong>, elige el tipo.</p>
 <p><strong>Este es el paso que más importa para este tutorial:</strong> elige <strong>Prueba de Fabric</strong> (el trial gratuito de 60 días), <strong>no Power BI Pro</strong>. ¿Por qué? Porque todo lo que vas a crear —el Lakehouse y el Flujo de datos Gen2— son workloads de <strong>Fabric</strong>, y un workspace de Power BI Pro solo admite elementos de Power BI. De hecho, los "Flujos de datos" que existen en Power BI Pro son <strong>Gen1</strong>; el <strong>Gen2</strong> que usaremos requiere capacidad Fabric (por debajo crea items de Lakehouse y Warehouse para funcionar). Si tuvieras una capacidad F-SKU de pago, el tipo <strong>Fabric</strong> también serviría.</p>
 <h3>Qué hay dentro de un workspace vacío</h3>
-<p>Al crear un workspace, la interfaz muestra:
-- <strong>Nuevo elemento</strong> — crea cualquier tipo de elemento (Lakehouse, Notebook, Pipeline, etc.)
-- <strong>Flujos de tareas prediseñados</strong> — guías paso a paso para escenarios específicos (ver: fabric-flujos-de-tareas-prediseñados)
-- <strong>Importar / Migrar</strong> — para traer elementos desde fuera de Fabric</p>
+<p>Al crear un workspace, la interfaz muestra:</p>
+<ul>
+<li><strong>Nuevo elemento</strong> — crea cualquier tipo de elemento (Lakehouse, Notebook, Pipeline, etc.)</li>
+<li><strong>Flujos de tareas prediseñados</strong> — guías paso a paso para escenarios específicos (ver: fabric-flujos-de-tareas-prediseñados)</li>
+<li><strong>Importar / Migrar</strong> — para traer elementos desde fuera de Fabric</li>
+</ul>
 <hr />
 <p>Dentro de un workspace puedes crear muchos tipos de elementos: notebooks, pipelines, warehouses, reportes. Pero si quieres ir más allá de consumir dashboards y entender cómo se construyen los datos que hay detrás, el primer elemento que necesitas conocer es el <strong>Lakehouse</strong>. 
 Es el corazón de cualquier proyecto de datos en Fabric: donde los datos llegan, se transforman y quedan disponibles para que todo lo demás los consuma. Los notebooks los procesan, los pipelines los cargan, los reportes los visualizan. Todo orbita alrededor del Lakehouse.</p>
