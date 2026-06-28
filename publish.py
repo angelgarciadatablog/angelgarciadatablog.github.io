@@ -41,6 +41,28 @@ def extraer_video_id(url):
     return match.group(1) if match else url
 
 
+def normalizar_videos(value):
+    """Normaliza el campo `video-youtube` a una lista de dicts {titulo, url}.
+
+    El campo es polimórfico (ver vault/proyectos/web-angelgarciadatablog.md):
+    - "" / None             → []  (sin video)
+    - "https://..."         → un video con título por defecto "Video explicativo"
+    - ["url1", "url2", ...]  → varios videos sin título explícito
+    - [{titulo, url}, ...]   → varios videos, cada uno con su etiqueta propia
+    """
+    if not value:
+        return []
+    if isinstance(value, str):
+        return [{"titulo": "Video explicativo", "url": value}]
+    videos = []
+    for item in value:
+        if isinstance(item, str):
+            videos.append({"titulo": "Video explicativo", "url": item})
+        elif isinstance(item, dict) and item.get("url"):
+            videos.append({"titulo": item.get("titulo") or "Video explicativo", "url": item["url"]})
+    return videos
+
+
 def escribir_lapida(slug):
     """Genera una página-lápida estética para un slug borrado (link perdido).
 
@@ -160,17 +182,18 @@ for meta in posts_a_publicar:
     tags_raw = meta.get("tags", [])
     tags_html = " ".join(f'<span class="post-tag">{t}</span>' for t in tags_raw)
 
-    # Video YouTube
-    video_url = meta.get("video-youtube", "")
-    if video_url:
-        video_id = extraer_video_id(video_url)
-        video_html = f"""
+    # Video(s) de YouTube — campo polimórfico: string (un video) o lista de
+    # {titulo, url} (varios). Ver decisión en vault/proyectos/web-angelgarciadatablog.md
+    videos = normalizar_videos(meta.get("video-youtube", ""))
+    video_urls = [v["url"] for v in videos]
+    video_html = ""
+    for v in videos:
+        video_id = extraer_video_id(v["url"])
+        video_html += f"""
 <div class="post-video">
-  <div class="post-video-title">Video explicativo</div>
+  <div class="post-video-title">{v["titulo"]}</div>
   <iframe src="https://www.youtube.com/embed/{video_id}" allowfullscreen></iframe>
 </div>"""
-    else:
-        video_html = ""
 
     # Posts relacionados (solo los que tendrán página publicada — el resto se omite)
     relacionados_raw = meta.get("posts-relacionados") or []
@@ -223,7 +246,7 @@ for meta in posts_a_publicar:
         "slug": slug,
         "sistema_operativo": meta.get("sistema-operativo", ""),
         "fecha_publicacion": str(meta.get("created", "")),
-        "video_youtube": video_url or "",
+        "video_youtube": video_urls,
     }
     datalayer_json = json.dumps(datalayer_data, ensure_ascii=False)
     datalayer_push = f"<script>\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({datalayer_json});\n</script>"
@@ -263,7 +286,7 @@ for meta in posts_a_publicar:
         "tags": tags_raw,
         "updated": str(meta.get("updated", "")),
         "posts-relacionados": relacionados_raw,
-        "video-youtube": video_url or "",
+        "video-youtube": video_urls,
         "sistema-operativo": meta.get("sistema-operativo", ""),
         "repositorio": meta.get("repositorio", "") or "",
         "descripcion": meta.get("descripcion", "") or "",

@@ -203,6 +203,7 @@
 
 /* VIDEO YOUTUBE */
 .post-video { margin-top: 48px; }
+.post-video + .post-video { margin-top: 24px; }
 
 .post-video-title {
   font-size: 14px;
