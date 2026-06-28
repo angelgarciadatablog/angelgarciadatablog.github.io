@@ -90,6 +90,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 <p>Pero antes de mover un solo dato hay que entender <strong>dónde va a vivir</strong>; por eso empezamos por los dos contenedores base —el <strong>workspace</strong> y el <strong>Lakehouse</strong>— y de ahí seguimos el flujo natural del dato hasta el reporte.</p>
 <p>Damos por sentado que ya sabes qué es una petición a una API pública. Si no, revisa primero los posts relacionados al final (introducción a las APIs y cómo extraer datos de la API de GitHub).</p>
+<p>Y todo ese recorrido arranca siempre por el mismo punto de partida: el <strong>workspace</strong>. En Fabric no creas nada suelto —ni un Lakehouse, ni un flujo de datos, ni un reporte—; cada pieza del pipeline que vas a construir vive dentro de un workspace. Es el contenedor que lo agrupa todo, así que es justo por ahí por donde empezamos.</p>
 <h2>1. Qué es un Workspace</h2>
 <p>Un workspace (área de trabajo) es el contenedor principal de Fabric. Todo lo que creas en Fabric vive dentro de un workspace: lakehouses, notebooks, warehouses, pipelines, reportes.</p>
 <pre><code>Fabric tenant
