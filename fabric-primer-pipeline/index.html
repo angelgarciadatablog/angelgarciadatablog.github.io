@@ -80,7 +80,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <hr class="post-divider" />
     
-    <div class="post-body" id="post-body"><h2>1. Qué es un Workspace</h2>
+    <div class="post-body" id="post-body"><p>En este tutorial vas a construir tu <strong>primer pipeline de datos de punta a punta en Microsoft Fabric</strong>: partimos de una <strong>API pública de GitHub</strong> —los repositorios de una cuenta, sin autenticación— y llevamos esos datos, paso a paso, hasta un <strong>reporte en Power BI</strong>.</p>
+<p>El recorrido completo son cuatro pasos:</p>
+<ul>
+<li><strong>Traer los datos</strong> desde la API de GitHub con un <strong>Flujo de datos Gen2</strong>.</li>
+<li><strong>Aterrizarlos</strong> como una <strong>tabla Delta</strong> dentro de un <strong>Lakehouse</strong>.</li>
+<li><strong>Modelar</strong> encima un <strong>modelo semántico (Direct Lake)</strong> — la capa que Power BI necesita para leer las tablas.</li>
+<li><strong>Visualizar</strong> en un <strong>reporte de Power BI</strong> conectado a ese modelo.</li>
+</ul>
+<p>Pero antes de mover un solo dato hay que entender <strong>dónde va a vivir</strong>; por eso empezamos por los dos contenedores base —el <strong>workspace</strong> y el <strong>Lakehouse</strong>— y de ahí seguimos el flujo natural del dato hasta el reporte.</p>
+<p>Damos por sentado que ya sabes qué es una petición a una API pública. Si no, revisa primero los posts relacionados al final (introducción a las APIs y cómo extraer datos de la API de GitHub).</p>
+<h2>1. Qué es un Workspace</h2>
 <p>Un workspace (área de trabajo) es el contenedor principal de Fabric. Todo lo que creas en Fabric vive dentro de un workspace: lakehouses, notebooks, warehouses, pipelines, reportes.</p>
 <pre><code>Fabric tenant
 └── Workspace: aprendizaje-fabric
@@ -396,6 +406,14 @@ API/DB → [scheduler] → Lakehouse (tabla Delta) → Modelo semántico → Rep
 <li>[ ] Probar el pipeline completo (Notebook → GitHub API → tabla Delta) con capacidad F8 o F16 al terminar el trial de 60 días. Con F4 los VCores no alcanzan para arrancar un Notebook con la configuración por defecto.</li>
 </ul></div>
     
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/introduccion-apis-para-analistas">Introducción a APIs para analistas de datos</a>
+<a class="relacionado-item" href="/api-github-extraer-datos-publicos-privados-postman">API de GitHub: cómo extraer datos públicos y privados con Postman</a>
+
+  </div>
+</div>
     <nav class="post-nav">
       <a class="nav-anterior" href="/microsoft-fabric-que-es"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Microsoft Fabric — qué es y cómo se organiza</span></a>
       

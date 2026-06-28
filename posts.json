@@ -8,7 +8,10 @@
       "azure"
     ],
     "updated": "2026-06-28",
-    "posts-relacionados": [],
+    "posts-relacionados": [
+      "introduccion-apis-para-analistas",
+      "api-github-extraer-datos-publicos-privados-postman"
+    ],
     "video-youtube": "",
     "sistema-operativo": "mac-windows",
     "repositorio": "",
