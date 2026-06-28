@@ -1,5 +1,26 @@
 [
   {
+    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
+    "slug": "primeros-pasos-en-azure",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-06-28",
+    "posts-relacionados": [
+      "microsoft-fabric-que-es"
+    ],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
     "slug": "fabric-primer-pipeline",
     "categoria": "azure",
@@ -42,27 +63,6 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": "fabric-primer-pipeline"
-  },
-  {
-    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
-    "slug": "primeros-pasos-en-azure",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-06-26",
-    "posts-relacionados": [
-      "microsoft-fabric-que-es"
-    ],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
   },
   {
     "titulo": "Introducción a APIs para analistas de datos",

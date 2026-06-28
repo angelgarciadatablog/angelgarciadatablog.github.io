@@ -72,7 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Primeros pasos en Azure: cuenta gratuita y usuario organizacional</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
-      <span class="post-updated">Actualizado: 2026-06-26</span>
+      <span class="post-updated">Actualizado: 2026-06-28</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -298,6 +298,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </table>
 <p><strong>3. Crédito de $200 — válido 30 días</strong></p>
 <p>Para probar servicios que cobran desde el primer uso: Azure OpenAI, VMs grandes, servicios de IA, etc. Una vez agotado o vencido, sin upgrade no hay cobros.</p>
+<h3>El crédito de Azure no es la prueba de Fabric</h3>
+<p>Es la confusión más común al empezar. Son <strong>dos cosas separadas</strong>, con bolsas y relojes distintos:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Crédito de Azure</th>
+<th>Prueba de Fabric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué es</strong></td>
+<td>$200 USD de crédito <strong>monetario</strong></td>
+<td>Una <strong>capacidad</strong> de Fabric dedicada (F4 o F64)</td>
+</tr>
+<tr>
+<td><strong>Duración</strong></td>
+<td>30 días</td>
+<td>60 días</td>
+</tr>
+<tr>
+<td><strong>Para qué sirve</strong></td>
+<td>Cualquier servicio de Azure (VMs, storage, IA…)</td>
+<td>Todos los workloads de Fabric + 1 TB de OneLake</td>
+</tr>
+<tr>
+<td><strong>Cómo se consume</strong></td>
+<td>Se descuenta en dinero según el uso</td>
+<td>No descuenta dinero: capacidad reservada por tiempo</td>
+</tr>
+</tbody>
+</table>
+<p>La clave: <strong>usar la prueba de Fabric no te gasta los $200</strong>, y al revés — son carriles independientes. De hecho, la prueba de Fabric puede activarse incluso con un correo personal, sin la cuenta de Azure con crédito. Eso sí, ten en cuenta que la prueba suele venir como <strong>F4</strong> (capacidad limitada), no F64, así que es modesta para cargas pesadas.</p>
 <h3>Si no haces nada, no hay cobros</h3>
 <p>Explorar el portal, crear usuarios en Entra ID, navegar Fabric free — todo esto genera $0. Los cobros solo aparecen cuando se consumen recursos de cómputo o almacenamiento más allá del free tier.</p>
 <h3>Qué SÍ puede generar costos al avanzar</h3>
