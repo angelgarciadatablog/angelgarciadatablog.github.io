@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable · Angel García</title>
-  <meta name="description" content="Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric." />
+  <title>Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI · Angel García</title>
+  <meta name="description" content="Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake." />
   <link rel="canonical" href="https://www.angelgarciadatablog.com/fabric-primer-pipeline/" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable" />
-  <meta property="og:description" content="Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric." />
+  <meta property="og:title" content="Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI" />
+  <meta property="og:description" content="Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake." />
   <meta property="og:url" content="https://www.angelgarciadatablog.com/fabric-primer-pipeline/" />
   <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-primer-pipeline", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
+window.dataLayer.push({"titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-primer-pipeline", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-23", "video_youtube": ""});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -69,10 +69,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="post-so">Mac & Windows</span>
       </div>
     </div>
-    <h1 class="post-titulo">Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable</h1>
+    <h1 class="post-titulo">Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
-      <span class="post-updated">Actualizado: 2026-06-26</span>
+      <span class="post-updated">Actualizado: 2026-06-28</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -124,6 +124,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tbody>
 </table>
 <p>Para crear un workspace de Prueba de Fabric o Fabric, la Fabric capacity debe estar activa en el tenant — sin ella, esos tipos aparecen deshabilitados en el formulario de creación.</p>
+<h3>Crear el workspace</h3>
+<p>Desde la barra lateral de Fabric → <strong>Áreas de trabajo → + Nueva área de trabajo</strong>, ponle un nombre (ej. <code>aprendizaje-fabric</code>) y, en las opciones avanzadas, sección <strong>Tipo de área de trabajo</strong>, elige el tipo.</p>
+<p><strong>Este es el paso que más importa para este tutorial:</strong> elige <strong>Prueba de Fabric</strong> (el trial gratuito de 60 días), <strong>no Power BI Pro</strong>. ¿Por qué? Porque todo lo que vas a crear —el Lakehouse y el Flujo de datos Gen2— son workloads de <strong>Fabric</strong>, y un workspace de Power BI Pro solo admite elementos de Power BI. De hecho, los "Flujos de datos" que existen en Power BI Pro son <strong>Gen1</strong>; el <strong>Gen2</strong> que usaremos requiere capacidad Fabric (por debajo crea items de Lakehouse y Warehouse para funcionar). Si tuvieras una capacidad F-SKU de pago, el tipo <strong>Fabric</strong> también serviría.</p>
 <h3>Qué hay dentro de un workspace vacío</h3>
 <p>Al crear un workspace, la interfaz muestra:
 - <strong>Nuevo elemento</strong> — crea cualquier tipo de elemento (Lakehouse, Notebook, Pipeline, etc.)
@@ -134,14 +137,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 Es el corazón de cualquier proyecto de datos en Fabric: donde los datos llegan, se transforman y quedan disponibles para que todo lo demás los consuma. Los notebooks los procesan, los pipelines los cargan, los reportes los visualizan. Todo orbita alrededor del Lakehouse.</p>
 <h2>2. Qué es un Lakehouse</h2>
 <p>Un Lakehouse es el elemento central de Data Engineering en Fabric. Combina lo mejor de un data lake (almacenamiento flexible de archivos) con lo mejor de un data warehouse (tablas consultables con SQL).</p>
-<h3>Las dos vistas</h3>
+<h3>2.1 El Lakehouse vive dentro de OneLake</h3>
+<p>El Lakehouse es lo que técnicamente vas a crear en este tutorial. Pero ese Lakehouse no existe aislado: vive dentro de un mundo más grande llamado <strong>OneLake</strong>.</p>
+<p>OneLake es <strong>el "OneDrive para datos"</strong> de Fabric. Así como tu OneDrive personal es el único lugar donde se guardan todos tus archivos, OneLake es el único lugar donde se guardan todos los datos de tu organización en Fabric. Tres características clave:</p>
+<ul>
+<li><strong>Viene solo y es único</strong> — cada tenant de Fabric trae un OneLake automáticamente. Hay uno solo: no se crea, no se borra, no se configura.</li>
+<li><strong>Todo vive ahí</strong> — lakehouses, warehouses y cualquier elemento de datos guardan su contenido físicamente en OneLake, aunque tú los manejes por separado.</li>
+<li><strong>Formato abierto</strong> — por debajo es Azure Data Lake Storage (ADLS Gen2) y guarda las tablas en Delta Parquet, un estándar que cualquier herramienta puede leer.</li>
+</ul>
+<p>La relación, entonces, es: <strong>OneLake es el almacén</strong> (el disco donde todo se guarda) y <strong>el Lakehouse es una vista organizada</strong> sobre una parte de ese almacén. Cuando más adelante veas tus tablas en el Lakehouse, recuerda que físicamente están en OneLake.</p>
+<h3>2.2 Crear tu Lakehouse</h3>
+<p>Ya sabes qué es; ahora créalo. Desde tu workspace:</p>
+<ol>
+<li><strong>Nuevo elemento</strong> → buscar y elegir <strong>Lakehouse</strong></li>
+<li>Ponle nombre (ej. <code>mi_primer_lakehouse</code>) → <strong>Crear</strong></li>
+</ol>
+<p>El nombre debe empezar con letra y solo admite alfanuméricos y guiones bajos — sin espacios ni caracteres especiales (por eso <code>mi_primer_lakehouse</code> va con guion bajo). El check <strong>"Lakehouse schemas"</strong> viene activado por defecto y organiza las tablas en grupos lógicos.</p>
+<h3>2.3 Las dos vistas dentro de un Lakehouse</h3>
 <p>Al abrir un Lakehouse se muestran dos secciones en la barra lateral:</p>
 <ul>
 <li><strong>Files</strong> → almacenamiento libre de archivos. Acepta cualquier formato: CSV, JSON, Parquet, imágenes, etc. Es el lado "lago de datos" — sin estructura impuesta.</li>
 <li><strong>Tables</strong> → tablas Delta consultables con SQL. Es el lado "warehouse" — datos estructurados, con esquema definido.</li>
 </ul>
 <p>El mismo dato puede llegar como archivo crudo a Files y luego procesarse para convertirse en una tabla en Tables.</p>
-<h3>Los tres puntos de conexión</h3>
+<h3>2.4 Los tres puntos de conexión</h3>
 <p>Un Lakehouse no es solo una interfaz visual — expone tres formas de conectarse a sus datos desde otros workloads:</p>
 <table>
 <thead>
@@ -170,118 +189,11 @@ Es el corazón de cualquier proyecto de datos en Fabric: donde los datos llegan,
 </tbody>
 </table>
 <p>Esto es OneLake en acción: el mismo dato físico, accesible desde tres workloads distintos sin moverlo ni copiarlo.</p>
-<h3>Qué cubre la capacidad — modelo de costos</h3>
-<p>La capacidad (F-SKU) no es solo para Gen2 ni para Spark. Es un <strong>pool compartido</strong> que todos los workloads de Fabric consumen:</p>
-<table>
-<thead>
-<tr>
-<th>Workload</th>
-<th>Qué incluye</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Data Engineering</strong></td>
-<td>Notebooks Spark, Spark Job Definitions, Lakehouses</td>
-</tr>
-<tr>
-<td><strong>Data Factory</strong></td>
-<td>Dataflow Gen2, Pipelines, Copy Activity</td>
-</tr>
-<tr>
-<td><strong>Data Warehouse</strong></td>
-<td>Warehouse, SQL Analytics Endpoint</td>
-</tr>
-<tr>
-<td><strong>Data Science</strong></td>
-<td>Notebooks ML, Experimentos, Modelos</td>
-</tr>
-<tr>
-<td><strong>Real-Time Intelligence</strong></td>
-<td>Eventstream, Eventhouse, KQL Database</td>
-</tr>
-<tr>
-<td><strong>Power BI</strong></td>
-<td>Reportes, Dashboards, Modelos Semánticos</td>
-</tr>
-<tr>
-<td><strong>Databases</strong></td>
-<td>SQL Database</td>
-</tr>
-</tbody>
-</table>
-<p>Pagas la capacidad encendida por tiempo — no por query ni por volumen procesado. Cinco queries de 100M filas cuestan lo mismo que cinco queries de 100 filas si las corres en el mismo rango de tiempo. Es predecible pero requiere disciplina: dejar la capacidad encendida sin usar consume igual.</p>
-<p><strong>Comparación con BigQuery:</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Fabric (F-SKU)</th>
-<th>BigQuery</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Modelo</td>
-<td>Pago por tiempo encendido</td>
-<td>Pago por datos escaneados</td>
-</tr>
-<tr>
-<td>Predecibilidad</td>
-<td>Alta — precio fijo</td>
-<td>Variable — depende del volumen</td>
-</tr>
-<tr>
-<td>Riesgo</td>
-<td>Capacidad ociosa encendida</td>
-<td>Query mal escrita que escanea TBs</td>
-</tr>
-<tr>
-<td>Ideal para</td>
-<td>Workloads constantes y predecibles</td>
-<td>Workloads esporádicos o impredecibles</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Cómo elegir el SKU correcto — el criterio es paralelismo y tiempo:</strong></p>
-<p>El tamaño del dataset no determina el SKU. Lo determina cuántos trabajos necesitas correr al mismo tiempo y en qué ventana de tiempo.</p>
-<table>
-<thead>
-<tr>
-<th>Situación</th>
-<th>SKU recomendado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100 Dataflows grandes pero con tiempo suficiente</td>
-<td>F2 con scheduling por turnos</td>
-</tr>
-<tr>
-<td>100 Dataflows que deben terminar antes de las 8am</td>
-<td>F16 o F32 para correrlos en paralelo</td>
-</tr>
-<tr>
-<td>Workloads esporádicos, uso puntual</td>
-<td>F2 o F4, pausar cuando no se usa</td>
-</tr>
-</tbody>
-</table>
-<p>Con una F2 y scheduling bien organizado, los trabajos corren en cola uno por uno. Cuesta mucho menos pero requiere planificar los turnos manualmente. Es la estrategia de equipos pequeños con presupuesto ajustado.</p>
-<p><strong>Cómo se configura el scheduler:</strong></p>
-<p>Desde el workspace, en los tres puntos del Dataflow Gen2 → <strong>Programar actualización</strong>. Se define frecuencia (horaria, diaria, semanal), hora exacta y zona horaria — idéntico al scheduler de Power BI Service.</p>
-<p>La diferencia clave con Power BI Pro:</p>
-<pre><code>Power BI Pro:
-Fuente → [scheduler] → Modelo Power BI → Reporte
-
-Fabric:
-API/DB → [scheduler] → Lakehouse (tabla Delta) → Modelo semántico → Reporte
-                                                 → Notebook
-                                                 → Warehouse
-                                                 → Otro Dataflow
-</code></pre>
-<p>En Power BI Pro el scheduler actualiza el modelo del reporte. En Fabric actualiza la <strong>tabla en el Lakehouse</strong> — la fuente misma. Todo lo que consume esa tabla recibe los datos frescos automáticamente, sin configurar nada más en cada reporte.</p>
-<h3>El Lakehouse en perspectiva — equivalencias con GCP y AWS</h3>
+<blockquote>
+<p><strong>Nota:</strong> el modelo semántico que consume Power BI <strong>no es</strong> uno de estos tres puntos. Es una capa que se construye <em>encima</em> del acceso al dato: él mismo lee las tablas (vía el endpoint SQL o directo desde OneLake con Direct Lake) y luego alimenta los reportes. Está río abajo de los puntos de conexión, no al mismo nivel — lo verás en la sección 4.</p>
+</blockquote>
+<p>En este tutorial solo usaremos el <strong>punto de conexión de análisis SQL</strong> —para consultar la tabla y crear el modelo semántico—. El de Notebook requiere F8 o superior (no arranca en el trial F4), y el del centro de eventos es para datos en <em>streaming</em>: un flujo continuo de eventos en tiempo real. Lo nuestro es distinto — es <em>batch</em>: el dato se trae en <strong>cargas programadas</strong> (por ejemplo, cada hora o cada día), no en un flujo continuo. El pipeline igual fluye y se actualiza solo; lo que cambia es la cadencia: por lotes en un horario, no evento por evento en vivo.</p>
+<h3>2.5 El Lakehouse en perspectiva — equivalencias con GCP y AWS</h3>
 <p>Si vienes de otros clouds, el Lakehouse colapsa dos servicios en uno:</p>
 <table>
 <thead>
@@ -311,58 +223,23 @@ API/DB → [scheduler] → Lakehouse (tabla Delta) → Modelo semántico → Rep
 </table>
 <p>El storage (archivos Parquet) y el motor SQL viven juntos, sin configurar permisos entre servicios ni pagar transferencia de datos entre ellos.</p>
 <p>La diferencia filosófica con BigQuery: BigQuery es serverless puro — no ves los archivos debajo. En Fabric el Lakehouse te hace consciente de que hay Parquet físico en OneLake. Más transparente, más control, más complejidad.</p>
-<h3>Acciones disponibles dentro del Lakehouse</h3>
-<p>Desde la barra de herramientas del Lakehouse:</p>
-<ul>
-<li><strong>Obtener datos</strong> — importar datos desde fuentes externas (CSV, base de datos, API, etc.)</li>
-<li><strong>Nuevo modelo semántico</strong> — crear una capa semántica sobre las tablas para usar en Power BI</li>
-<li><strong>Abrir cuaderno</strong> — abrir un Notebook Spark ya conectado a este Lakehouse</li>
-<li><strong>Agregar al agente de datos</strong> — exponer los datos del Lakehouse a un agente de IA</li>
-<li><strong>Administrar la seguridad de OneLake</strong> — controlar permisos de acceso al nivel de OneLake</li>
-</ul>
-<h2>3. Pipeline opción A — Notebook (requiere F8 o superior)</h2>
-<p>El camino más directo para cargar datos de una API al Lakehouse es un Notebook de Spark. El código es Python estándar: llamas la API, conviertes la respuesta a un DataFrame y lo escribes como tabla Delta con una línea.</p>
-<blockquote>
-<p><strong>Nota:</strong> Este código no se pudo ejecutar en el trial FTL4 (equivalente a F4, 8 VCores). Spark necesita mínimo 2 nodos Medium (16 VCores) para arrancar una sesión. Con F8 o superior funciona sin modificaciones.</p>
-</blockquote>
-<pre><code class="language-python"># NOTA: Este código requiere F8 o superior (mínimo 16 VCores).
-# Con el trial FTL4 (F4, 8 VCores) falla al arrancar la sesión Spark
-# antes de ejecutar cualquier línea — error 430 TooManyRequestsForCapacity.
-
-import requests
-import pandas as pd
-
-username = &quot;torvalds&quot;
-url = f&quot;https://api.github.com/users/{username}/repos&quot;
-
-response = requests.get(url)
-repos = response.json()
-
-columnas = [&quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;language&quot;,
-            &quot;stargazers_count&quot;, &quot;forks_count&quot;,
-            &quot;created_at&quot;, &quot;updated_at&quot;]
-
-df = pd.DataFrame(repos)[columnas]
-print(f&quot;Repositorios encontrados: {len(df)}&quot;)
-
-# spark está disponible como global en cualquier Notebook de Fabric
-# saveAsTable escribe la tabla en el Lakehouse conectado (visible en Tables)
-df_spark = spark.createDataFrame(df)
-df_spark.write.mode(&quot;overwrite&quot;).saveAsTable(&quot;repos_github&quot;)
-</code></pre>
-<hr />
-<h2>4. Pipeline opción B — Dataflow Gen2 (funciona con trial F4)</h2>
-<p>Dataflow Gen2 es la alternativa sin Spark. Usa Power Query como motor — el mismo que hay detrás de Excel y Power BI — y tiene su propio compute independiente de la capacidad Spark.</p>
-<h3>4.1 Crear el Dataflow Gen2</h3>
-<p>Desde el workspace, hacer clic en <strong>Nuevo elemento → Flujo de datos Gen2</strong>. Nombrar la consulta de forma descriptiva — el nombre que le des a la consulta será el nombre de la tabla en el Lakehouse.</p>
-<p>En este caso: <code>repo_github_torvalds</code></p>
-<h3>4.2 Conectar a la API de GitHub</h3>
+<h2>3. El pipeline: de la API a una tabla consultable</h2>
+<p>Un pipeline de datos es el camino que recorre un dato desde su origen hasta quedar listo para usarse. Aquí construirás uno real: traer información de una <strong>API pública de GitHub</strong> y dejarla como una <strong>tabla Delta consultable</strong> en tu Lakehouse.</p>
+<p>Con el Lakehouse abierto, la opción <strong>Obtener datos</strong> despliega varias formas de cargar información: subir archivos, empezar con datos de muestra, crear accesos directos (<em>shortcuts</em>) a datos externos, trabajos de copia, notebooks o secuencias de eventos, entre otras <em>(el menú evoluciona con el tiempo)</em>. Cada una sirve para un escenario distinto.</p>
+<p>Para lo nuestro —traer datos de una <strong>API web</strong>— la herramienta indicada es el <strong>Flujo de datos Gen2</strong>.</p>
+<p><strong>¿Qué es un Flujo de datos Gen2?</strong> <em>(en la documentación en inglés lo verás como </em><em>Dataflow Gen2</em><em> — es lo mismo)</em>. Es la herramienta de ingesta y transformación de Fabric basada en <strong>Power Query</strong>, el mismo motor visual de Excel y Power BI: te conectas a una fuente, limpias y transformas los datos con clics (sin escribir código) y defines a dónde van. Tiene su propio compute, <strong>independiente de Spark</strong>, por lo que <strong>funciona incluso en el trial F4</strong> — esa es la razón por la que lo elegimos. La alternativa sería un Notebook de Spark con código, pero requiere F8 o superior; lo vemos al final.</p>
+<p>Vamos a crearlo.</p>
+<h3>3.1 Crear el Flujo de datos Gen2</h3>
+<p>En <strong>Obtener datos → Nuevo flujo de datos Gen2</strong>. Ponle al flujo un nombre descriptivo: <code>dataflow-github-repos</code>.</p>
+<p><strong>Torvalds es una cuenta de github de prueba, pero podrías utilizar cualquier otra cuenta de github que conozcas y quieras analizar sus datos.</strong></p>
+<h3>3.2 Conectar a la API de GitHub</h3>
 <p>Al abrir el editor, seleccionar <strong>Obtener datos → Web API</strong> y pegar la URL:</p>
 <pre><code>https://api.github.com/users/torvalds/repos
 </code></pre>
+<p>*<em>En caso quieras explorar datos de otra cuenta de github cambia torvalds por el nombre del repositorio de github</em></p>
 <p>Credenciales: <strong>Anónimo</strong>. La API pública de GitHub no requiere autenticación para leer repos públicos.</p>
-<p>Dataflow carga la respuesta y muestra una tabla con 11 filas — una por repositorio — y decenas de columnas (todos los campos que devuelve la API).</p>
-<h3>4.3 Limpiar las columnas</h3>
+<p>El Flujo de datos carga la respuesta y muestra una tabla con 11 filas — una por repositorio — y decenas de columnas (todos los campos que devuelve la API).</p>
+<h3>3.3 Aplicar cambios a la tabla - Limpiar las columnas</h3>
 <p>Seleccionar solo las columnas relevantes y aplicar <strong>Quitar otras columnas</strong>:</p>
 <ul>
 <li><code>id</code></li>
@@ -374,18 +251,133 @@ df_spark.write.mode(&quot;overwrite&quot;).saveAsTable(&quot;repos_github&quot;)
 <li><code>created_at</code></li>
 <li><code>updated_at</code></li>
 </ul>
-<h3>4.4 Configurar el destino</h3>
-<p>En el panel inferior, hacer clic en <strong>Agregar destino de datos → Lakehouse</strong> y seleccionar <code>aprendizaje-fabric</code> → <code>mi_primer_lakehouse</code>.</p>
-<p>Modo de actualización: <strong>Reemplazar</strong> — cada vez que el Dataflow corre, sobreescribe la tabla completa.</p>
-<h3>4.5 Publicar y ejecutar</h3>
-<p>Hacer clic en <strong>Guardar y ejecutar</strong>. En segundos el Dataflow procesa la respuesta y escribe la tabla en el Lakehouse.</p>
-<h3>4.6 Verificar la tabla</h3>
-<p>Al volver al Lakehouse, la tabla <code>repo_github_torvalds</code> aparece bajo <strong>Tables</strong>. Desde el <strong>Punto de conexión de análisis SQL</strong>, se puede consultar directamente:</p>
+<h3>3.4 Renombrar la tabla</h3>
+<p>Por defecto, el Flujo de datos nombra su consulta —y por tanto la tabla que escribirá en el Lakehouse— como <strong>"Consulta"</strong>. Renómbrala ahora con un nombre descriptivo, <code>repos_github</code>, porque <strong>ese es el nombre con el que la tabla aparecerá en el Lakehouse y el que tendrás que seleccionar al crear el modelo semántico</strong> (sección 4.2). Si la dejas como "Consulta", en ese diálogo no sabrás cuál de las tablas es la tuya.</p>
+<p><em>En Power Query, la consulta se renombra en el panel izquierdo: clic derecho sobre la consulta → Cambiar nombre.</em></p>
+<h3>3.5 Configurar el destino</h3>
+<p>Como creaste el Flujo de datos <strong>desde el Lakehouse</strong>, este ya viene como <strong>destino predeterminado</strong> — no hace falta configurarlo a mano (lo confirmas pasando el cursor sobre el ícono del destino, que aparece etiquetado como <em>Destino predeterminado</em>). <em>(Si lo hubieras creado desde el workspace, ahí sí tendrías que agregarlo: Agregar destino de datos → Lakehouse.)</em></p>
+<p>Lo único que conviene revisar es el <strong>modo de actualización</strong>: déjalo en <strong>Reemplazar</strong> — cada vez que el flujo corre, sobreescribe la tabla completa. Y si alguna vez quieres apuntar a otro destino, borra el actual y elige uno nuevo.</p>
+<h3>3.6 Publicar y ejecutar</h3>
+<p>Hacer clic en <strong>Guardar y ejecutar</strong>. En segundos el Flujo de datos procesa la respuesta y escribe la tabla en el Lakehouse.</p>
+<p>Una distinción clave antes de seguir: el <strong>Flujo de datos Gen2 es solo el procesador</strong> —literalmente Power Query—. Trae los datos y los transforma, <strong>pero no los almacena</strong>. Los datos <em>viajan a través</em> del flujo y <strong>aterrizan en el Lakehouse</strong>, que es el destino. Por eso, para comprobar que llegaron, no miras el flujo: vas al <strong>Lakehouse</strong>.</p>
+<h3>3.7 Verificar la tabla</h3>
+<p>Para comprobar que los datos llegaron, ve a <strong>Áreas de trabajo</strong> y abre el objeto <strong>Lakehouse</strong> (<code>mi_primer_lakehouse</code>). La tabla <code>repos_github</code> aparece bajo <strong>Tables</strong>. Para consultarla, cambia al <strong>Punto de conexión de análisis SQL</strong> (el desplegable de arriba a la derecha) y ejecuta SQL directamente:</p>
 <pre><code class="language-sql">SELECT name, language, stargazers_count, forks_count
-FROM repo_github_torvalds
+FROM repos_github
 ORDER BY stargazers_count DESC;
 </code></pre>
 <p>Resultado: 11 repos de Linus Torvalds ordenados por stars. <code>linux</code> encabeza la lista con 234,348 stars — el kernel del sistema operativo más usado del mundo.</p>
+<h3>3.8 Programar la actualización</h3>
+<p>Hasta aquí el Flujo de datos corre solo cuando le das <strong>Guardar y ejecutar</strong> a mano. Para que se actualice solo, desde el workspace, en los tres puntos del Flujo de datos Gen2 → <strong>Programar actualización</strong>. Se define frecuencia (horaria, diaria, semanal), hora exacta y zona horaria — idéntico al scheduler de Power BI Service.</p>
+<p>Aquí hay una diferencia conceptual importante con Power BI Pro:</p>
+<pre><code>Power BI Pro:
+Fuente → [scheduler] → Modelo Power BI → Reporte
+
+Fabric:
+API/DB → [scheduler] → Lakehouse (tabla Delta) → Modelo semántico → Reporte
+                                               → Notebook
+                                               → Warehouse
+                                               → Otro flujo de datos
+</code></pre>
+<p>En Power BI Pro el scheduler actualiza el modelo del reporte. En Fabric actualiza la <strong>tabla en el Lakehouse</strong> — la fuente misma. Todo lo que consume esa tabla (modelo semántico, notebook, warehouse, otro flujo de datos) recibe los datos frescos automáticamente, sin configurar nada más en cada reporte.</p>
+<h3>3.9 La alternativa con código: Notebook de Spark</h3>
+<p>Si tuvieras una capacidad <strong>F8 o superior</strong>, podrías construir este mismo pipeline con un Notebook de Spark en unas pocas líneas de Python: llamar a la API, convertir la respuesta en un DataFrame y escribirlo como tabla Delta. Es más flexible para transformaciones complejas, pero pesa más — cada Notebook levanta un cluster Spark al arrancar, y por eso en el trial F4 ni siquiera inicia la sesión (no le alcanzan los VCores). Lo dejamos anotado como referencia para cuando subas de capacidad.</p>
+<hr />
+<h2>4. Del Lakehouse a un reporte</h2>
+<p>Tener la tabla en el Lakehouse es la mitad del trabajo. El pago final de un pipeline es <strong>ver</strong> los datos. Y aquí aparece una decisión de arquitectura: ¿por qué visualizar desde la tabla del Lakehouse y no conectar el reporte directo a la API?</p>
+<p>Porque la tabla del Lakehouse es una <strong>fuente reutilizable y única</strong>: una sola ingesta alimenta el endpoint SQL, los notebooks y todos los reportes que quieras, sin volver a pegarle a la API en cada actualización. El reporte se vuelve un consumidor más de esa tabla — exactamente el flujo que dibuja el diagrama de la sección 3.</p>
+<h3>4.1 La capa intermedia obligatoria: el modelo semántico</h3>
+<p>Un reporte de Power BI <strong>nunca lee las tablas Delta directamente</strong>. Siempre se apoya en un <strong>modelo semántico</strong>: la capa de modelado con relaciones, medidas (DAX) y formatos. El reporte visualiza el modelo, no la tabla cruda.</p>
+<pre><code>Tabla Delta (Lakehouse) → Modelo semántico (Direct Lake) → Reporte
+</code></pre>
+<p>Un dato de contexto: hasta el 5 de septiembre de 2025, Fabric creaba un modelo semántico "por defecto" automáticamente al crear el Lakehouse. Desde esa fecha <strong>ya no</strong> — hay que crearlo a mano. Es mejor así: el modelo por defecto traía limitaciones, y ahora controlas qué tablas incluir.</p>
+<h3>4.2 Crear el modelo semántico</h3>
+<p>El modelo se crea desde el <strong>objeto Lakehouse</strong>, no desde el endpoint SQL:</p>
+<ol>
+<li>Abrir el <strong>Lakehouse</strong> (<code>mi_primer_lakehouse</code>)</li>
+<li>En la cinta → <strong>Nuevo modelo semántico</strong></li>
+<li>Se abre el diálogo <strong>Nuevo modelo semántico</strong>, que pide solo tres cosas:</li>
+<li><strong>Nombre</strong> — ponle <code>modelo-github-repos</code>. </li>
+<li><strong>Área de trabajo</strong> — viene preseleccionada (<code>aprendizaje-fabric</code>).</li>
+<li><strong>Seleccionar las tablas</strong> — marca tu tabla bajo el esquema <code>dbo</code> (<code>repos_github</code>) y pulsa <strong>Confirmar</strong> (el botón se habilita al marcar al menos una).</li>
+</ol>
+<blockquote>
+<p><strong>Nota del diálogo:</strong> no puedes seleccionar <strong>vistas SQL</strong> para Direct Lake en OneLake, solo tablas. Las tablas basadas en vistas SQL se pueden agregar después al modelo usando otros modos de almacenamiento.</p>
+</blockquote>
+<h3>4.3 La otra variante: Direct Lake en OneLake vs. en SQL</h3>
+<p>Como creaste el modelo desde el Lakehouse, Fabric lo puso en <strong>Direct Lake en OneLake</strong> sin preguntarte nada. Pero existe una segunda variante —<strong>Direct Lake en SQL</strong>— que solo aparece como opción a elegir cuando creas el modelo desde el <strong>Punto de conexión de análisis SQL</strong>. La diferencia:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Direct Lake en OneLake</th>
+<th>Direct Lake en SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lee de</td>
+<td>Tablas Delta directo en OneLake</td>
+<td>A través del endpoint SQL</td>
+</tr>
+<tr>
+<td>Fallback a DirectQuery</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Estado</td>
+<td>El moderno, recomendado</td>
+<td>El anterior</td>
+</tr>
+</tbody>
+</table>
+<p>Para modelos nuevos se recomienda <strong>Direct Lake en OneLake</strong> —el que ya tienes—; no hay razón para usar el otro salvo casos puntuales (por ejemplo, seguridad a nivel de fila o columna definida en el endpoint SQL).</p>
+<h3>4.4 Qué es Direct Lake (y por qué importa)</h3>
+<p>Direct Lake es un modo de almacenamiento exclusivo de Fabric: el modelo semántico <strong>lee las tablas Delta directo desde OneLake a memoria</strong>, procesadas por el motor VertiPaq — tan rápido como el modo Import, pero <strong>sin importar ni duplicar el dato y sin programar refrescos</strong>. Cuando el Flujo de datos Gen2 actualiza la tabla, el reporte ve el dato fresco solo.</p>
+<p>Si vienes de Power BI Desktop ya conoces dos modos de almacenamiento; Direct Lake es un tercero que combina lo mejor de ambos:</p>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>¿Copia los datos?</th>
+<th>Frescura</th>
+<th>Velocidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Import</strong> (el clásico en local)</td>
+<td>Sí, al modelo</td>
+<td>Una foto: hay que refrescar</td>
+<td>Rápida (en memoria)</td>
+</tr>
+<tr>
+<td><strong>DirectQuery</strong></td>
+<td>No, consulta la fuente en vivo</td>
+<td>En tiempo real</td>
+<td>Más lenta</td>
+</tr>
+<tr>
+<td><strong>Direct Lake</strong> (lo nuestro)</td>
+<td>No, lee Delta de OneLake</td>
+<td>Auto-fresco</td>
+<td>Rápida (en memoria)</td>
+</tr>
+</tbody>
+</table>
+<p>Es la velocidad de Import con la frescura de DirectQuery, sin las desventajas de ninguno.</p>
+<p><strong>Consecuencia práctica:</strong> como el modelo es Direct Lake, <strong>la única programación de actualización que necesitas es la del Flujo de datos Gen2</strong> (la de la sección 3.8). El modelo semántico se sincroniza solo, no lleva su propio refresh. Si fuera modo Import, tendrías que programar además el refresh del modelo — dos programaciones en vez de una.</p>
+<h3>4.5 Construir el reporte</h3>
+<p>Con el modelo semántico listo:</p>
+<ol>
+<li>Abrir el modelo semántico (<code>modelo-github-repos</code>)</li>
+<li>En la cinta → <strong>Nuevo reporte</strong></li>
+<li>Se abre el lienzo de Power BI ya conectado a las tablas → arrastrar campos (<code>name</code>, <code>language</code>, <code>stargazers_count</code>…) y crear las visualizaciones. Guarda el informe con un nombre descriptivo: <code>informe-bi-github-repos</code></li>
+</ol>
+<p>Con esto el pipeline queda completo de punta a punta:</p>
+<pre><code>API GitHub → Flujo de datos Gen2 → tabla Delta (Lakehouse) → modelo semántico (Direct Lake) → reporte Power BI
+</code></pre>
 <hr />
 <h2>Gotchas</h2>
 <ul>
@@ -394,6 +386,9 @@ ORDER BY stargazers_count DESC;
 <li><strong>Fabric es un producto enterprise, no un producto para aprender</strong> — un F4 (~$527/mes) ya es limitado para aprender; un F64 cuesta ~$5,000/mes en reserva. El trial es una demo del producto, no una capa gratuita optimizada para developers individuales. BigQuery free tier está pensado para ese caso de uso; Fabric trial no.</li>
 <li><strong>Cualquier Notebook requiere inicializar un cluster Spark</strong> — incluso <code>print("hola")</code> consume VCores desde el arranque porque Fabric levanta un cluster distribuido antes de ejecutar cualquier código. No hay modo "Python ligero" en notebooks conectados al Lakehouse.</li>
 <li><strong>El throttling se recupera solo</strong> — si el trial queda throttled por intentos fallidos, dejarlo quieto 15-20 minutos sin abrir el Notebook suele liberar la capacidad.</li>
+<li><strong>El modelo semántico ya no se autocrea</strong> — desde el 5 de septiembre de 2025, Fabric dejó de generar el modelo semántico "por defecto" al crear un Lakehouse. Hay que crearlo manualmente desde el objeto Lakehouse (<strong>Nuevo modelo semántico</strong>), que lo crea directamente en Direct Lake en OneLake.</li>
+<li><strong>Desde dónde lo creas define el modo</strong> — si creas el modelo desde el <strong>objeto Lakehouse</strong>, nace en Direct Lake en OneLake sin preguntarte. Solo si lo creas desde el <strong>Punto de conexión de análisis SQL</strong> te aparece el diálogo para elegir entre Direct Lake en OneLake y Direct Lake en SQL.</li>
+<li><strong>No se pueden seleccionar vistas SQL para Direct Lake en OneLake</strong> — en el diálogo del modelo solo aparecen tablas, no vistas. Las tablas basadas en vistas SQL se agregan después usando otros modos de almacenamiento.</li>
 </ul>
 <h2>Pendientes</h2>
 <ul>

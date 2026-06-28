@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
+    "slug": "fabric-primer-pipeline",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-06-28",
+    "posts-relacionados": [],
+    "video-youtube": "",
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "microsoft-fabric-que-es",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Microsoft Fabric — qué es y cómo se organiza",
     "slug": "microsoft-fabric-que-es",
     "categoria": "azure",
@@ -40,25 +59,6 @@
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a una tabla consultable",
-    "slug": "fabric-primer-pipeline",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-06-26",
-    "posts-relacionados": [],
-    "video-youtube": "",
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Workspace, Lakehouse y tu primer pipeline real: cómo traer datos de una API pública de GitHub a una tabla Delta consultable con SQL en Microsoft Fabric.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "microsoft-fabric-que-es",
     "parte-siguiente": ""
   },
   {

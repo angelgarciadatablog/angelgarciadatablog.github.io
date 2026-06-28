@@ -191,8 +191,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tr>
 </tbody>
 </table>
-<p>La cuenta de Outlook personal queda como <strong>administrador externo</strong> del tenant, pero no es un usuario organizacional dentro de él. Para acceder a servicios empresariales de Microsoft (Fabric, Power BI Service, Azure DevOps, entre otros), hay que crear un usuario organizacional dentro del tenant desde el Azure Portal → Microsoft Entra ID → Usuarios → Nuevo usuario → Crear usuario.</p>
-<h2>6. ¿Y ahora qué?</h2>
+<p>La cuenta de Outlook personal queda como <strong>administrador externo</strong> del tenant, pero no es un usuario organizacional dentro de él. Para acceder a servicios empresariales de Microsoft (Fabric, Power BI Service, Azure DevOps, entre otros), hay que crear un usuario organizacional dentro del tenant — lo hacemos en la sección siguiente.</p>
+<h2>6. Crear tu usuario organizacional en el tenant</h2>
+<p>El tenant nace <strong>vacío de usuarios</strong>: la cuenta de Outlook personal solo queda como administrador externo, no como una identidad con la que puedas entrar a los servicios. Para tener una cuenta que sí pueda iniciar sesión en Fabric, Power BI Service o Azure DevOps, hay que crear el usuario manualmente dentro del tenant.</p>
+<p>La ruta dentro del Azure Portal es:</p>
+<ol>
+<li>Entrar al <strong>Azure Portal</strong></li>
+<li>Abrir <strong>Microsoft Entra ID</strong></li>
+<li>Ir a la sección <strong>Usuarios</strong></li>
+<li>Hacer clic en <strong>Nuevo usuario → Crear usuario</strong></li>
+</ol>
+<p>El usuario se crea con el formato <code>&lt;nombre&gt;@&lt;tu-tenant&gt;.onmicrosoft.com</code> — por ejemplo <code>angeldev@angelgarciadatablogoutlook.onmicrosoft.com</code>. Esta sí es una cuenta con la que se puede iniciar sesión, y es la que usarás de aquí en adelante para entrar a los servicios empresariales de Microsoft.</p>
+<h3>Cuenta dueña vs. usuario de servicios</h3>
+<p>A partir de aquí conviven <strong>dos identidades</strong> en tu tenant, y es clave no confundirlas:</p>
+<ul>
+<li><strong>Tu cuenta de Outlook</strong> (la que creó Azure) es la <strong>dueña</strong>: tiene el rol de <em>Global Administrator</em> del tenant y <em>Owner</em> de la suscripción. Con ella administras Azure — el portal, la facturación y la creación de usuarios. En la lista de <strong>Usuarios</strong> aparece con el formato <code>tucorreo_dominio.com#EXT#@tutenant.onmicrosoft.com</code>. El <code>#EXT#</code> indica que es una identidad <strong>externa</strong>: es tu cuenta personal representada dentro del tenant. No la creaste tú, Azure la añadió sola al registrarte.</li>
+<li><strong>El usuario que acabas de crear</strong> (<code>angeldev@...</code>) es un <strong>usuario de servicios</strong>: por defecto <strong>no tiene ningún rol de administrador</strong>. Existe solo para darte una cuenta organizacional con la que entrar a Fabric o Power BI Service.</li>
+</ul>
+<p>Esto tiene una consecuencia práctica que confunde a todos la primera vez: <strong>si inicias sesión con el usuario nuevo (<code>angeldev@</code>), la opción "Crear un usuario nuevo" aparecerá en gris (deshabilitada)</strong>. No es un error ni un bloqueo de la cuenta — crear usuarios internos requiere el rol <em>User Administrator</em>, y ese usuario no lo tiene. Para crear más usuarios, inicia sesión con tu cuenta de Outlook, que es la dueña del tenant.</p>
+<h2>7. ¿Y ahora qué?</h2>
 <p>Con Azure Free Account, un tenant de Entra ID y un usuario organizacional creado, tienes la base completa para moverse en el ecosistema Microsoft. Las posibilidades se dividen según lo que quieras explorar:</p>
 <table>
 <thead>
@@ -222,14 +239,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <td>Practicar SQL en la nube</td>
 <td>Fabric Warehouse o Azure SQL Database</td>
 </tr>
-<tr>
-<td>Entender el ecosistema completo primero</td>
-<td>Ver tema: mapa-de-azure</td>
-</tr>
 </tbody>
 </table>
 <p>No hay un único camino — depende del proyecto que tengas en mente. El tenant y el usuario organizacional son la llave que abre cualquiera de estas puertas.</p>
-<h2>7. Costos y protección contra cobros inesperados</h2>
+<h2>8. Costos y protección contra cobros inesperados</h2>
 <h3>La tarjeta no es una trampa</h3>
 <p>Al crear la cuenta se ingresa una tarjeta de crédito, pero <strong>solo es para verificación de identidad</strong>. Azure tiene "Protección de gasto" — cuando el crédito de $200 se agota o vencen los 30 días, Azure no cobra automáticamente. Simplemente restringe el acceso a servicios de pago. Para que haya cobros reales hay que ir activamente al portal y hacer upgrade a "Pay-As-You-Go".</p>
 <h3>Las tres capas de gratuidad</h3>
@@ -294,14 +307,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>VMs corriendo 24/7</strong> — las 750 horas gratuitas se agotan en un mes si la VM no se apaga</li>
 <li><strong>Data transfer saliente</strong> — 15 GB gratis/mes, luego cobra</li>
 </ul>
-<h2>8. Gotchas</h2>
+<h2>9. Gotchas</h2>
 <ul>
 <li><strong>Los servicios empresariales de Microsoft rechazan cuentas personales de Outlook</strong> — aunque la cuenta Outlook sea la que creó el Azure account, servicios como Fabric, Power BI Service o Azure DevOps no la aceptan directamente. Se necesita el usuario organizacional del tenant.</li>
 <li><strong>El dominio <code>.onmicrosoft.com</code> no se elige</strong> — Azure lo genera automáticamente. No es editable sin verificar un dominio propio.</li>
 <li><strong>El crédito de $200 es independiente del trial de Fabric</strong> — Microsoft Fabric tiene su propio free trial de 60 días. No consumes el crédito de Azure al activar Fabric.</li>
 <li><strong>MFA obligatorio desde el inicio</strong> — no es opcional. Si no lo configuras no puedes completar el registro.</li>
+<li><strong>La contraseña del usuario nuevo es temporal</strong> — al crear un usuario en Entra ID, la contraseña (autogenerada o la que escribas) sirve solo para el <strong>primer</strong> inicio de sesión. Por defecto, Entra ID obliga a cambiarla en ese primer acceso (propiedad <code>forceChangePasswordNextSignIn</code>). La contraseña definitiva es la que el usuario define en ese momento, no la generada al crearlo.</li>
+<li><strong>El límite de usuarios es altísimo</strong> — Entra ID Free permite hasta 50,000 objetos de directorio, y ahí entran usuarios, grupos y aplicaciones compartiendo el mismo cupo. Para uso personal o de aprendizaje es prácticamente ilimitado.</li>
+<li><strong>Si "Crear un usuario nuevo" aparece en gris</strong> — es porque iniciaste sesión con un usuario sin rol de administrador (como el usuario organizacional que creaste). Crear usuarios requiere el rol <em>User Administrator</em>; hazlo desde tu cuenta de Outlook, que es la dueña del tenant.</li>
+<li><strong>Tu cuenta de Outlook aparece como usuario <code>#EXT#</code></strong> — no la creaste tú: al registrarte, Azure añadió tu correo personal al tenant como identidad externa, con el formato <code>tucorreo_dominio.com#EXT#@tutenant.onmicrosoft.com</code>. Es tu cuenta dueña representada dentro del tenant, no un usuario organizacional nativo.</li>
 </ul>
-<h2>9. Referencia oficial</h2>
+<h2>10. Referencia oficial</h2>
 <ul>
 <li><a href="https://azure.microsoft.com/free">Azure Free Account</a></li>
 <li><a href="https://azure.microsoft.com/pricing/free-services">Servicios siempre gratuitos</a></li>
