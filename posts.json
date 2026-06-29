@@ -1,5 +1,31 @@
 [
   {
+    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
+    "slug": "fabric-primer-pipeline",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-06-29",
+    "posts-relacionados": [
+      "primeros-pasos-en-azure",
+      "introduccion-apis-para-analistas",
+      "api-github-extraer-datos-publicos-privados-postman"
+    ],
+    "video-youtube": [
+      "https://www.youtube.com/watch?v=lqwMXNy0ATk",
+      "https://www.youtube.com/watch?v=eXfqUxzE0MY"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "microsoft-fabric-que-es",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
     "slug": "primeros-pasos-en-azure",
     "categoria": "azure",
@@ -19,32 +45,6 @@
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
-    "slug": "fabric-primer-pipeline",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-06-28",
-    "posts-relacionados": [
-      "primeros-pasos-en-azure",
-      "introduccion-apis-para-analistas",
-      "api-github-extraer-datos-publicos-privados-postman"
-    ],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=lqwMXNy0ATk",
-      "https://www.youtube.com/watch?v=eXfqUxzE0MY"
-    ],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "microsoft-fabric-que-es",
     "parte-siguiente": ""
   },
   {

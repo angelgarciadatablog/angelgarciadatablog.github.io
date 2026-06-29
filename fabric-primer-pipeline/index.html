@@ -72,7 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
-      <span class="post-updated">Actualizado: 2026-06-28</span>
+      <span class="post-updated">Actualizado: 2026-06-29</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -89,6 +89,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <iframe src="https://www.youtube.com/embed/eXfqUxzE0MY" allowfullscreen></iframe>
 </div>
     <div class="post-body" id="post-body"><p>En este tutorial vas a construir tu <strong>primer pipeline de datos de punta a punta en Microsoft Fabric</strong>: partimos de una <strong>API pública de GitHub</strong> —los repositorios de una cuenta, sin autenticación— y llevamos esos datos, paso a paso, hasta un <strong>reporte en Power BI</strong>.</p>
+<blockquote>
+<p><strong>Importante — aquí "pipeline" es el concepto, no el item de Fabric.</strong> En este post "pipeline de datos" se refiere al <em>recorrido</em> que hace el dato de punta a punta (API → Flujo de datos Gen2 → Lakehouse → reporte). Fabric <strong>además</strong> tiene un elemento que se llama literalmente <strong>Data pipeline</strong>, pero ese es otra cosa: una herramienta de <strong>orquestación</strong> para encadenar y programar actividades, y <strong>no la usamos en este tutorial</strong> —el flujo lo armamos conectando las piezas directamente—. Si vienes de Azure Data Factory, es el heredero de aquellos pipelines; lo veremos en un post aparte. No lo busques en este recorrido.</p>
+</blockquote>
 <p>El recorrido completo son cuatro pasos:</p>
 <ul>
 <li><strong>Traer los datos</strong> desde la API de GitHub con un <strong>Flujo de datos Gen2</strong>.</li>
