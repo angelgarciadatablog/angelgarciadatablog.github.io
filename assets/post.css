@@ -205,6 +205,10 @@
 .post-video { margin-top: 48px; }
 .post-video + .post-video { margin-top: 24px; }
 
+/* Espacio entre el último video y el cuerpo cuando este no empieza con un
+   título (los h2/h3 ya traen su propio margin-top) */
+.post-video + .post-body > :first-child:not(h2):not(h3) { margin-top: 40px; }
+
 .post-video-title {
   font-size: 14px;
   font-weight: 600;
