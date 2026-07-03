@@ -123,7 +123,7 @@ document.getElementById('asesoriaForm').addEventListener('submit', async functio
     window.dataLayer.push({ event: 'lead_form_submit', form_location: 'home' });
 
     form.style.display = 'none';
-    estado.textContent = '¡Gracias! Te escribiré pronto a tu correo para coordinar la asesoría.';
+    estado.textContent = '✓ ¡Listo! Me comunicaré contigo pronto.';
     estado.classList.add('visible');
   } catch (err) {
     btn.disabled = false;
