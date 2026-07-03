@@ -91,6 +91,48 @@ function filtrarPosts(query) {
   renderPosts(filtrados.filter(postMatchOS));
 }
 
+// ─── FORMULARIO DE ASESORÍA ───────────────────────────────────────────────────
+// Mismo endpoint de Apps Script que usa el popup de GTM (variable url-apps-script-popup-suscripcion)
+const ASESORIA_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwaoACq0wLtaCCpWKbyBaXi1f44WWzlU6M8Xwu2sfebxYKGNXhRxEIr-wlzd_AhU35cwg/exec';
+
+document.getElementById('asesoriaForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = this;
+  const btn = document.getElementById('asesoriaBtn');
+  const estado = document.getElementById('asesoriaEstado');
+  const email = document.getElementById('asesoriaEmail').value.trim();
+  const objetivo = document.getElementById('asesoriaObjetivo').value.trim();
+
+  if (email.indexOf('@') < 0 || !objetivo) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    await fetch(ASESORIA_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({ email: email, message: objetivo, page: location.href })
+    });
+
+    // Mismo flag que usa el popup de GTM: ya se suscribió, no volver a mostrarlo
+    localStorage.setItem('pp_d', '1');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_form_submit', form_location: 'home' });
+
+    form.style.display = 'none';
+    estado.textContent = '¡Gracias! Te escribiré pronto a tu correo para coordinar la asesoría.';
+    estado.classList.add('visible');
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Enviar';
+    estado.textContent = 'Hubo un problema al enviar. Inténtalo de nuevo en unos segundos.';
+    estado.classList.add('visible');
+  }
+});
+
 // Re-renderiza home cuando cambia el OS (sidebar llama cambiarOS desde los botones)
 const _cambiarOSSidebar = cambiarOS;
 window.cambiarOS = function(os) {

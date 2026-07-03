@@ -18,6 +18,57 @@
   min-width: 0;
 }
 
+/* BANNER YOUTUBE */
+.yt-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 32px;
+  transition: border-color 0.15s;
+}
+
+.yt-banner:hover {
+  border-color: var(--color-acento);
+}
+
+.yt-banner-icono {
+  flex-shrink: 0;
+}
+
+.yt-banner-texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.yt-banner-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.yt-banner-sub {
+  font-size: 12px;
+  color: var(--color-texto-suave);
+}
+
+.yt-banner-btn {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: var(--color-acento);
+  border-radius: 6px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+.yt-banner:hover .yt-banner-btn {
+  background-color: var(--color-acento-hover);
+}
+
 /* GRID DE CATEGORÍAS */
 .cat-grid {
   display: grid;
@@ -128,10 +179,135 @@
   padding: 24px 0;
 }
 
+/* FORMULARIO DE ASESORÍA */
+.asesoria {
+  margin-top: 48px;
+}
+
+.asesoria-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 28px;
+  margin-top: 16px;
+}
+
+.asesoria-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.asesoria-form-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.asesoria-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+}
+
+.asesoria-texto {
+  font-size: 15px;
+  color: var(--color-texto-cuerpo);
+}
+
+.asesoria-texto strong {
+  color: var(--color-acento);
+  font-weight: 600;
+}
+
+.asesoria-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.asesoria-form input,
+.asesoria-form textarea {
+  width: 100%;
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: var(--fuente);
+  color: var(--color-texto);
+  outline: none;
+  resize: vertical;
+}
+
+.asesoria-form input::placeholder,
+.asesoria-form textarea::placeholder {
+  color: var(--color-texto-suave);
+}
+
+.asesoria-form input:focus,
+.asesoria-form textarea:focus {
+  border-color: var(--color-acento);
+}
+
+.asesoria-btn {
+  align-self: flex-start;
+  background-color: var(--color-acento);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--fuente);
+  cursor: pointer;
+}
+
+.asesoria-btn:hover {
+  background-color: var(--color-acento-hover);
+}
+
+.asesoria-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.asesoria-estado {
+  display: none;
+  font-size: 14px;
+  color: var(--color-texto-cuerpo);
+  margin-top: 12px;
+}
+
+.asesoria-estado.visible {
+  display: block;
+}
+
 @media (max-width: 900px) {
   .home-layout {
     margin-left: 0;
     padding: 24px 20px;
+  }
+
+  .asesoria-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .asesoria-form-col {
+    width: 100%;
+  }
+
+  .asesoria-info,
+  .asesoria-estado {
+    text-align: center;
+  }
+
+  .asesoria-btn {
+    align-self: center;
+    padding: 8px 32px;
   }
 
   .cat-grid {
@@ -150,4 +326,10 @@
   }
 
   .post-fila-fecha { display: none; }
+
+  .yt-banner {
+    flex-wrap: wrap;
+  }
+
+  .yt-banner-sub { display: none; }
 }
