@@ -1,5 +1,26 @@
 [
   {
+    "titulo": "Mi pipeline de datos se cayó y estuve semanas sin datos",
+    "slug": "mi-pipeline-se-cayo-por-cero-playlists",
+    "categoria": "formacion",
+    "tags": [
+      "datablog",
+      "formacion"
+    ],
+    "updated": "2026-07-04",
+    "posts-relacionados": [],
+    "video-youtube": [
+      "https://www.youtube.com/watch?v=Wez4b-J_xL4"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Historia real de cómo mi pipeline de datos se cayó por un caso que nunca consideré — cero playlists. Qué pasó, por qué y la lección para tus pipelines.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
     "slug": "fabric-primer-pipeline",
     "categoria": "azure",

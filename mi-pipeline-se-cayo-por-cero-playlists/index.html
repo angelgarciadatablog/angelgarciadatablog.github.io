@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi pipeline de datos se cayó y estuve semanas sin datos · Angel García</title>
+  <meta name="description" content="Historia real de cómo mi pipeline de datos se cayó por un caso que nunca consideré — cero playlists. Qué pasó, por qué y la lección para tus pipelines." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/mi-pipeline-se-cayo-por-cero-playlists/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Mi pipeline de datos se cayó y estuve semanas sin datos" />
+  <meta property="og:description" content="Historia real de cómo mi pipeline de datos se cayó por un caso que nunca consideré — cero playlists. Qué pasó, por qué y la lección para tus pipelines." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/mi-pipeline-se-cayo-por-cero-playlists/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Mi pipeline de datos se cayó y estuve semanas sin datos", "categoria": "formacion", "serie": "", "series_relacionadas": "", "slug": "mi-pipeline-se-cayo-por-cero-playlists", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-04", "video_youtube": ["https://www.youtube.com/watch?v=Wez4b-J_xL4"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">formacion</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Mi pipeline de datos se cayó y estuve semanas sin datos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">formacion</span></div>
+      <span class="post-updated">Actualizado: 2026-07-04</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<div class="post-video">
+  <div class="post-video-title">Video explicativo</div>
+  <iframe src="https://www.youtube.com/embed/Wez4b-J_xL4" allowfullscreen></iframe>
+</div>
+    <div class="post-body" id="post-body"><p>Esta es una historia real. No es un tutorial: es lo que pasa cuando un pipeline que funciona perfecto durante meses se encuentra con el caso que nunca consideraste.</p>
+<h2>1. El contexto: un pipeline que alimentaba mi dashboard</h2>
+<p>Tengo un pipeline de datos que alimenta uno de mis dashboards personales con las métricas de mi canal de YouTube. Cada lunes se actualizaban los datos automáticamente, sin intervención. Funcionaba con una premisa implícita: el canal siempre tiene videos y playlists.</p>
+<h2>2. El detonante: reorganizar las playlists del canal</h2>
+<p>El 13 de mayo decidí reorganizar mi canal con las nuevas playlists temáticas que había definido en mi sistema de conocimiento. Para hacerlo, borré todas las playlists existentes (solo las playlists, no los videos) y creé las nuevas.</p>
+<p>Lo que no sabía: <strong>la API de YouTube no devuelve una playlist hasta que tiene al menos un video dentro</strong>. Al día siguiente, para la API, mi canal tenía cero playlists.</p>
+<h2>3. El error: la casuística de cero playlists</h2>
+<p>El script del pipeline recorría la lista de playlists del canal. Nunca contempló que esa lista pudiera llegar vacía — y con cero playlists, el script arrojaba error y el pipeline completo se caía. Resultado: el dashboard dejó de recibir datos.</p>
+<h2>4. La "solución" que no fue solución</h2>
+<p>El error se resolvió solo en cuanto añadí un video a una playlist nueva: la API volvió a devolver playlists y el pipeline retomó su ciclo. Pero el daño ya estaba hecho — estuve varias semanas sin datos en el dashboard.</p>
+<h2>5. La lección: diseña para la lista vacía</h2>
+<ol>
+<li>Todo pipeline tiene premisas implícitas — hazlas explícitas y pregúntate qué pasa si cada fuente llega vacía.</li>
+<li>Una lista vacía no es un caso raro: es un estado normal que tu código debe manejar sin caerse.</li>
+<li>Un cambio manual "inofensivo" (reorganizar playlists) puede romper un proceso automatizado que depende de ese estado.</li>
+<li>Si el pipeline se cae en silencio, el costo no es el error — son las semanas de datos que no vuelven.</li>
+</ol></div>
+    
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'mi-pipeline-se-cayo-por-cero-playlists';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
