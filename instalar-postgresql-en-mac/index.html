@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo instalar PostgreSQL en Mac · Angel García</title>
+  <meta name="description" content="Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/instalar-postgresql-en-mac/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo instalar PostgreSQL en Mac" />
+  <meta property="og:description" content="Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/instalar-postgresql-en-mac/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Cómo instalar PostgreSQL en Mac", "categoria": "bases-de-datos", "serie": "postgresql-desde-cero", "series_relacionadas": "", "slug": "instalar-postgresql-en-mac", "sistema_operativo": "mac", "fecha_publicacion": "2026-05-31", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bases-de-datos</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Cómo instalar PostgreSQL en Mac</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bases-de-datos</span></div>
+      <span class="post-updated">Actualizado: 2026-07-05</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><h2>1. Qué es PostgreSQL</h2>
+<p>PostgreSQL es un motor de base de datos relacional open source con más de 30 años de desarrollo activo. Es el motor más usado en empresas que necesitan una base de datos seria sin el costo de licencias de Oracle o SQL Server.</p>
+<p>A diferencia de BigQuery — que es serverless y vive 100% en la nube de Google — PostgreSQL es un servidor que corre en una máquina. Puede ser tu laptop, un servidor de la empresa, o una instancia en la nube. Tú controlas todo: la instalación, los usuarios, los permisos, los backups.</p>
+<p>En las empresas lo vas a encontrar principalmente como la base de datos de las aplicaciones: cuando un usuario se registra, hace un pedido o actualiza su perfil, esa acción escribe en PostgreSQL. Los datos analíticos suelen fluir desde PostgreSQL hacia un warehouse como BigQuery — pero la fuente de verdad operacional vive en Postgres.</p>
+<h3>Diferencia con BigQuery</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PostgreSQL</th>
+<th>BigQuery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>OLTP (transaccional)</td>
+<td>OLAP (analítico)</td>
+</tr>
+<tr>
+<td>Dónde vive</td>
+<td>Tu máquina / servidor / nube</td>
+<td>Google Cloud</td>
+</tr>
+<tr>
+<td>Instalación</td>
+<td>Sí — tú lo gestionas</td>
+<td>No — serverless</td>
+</tr>
+<tr>
+<td>Restricciones relacionales</td>
+<td>PK, FK, NOT NULL, UNIQUE</td>
+<td>No existen de forma nativa</td>
+</tr>
+<tr>
+<td>Quién lo usa</td>
+<td>Desarrolladores, analistas</td>
+<td>Analistas de datos, ingenieros</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Instalar PostgreSQL en Mac</h2>
+<h3>Paso 1 — Verificar si ya lo tienes instalado</h3>
+<pre><code class="language-bash">which psql &amp;&amp; brew list | grep postgresql
+</code></pre>
+<p>Si ves algo como <code>/opt/homebrew/opt/postgresql@17/bin/psql</code> y <code>postgresql@17</code> — ya lo tienes. Salta al Paso 3.</p>
+<p>Si el comando no devuelve nada — no está instalado. Sigue con el Paso 2.</p>
+<h3>Paso 2 — Instalación</h3>
+<p>Usamos <strong>Homebrew</strong> porque es la forma en que trabajan los ingenieros y te da control real sobre el servidor. Si no tienes Homebrew instalado, sigue las instrucciones oficiales en <a href="https://brew.sh">brew.sh</a> antes de continuar.</p>
+<pre><code class="language-bash">brew install postgresql@17
+</code></pre>
+<h3>Paso 3 — Arrancar el servidor</h3>
+<p>PostgreSQL es un <strong>servidor</strong> — un programa que corre en segundo plano en tu Mac esperando conexiones. Instalarlo no es suficiente: hay que arrancarlo para que esté disponible.</p>
+<p>Antes de arrancar nada, verifica si ya está corriendo — si en algún momento anterior se usó <code>start</code>, el servidor arranca solo en cada inicio de sesión y puede llevar tiempo encendido sin que lo notes:</p>
+<pre><code class="language-bash"># Ver si está corriendo (busca &quot;started&quot; en la columna Status)
+brew services list
+</code></pre>
+<p>Si aparece <code>started</code>, salta al Paso 4. Si no:</p>
+<pre><code class="language-bash"># Arrancar el servidor + registrar inicio automático al encender el Mac
+brew services start postgresql@17
+
+# Arrancar solo esta vez, sin registrar inicio automático
+brew services run postgresql@17
+
+# Detenerlo + eliminar el inicio automático (apaga el proceso en segundo plano)
+brew services stop postgresql@17
+</code></pre>
+<p>Cuando ejecutas <code>brew services start</code>, verás algo así:</p>
+<pre><code>Name          Status  User          File
+postgresql@17 started &lt;tu-usuario&gt;  ~/Library/LaunchAgents/homebrew.mxcl.postgresql@17.plist
+</code></pre>
+<p>Ese archivo <code>.plist</code> en <code>~/Library/LaunchAgents/</code> es el mecanismo de macOS para arrancar servicios automáticamente al encender el Mac. Brew lo crea por ti.</p>
+<h3>Paso 4 — Conectarte</h3>
+<pre><code class="language-bash">psql postgres
+</code></pre>
+<p>Qué significa el comando: <code>psql</code> es el <strong>cliente</strong> para hablarle al servidor, y <code>postgres</code> es <strong>el nombre de la base a la que entras</strong> (el patrón es <code>psql &lt;nombre-de-base&gt;</code>). Entramos por <code>postgres</code> porque es una base de sistema que existe siempre desde la instalación — la puerta garantizada cuando todavía no has creado ninguna base propia.</p>
+<p>Si ves el prompt <code>postgres=#</code> — estás dentro del motor. Ese prompt indica la base de datos a la que estás conectado. Desde aquí puedes escribir comandos directamente a PostgreSQL.</p>
+<h2>3. Primeros comandos desde psql</h2>
+<p><code>psql</code> tiene dos tipos de comandos: los que empiezan con <code>\</code> son comandos propios de psql (no llevan punto y coma), y los que son SQL estándar sí llevan punto y coma al final.</p>
+<p>Por ahora solo necesitas dos para orientarte:</p>
+<p><strong>Antes de empezar, un tip opcional:</strong> cuando un resultado no cabe en la pantalla, psql lo muestra dentro de un visor paginado (verás <code>(END)</code> al final; se sale con <code>q</code>). Si prefieres que todo salga directo en la terminal, desactívalo para esta sesión:</p>
+<pre><code class="language-sql">\pset pager off
+</code></pre>
+<p><strong>Ver qué bases de datos existen:</strong></p>
+<pre><code class="language-sql">\l
+</code></pre>
+<p>En una instalación limpia aparecen tres bases de datos por defecto:</p>
+<pre><code>   Nombre   |       Dueño       | ...
+------------+-------------------+----
+ postgres   | nombreusuario     |
+ template0  | nombreusuario     |
+ template1  | nombreusuario     |
+</code></pre>
+<p>Si aparece <code>(END)</code> al final, presiona <code>q</code> para volver al prompt.</p>
+<p>¿Por qué entramos por <code>postgres</code> y no por otra base? Porque para listar las bases hay que preguntarle al servidor, y para eso hay que estar conectado a <em>alguna</em> base. <code>postgres</code> es el <strong>lobby</strong>: una base de sistema que siempre existe desde la instalación, garantizada como puerta de entrada. Cuando tengas bases propias, el mismo comando sirve para entrar directo a cualquiera (<code>psql tareas</code>), y desde dentro puedes cambiarte con <code>\c tareas</code>. Atajo útil: <code>psql -l</code> desde la terminal lista las bases y sale, sin quedarse dentro.</p>
+<p><strong>Experimenta un poco (sin miedo — ninguno de estos comandos crea ni modifica nada):</strong></p>
+<p><strong>1. Tu primera consulta SQL — pregúntale al servidor su versión:</strong></p>
+<pre><code class="language-sql">SELECT version(); 
+</code></pre>
+<p>Fíjate en el <code>;</code> final: esto ya es SQL de verdad, no un comando de psql. La respuesta muestra la versión exacta del motor y la plataforma para la que fue compilado.</p>
+<p><strong>2. ¿Dónde estoy conectado?</strong></p>
+<pre><code class="language-sql">\conninfo
+</code></pre>
+<p>Responde la base, el usuario y el puerto (el famoso <code>5432</code>) — los mismos ingredientes de la cadena de conexión que vimos en la parte 1 de esta serie.</p>
+<p><strong>3. ¿Quién soy dentro del motor?</strong></p>
+<pre><code class="language-sql">\du
+</code></pre>
+<p>Lista los roles (usuarios) del servidor. En una instalación con Homebrew verás uno solo: tu usuario de Mac, marcado como <strong>Superusuario</strong>.</p>
+<p><strong>4. ¿Qué tablas hay en esta base?</strong></p>
+<pre><code class="language-sql">\dt
+</code></pre>
+<p>Respuesta: <em>"No se encontró ninguna relación."</em> La base <code>postgres</code> está vacía — y así debe quedarse: es el lobby, no un lugar de trabajo. De hecho, <strong>ninguna base de una instalación limpia tiene datos</strong>: PostgreSQL no trae datos de prueba. Para ver tablas con filas de verdad habrá que crear una base propia y llenarla — eso es justo lo que viene (ver "Qué sigue").</p>
+<p>Bonus: cámbiate de base sin salir de psql con <code>\c template1</code>, mira su prompt cambiar a <code>template1=#</code>, y vuelve con <code>\c postgres</code>.</p>
+<p><strong>Salir de psql:</strong></p>
+<pre><code class="language-sql">\q
+</code></pre>
+<p>Te devuelve al prompt normal de la terminal.</p>
+<p>El resto de comandos — crear bases de datos, conectarte a ellas, ver tablas — los veremos en una próxima serie, cuando tengamos contexto de qué estamos creando y por qué.</p>
+<h2>4. ¿Tengo que dejarlo encendido siempre?</h2>
+<p>No es obligatorio. Los tres comandos del Paso 3 hacen cosas distintas:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Arranca ahora</th>
+<th>Inicio automático al encender el Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>brew services start postgresql@17</code></td>
+<td>Sí</td>
+<td>Sí — registra el LaunchAgent</td>
+</tr>
+<tr>
+<td><code>brew services stop postgresql@17</code></td>
+<td>No (detiene)</td>
+<td>No — elimina el LaunchAgent</td>
+</tr>
+<tr>
+<td><code>brew services run postgresql@17</code></td>
+<td>Sí</td>
+<td>No — sin registro automático</td>
+</tr>
+</tbody>
+</table>
+<p>Puedes verificar qué servicios están registrados en <strong>Configuración del Sistema → General → Elementos de inicio</strong>.</p>
+<p>Para el aprendizaje de esta serie recomendamos <code>start</code> — arranca solo y no tienes que recordar iniciarlo cada vez.</p>
+<p>¿Y en una empresa, quién lo mantiene encendido 24/7? Nadie depende de que una laptop esté prendida: el servidor corre en una máquina que nunca se apaga, por alguno de los dos caminos que vimos en la parte 1 de esta serie — autogestionado (un servidor Linux administrado por el equipo de infraestructura, donde el equivalente de <code>brew services</code> se llama <code>systemd</code>) o gestionado (Cloud SQL, RDS, Azure Database, Supabase: el proveedor se encarga del 24/7, los respaldos y los reinicios). La diferencia con tu Mac es una sola: allá el administrador del servidor es otro; aquí eres tú.</p>
+<h2>5. Excluir los datos de Spotlight (hacer esto justo después de instalar)</h2>
+<p>Spotlight es el buscador de macOS — el que se abre con Cmd+Space. Su trabajo es indexar automáticamente todos los archivos del sistema para que puedas encontrarlos en segundos. El problema es que Spotlight no distingue entre un documento de Word y un archivo binario interno de una base de datos: cuando detecta archivos nuevos en cualquier carpeta, los indexa todos sin excepción.</p>
+<p>Al instalar PostgreSQL, Homebrew inicializa el cluster de datos en <code>/opt/homebrew/var/postgresql@17/</code> — una carpeta con cientos de archivos binarios que son el corazón interno del motor (páginas de datos, logs de transacciones, archivos de control). Spotlight los ve como "archivos nuevos" y lanza hasta 16 workers paralelos para abrirlos y catalogarlos. Como son binarios sin contenido legible, el proceso es inútil — pero el daño ya está hecho: el disco se satura (hasta 148 MB/s de actividad sostenida) y el síntoma visible es que todo el Mac se pone lento — Chrome, apps, todo — aunque PostgreSQL no esté corriendo.</p>
+<p>Para confirmar que Spotlight está indexando activamente, ejecutar:</p>
+<pre><code class="language-bash">ps aux | grep mdworker_shared | grep -v grep | wc -l
+</code></pre>
+<p>Este comando cuenta cuántos workers de indexación de Spotlight están corriendo en ese momento. Si el número es mayor a 0 (especialmente si ves 10 o más), Spotlight está en plena indexación. Cuando llega a 0, terminó.</p>
+<p>La solución es decirle a Spotlight que nunca indexe esa carpeta:</p>
+<pre><code class="language-bash">sudo touch /opt/homebrew/var/postgresql@17/.metadata_never_index
+</code></pre>
+<p>Ese archivo es una señal que Spotlight reconoce nativamente. Una vez creado, los workers de indexación terminan solos en 2-3 minutos y el Mac vuelve a la normalidad. Es permanente — no se borra solo. Si en el futuro instalas otra versión (ej. <code>postgresql@18</code>), repetir el comando con la ruta de esa versión.</p>
+<h2>6. Qué sigue</h2>
+<p>Tienes PostgreSQL instalado, corriendo y conectado. Pero al explorar notaste algo: <strong>ninguna de las bases por defecto tiene datos</strong>. <code>postgres</code> es el lobby y las <code>template</code> son moldes — las tres vacías por diseño. PostgreSQL no trae datos de prueba: los datos los pones tú.</p>
+<p>Por eso el siguiente paso es <strong>crear tu primera base de datos y llenarla con datos reales</strong>. Recién ahí cobran vida los comandos que hoy se quedaron con hambre: <code>\dt</code> mostrando tablas de verdad, <code>\d &lt;tabla&gt;</code> revelando su estructura, y los <code>SELECT</code> devolviendo filas reales. Ese camino — diseñar el modelo relacional, crear las tablas y consultarlas con SQL — viene en una próxima serie del blog.</p>
+<p>Con esto cierra la serie: ya sabes qué es PostgreSQL por dentro y lo tienes funcionando en tu Mac.</p>
+<h2>Gotchas</h2>
+<ul>
+<li>En Mac con teclado <strong>Latinoamericano</strong>, la barra invertida <code>\</code> se escribe con <code>Option + ?</code>. Si dentro de la terminal no produce <code>\</code> sino <code>(arg: -1)</code> u otro resultado extraño, es porque Terminal intercepta <code>Option</code> como meta-tecla. Solución: Terminal → Settings → Profiles → Basic → Keyboard → desmarcar <strong>"Use Option as Meta key"</strong> → cerrar y reabrir la terminal</li>
+<li>El comando <code>\l</code> usa la letra <strong>ele minúscula</strong>, no el número uno — en terminal con fuente monoespaciada se ven casi iguales</li>
+<li>Si después de <code>\l</code> aparece <code>(END)</code> al final, psql está mostrando el resultado dentro de un visor paginado (<code>less</code>). <strong>Mientras veas <code>(END)</code>, todo lo que tecleas va al visor, no a psql</strong> — si repites <code>\l</code> + Enter pensando que no funcionó, solo acumulas comandos que se ejecutarán al salir y el listado reaparecerá una y otra vez. La única tecla que necesitas es <code>q</code> (una por cada listado abierto) hasta volver al prompt. Las líneas con <code>~</code> son el visor indicando que no hay más contenido, no un error. Si prefieres que los resultados salgan directo a la terminal sin visor, ejecuta <code>\pset pager off</code> dentro de psql (dura hasta que cierres la sesión)</li>
+<li>Si el prompt cambia de <code>postgres=#</code> a <code>postgres-#</code> (guion en vez de igual), psql está esperando que <strong>termines</strong> una sentencia que dejaste a medias — todo lo que escribas se acumula en ese borrador. Pasa, por ejemplo, si tecleas <code>q</code> suelto fuera del visor: psql lo toma como inicio de una sentencia SQL. Solución: <code>\r</code> (<em>reset</em>) borra el borrador y devuelve el prompt <code>=#</code></li>
+<li>Si al conectarte ves <code>No such file or directory</code> en el socket, el servidor no está corriendo — ejecutar <code>brew services start postgresql@17</code></li>
+<li>En Mac con Homebrew el superusuario por defecto es tu usuario de Mac, no <code>postgres</code>. El comando correcto para conectarte es <code>psql postgres</code>, no <code>psql -U postgres</code></li>
+<li>La versión instalada puede variar — verificar con <code>brew list | grep postgresql</code> y usar ese número en los comandos de <code>brew services</code></li>
+<li>En macOS Ventura o posterior, al ejecutar <code>brew services start</code> aparece una notificación del sistema: <em>"Se instalaron elementos en segundo plano"</em>. Es esperado — macOS te avisa que se registró el LaunchAgent de PostgreSQL para inicio automático. No es un error</li>
+<li>Si al arrancar ves <code>Service already running</code>, no es un error: el servidor ya estaba encendido, casi seguro por el inicio automático de un <code>start</code> anterior. Para saber desde cuándo: el archivo <code>.plist</code> que muestra <code>brew services list</code> solo existe si hubo un <code>start</code> y ningún <code>stop</code> después — o sea, Postgres ha estado arrancando solo en cada inicio de sesión desde entonces</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/">PostgreSQL — documentación oficial</a></li>
+<li><a href="https://formulae.brew.sh/formula/postgresql@17">Homebrew — postgresql@17</a></li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/como-funciona-postgresql-servidor-y-almacenamiento"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Cómo funciona PostgreSQL: servidor, almacenamiento y acceso</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'instalar-postgresql-en-mac';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

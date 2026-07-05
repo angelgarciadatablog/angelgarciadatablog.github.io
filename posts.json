@@ -1,5 +1,43 @@
 [
   {
+    "titulo": "Cómo instalar PostgreSQL en Mac",
+    "slug": "instalar-postgresql-en-mac",
+    "categoria": "bases-de-datos",
+    "tags": [
+      "datablog",
+      "bases-de-datos"
+    ],
+    "updated": "2026-07-05",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo.",
+    "serie": "postgresql-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "como-funciona-postgresql-servidor-y-almacenamiento",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "Cómo funciona PostgreSQL: servidor, almacenamiento y acceso",
+    "slug": "como-funciona-postgresql-servidor-y-almacenamiento",
+    "categoria": "bases-de-datos",
+    "tags": [
+      "datablog",
+      "bases-de-datos"
+    ],
+    "updated": "2026-07-05",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Qué es PostgreSQL entendido como servidor (no como archivo), cómo almacena los datos en binario en disco, la jerarquía servidor→base→tabla, cómo se accede con SQL y qué cambia entre local y nube (gestionado vs autogestionado).",
+    "serie": "postgresql-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": "instalar-postgresql-en-mac"
+  },
+  {
     "titulo": "Mi pipeline de datos se cayó y estuve semanas sin datos",
     "slug": "mi-pipeline-se-cayo-por-cero-playlists",
     "categoria": "formacion",

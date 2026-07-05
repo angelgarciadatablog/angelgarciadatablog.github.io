@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo funciona PostgreSQL: servidor, almacenamiento y acceso · Angel García</title>
+  <meta name="description" content="Qué es PostgreSQL entendido como servidor (no como archivo), cómo almacena los datos en binario en disco, la jerarquía servidor→base→tabla, cómo se accede con SQL y qué cambia entre local y nube (gestionado vs autogestionado)." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/como-funciona-postgresql-servidor-y-almacenamiento/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo funciona PostgreSQL: servidor, almacenamiento y acceso" />
+  <meta property="og:description" content="Qué es PostgreSQL entendido como servidor (no como archivo), cómo almacena los datos en binario en disco, la jerarquía servidor→base→tabla, cómo se accede con SQL y qué cambia entre local y nube (gestionado vs autogestionado)." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/como-funciona-postgresql-servidor-y-almacenamiento/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Cómo funciona PostgreSQL: servidor, almacenamiento y acceso", "categoria": "bases-de-datos", "serie": "postgresql-desde-cero", "series_relacionadas": "", "slug": "como-funciona-postgresql-servidor-y-almacenamiento", "sistema_operativo": "mac", "fecha_publicacion": "2026-07-02", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bases-de-datos</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Cómo funciona PostgreSQL: servidor, almacenamiento y acceso</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bases-de-datos</span></div>
+      <span class="post-updated">Actualizado: 2026-07-05</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><p>Este tema no explica <em>cómo se instala</em> (eso viene en la siguiente parte de esta serie) ni <em>cómo se diseña un schema</em>. Aquí se responde una pregunta más de fondo, que surge apenas empiezas a usar una base de datos de verdad: <strong>¿qué es PostgreSQL físicamente, dónde viven realmente los datos, y cómo se accede a ellos igual en local que en la nube?</strong></p>
+<h2>1. Qué es: un servidor, no un archivo</h2>
+<p>PostgreSQL <strong>no es un archivo que abres</strong> (como un Excel o un CSV). Es un <strong>servidor</strong>: un programa que se queda corriendo, escuchando en un puerto (por defecto el <code>5432</code>), y con el que se habla enviándole consultas SQL.</p>
+<p>La analogía que lo ordena todo:</p>
+<blockquote>
+<p>PostgreSQL es una <strong>biblioteca con un bibliotecario</strong>. Los libros (tus datos) están dentro, pero <strong>solo el bibliotecario (el proceso <code>postgres</code>) sabe interpretarlos</strong>. Tú no entras a agarrar libros: tocas la puerta, te identificas (usuario/contraseña) y le pides libros con SQL. Si la biblioteca está cerrada (servidor apagado), los libros siguen ahí en disco, pero nadie puede leerlos.</p>
+</blockquote>
+<p>Consecuencia clave: <strong>los datos y el servidor son cosas separadas</strong>. El servidor se enciende (y se apaga en las pruebas); los datos persisten en disco independientemente.</p>
+<h2>2. La jerarquía de 4 niveles</h2>
+<p>Cuando decimos "mi base de datos", en realidad hay cuatro cosas apiladas que se crean en momentos distintos:</p>
+<pre><code>1. SERVIDOR / INSTANCIA   → el proceso 'postgres' corriendo (escucha en 5432)
+        │
+2. CLUSTER / ALMACÉN      → una carpeta en disco (el &quot;data directory&quot;)
+        │                    aquí viven TODAS tus bases juntas
+        ├── postgres          (base de sistema)
+        ├── otra_base         (otro proyecto)
+        └── tareas            ← 3. UNA BASE DE DATOS concreta
+                 │
+                 └── tasks    ← 4. UNA TABLA (+ sus filas)
+</code></pre>
+<ul>
+<li><strong>Un mismo servidor guarda muchas bases distintas.</strong> En una misma instalación pueden convivir la base de un proyecto y la de otro, sin mezclarse.</li>
+<li>En Mac (Homebrew) el almacén vive en <code>/opt/homebrew/var/postgresql@17</code>.</li>
+<li>Postgres <strong>no usa los nombres bonitos</strong> en disco: cada base es una carpeta-número y cada tabla un archivo-número (<strong>OIDs</strong>, identificadores internos). Ej: la tabla <code>tasks</code> puede vivir en <code>base/16482/16484</code> donde <code>16482</code> es el OID de la base y <code>16484</code> el de la tabla.</li>
+</ul>
+<h2>3. Los 4 momentos: instalar ≠ encender ≠ crear base ≠ crear tablas</h2>
+<p>Cada nivel se "arma" en un momento distinto. Confundirlos es el error típico:</p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Comando (nativo en Mac)</th>
+<th>Qué nivel arma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Al instalar</strong> (una vez en la vida)</td>
+<td><code>brew install postgresql@17</code> corre <code>initdb</code> por dentro</td>
+<td><strong>Nivel 2</strong>: crea el almacén en disco + las bases de sistema + el superusuario</td>
+</tr>
+<tr>
+<td><strong>Al arrancar</strong></td>
+<td><code>brew services start postgresql@17</code></td>
+<td><strong>Nivel 1</strong>: enciende el servidor sobre ese almacén. No crea nada nuevo</td>
+</tr>
+<tr>
+<td><strong>Al crear la base</strong></td>
+<td><code>createdb tareas</code></td>
+<td><strong>Nivel 3</strong>: crea la base <code>tareas</code>, vacía</td>
+</tr>
+<tr>
+<td><strong>Al crear la estructura</strong></td>
+<td><code>psql -d tareas -f init.sql</code></td>
+<td><strong>Nivel 4</strong>: crea las tablas y mete las filas</td>
+</tr>
+</tbody>
+</table>
+<p>¿Y <code>psql postgres</code>? No aparece como momento porque <strong>no arma ni enciende nada</strong>: es el cliente con el que te conectas al servidor <em>ya encendido</em> para hablarle en SQL. Con la analogía de la biblioteca: <code>brew services start</code> abre la biblioteca; <code>psql</code> es entrar a hablar con el bibliotecario. Si el servidor está apagado, <code>psql</code> no lo arranca — simplemente falla la conexión. Detalle de la sintaxis: <code>postgres</code> ahí es <strong>el nombre de la base a la que entras</strong> (el comando es <code>psql &lt;nombre-de-base&gt;</code>, ej. <code>psql tareas</code>). Se entra por <code>postgres</code> porque es una base de sistema que <strong>siempre existe desde la instalación</strong> — el lobby garantizado del servidor cuando todavía no tienes bases propias.</p>
+<h2>4. Cómo se accede a los datos</h2>
+<p>Para leer/escribir datos, siempre el mismo proceso, en local o en la nube:</p>
+<ol>
+<li>El <strong>servidor tiene que estar encendido</strong> (si no, "connection refused").</li>
+<li>El cliente se <strong>conecta</strong> con una cadena de conexión: dirección + puerto + usuario + contraseña + nombre de base.</li>
+<li>Se mandan <strong>consultas SQL</strong> (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+</ol>
+<p>Cualquier herramienta que se conecte a PostgreSQL — un script de Python, un backend, DBeaver, Power BI — hace exactamente esto: presenta la cadena de conexión y manda SQL.</p>
+<h2>5. Cómo se almacenan los datos: binario en disco, no CSV</h2>
+<p>Esto se comprobó mirando los bytes reales de una tabla:</p>
+<ul>
+<li>El archivo de una tabla es de tipo <strong><code>data</code></strong> (binario). Abrirlo "como texto" da basura (<code>^@^@^@�T�...</code>).</li>
+<li>Está organizado en <strong>páginas de 8 KB</strong> — la unidad mínima que Postgres lee/escribe del disco. Aunque la tabla tenga 2 filas, ocupa una página entera.</li>
+<li>Los <strong>textos sí se ven</strong> legibles dentro del binario (ej. el título de una fila aparece como cadena), pero están <strong>envueltos en estructura binaria</strong>: encabezados de fila, punteros, longitudes. Sin el "mapa" que solo Postgres tiene, no sabes dónde empieza y termina cada dato.</li>
+<li>Una base recién creada ya pesa varios MB con <strong>cientos de archivos</strong>, aunque tenga pocas filas: cada base carga su propio <strong>catálogo de sistema</strong> (<code>pg_class</code>, <code>pg_attribute</code>...), las tablas internas donde Postgres guarda "qué tablas y columnas existen".</li>
+</ul>
+<h3>5.1 Por qué binario y no un CSV (la razón a escala)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CSV / Excel</th>
+<th>Postgres (binario + páginas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buscar 1 fila entre 100.000</td>
+<td>Leer línea por línea desde arriba</td>
+<td>Saltar directo a la página exacta con un <strong>índice</strong></td>
+</tr>
+<tr>
+<td>Modificar 1 fila</td>
+<td>Reescribir buena parte del archivo</td>
+<td>Reescribir solo su página de 8 KB</td>
+</tr>
+<tr>
+<td>Varios escribiendo a la vez</td>
+<td>Se corrompe</td>
+<td>Control de concurrencia por fila</td>
+</tr>
+</tbody>
+</table>
+<p>Un <strong>índice</strong> es el catálogo de la biblioteca: en vez de recorrer los estantes uno por uno, consultas la ficha y vas directo al estante exacto. Merece su propio post más adelante.</p>
+<p>Todo el formato binario existe para una cosa: <strong>encontrar y modificar filas rápido sin leerlo todo</strong> — justo lo que un CSV no puede a escala. Con 100.000 filas la tabla ocupa cientos de páginas (varios MB), y si supera 1 GB Postgres la parte en varios archivos automáticamente.</p>
+<h3>5.2 Sacar los datos afuera: exportar</h3>
+<p>Como el archivo binario <strong>solo lo entiende el servidor Postgres</strong> (misma versión, su catálogo), no se puede copiar a otro lado y "abrir". Para una copia portable o legible se <strong>exporta</strong>:</p>
+<ul>
+<li><code>pg_dump</code> → respaldo (script SQL o formato propio) para restaurar en otro Postgres.</li>
+<li><code>COPY tasks TO 'archivo.csv' CSV HEADER</code> → las filas como CSV real, para Excel u otra herramienta.</li>
+</ul>
+<p>Regla: <strong>binario por dentro para velocidad; se exporta a CSV/SQL cuando hay que sacarlo afuera.</strong></p>
+<h3>5.3 Matiz de precisión: disco, no "memoria"</h3>
+<p>Postgres usa dos cosas distintas:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Qué es</th>
+<th>¿Sobrevive a un reinicio?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Disco</strong> (almacenamiento persistente)</td>
+<td>El data directory: donde viven <strong>los datos</strong></td>
+<td><strong>Sí</strong></td>
+</tr>
+<tr>
+<td><strong>RAM</strong> (memoria volátil)</td>
+<td>Espacio de trabajo para procesar/cachear queries</td>
+<td><strong>No</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Los datos viven en <strong>disco</strong>; la RAM es solo la mesa de trabajo. Por eso Postgres necesita <strong>un entorno con disco persistente</strong>.</p>
+<h2>6. El servidor y quien se conecta tienen vidas separadas</h2>
+<p>El servicio que desea conectarse a la base de datos — un backend, un script de Python, una herramienta de BI — <strong>no la arranca</strong> ni la "despierta". Son dos servicios independientes: la base tiene que estar corriendo <em>antes</em> de que el cliente se conecte. Si está apagada, la conexión falla — y el cliente no tiene el poder de encenderla.</p>
+<p>¿Y no debería estar siempre encendida? Sí — en producción una base corre 24/7. Pero "siempre encendida" también tiene momentos de arranque: un despliegue, un reinicio del servidor, una caída. Y cuando la base y el servicio que la usa arrancan a la vez, la base tarda más (segundos) que el servicio (milisegundos). Por eso todo sistema que orquesta varios servicios incluye un mecanismo de "espera a que la base esté lista" (<em>healthcheck</em>): la solución nunca es que el cliente encienda la base (imposible), sino que <strong>espere</strong>.</p>
+<h2>7. En local vs en la nube: el acceso es idéntico (lo que cambia es quién administra)</h2>
+<p>PostgreSQL es el mismo motor en todos lados: almacén binario en disco + acceso por SQL. Lo que cambia entre local y nube no es el acceso — siempre es cadena de conexión + SQL — sino <strong>dónde vive el almacén y quién administra el servidor</strong>.</p>
+<h3>7.1 En local: tu ordenador es el servidor</h3>
+<ol>
+<li>El "servidor" es, literalmente, <strong>tu computador</strong>: el proceso <code>postgres</code> corre en tu máquina.</li>
+<li>El almacén es <strong>una carpeta de tu disco</strong> (la de la sección 2), que consume espacio de tu SSD como cualquier otra carpeta.</li>
+<li><strong>No está siempre encendido</strong>: depende de cómo lo configures. Lo usual es encenderlo con un comando en consola (<code>brew services start postgresql@17</code>), que además lo deja auto-arrancando cada vez que inicias sesión; se apaga con <code>brew services stop</code>.</li>
+<li>La cadena de conexión apunta a tu propia máquina: <code>localhost:5432</code>.</li>
+</ol>
+<h3>7.2 En la nube: dos caminos (gestionado vs autogestionado)</h3>
+<p>En la nube la base ya no vive en tu máquina sino en un computador de un datacenter, encendido 24/7. La pregunta que separa los dos caminos es <strong>quién administra ese computador</strong>:</p>
+<ol>
+<li><strong>Camino A — gestionado (<em>managed</em>), lo normal: Cloud SQL, RDS, Neon, Supabase.</strong> El proveedor corre el servidor Postgres por ti: lo instala, lo mantiene encendido, lo respalda y lo actualiza, con disco persistente garantizado. Tú nunca ves la máquina ni la carpeta del almacén — solo recibes una <strong>cadena de conexión</strong> y te conectas con SQL, igual que en local.</li>
+<li><strong>Camino B — autogestionado (<em>self-managed</em>): alquilar una máquina virtual (Compute Engine, EC2) e instalar Postgres tú mismo.</strong> Es exactamente lo que hiciste en tu ordenador, pero en un computador remoto que nunca se apaga: instalas, enciendes el servicio, y el almacén es una carpeta del disco de esa máquina. El control es total — y la administración también es tuya: respaldos, actualizaciones, seguridad, y levantar la base cuando falle.</li>
+</ol>
+<p>Para un analista o un proyecto pequeño, el camino gestionado es el default: pagas un poco más a cambio de no ser el administrador de la base.</p>
+<h2>8. Qué sigue</h2>
+<p>Ya sabes qué es PostgreSQL por dentro: un servidor que guarda tus bases en binario dentro de un almacén en disco, y al que todo — un script, DBeaver, Power BI — se conecta igual: cadena de conexión + SQL.</p>
+<p>El siguiente paso es tenerlo corriendo en tu propia máquina. Eso es la parte 2 de esta serie: <strong>instalar PostgreSQL en Mac</strong> con Homebrew, arrancar el servidor y dar los primeros pasos con <code>psql</code>.</p>
+<h2>9. Gotchas</h2>
+<ul>
+<li><strong>El Postgres nativo de Homebrew no tiene el usuario <code>postgres</code> ni una contraseña por defecto.</strong> Su superusuario es tu usuario de macOS (ej. <code>angelgarciadatablog</code>) y las conexiones locales suelen ser de confianza (sin contraseña). Si el código trae por defecto <code>user: 'postgres'</code>, hay que sobreescribirlo con <code>DB_USER=&lt;tu-usuario-mac&gt;</code> — sin tocar el código, vía variable de entorno.</li>
+<li><strong>Arrancar el servicio no crea ninguna base.</strong> <code>brew services start</code> solo enciende el servidor. La base concreta hay que crearla aparte (<code>createdb</code>) y cargarle la estructura (<code>.sql</code>).</li>
+<li><strong>Las carpetas de una base de datos no se pueden copiar y pegar.</strong> Mover una base a otra máquina no es copiar su carpeta-número del almacén (sección 2): esos archivos solo funcionan dentro de su almacén original y con su versión exacta de Postgres. Para llevar los datos a otro lado siempre se exporta (sección 5.2): <code>pg_dump</code> para la base completa, <code>COPY</code> para sacar filas como CSV.</li>
+<li><strong>Una base "vacía" no pesa cero.</strong> Arranca en varios MB por el catálogo de sistema. Es normal.</li>
+</ul>
+<h2>10. Referencia oficial</h2>
+<ul>
+<li>Estructura física del almacenamiento: https://www.postgresql.org/docs/current/storage.html</li>
+<li><code>pg_dump</code> (respaldos): https://www.postgresql.org/docs/current/app-pgdump.html</li>
+<li><code>COPY</code> (exportar/importar CSV): https://www.postgresql.org/docs/current/sql-copy.html</li>
+</ul></div>
+    
+    <nav class="post-nav">
+      
+      <a class="nav-siguiente" href="/instalar-postgresql-en-mac"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Cómo instalar PostgreSQL en Mac</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'como-funciona-postgresql-servidor-y-almacenamiento';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
