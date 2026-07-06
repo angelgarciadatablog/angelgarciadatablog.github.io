@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qué se instala realmente cuando instalas PostgreSQL · Angel García</title>
+  <meta name="description" content="El momento fundacional que Homebrew ejecuta en silencio: initdb, las tres decisiones que toma (data directory, superusuario, autenticación), cómo se toman en la vida real y cómo cerrar la puerta que quedó abierta." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/postgresql-que-se-instala-realmente/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Qué se instala realmente cuando instalas PostgreSQL" />
+  <meta property="og:description" content="El momento fundacional que Homebrew ejecuta en silencio: initdb, las tres decisiones que toma (data directory, superusuario, autenticación), cómo se toman en la vida real y cómo cerrar la puerta que quedó abierta." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/postgresql-que-se-instala-realmente/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Qué se instala realmente cuando instalas PostgreSQL", "categoria": "bases-de-datos", "serie": "postgresql-desde-cero", "series_relacionadas": "", "slug": "postgresql-que-se-instala-realmente", "sistema_operativo": "mac", "fecha_publicacion": "2026-07-05", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bases-de-datos</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Qué se instala realmente cuando instalas PostgreSQL</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bases-de-datos</span></div>
+      <span class="post-updated">Actualizado: 2026-07-06</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><p>Ya tienes PostgreSQL corriendo. ¿Notaste que entraste sin que te pidiera usuario ni contraseña? Eso no es normal — y explica todo lo que sigue.</p>
+<h2>1. Instalar el software no es crear el servidor</h2>
+<p>Cuando ejecutaste <code>brew install postgresql@17</code> pasaron <strong>dos cosas distintas</strong> que parecieron una sola:</p>
+<ol>
+<li><strong>Se instaló el software</strong>: los programas (<code>psql</code>, el proceso servidor, las herramientas). Esto es solo copiar archivos — como instalar cualquier aplicación.</li>
+<li><strong>Se fundó un servidor</strong>: se creó el <em>cluster</em> — el data directory con sus archivos internos, un superusuario inicial y una política de acceso. Esto lo hizo un comando llamado <code>initdb</code>, y Homebrew lo ejecutó <strong>en silencio, sin preguntarte nada</strong>.</li>
+</ol>
+<p>La distinción importa porque el software se puede reinstalar mil veces, pero <strong>cada cluster se funda una sola vez</strong> — y en esa fundación se toman decisiones que lo acompañan toda su vida. </p>
+<p>Una misma máquina puede albergar varios clusters (cada uno con su propio data directory, sus propias decisiones y su propio puerto si corren a la vez — así conviven dos versiones de PostgreSQL durante una migración, por ejemplo), aunque en un entorno local lo normal es tener uno solo.</p>
+<h2>2. initdb: el momento fundacional y sus tres decisiones</h2>
+<p><code>initdb</code> es el comando que crea un cluster desde cero. Sus flags son, literalmente, las decisiones fundacionales:</p>
+<table>
+<thead>
+<tr>
+<th>Decisión</th>
+<th>Flag</th>
+<th>Pregunta que responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Dónde viven los datos?</td>
+<td><code>-D</code> (<code>--pgdata</code>)</td>
+<td>ubicación del data directory</td>
+</tr>
+<tr>
+<td>¿Cómo se llama el superusuario inicial?</td>
+<td><code>-U</code> (<code>--username</code>)</td>
+<td>el primer rol, dueño de todo</td>
+</tr>
+<tr>
+<td>¿Cómo se autentica la gente?</td>
+<td><code>-A</code> (<code>--auth</code>)</td>
+<td>método por defecto en <code>pg_hba.conf</code></td>
+</tr>
+</tbody>
+</table>
+<p>Un administrador fundando un servidor a mano en la vida real ejecutaría algo así:</p>
+<pre><code class="language-bash">initdb -D /ruta/a/los/datos -U postgres -A scram-sha-256 -W
+</code></pre>
+<p>Traducción: <em>"los datos van aquí, el superusuario se llama <code>postgres</code>, todo el mundo se autentica con contraseña cifrada, y pídeme ahora la contraseña del superusuario"</em> (<code>-W</code>). Existen incluso versiones más finas: <code>--auth-local</code> (conexiones por socket, misma máquina) y <code>--auth-host</code> (conexiones por red) permiten un método distinto para cada entrada.</p>
+<h2>3. Cómo tomó esas decisiones Homebrew</h2>
+<p>Homebrew ejecutó <code>initdb</code> por ti con estas respuestas:</p>
+<table>
+<thead>
+<tr>
+<th>Decisión</th>
+<th>Lo que eligió Homebrew</th>
+<th>Consecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data directory</td>
+<td><code>/opt/homebrew/var/postgresql@17</code></td>
+<td>los datos son de tu usuario de macOS</td>
+</tr>
+<tr>
+<td>Superusuario</td>
+<td><strong>tu usuario de macOS</strong></td>
+<td>no existe el rol <code>postgres</code></td>
+</tr>
+<tr>
+<td>Autenticación</td>
+<td><code>trust</code></td>
+<td><strong>cualquier proceso de tu Mac entra como cualquier rol, sin contraseña</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>3.1 Ubicación y propiedad: dos preguntas distintas</h3>
+<p>Fíjate en un detalle de la ruta del data directory: empieza con <code>/</code>, no con <code>~</code>. No es casualidad — esconde una distinción que te va a acompañar toda la vida con las bases de datos.</p>
+<p><code>~</code> es un atajo de la terminal que significa "la carpeta home de quien está logueado" (<code>/Users/tu-usuario</code>). Solo sirve para rutas que viven dentro de tu home. El data directory no está ahí — cuelga de <code>/opt</code>, directamente en la raíz del disco, al mismo nivel que <code>/Users</code>:</p>
+<pre><code>/                        ← raíz del disco
+├── Users/
+│   └── tu-usuario/      ← esto es &quot;~&quot;
+└── opt/
+    └── homebrew/
+        └── var/postgresql@17   ← el data directory
+</code></pre>
+<p>Y aquí la distinción: <strong>dónde vive un archivo y de quién es son dos cosas independientes</strong>.</p>
+<ol>
+<li><strong>Ubicación</strong>: el data directory está <em>fuera</em> de tu home, en <code>/opt</code> — la zona tradicional de Unix para software instalado a nivel de máquina, disponible para todas las cuentas del ordenador.</li>
+<li><strong>Propiedad</strong>: aun así, la carpeta <em>pertenece</em> a tu usuario — porque <code>initdb</code> corrió como tú, y quien funda el cluster es dueño de sus datos.</li>
+</ol>
+<p>Por eso cualquier cuenta de tu Mac puede ejecutar <code>psql</code> (los binarios están en zona común), pero solo tu usuario puede arrancar el servidor y tocar los datos (la carpeta de datos es privada, con permisos que PostgreSQL exige por diseño).</p>
+<h3>3.2 Verificar las decisiones en tu instalación</h3>
+<p>Por eso entraste sin contraseña. Toda conexión a PostgreSQL empieza igual: el cliente dice <em>"quiero entrar como el rol X"</em>. Con <code>trust</code>, el servidor acepta esa afirmación <strong>sin pedir ninguna prueba</strong> — ni contraseña, ni verificación de quién eres. </p>
+<p>¿Y quién es "cualquiera"? Todo lo que corre <strong>dentro de tu Mac</strong>: una app que instalaste, un script de Python, DBeaver, un proceso de otra cuenta de usuario del mismo ordenador. Cualquiera de ellos podría conectarse declarando ser el superusuario, y el servidor lo dejaría pasar. Desde fuera de tu Mac, en cambio, nadie llega — el servidor ni siquiera escucha hacia la red externa, como verás en la pregunta 4 (¿en qué direcciones y puerto escucha el servidor?). Es cómodo para aprender, pero es una puerta sin cerradura por dentro.</p>
+<p>Recién instalado el servidor, hay cuatro preguntas que puedes (y deberías) hacerle. Todas se responden desde <code>psql</code>:</p>
+<h4>Pregunta 1 — ¿Dónde viven los datos y la configuración?</h4>
+<pre><code class="language-bash">psql -d postgres -c &quot;SHOW data_directory;&quot; -c &quot;SHOW hba_file;&quot;
+</code></pre>
+<p>El data directory que ya conoces, y dentro de él <code>pg_hba.conf</code> — el archivo con las reglas de acceso.</p>
+<h4>Pregunta 2 — ¿Qué roles existen?</h4>
+<pre><code class="language-bash">psql -d postgres -c &quot;SELECT rolname, rolsuper FROM pg_roles WHERE rolname NOT LIKE 'pg_%';&quot;
+</code></pre>
+<p>La <code>t</code> y la <code>f</code> de la salida son <code>true</code>/<code>false</code> — así muestra psql los booleanos. Recién instalado verás <strong>un solo rol</strong>: el tuyo, con <code>rolsuper = t</code> (quien funda el cluster es superusuario), y ningún rol <code>postgres</code> a la vista. El filtro <code>NOT LIKE 'pg_%'</code> esconde los roles internos de mantenimiento que PostgreSQL trae de fábrica.</p>
+<h4>Pregunta 3 — ¿Qué reglas de acceso están activas?</h4>
+<pre><code class="language-bash">grep -v &quot;^#&quot; $(psql -d postgres -tAc &quot;SHOW hba_file;&quot;) | grep -v &quot;^$&quot;
+</code></pre>
+<p>El comando lee <code>pg_hba.conf</code> quitando comentarios y líneas vacías — quedan solo las reglas vivas. Cada línea es <strong>una puerta del servidor</strong>, descrita en columnas: <em>entrada → base → rol → [dirección]→ método</em>. Hay dos tipos de entrada: <code>local</code> (el socket — conexiones desde tu propia terminal, misma máquina) y <code>host</code> (conexiones por red). </p>
+<p>En las puertas de red aparecen dos direcciones raras: <code>127.0.0.1/32</code> y <code>::1/128</code>. La idea detrás es simpática: toda máquina tiene una dirección reservada para <strong>hablarse a sí misma</strong>, llamada <em>localhost</em>. </p>
+<p>Cuando un programa la usa, el mensaje "sale por la red" y vuelve a entrar al instante, sin tocar ningún cable ni el WiFi — es la entrada local, pero <strong>disfrazada de conexión de red</strong>. ¿Y por qué dos direcciones para la misma idea? Porque en tu máquina conviven los dos idiomas de direcciones de internet, y <em>localhost</em> se escribe distinto en cada uno: <code>127.0.0.1</code> en el clásico (IPv4) y <code>::1</code> en el moderno (IPv6) — una puerta por idioma, para que nadie se quede afuera hable el que hable. El número tras la barra es la precisión de la regla: <code>/32</code> y <code>/128</code> significan "exactamente esta dirección, ni una más".</p>
+<p>¿Y las líneas <code>replication</code>? Son esas mismas puertas, pero para un visitante muy específico: <strong>otro servidor PostgreSQL</strong> que viene a clonarse de este en tiempo real (así se montan las réplicas de respaldo en producción). En tu máquina de aprendizaje, nadie toca esas puertas.</p>
+<p>La última columna es el candado de cada puerta, y hay tres métodos que debes conocer:</p>
+<ol>
+<li><strong><code>trust</code></strong> — sin candado: el servidor acepta cualquier identidad sin prueba. Es lo que verás en toda la salida recién instalado, y no debería sobrevivir a este post.</li>
+<li><strong><code>peer</code></strong> — el candado correcto para la puerta <code>local</code>: el sistema operativo da fe de quién eres (solo entras como el rol que coincide con tu usuario), sin contraseñas.</li>
+<li><strong><code>scram-sha-256</code></strong> — el candado correcto para las puertas <code>host</code>: contraseña cifrada, porque en una conexión de red el sistema operativo ya no puede dar fe de quién está al otro lado.</li>
+</ol>
+<p>Esa es exactamente la configuración objetivo que montarás en la sección 6: <code>peer</code> en <code>local</code>, <code>scram-sha-256</code> en las <code>host</code>, cero <code>trust</code>.</p>
+<h4>Pregunta 4 — ¿En qué direcciones y puerto escucha el servidor?</h4>
+<pre><code class="language-bash">psql -d postgres -c &quot;SHOW listen_addresses;&quot; -c &quot;SHOW port;&quot;
+</code></pre>
+<p>La salida trae dos datos que parecen lo mismo pero responden preguntas distintas:</p>
+<ol>
+<li><strong><code>listen_addresses = localhost</code></strong> responde <em>¿desde dónde se puede llegar al servidor?</em> Piensa en la dirección como el edificio: <code>localhost</code> significa que el servidor solo atiende visitas originadas en tu propia máquina. Para cualquier otro ordenador de tu red WiFi, tu PostgreSQL no existe — no es que rechace conexiones, es que no hay puerta hacia afuera.</li>
+<li><strong><code>port = 5432</code></strong> responde <em>¿en qué puerta del edificio está PostgreSQL?</em> Tu máquina corre muchos programas que escuchan conexiones a la vez, y cada uno toma un número de puerta distinto — el puerto — para que los mensajes lleguen al programa correcto. El 5432 es el número tradicional de PostgreSQL (igual que el 443 es el de los sitios web seguros).</li>
+</ol>
+<p>Juntos se leen: <em>"a PostgreSQL se llega solo desde esta máquina (dirección), tocando la puerta 5432 (puerto)"</em>. Por eso los clientes como DBeaver piden host y puerto por separado — son las dos coordenadas de la conexión. A diferencia de todo lo anterior, esta configuración no vive en <code>pg_hba.conf</code> sino en <code>postgresql.conf</code>, el otro archivo del data directory — y en la sección 5 verás por qué son dos capas de seguridad distintas.</p>
+<h2>4. Cómo pasa en la vida real (fuera de tu Mac)</h2>
+<p><code>initdb</code> corre <strong>siempre y exactamente una vez por cluster</strong> — lo que cambia entre entornos es <em>quién</em> lo ejecuta y <em>qué decisiones</em> toma:</p>
+<table>
+<thead>
+<tr>
+<th>Entorno</th>
+<th>¿Quién ejecuta initdb?</th>
+<th>Superusuario</th>
+<th>Autenticación por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Homebrew (Mac)</td>
+<td>automático, al instalar</td>
+<td>tu usuario de macOS</td>
+<td><code>trust</code> (abierto)</td>
+</tr>
+<tr>
+<td>Ubuntu/Debian (servidores reales)</td>
+<td>automático, al instalar</td>
+<td><code>postgres</code></td>
+<td><code>peer</code> local + <code>scram-sha-256</code> por red</td>
+</tr>
+<tr>
+<td>Red Hat/CentOS</td>
+<td><strong>tú, manualmente</strong> (<code>postgresql-setup --initdb</code>)</td>
+<td><code>postgres</code></td>
+<td><code>peer</code> local + <code>scram-sha-256</code> por red</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>automático, en el primer arranque</td>
+<td><code>postgres</code></td>
+<td>te <strong>obliga</strong> a definir la contraseña (<code>POSTGRES_PASSWORD</code>); método <code>scram-sha-256</code></td>
+</tr>
+<tr>
+<td>Nube gestionada (Cloud SQL, RDS, Supabase)</td>
+<td>invisible, lo hace el proveedor</td>
+<td><code>postgres</code> (o similar)</td>
+<td>la contraseña la defines en la consola; método <code>scram-sha-256</code></td>
+</tr>
+</tbody>
+</table>
+<p>Dos observaciones de esta tabla:</p>
+<ol>
+<li><strong>El origen del misterio <code>-U postgres</code> (nombre usuario -&gt; postgres)</strong>: casi todos los tutoriales dicen <code>psql -U postgres</code> porque en Linux, Docker y la nube el superusuario se llama así — en Linux, <code>initdb</code> lo ejecuta un usuario de sistema llamado <code>postgres</code> creado para eso. Homebrew es la excepción: lo ejecutaste tú, así que el superusuario eres tú (tu nombre de usuario).</li>
+<li><strong>Homebrew es el único que deja la puerta abierta</strong>: todos los entornos serios nacen con autenticación real. Docker directamente se niega a arrancar sin contraseña. Por eso en una sección posterior  de este post cerraremos esa puerta.</li>
+</ol>
+<h2>5. Las dos capas de acceso: <code>postgresql.conf</code> y <code>pg_hba.conf</code></h2>
+<p>Las preguntas 3 y 4 de la sección 3.2 (¿qué reglas de acceso están activas? y ¿en qué direcciones y puerto escucha el servidor?) no eran dos datos sueltos — son las <strong>dos capas</strong> con las que PostgreSQL decide quién entra, cada una con su propio archivo de configuración (ambos viven en el data directory):</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Archivo</th>
+<th>Pregunta que responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. ¿Qué puertas existen?</td>
+<td><code>postgresql.conf</code> → <code>listen_addresses</code></td>
+<td>en qué direcciones escucha el servidor</td>
+</tr>
+<tr>
+<td>2. ¿Quién pasa por cada puerta, y con qué prueba de identidad?</td>
+<td><code>pg_hba.conf</code></td>
+<td>el reglamento del portero, línea por línea</td>
+</tr>
+</tbody>
+</table>
+<p>Puedes interrogar las dos capas en cualquier momento (con los mismos comandos que ya usaste para verificar las decisiones de Homebrew en la sección 3.2):</p>
+<pre><code class="language-bash"># Capa 1 — ¿en qué fachadas hay puerta?
+psql -d postgres -c &quot;SHOW listen_addresses;&quot;
+
+# Capa 2 — ¿qué dice el reglamento del portero?
+grep -v &quot;^#&quot; $(psql -d postgres -tAc &quot;SHOW hba_file;&quot;) | grep -v &quot;^$&quot;
+</code></pre>
+<p>Y la forma más fácil de no confundirlas nunca: <strong><code>listen_addresses</code> habla de tus fachadas; <code>pg_hba.conf</code> habla de tus visitantes.</strong></p>
+<h3>5.1 Capa 1 — <code>listen_addresses</code>: tus fachadas</h3>
+<p>Tu máquina tiene más de una "fachada" por donde recibir conexiones: la interna (<em>localhost</em>, la dirección con la que se habla a sí misma) y la que da a tu red (la IP que el router le asignó, algo como <code>192.168.1.50</code>). <code>listen_addresses</code> decide <strong>en cuáles de tus propias fachadas el servidor construye una puerta</strong>:</p>
+<pre><code>listen_addresses = 'localhost'                  # hoy: solo fachada interna
+listen_addresses = 'localhost, 192.168.1.50'    # + puerta hacia tu red WiFi
+listen_addresses = '*'                          # puertas en todas las fachadas
+</code></pre>
+<p>Fíjate en lo que <strong>no</strong> aparece ahí: ninguna dirección de visitantes. Esta capa no decide quién entra — solo dónde hay puertas. Con <code>localhost</code>, para cualquier otra máquina de tu red tu PostgreSQL no existe: no es que rechace conexiones, es que no hay puerta que tocar.</p>
+<p>Detalle operativo: cambiar <code>listen_addresses</code> requiere <strong>reiniciar el servidor</strong> (<code>brew services restart postgresql@17</code>) — construir puertas nuevas no se hace con el edificio en marcha.</p>
+<h3>5.2 Capa 2 — <code>pg_hba.conf</code>: tus visitantes</h3>
+<p>De las puertas que existen, este archivo decide <strong>quién cruza cada una y con qué prueba de identidad</strong> — es el reglamento del portero que ya leíste en la pregunta 3 (¿qué reglas de acceso están activas?). Cada regla del archivo es siempre la misma frase con cinco espacios en blanco:</p>
+<pre><code>¿por qué entrada? + ¿a qué base? + ¿con qué rol? + ¿desde qué dirección?  →  ¿qué prueba exijo?
+</code></pre>
+<p>Y ojo con un malentendido común: el reglamento <strong>no es una lista de invitados</strong>. Una lista de invitados solo respondería una de las preguntas ("¿con qué rol?"); aquí el rol es apenas una de las cuatro condiciones de cada regla — de hecho, en tu servidor recién instalado todas las reglas dicen <code>all</code> en esa condición: no filtran por quién eres, filtran por dónde entras y desde dónde vienes. En producción sí verás reglas que nombran roles concretos (ahí el portero se pone en modo lista de invitados), pero siempre como parte de la frase completa.</p>
+<p>Aquí sí aparecen direcciones de visitantes: si un día quisieras que otra máquina de tu red entre, además de abrirle la fachada en la capa 1, necesitarías una línea que la reciba:</p>
+<pre><code>host    youtube_analytics    datablog    192.168.1.0/24    scram-sha-256
+</code></pre>
+<p>Se lee: <em>"por la puerta de red, a esta base, con este rol, pueden entrar visitantes de mi red WiFi (las 256 direcciones del rango <code>/24</code>), probando identidad con contraseña"</em>.</p>
+<p>Dos reglas para leer este archivo como un administrador:</p>
+<ol>
+<li><strong>Si una conexión no coincide con ninguna línea, se rechaza.</strong> No hay puerta por defecto — todo lo que entra, entra porque una línea lo permite.</li>
+<li><strong>Gana la primera línea que coincide</strong> — se lee de arriba hacia abajo, el orden importa.</li>
+</ol>
+<p>Detalle operativo (y contraste con la capa 1): los cambios en <code>pg_hba.conf</code> no requieren reinicio — basta recargar con <code>SELECT pg_reload_conf();</code>.</p>
+<p>En un servidor de producción las dos capas se estiran al máximo: <code>listen_addresses = '*'</code> (las apps se conectan desde otras máquinas — las fachadas deben existir) y entonces <code>pg_hba.conf</code> se convierte en la muralla crítica: rangos de IP concretos, bases concretas, siempre contraseña cifrada. En tu Mac es al revés: la capa 1 ya te aísla del mundo, y la capa 2 es la que hoy está en <code>trust</code> y toca cerrar.</p>
+<h2>6. Cerrar la puerta: el cambio, paso a paso</h2>
+<p>El plan para la capa 2: <code>peer</code> para lo local (el sistema operativo da fe de quién eres — el estándar de los servidores Linux) y <code>scram-sha-256</code> para la red (contraseña cifrada — el estándar de Docker y la nube).</p>
+<pre><code class="language-bash"># Paso 1 — localizar el archivo
+psql -d postgres -tAc &quot;SHOW hba_file;&quot;
+
+# Paso 2 — respaldarlo antes de tocar nada
+cp &lt;ruta-del-archivo&gt; &lt;ruta-del-archivo&gt;.bak
+
+</code></pre>
+<p><strong>Paso 3 — crear las contraseñas.</strong> Va antes de cerrar nada por una razón: la llave debe existir antes de instalar la cerradura — si activas <code>scram</code> sin contraseñas creadas, ningún cliente TCP (como DBeaver) podrá entrar:</p>
+<pre><code class="language-bash">psql -d postgres
+# dentro de psql:
+\password              # contraseña para tu rol (la pide dos veces)
+\q
+</code></pre>
+<pre><code class="language-bash"># Paso 4 — editar el archivo (nano, VS Code, el editor que uses)
+
+#Si tienes el comando code activo 
+code /opt/homebrew/var/postgresql@17/pg_hba.conf
+
+# Cambiar el método de las líneas que empiezan con &quot;local&quot;:  trust → peer
+# Cambiar el método de las líneas que empiezan con &quot;host&quot;:   trust → scram-sha-256
+
+</code></pre>
+<p><strong>Paso 5 — recargar y probar.</strong> No hace falta reiniciar el servidor:</p>
+<pre><code class="language-bash">psql -d postgres -c &quot;SELECT pg_reload_conf();&quot;
+
+# Probar 1: tu conexión local sigue entrando sin contraseña (peer: macOS da fe de ti)
+psql -d postgres -c &quot;SELECT current_user;&quot;
+
+# Probar 2: intentar entrar como un rol ajeno debe FALLAR — esta es la señal de éxito
+psql -U otro_rol -d postgres
+# → FATAL: Peer authentication failed  ✓ el portero ya verifica identidades
+
+# Probar 3: por red (como DBeaver) ahora pide contraseña
+psql -h 127.0.0.1 -d postgres
+</code></pre>
+<p>Con esto tu instalación local pasa de "modo juguete" a la configuración que encontrarías en un servidor real: la misma que los DBA montan a mano cuando fundan un cluster.</p>
+<h2>7. Lo que acabas de lograr</h2>
+<p>Tu instalación pasó de "modo juguete" a la configuración que encontrarías en un servidor real — la misma que los DBA montan a mano cuando fundan un cluster. Pero lo importante no es solo el cambio; es todo lo que ahora entiendes de tu servidor:</p>
+<ol>
+<li><strong>Instalar no es fundar</strong>: sabes que detrás de <code>brew install</code> corrió <code>initdb</code>, y que sus tres decisiones (data directory, superusuario, autenticación) explican los tres "misterios" de tu instalación — por qué entrabas sin contraseña, por qué no existe el rol <code>postgres</code>, por qué los datos viven bajo tu usuario.</li>
+<li><strong>Sabes interrogar cualquier servidor PostgreSQL</strong>: las cuatro preguntas de la sección 3.2 funcionan igual en tu Mac, en un Linux de empresa o en Docker.</li>
+<li><strong>Distingues las dos capas de acceso</strong>: <code>listen_addresses</code> (tus fachadas) y <code>pg_hba.conf</code> (tus visitantes), cada una con su comando de verificación y su forma de recargarse.</li>
+<li><strong>Cerraste la puerta con los métodos del mundo real</strong>: <code>peer</code> donde el sistema operativo puede dar fe de ti, <code>scram-sha-256</code> donde no — y comprobaste con tres pruebas que la seguridad quedó activa sin estorbar tu trabajo diario.</li>
+</ol>
+<h2>8. Qué sigue</h2>
+<p>El portero ya verifica <strong>quién entra</strong>. La siguiente pregunta natural es la otra mitad del control de acceso: una vez adentro, <strong>¿qué puede hacer cada quien?</strong></p>
+<p>Hoy tu cluster tiene un solo rol: tú, superusuario absoluto. Pero en el mundo real nadie trabaja así — las aplicaciones y los analistas usan roles con permisos mínimos (leer solo lo que necesitan, sin poder crear ni borrar nada). Crear un usuario de solo lectura con <code>GRANT</code>, y entender por qué un superusuario ignora todos los permisos, es el tema del siguiente post de la serie.</p>
+<h2>9. Gotchas</h2>
+<ul>
+<li><strong><code>initdb</code> te avisó y nadie lo lee</strong>: cuando se usa <code>trust</code>, <code>initdb</code> imprime una advertencia explícita de que es inseguro. Homebrew la muestra durante la instalación — enterrada entre decenas de líneas de output.</li>
+<li><strong>Desinstalar PostgreSQL con brew no borra el cluster</strong>: <code>brew uninstall</code> elimina los binarios pero el data directory queda intacto en <code>/opt/homebrew/var/</code>. Reinstalar reutiliza el cluster viejo con todas sus decisiones fundacionales — si quieres empezar de cero de verdad, hay que borrar también esa carpeta.</li>
+<li><strong><code>peer</code> amarra rol ↔ usuario del sistema operativo</strong>: tras el cambio, desde tu sesión solo puedes entrar por socket como el rol que lleva tu nombre. Para conectarte como otro rol desde la misma cuenta, usa la vía de red con contraseña: <code>psql -h 127.0.0.1 -U &lt;rol&gt;</code>.</li>
+</ul>
+<h2>10. Referencia oficial</h2>
+<ul>
+<li>initdb: https://www.postgresql.org/docs/17/app-initdb.html</li>
+<li>pg_hba.conf: https://www.postgresql.org/docs/17/auth-pg-hba-conf.html</li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/instalar-postgresql-en-mac"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Cómo instalar PostgreSQL en Mac</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'postgresql-que-se-instala-realmente';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

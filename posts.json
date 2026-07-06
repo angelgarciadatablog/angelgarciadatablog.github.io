@@ -1,5 +1,26 @@
 [
   {
+    "titulo": "Qué se instala realmente cuando instalas PostgreSQL",
+    "slug": "postgresql-que-se-instala-realmente",
+    "categoria": "bases-de-datos",
+    "tags": [
+      "datablog",
+      "bases-de-datos"
+    ],
+    "updated": "2026-07-06",
+    "posts-relacionados": [
+      "roles-y-permisos-en-postgresql"
+    ],
+    "video-youtube": [],
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "El momento fundacional que Homebrew ejecuta en silencio: initdb, las tres decisiones que toma (data directory, superusuario, autenticación), cómo se toman en la vida real y cómo cerrar la puerta que quedó abierta.",
+    "serie": "postgresql-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "instalar-postgresql-en-mac",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Cómo instalar PostgreSQL en Mac",
     "slug": "instalar-postgresql-en-mac",
     "categoria": "bases-de-datos",
@@ -7,7 +28,7 @@
       "datablog",
       "bases-de-datos"
     ],
-    "updated": "2026-07-05",
+    "updated": "2026-07-06",
     "posts-relacionados": [],
     "video-youtube": [],
     "sistema-operativo": "mac",
@@ -16,7 +37,7 @@
     "serie": "postgresql-desde-cero",
     "series-relacionadas": "",
     "parte-anterior": "como-funciona-postgresql-servidor-y-almacenamiento",
-    "parte-siguiente": ""
+    "parte-siguiente": "postgresql-que-se-instala-realmente"
   },
   {
     "titulo": "Cómo funciona PostgreSQL: servidor, almacenamiento y acceso",

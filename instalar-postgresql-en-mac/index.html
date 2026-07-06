@@ -72,7 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Cómo instalar PostgreSQL en Mac</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bases-de-datos</span></div>
-      <span class="post-updated">Actualizado: 2026-07-05</span>
+      <span class="post-updated">Actualizado: 2026-07-06</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -128,7 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Si ves algo como <code>/opt/homebrew/opt/postgresql@17/bin/psql</code> y <code>postgresql@17</code> — ya lo tienes. Salta al Paso 3.</p>
 <p>Si el comando no devuelve nada — no está instalado. Sigue con el Paso 2.</p>
 <h3>Paso 2 — Instalación</h3>
-<p>Usamos <strong>Homebrew</strong> porque es la forma en que trabajan los ingenieros y te da control real sobre el servidor. Si no tienes Homebrew instalado, sigue las instrucciones oficiales en <a href="https://brew.sh">brew.sh</a> antes de continuar.</p>
+<p>Usamos <strong>Homebrew</strong> porque es la forma más común de trabajar en mac y te da control real sobre el servidor. Si no tienes Homebrew instalado, sigue las instrucciones oficiales en <a href="https://brew.sh">brew.sh</a> antes de continuar.</p>
 <pre><code class="language-bash">brew install postgresql@17
 </code></pre>
 <h3>Paso 3 — Arrancar el servidor</h3>
@@ -243,7 +243,7 @@ postgresql@17 started &lt;tu-usuario&gt;  ~/Library/LaunchAgents/homebrew.mxcl.p
 <h2>6. Qué sigue</h2>
 <p>Tienes PostgreSQL instalado, corriendo y conectado. Pero al explorar notaste algo: <strong>ninguna de las bases por defecto tiene datos</strong>. <code>postgres</code> es el lobby y las <code>template</code> son moldes — las tres vacías por diseño. PostgreSQL no trae datos de prueba: los datos los pones tú.</p>
 <p>Por eso el siguiente paso es <strong>crear tu primera base de datos y llenarla con datos reales</strong>. Recién ahí cobran vida los comandos que hoy se quedaron con hambre: <code>\dt</code> mostrando tablas de verdad, <code>\d &lt;tabla&gt;</code> revelando su estructura, y los <code>SELECT</code> devolviendo filas reales. Ese camino — diseñar el modelo relacional, crear las tablas y consultarlas con SQL — viene en una próxima serie del blog.</p>
-<p>Con esto cierra la serie: ya sabes qué es PostgreSQL por dentro y lo tienes funcionando en tu Mac.</p>
+<p>Y antes de eso, esta misma serie te debe una explicación. ¿Notaste que al conectarte <code>psql</code> <strong>no te pidió usuario ni contraseña</strong>? Eso no es normal — y esconde tres decisiones que Homebrew tomó por ti sin preguntarte. Ese misterio es la parte 3: qué se instaló realmente cuando instalaste PostgreSQL.</p>
 <h2>Gotchas</h2>
 <ul>
 <li>En Mac con teclado <strong>Latinoamericano</strong>, la barra invertida <code>\</code> se escribe con <code>Option + ?</code>. Si dentro de la terminal no produce <code>\</code> sino <code>(arg: -1)</code> u otro resultado extraño, es porque Terminal intercepta <code>Option</code> como meta-tecla. Solución: Terminal → Settings → Profiles → Basic → Keyboard → desmarcar <strong>"Use Option as Meta key"</strong> → cerrar y reabrir la terminal</li>
@@ -264,7 +264,7 @@ postgresql@17 started &lt;tu-usuario&gt;  ~/Library/LaunchAgents/homebrew.mxcl.p
     
     <nav class="post-nav">
       <a class="nav-anterior" href="/como-funciona-postgresql-servidor-y-almacenamiento"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Cómo funciona PostgreSQL: servidor, almacenamiento y acceso</span></a>
-      
+      <a class="nav-siguiente" href="/postgresql-que-se-instala-realmente"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Qué se instala realmente cuando instalas PostgreSQL</span></a>
     </nav>
   </article>
 
