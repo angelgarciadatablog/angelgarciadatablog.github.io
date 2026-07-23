@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Microsoft Fabric — Lakehouse vs Warehouse", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "microsoft-fabric-lakehouse-vs-warehouse", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-08", "video_youtube": []});
+window.dataLayer.push({"titulo": "Microsoft Fabric — Lakehouse vs Warehouse", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "microsoft-fabric-lakehouse-vs-warehouse", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-08", "video_youtube": ["https://www.youtube.com/watch?v=Eu2w5wSNlJI"]});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -72,7 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Microsoft Fabric — Lakehouse vs Warehouse</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
-      <span class="post-updated">Actualizado: 2026-07-22</span>
+      <span class="post-updated">Actualizado: 2026-07-23</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -80,6 +80,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <hr class="post-divider" />
     
+<div class="post-video">
+  <div class="post-video-title">Video explicativo</div>
+  <iframe src="https://www.youtube.com/embed/Eu2w5wSNlJI" allowfullscreen></iframe>
+</div>
     <div class="post-body" id="post-body"><p>Si ya creaste un Lakehouse y un Warehouse en Fabric, es muy probable que hayas pensado lo mismo que cualquiera al abrirlos: <em>se parecen demasiado</em>. Los dos guardan tablas, los dos se consultan con SQL, y si los miras por dentro hasta tienen las mismas carpetas. Entonces, ¿por qué existen los dos? ¿Cuándo se elige uno y cuándo el otro?</p>
 <p>Este post responde eso construyendo los dos con datos reales, aplicándoles el mismo SQL y viendo con nuestros ojos dónde uno dice que sí y el otro dice que no.</p>
 <p>Los datos de este tutorial son reales. En vez de una fuente de ejemplo, vamos a trabajar con <strong>datos reales y públicos</strong>: la lista de videos y las métricas de un canal de YouTube auténtico, publicadas como <strong>archivos CSV</strong> que cualquiera puede abrir y descargar. Son dos tablas relacionadas por <code>video_id</code>:</p>

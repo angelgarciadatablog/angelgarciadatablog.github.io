@@ -7,12 +7,14 @@
       "datablog",
       "azure"
     ],
-    "updated": "2026-07-22",
+    "updated": "2026-07-23",
     "posts-relacionados": [
       "microsoft-fabric-herramientas",
       "elementos-de-fabric"
     ],
-    "video-youtube": [],
+    "video-youtube": [
+      "https://www.youtube.com/watch?v=Eu2w5wSNlJI"
+    ],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube.",
