@@ -1,5 +1,53 @@
 [
   {
+    "titulo": "Microsoft Fabric — Lakehouse vs Warehouse",
+    "slug": "microsoft-fabric-lakehouse-vs-warehouse",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-07-22",
+    "posts-relacionados": [
+      "microsoft-fabric-herramientas",
+      "elementos-de-fabric"
+    ],
+    "video-youtube": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "fabric-primer-pipeline",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
+    "slug": "fabric-primer-pipeline",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-07-22",
+    "posts-relacionados": [
+      "primeros-pasos-en-azure",
+      "introduccion-apis-para-analistas",
+      "api-github-extraer-datos-publicos-privados-postman"
+    ],
+    "video-youtube": [
+      "https://www.youtube.com/watch?v=lqwMXNy0ATk",
+      "https://www.youtube.com/watch?v=eXfqUxzE0MY"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "microsoft-fabric-que-es",
+    "parte-siguiente": "microsoft-fabric-lakehouse-vs-warehouse"
+  },
+  {
     "titulo": "Qué se instala realmente cuando instalas PostgreSQL",
     "slug": "postgresql-que-se-instala-realmente",
     "categoria": "bases-de-datos",
@@ -77,32 +125,6 @@
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
-    "slug": "fabric-primer-pipeline",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-06-29",
-    "posts-relacionados": [
-      "primeros-pasos-en-azure",
-      "introduccion-apis-para-analistas",
-      "api-github-extraer-datos-publicos-privados-postman"
-    ],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=lqwMXNy0ATk",
-      "https://www.youtube.com/watch?v=eXfqUxzE0MY"
-    ],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "microsoft-fabric-que-es",
     "parte-siguiente": ""
   },
   {

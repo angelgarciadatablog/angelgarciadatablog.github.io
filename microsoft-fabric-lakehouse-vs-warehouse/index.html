@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Fabric — Lakehouse vs Warehouse · Angel García</title>
+  <meta name="description" content="Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/microsoft-fabric-lakehouse-vs-warehouse/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Microsoft Fabric — Lakehouse vs Warehouse" />
+  <meta property="og:description" content="Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/microsoft-fabric-lakehouse-vs-warehouse/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Microsoft Fabric — Lakehouse vs Warehouse", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "microsoft-fabric-lakehouse-vs-warehouse", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-08", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">azure</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Microsoft Fabric — Lakehouse vs Warehouse</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
+      <span class="post-updated">Actualizado: 2026-07-22</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><p>Si ya creaste un Lakehouse y un Warehouse en Fabric, es muy probable que hayas pensado lo mismo que cualquiera al abrirlos: <em>se parecen demasiado</em>. Los dos guardan tablas, los dos se consultan con SQL, y si los miras por dentro hasta tienen las mismas carpetas. Entonces, ¿por qué existen los dos? ¿Cuándo se elige uno y cuándo el otro?</p>
+<p>Este post responde eso construyendo los dos con datos reales, aplicándoles el mismo SQL y viendo con nuestros ojos dónde uno dice que sí y el otro dice que no.</p>
+<p>Los datos de este tutorial son reales. En vez de una fuente de ejemplo, vamos a trabajar con <strong>datos reales y públicos</strong>: la lista de videos y las métricas de un canal de YouTube auténtico, publicadas como <strong>archivos CSV</strong> que cualquiera puede abrir y descargar. Son dos tablas relacionadas por <code>video_id</code>:</p>
+<ul>
+<li><strong><code>videos</code></strong> — una fila por video (título, fecha de publicación, duración…). Es la <strong>dimensión</strong>.</li>
+<li><strong><code>video_metrics</code></strong> — vistas, likes y comentarios de cada video en distintas fechas (<em>snapshots</em>). Es la tabla de <strong>hechos</strong>.</li>
+</ul>
+<p>Esa relación entre ambas tablas es justo la que nos mostrará para qué sirve de verdad el Warehouse. Las dos fuentes están aquí:</p>
+<pre><code>https://raw.githubusercontent.com/angelgarciadatablog/postgresql-youtube-dataset/main/csv/videos.csv
+</code></pre>
+<pre><code>https://raw.githubusercontent.com/angelgarciadatablog/postgresql-youtube-dataset/main/csv/video_metrics.csv
+</code></pre>
+<h2>1. Primero el Lakehouse: donde aterrizan los datos crudos</h2>
+<h3>1.1 Qué es (y por qué empezamos por él)</h3>
+<p>El Lakehouse es la <strong>zona de aterrizaje</strong> de un proyecto de datos: el lugar donde el dato llega tal cual viene de la fuente, sin cocinar. Combina un data lake (archivos crudos de cualquier formato) con tablas Delta consultables con SQL. Empezamos por él porque es el primer sitio al que llegan nuestras dos fuentes.</p>
+<h3>1.2 Crear el Lakehouse</h3>
+<p>Desde el workspace → <strong>Nuevo elemento → Lakehouse</strong>. Le ponemos <code>lakehouse_datablog_1</code> (el nombre debe empezar por letra y solo admite alfanuméricos y guiones bajos — sin espacios ni guiones medios). Al crearlo queda vacío, con sus dos secciones: <strong>Files</strong> (archivos crudos) y <strong>Tables</strong> (tablas Delta).</p>
+<h3>1.3 Ingestar las dos fuentes con un Flujo de datos Gen2</h3>
+<p>Los CSV viven en una URL, así que los traemos con un <strong>Flujo de datos Gen2</strong> (la herramienta de ingesta de Fabric basada en Power Query, que corre en el trial F4).</p>
+<ol>
+<li>Con el Lakehouse abierto → <strong>Obtener datos → Nuevo flujo de datos Gen2</strong>. Nómbralo <code>dataflow-datablog_1</code>.</li>
+<li>Dentro del editor, primera fuente: <strong>Obtener datos → Web</strong> y pega la <strong>URL raw</strong> de <code>videos.csv</code>. Autenticación: <strong>Anónima</strong> (el repo es público). Power Query detecta que es CSV y lo separa en columnas.</li>
+<li>Renombra esa consulta a <strong><code>videos</code></strong> (clic derecho sobre la consulta → Cambiar nombre). Ese será el nombre de la tabla en el Lakehouse.</li>
+<li>Repite para la segunda fuente en el mismo flujo: <strong>Obtener datos → Web</strong> con la URL raw de <code>video_metrics.csv</code>, y renombra la consulta a <strong><code>video_metrics</code></strong>.</li>
+<li>Revisa los tipos en la vista previa: <code>snapshot_date</code> y <code>published_at</code> como <strong>Date/DateTime</strong>, y <code>view_count</code>, <code>like_count</code>, <code>comment_count</code>, <code>duration_seconds</code> como <strong>Whole Number</strong> (a veces entran como texto).</li>
+<li>Destino: como creaste el flujo desde el Lakehouse, este ya viene como <strong>destino predeterminado</strong> para ambas consultas. Deja el modo en <strong>Reemplazar</strong>.</li>
+<li><strong>Guardar y ejecutar.</strong> En segundos las dos tablas aparecen bajo <strong>Tables</strong> en <code>lakehouse_datablog_1</code>.</li>
+</ol>
+<blockquote>
+<p>⚠️ La URL debe ser la <strong>raw</strong> (<code>raw.githubusercontent.com/...</code>), no la vista <code>blob</code> de GitHub — esa devuelve la página HTML, no el CSV. Y el conector es <strong>Web</strong>, no "Text/CSV" (ese es para archivos locales o en Azure Storage).</p>
+</blockquote>
+<h3>1.4 El punto de conexión SQL del Lakehouse</h3>
+<p>Con las tablas dentro, el Lakehouse ya se puede consultar con SQL desde su <strong>Punto de conexión de análisis SQL</strong> (el desplegable de arriba a la derecha). Prueba una consulta con agregación — cuántos videos se publicaron por año y su duración promedio:</p>
+<pre><code class="language-sql">SELECT
+    YEAR(published_at)    AS anio,
+    COUNT(*)              AS videos_publicados,
+    AVG(duration_seconds) AS duracion_promedio_seg
+FROM videos
+GROUP BY YEAR(published_at)
+ORDER BY anio;
+</code></pre>
+<p>Funciona: el endpoint agrupa, cuenta y promedia sin problema.</p>
+<p>Y como es de solo lectura pero <strong>no</strong> de solo-una-tabla, también puede <strong>unir las dos tablas</strong> en la misma consulta. Vamos por lo mismo —agrupar por año— pero sumando las métricas de <code>video_metrics</code>. Esa tabla tiene varios snapshots por video, así que primero nos quedamos con el <strong>último snapshot de cada video</strong> (para no contar las vistas repetidas) y luego agrupamos:</p>
+<pre><code class="language-sql">WITH ultimo_snapshot AS (
+    SELECT
+        video_id,
+        view_count,
+        like_count,
+        ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
+    FROM video_metrics
+)
+SELECT
+    YEAR(v.published_at) AS anio,
+    COUNT(*)             AS videos,
+    SUM(m.view_count)    AS vistas_totales,
+    SUM(m.like_count)    AS likes_totales
+FROM videos AS v
+JOIN ultimo_snapshot AS m
+     ON v.video_id = m.video_id AND m.rn = 1
+GROUP BY YEAR(v.published_at)
+ORDER BY anio;
+</code></pre>
+<p>El <code>JOIN</code> corre sin problema: unir tablas para consultarlas es una <strong>lectura</strong>, y de eso el endpoint del Lakehouse sabe. </p>
+<p><strong>Guarda mentalmente este detalle</strong> — el Lakehouse <em>se consulta</em> con SQL, incluso uniendo tablas. En un momento veremos qué pasa cuando en vez de consultar queremos <em>escribir</em>, y ahí aparece la primera sorpresa.</p>
+<h2>2. Ahora el Warehouse: una base SQL completa</h2>
+<h3>2.1 Qué es (y qué ventajas trae)</h3>
+<p>El Warehouse es una <strong>base de datos analítica T-SQL</strong> con todas las de la ley: no solo consulta, también <strong>escribe</strong>. Soporta <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>CREATE TABLE</code>, procedimientos almacenados, funciones y transacciones. Si vienes de SQL Server, es territorio conocido: se comporta como una base SQL completa, no como un simple visor de tablas.</p>
+<h3>2.2 Crear el Warehouse</h3>
+<p>Desde el workspace → <strong>Nuevo elemento → Warehouse</strong>. Lo llamamos <code>warehouse_datablog_1</code>. A diferencia del Lakehouse, no tiene sección de "Files": es SQL de nacimiento, y su explorador es el de una base de datos (esquemas, tablas, vistas, procedimientos). Nace vacío, listo para que le escribamos con SQL.</p>
+<h2>3. El Warehouse en acción: materializar y servir</h2>
+<p>Ya tenemos los dos elementos. Ahora el Warehouse hace lo que el Lakehouse no puede: <strong>escribir</strong> — y con eso convierte una consulta en una tabla lista para el reporte.</p>
+<h3>3.1 Materializar la tabla del query anterior</h3>
+<p>En la sección 1.4 corrimos la consulta del <code>JOIN</code> + <code>GROUP BY</code> en el endpoint del Lakehouse y funcionó, porque un <code>SELECT</code> es una <strong>lectura</strong>. Pero ahí está el límite: el endpoint del Lakehouse <strong>ejecuta</strong> la consulta pero no puede <strong>guardarla</strong> como tabla. Y esa es la respuesta a la pregunta con que abre el post — por debajo los dos guardan lo mismo (tablas Delta en OneLake); la única diferencia real es <strong>quién tiene permiso de escribir</strong>. El Warehouse sí escribe, así que es él quien <strong>materializa</strong>.</p>
+<p>Antes de escribir la tabla hay que darle al Warehouse visibilidad del Lakehouse. No hay conexión que configurar —los dos viven en el mismo OneLake—: en la <strong>Nueva consulta SQL</strong> del Warehouse, usa la acción <strong><code>+ Warehouses</code></strong> del Explorador y agrega tu <code>lakehouse_datablog_1</code> (ambos deben estar en el <strong>mismo workspace</strong>). Desde ahí lo referencias con un nombre de tres partes (<code>lakehouse.esquema.tabla</code>).</p>
+<p>Ahora materializamos la consulta anterior con <code>CREATE TABLE AS SELECT</code> (CTAS):</p>
+<pre><code class="language-sql">CREATE TABLE dbo.metricas_por_anio AS
+WITH ultimo_snapshot AS (
+    SELECT
+        video_id,
+        view_count,
+        like_count,
+        ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
+    FROM lakehouse_datablog_1.dbo.video_metrics
+)
+SELECT
+    YEAR(v.published_at) AS anio,
+    COUNT(*)             AS videos,
+    SUM(m.view_count)    AS vistas_totales,
+    SUM(m.like_count)    AS likes_totales
+FROM lakehouse_datablog_1.dbo.videos AS v
+JOIN ultimo_snapshot AS m
+     ON v.video_id = m.video_id AND m.rn = 1
+GROUP BY YEAR(v.published_at);
+</code></pre>
+<p>Dos ajustes respecto a la consulta de la sección 1.4: las tablas del Lakehouse van con <strong>nombre de tres partes</strong>, y <strong>se quita el <code>ORDER BY</code></strong> final (una tabla no guarda orden — se ordena al consultarla). Con eso, <code>metricas_por_anio</code> queda como tabla física dentro del Warehouse.</p>
+<h3>3.2 Qué más puede el Warehouse</h3>
+<p>El <code>CTAS</code> es solo una de las cosas que un Warehouse —una base T-SQL completa— sabe hacer. Todas estas son escrituras que el endpoint del Lakehouse no permite:</p>
+<ul>
+<li><strong><code>INSERT INTO ... SELECT</code></strong> — cargar una tabla en lote a partir de otras (el <code>INSERT</code> que sí se usa en analítica; fila por fila a mano es raro).</li>
+<li><strong><code>UPDATE</code> / <code>DELETE</code></strong> — corregir o depurar datos ya cargados.</li>
+<li><strong><code>MERGE</code></strong> — actualización incremental (upsert): cuando llegan snapshots nuevos, actualiza lo existente e inserta lo nuevo de un golpe.</li>
+<li><strong>Procedimientos almacenados y funciones</strong> — encapsular la lógica de transformación para reutilizarla y <strong>programarla</strong>.</li>
+<li><strong>Transacciones</strong> (<code>BEGIN TRAN</code> / <code>COMMIT</code> / <code>ROLLBACK</code>) — varios pasos de forma atómica: o se aplican todos o ninguno.</li>
+</ul>
+<p><em>(Automatizar el refresco de <code>metricas_por_anio</code> con un procedimiento + un Data Pipeline programado —el equivalente a una scheduled query de BigQuery— es material de un tema aparte de orquestación.)</em></p>
+<h3>3.3 Del Warehouse al reporte: modelo semántico y Power BI</h3>
+<p>Para visualizar en Power BI hace falta un <strong>modelo semántico</strong>, y aquí se cierra el porqué de haber materializado. El modo estrella de Fabric —<strong>Direct Lake</strong>, rápido y que se refresca solo— <strong>solo lee tablas Delta físicas, no vistas</strong>. Por eso materializamos con <code>CTAS</code>: una vista no serviría para Direct Lake (obligaría a Import, con refresco manual, o a DirectQuery, más lento).</p>
+<p>Desde el Warehouse:</p>
+<ol>
+<li>Cinta → grupo <strong>Reporting</strong> → <strong>Nuevo modelo semántico</strong>.</li>
+<li>Nómbralo (ej. <code>modelo-metricas-youtube</code>), confirma el área de trabajo y <strong>selecciona la tabla <code>metricas_por_anio</code></strong> → Confirmar.</li>
+<li>Como la tabla es Delta física en OneLake, el modelo nace en <strong>Direct Lake</strong>: cuando reconstruyas la tabla, el reporte ve el dato nuevo sin refresco manual.</li>
+</ol>
+<p>Y el cierre, ya en <strong>Nuevo reporte</strong>: un <strong>gráfico de columnas</strong> con <code>anio</code> en el eje X y <code>vistas_totales</code> en el eje Y. En segundos ves qué año concentró más vistas. El pipeline completo, del CSV crudo al gráfico:</p>
+<pre><code>Lakehouse (crudo) → CTAS en Warehouse (tabla física) → modelo semántico Direct Lake → reporte
+</code></pre>
+<h2>4. ¿Puedo saltarme el Lakehouse? Sí: la ingesta directa</h2>
+<p>Una duda natural si prefieres el Warehouse: ¿los datos están obligados a aterrizar primero en un Lakehouse? <strong>No.</strong> El patrón "Lakehouse primero" es una recomendación de arquitectura, no una imposición técnica. El Warehouse recibe ingesta directa por varias vías oficiales:</p>
+<table>
+<thead>
+<tr>
+<th>Vía</th>
+<th>Estilo</th>
+<th>Típico para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flujo de datos Gen2 (destino: Almacén)</td>
+<td>Sin código, con transformaciones</td>
+<td>APIs, archivos, bases — el camino del analista</td>
+</tr>
+<tr>
+<td>Data Pipeline (actividad de copia)</td>
+<td>Low-code, programable</td>
+<td>Cargas repetitivas y volumen</td>
+</tr>
+<tr>
+<td><code>COPY INTO</code> (T-SQL)</td>
+<td>Código, máximo rendimiento</td>
+<td>Archivos CSV/Parquet/JSONL en Azure Storage</td>
+</tr>
+<tr>
+<td><code>CTAS</code> / <code>INSERT...SELECT</code> / <code>OPENROWSET</code></td>
+<td>Código</td>
+<td>Tablas del mismo workspace o archivos externos</td>
+</tr>
+</tbody>
+</table>
+<p>Lo probamos en vivo: el mismo flujo de ingesta (CSV público de YouTube → Flujo de datos Gen2), pero eligiendo <strong>Almacén</strong> como destino en lugar del Lakehouse. Dos diferencias aparecieron en el camino:</p>
+<ol>
+<li><strong>La conexión se vuelve explícita.</strong> Al declarar el destino a mano, Gen2 pide crear una conexión con credencial (tipo "Cuenta de organización"). Cuando el destino era el Lakehouse "predeterminado", ese paso existía igual — solo que resuelto en silencio.</li>
+<li><strong>El resultado es idéntico en experiencia:</strong> al terminar la ejecución, la tabla apareció en <code>Tables/dbo</code> del Warehouse, lista para consultarse — esta vez sin nombre de tres partes, porque es tabla local.</li>
+</ol>
+<p>¿Y entonces por qué el patrón Lakehouse-primero sigue siendo el default profesional? Tres razones:</p>
+<ol>
+<li><strong>Conservar el crudo.</strong> El Lakehouse guarda el dato tal cual llegó. Si mañana cambia la transformación, reprocesas desde el crudo sin volver a pegarle a la fuente. El Warehouse solo guarda el resultado cocinado.</li>
+<li><strong>Fuentes sucias o diversas.</strong> JSON anidados, archivos irregulares, volúmenes que piden Spark — todo eso aterriza natural en un Lakehouse. Al Warehouse le gusta recibir datos ya estructurados.</li>
+<li><strong>Un aterrizaje, muchos consumidores.</strong> El crudo del Lakehouse alimenta al Warehouse, a notebooks y a otros flujos sin repetir la ingesta.</li>
+</ol>
+<p>Para una fuente limpia y estructurada, la ruta corta <strong>fuente → Gen2 → Warehouse → modelo semántico → reporte</strong> es perfectamente válida.</p>
+<h2>5. Otras diferencias visibles (una vez que sabes qué mirar)</h2>
+<ol>
+<li><strong>El selector de caras.</strong> El Lakehouse tiene un desplegable para alternar entre su vista de Lakehouse y su endpoint SQL — porque son dos caras del mismo elemento. El Warehouse no tiene selector: él es SQL de nacimiento.</li>
+<li><strong>El explorador.</strong> El panel del Warehouse es el de una base de datos: esquemas, tablas, vistas, procedimientos, funciones. El del Lakehouse es un explorador de contenido: carpetas con archivos crudos (que puedes subir a mano: CSV, JSON, imágenes) y tablas. Al Warehouse no le subes archivos por la interfaz — todo le entra por SQL o por pipelines.</li>
+<li><strong>Los esquemas.</strong> El Warehouse organiza sus tablas en esquemas (<code>dbo</code>, y los que crees) desde el primer día, como cualquier base SQL. En el Lakehouse los esquemas son opcionales.</li>
+</ol>
+<h2>6. Entonces, ¿cuál elijo? Los tres caminos</h2>
+<p>La pregunta decisiva es: <strong>¿quién va a escribir tus tablas y en qué lenguaje piensa tu equipo?</strong> Con las piezas que ya probamos, existen tres arquitecturas posibles — las tres válidas, para momentos distintos:</p>
+<pre><code>CAMINO 1 — Lakehouse-céntrico
+Fuente → Gen2 → Lakehouse → modelo semántico → reporte
+
+CAMINO 2 — Warehouse-céntrico
+Fuente → Gen2 → Warehouse (raw) → CTAS/procedimientos (tablas cocinadas)
+                                    → modelo semántico → reporte
+
+CAMINO 3 — Los dos juntos (el patrón enterprise)
+Fuente → Gen2 → LAKEHOUSE (aterriza el crudo, tal cual llegó)
+                    ↓  consulta de tres partes (CTAS — sin copiar nada)
+                WAREHOUSE (staging → dimensiones → hechos, en T-SQL)
+                    ↓
+                modelo semántico → reporte
+</code></pre>
+<h3>6.1 Camino Lakehouse</h3>
+<p>Elígelo si tus datos llegan como archivos o desde APIs, los trae un Flujo de datos Gen2 o los procesa Spark, y el SQL lo usas para consultar y verificar. Es el punto de aterrizaje natural de un proyecto analítico — y por eso es la primera pieza que se aprende.</p>
+<h3>6.2 Camino Warehouse</h3>
+<p>Elígelo si tu equipo construye el modelo analítico escribiendo T-SQL: la raw llega directo al Warehouse (ingesta directa de la sección 4) y las tablas para el reporte se cocinan con <code>CTAS</code> y procedimientos. Si vienes de SQL Server y tus fuentes son limpias y estructuradas, este camino es legítimo y cómodo.</p>
+<h3>6.3 El tercer camino: los dos juntos</h3>
+<p>El patrón profesional por excelencia. Cada casa hace lo que mejor sabe:</p>
+<ol>
+<li><strong>El Lakehouse es la zona de aterrizaje:</strong> guarda el crudo intacto (reprocesable para siempre), acepta cualquier formato, y si un día llega volumen salvaje, Spark trabaja ahí. Aquí aterrizan nuestras <code>videos</code> y <code>video_metrics</code> sin tocar.</li>
+<li><strong>El Warehouse es la fábrica:</strong> toma el crudo del Lakehouse con nombres de tres partes y lo convierte en modelo analítico con T-SQL — como hicimos al materializar <code>metricas_por_anio</code>.</li>
+<li><strong>El modelo semántico sirve la mesa</strong> desde las tablas cocinadas del Warehouse.</li>
+</ol>
+<p>Este patrón tiene nombre en la industria: <strong>arquitectura medallón</strong> (<em>medallion</em>) — capas bronce (crudo), plata (limpio) y oro (modelado para consumo). En Fabric se mapea natural: bronce en el Lakehouse (<code>videos</code>, <code>video_metrics</code> crudas), plata y oro en el Warehouse (<code>metricas_por_anio</code>, lista para el reporte).</p>
+<h3>6.4 Los tres caminos frente a frente</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Camino Lakehouse</th>
+<th>Camino Warehouse</th>
+<th>Los dos juntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La raw llega a</td>
+<td>Lakehouse (tabla o archivo)</td>
+<td>Warehouse (tabla)</td>
+<td>Lakehouse (crudo intacto)</td>
+</tr>
+<tr>
+<td>Transformas con</td>
+<td>Otro Gen2, o Spark</td>
+<td>T-SQL: CTAS, procedimientos</td>
+<td>T-SQL, leyendo el crudo con tres partes</td>
+</tr>
+<tr>
+<td>¿Conservas el crudo original?</td>
+<td>Sí</td>
+<td>No (solo lo cocinado)</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>El modelo semántico lee</td>
+<td>Tablas del Lakehouse</td>
+<td>Tablas cocinadas del Warehouse</td>
+<td>Tablas oro del Warehouse</td>
+</tr>
+<tr>
+<td>Ideal para</td>
+<td>Fuentes crudas o diversas, reprocesos, Spark</td>
+<td>Analista SQL con fuentes limpias</td>
+<td>Proyectos que crecen: varias fuentes, reproceso histórico, equipos por capa</td>
+</tr>
+</tbody>
+</table>
+<p>¿Cuándo se justifica la dupla frente a un camino simple? Cuando el proyecto crece: varias fuentes, necesidad de reprocesar el histórico, equipos distintos tocando capas distintas. Para un proyecto personal de una sola fuente, cualquiera de los dos caminos simples basta — la dupla es el traje para cuando la cosa se pone seria.</p>
+<p>Y las otras dos casas del mapa, para no perderlas de vista: si lo que necesitas es que una <strong>aplicación</strong> registre operaciones en vivo (muchas escrituras pequeñas y simultáneas), eso no es ninguno de estos dos — es una <strong>SQL Database</strong> (OLTP). Y si tu dato es un flujo continuo de eventos (logs, sensores, clics), su casa es el <strong>Eventhouse</strong> con KQL. Cada una merece su propia exploración.</p>
+<h2>7. La tabla de decisión</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Lakehouse</th>
+<th>Warehouse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Almacenamiento físico</td>
+<td>Delta en OneLake</td>
+<td>Delta en OneLake (idéntico)</td>
+</tr>
+<tr>
+<td>Quién escribe</td>
+<td>Spark, Flujos Gen2</td>
+<td>Motor T-SQL</td>
+</tr>
+<tr>
+<td>SQL de escritura de datos (<code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code>/<code>MERGE</code>)</td>
+<td>❌ (endpoint solo lectura)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Materializar una tabla nueva (<code>CTAS</code>, datos físicos)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Transacciones que modifican datos</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Vistas, funciones y procedimientos (envuelven un <code>SELECT</code>)</td>
+<td>✅ (el endpoint SQL los soporta)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Archivos crudos (CSV, JSON, imágenes)</td>
+<td>✅ (sección Files)</td>
+<td>❌ por interfaz</td>
+</tr>
+<tr>
+<td>Lee tablas del otro</td>
+<td>✅ (vía Spark/shortcuts)</td>
+<td>✅ (nombre de tres partes)</td>
+</tr>
+<tr>
+<td>Ingesta directa desde fuentes (Gen2, pipelines)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Perfil natural</td>
+<td>Analista/ingeniero de datos</td>
+<td>Desarrollador SQL</td>
+</tr>
+<tr>
+<td>Rol en el patrón clásico</td>
+<td>Aterrizar y preparar</td>
+<td>Modelar y servir</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La línea de fondo (más honesta que la tabla):</strong> el almacenamiento es idéntico y los dos materializan tablas Delta. Lo único que de verdad los separa es <strong>en qué lenguaje transformas</strong>: en <strong>T-SQL</strong> (<code>CTAS</code>, procedimientos, <code>MERGE</code>) → Warehouse; en <strong>Power Query (Gen2)</strong> o <strong>Spark</strong> → Lakehouse. Por eso, para un proyecto simple de una sola fuente puede que <strong>ni necesites un Warehouse</strong> — el Lakehouse con Gen2 te alcanza. El Warehouse gana cuando piensas y trabajas en SQL (por ejemplo, si vienes de BigQuery o SQL Server): es el elemento que te deja construir y materializar con el lenguaje que ya dominas.</p>
+<h2>Gotchas</h2>
+<ul>
+<li><strong>El endpoint SQL del Lakehouse "solo lectura" sí crea vistas, funciones y procedimientos</strong> — "solo lectura" se refiere a los <em>datos</em>: no puedes <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> ni materializar una tabla (<code>CTAS</code>). Pero los objetos que solo envuelven un <code>SELECT</code> —vistas, funciones escalares <em>inlineables</em>, procedimientos— sí se pueden crear en el endpoint (confirmado en la doc oficial). La línea real no es "crear objetos" sino "escribir datos". Lo único exclusivo del Warehouse es escribir/modificar datos y materializar tablas.</li>
+<li><strong>El nombre de tres partes exige el nombre exacto de la tabla</strong> — si la tabla del Lakehouse no existe con ese nombre, el Warehouse devuelve <code>Invalid object name</code> (error 208). Verificar el nombre real en el explorador del Lakehouse antes de culpar a la sintaxis: la tabla pudo haber sido renombrada después de crear el flujo. Y antes de nada, el Lakehouse debe estar agregado al Explorador con <code>+ Warehouses</code> (sección 3.1).</li>
+<li><strong>El <code>CTAS</code> de Fabric acepta CTE pero no <code>ORDER BY</code></strong> — un <code>WITH ... AS (...)</code> antes del <code>SELECT</code> funciona en el <code>CTAS</code> del Warehouse (verificado en F4), aunque la gramática de la doc oficial de Fabric no lo liste explícitamente. Lo que no admite es <code>ORDER BY</code> a nivel de query: una tabla no guarda orden, así que se ordena al consultar, no al materializar.</li>
+<li><strong>Los "Staging…ForDataflows" del selector <code>+ Warehouses</code> son de sistema</strong> — al ejecutar un Flujo de datos Gen2, Fabric crea automáticamente elementos internos (<code>StagingLakehouseForDataflows_&lt;fecha&gt;</code>, <code>StagingWarehouseForDataflows_&lt;fecha&gt;</code>) como mesa de trabajo intermedia. Aparecen en el selector porque lista todos los endpoints SQL del workspace. No borrarlos, no consultarlos, no escribirlos: son plomería de Gen2. Elegir solo el Lakehouse propio.</li>
+<li><strong>El explorador del Warehouse no siempre se refresca solo</strong> — tras un CTAS, usar el botón Actualizar para ver la tabla nueva en el panel.</li>
+<li><strong>El CLI de Fabric (<code>fab</code>) no ejecuta T-SQL</strong> — crea el Warehouse y navega sus tablas, pero las consultas van por conexión SQL (editor del portal o cliente SQL con autenticación de Entra).</li>
+<li><strong>La URL de un CSV en GitHub debe ser la <code>raw</code>, no la de la página</strong> — la vista <code>github.com/.../blob/...</code> devuelve HTML, no el CSV. En Gen2 hay que usar <code>raw.githubusercontent.com/.../...</code> (cambiar <code>github.com</code> por <code>raw.githubusercontent.com</code> y quitar el <code>/blob</code>). Con la URL equivocada, el flujo trae la página web entera en vez de los datos.</li>
+<li><strong>Un CSV por URL entra por el conector Web, no por "Text/CSV"</strong> — el conector "Text/CSV" es para archivos locales o en Azure Storage. Para un archivo detrás de una URL se usa el conector <strong>Web</strong> (autenticación Anónima si el repo es público); Power Query detecta que el contenido es CSV y lo parsea en columnas solo.</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li>Qué es un Lakehouse: https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview</li>
+<li>Qué es el Data Warehouse de Fabric: https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing</li>
+<li>SQL analytics endpoint (solo lectura): https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#sql-analytics-endpoint-of-the-lakehouse</li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/fabric-primer-pipeline"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'microsoft-fabric-lakehouse-vs-warehouse';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
