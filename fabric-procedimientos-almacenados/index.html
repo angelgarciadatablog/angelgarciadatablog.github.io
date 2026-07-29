@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Procedimientos almacenados en Microsoft Fabric", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-procedimientos-almacenados", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-28", "video_youtube": []});
+window.dataLayer.push({"titulo": "Procedimientos almacenados en Microsoft Fabric", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-procedimientos-almacenados", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-28", "video_youtube": ["d4-4XioffMU"]});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -80,6 +80,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <hr class="post-divider" />
     
+<div class="post-video">
+  <div class="post-video-title">Video explicativo</div>
+  <iframe src="https://www.youtube.com/embed/d4-4XioffMU" allowfullscreen></iframe>
+</div>
     <div class="post-body" id="post-body"><p>Un Lakehouse y un Warehouse hacen lo mismo en el fondo: <strong>guardan datos</strong>. Ya montamos los dos.</p>
 <p>En el Lakehouse aterrizaron los datos  —<code>videos</code> y <code>video_metrics</code>— traídos con un Flujo de datos Gen2 (Power Query). Esos datos son <strong>dinámicos</strong>: si programas el flujo, cada semana llegan solos al lakehouse</p>
 <p>Después, para el reporte, escribimos una consulta SQL que apuntaba al lakehouse, unía las dos tablas y agrupaba por año, y la materializamos como tabla física dentro del Warehouse con un <code>CREATE TABLE AS SELECT</code> (CTAS). De ahí salió <code>metricas_por_anio</code>, el modelo semántico en Direct Lake y el gráfico en un reporte.</p>

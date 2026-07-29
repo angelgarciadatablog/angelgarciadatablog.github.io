@@ -35,7 +35,9 @@
     "posts-relacionados": [
       "microsoft-fabric-herramientas"
     ],
-    "video-youtube": [],
+    "video-youtube": [
+      "d4-4XioffMU"
+    ],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento.",
