@@ -72,7 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Microsoft Fabric — Lakehouse vs Warehouse</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
-      <span class="post-updated">Actualizado: 2026-07-23</span>
+      <span class="post-updated">Actualizado: 2026-07-29</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -166,14 +166,14 @@ WITH ultimo_snapshot AS (
         view_count,
         like_count,
         ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
-    FROM lakehouse_datablog_1.dbo.video_metrics
+    FROM lakehouse_datablog.dbo.video_metrics
 )
 SELECT
     YEAR(v.published_at) AS anio,
     COUNT(*)             AS videos,
     SUM(m.view_count)    AS vistas_totales,
     SUM(m.like_count)    AS likes_totales
-FROM lakehouse_datablog_1.dbo.videos AS v
+FROM lakehouse_datablog.dbo.videos AS v
 JOIN ultimo_snapshot AS m
      ON v.video_id = m.video_id AND m.rn = 1
 GROUP BY YEAR(v.published_at);
@@ -412,7 +412,7 @@ Fuente → Gen2 → LAKEHOUSE (aterriza el crudo, tal cual llegó)
     
     <nav class="post-nav">
       <a class="nav-anterior" href="/fabric-primer-pipeline"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI</span></a>
-      
+      <a class="nav-siguiente" href="/fabric-procedimientos-almacenados"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Procedimientos almacenados en Microsoft Fabric</span></a>
     </nav>
   </article>
 

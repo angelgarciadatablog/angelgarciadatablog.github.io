@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procedimientos almacenados en Microsoft Fabric · Angel García</title>
+  <meta name="description" content="Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/fabric-procedimientos-almacenados/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Procedimientos almacenados en Microsoft Fabric" />
+  <meta property="og:description" content="Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/fabric-procedimientos-almacenados/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Procedimientos almacenados en Microsoft Fabric", "categoria": "azure", "serie": "fabric-desde-cero", "series_relacionadas": "", "slug": "fabric-procedimientos-almacenados", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-07-28", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">azure</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Procedimientos almacenados en Microsoft Fabric</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">azure</span></div>
+      <span class="post-updated">Actualizado: 2026-07-29</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><p>Un Lakehouse y un Warehouse hacen lo mismo en el fondo: <strong>guardan datos</strong>. Ya montamos los dos.</p>
+<p>En el Lakehouse aterrizaron los datos  —<code>videos</code> y <code>video_metrics</code>— traídos con un Flujo de datos Gen2 (Power Query). Esos datos son <strong>dinámicos</strong>: si programas el flujo, cada semana llegan solos al lakehouse</p>
+<p>Después, para el reporte, escribimos una consulta SQL que apuntaba al lakehouse, unía las dos tablas y agrupaba por año, y la materializamos como tabla física dentro del Warehouse con un <code>CREATE TABLE AS SELECT</code> (CTAS). De ahí salió <code>metricas_por_anio</code>, el modelo semántico en Direct Lake y el gráfico en un reporte.</p>
+<p>Y ahí está el problema. <strong>El <code>CREATE TABLE AS SELECT</code> (CTAS) es fijo.</strong> Corrió una vez, el día que lo escribiste. </p>
+<p>El Lakehouse se refresca solo; pero <code>metricas_por_anio</code>  está en el warehouse y no se entera que hay nuevos datos porque es una tabla que se creo una sola vez con un <code>CREATE TABLE AS SELECT</code> (CTAS).</p>
+<p>Entonces, ¿qué hacemos?</p>
+<p>Lo primero no es escribir código: es <strong>entender qué tipo de cosa es</strong> eso que hay que hacer. Reemplazar esa tabla cada semana no es <em>"quiero consultar algo y ya"</em>. Es una acción que hay que repetir, siempre igual, indefinidamente, para tener datos frescos. Eso es un <strong>trabajo</strong>.</p>
+<p>Y un trabajo se puede <strong>empaquetar</strong>. El envase que lo guarda se llama <strong>procedimiento almacenado</strong>.</p>
+<p>Este post construye ese envase con la pieza más pequeña posible, y de paso desactiva las dos confusiones más comunes:</p>
+<ol>
+<li>Que un procedimiento sirve solo para meter <code>CREATE TABLE</code> adentro. No.</li>
+<li>Que un procedimiento es "una vista con otro nombre". Tampoco — y hay una prueba de una línea que lo demuestra.</li>
+</ol>
+<p>La promesa: <strong>no vas a aprender ni una sola cosa nueva de SQL.</strong> Vas a aprender tres palabras y a distinguir un trabajo de una consulta.</p>
+<h2>1. El problema: una tabla que nace una sola vez</h2>
+<p>Así materializamos la tabla en el post anterior:</p>
+<pre><code class="language-sql">CREATE TABLE dbo.metricas_por_anio AS
+WITH ultimo_snapshot AS (
+    SELECT
+        video_id,
+        view_count,
+        like_count,
+        ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
+    FROM lakehouse_datablog.dbo.video_metrics
+)
+SELECT
+    YEAR(v.published_at) AS anio,
+    COUNT(*)             AS videos,
+    SUM(m.view_count)    AS vistas_totales,
+    SUM(m.like_count)    AS likes_totales
+FROM lakehouse_datablog.dbo.videos AS v
+JOIN ultimo_snapshot AS m
+     ON v.video_id = m.video_id AND m.rn = 1
+GROUP BY YEAR(v.published_at);
+</code></pre>
+<p>Ha pasado una semana y el Lakehouse ya tiene datos nuevos. Lo intuitivo es volver a correr lo que funcionó. <strong>Ejecuta otra vez ese mismo bloque</strong>, tal cual, sin cambiarle nada:</p>
+<p>El problema que te vas a encontrar cuando ejecutes nuevamente la query es el siguiente: </p>
+<pre><code>There is already an object named 'metricas_por_anio' in the database.
+</code></pre>
+<p>Ese error es todo el post en una línea. <strong>El <code>CREATE TABLE AS SELECT</code> (CTAS) sabe crear, no sabe rehacer.</strong> Sirve exactamente una vez: la primera. Y nosotros necesitamos lo contrario — algo ejecutable todas las semanas, para siempre.</p>
+<h3>Lo que sí sabe rehacer</h3>
+<p>Vaciar y volver a llenar. Dos sentencias que ya conoces:</p>
+<pre><code class="language-sql">TRUNCATE TABLE dbo.metricas_por_anio;
+
+WITH ultimo_snapshot AS (
+    SELECT
+        video_id,
+        view_count,
+        like_count,
+        ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
+    FROM lakehouse_datablog.dbo.video_metrics
+)
+INSERT INTO dbo.metricas_por_anio (anio, videos, vistas_totales, likes_totales)
+SELECT
+    YEAR(v.published_at),
+    COUNT(*),
+    SUM(m.view_count),
+    SUM(m.like_count)
+FROM lakehouse_datablog.dbo.videos AS v
+JOIN ultimo_snapshot AS m
+     ON v.video_id = m.video_id AND m.rn = 1
+GROUP BY YEAR(v.published_at);
+</code></pre>
+<p>Córrelo dos o tres veces seguidas. Nunca falla, y la tabla queda siempre igual.</p>
+<p>Fíjate en el cambio de piezas: <strong>desapareció el <code>CREATE TABLE</code></strong>. La tabla ya existe y no hay que volver a crearla nunca; lo que hay que hacer es cambiarle el contenido. Guarda ese detalle, porque en la sección 5 es el que desmonta el malentendido más común sobre los procedimientos.</p>
+<p>Pero antes, mira <strong>dónde está viviendo</strong> este SQL: en una pestaña del editor. Si cierras el navegador, se fue. Si mañana alguien pregunta cómo se arma <code>metricas_por_anio</code>, la respuesta honesta es <em>"estaba en un query que tenía abierto"</em>.</p>
+<p>Eso es lo que resuelve un procedimiento almacenado: <strong>le da a este trabajo un nombre y una casa.</strong></p>
+<h2>2. Un procedimiento son tres palabras nuevas</h2>
+<p>Cuando alguien aprende SQL no se empieza por funciones de ventana. Se empieza por cinco cláusulas —<code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code>— que en realidad son <strong>una sola frase con huecos</strong>. Con esa frase ya respondes preguntas reales el primer día.</p>
+<p>Los procedimientos tienen su equivalente, y es todavía más corto:</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CREATE OR ALTER PROCEDURE &lt;nombre&gt;</code></td>
+<td>Bautizarlo</td>
+</tr>
+<tr>
+<td><code>AS BEGIN ... END</code></td>
+<td>El envase donde va el SQL</td>
+</tr>
+<tr>
+<td><code>EXEC &lt;nombre&gt;</code></td>
+<td>Llamarlo</td>
+</tr>
+</tbody>
+</table>
+<p>Tres palabras. Y aquí está la diferencia con aprender SQL: las cinco cláusulas eran cinco conceptos nuevos —filtrar, agrupar, ordenar—. Un procedimiento <strong>no trae ningún concepto de SQL nuevo</strong>. El contenido del envase es el <code>TRUNCATE</code> + <code>INSERT</code> que acabas de escribir, sin cambiarle una coma.</p>
+<p>Lo único que cambia es la categoría mental. Hasta ahora, todo lo que guardabas dentro de la base de datos <strong>describía</strong> algo: una tabla describe una estructura, una vista describe una consulta. Un procedimiento es lo primero que guardas que <strong>hace</strong> algo.</p>
+<h2>3. El procedimiento mínimo</h2>
+<p>Ejecuta esto en el Warehouse:</p>
+<pre><code class="language-sql">CREATE OR ALTER PROCEDURE dbo.sp_refrescar_metricas_por_anio
+AS
+BEGIN
+    TRUNCATE TABLE dbo.metricas_por_anio;
+
+    WITH ultimo_snapshot AS (
+        SELECT
+            video_id,
+            view_count,
+            like_count,
+            ROW_NUMBER() OVER (PARTITION BY video_id ORDER BY snapshot_date DESC) AS rn
+        FROM lakehouse_datablog.dbo.video_metrics
+    )
+    INSERT INTO dbo.metricas_por_anio (anio, videos, vistas_totales, likes_totales)
+    SELECT
+        YEAR(v.published_at),
+        COUNT(*),
+        SUM(m.view_count),
+        SUM(m.like_count)
+    FROM lakehouse_datablog.dbo.videos AS v
+    JOIN ultimo_snapshot AS m
+         ON v.video_id = m.video_id AND m.rn = 1
+    GROUP BY YEAR(v.published_at);
+END
+</code></pre>
+<p>Compáralo con el bloque anterior. Es el mismo SQL, con dos líneas encima y una debajo.</p>
+<p>Detalles que vale la pena notar:</p>
+<ol>
+<li><strong><code>CREATE OR ALTER</code></strong> — si el procedimiento no existe lo crea, y si existe lo reemplaza. Sin él tendrías el mismo problema que con el <code>CREATE TABLE AS SELECT</code> (CTAS): el segundo <code>CREATE PROCEDURE</code> fallaría por nombre repetido.</li>
+<li><strong><code>dbo.</code></strong> — el esquema. En un Warehouse de Fabric todo vive en un esquema; <code>dbo</code> es el de fábrica.</li>
+<li><strong><code>sp_</code></strong> — convención heredada de SQL Server para nombrar procedimientos. No es obligatoria, pero hace obvio en el explorador qué es cada cosa.</li>
+<li><strong>El nombre de tres partes sigue funcionando desde adentro.</strong> <code>lakehouse_datablog.dbo.video_metrics</code> se lee igual dentro del procedimiento que en una consulta suelta.</li>
+<li><strong>En <code>INSERT INTO ... SELECT</code> las columnas se emparejan por posición</strong>, no por nombre. El orden de la lista del <code>INSERT</code> manda; por eso el <code>SELECT</code> ya no lleva alias.</li>
+</ol>
+<p>Cuando termine, abre el explorador del Warehouse y busca la carpeta <strong>Stored Procedures</strong>. Ahí está, con nombre propio, dentro de la base de datos. Ya no vive en una pestaña.</p>
+<h2>4. El momento que importa: ejecútalo dos veces</h2>
+<p>Antes de ejecutarlo, vamos a romper la tabla a propósito. Si no, el <code>EXEC</code> no se ve hacer nada y no queda claro qué acaba de pasar.</p>
+<pre><code class="language-sql">-- 1. Vaciamos la tabla a propósito
+DELETE FROM dbo.metricas_por_anio;
+
+-- 2. Confirmamos que no queda nada
+SELECT COUNT(*) AS filas FROM dbo.metricas_por_anio;
+</code></pre>
+<p>Devuelve <code>0</code>. La tabla del reporte está vacía. Ahora el trabajo:</p>
+<pre><code class="language-sql">-- 3. Ejecutamos el trabajo
+EXEC dbo.sp_refrescar_metricas_por_anio;
+</code></pre>
+<pre><code class="language-sql">-- 4. Volvemos a mirar la tabla
+SELECT * FROM dbo.metricas_por_anio ORDER BY anio;
+</code></pre>
+<p>Las filas están de vuelta.</p>
+<p><strong>Fíjate en el paso 3: el <code>EXEC</code> no devuelve ni una fila.</strong> No te muestra nada, y no es un fallo — es exactamente lo que hace un procedimiento. No <strong>devuelve</strong> un resultado: <strong>cambia</strong> algo. Por eso hace falta el paso 4, una consulta aparte, para ver qué dejó hecho.</p>
+<p>Esa es la diferencia de fondo con una consulta normal. Un <code>SELECT</code> te da filas. Un <code>EXEC</code> te deja el mundo distinto. Guárdalo, porque en la sección 5 es lo que explica por qué un procedimiento no se puede meter dentro de otra consulta.</p>
+<h3>Ojo: los datos no se recuperaron, se recalcularon</h3>
+<p>Es tentador leer el paso 4 como <em>"el procedimiento restauró lo que borré"</em>. No es eso, y la diferencia importa.</p>
+<p>Las filas que volvieron son <strong>nuevas</strong>: el <code>INSERT</code> las calculó otra vez desde <code>videos</code> y <code>video_metrics</code> en el Lakehouse. Salieron idénticas solo porque el origen no cambió entre medias. No hay ninguna copia de seguridad de por medio.</p>
+<p>Eso es lo que hace seguro todo el patrón: <strong><code>metricas_por_anio</code> es una tabla derivada</strong>. No contiene información propia — es el resultado de una fórmula aplicada a otros datos. Es desechable por diseño, y por eso puedes vaciarla y rehacerla mil veces sin miedo. Si el Lakehouse desapareciera, el <code>EXEC</code> no traería nada de vuelta.</p>
+<blockquote>
+<p>⚠️ Vaciar una tabla a propósito solo es seguro cuando es derivada. Si esa tabla fuera el único sitio donde vive ese dato, el <code>DELETE</code> sería definitivo y ningún procedimiento la traería de vuelta.</p>
+</blockquote>
+<p>Y un detalle que confirma lo que hay dentro del envase: si en vez de <code>DELETE FROM</code> hicieras <code>DROP TABLE dbo.metricas_por_anio</code>, el procedimiento <strong>fallaría</strong> con <code>Invalid object name</code>. Porque el <code>TRUNCATE</code> exige que la tabla exista, y el procedimiento no sabe crearla. Nunca hubo un <code>CREATE TABLE</code> ahí dentro.</p>
+<h3>Ahora sí: ejecútalo dos veces</h3>
+<p>Con el trabajo ya entendido, corre el <code>EXEC</code> otra vez. Y una tercera.</p>
+<pre><code class="language-sql">EXEC dbo.sp_refrescar_metricas_por_anio;
+
+SELECT * FROM dbo.metricas_por_anio ORDER BY anio;
+</code></pre>
+<p>Mismo resultado, siempre. Sin errores, sin filas duplicadas, sin <em>"ya existe un objeto con ese nombre"</em>.</p>
+<p>Compáralo con el <code>CREATE TABLE AS SELECT</code> (CTAS) del principio, que a la segunda vez te arrojaba el error: <em>"ya existe un objeto con ese nombre"</em>. Ese es el cambio: <strong>el trabajo que metimos dentro del envase se puede repetir, y el del <code>CREATE TABLE AS SELECT</code> (CTAS) no.</strong></p>
+<p>Quien hace esa diferencia es el <code>TRUNCATE</code>. No está ahí por gusto: es lo que hace que la segunda ejecución no se sume a la primera. Quítalo y el procedimiento seguiría siendo un procedimiento perfectamente válido... que te duplica los datos cada semana, sin dar ningún error.</p>
+<p>Y ojo con la conclusión fácil: <strong>el envase no aporta esa propiedad</strong>. Un procedimiento que por dentro solo hiciera un <code>INSERT</code> se puede llamar igual con <code>EXEC</code>, y cada llamada añadiría filas nuevas. Que un trabajo se pueda repetir sin daño no viene del <code>CREATE PROCEDURE</code> — <strong>hay que diseñarlo así</strong>.</p>
+<h2>5. Una vista empaqueta una consulta; un procedimiento empaqueta un trabajo</h2>
+<p>Aquí es donde mucha gente saca la conclusión equivocada. Nuestro ejemplo rehace una tabla, así que es tentador guardar la idea como <em>"un procedimiento sirve para materializar tablas"</em>. <strong>No es eso.</strong></p>
+<p>De hecho, fíjate en un detalle: <strong>en todo este post no hay un solo <code>CREATE TABLE</code> dentro de un procedimiento</strong>. El <code>CREATE TABLE</code> fue el problema —lo que falló al ejecutarlo dos veces—, no la solución. Dentro del envase solo hay <code>TRUNCATE</code> e <code>INSERT</code>.</p>
+<p>La otra confusión es más sutil, porque una vista también "empaqueta SQL con un nombre". La diferencia está en <strong>qué</strong> empaqueta cada una: <strong>una vista empaqueta una consulta; un procedimiento empaqueta un trabajo.</strong></p>
+<h3>5.1 La pregunta que traza la línea</h3>
+<p>Ante cualquier SQL que escribas, pregúntate:</p>
+<blockquote>
+<p><strong>¿Esto cambia algo, o solo lo mira?</strong></p>
+</blockquote>
+<p>Esa pregunta separa dos mundos:</p>
+<table>
+<thead>
+<tr>
+<th>Lo que necesitas</th>
+<th>La herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mirar</strong> los datos, siempre igual</td>
+<td>Una <strong>vista</strong>. Se recalcula sola cada vez que la consultas, no ocupa espacio, no hay nada que programar.</td>
+</tr>
+<tr>
+<td><strong>Mirar</strong> los datos filtrando por un valor distinto cada vez</td>
+<td>Una <strong>función con valores de tabla</strong>, o un procedimiento con parámetros</td>
+</tr>
+<tr>
+<td><strong>Cambiar</strong> algo: escribir, borrar, actualizar, mover</td>
+<td>Un <strong>procedimiento</strong>. Aquí no hay alternativa: una vista es incapaz de modificar datos.</td>
+</tr>
+</tbody>
+</table>
+<p>La regla es asimétrica y conviene decirla completa: <strong>si cambias algo, estás obligado a usar un procedimiento. Si solo lees, casi siempre una vista es la respuesta más simple</strong> — y elegir un procedimiento sería complicarte la vida.</p>
+<h3>5.2 La prueba de una línea: el <code>FROM</code></h3>
+<p>Hay una forma de comprobar que una vista y un procedimiento son cosas de naturaleza distinta, y cabe en dos consultas. Pruébalas en tu Warehouse.</p>
+<p>La primera va contra la tabla que mantiene nuestro procedimiento. Funciona, evidentemente:</p>
+<pre><code class="language-sql">-- Una tabla va en un FROM sin problema
+SELECT anio, vistas_totales
+FROM dbo.metricas_por_anio
+WHERE vistas_totales &gt; 10000;
+</code></pre>
+<p>La segunda va contra el procedimiento:</p>
+<pre><code class="language-sql">-- Esto NO funciona. No es sintaxis válida.
+SELECT * FROM dbo.sp_refrescar_metricas_por_anio;
+</code></pre>
+<p>Y aquí está la clave: <strong>si en la primera consulta cambiaras la tabla por una vista, seguiría funcionando igual.</strong> Cambia el <code>FROM</code> por el nombre de una vista y el motor ni se inmuta.</p>
+<p>La razón no es un capricho. <strong>Una vista <em>es</em> una tabla</strong> — una tabla lógica, calculada al vuelo, pero una tabla al fin: tiene columnas fijas, tipos fijos, y devuelve exactamente un conjunto de filas. </p>
+<p>Por eso el motor la trata igual que a <code>dbo.metricas_por_anio</code>: la puede poner en un <code>FROM</code>, unirla con otra tabla, filtrarla y anidarla dentro de vistas más grandes.</p>
+<p><strong>Un procedimiento no es una tabla.</strong> Es una acción. Puede no devolver ninguna fila (el nuestro no devuelve ninguna: solo cambia datos), puede devolver un conjunto, puede devolver tres conjuntos distintos con columnas distintas, y puede hacer cosas diferentes según el parámetro que le pases. El motor no tiene forma de saber de antemano qué estructura tendría eso, así que no puede tratarlo como una fuente de datos.</p>
+<p>De ahí sale la regla práctica: <strong>si necesitas que el resultado alimente otra consulta, necesitas una vista. Si necesitas cambiar datos, necesitas un procedimiento.</strong></p>
+<h3>5.3 Entonces, ¿qué te devuelve un procedimiento?</h3>
+<p>Si no se puede poner en un <code>FROM</code>, vale la pena saber qué produce realmente. Cuatro cosas:</p>
+<ol>
+<li><strong>Efectos sobre los datos.</strong> El resultado principal y el que importa. El nuestro deja <code>metricas_por_anio</code> reconstruida. No "devuelve" nada — <strong>cambia</strong> algo, que es distinto.</li>
+<li><strong>Uno o varios conjuntos de resultados.</strong> Si el procedimiento lleva un <code>SELECT</code> adentro, esas filas te llegan a la pantalla (o a la aplicación que lo llamó). Pero llegan como salida final: no las puedes encadenar en otra consulta.</li>
+<li><strong>Parámetros de salida.</strong> La sintaxis documentada de Fabric admite parámetros marcados como <code>OUTPUT</code>, para devolver valores sueltos — cuántas filas se cargaron, a qué hora terminó.</li>
+<li><strong>Errores.</strong> Si algo sale mal, el procedimiento lanza el error a quien lo llamó. Suena obvio, pero es la base de todo lo que hace confiable a un procedimiento, y es el tema de próximos post.</li>
+</ol>
+<h3>5.4 Trabajos que no crean ninguna tabla</h3>
+<p>Para terminar de desmontar la idea de "procedimiento = crear tablas", estos son casos reales, y en ninguno aparece un <code>CREATE TABLE</code>:</p>
+<ol>
+<li><strong>Refrescar una tabla</strong> — <code>TRUNCATE</code> + <code>INSERT</code>. Lo que acabamos de hacer.</li>
+<li><strong>Carga incremental</strong> — un <code>MERGE</code> que actualiza las filas que cambiaron e inserta las nuevas, sin tocar el resto. Es lo que usarías cuando la tabla es grande y rehacerla entera sale caro.</li>
+<li><strong>Depurar datos</strong> — un <code>UPDATE</code> que normaliza valores mal escritos, un <code>DELETE</code> que quita registros de prueba.</li>
+<li><strong>Archivar histórico</strong> — mover las filas antiguas a una tabla de archivo y quitarlas de la tabla activa. Dos operaciones que tienen que ir juntas.</li>
+<li><strong>Encadenar pasos en orden</strong> — un procedimiento puede llamar a otros con <code>EXEC</code>. Primero cargar dimensiones, después hechos, después las tablas agregadas.</li>
+<li><strong>Validar antes de actuar</strong> — comprobar una condición y detenerse si no se cumple, en lugar de arrasar con la tabla.</li>
+</ol>
+<p>Los dos últimos son los que rompen del todo la idea de "un procedimiento es una consulta con nombre": ahí ya no hay una consulta, hay <strong>varias operaciones con lógica entre ellas</strong>. Eso es exactamente lo que una vista jamás podría contener.</p>
+<h3>5.5 Entonces, ¿por qué nuestro caso sí necesita un procedimiento?</h3>
+<p>Porque la salida barata está cerrada. Lo natural sería no materializar nada y dejar <code>metricas_por_anio</code> como vista — se recalcularía sola y no habría trabajo que programar. En Fabric eso no se puede, por dos razones que se suman:</p>
+<ol>
+<li><strong>Direct Lake (el método para lllevar los datos a un modelo semántico y aun reporte) solo lee tablas Delta físicas, nunca vistas.</strong> Si la conviertes en vista, el modelo semántico pierde Direct Lake y cae a Import (refresco manual) o DirectQuery (más lento).</li>
+<li><strong>El Warehouse de Fabric no soporta vistas materializadas.</strong> No es que sean peor opción: no existen. Están en la lista oficial de comandos no soportados.</li>
+</ol>
+<p>Sumadas dejan un solo camino: la tabla tiene que ser física, y alguien tiene que reconstruirla periódicamente. Reconstruirla <strong>cambia</strong> algo, así que por la regla de arriba es territorio de procedimiento — obligatoriamente.</p>
+<h2>6. Qué ganaste al empaquetarlo</h2>
+<p>El envase parece trivial —tres palabras— pero te dio cuatro cosas concretas:</p>
+<ol>
+<li><strong>Un nombre.</strong> <code>sp_refrescar_metricas_por_anio</code> es ahora un sustantivo del que puedes hablar en una reunión. Antes tenías que describir un query.</li>
+<li><strong>Una casa.</strong> El código vive dentro de la base de datos. Cualquiera con acceso al Warehouse puede abrirlo y leer cómo se arma esa tabla, sin pedirte el archivo.</li>
+<li><strong>Repetibilidad.</strong> Se ejecuta las veces que haga falta sin romperse.</li>
+<li><strong>Se puede llamar desde afuera.</strong> Y esta es la que abre la siguiente puerta: <code>EXEC dbo.sp_refrescar_metricas_por_anio</code> es una sola línea que un proceso programado puede ejecutar cada lunes a las 4 AM sin que tú estés delante.</li>
+</ol>
+<p>Las tres primeras son comodidad. La cuarta es la que convierte una tabla congelada en una tabla viva.</p>
+<h2>7. Lo que este procedimiento todavía no hace</h2>
+<p>Sería deshonesto terminar sin decir qué le falta, porque le falta bastante.</p>
+<p>Fíjate en el orden de las operaciones: primero <code>TRUNCATE</code>, después <code>INSERT</code>. Ahora imagina que un lunes el Lakehouse llega vacío por un problema en la fuente, o que el <code>INSERT</code> falla a mitad de camino. El <code>TRUNCATE</code> ya se ejecutó. La tabla queda <strong>vacía</strong>, el reporte de Power BI queda en blanco, y no te enteras hasta que alguien te escribe.</p>
+<p>Ese escenario tiene solución, y no es complicada, pero son conceptos aparte:</p>
+<ol>
+<li><strong>Transacciones</strong> (<code>BEGIN TRAN</code> / <code>COMMIT</code> / <code>ROLLBACK</code>) — para que el borrado y la carga sean una sola operación indivisible: o se aplican los dos o no se aplica ninguno.</li>
+<li><strong>Manejo de errores</strong> (<code>TRY...CATCH</code>) — para atrapar el fallo en vez de dejar que reviente.</li>
+<li><strong>Bitácora de ejecuciones</strong> — una tabla donde el procedimiento anota cada corrida con su resultado, para que un fallo nunca sea silencioso.</li>
+</ol>
+<p>Ninguna de las tres es parte de lo que hace que algo <strong>sea</strong> un procedimiento. Son lo que hace que un procedimiento sea <strong>confiable</strong>, que es otro eje distinto.</p>
+<p>Y después queda la pieza que da sentido a todo: el proceso programado que ejecuta este <code>EXEC</code> cada lunes sin que nadie abra el navegador.</p>
+<h2>8. Mi conclusión</h2>
+<p>Cuando escuché "procedimiento almacenado" por primera vez, asumí que era territorio avanzado — cosa de DBA, de las que se aprenden después. Resultó ser lo contrario: es de las piezas más simples de SQL. Tres palabras alrededor de código que ya sabías escribir.</p>
+<p>Lo que me llevo es la distinción que ordena todo el resto. Una vista empaqueta <strong>una consulta</strong>: la puedes meter en un <code>FROM</code>, encadenar, reutilizar como si fuera una tabla. Un procedimiento empaqueta <strong>un trabajo</strong>: no va en ningún <code>FROM</code>, porque no es una tabla — es una acción con nombre. Cuando dudes entre uno y otro, la pregunta es siempre la misma: <em>¿esto cambia algo, o solo lo mira?</em></p>
+<h2>Gotchas</h2>
+<ul>
+<li><strong>El procedimiento no crea la tabla, la rellena.</strong> <code>TRUNCATE TABLE</code> exige que la tabla ya exista. El <code>CREATE TABLE AS SELECT</code> (CTAS) sigue siendo necesario <strong>una vez</strong>, para el nacimiento; el procedimiento se encarga del mantenimiento. Si borras la tabla, el procedimiento falla con <code>Invalid object name</code> hasta que la vuelvas a crear.</li>
+<li><strong>Sin <code>OR ALTER</code>, el segundo <code>CREATE PROCEDURE</code> falla</strong> con el mismo error de nombre repetido que el <code>CREATE TABLE AS SELECT</code> (CTAS). <code>CREATE OR ALTER PROCEDURE</code> está en la sintaxis documentada de Fabric y evita el ciclo <code>DROP</code> + <code>CREATE</code>.</li>
+<li><strong>La CTE (<code>WITH</code>) va antes del <code>INSERT INTO</code>, no después.</strong> El orden es <code>WITH ... AS (...)</code> y luego <code>INSERT INTO ... SELECT</code>. Funciona dentro de un procedimiento en el Warehouse de Fabric.</li>
+<li><strong>En <code>INSERT INTO ... SELECT</code> las columnas se emparejan por posición, no por nombre.</strong> Si cambias el orden del <code>SELECT</code> sin cambiar la lista del <code>INSERT</code>, no hay error — hay datos en la columna equivocada. Es el fallo más silencioso de este patrón.</li>
+<li><strong>El editor SQL aborta el lote completo tras un error.</strong> Si pones varias sentencias en la misma pestaña y una falla, las siguientes <strong>no se ejecutan</strong>, aunque no dependan de la que falló. Al depurar, ejecuta las verificaciones por separado.</li>
+</ul>
+<h2>Referencia oficial</h2>
+<ul>
+<li>Superficie T-SQL del Warehouse de Fabric (incluye la lista de comandos no soportados): https://learn.microsoft.com/en-us/fabric/data-warehouse/tsql-surface-area</li>
+<li><code>CREATE PROCEDURE</code> — sintaxis para Microsoft Fabric: https://learn.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql?view=fabric</li>
+<li>Ingesta de datos en el Warehouse con T-SQL (<code>CREATE TABLE AS SELECT</code> e <code>INSERT ... SELECT</code>): https://learn.microsoft.com/en-us/fabric/data-warehouse/ingest-data-tsql</li>
+<li>Tablas temporales en el Warehouse de Fabric: https://learn.microsoft.com/en-us/fabric/data-warehouse/temp-tables</li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/microsoft-fabric-lakehouse-vs-warehouse"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Microsoft Fabric — Lakehouse vs Warehouse</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'fabric-procedimientos-almacenados';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
       "datablog",
       "azure"
     ],
-    "updated": "2026-07-23",
+    "updated": "2026-07-29",
     "posts-relacionados": [
       "microsoft-fabric-herramientas",
       "elementos-de-fabric"
@@ -21,6 +21,27 @@
     "serie": "fabric-desde-cero",
     "series-relacionadas": "",
     "parte-anterior": "fabric-primer-pipeline",
+    "parte-siguiente": "fabric-procedimientos-almacenados"
+  },
+  {
+    "titulo": "Procedimientos almacenados en Microsoft Fabric",
+    "slug": "fabric-procedimientos-almacenados",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-07-29",
+    "posts-relacionados": [
+      "microsoft-fabric-herramientas"
+    ],
+    "video-youtube": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento.",
+    "serie": "fabric-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "microsoft-fabric-lakehouse-vs-warehouse",
     "parte-siguiente": ""
   },
   {
