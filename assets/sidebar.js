@@ -90,6 +90,13 @@ function renderSidebar(query) {
   inicio.textContent = 'Inicio';
   nav.appendChild(inicio);
 
+  // Portafolio
+  const portafolio = document.createElement('a');
+  portafolio.href = '/portafolio';
+  portafolio.className = 'sidebar-inicio';
+  portafolio.textContent = 'Portafolio';
+  nav.appendChild(portafolio);
+
   // Categorías
   Object.entries(CATEGORIAS).forEach(([catSlug, catNombre]) => {
     const posts = _todosLosPosts.filter(p => {
