@@ -73,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">API de Notion: cómo leer páginas y tablas con Postman</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
-      <span class="post-updated">Actualizado: 2026-05-24</span>
+      <span class="post-updated">Actualizado: 2026-08-11</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -180,15 +180,12 @@ https://api.notion.com/v1/databases/{database_id}/query → consultar una databa
 <p>En esta sesión usamos tres: <code>POST /search</code>, <code>GET /blocks/{page_id}/children</code> y <code>GET /blocks/{table_id}/children</code>.</p>
 <h3>Por qué algunos endpoints de lectura usan POST</h3>
 <p>En REST la convención es usar <code>GET</code> para leer. Pero <code>GET</code> transfiere sus parámetros en la URL — lo que funciona bien para identificadores simples, pero se vuelve engorroso con estructuras complejas.</p>
-<p>Notion usa <code>POST</code> en los endpoints de lectura que aceptan filtros. Por ejemplo, <code>/databases/{id}/query</code> permite enviar esto en el body:</p>
+<p>Notion usa <code>POST</code> en los endpoints de lectura que aceptan filtros. Por ejemplo, <code>/search</code> permite enviar esto en el body:</p>
 <pre><code class="language-json">{
-  &quot;filter&quot;: {
-    &quot;property&quot;: &quot;Estado&quot;,
-    &quot;select&quot;: { &quot;equals&quot;: &quot;Comprado&quot; }
-  },
-  &quot;sorts&quot;: [
-    { &quot;property&quot;: &quot;Precio&quot;, &quot;direction&quot;: &quot;descending&quot; }
-  ]
+  &quot;query&quot;: &quot;Página&quot;,
+  &quot;filter&quot;: { &quot;property&quot;: &quot;object&quot;, &quot;value&quot;: &quot;page&quot; },
+  &quot;sort&quot;: { &quot;timestamp&quot;: &quot;last_edited_time&quot;, &quot;direction&quot;: &quot;descending&quot; },
+  &quot;page_size&quot;: 10
 }
 </code></pre>
 <p>Ese mismo filtro en la URL sería ilegible e inmanejable. El body de un <code>POST</code> es la forma práctica de enviar parámetros de consulta complejos.</p>
@@ -223,7 +220,7 @@ https://api.notion.com/v1/databases/{database_id}/query → consultar una databa
 <p>En Postman: <code>Authorization</code> se configura en la pestaña <strong>Authorization → Bearer Token</strong>. <code>Notion-Version</code> va en la pestaña <strong>Headers</strong> como un par clave-valor.</p>
 <p><strong>Una aclaración sobre el nombre</strong>: el Integration Token de Notion es un <strong>Bearer Token estático</strong> — usa el header <code>Authorization: Bearer</code> y se genera manualmente desde la web, sin POST de login. Postman llama al campo "Bearer Token" porque ese es el formato del header. Lo que lo distingue de un Bearer Token dinámico es que es estático: no expira automáticamente y no hay que renovarlo con ninguna petición programática.</p>
 <h3>Body</h3>
-<p>Solo en métodos que envían datos: <code>POST</code>, <code>PATCH</code>. En el caso de <code>/search</code> con body vacío <code>{}</code>, la API devuelve todo lo accesible para la Integration.</p>
+<p>Solo en métodos que envían datos: <code>POST</code>, <code>PATCH</code>. En el caso de <code>/search</code> con body vacío <code>{}</code>, la API devuelve todo lo accesible para la Integration. El body lleva todo lo que no cabe como identificador (criterios de búsqueda, el contenido nuevo, los campos a cambiar)</p>
 <h3>Status code</h3>
 <p>Los más importantes para trabajar con Notion:</p>
 <table>
