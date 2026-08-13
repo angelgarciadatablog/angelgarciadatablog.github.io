@@ -1,5 +1,26 @@
 [
   {
+    "titulo": "Terminal, shell, zsh y PowerShell: qué es cada cosa",
+    "slug": "terminal-shell-zsh-y-powershell",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-08-13",
+    "posts-relacionados": [
+      "configurar-atajos-terminal-mac"
+    ],
+    "video-youtube": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Antes de escribir tu primer script conviene entender tres palabras que casi nadie separa bien - terminal, shell y script. Aquí están, en orden.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
     "slug": "api-notion-extraer-paginas-tablas-postman",
     "categoria": "apis",
@@ -9,7 +30,9 @@
     ],
     "updated": "2026-08-11",
     "posts-relacionados": [],
-    "video-youtube": [],
+    "video-youtube": [
+      "https://www.youtube.com/watch?v=IKRRKvhnnJ0"
+    ],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",

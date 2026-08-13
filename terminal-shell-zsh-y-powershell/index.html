@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal, shell, zsh y PowerShell: qué es cada cosa · Angel García</title>
+  <meta name="description" content="Antes de escribir tu primer script conviene entender tres palabras que casi nadie separa bien - terminal, shell y script. Aquí están, en orden." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/terminal-shell-zsh-y-powershell/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Terminal, shell, zsh y PowerShell: qué es cada cosa" />
+  <meta property="og:description" content="Antes de escribir tu primer script conviene entender tres palabras que casi nadie separa bien - terminal, shell y script. Aquí están, en orden." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/terminal-shell-zsh-y-powershell/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Terminal, shell, zsh y PowerShell: qué es cada cosa", "categoria": "bash-shell", "serie": "", "series_relacionadas": "", "slug": "terminal-shell-zsh-y-powershell", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-08-13", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <a href="/portafolio">Portafolio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Terminal, shell, zsh y PowerShell: qué es cada cosa</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-08-13</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><p>Todos los días le das órdenes a tu computadora. Lo que pasa es que no lo vives así: tú abres una carpeta, arrastras un archivo, haces clic derecho y eliges una opción. Se siente como usar la computadora, no como darle instrucciones. Pero cada clic es exactamente eso —una orden.</p>
+<p>Este post es sobre la otra forma de dar esas mismas órdenes: escribiéndolas. Y sobre las tres palabras que se cruzan en el camino y que casi nadie te explica en orden: <strong>terminal</strong>, <strong>shell</strong> y <strong>script</strong>.</p>
+<h2>1. Señalar o dictar</h2>
+<p>Hay dos formas de darle órdenes a una computadora: <strong>señalar</strong> o <strong>dictar</strong>.</p>
+<p>1) Cuando usas el mouse, señalas. Es cómodo y no tienes que aprender nada —pero solo puedes hacer lo que alguien ya dibujó en la pantalla, y tienes que hacerlo <strong>una vez por cada elemento</strong>.</p>
+<p>2) Cuando usas la terminal, dictas. Escribes la orden en palabras. Es más incómodo al principio, y aquí viene lo importante: la ventaja real <strong>no es que la computadora se vuelva más potente</strong>. Copiar 100 archivos cuesta lo mismo por dentro, lo hagas como lo hagas.</p>
+<p>Lo que cambia es quién hace el trabajo repetitivo:</p>
+<ul>
+<li>Con el mouse, <strong>tú ejecutas</strong> la acción 100 veces.</li>
+<li>Con la terminal, <strong>tú describes</strong> la acción una vez y la máquina la ejecuta 100 veces.</li>
+</ul>
+<p>Ese es el salto completo: pasas de <em>ejecutar</em> a <em>describir</em>. Y describir no se cansa, no se distrae, y no se equivoca en el archivo número 73.</p>
+<p>Piensa en una tarea real: buscar dentro de veinte carpetas todos los archivos cuyo nombre empiece con "a", y copiarlos a otra carpeta ordenados. Con el mouse es una tarde entera entrando y saliendo de carpetas. Dictada, es una línea. La tarea no cambió de dificultad —cambió quién la repite.</p>
+<h2>2. La terminal: la mínima interfaz gráfica posible</h2>
+<p>Aquí hay una paradoja que me gusta mucho.</p>
+<p>La terminal <strong>es</strong> una aplicación gráfica: tiene ventana, pestañas, tipografía, colores. Lo que la hace distinta es que renunció a casi toda su parte gráfica. No te ofrece nada que señalar —solo un lugar donde escribir.</p>
+<blockquote>
+<p>La terminal es la mínima cantidad de interfaz gráfica necesaria para dejar de usar interfaz gráfica.</p>
+</blockquote>
+<p>Su nombre completo es <strong>emulador de terminal</strong>, y viene de algo literal: antes existían terminales físicas, una pantalla con teclado y sin computadora propia, conectada por cable a una máquina central. Las aplicaciones de hoy <em>emulan</em> aquel aparato.</p>
+<p>En el día a día basta con decirle <strong>terminal</strong>. Es el término genérico correcto y se entiende en cualquier sistema. También verás la palabra <em>consola</em>, que se usa como sinónimo.</p>
+<p>Y ahora el punto que ordena todo lo demás: <strong>la terminal no entiende ni un solo comando</strong>. Es una ventana. Dibuja lo que escribes y muestra lo que le devuelven. Nada más.</p>
+<p>Entonces, ¿quién te entiende?</p>
+<h2>3. El shell: quien te escucha</h2>
+<p>Dentro de esa ventana corre un programa cuyo trabajo es escucharte. Se llama <strong>shell</strong>.</p>
+<p>Es la palabra que más confusión genera, así que vale la pena decir qué <strong>no</strong> es: el shell no es la ventana, y tampoco es el idioma. <strong>El shell es un programa</strong>, y hace tres cosas:</p>
+<ol>
+<li><strong>Define la gramática</strong> — las reglas con las que le hablas.</li>
+<li><strong>Entiende lo que escribiste</strong> — expande comodines, resuelve variables, separa el comando de sus argumentos.</li>
+<li><strong>Manda a ejecutar</strong> — localiza los programas necesarios, los lanza, los conecta entre sí y espera resultados.</li>
+</ol>
+<p>La imagen que mejor le queda es la de un <strong>capataz de obra</strong>: le hablas en su idioma, te entiende, y moviliza a los obreros —que son los programas ya instalados— para que hagan el trabajo. No te da clases: obedece y organiza.</p>
+<h3>Cada sistema trae el suyo</h3>
+<p>Tu computadora ya tiene un shell instalado, vengas de donde vengas:</p>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Shell por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mac</td>
+<td><code>zsh</code> (Z Shell)</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>PowerShell</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>bash</code> en la mayoría de distribuciones</td>
+</tr>
+</tbody>
+</table>
+<p>Dos aclaraciones que evitan malentendidos:</p>
+<ul>
+<li><strong>Un sistema no habla un solo idioma.</strong> Tu Mac trae zsh por defecto, pero también tiene bash instalado. Windows trae PowerShell y además CMD, y puede correr bash de Linux por dentro. Cada sistema tiene una lengua materna, pero puede aprender otras.</li>
+<li><strong>El lenguaje se llama igual que el programa</strong>, y de ahí viene medio enredo. Es como si a la persona que te atiende la llamaran "Español" y al idioma que habla también "Español". Preguntas <em>¿quién me atiende?</em> → zsh. <em>¿En qué idioma le hablo?</em> → zsh. Mismo nombre, dos cosas distintas.</li>
+</ul>
+<p>Y sí, ese lenguaje <strong>es un lenguaje de programación</strong>, aunque no lo parezca. Tiene variables, condicionales, bucles y funciones. Lo que lo hace sentir distinto es que puedes usarlo <strong>de a una línea a la vez</strong>: escribes una instrucción, pulsas Enter, ves el resultado. En la mayoría de lenguajes primero escribes el archivo completo y después lo ejecutas.</p>
+<p>Esa particularidad es la que hace posible lo que viene ahora.</p>
+<h2>4. El script: órdenes guardadas</h2>
+<p>Un <strong>script</strong> es un archivo de texto con una lista de instrucciones que la computadora ejecuta una por una, en orden.</p>
+<p>Y aquí está el mejor regalo de todo esto:</p>
+<blockquote>
+<p>Lo que escribes en un script es <strong>literalmente lo mismo</strong> que escribirías a mano en la terminal.</p>
+</blockquote>
+<p>No hay un segundo lenguaje. No hay un "modo script". Es la misma conversación, guardada en un archivo para no tener que repetirla. Si ya sabes escribir tres comandos en la terminal, ya sabes escribir un script de tres líneas: son esos mismos comandos, uno debajo del otro.</p>
+<p>Por eso la definición corta que uso es esta:</p>
+<blockquote>
+<p><strong>Scripting es escribir en un archivo las mismas órdenes que escribirías a mano en la terminal, para no tener que volver a escribirlas.</strong></p>
+</blockquote>
+<h2>5. Lo mínimo para empezar, en los dos idiomas</h2>
+<p>Hasta aquí todo fue mapa. Bajemos a la tierra con lo mínimo indispensable —lo justo para que puedas abrir la terminal hoy y no quedarte mirando el cursor.</p>
+<h3>5.1 La forma de una orden</h3>
+<p>Antes de cualquier lista, la gramática, porque es siempre la misma en los dos sistemas:</p>
+<pre><code>comando   -opciones   argumentos
+</code></pre>
+<ul>
+<li><strong>Comando</strong> — qué quieres hacer</li>
+<li><strong>Opciones</strong> — cómo lo quieres (empiezan con guion)</li>
+<li><strong>Argumentos</strong> — sobre qué lo quieres</li>
+</ul>
+<p>Y un detalle que evita el primer tropiezo de todo el mundo: <strong>el espacio separa las piezas</strong>. Por eso un nombre con espacios necesita comillas —<code>cd "Mi unidad"</code>—, porque sin ellas el shell cree que le pasaste dos argumentos distintos.</p>
+<h3>5.2 Las órdenes básicas</h3>
+<p>Las mismas acciones, dichas en cada idioma:</p>
+<table>
+<thead>
+<tr>
+<th>Qué quieres hacer</th>
+<th>Mac (zsh)</th>
+<th>Windows (PowerShell)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saber en qué carpeta estás</td>
+<td><code>pwd</code></td>
+<td><code>Get-Location</code></td>
+</tr>
+<tr>
+<td>Listar lo que hay aquí</td>
+<td><code>ls</code></td>
+<td><code>Get-ChildItem</code></td>
+</tr>
+<tr>
+<td>Entrar a una carpeta</td>
+<td><code>cd informes</code></td>
+<td><code>Set-Location informes</code></td>
+</tr>
+<tr>
+<td>Subir un nivel</td>
+<td><code>cd ..</code></td>
+<td><code>Set-Location ..</code></td>
+</tr>
+<tr>
+<td>Crear una carpeta</td>
+<td><code>mkdir informes</code></td>
+<td><code>New-Item -ItemType Directory informes</code></td>
+</tr>
+<tr>
+<td>Copiar un archivo</td>
+<td><code>cp a.txt b.txt</code></td>
+<td><code>Copy-Item a.txt b.txt</code></td>
+</tr>
+<tr>
+<td>Mover o renombrar</td>
+<td><code>mv viejo.txt nuevo.txt</code></td>
+<td><code>Move-Item viejo.txt nuevo.txt</code></td>
+</tr>
+<tr>
+<td>Borrar un archivo</td>
+<td><code>rm notas.txt</code></td>
+<td><code>Remove-Item notas.txt</code></td>
+</tr>
+<tr>
+<td>Ver el contenido de un archivo</td>
+<td><code>cat notas.txt</code></td>
+<td><code>Get-Content notas.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p>Compara las dos columnas y verás el carácter de cada idioma:</p>
+<ul>
+<li><strong>zsh es corto.</strong> Nombres de dos o tres letras, heredados de una época en que escribir costaba caro. Rápido de teclear, imposible de adivinar.</li>
+<li><strong>PowerShell es explícito.</strong> Todo sigue el patrón <strong>Verbo-Sustantivo</strong>: <code>Get-</code>, <code>Set-</code>, <code>New-</code>, <code>Copy-</code>, <code>Move-</code>, <code>Remove-</code>. Cansa más al escribir, pero si sabes el verbo y el sustantivo, adivinas el comando sin buscarlo.</li>
+</ul>
+<blockquote>
+<p>En Windows, además, <code>ls</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code> y <code>cat</code> también funcionan: PowerShell los trae como <strong>alias</strong> de sus cmdlets. Es un gesto amable para quien viene de Unix —pero cuidado, son solo apodos. Por dentro se ejecuta <code>Get-ChildItem</code>, y las opciones no son las mismas que en Mac.</p>
+</blockquote>
+<p>Una advertencia que vale para los dos sistemas: <strong>borrar desde la terminal no manda nada a la papelera</strong>. No hay confirmación ni deshacer. Con <code>rm</code> y con <code>Remove-Item</code>, lee dos veces antes de pulsar Enter.</p>
+<h3>5.3 Cuando no sepas qué hace algo</h3>
+<p>No hay que memorizar nada; hay que saber preguntar:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Mac (zsh)</th>
+<th>Windows (PowerShell)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ver el manual de un comando</td>
+<td><code>man ls</code></td>
+<td><code>Get-Help Get-ChildItem</code></td>
+</tr>
+<tr>
+<td>Saber qué es un comando</td>
+<td><code>type ls</code></td>
+<td><code>Get-Command ls</code></td>
+</tr>
+</tbody>
+</table>
+<p>Y tres teclas que valen más que media lista de comandos, iguales en ambos:</p>
+<ol>
+<li><strong>Tab</strong> — autocompleta nombres. Úsala siempre: además de ahorrar tiempo, evita errores de tipeo.</li>
+<li><strong>Flecha arriba</strong> — recupera los comandos anteriores.</li>
+<li><strong>Ctrl + C</strong> — cancela lo que esté corriendo.</li>
+</ol>
+<p>Con esto ya te mueves en cualquiera de los dos. Y viendo lo distintos que se ven, la pregunta cae sola: ¿por qué dos programas que hacen lo mismo terminaron hablando tan diferente?</p>
+<h2>6. Las cuatro shells que te vas a cruzar</h2>
+<p>Ya viste zsh y PowerShell lado a lado. Hay dos más rondando por ahí, y conviene saber de dónde viene cada una —porque no son cuatro versiones de la misma idea:</p>
+<table>
+<thead>
+<tr>
+<th>Shell</th>
+<th>Familia</th>
+<th>Origen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bash</code></td>
+<td>Unix</td>
+<td>Descendiente del Bourne Shell de los años 70</td>
+</tr>
+<tr>
+<td><code>zsh</code></td>
+<td>Unix</td>
+<td>Misma familia que bash, versión más moderna</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>DOS</td>
+<td>Heredero de MS-DOS, años 80</td>
+</tr>
+<tr>
+<td>PowerShell</td>
+<td>.NET</td>
+<td>Diseñado desde cero en 2006, sin herencia</td>
+</tr>
+</tbody>
+</table>
+<p>Esa tabla reordena el mapa entero:</p>
+<ol>
+<li><strong>bash y zsh son casi el mismo idioma.</strong> Dialectos. Prácticamente todo lo que escribes en uno funciona igual en el otro. Pasar de bash a zsh es como pasar del español de España al de México: acento y modismos distintos, entendimiento total.</li>
+<li><strong>CMD y PowerShell no son parientes.</strong> PowerShell no es "el CMD moderno" —es un diseño hecho desde cero porque CMD ya no daba más.</li>
+<li><strong>PowerShell tampoco es pariente de bash.</strong> Es una tercera cosa, sin relación con ninguna de las otras dos.</li>
+</ol>
+<p>Así que la simetría es falsa: en Mac tienes <strong>dos dialectos de la misma lengua</strong>; en Windows, <strong>dos lenguas sin parentesco</strong>.</p>
+<h3>No todas alcanzan lo mismo</h3>
+<p>Aquí hay una jerarquía real y prefiero decirla sin diplomacia: <strong>CMD es una pieza de museo que aún respira.</strong> Lenguaje pobre, sin funciones de verdad, manejo de errores casi inexistente y una sintaxis heredada de los años 80. Sigue ahí por compatibilidad con archivos <code>.bat</code> antiguos, no porque sea una buena opción. Si abres una terminal en Windows hoy, no es en CMD donde quieres escribir.</p>
+<p>Las otras tres —bash, zsh y PowerShell— son lenguajes completos, con variables, condicionales, bucles y funciones. Con cualquiera de las tres puedes escribir cosas serias.</p>
+<h3>Texto contra objetos</h3>
+<p>Entre las tres opciones serias hay una división de fondo que vale la pena conocer desde el principio:</p>
+<ul>
+<li><strong>bash y zsh mueven texto.</strong> Todo lo que sale de un comando es una cadena de caracteres. Si quieres el tamaño de un archivo, recortas la columna correcta de ese texto.</li>
+<li><strong>PowerShell mueve objetos.</strong> Lo que sale de un comando conserva su estructura, con propiedades que tienen nombre. No recortas nada: pides la propiedad.</li>
+</ul>
+<p>Ninguno es mejor. Son dos apuestas distintas: el mundo Unix cree que el texto es el formato universal que todos entienden; PowerShell cree que perder la estructura para luego reconstruirla a mano es un desperdicio.</p>
+<h2>7. Ejemplo práctico: ordenar los Excel de Downloads</h2>
+<p>Un último dato antes del ejemplo, y es el que lo vuelve legible: <strong>la mayoría de los comandos que usas no pertenecen al shell.</strong> <code>ls</code>, <code>git</code> o <code>python</code> son programas independientes instalados en tu sistema; el shell solo los localiza, los ejecuta y los conecta entre sí. Los programas son los electrodomésticos —el shell es la instalación eléctrica.</p>
+<p>Con eso en mente, vamos a un caso real y bastante universal: tu carpeta de descargas es un basurero, y ahí dentro viven mezclados PDFs, imágenes, instaladores y un montón de archivos de Excel. Queremos que <strong>todos los Excel se vayan a una carpeta <code>mis-excels</code></strong>, dentro de la misma carpeta de descargas.</p>
+<h3>7.1 En Mac, con zsh</h3>
+<p>Son dos líneas:</p>
+<pre><code class="language-bash">mkdir -p ~/Downloads/mis-excels
+mv ~/Downloads/*.xls* ~/Downloads/mis-excels/
+</code></pre>
+<p>Qué hace cada pieza:</p>
+<ul>
+<li><code>mkdir -p</code> crea la carpeta. La opción <code>-p</code> significa "no te quejes si ya existe" —así el comando sirve tanto la primera vez como todas las siguientes.</li>
+<li><code>*.xls*</code> es el comodín, y está construido con intención. El <code>*</code> de la izquierda acepta cualquier nombre de archivo; el <code>.xls</code> fija la parte que nos importa; el <code>*</code> de la derecha acepta cualquier cosa que venga después. Con eso caen de una sola vez los <code>.xls</code>, los <code>.xlsx</code> y los <code>.xlsm</code>.</li>
+<li><code>mv</code> mueve.</li>
+</ul>
+<p>Y aquí está lo interesante, que conecta con todo lo anterior: <strong><code>mv</code> nunca ve un asterisco</strong>. El shell expande el comodín <em>antes</em> de llamarlo, y le entrega la lista real de archivos ya resuelta. <code>mv</code> es un programa tonto que recibe nombres concretos; la inteligencia de "busca todo lo que se parezca a esto" la puso el shell.</p>
+<blockquote>
+<p>Si en tu carpeta no hay ningún Excel, zsh responde <code>no matches found</code> y no hace nada. No es un error grave —es zsh avisándote de que no encontró a qué aplicar la orden.</p>
+</blockquote>
+<h3>7.2 En Windows, con PowerShell</h3>
+<p>Lo mismo, en el otro idioma:</p>
+<pre><code class="language-powershell">New-Item -ItemType Directory -Force &quot;$HOME\Downloads\mis-excels&quot;
+Get-ChildItem &quot;$HOME\Downloads&quot; -Filter *.xls* | Move-Item -Destination &quot;$HOME\Downloads\mis-excels&quot;
+</code></pre>
+<p>Las equivalencias se leen solas: <code>New-Item -ItemType Directory</code> es el <code>mkdir</code>, y <code>-Force</code> cumple el papel del <code>-p</code> (no protestar si la carpeta ya está). <code>Get-ChildItem</code> es el <code>ls</code> y <code>Move-Item</code> es el <code>mv</code>.</p>
+<p>Pero fíjate en la diferencia de fondo, que no es cosmética: en zsh el shell expandió el comodín a texto y se lo pasó a <code>mv</code>. En PowerShell, <code>Get-ChildItem</code> <strong>entrega objetos</strong> —archivos con sus propiedades intactas— y la tubería se los pasa a <code>Move-Item</code>, que sabe qué hacer con ellos. Es exactamente la diferencia entre texto y objetos que veíamos antes, ocurriendo en una línea que resuelve el mismo problema.</p>
+<h3>7.3 De la terminal al archivo: esto ya es un script</h3>
+<p>Aquí viene la parte que hace que todo valga la pena. <strong>Lo que acabas de escribir a mano se guarda tal cual en un archivo y se convierte en un script.</strong> No hay que traducir nada, no hay que adaptar nada: son las mismas líneas.</p>
+<p><strong>En Mac</strong>, creas un archivo llamado <code>organizar-excels.sh</code> con esto dentro:</p>
+<pre><code class="language-bash">#!/bin/zsh
+mkdir -p ~/Downloads/mis-excels
+mv ~/Downloads/*.xls* ~/Downloads/mis-excels/
+echo &quot;Listo: Excels ordenados.&quot;
+</code></pre>
+<p>Solo se agregó una línea nueva, la primera. Se llama <strong>shebang</strong> (<code>#!</code>) y le dice al sistema con qué shell ejecutar el archivo. Todo lo demás es idéntico a lo que escribiste en la terminal.</p>
+<p>Falta un paso que confunde a todo el mundo la primera vez: <strong>un archivo de texto no se puede ejecutar hasta que le des permiso</strong>. Si lo intentas antes, el sistema responde <code>permission denied</code>. El permiso se da una sola vez:</p>
+<pre><code class="language-bash">chmod +x organizar-excels.sh
+./organizar-excels.sh
+</code></pre>
+<p>El <code>./</code> del final no es decorativo: significa "el archivo que está en esta carpeta". Sin él, el shell buscaría un programa llamado <code>organizar-excels.sh</code> entre los instalados del sistema, y no lo encontraría.</p>
+<p><strong>En Windows</strong> el archivo se llama <code>organizar-excels.ps1</code> y se ejecuta así:</p>
+<pre><code class="language-powershell">.\organizar-excels.ps1
+</code></pre>
+<p>No hace falta dar permisos como en Mac, pero hay otra barrera: por seguridad, Windows viene configurado para <strong>no ejecutar scripts</strong> de PowerShell. La primera vez tendrás que autorizarlo para tu usuario:</p>
+<pre><code class="language-powershell">Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+</code></pre>
+<p>Dos apuntes sobre los nombres: en Mac la extensión habitual es <code>.sh</code> (también verás <code>.zsh</code>), y en Windows es <code>.ps1</code>. Y en ninguno de los dos casos la extensión es lo que hace funcionar al archivo —en Mac manda el shebang, y en Windows manda con qué programa lo ejecutas. La extensión es para los humanos.</p>
+<p>Ese es todo el misterio del scripting: <strong>el archivo no contiene nada que no hubieras escrito a mano.</strong></p>
+<h2>8. Cuándo esto se vuelve programación</h2>
+<p>Nuestro script tiene un defecto que aparece al segundo mes de usarlo: si vuelves a descargar un archivo que se llama igual que uno ya archivado, lo pisa. Digamos que quieres que cada archivo llegue con la fecha delante.</p>
+<p>Eso ya no se resuelve con una lista fija de órdenes:</p>
+<pre><code class="language-bash">for archivo in ~/Downloads/*.xls*(N); do
+    mv &quot;$archivo&quot; ~/Downloads/mis-excels/$(date +%F)-$(basename &quot;$archivo&quot;)
+done
+</code></pre>
+<p>Quién es quién en esas tres líneas:</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>De quién es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for ... in ... do ... done</code></td>
+<td><strong>Shell</strong> — la estructura de bucle</td>
+</tr>
+<tr>
+<td><code>~/Downloads/*.xls*</code></td>
+<td><strong>Shell</strong> — expande el comodín a la lista real</td>
+</tr>
+<tr>
+<td><code>(N)</code></td>
+<td><strong>Shell</strong> — extra de zsh: si no hay coincidencias, la lista queda vacía y el bucle simplemente no corre (en vez del <code>no matches found</code>)</td>
+</tr>
+<tr>
+<td><code>archivo</code> y <code>"$archivo"</code></td>
+<td><strong>Shell</strong> — declarar la variable y leerla</td>
+</tr>
+<tr>
+<td><code>$( ... )</code></td>
+<td><strong>Shell</strong> — ejecuta algo y pone su resultado ahí mismo</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Programa externo — dice la fecha</td>
+</tr>
+<tr>
+<td><code>basename</code></td>
+<td>Programa externo — se queda solo con el nombre del archivo, sin la ruta</td>
+</tr>
+</tbody>
+</table>
+<p>De siete piezas, <strong>cinco son del shell</strong>. Los dos programas externos son los más tontos de la línea: uno dice la fecha y el otro recorta una ruta. Toda la inteligencia —recorrer, componer el nombre nuevo, saltarse el caso vacío— la pone el shell.</p>
+<p>Y aquí está la frontera que da nombre a esta sección:</p>
+<ol>
+<li><strong>Automatizar</strong> es guardar una lista fija de órdenes. El script hace siempre exactamente lo mismo. Es una grabación.</li>
+<li><strong>Programar</strong> empieza cuando esa lista deja de ser fija: cuando aparecen <strong>variables</strong> (guardar un valor para reusarlo), <strong>bucles</strong> (repetir para cada elemento) y <strong>condicionales</strong> (hacer algo solo si se cumple algo).</li>
+</ol>
+<p>Fíjate en cómo llegamos: no te sentaste a programar. Querías que los archivos no se pisaran, y para eso hacía falta tratar a cada archivo por separado. Salieron el bucle y la variable solos, empujados por el problema.</p>
+<p>Así es como se cruza esa frontera en la vida real —por pereza y por necesidad, no por ambición.</p>
+<h2>9. ¿Y Python dónde entra?</h2>
+<p>Si con el shell ya puedo automatizar, ¿para qué querría Python? Es la pregunta correcta, y conviene empezar por deshacer un malentendido: <strong>no compiten.</strong></p>
+<h3>9.1 Python es un programa más</h3>
+<p>Preguntémosle al sistema qué es cada cosa:</p>
+<pre><code>ls is /bin/ls
+python3 is /opt/homebrew/bin/python3
+</code></pre>
+<p>Ahí está la respuesta: para el shell, <code>python3</code> y <code>ls</code> son <strong>exactamente la misma clase de cosa</strong>. Un archivo instalado en una carpeta del sistema, que el shell localiza y ejecuta cuando escribes su nombre. Python no es una tecnología de otro rango —es un programa, como todos los demás.</p>
+<p>Y cuando lo lanzas, pasa lo de siempre: el shell lo arranca como un proceso aparte y <strong>se hace a un lado a esperar</strong>. Mientras Python trabaja, el shell no está interpretando nada. Cuando Python termina, el shell recupera el control y te devuelve el prompt.</p>
+<p>O sea que Python no vive <em>dentro</em> del shell. El shell es quien lo <strong>lanza</strong>.</p>
+<h3>9.2 Dos formas de construir lo mismo</h3>
+<p>Aclarado eso, la diferencia real entre uno y otro no es de potencia, es de <strong>cómo arman las piezas</strong>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Shell</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qué combina</td>
+<td>Programas</td>
+<td>Librerías</td>
+</tr>
+<tr>
+<td>Cómo se conectan</td>
+<td>Tuberías entre programas</td>
+<td><code>import</code> dentro del mismo programa</td>
+</tr>
+<tr>
+<td>Qué viaja entre las piezas</td>
+<td>Texto</td>
+<td>Datos con su estructura intacta</td>
+</tr>
+</tbody>
+</table>
+<p>El mundo del shell dice: <em>muchos programas pequeños, cada uno hace una cosa bien, y yo los conecto con texto</em>. Python dice: <em>un solo programa, con librerías para todo, y los datos nunca se aplanan</em>.</p>
+<p>De ahí sale la razón de fondo por la que Python gana cuando la cosa se complica. En una tubería del shell, <strong>cada paso convierte los datos a texto y el siguiente tiene que volver a interpretarlos</strong>. Con dos pasos es elegante. Con ocho pasos y datos que tienen estructura, acabas dedicando más tiempo a recortar texto que a resolver el problema.</p>
+<h3>9.3 Cuál elegir</h3>
+<p>El criterio es más simple de lo que parece: <strong>¿necesitas una librería?</strong></p>
+<p>Mientras trabajes con los archivos <em>por fuera</em> —moverlos, renombrarlos, copiarlos, buscarlos por nombre, comprimirlos— el shell te sobra. Nada de eso necesita librerías, y hacerlo en Python sería dar un rodeo para llegar al mismo sitio.</p>
+<p>En cambio, en el momento en que necesitas <strong>entrar al contenido</strong>, aparece la librería, y con ella Python:</p>
+<table>
+<thead>
+<tr>
+<th>Lo que quieres hacer</th>
+<th>La librería que lo resuelve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leer un Excel y sumar una columna</td>
+<td><code>openpyxl</code> o <code>pandas</code></td>
+</tr>
+<tr>
+<td>Cruzar dos CSV grandes por una columna en común</td>
+<td><code>pandas</code></td>
+</tr>
+<tr>
+<td>Pedir datos a una API y quedarte con dos campos del resultado</td>
+<td><code>requests</code></td>
+</tr>
+<tr>
+<td>Sacar las tablas de un PDF y volcarlas a un Excel</td>
+<td><code>pdfplumber</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ninguna de esas cuatro cosas se hace cómodamente en zsh, y las cuatro son media docena de líneas en Python.</p>
+<p>En una frase: <strong>mover archivos es shell; abrir archivos es Python.</strong></p>
+<h3>9.4 Lo que cuesta cada uno</h3>
+<p>Antes de concluir "entonces siempre Python", hay una contrapartida que decide más casos de los que parece:</p>
+<ul>
+<li><strong>Las piezas del shell ya están instaladas.</strong> <code>grep</code>, <code>sort</code>, <code>mv</code> o <code>find</code> están en cualquier Mac y en cualquier Linux del mundo. Cero instalación, cero configuración, funcionan hoy.</li>
+<li><strong>Las librerías de Python hay que instalarlas</strong> y mantenerlas: entornos virtuales, versiones que chocan, una lista de dependencias que acompaña al script a todos lados.</li>
+</ul>
+<p>Por eso el shell gana en lo pequeño. No porque sea más capaz, sino porque <strong>empezar no cuesta nada</strong>. Para mover unos archivos, montar un entorno de Python es traer una grúa para levantar una silla.</p>
+<p>Y no es una elección excluyente. Lo más común en la práctica es <strong>el shell llamando a Python</strong>: el shell decide qué archivos hay que procesar y se los pasa a un script que hace el trabajo fino. Cada uno en lo suyo.</p>
+<h3>9.5 Una aclaración de alcance</h3>
+<p>Todo lo anterior compara shell y Python para una cosa concreta: <strong>automatizar tareas</strong>. Y ahí la frontera es la que vimos. Pero sería injusto dejar al shell como "eso que mueve archivos", porque su verdadero terreno es otro: <strong>operar la máquina</strong>.</p>
+<p>Ver qué procesos están corriendo y matar el que se colgó. Revisar cuánto disco queda. Leer los logs de un servicio en vivo mientras falla. Gestionar permisos, instalar software, programar tareas que corran solas de madrugada. Nada de eso es automatizar —es administrar el sistema, y se hace desde el shell.</p>
+<p>Y hay un lugar donde deja de ser una opción: <strong>cuando te conectas a un servidor Linux no hay escritorio</strong>. No hay ventanas que señalar ni menús donde buscar. Aterrizas en un shell y eso es todo lo que hay. Por eso quien administra servidores vive en la terminal —no por gusto, sino porque es la única puerta de entrada.</p>
+<p>La buena noticia para quien empieza en un Mac: <strong>lo que aprendes de zsh se transfiere casi entero a esos servidores</strong>, porque zsh y bash son de la misma familia. No estás aprendiendo algo que solo sirva en tu computadora.</p>
+<h2>10. Mi conclusión</h2>
+<p>Si tuviera que resumir el mapa en cinco frases:</p>
+<ol>
+<li><strong>La terminal</strong> es la ventana donde escribes. No entiende nada; solo transporta.</li>
+<li><strong>El shell</strong> es el programa que te escucha dentro de esa ventana, entiende tu orden y la manda a ejecutar. Define la gramática y coordina a los demás programas.</li>
+<li><strong>Los comandos</strong> que usas casi siempre son programas independientes. El shell no los provee: los conecta.</li>
+<li><strong>Un script</strong> es esa misma conversación guardada en un archivo, para no repetirla.</li>
+<li><strong>Python empieza donde el shell se queda corto</strong>: el shell mueve las cajas, Python las abre.</li>
+</ol>
+<p>Lo que cambia entre Mac y Windows es el idioma —zsh en un lado, PowerShell en el otro— pero el concepto es idéntico en los dos. Aprenderlo una vez sirve para ambos; después solo cambias de vocabulario.</p>
+<p>Mi recomendación para empezar hoy: no busques una lista de comandos para memorizar. Busca <strong>algo que hagas repetido</strong> y pregúntate cómo lo dictarías. Ese es el único punto de partida que no se olvida a los dos días.</p>
+<h2>11. Recursos</h2>
+<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/">Manual oficial de Bash (GNU)</a></li>
+<li><a href="https://zsh.sourceforge.io/Guide/">Guía de inicio de Zsh</a></li>
+<li><a href="https://learn.microsoft.com/powershell/">Documentación oficial de PowerShell</a></li>
+</ul>
+<h2>12. Pendientes</h2>
+<ul>
+<li>[ ] Post aparte sobre por qué la terminal de Mac se siente más fácil que la de Windows: Unix nació para la terminal y Windows para el mouse, "todo es un archivo", y el hecho de que casi toda la documentación de internet asume Unix. Con la parte incómoda incluida: nada de eso significa que PowerShell sea peor lenguaje —de hecho está mejor diseñado que bash en varios frentes.</li>
+<li>[ ] Verificar en Windows los comandos de PowerShell del post antes de publicarlo. Los de zsh están probados; los de PowerShell están escritos según la documentación oficial pero no ejecutados.</li>
+<li>[ ] Continuación del script de los Excel: hacer que se ejecute solo cada día, sin lanzarlo a mano (<code>launchd</code> en Mac, Programador de tareas en Windows).</li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/configurar-atajos-terminal-mac">Configurar atajos en la terminal de Mac</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'terminal-shell-zsh-y-powershell';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
