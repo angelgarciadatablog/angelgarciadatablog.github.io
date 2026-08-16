@@ -225,6 +225,14 @@ for meta in posts_a_publicar:
     parte_siguiente = meta.get("parte-siguiente", "") or ""
     series_relacionadas = meta.get("series-relacionadas", "") or ""
 
+    # Mismo criterio que posts-relacionados: si la parte vecina no tendrá página
+    # publicada (retirada del vault, o aún en borrador), no se enlaza — el botón
+    # llevaría a una lápida o a un 404.
+    if parte_anterior not in slugs_publicables:
+        parte_anterior = ""
+    if parte_siguiente not in slugs_publicables:
+        parte_siguiente = ""
+
     if parte_anterior:
         titulo_anterior = slug_a_titulo.get(parte_anterior, parte_anterior)
         nav_anterior_html = f'<a class="nav-anterior" href="/{parte_anterior}"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">{titulo_anterior}</span></a>'
