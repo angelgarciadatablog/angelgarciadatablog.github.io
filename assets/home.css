@@ -27,7 +27,9 @@
   border: 1px solid var(--color-borde);
   border-radius: 8px;
   padding: 14px 16px;
-  margin-bottom: 32px;
+  /* Pegado al banner de asesoría que va justo debajo: los dos se leen como
+     un par. El aire de 32px lo pone .asesoria, ya cerrando el bloque. */
+  margin-bottom: 10px;
   transition: border-color 0.15s;
 }
 
@@ -179,114 +181,72 @@
   padding: 24px 0;
 }
 
-/* FORMULARIO DE ASESORÍA */
+/* ASESORÍA — BANNER A WHATSAPP
+   Mismo esqueleto que .yt-banner; solo cambia el acento (verde de WhatsApp). */
 .asesoria {
-  margin-top: 48px;
+  margin-bottom: 32px;
 }
 
-.asesoria-card {
+.wa-banner {
   display: flex;
-  align-items: flex-start;
-  gap: 40px;
+  align-items: center;
+  gap: 14px;
   background-color: var(--color-superficie);
   border: 1px solid var(--color-borde);
   border-radius: 8px;
-  padding: 28px;
-  margin-top: 16px;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: border-color 0.15s;
 }
 
-.asesoria-info {
-  flex: 1;
-  min-width: 0;
+.wa-banner:hover {
+  border-color: #25d366;
 }
 
-.asesoria-form-col {
-  flex: 1;
-  min-width: 0;
+.wa-banner:focus-visible {
+  outline: 2px solid #25d366;
+  outline-offset: 2px;
 }
 
-.asesoria-titulo {
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--color-texto);
-  margin-bottom: 18px;
-}
-
-.asesoria-texto {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #d1d5db;
-}
-
-.asesoria-texto strong {
-  color: #60a5fa;
-  font-weight: 600;
-}
-
-.asesoria-form {
+.wa-banner-icono {
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
-.asesoria-form input,
-.asesoria-form textarea {
-  width: 100%;
-  background-color: var(--color-fondo);
-  border: 1px solid var(--color-borde);
-  border-radius: 6px;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-family: var(--fuente);
-  color: var(--color-texto);
-  outline: none;
-  resize: vertical;
+.wa-banner-texto {
+  flex: 1;
+  min-width: 0;
 }
 
-.asesoria-form input::placeholder,
-.asesoria-form textarea::placeholder {
-  color: #555555;
-  font-style: italic;
-  font-family: Georgia, serif;
-}
-
-.asesoria-form input:focus,
-.asesoria-form textarea:focus {
-  border-color: var(--color-acento);
-}
-
-.asesoria-btn {
-  align-self: flex-start;
-  background-color: var(--color-acento);
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 11px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--fuente);
-  cursor: pointer;
-}
-
-.asesoria-btn:hover {
-  background-color: var(--color-acento-hover);
-}
-
-.asesoria-btn:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.asesoria-estado {
-  display: none;
-  font-size: 16px;
-  color: var(--color-texto);
-  text-align: center;
-  padding: 16px 0;
-}
-
-.asesoria-estado.visible {
+.wa-banner-titulo,
+.wa-banner-sub {
   display: block;
+}
+
+.wa-banner-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.wa-banner-sub {
+  font-size: 12px;
+  color: var(--color-texto-suave);
+}
+
+/* Texto oscuro sobre el verde: blanco sobre #25d366 no alcanza contraste. */
+.wa-banner-btn {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a1f12;
+  background-color: #25d366;
+  border-radius: 6px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+.wa-banner:hover .wa-banner-btn {
+  background-color: #1fbe5a;
 }
 
 @media (max-width: 900px) {
@@ -295,23 +255,10 @@
     padding: 24px 20px;
   }
 
-  .asesoria-card {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .asesoria-form-col {
-    width: 100%;
-  }
-
-  .asesoria-info,
-  .asesoria-estado {
-    text-align: center;
-  }
-
-  .asesoria-btn {
-    align-self: center;
-    padding: 8px 32px;
+  /* A diferencia del banner de YouTube, aquí el subtítulo NO se oculta:
+     es lo que dice de qué se puede hablar en la sesión. */
+  .wa-banner {
+    flex-wrap: wrap;
   }
 
   .cat-grid {

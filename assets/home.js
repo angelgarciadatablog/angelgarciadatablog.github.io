@@ -91,47 +91,69 @@ function filtrarPosts(query) {
   renderPosts(filtrados.filter(postMatchOS));
 }
 
-// ─── FORMULARIO DE ASESORÍA ───────────────────────────────────────────────────
-// Mismo endpoint de Apps Script que usa el popup de GTM (variable url-apps-script-popup-suscripcion)
-const ASESORIA_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwaoACq0wLtaCCpWKbyBaXi1f44WWzlU6M8Xwu2sfebxYKGNXhRxEIr-wlzd_AhU35cwg/exec';
+// ─── ASESORÍA: BOTÓN DE WHATSAPP ──────────────────────────────────────────────
+// Sustituye al formulario de correo + objetivo. Motivo: en la práctica casi
+// nadie dejaba sus datos, y quien lo hacía quedaba esperando una respuesta
+// manual. WhatsApp abre la conversación en dos clics y con el mensaje escrito.
+// Mismo patrón que la página de links (proyecto-links/links/assets/links.js).
 
-document.getElementById('asesoriaForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
+// Troceado a propósito, igual que en links.json: el número viaja dentro de la
+// URL de wa.me y los enlaces wa.me publicados en HTML terminan indexados por
+// buscadores. Solo dígitos, primera parte = código de país (Perú 51), sin +.
+const ASESORIA_WA_PARTES = ['51', '967', '130', '241'];
 
-  const form = this;
-  const btn = document.getElementById('asesoriaBtn');
-  const estado = document.getElementById('asesoriaEstado');
-  const email = document.getElementById('asesoriaEmail').value.trim();
-  const objetivo = document.getElementById('asesoriaObjetivo').value.trim();
+// El texto que llega identifica el origen del lead sin abrir GA4: es el
+// tracking que sobrevive al clic.
+const ASESORIA_WA_MENSAJE = 'Hola Ángel, vengo de tu blog. Me interesa la asesoría personalizada y quiero agendar la sesión de descubrimiento de 20 minutos.';
 
-  if (email.indexOf('@') < 0 || !objetivo) return;
+(function () {
+  const enlace = document.getElementById('asesoriaWhatsapp');
+  if (!enlace) return;
 
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
+  // Si el número quedó mal armado, se oculta la sección entera: mejor que
+  // publicar un wa.me roto que manda al visitante a un error de WhatsApp.
+  const numero = ASESORIA_WA_PARTES.join('');
+  if (!/^[0-9]{8,15}$/.test(numero)) {
+    document.getElementById('asesoria').hidden = true;
+    return;
+  }
 
-  try {
-    await fetch(ASESORIA_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify({ email: email, message: objetivo, page: location.href })
-    });
+  // El href real se escribe recién cuando alguien va a usar el botón. Googlebot
+  // renderiza JS pero no dispara eventos de interacción, así que nunca ve el
+  // número armado. Es un obstáculo contra bots, NO contra personas.
+  let armado = false;
+  function armar() {
+    if (armado) return;
+    enlace.href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(ASESORIA_WA_MENSAJE);
+    armado = true;
+  }
 
-    // Mismo flag que usa el popup de GTM: ya se suscribió, no volver a mostrarlo
+  ['mousedown', 'touchstart', 'focus', 'keydown'].forEach(function (evento) {
+    enlace.addEventListener(evento, armar, { passive: true });
+  });
+
+  enlace.addEventListener('click', function () {
+    // Red de seguridad: si ningún evento previo disparó (clic sintético, lector
+    // de pantalla), se arma aquí antes de que el navegador navegue.
+    armar();
+
+    // Mismo flag que usa el popup de GTM: ya inició conversación, no tiene
+    // sentido seguir persiguiéndolo con el popup.
     localStorage.setItem('pp_d', '1');
 
+    // Mismo evento y mismos parámetros que /links/, para que el tag de GTM que
+    // ya existe lo recoja sin configurar nada nuevo. link_seccion lo distingue.
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'lead_form_submit', form_location: 'home' });
-
-    form.style.display = 'none';
-    estado.textContent = '✓ ¡Listo! Me comunicaré contigo pronto.';
-    estado.classList.add('visible');
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = 'Enviar';
-    estado.textContent = 'Hubo un problema al enviar. Inténtalo de nuevo en unos segundos.';
-    estado.classList.add('visible');
-  }
-});
+    window.dataLayer.push({
+      event: 'link_click',
+      link_id: 'asesoria-home',
+      link_destino: 'whatsapp',
+      link_seccion: 'home',
+      link_posicion: 1,
+      campana: ''
+    });
+  });
+})();
 
 // Re-renderiza home cuando cambia el OS (sidebar llama cambiarOS desde los botones)
 const _cambiarOSSidebar = cambiarOS;
