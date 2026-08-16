@@ -1,5 +1,24 @@
 [
   {
+    "titulo": "Cómo instalar PostgreSQL en Mac",
+    "slug": "instalar-postgresql-en-mac",
+    "categoria": "bases-de-datos",
+    "tags": [
+      "datablog",
+      "bases-de-datos"
+    ],
+    "updated": "2026-08-15",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo.",
+    "serie": "postgresql-desde-cero",
+    "series-relacionadas": "",
+    "parte-anterior": "como-funciona-postgresql-servidor-y-almacenamiento",
+    "parte-siguiente": "postgresql-que-se-instala-realmente"
+  },
+  {
     "titulo": "Terminal, shell, zsh y PowerShell: qué es cada cosa",
     "slug": "terminal-shell-zsh-y-powershell",
     "categoria": "bash-shell",
@@ -134,25 +153,6 @@
     "series-relacionadas": "",
     "parte-anterior": "instalar-postgresql-en-mac",
     "parte-siguiente": ""
-  },
-  {
-    "titulo": "Cómo instalar PostgreSQL en Mac",
-    "slug": "instalar-postgresql-en-mac",
-    "categoria": "bases-de-datos",
-    "tags": [
-      "datablog",
-      "bases-de-datos"
-    ],
-    "updated": "2026-07-06",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "sistema-operativo": "mac",
-    "repositorio": "",
-    "descripcion": "Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo.",
-    "serie": "postgresql-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "como-funciona-postgresql-servidor-y-almacenamiento",
-    "parte-siguiente": "postgresql-que-se-instala-realmente"
   },
   {
     "titulo": "Cómo funciona PostgreSQL: servidor, almacenamiento y acceso",

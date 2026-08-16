@@ -73,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Cómo instalar PostgreSQL en Mac</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bases-de-datos</span></div>
-      <span class="post-updated">Actualizado: 2026-07-06</span>
+      <span class="post-updated">Actualizado: 2026-08-15</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -158,6 +158,63 @@ postgresql@17 started &lt;tu-usuario&gt;  ~/Library/LaunchAgents/homebrew.mxcl.p
 </code></pre>
 <p>Qué significa el comando: <code>psql</code> es el <strong>cliente</strong> para hablarle al servidor, y <code>postgres</code> es <strong>el nombre de la base a la que entras</strong> (el patrón es <code>psql &lt;nombre-de-base&gt;</code>). Entramos por <code>postgres</code> porque es una base de sistema que existe siempre desde la instalación — la puerta garantizada cuando todavía no has creado ninguna base propia.</p>
 <p>Si ves el prompt <code>postgres=#</code> — estás dentro del motor. Ese prompt indica la base de datos a la que estás conectado. Desde aquí puedes escribir comandos directamente a PostgreSQL.</p>
+<h3>¿Por qué psql y no una interfaz visual?</h3>
+<p><code>psql</code> es <strong>un</strong> cliente, no <em>el</em> cliente. Existen interfaces gráficas — DBeaver, pgAdmin, DataGrip — y más adelante en el blog usaremos DBeaver para escribir consultas cómodamente. No dependen de psql: traen su propio driver y hablan directo con el servidor.</p>
+<p>Entonces, ¿por qué empezar por la terminal?</p>
+<ol>
+<li><strong>Es la prueba de que el Paso 3 funcionó.</strong> Si el servidor no arrancó, <code>psql</code> te lo dice en una línea. Con una interfaz gráfica un fallo puede venir del servidor, del driver, del puerto o de la contraseña — cuatro sospechosos en vez de uno.</li>
+<li><strong>No añade otra instalación.</strong> Ya lo tienes: <code>brew install postgresql@17</code> instaló el servidor y el cliente juntos, en el mismo paquete.</li>
+<li><strong>Es lo único que hay en un servidor real.</strong> Cuando administres PostgreSQL en una máquina remota por SSH no habrá ventanas, habrá <code>psql</code>.</li>
+<li><strong>Los metacomandos (<code>\l</code>, <code>\du</code>, <code>\dt</code>) solo existen aquí.</strong> No son SQL, son de psql. La documentación oficial y la mayoría de respuestas que encontrarás hablan ese idioma.</li>
+</ol>
+<p>Su punto débil es real: leer datos en la terminal es incómodo. Por eso el reparto natural es <strong>psql para verificar y administrar; una interfaz visual para explorar y consultar.</strong></p>
+<h4>No entran por la misma puerta</h4>
+<p>Un detalle que importará más adelante: psql y DBeaver <strong>no llegan al servidor por el mismo camino</strong>, y PostgreSQL aplica una regla distinta a cada uno. Esas reglas viven en un archivo llamado <code>pg_hba.conf</code>, donde cada línea es una puerta del servidor:</p>
+<table>
+<thead>
+<tr>
+<th>Cliente</th>
+<th>Camino</th>
+<th>Puerta que le aplica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>psql</code> en tu propia máquina</td>
+<td>socket Unix (un archivo local)</td>
+<td>línea <code>local</code></td>
+</tr>
+<tr>
+<td>DBeaver</td>
+<td>red TCP (<code>localhost:5432</code>)</td>
+<td>línea <code>host</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ojo con el nombre: <strong><code>host</code> significa "por red TCP", no "desde internet"</strong>. DBeaver le aplica una regla <code>host</code> sin salir nunca de tu Mac.</p>
+<p>La última columna de cada línea es el <strong>método de autenticación</strong> — la cerradura de esa puerta. Y aquí está lo que conviene saber desde ya:</p>
+<table>
+<thead>
+<tr>
+<th>Puerta</th>
+<th>Homebrew de fábrica</th>
+<th>Lo recomendable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>local</code> (socket)</td>
+<td><code>trust</code></td>
+<td><strong><code>peer</code></strong> — el sistema operativo da fe de quién eres, sin contraseña</td>
+</tr>
+<tr>
+<td><code>host</code> (TCP)</td>
+<td><code>trust</code></td>
+<td><strong><code>scram-sha-256</code></strong> — contraseña cifrada, porque por red el sistema operativo ya no puede dar fe de nadie</td>
+</tr>
+</tbody>
+</table>
+<p>O sea: para conectar DBeaver como es debido, tu base necesita la línea <code>host</code> en <code>scram-sha-256</code> <strong>y</strong> un rol con contraseña definida. Por qué Homebrew no lo deja así, y cómo cambiarlo, es el tema de otra sesión.</p>
 <h2>3. Primeros comandos desde psql</h2>
 <p><code>psql</code> tiene dos tipos de comandos: los que empiezan con <code>\</code> son comandos propios de psql (no llevan punto y coma), y los que son SQL estándar sí llevan punto y coma al final.</p>
 <p>Por ahora solo necesitas dos para orientarte:</p>
