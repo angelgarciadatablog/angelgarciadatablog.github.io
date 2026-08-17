@@ -135,6 +135,16 @@ function renderSidebar(query) {
 
     nav.appendChild(postsEl);
   });
+
+  // Enlaces externos al pie: en móvil el header no los muestra, así que
+  // esta es su única puerta de entrada. En escritorio el cajón está oculto.
+  const enlaces = document.createElement('div');
+  enlaces.className = 'sidebar-enlaces';
+  enlaces.innerHTML = `
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener">LinkedIn</a>
+  `;
+  nav.appendChild(enlaces);
 }
 
 function toggleCategoria(catSlug) {

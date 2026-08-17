@@ -116,6 +116,20 @@ body.sidebar-resizing { cursor: col-resize; user-select: none; }
 .sidebar-inicio:hover,
 .sidebar-inicio.activo { color: var(--color-texto); }
 
+/* Enlaces externos al pie del cajón */
+.sidebar-enlaces {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-borde);
+  font-size: 13px;
+}
+
+.sidebar-enlaces a { color: var(--color-texto-cuerpo); }
+.sidebar-enlaces a:hover { color: var(--color-texto); }
+
 .sidebar-cat-header {
   display: flex;
   align-items: center;
@@ -197,28 +211,6 @@ body.sidebar-resizing { cursor: col-resize; user-select: none; }
   color: var(--color-texto);
 }
 
-/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .menu-btn { display: block; }
-
-  #sidebar {
-    width: min(var(--sidebar-width), 80vw);
-    transform: translateX(-100%);
-    transition: transform 0.2s ease;
-    z-index: 100;
-  }
-
-  #sidebar.abierto { transform: translateX(0); }
-
-  .sidebar-resizer { display: none; }
-
-  .topnav-links a:not(:first-child) { display: none; }
-
-  #os-toggle { display: none; }
-
-  .topnav-os-toggle { display: flex; }
-}
-
 /* OVERLAY MÓVIL */
 .sidebar-overlay {
   display: none;
@@ -231,6 +223,9 @@ body.sidebar-resizing { cursor: col-resize; user-select: none; }
 .sidebar-overlay.visible { display: block; }
 
 /* HAMBURGUESA */
+/* Ojo con el orden: este bloque tiene que quedar ANTES de la sección
+   responsive. Las media queries no suman especificidad, así que si el
+   display:none va después, gana él y el botón no aparece nunca. */
 .menu-btn {
   display: none;
   background: none;
@@ -274,4 +269,31 @@ nav.topnav {
 
 .topnav-links a:hover {
   color: var(--color-texto);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+/* Todo lo de abajo son overrides: cualquier bloque nuevo va ANTES de aquí,
+   o su display ganará sobre el de la media query. */
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+
+  #sidebar {
+    width: min(var(--sidebar-width), 80vw);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 100;
+  }
+
+  #sidebar.abierto { transform: translateX(0); }
+
+  .sidebar-resizer { display: none; }
+
+  /* El header móvil se queda con la hamburguesa y el logo. Los enlaces
+     pasan al cajón (Inicio y Portafolio arriba, YouTube y LinkedIn al pie),
+     igual que en /portafolio. */
+  .topnav-links { display: none; }
+
+  #os-toggle { display: none; }
+
+  .topnav-os-toggle { display: flex; }
 }
