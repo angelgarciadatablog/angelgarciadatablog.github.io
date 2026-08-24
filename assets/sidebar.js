@@ -141,6 +141,7 @@ function renderSidebar(query) {
   const enlaces = document.createElement('div');
   enlaces.className = 'sidebar-enlaces';
   enlaces.innerHTML = `
+    <a href="/curso-sql/">Curso de SQL · gratis</a>
     <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener">YouTube</a>
     <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank" rel="noopener">LinkedIn</a>
   `;

@@ -271,6 +271,38 @@ nav.topnav {
   color: var(--color-texto);
 }
 
+
+/* ─── MENÚ CURSOS DEL TOPNAV ──────────────────────────────────────────────── */
+.topnav-cursos { position: relative; }
+.topnav-cursos-btn {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: var(--color-texto-suave);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav-cursos-btn:hover, .topnav-cursos:hover .topnav-cursos-btn { color: var(--color-texto); }
+.topnav-chev {
+  width: 6px; height: 6px; border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s;
+}
+.topnav-cursos:hover .topnav-chev { transform: rotate(225deg) translate(-2px, -2px); }
+.topnav-cursos-menu {
+  position: absolute; top: 100%; left: -14px; margin-top: 8px; min-width: 210px;
+  background: var(--color-fondo); border: 1px solid var(--color-borde);
+  border-radius: 9px; padding: 6px; display: none; z-index: 40;
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+}
+.topnav-cursos:hover .topnav-cursos-menu,
+.topnav-cursos:focus-within .topnav-cursos-menu { display: block; }
+.topnav-cursos-menu a {
+  display: block; padding: 9px 11px; border-radius: 6px;
+  color: var(--color-texto); font-size: 13px; line-height: 1.3;
+}
+.topnav-cursos-menu a:hover { background: #1a1a1a; color: var(--color-texto); }
+.topnav-cursos-menu a span {
+  display: block; font-size: 11.5px; color: var(--color-texto-suave); margin-top: 2px;
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 /* Todo lo de abajo son overrides: cualquier bloque nuevo va ANTES de aquí,
    o su display ganará sobre el de la media query. */
