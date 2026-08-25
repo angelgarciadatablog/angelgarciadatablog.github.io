@@ -181,8 +181,10 @@
   padding: 24px 0;
 }
 
-/* ASESORÍA — BANNER A WHATSAPP
-   Mismo esqueleto que .yt-banner; solo cambia el acento (verde de WhatsApp). */
+/* ASESORÍA — BANNER AL FORMULARIO PREVIO
+   Mismo esqueleto y mismo acento que .yt-banner. Las clases conservan el
+   prefijo .wa- de cuando el banner iba a WhatsApp: renombrarlas tocaría el
+   CSS, el HTML y el id que lee home.js, sin cambiar nada de lo que se ve. */
 .asesoria {
   margin-bottom: 32px;
 }
@@ -200,11 +202,11 @@
 }
 
 .wa-banner:hover {
-  border-color: #25d366;
+  border-color: var(--color-acento);
 }
 
 .wa-banner:focus-visible {
-  outline: 2px solid #25d366;
+  outline: 2px solid var(--color-acento);
   outline-offset: 2px;
 }
 
@@ -234,19 +236,19 @@
   color: var(--color-texto-suave);
 }
 
-/* Texto oscuro sobre el verde: blanco sobre #25d366 no alcanza contraste. */
+/* Azul de acento desde que el banner va al formulario y no a WhatsApp. */
 .wa-banner-btn {
   font-size: 13px;
   font-weight: 500;
-  color: #0a1f12;
-  background-color: #25d366;
+  color: #ffffff;
+  background-color: var(--color-acento);
   border-radius: 6px;
   padding: 6px 14px;
   white-space: nowrap;
 }
 
 .wa-banner:hover .wa-banner-btn {
-  background-color: #1fbe5a;
+  background-color: var(--color-acento-hover);
 }
 
 @media (max-width: 900px) {

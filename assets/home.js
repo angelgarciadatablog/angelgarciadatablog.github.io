@@ -91,53 +91,23 @@ function filtrarPosts(query) {
   renderPosts(filtrados.filter(postMatchOS));
 }
 
-// ─── ASESORÍA: BOTÓN DE WHATSAPP ──────────────────────────────────────────────
-// Sustituye al formulario de correo + objetivo. Motivo: en la práctica casi
-// nadie dejaba sus datos, y quien lo hacía quedaba esperando una respuesta
-// manual. WhatsApp abre la conversación en dos clics y con el mensaje escrito.
-// Mismo patrón que la página de links (proyecto-links/links/assets/links.js).
-
-// Troceado a propósito, igual que en links.json: el número viaja dentro de la
-// URL de wa.me y los enlaces wa.me publicados en HTML terminan indexados por
-// buscadores. Solo dígitos, primera parte = código de país (Perú 51), sin +.
-const ASESORIA_WA_PARTES = ['51', '967', '130', '241'];
-
-// El texto que llega identifica el origen del lead sin abrir GA4: es el
-// tracking que sobrevive al clic.
-const ASESORIA_WA_MENSAJE = 'Hola Ángel, vengo de tu blog. Me interesa la asesoría personalizada y quiero agendar la sesión de descubrimiento de 20 minutos.';
+// ─── ASESORÍA: BANNER AL FORMULARIO PREVIO ───────────────────────────────────
+// Sustituye al botón de WhatsApp (2026-08-25). Motivo: cuatro sesiones en una
+// semana y solo una o dos con formulario llenado; la conversación arrancaba
+// tomando notas en vez de conversando. Ahora el formulario es la única puerta
+// y el link del calendario vive en su pantalla de confirmación.
+//
+// Efecto secundario buscado: el número de WhatsApp deja de publicarse en el
+// blog entero. Solo queda en /links/, en los tres botones de asesoría pagada.
+// Por eso ya no hace falta trocear el número ni escribir el href al interactuar:
+// el destino es público y va directo en el HTML.
 
 (function () {
   const enlace = document.getElementById('asesoriaWhatsapp');
   if (!enlace) return;
 
-  // Si el número quedó mal armado, se oculta la sección entera: mejor que
-  // publicar un wa.me roto que manda al visitante a un error de WhatsApp.
-  const numero = ASESORIA_WA_PARTES.join('');
-  if (!/^[0-9]{8,15}$/.test(numero)) {
-    document.getElementById('asesoria').hidden = true;
-    return;
-  }
-
-  // El href real se escribe recién cuando alguien va a usar el botón. Googlebot
-  // renderiza JS pero no dispara eventos de interacción, así que nunca ve el
-  // número armado. Es un obstáculo contra bots, NO contra personas.
-  let armado = false;
-  function armar() {
-    if (armado) return;
-    enlace.href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(ASESORIA_WA_MENSAJE);
-    armado = true;
-  }
-
-  ['mousedown', 'touchstart', 'focus', 'keydown'].forEach(function (evento) {
-    enlace.addEventListener(evento, armar, { passive: true });
-  });
-
   enlace.addEventListener('click', function () {
-    // Red de seguridad: si ningún evento previo disparó (clic sintético, lector
-    // de pantalla), se arma aquí antes de que el navegador navegue.
-    armar();
-
-    // Mismo flag que usa el popup de GTM: ya inició conversación, no tiene
+    // Mismo flag que usa el popup de GTM: ya entró al formulario, no tiene
     // sentido seguir persiguiéndolo con el popup.
     localStorage.setItem('pp_d', '1');
 
@@ -147,7 +117,7 @@ const ASESORIA_WA_MENSAJE = 'Hola Ángel, vengo de tu blog. Me interesa la aseso
     window.dataLayer.push({
       event: 'link_click',
       link_id: 'asesoria-home',
-      link_destino: 'whatsapp',
+      link_destino: 'formulario',
       link_seccion: 'home',
       link_posicion: 1,
       campana: ''
