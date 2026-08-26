@@ -28,6 +28,16 @@ LINKS_PERDIDOS = WEB_ROOT / "links-perdidos.json"
 BASE_URL = "https://www.angelgarciadatablog.com"
 STATUS_PUBLICABLES = {"listo", "publicado"}
 
+# ─── SECCIONES EXTERNAS AL SITEMAP ────────────────────────────────────────────
+# Rutas que viven en repos APARTE (GitHub Pages las sirve bajo el mismo dominio),
+# así que publish.py no puede descubrirlas: no salen de vault/datablog/.
+# Se listan a mano para que entren igual en el sitemap de la raíz.
+# Si más adelante se crea otro repo aparte servido bajo este dominio → añadirlo aquí.
+#   /curso-sql/  → repo angelgarciadatablog/curso-sql
+#                  (sus lecciones internas tienen su propio /curso-sql/sitemap.xml)
+#   /links/      → repo angelgarciadatablog/links
+RUTAS_EXTERNAS = ["curso-sql", "links"]
+
 # ─── ARGUMENTOS ───────────────────────────────────────────────────────────────
 parser = argparse.ArgumentParser()
 parser.add_argument("--borrador", action="store_true", help="incluye posts con status: borrador")
@@ -335,6 +345,9 @@ print(f"✓ posts.json actualizado ({len(indice)} posts)")
 urls = [f'  <url>\n    <loc>{BASE_URL}/</loc>\n  </url>']
 for p in indice:
     urls.append(f'  <url>\n    <loc>{BASE_URL}/{p["slug"]}/</loc>\n    <lastmod>{p["updated"]}</lastmod>\n  </url>')
+# Sin <lastmod>: publish.py no conoce la fecha real de un repo que no gestiona
+for ruta in RUTAS_EXTERNAS:
+    urls.append(f'  <url>\n    <loc>{BASE_URL}/{ruta}/</loc>\n  </url>')
 
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
 sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -342,4 +355,4 @@ sitemap += "\n".join(urls) + "\n"
 sitemap += "</urlset>\n"
 
 (WEB_ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-print(f"✓ sitemap.xml actualizado ({len(indice) + 1} URLs)")
+print(f"✓ sitemap.xml actualizado ({len(indice) + 1 + len(RUTAS_EXTERNAS)} URLs)")
