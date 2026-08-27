@@ -1,5 +1,28 @@
 [
   {
+    "titulo": "Explorar una base: qué tablas hay y cuántas filas tienen",
+    "slug": "explorar-tablas-y-recuento-de-filas",
+    "categoria": "sql",
+    "tags": [
+      "datablog",
+      "sql"
+    ],
+    "updated": "2026-08-27",
+    "posts-relacionados": [
+      "como-funciona-postgresql-servidor-y-almacenamiento",
+      "sql-en-postgresql-con-datos-reales",
+      "produccion-vs-analisis-oltp-y-olap"
+    ],
+    "video-youtube": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo obtener el resumen de tablas de una base con su recuento de filas sin escanear los datos. Consultas comprobadas en PostgreSQL y BigQuery, y por qué unos motores estiman y otros cuentan exacto.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Cómo instalar PostgreSQL en Mac",
     "slug": "instalar-postgresql-en-mac",
     "categoria": "bases-de-datos",

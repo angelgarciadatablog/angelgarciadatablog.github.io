@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explorar una base: qué tablas hay y cuántas filas tienen · Angel García</title>
+  <meta name="description" content="Cómo obtener el resumen de tablas de una base con su recuento de filas sin escanear los datos. Consultas comprobadas en PostgreSQL y BigQuery, y por qué unos motores estiman y otros cuentan exacto." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/explorar-tablas-y-recuento-de-filas/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Explorar una base: qué tablas hay y cuántas filas tienen" />
+  <meta property="og:description" content="Cómo obtener el resumen de tablas de una base con su recuento de filas sin escanear los datos. Consultas comprobadas en PostgreSQL y BigQuery, y por qué unos motores estiman y otros cuentan exacto." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/explorar-tablas-y-recuento-de-filas/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=2" />
+  <link rel="stylesheet" href="/assets/post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Explorar una base: qué tablas hay y cuántas filas tienen", "categoria": "sql", "serie": "", "series_relacionadas": "", "slug": "explorar-tablas-y-recuento-de-filas", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-08-27", "video_youtube": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <a href="/portafolio">Portafolio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sql</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Explorar una base: qué tablas hay y cuántas filas tienen</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sql</span></div>
+      <span class="post-updated">Actualizado: 2026-08-27</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    <div class="post-body" id="post-body"><h2>1. Qué es</h2>
+<p>Cuando te dan acceso a una base que no conoces, la primera pregunta nunca es una consulta de negocio. Es:</p>
+<blockquote>
+<p>¿Qué hay aquí dentro, y dónde está el volumen?</p>
+</blockquote>
+<p>La respuesta ingenua es abrir tabla por tabla y hacer <code>COUNT(*)</code>. Funciona, pero <strong>lee los datos</strong>: en una tabla grande tarda, y en un motor que factura por bytes escaneados, cuesta dinero.</p>
+<p>La respuesta buena es otra: <strong>no preguntar a los datos, preguntar al catálogo</strong>. Toda base lleva unas tablas internas donde apunta qué objetos existe y, con suerte, cuántas filas tiene cada uno. Consultar eso es instantáneo y no toca los datos.</p>
+<p>El detalle que hay que entender antes de nada:</p>
+<blockquote>
+<p>Ese número puede ser una <strong>estimación</strong> o un <strong>conteo exacto</strong>, y depende del motor. No es un matiz cosmético — cambia cómo interpretas el resultado.</p>
+</blockquote>
+<h2>2. PostgreSQL</h2>
+<p>Postgres mantiene estadísticas de actividad por tabla en la vista <code>pg_stat_user_tables</code>. Ahí vive <code>n_live_tup</code>: el número de filas vivas. Son tres consultas en escalera.</p>
+<p><strong>2.1 Qué esquemas hay.</strong> Antes de filtrar hay que saber por dónde filtrar. <code>public</code> es solo el esquema por defecto — en bases reales de trabajo casi nunca es el único (<code>ventas</code>, <code>staging</code>, <code>raw</code>, <code>analytics</code>…).</p>
+<pre><code class="language-sql">SELECT DISTINCT schemaname
+FROM pg_stat_user_tables;
+</code></pre>
+<p><strong>2.2 El resumen completo</strong>, sin filtrar y con el esquema como una columna más:</p>
+<pre><code class="language-sql">SELECT schemaname AS esquema, relname AS tabla, n_live_tup AS filas
+FROM pg_stat_user_tables
+ORDER BY schemaname, n_live_tup DESC;
+</code></pre>
+<p><strong>2.3 El resumen de un esquema concreto</strong>, que es lo habitual:</p>
+<pre><code class="language-sql">SELECT relname AS tabla, n_live_tup AS filas
+FROM pg_stat_user_tables
+WHERE schemaname = 'public'
+ORDER BY n_live_tup DESC;
+</code></pre>
+<p><strong>En ese <code>WHERE</code> va el nombre de tu esquema</strong>, no literalmente <code>public</code>. Es el error más fácil de cometer al copiar la consulta: se ejecuta sin dar error y devuelve cero filas, que parece "esta base está vacía" cuando en realidad es "estás mirando el esquema equivocado".</p>
+<p>Nota: <code>pg_stat_user_tables</code> ya excluye los catálogos del sistema, así que el <code>WHERE</code> solo cambia algo si tienes varios esquemas propios. Como filtro explícito está bien porque deja clara la intención.</p>
+<h2>3. BigQuery</h2>
+<p>Aquí el paralelo es directo, pero con un giro: <strong>el dataset va en la ruta, no en un <code>WHERE</code></strong>. Es la misma idea que el esquema de Postgres, resuelta de otra forma — y es obligatorio, no puedes omitirlo.</p>
+<p>Detalle de vocabulario: BigQuery llama <code>SCHEMATA</code> a sus datasets dentro de <code>INFORMATION_SCHEMA</code>. El concepto es el mismo, solo cambia el nombre comercial.</p>
+<p><strong>3.1 Qué datasets hay:</strong></p>
+<pre><code class="language-sql">SELECT schema_name AS dataset
+FROM `mi-proyecto.INFORMATION_SCHEMA.SCHEMATA`;
+</code></pre>
+<p><strong>3.2 El resumen de un dataset:</strong></p>
+<pre><code class="language-sql">SELECT table_id AS tabla, row_count AS filas
+FROM `mi-proyecto.mi_dataset.__TABLES__`
+WHERE type = 1
+ORDER BY row_count DESC;
+</code></pre>
+<p><code>__TABLES__</code> es una tabla oculta que existe en todo dataset, sin configurar nada. Devuelve además <code>size_bytes</code>, <code>creation_time</code> y <code>last_modified_time</code>.</p>
+<p><strong>El filtro <code>type</code> no es opcional en la práctica:</strong> <code>1</code> son tablas y <code>2</code> son vistas. Sin él, las vistas aparecen en el resumen con <code>filas = 0</code> y ensucian la lectura — parecen tablas vacías cuando no lo son.</p>
+<h2>4. Por qué unos estiman y otros cuentan exacto</h2>
+<p>Esta es la parte que explica todo lo demás.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PostgreSQL</th>
+<th>BigQuery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naturaleza del número</td>
+<td>Estimación</td>
+<td>Exacto</td>
+</tr>
+<tr>
+<td>De dónde sale</td>
+<td>Estadísticas de <code>ANALYZE</code> / autovacuum</td>
+<td>Metadatos de almacenamiento</td>
+</tr>
+<tr>
+<td>Cuándo se actualiza</td>
+<td>Cuando pasa el autovacuum</td>
+<td>Continuamente</td>
+</tr>
+</tbody>
+</table>
+<p>Postgres está diseñado para escrituras concurrentes constantes. Mantener un contador exacto de filas obligaría a serializar todas las transacciones sobre ese contador, y eso mataría el rendimiento. Así que Postgres <strong>no lo mantiene</strong>: guarda la última estimación conocida y la refresca cuando pasa <code>ANALYZE</code>.</p>
+<p>BigQuery no tiene ese problema: no hay transacciones concurrentes fila a fila, y necesita saber cuántas filas y cuántos bytes tiene cada tabla porque <strong>de eso depende cómo administra y factura el almacenamiento</strong>. El conteo exacto le sale gratis porque ya lo lleva por otro motivo.</p>
+<blockquote>
+<p>La regla general: <strong>un motor sabe cuántas filas tiene cuando es dueño de su almacenamiento y ese dato le sirve para otra cosa.</strong> Cuando solo le sirve para responderte a ti, se conforma con estimarlo.</p>
+</blockquote>
+<h2>5. El mismo mapa en otros motores</h2>
+<p>La estructura se repite en todos: hay una vista de catálogo, una columna con el recuento, y una respuesta a "¿es exacto?".</p>
+<table>
+<thead>
+<tr>
+<th>Motor</th>
+<th>Vista / catálogo</th>
+<th>Columna de filas</th>
+<th>¿Exacto?</th>
+<th>Comprobado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PostgreSQL</td>
+<td><code>pg_stat_user_tables</code> (o <code>pg_class.reltuples</code>)</td>
+<td><code>n_live_tup</code></td>
+<td>Estimado</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>BigQuery</td>
+<td><code>&lt;dataset&gt;.__TABLES__</code></td>
+<td><code>row_count</code></td>
+<td>Exacto</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>MySQL / MariaDB</td>
+<td><code>information_schema.tables</code></td>
+<td><code>table_rows</code></td>
+<td>Estimado (InnoDB)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>SQL Server</td>
+<td><code>sys.partitions</code> / <code>sys.dm_db_partition_stats</code></td>
+<td><code>rows</code> / <code>row_count</code></td>
+<td>Casi exacto</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td><code>user_tables</code> / <code>all_tables</code></td>
+<td><code>num_rows</code></td>
+<td>Estimado (última estadística)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td><code>information_schema.tables</code></td>
+<td><code>row_count</code></td>
+<td>Exacto</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Redshift</td>
+<td><code>svv_table_info</code></td>
+<td><code>tbl_rows</code></td>
+<td>Estimado</td>
+<td>—</td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td><code>duckdb_tables()</code></td>
+<td><code>estimated_size</code></td>
+<td>Estimado</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Las dos filas con ✅ están ejecutadas contra bases reales. <strong>Las demás vienen de documentación y no las he verificado</strong> — sirven como punto de partida para buscar, no como consulta lista para copiar.</p>
+<p>Un aviso al traducir la consulta entre motores: <code>information_schema.tables</code> <strong>tiene</strong> el recuento de filas en MySQL y Snowflake, pero <strong>no</strong> en PostgreSQL ni en BigQuery. Es la trampa más común, porque <code>information_schema</code> es el estándar SQL y uno asume que se comporta igual en todas partes.</p>
+<h2>6. Gotchas</h2>
+<p><strong>6.1 En Postgres, <code>filas = 0</code> puede significar "todavía no lo sé".</strong> <code>n_live_tup</code> depende de que haya pasado <code>ANALYZE</code> o el autovacuum. En una base <strong>recién restaurada o recién cargada</strong> puede mostrar <code>0</code> en tablas que sí tienen datos, simplemente porque nadie ha recolectado estadísticas aún.</p>
+<p>Si el resumen sale sospechosamente vacío:</p>
+<pre><code class="language-sql">ANALYZE;
+</code></pre>
+<p>y vuelve a consultar. Es la primera comprobación antes de asumir que la base está vacía.</p>
+<p><strong>6.2 En BigQuery, <code>TABLE_STORAGE</code> no está disponible por defecto.</strong> La documentación menciona <code>INFORMATION_SCHEMA.TABLE_STORAGE</code> con su columna <code>total_rows</code>, y es tentador usarla porque suena más oficial que <code>__TABLES__</code>. <strong>No funciona de fábrica.</strong> Es telemetría que hay que activar explícitamente por proyecto y región:</p>
+<pre><code class="language-sql">ALTER PROJECT `mi-proyecto`
+SET OPTIONS (`region-us.enable_info_schema_storage` = TRUE)
+</code></pre>
+<p>Requiere el permiso <code>bigquery.config.update</code> (incluido en <code>bigquery.admin</code>) y, una vez activada, <strong>tarda alrededor de un día</strong> en poblarse con el histórico. Para un simple resumen de tablas es desproporcionado: <code>__TABLES__</code> funciona ya.</p>
+<h2>8. Referencia oficial</h2>
+<ul>
+<li>PostgreSQL — <a href="https://www.postgresql.org/docs/current/monitoring-stats.html">The Statistics Collector: <code>pg_stat_all_tables</code></a></li>
+<li>PostgreSQL — <a href="https://www.postgresql.org/docs/current/catalog-pg-class.html"><code>pg_class</code></a></li>
+<li>BigQuery — <a href="https://cloud.google.com/bigquery/docs/information-schema-schemata"><code>INFORMATION_SCHEMA.SCHEMATA</code></a></li>
+<li>BigQuery — <a href="https://cloud.google.com/bigquery/docs/information-schema-table-storage"><code>INFORMATION_SCHEMA.TABLE_STORAGE</code></a></li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/como-funciona-postgresql-servidor-y-almacenamiento">Cómo funciona PostgreSQL: servidor, almacenamiento y acceso</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'explorar-tablas-y-recuento-de-filas';</script>
+<script src="/assets/sidebar.js"></script>
+<script src="/assets/post.js"></script>
+
+</body>
+</html>
