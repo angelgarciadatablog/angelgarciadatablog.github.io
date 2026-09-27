@@ -7,8 +7,15 @@
   <meta name="description" content="Aprender datos y cloud no tiene que ser difícil — aquí lo explico todo con ejemplos reales y paso a paso." />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/styles.css?v=2" />
-  <link rel="stylesheet" href="/assets/home.css" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/home.css?v=2" />
+  <!-- Oculta homeIntro ANTES del primer pintado si la URL ya trae ?cat=,
+       para no mostrarlo un instante y recién después ocultarlo (parpadeo). -->
+  <script>
+    if (new URLSearchParams(location.search).has('cat')) {
+      document.documentElement.classList.add('cat-activa');
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,7 +37,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
     <a class="topnav-logo" href="/">Angel García</a>
   </div>
-  <div id="topnav-os-toggle" class="topnav-os-toggle"></div>
   <div class="topnav-links">
     <div class="topnav-cursos">
       <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
@@ -59,34 +65,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="home-content">
     <h1 class="home-titulo">Datablog</h1>
 
-    <a class="yt-banner" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener">
-      <svg class="yt-banner-icono" width="28" height="20" viewBox="0 0 28 20" aria-hidden="true">
-        <path fill="#FF0000" d="M27.4 3.1c-.3-1.2-1.3-2.2-2.5-2.5C22.7 0 14 0 14 0S5.3 0 3.1.6C1.9.9.9 1.9.6 3.1 0 5.3 0 10 0 10s0 4.7.6 6.9c.3 1.2 1.3 2.2 2.5 2.5C5.3 20 14 20 14 20s8.7 0 10.9-.6c1.2-.3 2.2-1.3 2.5-2.5.6-2.2.6-6.9.6-6.9s0-4.7-.6-6.9z"/>
-        <path fill="#FFFFFF" d="M11.2 14.3 18.5 10l-7.3-4.3v8.6z"/>
-      </svg>
-      <div class="yt-banner-texto">
-        <div class="yt-banner-titulo">El contenido de este blog, también en video</div>
-        <div class="yt-banner-sub">Tutoriales completos de datos y cloud, explicados paso a paso en YouTube.</div>
-      </div>
-      <span class="yt-banner-btn">Ver canal</span>
-    </a>
-
-    <section class="asesoria" id="asesoria">
-      <!-- Va al formulario previo, no a WhatsApp: ver assets/home.js -->
-      <a class="wa-banner" id="asesoriaWhatsapp" href="https://docs.google.com/forms/d/e/1FAIpQLSfbRVNGQRnyZ11lMeBH_6h8aWJ73Nx7EbMVg2aZ5kKoP2agKA/viewform" target="_blank" rel="noopener">
-        <span class="wa-banner-icono" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-        </span>
-        <span class="wa-banner-texto">
-          <span class="wa-banner-titulo">Agenda una sesión gratuita de 20 minutos para conversar</span>
-          <span class="wa-banner-sub">Cómo armar tu portafolio, aprender SQL rápido, automatizar procesos con IA. Traes tu caso y salimos con un plan.</span>
-        </span>
-        <span class="wa-banner-btn">Agendar</span>
+    <!-- Solo se ve en la portada (sin categoría activa). Al entrar a la
+         pantalla de una categoría, home.js oculta este bloque entero. -->
+    <div id="homeIntro">
+      <a class="yt-banner" href="https://www.youtube.com/@angelgarciadatablog" target="_blank" rel="noopener">
+        <svg class="yt-banner-icono" width="28" height="20" viewBox="0 0 28 20" aria-hidden="true">
+          <path fill="#FF0000" d="M27.4 3.1c-.3-1.2-1.3-2.2-2.5-2.5C22.7 0 14 0 14 0S5.3 0 3.1.6C1.9.9.9 1.9.6 3.1 0 5.3 0 10 0 10s0 4.7.6 6.9c.3 1.2 1.3 2.2 2.5 2.5C5.3 20 14 20 14 20s8.7 0 10.9-.6c1.2-.3 2.2-1.3 2.5-2.5.6-2.2.6-6.9.6-6.9s0-4.7-.6-6.9z"/>
+          <path fill="#FFFFFF" d="M11.2 14.3 18.5 10l-7.3-4.3v8.6z"/>
+        </svg>
+        <div class="yt-banner-texto">
+          <div class="yt-banner-titulo">El contenido de este blog, también en video</div>
+          <div class="yt-banner-sub">Tutoriales completos de datos y cloud, explicados paso a paso en YouTube.</div>
+        </div>
+        <span class="yt-banner-btn">Ver canal</span>
       </a>
-    </section>
 
-    <div class="cat-grid" id="catGrid"></div>
-    <div class="posts-header">
+      <section class="asesoria" id="asesoria">
+        <!-- Va al formulario previo, no a WhatsApp: ver assets/home.js -->
+        <a class="wa-banner" id="asesoriaWhatsapp" href="https://docs.google.com/forms/d/e/1FAIpQLSfbRVNGQRnyZ11lMeBH_6h8aWJ73Nx7EbMVg2aZ5kKoP2agKA/viewform" target="_blank" rel="noopener">
+          <span class="wa-banner-icono" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          </span>
+          <span class="wa-banner-texto">
+            <span class="wa-banner-titulo">Agenda una sesión gratuita de 20 minutos para conversar</span>
+            <span class="wa-banner-sub">Cómo armar tu portafolio, aprender SQL rápido, automatizar procesos con IA. Traes tu caso y salimos con un plan.</span>
+          </span>
+          <span class="wa-banner-btn">Agendar</span>
+        </a>
+      </section>
+
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+
+    <div class="posts-header" id="postsHeader">
       <div class="posts-titulo" id="postsTitulo">Posts recientes</div>
       <div class="posts-reset" id="postsReset" onclick="resetCategoria()">← Todas</div>
     </div>
@@ -94,8 +105,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 </div>
 
-<script src="/assets/sidebar.js"></script>
-<script src="/assets/home.js"></script>
+<script src="/assets/sidebar.js?v=5"></script>
+<script src="/assets/home.js?v=2"></script>
 
 </body>
 </html>

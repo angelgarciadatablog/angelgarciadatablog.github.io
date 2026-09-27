@@ -12,6 +12,15 @@
   margin-bottom: 32px;
 }
 
+/* Con una categoría activa, la pantalla es solo esa categoría: se oculta
+   todo lo de la portada (banners + grid). La clase la pone home.js al
+   navegar dentro de la página, y un script en el <head> la adelanta antes
+   del primer pintado cuando la URL ya trae ?cat=, para evitar el parpadeo
+   de "aparece y luego se oculta". */
+html.cat-activa #homeIntro {
+  display: none;
+}
+
 /* CONTENIDO PRINCIPAL */
 .home-content {
   flex: 1;
@@ -134,6 +143,21 @@
 .posts-lista {
   display: flex;
   flex-direction: column;
+}
+
+.posts-serie {
+  margin-bottom: 20px;
+}
+
+.posts-serie-titulo {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-acento);
+  padding: 8px 0 6px;
+  border-bottom: 1px solid var(--color-borde);
+  margin-bottom: 2px;
 }
 
 .post-fila {

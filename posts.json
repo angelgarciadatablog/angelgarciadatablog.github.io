@@ -176,27 +176,6 @@
     "parte-siguiente": "instalar-postgresql-en-mac"
   },
   {
-    "titulo": "Mi pipeline de datos se cayó y estuve semanas sin datos",
-    "slug": "mi-pipeline-se-cayo-por-cero-playlists",
-    "categoria": "formacion",
-    "tags": [
-      "datablog",
-      "formacion"
-    ],
-    "updated": "2026-07-04",
-    "posts-relacionados": [],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=Wez4b-J_xL4"
-    ],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Historia real de cómo mi pipeline de datos se cayó por un caso que nunca consideré — cero playlists. Qué pasó, por qué y la lección para tus pipelines.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
     "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
     "slug": "primeros-pasos-en-azure",
     "categoria": "azure",
@@ -260,25 +239,6 @@
     "series-relacionadas": "fundamentos-http",
     "parte-anterior": "",
     "parte-siguiente": "api-github-extraer-datos-publicos-privados-postman"
-  },
-  {
-    "titulo": "Ruta del analista de datos",
-    "slug": "ruta-analista-datos",
-    "categoria": "formacion",
-    "tags": [
-      "datablog",
-      "formacion"
-    ],
-    "updated": "2026-06-13",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Mapa de recursos de la ruta de aprendizaje para analistas de datos. Posts, herramientas y categorías organizados por área.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
   },
   {
     "titulo": "Configurar atajos en la terminal de Mac",

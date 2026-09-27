@@ -170,6 +170,7 @@ if not posts_a_publicar and not retired_slugs:
 md_converter = markdown.Markdown(extensions=["fenced_code", "tables"])
 
 indice = []
+ocultos_para_sitemap = []
 
 for meta in posts_a_publicar:
     # Recargar para tener el body
@@ -296,6 +297,15 @@ for meta in posts_a_publicar:
     (output_dir / "index.html").write_text(html, encoding="utf-8")
     print(f"✓ {slug}/index.html")
 
+    # oculto: true → la página se genera y sigue siendo pública (GA4, buscadores),
+    # pero no entra a posts.json. Como sidebar.js y home.js leen solo de ahí, el
+    # post queda sin acceso desde categorías, buscador de la sidebar ni "posts
+    # recientes" — sigue en el sitemap aparte, para no perder lo que ya indexó Google.
+    if meta.get("oculto"):
+        ocultos_para_sitemap.append({"slug": slug, "updated": str(meta.get("updated", ""))})
+        print(f"  (oculto de la navegación interna)")
+        continue
+
     # Agregar al índice
     indice.append({
         "titulo": meta.get("titulo", ""),
@@ -315,11 +325,14 @@ for meta in posts_a_publicar:
     })
 
 # ─── ACTUALIZAR posts.json ────────────────────────────────────────────────────
-# Mezcla con el índice existente para no borrar posts ya publicados
+# Mezcla con el índice existente para no borrar posts ya publicados en corridas
+# anteriores (ej. --slug). Se descarta por TODO lo procesado en esta corrida,
+# no solo lo que entró a indice — si no, un post recién marcado oculto: true
+# dejaría su entrada vieja pegada en posts.json en vez de desaparecer.
 if POSTS_JSON.exists():
     existentes = json.loads(POSTS_JSON.read_text(encoding="utf-8"))
-    slugs_nuevos = {p["slug"] for p in indice}
-    existentes = [p for p in existentes if p["slug"] not in slugs_nuevos]
+    slugs_procesados = {meta["slug"] for meta in posts_a_publicar}
+    existentes = [p for p in existentes if p["slug"] not in slugs_procesados]
     indice = existentes + indice
 
 # ─── GENERAR LÁPIDAS (links perdidos) ─────────────────────────────────────────
@@ -345,6 +358,11 @@ print(f"✓ posts.json actualizado ({len(indice)} posts)")
 urls = [f'  <url>\n    <loc>{BASE_URL}/</loc>\n  </url>']
 for p in indice:
     urls.append(f'  <url>\n    <loc>{BASE_URL}/{p["slug"]}/</loc>\n    <lastmod>{p["updated"]}</lastmod>\n  </url>')
+# Ocultos de la navegación pero públicos: siguen en el sitemap para que Google
+# los siga rastreando, aunque nada del sitio los enlace ya.
+for p in ocultos_para_sitemap:
+    if p["slug"] not in retired_slugs:
+        urls.append(f'  <url>\n    <loc>{BASE_URL}/{p["slug"]}/</loc>\n    <lastmod>{p["updated"]}</lastmod>\n  </url>')
 # Sin <lastmod>: publish.py no conoce la fecha real de un repo que no gestiona
 for ruta in RUTAS_EXTERNAS:
     urls.append(f'  <url>\n    <loc>{BASE_URL}/{ruta}/</loc>\n  </url>')
@@ -355,4 +373,4 @@ sitemap += "\n".join(urls) + "\n"
 sitemap += "</urlset>\n"
 
 (WEB_ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-print(f"✓ sitemap.xml actualizado ({len(indice) + 1 + len(RUTAS_EXTERNAS)} URLs)")
+print(f"✓ sitemap.xml actualizado ({len(urls)} URLs)")

@@ -104,64 +104,31 @@ body.sidebar-resizing { cursor: col-resize; user-select: none; }
 .search-box input::placeholder { color: var(--color-texto-suave); }
 .search-box input:focus { border-color: var(--color-acento); }
 
-.sidebar-inicio {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-texto-suave);
-  padding: 4px 0;
-  margin-bottom: 12px;
-}
-
-.sidebar-inicio:hover,
-.sidebar-inicio.activo { color: var(--color-texto); }
-
-/* Enlaces externos al pie del cajón */
-.sidebar-enlaces {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid var(--color-borde);
-  font-size: 13px;
-}
-
-.sidebar-enlaces a { color: var(--color-texto-cuerpo); }
-.sidebar-enlaces a:hover { color: var(--color-texto); }
-
-.sidebar-cat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 5px 0;
-  margin-top: 4px;
-}
-
 .sidebar-cat-nombre {
   font-size: 13px;
   font-weight: 600;
   color: var(--color-texto-suave);
+  padding: 5px 0;
+  margin-top: 4px;
 }
 
-.sidebar-cat-chevron {
-  font-size: 10px;
+/* Inicio, Portafolio y cada categoría: mismo nivel, mismo estilo. Ninguno
+   es "principal" — el único acento visual es el estado activo. */
+.sidebar-link {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--color-texto-suave);
-  transition: transform 0.15s;
+  padding: 6px 0 6px 10px;
+  border-left: 2px solid transparent;
 }
 
-.sidebar-cat-header.expandido .sidebar-cat-chevron {
-  transform: rotate(90deg);
-}
+.sidebar-link:hover { color: var(--color-texto); }
 
-.sidebar-cat-posts {
-  display: none;
-  flex-direction: column;
-  margin-bottom: 4px;
+.sidebar-link.activo {
+  color: var(--color-texto);
+  border-left-color: var(--color-acento);
 }
-
-.sidebar-cat-posts.visible { display: flex; }
 
 .sidebar-post-link {
   display: block;
@@ -179,36 +146,6 @@ body.sidebar-resizing { cursor: col-resize; user-select: none; }
 .sidebar-post-link.activo {
   color: var(--color-texto);
   border-left-color: var(--color-acento);
-}
-
-/* ─── OS TOGGLE ──────────────────────────────────────────────────────────── */
-#os-toggle {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.topnav-os-toggle {
-  display: none;
-  gap: 6px;
-}
-
-.os-btn {
-  flex: 1;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 500;
-  background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde);
-  border-radius: 6px;
-  color: var(--color-texto-suave);
-  cursor: pointer;
-}
-
-.os-btn.activo {
-  background-color: var(--color-superficie);
-  border-color: var(--color-texto-suave);
-  color: var(--color-texto);
 }
 
 /* OVERLAY MÓVIL */
@@ -324,8 +261,4 @@ nav.topnav {
      pasan al cajón (Inicio y Portafolio arriba, YouTube y LinkedIn al pie),
      igual que en /portafolio. */
   .topnav-links { display: none; }
-
-  #os-toggle { display: none; }
-
-  .topnav-os-toggle { display: flex; }
 }
