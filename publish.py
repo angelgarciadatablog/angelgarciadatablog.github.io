@@ -73,6 +73,48 @@ def normalizar_videos(value):
     return videos
 
 
+def render_videos_verticales(urls):
+    """Carrusel de videos verticales (TikTok) para la parte de arriba del post.
+
+    Usa el reproductor oficial `player/v1/<id>` en un iframe, no el código de
+    "Compartir → Insertar": ese carga embed.js de TikTok en la página y cada
+    tarjeta trae perfil y descripción. Con loading="lazy" ningún iframe se
+    carga hasta que entra en pantalla.
+    """
+    ids, originales = [], []
+    for url in urls or []:
+        m = re.search(r"/video/(\d+)", str(url))
+        if not m:
+            raise ValueError(f"videos-verticales: no se encontró el ID en {url!r}")
+        if m.group(1) not in ids:   # un link repetido no duplica el video
+            ids.append(m.group(1))
+            originales.append(str(url))
+    if not ids:
+        return "", []
+
+    total = len(ids)
+    items = "\n".join(
+        f'    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/{vid}'
+        f'?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen '
+        f'title="Video corto {i} de {total}"></iframe></div>'
+        for i, vid in enumerate(ids, 1)
+    )
+    html = f"""
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · {total}</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+{items}
+  </div>
+</section>"""
+    return html, originales
+
+
 def escribir_lapida(slug):
     """Genera una página-lápida estética para un slug borrado (link perdido).
 
@@ -188,6 +230,9 @@ for meta in posts_a_publicar:
     body = re.sub(r'^\s*#[^#][^\n]*\n?', '', post.content, count=1)
     md_converter.reset()
     contenido_html = md_converter.convert(body)
+    # Tema con videos pero sin texto escrito todavía
+    if not body.strip():
+        contenido_html = '<p class="post-por-desarrollar">— Por desarrollar —</p>'
 
     # Tags
     tags_raw = meta.get("tags", [])
@@ -205,6 +250,10 @@ for meta in posts_a_publicar:
   <div class="post-video-title">{v["titulo"]}</div>
   <iframe src="https://www.youtube.com/embed/{video_id}" allowfullscreen></iframe>
 </div>"""
+
+    # Videos verticales (TikTok) — carrusel arriba del post
+    videos_verticales_html, videos_verticales_urls = render_videos_verticales(
+        meta.get("videos-verticales"))
 
     # Posts relacionados (solo los que tendrán página publicada — el resto se omite)
     relacionados_raw = meta.get("posts-relacionados") or []
@@ -266,6 +315,7 @@ for meta in posts_a_publicar:
         "sistema_operativo": meta.get("sistema-operativo", ""),
         "fecha_publicacion": str(meta.get("created", "")),
         "video_youtube": video_urls,
+        "videos_verticales": videos_verticales_urls,
     }
     datalayer_json = json.dumps(datalayer_data, ensure_ascii=False)
     datalayer_push = f"<script>\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({datalayer_json});\n</script>"
@@ -286,6 +336,7 @@ for meta in posts_a_publicar:
     html = html.replace("{{tags}}", tags_html)
     html = html.replace("{{sistema_operativo}}", so_html)
     html = html.replace("{{contenido}}", contenido_html)
+    html = html.replace("{{videos_verticales}}", videos_verticales_html)
     html = html.replace("{{video_youtube}}", video_html)
     html = html.replace("{{posts_relacionados}}", relacionados_html)
     html = html.replace("{{nav_anterior}}", nav_anterior_html)
@@ -315,6 +366,7 @@ for meta in posts_a_publicar:
         "updated": str(meta.get("updated", "")),
         "posts-relacionados": relacionados_raw,
         "video-youtube": video_urls,
+        "videos-verticales": videos_verticales_urls,
         "sistema-operativo": meta.get("sistema-operativo", ""),
         "repositorio": meta.get("repositorio", "") or "",
         "descripcion": meta.get("descripcion", "") or "",

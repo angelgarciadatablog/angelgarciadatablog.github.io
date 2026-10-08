@@ -42,3 +42,30 @@ function descargarPDF() {
 cargarSidebar(CURRENT_SLUG);
 generarTOC();
 hljs.highlightAll();
+
+// ─── CARRUSEL DE VIDEOS VERTICALES ───────────────────────────────────────────
+(function () {
+  const carrusel = document.querySelector('.post-shorts');
+  if (!carrusel) return;
+
+  const pista = carrusel.querySelector('.post-shorts-pista');
+  const [anterior, siguiente] = carrusel.querySelectorAll('.post-shorts-flecha');
+
+  function actualizar() {
+    const max = pista.scrollWidth - pista.clientWidth;
+    carrusel.classList.toggle('sin-desborde', max <= 1);
+    anterior.disabled = pista.scrollLeft <= 1;
+    siguiente.disabled = pista.scrollLeft >= max - 1;
+  }
+
+  carrusel.querySelectorAll('.post-shorts-flecha').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const paso = pista.querySelector('.post-short').offsetWidth + 12;
+      pista.scrollBy({ left: paso * Number(btn.dataset.dir) });
+    });
+  });
+
+  pista.addEventListener('scroll', actualizar, { passive: true });
+  window.addEventListener('resize', actualizar);
+  actualizar();
+})();

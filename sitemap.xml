@@ -4,6 +4,10 @@
     <loc>https://www.angelgarciadatablog.com/</loc>
   </url>
   <url>
+    <loc>https://www.angelgarciadatablog.com/primeros-pasos-en-azure/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
     <loc>https://www.angelgarciadatablog.com/explorar-tablas-y-recuento-de-filas/</loc>
     <lastmod>2026-08-27</lastmod>
   </url>
@@ -34,10 +38,6 @@
   <url>
     <loc>https://www.angelgarciadatablog.com/como-funciona-postgresql-servidor-y-almacenamiento/</loc>
     <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.angelgarciadatablog.com/primeros-pasos-en-azure/</loc>
-    <lastmod>2026-06-28</lastmod>
   </url>
   <url>
     <loc>https://www.angelgarciadatablog.com/microsoft-fabric-que-es/</loc>

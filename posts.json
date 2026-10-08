@@ -1,5 +1,35 @@
 [
   {
+    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
+    "slug": "primeros-pasos-en-azure",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-10-08",
+    "posts-relacionados": [
+      "microsoft-fabric-que-es",
+      "fabric-primer-pipeline"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7684130902053604628",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7682249064787758356",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7676854269219196181",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7673064713940487445",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7673062543035878676",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7673783927982558484"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Explorar una base: qué tablas hay y cuántas filas tienen",
     "slug": "explorar-tablas-y-recuento-de-filas",
     "categoria": "sql",
@@ -14,6 +44,7 @@
       "produccion-vs-analisis-oltp-y-olap"
     ],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo obtener el resumen de tablas de una base con su recuento de filas sin escanear los datos. Consultas comprobadas en PostgreSQL y BigQuery, y por qué unos motores estiman y otros cuentan exacto.",
@@ -33,6 +64,7 @@
     "updated": "2026-08-16",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac",
     "repositorio": "",
     "descripcion": "Cómo instalar PostgreSQL en Mac con Homebrew, arrancar el servidor y dar los primeros pasos con psql para tener el entorno listo.",
@@ -54,6 +86,7 @@
       "configurar-atajos-terminal-mac"
     ],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Antes de escribir tu primer script conviene entender tres palabras que casi nadie separa bien - terminal, shell y script. Aquí están, en orden.",
@@ -75,6 +108,7 @@
     "video-youtube": [
       "https://www.youtube.com/watch?v=IKRRKvhnnJ0"
     ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",
@@ -99,6 +133,7 @@
     "video-youtube": [
       "https://www.youtube.com/watch?v=Eu2w5wSNlJI"
     ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube.",
@@ -122,6 +157,7 @@
     "video-youtube": [
       "d4-4XioffMU"
     ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento.",
@@ -148,6 +184,7 @@
       "https://www.youtube.com/watch?v=lqwMXNy0ATk",
       "https://www.youtube.com/watch?v=eXfqUxzE0MY"
     ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
@@ -167,6 +204,7 @@
     "updated": "2026-07-05",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac",
     "repositorio": "",
     "descripcion": "Qué es PostgreSQL entendido como servidor (no como archivo), cómo almacena los datos en binario en disco, la jerarquía servidor→base→tabla, cómo se accede con SQL y qué cambia entre local y nube (gestionado vs autogestionado).",
@@ -174,28 +212,6 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": "instalar-postgresql-en-mac"
-  },
-  {
-    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
-    "slug": "primeros-pasos-en-azure",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-06-28",
-    "posts-relacionados": [
-      "microsoft-fabric-que-es",
-      "fabric-primer-pipeline"
-    ],
-    "video-youtube": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
   },
   {
     "titulo": "Microsoft Fabric — qué es y cómo se organiza",
@@ -211,6 +227,7 @@
       "primeros-pasos-en-azure"
     ],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es Microsoft Fabric, cómo acceder, qué tipos de licencia existen, cómo está organizado y por qué es la apuesta de Microsoft para unificar toda la plataforma de datos.",
@@ -232,6 +249,7 @@
     "video-youtube": [
       "https://www.youtube.com/watch?v=8KfTQmLyYAY"
     ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman.",
@@ -251,6 +269,7 @@
     "updated": "2026-06-12",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac",
     "repositorio": "",
     "descripcion": "Hay un archivo en tu Mac que se ejecuta cada vez que abres la terminal. Aprende a usarlo para no volver a escribir la misma ruta larga nunca más.",
@@ -270,6 +289,7 @@
     "updated": "2026-06-10",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Claude no recuerda nada entre sesiones. Cómo darle memoria de verdad ordenando la carpeta .claude — los dos archivos CLAUDE.md, la auto-memoria y los protocolos que hacen que tu agente trabaje a tu manera.",
@@ -289,6 +309,7 @@
     "updated": "2026-06-10",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Claude Code es mucho más que el chat de Claude. Qué necesitas para empezar en Mac, por qué elegir la app de escritorio y la regla de la carpeta única.",
@@ -308,6 +329,7 @@
     "updated": "2026-06-08",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es Google Cloud, cómo está organizado, qué perfiles trabajan en él y qué servicios existen. El mapa completo para entender GCP sin perderte.",
@@ -327,6 +349,7 @@
     "updated": "2026-05-24",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo hacer tu primer POST, qué es el body de petición, por qué Content-Type es obligatorio, y la diferencia entre una API de prueba y una API real.",
@@ -346,6 +369,7 @@
     "updated": "2026-05-24",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
@@ -367,6 +391,7 @@
       "anatomia-de-una-peticion-http"
     ],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría.",
@@ -386,6 +411,7 @@
     "updated": "2026-05-23",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Qué es una petición HTTP, sus 4 partes, los métodos principales, cómo hacer tu primer GET con el navegador y curl, y qué viaja en una respuesta: línea de estado, headers y body.",
@@ -405,6 +431,7 @@
     "updated": "2026-05-17",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac",
     "repositorio": "~/scripts-datablog/google-cloud/script-python-a-cloud-run",
     "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales.",
@@ -424,6 +451,7 @@
     "updated": "2026-05-14",
     "posts-relacionados": [],
     "video-youtube": [],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar datos reales con ejemplos claros y sin rodeos.",
