@@ -1,33 +1,23 @@
 [
   {
-    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
-    "slug": "primeros-pasos-en-azure",
-    "categoria": "azure",
+    "titulo": "Introducción a APIs para analistas de datos",
+    "slug": "introduccion-apis-para-analistas",
+    "categoria": "apis",
     "tags": [
       "datablog",
-      "azure"
+      "apis"
     ],
     "updated": "2026-10-08",
-    "posts-relacionados": [
-      "microsoft-fabric-que-es",
-      "fabric-primer-pipeline"
-    ],
+    "posts-relacionados": [],
     "video-youtube": [],
-    "videos-verticales": [
-      "https://www.tiktok.com/@angelgarciadatablog/video/7684130902053604628",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7682249064787758356",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7676854269219196181",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7673064713940487445",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7673062543035878676",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7673783927982558484"
-    ],
+    "videos-verticales": [],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
-    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
-    "serie": "",
-    "series-relacionadas": "",
+    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman.",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "fundamentos-http",
     "parte-anterior": "",
-    "parte-siguiente": ""
+    "parte-siguiente": "api-github-extraer-datos-publicos-privados-postman"
   },
   {
     "titulo": "Explorar una base: qué tablas hay y cuántas filas tienen",
@@ -96,104 +86,6 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "API de Notion: cómo leer páginas y tablas con Postman",
-    "slug": "api-notion-extraer-paginas-tablas-postman",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-08-11",
-    "posts-relacionados": [],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=IKRRKvhnnJ0"
-    ],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Conecta con la API de Notion usando Postman: aprende a autenticarte, leer páginas y extraer datos de tablas (databases) con llamadas HTTP reales.",
-    "serie": "apis-para-analistas",
-    "series-relacionadas": "fundamentos-http",
-    "parte-anterior": "api-github-extraer-datos-publicos-privados-postman",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Microsoft Fabric — Lakehouse vs Warehouse",
-    "slug": "microsoft-fabric-lakehouse-vs-warehouse",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-07-29",
-    "posts-relacionados": [
-      "microsoft-fabric-herramientas",
-      "elementos-de-fabric"
-    ],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=Eu2w5wSNlJI"
-    ],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Lakehouse vs Warehouse en Microsoft Fabric: se construyen los dos, se les aplica el mismo SQL y se descubre que por debajo son el mismo almacén (Delta en OneLake) — la única diferencia es qué motor tiene permiso de escribir. Con datos reales de un canal de YouTube.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "fabric-primer-pipeline",
-    "parte-siguiente": "fabric-procedimientos-almacenados"
-  },
-  {
-    "titulo": "Procedimientos almacenados en Microsoft Fabric",
-    "slug": "fabric-procedimientos-almacenados",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-07-29",
-    "posts-relacionados": [
-      "microsoft-fabric-herramientas"
-    ],
-    "video-youtube": [
-      "d4-4XioffMU"
-    ],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Un CREATE TABLE AS SELECT solo corre una vez. Reemplazar esa tabla cada semana no es una consulta: es un trabajo, y se empaqueta en un procedimiento.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "microsoft-fabric-lakehouse-vs-warehouse",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Fabric — tu primer pipeline de datos: de una API pública a un reporte en Power BI",
-    "slug": "fabric-primer-pipeline",
-    "categoria": "azure",
-    "tags": [
-      "datablog",
-      "azure"
-    ],
-    "updated": "2026-07-22",
-    "posts-relacionados": [
-      "primeros-pasos-en-azure",
-      "introduccion-apis-para-analistas",
-      "api-github-extraer-datos-publicos-privados-postman"
-    ],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=lqwMXNy0ATk",
-      "https://www.youtube.com/watch?v=eXfqUxzE0MY"
-    ],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Tu primer pipeline de Fabric de punta a punta: de una API pública de GitHub a una tabla Delta y un reporte en Power BI con Direct Lake.",
-    "serie": "fabric-desde-cero",
-    "series-relacionadas": "",
-    "parte-anterior": "microsoft-fabric-que-es",
-    "parte-siguiente": "microsoft-fabric-lakehouse-vs-warehouse"
-  },
-  {
     "titulo": "Cómo funciona PostgreSQL: servidor, almacenamiento y acceso",
     "slug": "como-funciona-postgresql-servidor-y-almacenamiento",
     "categoria": "bases-de-datos",
@@ -212,6 +104,28 @@
     "series-relacionadas": "",
     "parte-anterior": "",
     "parte-siguiente": "instalar-postgresql-en-mac"
+  },
+  {
+    "titulo": "Primeros pasos en Azure: cuenta gratuita y usuario organizacional",
+    "slug": "primeros-pasos-en-azure",
+    "categoria": "azure",
+    "tags": [
+      "datablog",
+      "azure"
+    ],
+    "updated": "2026-06-28",
+    "posts-relacionados": [
+      "microsoft-fabric-que-es"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Crea tu cuenta gratuita de Azure, entiende qué es un tenant de Entra ID y configura tu primer usuario organizacional para acceder a Microsoft Fabric y Power BI Service.",
+    "serie": "",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
   },
   {
     "titulo": "Microsoft Fabric — qué es y cómo se organiza",
@@ -234,29 +148,7 @@
     "serie": "fabric-desde-cero",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": "fabric-primer-pipeline"
-  },
-  {
-    "titulo": "Introducción a APIs para analistas de datos",
-    "slug": "introduccion-apis-para-analistas",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-06-23",
-    "posts-relacionados": [],
-    "video-youtube": [
-      "https://www.youtube.com/watch?v=8KfTQmLyYAY"
-    ],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman.",
-    "serie": "apis-para-analistas",
-    "series-relacionadas": "fundamentos-http",
-    "parte-anterior": "",
-    "parte-siguiente": "api-github-extraer-datos-publicos-privados-postman"
+    "parte-siguiente": ""
   },
   {
     "titulo": "Configurar atajos en la terminal de Mac",
@@ -376,7 +268,7 @@
     "serie": "apis-para-analistas",
     "series-relacionadas": "fundamentos-http",
     "parte-anterior": "introduccion-apis-para-analistas",
-    "parte-siguiente": "api-notion-extraer-paginas-tablas-postman"
+    "parte-siguiente": ""
   },
   {
     "titulo": "Google Tag Manager — Fundamentos",
