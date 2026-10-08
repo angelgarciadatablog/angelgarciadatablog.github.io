@@ -27,59 +27,6 @@ html.cat-activa #homeIntro {
   min-width: 0;
 }
 
-/* BANNER YOUTUBE */
-.yt-banner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  padding: 14px 16px;
-  /* Pegado al banner de asesoría que va justo debajo: los dos se leen como
-     un par. El aire de 32px lo pone .asesoria, ya cerrando el bloque. */
-  margin-bottom: 10px;
-  transition: border-color 0.15s;
-}
-
-.yt-banner:hover {
-  border-color: var(--color-acento);
-}
-
-.yt-banner-icono {
-  flex-shrink: 0;
-}
-
-.yt-banner-texto {
-  flex: 1;
-  min-width: 0;
-}
-
-.yt-banner-titulo {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-texto);
-}
-
-.yt-banner-sub {
-  font-size: 12px;
-  color: var(--color-texto-suave);
-}
-
-.yt-banner-btn {
-  font-size: 13px;
-  font-weight: 500;
-  color: #ffffff;
-  background-color: var(--color-acento);
-  border-radius: 6px;
-  padding: 6px 14px;
-  white-space: nowrap;
-}
-
-.yt-banner:hover .yt-banner-btn {
-  background-color: var(--color-acento-hover);
-}
-
 /* GRID DE CATEGORÍAS */
 .cat-grid {
   display: grid;
@@ -205,86 +152,10 @@ html.cat-activa #homeIntro {
   padding: 24px 0;
 }
 
-/* ASESORÍA — BANNER AL FORMULARIO PREVIO
-   Mismo esqueleto y mismo acento que .yt-banner. Las clases conservan el
-   prefijo .wa- de cuando el banner iba a WhatsApp: renombrarlas tocaría el
-   CSS, el HTML y el id que lee home.js, sin cambiar nada de lo que se ve. */
-.asesoria {
-  margin-bottom: 32px;
-}
-
-.wa-banner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: border-color 0.15s;
-}
-
-.wa-banner:hover {
-  border-color: var(--color-acento);
-}
-
-.wa-banner:focus-visible {
-  outline: 2px solid var(--color-acento);
-  outline-offset: 2px;
-}
-
-.wa-banner-icono {
-  flex-shrink: 0;
-  display: flex;
-}
-
-.wa-banner-texto {
-  flex: 1;
-  min-width: 0;
-}
-
-.wa-banner-titulo,
-.wa-banner-sub {
-  display: block;
-}
-
-.wa-banner-titulo {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-texto);
-}
-
-.wa-banner-sub {
-  font-size: 12px;
-  color: var(--color-texto-suave);
-}
-
-/* Azul de acento desde que el banner va al formulario y no a WhatsApp. */
-.wa-banner-btn {
-  font-size: 13px;
-  font-weight: 500;
-  color: #ffffff;
-  background-color: var(--color-acento);
-  border-radius: 6px;
-  padding: 6px 14px;
-  white-space: nowrap;
-}
-
-.wa-banner:hover .wa-banner-btn {
-  background-color: var(--color-acento-hover);
-}
-
 @media (max-width: 900px) {
   .home-layout {
     margin-left: 0;
     padding: 24px 20px;
-  }
-
-  /* A diferencia del banner de YouTube, aquí el subtítulo NO se oculta:
-     es lo que dice de qué se puede hablar en la sesión. */
-  .wa-banner {
-    flex-wrap: wrap;
   }
 
   .cat-grid {
@@ -303,10 +174,4 @@ html.cat-activa #homeIntro {
   }
 
   .post-fila-fecha { display: none; }
-
-  .yt-banner {
-    flex-wrap: wrap;
-  }
-
-  .yt-banner-sub { display: none; }
 }

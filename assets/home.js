@@ -200,38 +200,4 @@ function filtrarPosts(query) {
   renderPosts(filtrados);
 }
 
-// ─── ASESORÍA: BANNER AL FORMULARIO PREVIO ───────────────────────────────────
-// Sustituye al botón de WhatsApp (2026-08-25). Motivo: cuatro sesiones en una
-// semana y solo una o dos con formulario llenado; la conversación arrancaba
-// tomando notas en vez de conversando. Ahora el formulario es la única puerta
-// y el link del calendario vive en su pantalla de confirmación.
-//
-// Efecto secundario buscado: el número de WhatsApp deja de publicarse en el
-// blog entero. Solo queda en /links/, en los tres botones de asesoría pagada.
-// Por eso ya no hace falta trocear el número ni escribir el href al interactuar:
-// el destino es público y va directo en el HTML.
-
-(function () {
-  const enlace = document.getElementById('asesoriaWhatsapp');
-  if (!enlace) return;
-
-  enlace.addEventListener('click', function () {
-    // Mismo flag que usa el popup de GTM: ya entró al formulario, no tiene
-    // sentido seguir persiguiéndolo con el popup.
-    localStorage.setItem('pp_d', '1');
-
-    // Mismo evento y mismos parámetros que /links/, para que el tag de GTM que
-    // ya existe lo recoja sin configurar nada nuevo. link_seccion lo distingue.
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'link_click',
-      link_id: 'asesoria-home',
-      link_destino: 'formulario',
-      link_seccion: 'home',
-      link_posicion: 1,
-      campana: ''
-    });
-  });
-})();
-
 init();
