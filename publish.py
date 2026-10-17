@@ -176,6 +176,17 @@ vault_slugs = {p["slug"] for p in todos_los_posts}
 links_perdidos = []
 if LINKS_PERDIDOS.exists():
     links_perdidos = json.loads(LINKS_PERDIDOS.read_text(encoding="utf-8"))
+
+# Un slug retirado que vuelve a datablog/ con status publicable sale de la lista:
+# si se quedara, su lápida pisaría la página real y lo sacaría de posts.json.
+# Mientras siga en borrador, la lápida se mantiene.
+regresados = {e["slug"] for e in links_perdidos} & slugs_publicables
+if regresados:
+    links_perdidos = [e for e in links_perdidos if e["slug"] not in regresados]
+    for s in sorted(regresados):
+        print(f"↩️  link recuperado: {s}  → sale de links-perdidos.json")
+    LINKS_PERDIDOS.write_text(json.dumps(links_perdidos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
 registrados = {e["slug"] for e in links_perdidos}
 
 publicados_antes = set()
