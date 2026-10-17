@@ -292,6 +292,10 @@ for meta in posts_a_publicar:
 
     # Navegación prev/next
     serie = meta.get("serie", "") or ""
+    # "sin-serie" es la decisión explícita del vault de que el post no pertenece a
+    # ninguna serie. En la web equivale a vacío: el post sale bajo "Sueltos".
+    if serie == "sin-serie":
+        serie = ""
     parte_anterior = meta.get("parte-anterior", "") or ""
     parte_siguiente = meta.get("parte-siguiente", "") or ""
     series_relacionadas = meta.get("series-relacionadas", "") or ""
