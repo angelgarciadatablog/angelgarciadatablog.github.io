@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Llaves SSH: cómo entrar a tu VPS sin contraseña · Angel García</title>
+  <meta name="description" content="Cómo funcionan las llaves SSH para entrar a tu VPS: el par de llaves, la passphrase y qué guarda la carpeta .ssh de tu computadora (config y known_hosts)." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/llaves-ssh-vps/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Llaves SSH: cómo entrar a tu VPS sin contraseña" />
+  <meta property="og:description" content="Cómo funcionan las llaves SSH para entrar a tu VPS: el par de llaves, la passphrase y qué guarda la carpeta .ssh de tu computadora (config y known_hosts)." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/llaves-ssh-vps/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=2" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Llaves SSH: cómo entrar a tu VPS sin contraseña", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "llaves-ssh-vps", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-16", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7696157317405904148", "https://www.tiktok.com/@angelgarciadatablog/video/7696158033310846214", "https://www.tiktok.com/@angelgarciadatablog/video/7696160269910674709"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <a href="/portafolio">Portafolio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Llaves SSH: cómo entrar a tu VPS sin contraseña</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-10-16</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7696157317405904148?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7696158033310846214?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7696160269910674709?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. Las dos llaves</h2>
+<p>Para entrar a tu servidor tienes dos opciones. La primera ya la conoces: una contraseña. Es lo de siempre, tiene lógica, y cuando alquilas tu VPS seguramente te tienta elegirla. La segunda tiene un nombre raro: llave SSH. Te explico cómo funciona.</p>
+<p>Todo empieza en tu computadora, sea Windows o Mac. Piensa en ella como algo tuyo, porque ahí vas a crear algo que la identifica. Dentro de tu carpeta de usuario hay una carpeta oculta que se llama <code>.ssh</code>. Si nunca la usaste, puede que ni exista: se crea sola la primera vez que generas tu llave.</p>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Dónde está</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mac</td>
+<td><code>~/.ssh</code> (en Finder, <code>Cmd + Shift + .</code> muestra las carpetas ocultas)</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>C:\Users\&lt;usuario&gt;\.ssh</code></td>
+</tr>
+</tbody>
+</table>
+<p>Entonces, ¿hay que crear las llaves desde tu computadora? Sí, ese es el primer paso. Se hace con un comando, desde la terminal en Mac o desde PowerShell en Windows:</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;claudia@laptop&quot;
+</code></pre>
+<p>Tiene tres partes: primero <code>ssh-keygen</code>, el programa que fabrica las llaves; después, con la letra <code>t</code> de tipo, el tipo de llave que quieres, y hoy la recomendada es <code>ed25519</code>; y al final, con la <code>C</code> de comentario, una etiqueta para que sepas de qué computadora es esa llave.</p>
+<p>Al ejecutarlo, te hace dos preguntas: dónde guardar tu llave, y si quieres ponerle una frase secreta.</p>
+<pre><code>Enter file in which to save the key (~/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+</code></pre>
+<p>La primera, déjala como viene. La segunda es tan importante que tiene su propia sección, más abajo.</p>
+<p>Y no es una llave: son dos, y forman un par.</p>
+<pre><code>id_ed25519       ← la privada
+id_ed25519.pub   ← la pública
+</code></pre>
+<p>La privada se queda en tu computadora y nunca sale de ahí. La pública es la que viaja… pero ojo: pública no quiere decir que la pongas en cualquier parte de internet. Va solo al lugar donde quieres entrar. En este caso, tu VPS. Y la primera vez es fácil: al alquilarlo, la página de tu proveedor te deja un recuadro para pegarla.</p>
+<p>¿Recuerdas esas películas donde dos jefes tienen que girar su llave a la vez para activar algo? Algo así. Cuando tocas la puerta 22, el recepcionista, <code>sshd</code>, ya tiene tu llave pública. Entonces te pone una prueba que solo puede resolver la llave privada que hace pareja con ella. Tu computadora la resuelve y le devuelve la respuesta. Tu llave privada nunca viaja: solo demuestra que la tienes.</p>
+<p>Ahí está la diferencia. Una contraseña se puede adivinar probando una y otra vez: en sus primeros días, mi servidor recibió más de mil intentos de entrar. Una llave no se adivina: para entrar, el atacante tendría que tener tu llave privada.</p>
+<p>¿Y si alguien te la roba de tu computadora? Pues sí: acabas de descubrir un lugar delicado de tu equipo, además de tus fotos. Pero tu llave privada se puede proteger con algo más.</p>
+<h2>2. La frase secreta</h2>
+<p>Ya vimos que la forma más segura de entrar a tu servidor es con una llave SSH. Y que no es una llave, son dos: la pública vive en tu VPS y la privada se queda en tu computadora.</p>
+<p>Esa llave privada es un archivo, guardado en una carpeta de tu equipo. Y si alguien se lleva ese archivo, puede entrar a tu servidor como si fueras tú. Para eso existe la <strong>passphrase</strong>: una frase secreta para tu llave.</p>
+<p>Cuando creas tu par de llaves, te preguntan si quieres ponerle una. Puedes dejarla vacía, pero entonces tu llave privada queda abierta: quien tenga el archivo, la usa. Con una frase, la llave queda cerrada con candado: para usarla necesitas dos cosas, el archivo y la frase. El archivo se puede copiar, pero sin la frase no sirve para nada:</p>
+<pre><code>incorrect passphrase supplied to decrypt private key
+</code></pre>
+<p>Ojo, no la confundas con el método de la contraseña. Ahí escribes tu contraseña, viaja hasta el VPS y, si es correcta, ya estás adentro. La passphrase, en cambio, te la pide tu propia computadora, antes de la prueba de las dos llaves: sin ella, tu llave privada no puede resolverla y te quedas allí sin poder entrar a tu VPS.</p>
+<p>¿Y hay que escribirla cada vez que entras? Depende de ti. Puedes escribirla a mano en cada conexión: es lo más seguro. O puedes dejar que tu computadora la recuerde. Mac y Windows tienen un lugar para eso: en Mac, la frase se guarda en el Llavero; en Windows, un servicio del sistema (<code>ssh-agent</code>) guarda tu llave ya abierta.</p>
+<p>Pero cuidado: la passphrase es tan segura que también te frena a ti. Si quieres automatizar algo con un script que se conecte solo a tu servidor, y tu llave pide la frase a mano, el script se queda esperando a que alguien la escriba. Lo mismo pasa con un agente de inteligencia artificial: si tiene acceso a tu computadora, técnicamente puede usar tu llave… pero se queda atascado en la pregunta de la frase.</p>
+<p>Y si la olvidas, no hay forma de recuperarla. Tendrías que crear un par nuevo y llevar la nueva llave pública a tu VPS.</p>
+<p>¿Y si tienes varias llaves, para distintos lugares? ¿Cómo sabe tu computadora cuál usar?</p>
+<h2>3. La carpeta .ssh de tu computadora</h2>
+<p>Ya creaste tus llaves y ya las protegiste. Ahora abramos la carpeta <code>.ssh</code> de tu computadora y veamos qué hay dentro.</p>
+<pre><code>config
+id_ed25519
+id_ed25519.pub
+id_mi_servidor
+id_mi_servidor.pub
+known_hosts
+</code></pre>
+<p>Primero, tus llaves: cada par son dos archivos con el mismo nombre. El que termina en <code>.pub</code> es la pública; el que no tiene terminación es la privada.</p>
+<h3>config</h3>
+<p>Si tus llaves tienen el nombre que propone el comando, tu computadora las encuentra y las prueba sola. Pero si les pones un nombre propio, por ejemplo una para cada VPS, tienes que decirle cuál usar. Para eso puedes crear un archivo en esa misma carpeta, que se llama <code>config</code>: es como el índice. Se escribe por bloques, uno por cada lugar al que entras, y cada línea es una instrucción.</p>
+<pre><code>Host mi-servidor vps
+  HostName 203.0.113.10
+  User claudia
+  Port 22
+  IdentityFile ~/.ssh/id_mi_servidor
+  AddKeysToAgent yes
+  UseKeychain yes
+</code></pre>
+<p><code>Host</code> es el nombre corto, el apodo para tu VPS al momento de entrar. <code>HostName</code> es la dirección real, la IP de tu VPS. <code>User</code>, el usuario con el que entras. <code>Port</code> es la puerta; si no lo pones, usa la 22. Y <code>IdentityFile</code> dice qué llave privada usar.</p>
+<p>Las dos últimas son sobre la frase. <code>AddKeysToAgent</code> hace que escribas tu frase una sola vez: después, aunque vuelvas a conectarte, incluso desde otra terminal, no te la vuelve a pedir mientras tu computadora siga encendida. Y <code>UseKeychain</code>, que solo existe en Mac, la guarda en el Llavero.</p>
+<blockquote>
+<p><strong>Nota:</strong> en Windows, quita la línea <code>UseKeychain</code>.</p>
+</blockquote>
+<p>Con ese bloque, escribes <code>ssh</code> y el apodo de tu VPS, y tu computadora se encarga del resto:</p>
+<pre><code class="language-bash">ssh mi-servidor
+</code></pre>
+<h3>known_hosts</h3>
+<p>Y hay un archivo más, que aparece solo: <code>known_hosts</code>. Aquí no van tus llaves. Va el sello de tu VPS: algo que solo tiene tu VPS y que lo distingue de cualquier otro. No lo creas tú: tu VPS lo trae desde que nace. La primera vez que te conectas, tu computadora te pregunta si confías en él:</p>
+<pre><code>The authenticity of host '203.0.113.10' can't be established.
+ED25519 key fingerprint is SHA256:…
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</code></pre>
+<p>Si dices que sí, guarda su sello aquí.</p>
+<p>¿Y para qué? Imagina que alguien se mete en el camino entre tu computadora y tu VPS, por ejemplo en una wifi pública, y te responde haciéndose pasar por el VPS. ¿Y tu llave no te protegía? Tu llave sirve para que tu VPS compruebe que eres tú. Pero aquí quien te recibe no es tu VPS, es el impostor, y él te deja pasar sin revisar nada. Tu computadora te pide la passphrase como siempre, la escribes y entras. Todo parece normal… pero nunca llegaste a tu VPS. Lo que se pierde es todo lo que escribas ahí adentro: contraseñas, datos, comandos.</p>
+<p>Para eso está el sello: el impostor no lo tiene. Así que, antes de dejarte entrar, tu computadora lo compara y te dice: espera, este no es el sello que yo conozco. Te avisa con un mensaje de alarma y no te deja conectar:</p>
+<pre><code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+</code></pre>
+<p>¿Y si borras este archivo? No pasa nada grave: se vuelve a crear solo. La próxima vez que ingreses al VPS te vuelve a preguntar si confías, como la primera vez. Si justo en ese momento hay un impostor en el camino, guardarías su sello en vez del sello de tu VPS. Por eso esa primera pregunta importa: es el único momento en que el sello no te protege.</p>
+<p>Tu llave y tu frase protegen tu VPS de los demás. El sello te protege a ti de un VPS falso.</p>
+<h2>4. Recursos</h2>
+<ol>
+<li><a href="https://man.openbsd.org/sshd#AUTHORIZED_KEYS_FILE_FORMAT">man sshd — AUTHORIZED_KEYS FILE FORMAT</a>: la llave pública vive en el servidor.</li>
+<li><a href="https://man.openbsd.org/sshd_config">man sshd_config</a>: OpenSSH acepta contraseña por defecto (<code>PasswordAuthentication</code>).</li>
+<li><a href="https://man.openbsd.org/ssh">man ssh</a>: qué llaves busca por defecto y cómo funciona <code>known_hosts</code>.</li>
+<li><a href="https://man.openbsd.org/ssh_config">man ssh_config</a>: cada línea del archivo <code>config</code>.</li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">Microsoft Learn — Key-based authentication in OpenSSH for Windows</a>: dónde guarda Windows las llaves y cómo funciona <code>ssh-agent</code>.</li>
+<li><a href="https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/">DigitalOcean — Add SSH keys</a>: recomienda llaves SSH en lugar de contraseña.</li>
+</ol></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/que-es-un-vps"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">¿Qué es un VPS? Tu servidor como un edificio</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'llaves-ssh-vps';</script>
+<script src="/assets/sidebar.js?v=5"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

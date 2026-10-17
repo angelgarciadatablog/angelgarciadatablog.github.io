@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Qué es un VPS? Tu servidor como un edificio · Angel García</title>
+  <meta name="description" content="Qué es un VPS, qué te entregan al alquilarlo y cómo funciona su entrada: puertas, el recepcionista sshd y el guardia ufw, explicado como un edificio." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/que-es-un-vps/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="¿Qué es un VPS? Tu servidor como un edificio" />
+  <meta property="og:description" content="Qué es un VPS, qué te entregan al alquilarlo y cómo funciona su entrada: puertas, el recepcionista sshd y el guardia ufw, explicado como un edificio." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/que-es-un-vps/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=2" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "¿Qué es un VPS? Tu servidor como un edificio", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "que-es-un-vps", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-16", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7695651554174553365", "https://www.tiktok.com/@angelgarciadatablog/video/7695651814347230484", "https://www.tiktok.com/@angelgarciadatablog/video/7695652149652393237"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <a href="/portafolio">Portafolio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">¿Qué es un VPS? Tu servidor como un edificio</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-10-16</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7695651554174553365?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7695651814347230484?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7695652149652393237?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><p>Hace poco alquilé un servidor. Un VPS. Y voy a ir contándote todo lo que aprendo sobre cómo configurarlo, de forma sencilla. La idea es aprender juntos, así que ¡vamos!</p>
+<h2>1. El edificio</h2>
+<p>Primero, lo básico: ¿qué es un VPS? Es una máquina virtual. O sea, una computadora en la nube.</p>
+<p>Y sí, como cuando compras una laptop, eliges su procesador, su RAM y su almacenamiento.</p>
+<p>¿Quién te lo alquila? Hay muchos proveedores. Aquí vamos a hablar de dos: DigitalOcean y Hostinger.</p>
+<p>Al crearlo, te hacen una pregunta clave: ¿cómo vas a demostrar que eres tú cuando quieras entrar? Con una contraseña o con una llave SSH. Yo elegí la llave.</p>
+<p>Pagas, y… ¿qué te entregan? ¿Cómo se ve tu servidor? Te va a sorprender: en menos de un minuto te entregan una IP y un panel en la web de tu proveedor. Nada más.</p>
+<p>Ojo: ese panel es lo más básico. La verdadera configuración se hace dentro de tu máquina.</p>
+<p>Pero antes de entrar, imaginemos tu máquina como un edificio.</p>
+<p>Todo edificio está hecho de algo. Las casas suelen ser de cemento. El de tu servidor es de Linux. Bueno, de su corazón: el kernel.</p>
+<p>Pero no todos los edificios son iguales. Hay constructoras y constructoras, y cada una te lo entrega con distintas instalaciones de fábrica. En un VPS, esas constructoras se llaman distribuciones: Ubuntu, Debian y muchas más. En nuestro caso, vamos a hablar de Ubuntu.</p>
+<p>¿Y la IP? Es la dirección de tu edificio. Una dirección pública: cualquier computadora conectada a internet puede llegar hasta ella.</p>
+<p>Y como todo edificio, el tuyo tiene puertas. Miles. ¿Cuáles están abiertas? ¿Quién decide quién entra?</p>
+<h2>2. La puerta del dueño</h2>
+<p>Ya alquilamos nuestro VPS. Ya tenemos su IP. Ahora, ¿cómo entramos?</p>
+<p>Al crearlo nos preguntaron cómo íbamos a entrar: con una contraseña o con una llave SSH. Elegimos la llave. Antes de usarla, veamos cómo funciona la entrada del edificio.</p>
+<p>Tu edificio tiene miles de puertas hacia la calle. Cada puerta se llama <strong>puerto</strong>.</p>
+<p>Detrás de una puerta puede haber alguien atendiendo: un <strong>recepcionista</strong>. En tu servidor, un recepcionista es un programa que escucha en ese puerto. Si nadie escucha, la puerta está vacía: puedes tocar, pero nadie responde.</p>
+<p>Y aquí está lo interesante: el día uno, de miles de puertas, solo una tiene recepcionista hacia la calle: la 22. Es la puerta del dueño. Podría ser otra, pero casi todos los servidores usan la 22. Su recepcionista viene de fábrica y se llama <code>sshd</code>.</p>
+<p>¿Cómo tocas esa puerta? Desde una terminal, en cualquier computadora del mundo conectada a internet. El comando tiene tres partes: primero <code>ssh</code>, el programa que toca la puerta; después tu usuario; y al final, separada por una arroba, la IP de tu servidor.</p>
+<pre><code class="language-bash">ssh usuario@IP
+</code></pre>
+<p>No hace falta decir el número de la puerta: por defecto, <code>ssh</code> toca la 22.</p>
+<p>Toc, toc. Ya tocaste la puerta del dueño. ¿Y ahora? ¿Te abren?</p>
+<h2>3. Tocar no es entrar</h2>
+<p>Alguien respondió. Pero tocar no es entrar. Su recepcionista, <code>sshd</code>, te pide que demuestres quién eres. Si lo demuestras, te deja pasar a la <strong>sala de mando</strong>: la terminal desde donde controlas todo el edificio. ¿Y cómo lo demuestras? Con la llave que elegimos al crearlo. La contraseña no es lo recomendable; la llave es más segura.</p>
+<p>Ojo: cualquiera en internet puede tocar la 22. Y también todas las demás puertas. Porque en la entrada del edificio hay un <strong>guardia general</strong>, el que decide qué puertas se pueden tocar desde la calle… pero viene dormido. En Ubuntu se llama <code>ufw</code>; en Debian, por ejemplo, se usa otro: nftables. Recuérdalo bien: en el guardia está la configuración principal de las puertas de tu edificio.</p>
+<p>¿Y si en la 22 ya hay un recepcionista que pide tu llave, para qué despertar al guardia? Porque un VPS no es para tenerlo vacío. La idea es que dentro funcionen cosas: una página web, una app, una automatización. Y cada una de esas cosas que atiende visitas necesita su propia puerta y su propio recepcionista.</p>
+<p>Ese recepcionista es el mismo programa, escuchando en su puerta. Y ojo con esto: hay programas que, apenas los instalas, empiezan a atender solos, en una puerta que ya traen elegida. Por ejemplo, los programas que muestran páginas web suelen ponerse en la puerta 80. Y si el programa lo creas tú, eres tú quien elige la puerta: por ejemplo, la 8000.</p>
+<p>Con el guardia dormido, cualquiera puede tocar cualquiera de tus 65.535 puertas. Son muchísimas, pero casi ninguna se usa: solo responden las que tienen recepcionista. Y cada programa nuevo que pones a atender es una puerta más que responde. Lo ideal: todas cerradas, menos las que tú decidas.</p>
+<p>Pero cuidado con el orden. Apenas despierta, el guardia lee su libro de reglas, y la regla de fábrica es: nadie pasa, salvo los que estén en la lista. Si la lista está vacía, cierra todo. Incluida la 22… contigo afuera.</p>
+<p>Así que primero le escribes en su libro: deja pasar a la 22. Y recién ahí lo despiertas. Eso fue lo que hice yo:</p>
+<pre><code class="language-bash">ufw allow OpenSSH   # 1. deja pasar a la 22
+ufw enable          # 2. despierta al guardia
+</code></pre>
+<blockquote>
+<p><strong>Nota:</strong> si no entraste como <code>root</code>, antepón <code>sudo</code> a los dos comandos.</p>
+</blockquote>
+<p>Ahora, no los confundas:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>ufw</code>, el guardia</th>
+<th><code>sshd</code>, el recepcionista</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dónde está</td>
+<td>En la entrada, antes de todas las puertas</td>
+<td>Detrás de la puerta 22, y solo de esa</td>
+</tr>
+<tr>
+<td>Qué decide</td>
+<td>Qué puertas se pueden tocar desde la calle</td>
+<td>Quién entra a la sala de mando</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Recursos</h2>
+<ol>
+<li><a href="https://ubuntu.com/server/docs/how-to/security/firewalls/">Ubuntu Server — Firewalls</a>: <code>ufw</code> es la herramienta de firewall de Ubuntu y viene desactivada.</li>
+<li><a href="https://wiki.debian.org/nftables">Debian Wiki — nftables</a>: el firewall por defecto de Debian.</li>
+<li><a href="https://man.openbsd.org/ssh_config">man ssh_config</a>: <code>ssh</code> usa la puerta 22 si no se indica otra.</li>
+<li><a href="https://man.openbsd.org/sshd_config">man sshd_config</a>: la puerta de <code>sshd</code> se puede cambiar (<code>Port</code>).</li>
+<li><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">IANA — registro de puertos</a>: los puertos van del 0 al 65535.</li>
+<li><a href="https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/">DigitalOcean — Add SSH keys</a>: recomienda llaves SSH en lugar de contraseña.</li>
+</ol></div>
+    
+    <nav class="post-nav">
+      
+      <a class="nav-siguiente" href="/llaves-ssh-vps"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Llaves SSH: cómo entrar a tu VPS sin contraseña</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'que-es-un-vps';</script>
+<script src="/assets/sidebar.js?v=5"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

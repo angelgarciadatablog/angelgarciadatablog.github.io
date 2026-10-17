@@ -1,5 +1,53 @@
 [
   {
+    "titulo": "Llaves SSH: cómo entrar a tu VPS sin contraseña",
+    "slug": "llaves-ssh-vps",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-10-16",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7696157317405904148",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7696158033310846214",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7696160269910674709"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo funcionan las llaves SSH para entrar a tu VPS: el par de llaves, la passphrase y qué guarda la carpeta .ssh de tu computadora (config y known_hosts).",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "que-es-un-vps",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "¿Qué es un VPS? Tu servidor como un edificio",
+    "slug": "que-es-un-vps",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-10-16",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7695651554174553365",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7695651814347230484",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7695652149652393237"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es un VPS, qué te entregan al alquilarlo y cómo funciona su entrada: puertas, el recepcionista sshd y el guardia ufw, explicado como un edificio.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": "llaves-ssh-vps"
+  },
+  {
     "titulo": "Introducción a APIs para analistas de datos",
     "slug": "introduccion-apis-para-analistas",
     "categoria": "apis",

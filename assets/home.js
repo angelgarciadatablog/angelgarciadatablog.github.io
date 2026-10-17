@@ -9,6 +9,7 @@ const SERIES_NOMBRES = {
   'fabric-desde-cero': 'Microsoft Fabric desde cero',
   'introduccion-claude-code': 'Introducción a Claude Code',
   'fundamentos-http': 'Fundamentos de HTTP',
+  'bitacora-de-mi-servidor': 'Bitácora de mi servidor',
 };
 
 async function init() {
