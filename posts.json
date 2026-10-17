@@ -65,7 +65,7 @@
     "serie": "apis-para-analistas",
     "series-relacionadas": "fundamentos-http",
     "parte-anterior": "",
-    "parte-siguiente": "api-github-extraer-datos-publicos-privados-postman"
+    "parte-siguiente": ""
   },
   {
     "titulo": "Explorar una base: qué tablas hay y cuántas filas tienen",
@@ -219,46 +219,6 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "Cómo convertir a Claude en tu agente con memoria",
-    "slug": "como-convertir-claude-en-tu-agente-con-memoria",
-    "categoria": "claude-code",
-    "tags": [
-      "datablog",
-      "claude-code"
-    ],
-    "updated": "2026-06-10",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Claude no recuerda nada entre sesiones. Cómo darle memoria de verdad ordenando la carpeta .claude — los dos archivos CLAUDE.md, la auto-memoria y los protocolos que hacen que tu agente trabaje a tu manera.",
-    "serie": "introduccion-claude-code",
-    "series-relacionadas": "",
-    "parte-anterior": "como-ejecutar-claude-code-por-primera-vez",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Cómo empezar con Claude Code",
-    "slug": "como-ejecutar-claude-code-por-primera-vez",
-    "categoria": "claude-code",
-    "tags": [
-      "datablog",
-      "claude-code"
-    ],
-    "updated": "2026-06-10",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Claude Code es mucho más que el chat de Claude. Qué necesitas para empezar en Mac, por qué elegir la app de escritorio y la regla de la carpeta única.",
-    "serie": "introduccion-claude-code",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": "como-convertir-claude-en-tu-agente-con-memoria"
-  },
-  {
     "titulo": "El mapa de Google Cloud para analistas de datos",
     "slug": "google-cloud-conoce-el-mapa",
     "categoria": "google-cloud",
@@ -299,48 +259,6 @@
     "parte-siguiente": ""
   },
   {
-    "titulo": "API de GitHub: cómo extraer datos públicos y privados con Postman",
-    "slug": "api-github-extraer-datos-publicos-privados-postman",
-    "categoria": "apis",
-    "tags": [
-      "datablog",
-      "apis"
-    ],
-    "updated": "2026-05-24",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Aprende a hacer llamadas a la API de GitHub con Postman: autenticación con token, extracción de datos públicos y privados, y manejo de respuestas JSON.",
-    "serie": "apis-para-analistas",
-    "series-relacionadas": "fundamentos-http",
-    "parte-anterior": "introduccion-apis-para-analistas",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Google Tag Manager — Fundamentos",
-    "slug": "google-tag-manager-fundamentos",
-    "categoria": "google-analytics",
-    "tags": [
-      "datablog",
-      "google-analytics"
-    ],
-    "updated": "2026-05-23",
-    "posts-relacionados": [
-      "anatomia-de-una-peticion-http"
-    ],
-    "video-youtube": [],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Cómo funciona GTM por dentro: snippet, dataLayer, pushes y activadores. Aprende a pasar metadatos del frontmatter para medir tus posts por categoría.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
     "titulo": "Anatomía de una petición HTTP",
     "slug": "anatomia-de-una-peticion-http",
     "categoria": "apis",
@@ -375,26 +293,6 @@
     "sistema-operativo": "mac",
     "repositorio": "~/scripts-datablog/google-cloud/script-python-a-cloud-run",
     "descripcion": "Paso a paso: convierte un script Python en una API HTTP con FastAPI, empaquétala con Docker y despliégala en Google Cloud Run. Con ejemplos reales.",
-    "serie": "",
-    "series-relacionadas": "",
-    "parte-anterior": "",
-    "parte-siguiente": ""
-  },
-  {
-    "titulo": "Aprende SQL fácil y rápido desde cero",
-    "slug": "aprende-sql-facil-y-rapido-desde-cero",
-    "categoria": "sql",
-    "tags": [
-      "datablog",
-      "sql"
-    ],
-    "updated": "2026-05-14",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "videos-verticales": [],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Guía práctica de SQL desde cero: SELECT, WHERE, GROUP BY, JOIN y más. Aprende a consultar datos reales con ejemplos claros y sin rodeos.",
     "serie": "",
     "series-relacionadas": "",
     "parte-anterior": "",
