@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos · Angel García</title>
+  <meta name="description" content="Qué hay dentro de un VPS: el árbol de carpetas de Linux y el estándar FHS, los usuarios y root, cómo moverte con pwd, cd y ls, y cómo leer los 10 caracteres de permisos de carpetas y archivos." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/permisos-en-linux/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos" />
+  <meta property="og:description" content="Qué hay dentro de un VPS: el árbol de carpetas de Linux y el estándar FHS, los usuarios y root, cómo moverte con pwd, cd y ls, y cómo leer los 10 caracteres de permisos de carpetas y archivos." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/permisos-en-linux/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=2" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "permisos-en-linux", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-18", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7697967782213750037", "https://www.tiktok.com/@angelgarciadatablog/video/7697968066151402772", "https://www.tiktok.com/@angelgarciadatablog/video/7697968301439339797"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <a href="/portafolio">Portafolio</a>
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-10-19</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7697967782213750037?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7697968066151402772?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7697968301439339797?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. El árbol de carpetas de Linux</h2>
+<p>Hasta ahora nos quedamos afuera del VPS: vimos sus puertas, el guardia principal y que cada puerta puede tener un recepcionista. Hoy vamos a ver qué hay por dentro, una vez que entramos por la puerta del dueño.</p>
+<p>Cuando entras a tu servidor, la terminal te recibe con una línea así:</p>
+<pre><code>claudia@mi-servidor:~$
+</code></pre>
+<p>Te dice quién eres, en qué servidor estás y en qué carpeta estás parado.</p>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué te dice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claudia</code></td>
+<td>quién eres: tu usuario</td>
+</tr>
+<tr>
+<td><code>mi-servidor</code></td>
+<td>en qué servidor estás</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>en qué carpeta estás: tu carpeta personal</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>eres un usuario normal (si fueras root, saldría <code>#</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3>Tu usuario y root</h3>
+<p>Quién eres es tu usuario, y en este ejemplo se llama claudia. Pero en todo servidor Linux existe además un superusuario, <code>root</code>, que puede hacerlo todo.</p>
+<p>En mi proveedor, al crear el VPS solo viene root; en otros, viene un usuario con un nombre ya puesto. Y la diferencia importa: si te mueves como root, puedes hacer de todo, incluso romper algo sin querer; si te mueves con tu propio usuario, como claudia, te limitas a lo que sus permisos te dejan. Por eso se recomienda entrar siempre con tu propio usuario.</p>
+<h3>La constructora y el plano</h3>
+<p>Lo segundo que te dice esa línea es en qué servidor estás. Y ese servidor, en la mayoría de casos, usa Linux como kernel y una distribución, que en nuestro caso es Ubuntu.</p>
+<p>Esta distribución es como una constructora en particular, y usualmente comparte casi el mismo plano por dentro con las demás constructoras, como Debian, de la que nace Ubuntu, o Fedora. Ese plano se rige por algo que se llama FHS, que es el estándar que ordena las carpetas de Linux.</p>
+<p>Entonces hasta aquí ya sabemos que las distintas distribuciones de Linux van a tener un parecido en cuanto a sus carpetas, pero quizás te preguntes: Ángel, ¿y la interfaz para navegar?</p>
+<p>Esa pregunta es común para casi todo usuario, pues la mayoría está acostumbrada a una interfaz como la que te dan Windows o macOS. Pero en el caso de servidores, y de nuestro VPS, no hay ventanas ni íconos: hay una terminal.</p>
+<h3>Una sola raíz</h3>
+<p>Ahora fíjate en lo tercero que te dice esa primera línea: la carpeta. La carpeta donde apareciste no es la entrada del edificio: es tu propia carpeta. Como si al entrar aparecieras directo en tu departamento. Para ver todo el edificio, hay que ir a la entrada. Y esto es lo hermoso de Linux: todo cuelga de una sola carpeta, la carpeta raíz, que se escribe con una simple barra: <code>/</code>.</p>
+<p>Desde allí cuelgan las demás:</p>
+<table>
+<thead>
+<tr>
+<th>Habitación</th>
+<th>Carpetas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lo instalado</td>
+<td><code>/usr</code>, <code>/bin</code>, <code>/sbin</code>, <code>/lib</code></td>
+</tr>
+<tr>
+<td>La configuración</td>
+<td><code>/etc</code></td>
+</tr>
+<tr>
+<td>Lo que el edificio escribe</td>
+<td><code>/var</code></td>
+</tr>
+<tr>
+<td>Lo de paso</td>
+<td><code>/tmp</code>, <code>/run</code></td>
+</tr>
+<tr>
+<td>Las personas</td>
+<td><code>/home</code> (con tu carpeta: <code>/home/claudia</code>) y <code>/root</code>, aparte</td>
+</tr>
+<tr>
+<td>Lo que muestra el kernel</td>
+<td><code>/proc</code>, <code>/sys</code>, <code>/dev</code></td>
+</tr>
+<tr>
+<td>El arranque</td>
+<td><code>/boot</code></td>
+</tr>
+<tr>
+<td>Lo que se agrega</td>
+<td><code>/opt</code>, <code>/srv</code>, <code>/media</code>, <code>/mnt</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota:</strong> la carpeta de root es <code>/root</code>, no está dentro de <code>/home</code>.</p>
+</blockquote>
+<p>Y como las constructoras siguen casi el mismo plano, si aprendes a moverte dentro de tu VPS, te mueves en casi cualquier servidor Linux.</p>
+<h2>2. Cómo moverte dentro de tu VPS</h2>
+<p>Al entrar al VPS aparecimos directo en nuestro departamento, la carpeta <code>~</code>. Vamos a aprender unos comandos de Linux para movernos hasta la carpeta raíz.</p>
+<p>Primero, para saber dónde estamos parados, utilizamos el comando <code>pwd</code>. Viene de <em>print working directory</em>, y te muestra la dirección completa de la carpeta donde estás:</p>
+<pre><code class="language-bash">claudia@mi-servidor:~$ pwd
+/home/claudia
+</code></pre>
+<p>Para llegar a la carpeta raíz utilizamos el comando <code>cd</code>, seguido de una barra. <code>cd</code> viene de <em>change directory</em>: cambiar de carpeta. Y la barra, como vimos antes, es la raíz:</p>
+<pre><code class="language-bash">claudia@mi-servidor:~$ cd /
+claudia@mi-servidor:/$
+</code></pre>
+<p><code>cd</code> no muestra ningún mensaje: su resultado es que la línea de la terminal ya dice la carpeta nueva.</p>
+<p>Desde allí vamos a navegar con dos comandos principalmente. <code>cd</code>, seguido del nombre de una carpeta, para entrar en ella. Y <code>ls</code>, de <em>list</em>, para listar lo que hay dentro:</p>
+<pre><code class="language-bash">claudia@mi-servidor:/$ cd etc
+claudia@mi-servidor:/etc$ ls
+apt   cron.d   hostname   nginx   passwd   ssh   ufw   …
+</code></pre>
+<h3>Los permisos</h3>
+<p>Ahora, hay que tener en cuenta que en tu servidor cada archivo y cada carpeta tienen ciertos permisos. En tu computadora pasa algo similar, pero casi nunca lo notas, porque normalmente eres el único usuario. En un servidor, los permisos están a la vista y se cuidan más, y tú mismo, como administrador, puedes configurarlos.</p>
+<p>Para ver los permisos de una carpeta, nos paramos en la carpeta que la contiene. Por ejemplo, para ver los de tu departamento, nos movemos a la carpeta que lo contiene, la de las personas, con <code>cd /home</code>. Y luego usamos <code>ls -l</code>, de <em>long</em>, largo. Lista lo mismo, pero con detalle, incluidos los permisos:</p>
+<pre><code class="language-bash">claudia@mi-servidor:~$ cd /home
+claudia@mi-servidor:/home$ ls -l
+drwxr-x--- 11 claudia claudia 4096 Oct 11 12:56 claudia
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>drwxr-x---</code></td>
+<td>los permisos</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>cuántos enlaces tiene la carpeta</td>
+</tr>
+<tr>
+<td><code>claudia</code></td>
+<td>el dueño</td>
+</tr>
+<tr>
+<td><code>claudia</code></td>
+<td>el grupo</td>
+</tr>
+<tr>
+<td><code>4096</code></td>
+<td>el tamaño</td>
+</tr>
+<tr>
+<td><code>Oct 11 12:56</code></td>
+<td>la fecha de modificación</td>
+</tr>
+<tr>
+<td><code>claudia</code></td>
+<td>el nombre de la carpeta</td>
+</tr>
+</tbody>
+</table>
+<h3>Los 10 caracteres</h3>
+<p>Los permisos son los diez primeros caracteres. No es fácil adivinar qué significan, así que vamos por partes.</p>
+<p>El primero te dice qué es: una <code>d</code> significa que es una carpeta.</p>
+<p>Los otros nueve se leen en tres bloques de tres. Del segundo al cuarto, los permisos del dueño de la carpeta. Del quinto al séptimo, los permisos de su grupo. Y del octavo al décimo, los de todos los demás.</p>
+<pre><code>d   rwx   r-x   ---
+│   │     │     └── los demás
+│   │     └──────── el grupo
+│   └────────────── el dueño
+└────────────────── d = carpeta
+</code></pre>
+<p>Un grupo es un conjunto de usuarios que comparten permisos. En Ubuntu, cada usuario tiene uno propio, con su mismo nombre.</p>
+<p>Quizás te preguntes: si solo yo administro mi servidor, ¿para qué el segundo y el tercer bloque? Porque a las carpetas no solo entras tú: también entran los programas, cada uno con su propio usuario. Y se revisa en orden: primero si eres el dueño, luego si estás en su grupo, y si no eres ninguno de los dos, eres de los demás.</p>
+<p>Y cada bloque tiene tres letras posibles, siempre en el mismo orden:</p>
+<table>
+<thead>
+<tr>
+<th>Letra</th>
+<th>Viene de</th>
+<th>En una carpeta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td><em>read</em>, leer</td>
+<td>ver qué hay dentro</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><em>write</em>, escribir</td>
+<td>crear o borrar cosas</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><em>execute</em></td>
+<td>poder entrar</td>
+</tr>
+</tbody>
+</table>
+<p>Si en lugar de una letra aparece un guion, ese permiso no está. Por ejemplo, en mi departamento: yo, el dueño, tengo las tres; mi grupo, que soy solo yo, puede ver y entrar; y los demás, nada.</p>
+<h2>3. Los archivos también tienen permisos</h2>
+<p>Cada carpeta tiene sus permisos: diez caracteres que dicen quién puede ver, cambiar o entrar. ¿Y los archivos? También. Todos, sin excepción, tienen un dueño, un grupo y sus permisos.</p>
+<p>Para verlos usamos el mismo comando: <code>ls -l</code>, y al final el nombre del archivo.</p>
+<p>Se leen igual que en una carpeta, con dos diferencias. La primera está en el primer carácter: en una carpeta es una <code>d</code>; en un archivo, es un guion.</p>
+<p>La segunda es lo que significan las letras. La <code>r</code> sigue siendo leer, pero ahora es leer lo que el archivo tiene escrito. La <code>w</code>, escribir, es cambiar su contenido. Y la <code>x</code>, de <em>execute</em>, ya no es entrar: es ejecutar. Es decir, usar ese archivo como un comando.</p>
+<table>
+<thead>
+<tr>
+<th>Letra</th>
+<th>En una carpeta</th>
+<th>En un archivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td>ver qué hay dentro</td>
+<td>leer su contenido</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>crear o borrar cosas</td>
+<td>cambiar su contenido</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>poder entrar</td>
+<td>ejecutarlo como comando</td>
+</tr>
+</tbody>
+</table>
+<h3>root, el superusuario</h3>
+<p>Veámoslo con tres archivos reales de mi servidor. Pero antes, un personaje nuevo. Hasta ahora entramos con el usuario claudia, el que ves en la línea de la terminal: un usuario creado dentro del VPS.</p>
+<p>Pero hay otro que viene de fábrica: <code>root</code>, el superusuario. En mi proveedor, si no creas tu propio usuario, entras directamente como root. Y root es dueño de todo y puede hacerlo todo, sin que ningún permiso lo detenga. Por eso se recomienda entrar siempre con tu propio usuario: si te equivocas, el daño queda limitado.</p>
+<h3>Tres archivos reales</h3>
+<p>Los tres archivos que vamos a revisar son <code>hostname</code>, <code>shadow</code> y el propio <code>ls</code>. Y en los tres, el dueño es root.</p>
+<p>Los dos primeros viven en la habitación de la configuración. Así que entramos a esa carpeta con <code>cd /etc</code> y miramos cada archivo con <code>ls -l</code> y su nombre:</p>
+<pre><code class="language-bash">claudia@mi-servidor:~$ cd /etc
+claudia@mi-servidor:/etc$ ls -l hostname
+-rw-r--r-- 1 root root   13 Sep  7 18:58 hostname
+claudia@mi-servidor:/etc$ ls -l shadow
+-rw-r----- 1 root shadow 936 Sep  7 23:43 shadow
+</code></pre>
+<p>El primero, <code>hostname</code>, guarda el nombre del servidor. Root puede leerlo y cambiarlo; todos los demás, solo leerlo. Tiene sentido: cualquiera puede saber cómo se llama el servidor, pero solo root lo puede cambiar.</p>
+<p>El segundo, <code>shadow</code>, guarda las contraseñas de los usuarios, pero transformadas para que nadie pueda leerlas tal cual. Root puede leerlo y cambiarlo; su grupo solo puede leerlo; y los demás, nada. Por eso, si yo, con mi usuario, intento abrirlo, la terminal me dice que no tengo permiso:</p>
+<pre><code class="language-bash">claudia@mi-servidor:/etc$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+</code></pre>
+<p>El tercero es <code>ls</code>, el mismo comando que usamos para listar. Sí: un comando también es un archivo. Para verlo, usamos <code>ls -l</code> con su dirección completa:</p>
+<pre><code class="language-bash">claudia@mi-servidor:~$ ls -l /usr/bin/ls
+-rwxr-xr-x 1 root root 142312 Aug 25 15:09 /usr/bin/ls
+</code></pre>
+<p>Y tiene la <code>x</code> en los tres bloques: cualquiera puede ejecutarlo, pero solo root puede cambiarlo.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Permisos</th>
+<th>Dueño (root)</th>
+<th>Grupo</th>
+<th>Los demás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostname</code></td>
+<td><code>-rw-r--r--</code></td>
+<td>lee y cambia</td>
+<td>lee</td>
+<td>lee</td>
+</tr>
+<tr>
+<td><code>shadow</code></td>
+<td><code>-rw-r-----</code></td>
+<td>lee y cambia</td>
+<td>lee</td>
+<td>nada</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td><code>-rwxr-xr-x</code></td>
+<td>lee, cambia y ejecuta</td>
+<td>lee y ejecuta</td>
+<td>lee y ejecuta</td>
+</tr>
+</tbody>
+</table>
+<h3>No se heredan</h3>
+<p>Un último detalle: los permisos no se heredan. Cada archivo tiene los suyos. Pero para llegar a un archivo, necesitas poder entrar a todas las carpetas del camino. Por eso, si tu departamento está cerrado para los demás, todo lo que hay dentro queda protegido.</p>
+<h2>4. Recursos</h2>
+<ol>
+<li><a href="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">FHS 3.0 — Filesystem Hierarchy Standard</a>: el estándar que ordena las carpetas de Linux (Linux Foundation, 2015).</li>
+<li><a href="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03.html">FHS 3.0 — The Root Filesystem</a>: qué guarda cada carpeta que cuelga de la raíz.</li>
+<li><a href="https://www.gnu.org/software/coreutils/manual/html_node/What-information-is-listed.html">GNU Coreutils — What information is listed</a>: qué muestra <code>ls -l</code> en cada columna.</li>
+<li><a href="https://www.gnu.org/software/coreutils/manual/html_node/Mode-Structure.html">GNU Coreutils — Mode Structure</a>: qué significan <code>r</code>, <code>w</code> y <code>x</code> en archivos y en carpetas.</li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html">Bash — Bourne Shell Builtins</a>: los comandos <code>cd</code> y <code>pwd</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7)</a>: por qué root no se detiene ante los permisos.</li>
+</ol></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/llaves-ssh-vps"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Llaves SSH: cómo entrar a tu VPS sin contraseña</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'permisos-en-linux';</script>
+<script src="/assets/sidebar.js?v=5"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

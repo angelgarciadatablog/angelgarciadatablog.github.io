@@ -7,7 +7,7 @@
       "datablog",
       "sistemas-y-redes"
     ],
-    "updated": "2026-10-16",
+    "updated": "2026-10-19",
     "posts-relacionados": [],
     "video-youtube": [],
     "videos-verticales": [
@@ -21,6 +21,30 @@
     "serie": "bitacora-de-mi-servidor",
     "series-relacionadas": "",
     "parte-anterior": "que-es-un-vps",
+    "parte-siguiente": "permisos-en-linux"
+  },
+  {
+    "titulo": "Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos",
+    "slug": "permisos-en-linux",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-10-19",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7697967782213750037",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7697968066151402772",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7697968301439339797"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué hay dentro de un VPS: el árbol de carpetas de Linux y el estándar FHS, los usuarios y root, cómo moverte con pwd, cd y ls, y cómo leer los 10 caracteres de permisos de carpetas y archivos.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "llaves-ssh-vps",
     "parte-siguiente": ""
   },
   {
