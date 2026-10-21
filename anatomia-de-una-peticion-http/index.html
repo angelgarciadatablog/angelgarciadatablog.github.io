@@ -79,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Anatomía de una petición HTTP</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
-      <span class="post-updated">Actualizado: 2026-10-20</span>
+      <span class="post-updated">Actualizado: 2026-10-21</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -222,9 +222,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Nota:</strong> en OpenAI, <code>429</code> también = saldo agotado.</p>
-</blockquote>
+<p>Los más comunes:</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td>Éxito</td>
+</tr>
+<tr>
+<td><code>201</code></td>
+<td>Creado correctamente (respuesta a un POST)</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Error en tu petición: un parámetro mal escrito o que falta</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>No te identificaste</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Te identificaste, pero no tienes permiso</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Lo que pediste no existe</td>
+</tr>
+<tr>
+<td><code>429</code></td>
+<td>Pediste demasiado (superaste el límite de peticiones)</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Error del servidor, no tuyo</td>
+</tr>
+</tbody>
+</table>
 <h3>El cuerpo y su formato</h3>
 <p>Casi siempre llega en <strong>JSON</strong> (nombres y valores), pero no siempre: por eso conviene revisar <code>Content-Type</code> o la documentación antes de usar los datos. Algunas APIs dejan elegir el formato, como el Banco Mundial con <code>format=json</code>.</p>
 <h3>Los datos vienen envueltos</h3>
