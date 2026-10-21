@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introducción a APIs para analistas de datos · Angel García</title>
-  <meta name="description" content="Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman." />
+  <meta name="description" content="Qué es una API, qué datos vamos a usar para aprender, desde dónde se piden (terminal, Postman o Python) y qué necesitas para usar Python." />
   <link rel="canonical" href="https://www.angelgarciadatablog.com/introduccion-apis-para-analistas/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Introducción a APIs para analistas de datos" />
-  <meta property="og:description" content="Qué es una API, cómo funciona una petición HTTP, qué son los endpoints y cómo empezar a consumir datos desde herramientas como Python o Postman." />
+  <meta property="og:description" content="Qué es una API, qué datos vamos a usar para aprender, desde dónde se piden (terminal, Postman o Python) y qué necesitas para usar Python." />
   <meta property="og:url" content="https://www.angelgarciadatablog.com/introduccion-apis-para-analistas/" />
   <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
   <link rel="icon" type="image/png" href="/img/favicon.png" />
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"titulo": "Introducción a APIs para analistas de datos", "categoria": "apis", "serie": "apis-para-analistas", "series_relacionadas": "fundamentos-http", "slug": "introduccion-apis-para-analistas", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-16", "video_youtube": [], "videos_verticales": []});
+window.dataLayer.push({"titulo": "Introducción a APIs para analistas de datos", "categoria": "apis", "serie": "apis-para-analistas", "series_relacionadas": "", "slug": "introduccion-apis-para-analistas", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-05-16", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7698665015036972308", "https://www.tiktok.com/@angelgarciadatablog/video/7698666187361750293", "https://www.tiktok.com/@angelgarciadatablog/video/7698666844848278805", "https://www.tiktok.com/@angelgarciadatablog/video/7698668367334444309"]});
 </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -78,7 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="post-titulo">Introducción a APIs para analistas de datos</h1>
     <div class="post-tags-row">
       <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
-      <span class="post-updated">Actualizado: 2026-10-08</span>
+      <span class="post-updated">Actualizado: 2026-10-20</span>
       <button class="btn-descargar" onclick="descargarPDF()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         PDF
@@ -86,159 +86,213 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <hr class="post-divider" />
     
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 4</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7698665015036972308?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7698666187361750293?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7698666844848278805?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7698668367334444309?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 4 de 4"></iframe></div>
+  </div>
+</section>
     
-    <div class="post-body" id="post-body"><h2>1. Qué es</h2>
-<p>Una API (Application Programming Interface) es un contrato que define cómo dos sistemas de software se comunican entre sí. No es un archivo ni un servidor — es un conjunto de reglas que establece qué se puede pedir, cómo pedirlo y qué se recibirá a cambio.</p>
-<p>Cuando te conectas a la API de Shopify, estás enviando una petición estructurada a los servidores de Shopify siguiendo las reglas que ellos definieron. Si cumples el contrato, recibes los datos.</p>
-<hr />
-<h2>2. Entornos de uso (de mayor a menor volumen)</h2>
-<p>Las APIs no nacieron para que los analistas pidieran datos. Nacieron para resolver un problema de <strong>arquitectura de software</strong>: ¿cómo hace una app para que su interfaz (lo que ves) hable con sus datos (lo que no ves) sin que ambas cosas sean un solo bloque imposible de mantener?</p>
-<p>Imagina Instagram. Cuando abres la app en tu celular, el celular no tiene acceso a la base de datos de Instagram — alguien tiene que ser el intermediario. Ese intermediario es la API. <strong>Eso pasa millones de veces por segundo, en cada app que usas.</strong></p>
-<h3>2.1. Frontend ↔ Backend (la función principal)</h3>
-<p>Cada vez que tocas un botón en una app — abrir Instagram, hacer un pedido en Rappi, enviar un mensaje en WhatsApp — estás disparando llamadas a una API. Es la columna vertebral de todo el software moderno. El frontend (lo visual) nunca toca la base de datos. Siempre habla con la API.</p>
-<h3>2.2. Sistema A ↔ Sistema B (integraciones entre empresas)</h3>
-<p>Una tienda en Shopify recibe un pedido → automáticamente se crea una orden en el ERP → se notifica al almacén → se genera la factura en el sistema contable. Todo eso sin intervención humana. Cada flecha es una llamada de API. Es el uso más común en el mundo empresarial: conectar sistemas que antes eran islas.</p>
-<h3>2.3. APIs como producto (plataformas)</h3>
-<p>Algunas empresas construyen su negocio vendiendo acceso a su API:</p>
+    <div class="post-body" id="post-body"><h2>1. Qué es una API</h2>
+<p>Una API es un <strong>contrato entre dos sistemas</strong>: un conjunto de reglas sobre qué se puede pedir o hacer, cómo hay que pedirlo y qué se recibe a cambio. No es un archivo ni un servidor.</p>
+<p>En ese contrato hay dos partes:</p>
 <ul>
-<li><strong>Stripe</strong>: su producto <em>es</em> su API de pagos. No tienen app para usuarios finales.</li>
-<li><strong>Google Maps</strong>: cualquier app que muestra un mapa está pagando por llamadas a su API.</li>
-<li><strong>Twilio</strong>: envío de SMS vía API. El desarrollador paga por cada mensaje.</li>
+<li><strong>Quien pide</strong>: una persona, un script o una aplicación.</li>
+<li><strong>La plataforma que atiende</strong>: escribe las reglas y las publica en la <strong>documentación de la API</strong>.</li>
 </ul>
-<p>Aquí la API no es una pieza interna — es el producto que se vende.</p>
-<h3>2.4. Automatizaciones y workflows</h3>
-<p>Zapier, Make, n8n. Cuando dices <em>"si llega un email con adjunto, guárdalo en Drive y avísame por Slack"</em> — eso es una cadena de llamadas a APIs de Gmail, Drive y Slack orquestadas por una herramienta.</p>
-<h3>2.5. Extracción de datos para análisis (el caso del analista)</h3>
-<p>Es el último en la lista — no porque sea menos válido, sino porque es el menos frecuente en volumen. No es para lo que la mayoría de APIs fueron diseñadas, pero casi todas lo permiten.</p>
-<p><strong>Por qué el caso del analista es distinto:</strong> los primeros cuatro usos son <strong>transaccionales y en tiempo real</strong> — responden en milisegundos y lo hacen miles de veces por segundo. El uso como analista es <strong>batch y exploratorio</strong>: pides muchos datos de una vez, los almacenas y los analizas con calma. Por eso el <strong>rate limiting</strong> (límite de peticiones por minuto) duele más al analista — esa restricción existe para proteger el servidor de los casos 1 y 2. El analista es un efecto colateral bien tolerado.</p>
-<hr />
-<h2>3. La API desde el lado del analista</h2>
-<p>De los cinco entornos de uso, el nuestro es el último: <strong>extracción de datos para análisis</strong>. No construimos APIs ni las integramos entre sistemas — las consumimos para pedir datos, almacenarlos y analizarlos.</p>
-<p>Eso define todo lo que sigue en este documento: cómo autenticarse, cómo hacer una petición, cómo manejar los límites que imponen las plataformas. Todo aplica a ese contexto — el analista que necesita datos que viven en un sistema externo.</p>
-<h3>3.1 . ¿A qué datos puedo acceder?</h3>
-<p>Antes de hacer cualquier petición, hay que saber si la API existe y cómo conseguir acceso. Eso depende de a quién pertenecen los datos:</p>
-<h4>1. Datos de empresa</h4>
-<p>SAP, Oracle, Azure, GCP, AWS. Los controla la organización. Necesitas que alguien interno (IT o desarrollo) te dé acceso. No puedes solicitarlo solo.</p>
-<h4>2. Datos propios</h4>
-<p>Google Workspace, Notion, GitHub. Son tuyos. Puedes generar las credenciales directamente desde el panel de la plataforma sin depender de nadie.</p>
-<h4>3. Datos de prueba</h4>
-<p>Entornos sandbox que la plataforma ofrece para desarrollo. Stripe, Salesforce Developer Edition, HubSpot. No son datos reales — sirven para aprender y probar sin consecuencias.</p>
-<hr />
-<h2>4. Cómo hacer una petición</h2>
-<p>Para hacer una petición a una API necesitas tres cosas en orden:</p>
-<h3>4.1. Una herramienta</h3>
-<p>No todas las APIs requieren código. Hay tres niveles:</p>
-<ul>
-<li><strong>Navegador</strong> — solo funciona con APIs públicas o las que exponen el API key en la URL (ej: Windsor.ai)</li>
-<li><strong>Postman</strong> — interfaz visual, sin código. Ideal para explorar una API nueva</li>
-<li><strong>Python con <code>requests</code></strong> — desde un script, cuando ya sabes qué pedir y quieres automatizarlo</li>
-</ul>
-<h3>4.2. La documentación</h3>
-<p>Es el manual que te dice qué puedes pedir. Sin ella estás adivinando. Especifica los endpoints disponibles, los parámetros que acepta cada uno, cómo autenticarte y qué te devuelve.</p>
-<h3>4.3. Método de petición</h3>
-<p>No siempre es GET. Los cuatro métodos principales:</p>
-<ul>
-<li><strong>GET</strong> — pedir datos. El más común para el analista.</li>
-<li><strong>POST</strong> — enviar datos para crear algo nuevo. También se usa para consultas complejas cuyos parámetros no caben en la URL.</li>
-<li><strong>PUT/PATCH</strong> — actualizar algo existente.</li>
-<li><strong>DELETE</strong> — eliminar algo.</li>
-</ul>
-<p>Como analistas casi siempre usamos GET, pero hay casos donde POST se usa no para crear sino para enviar parámetros de consulta complejos.</p>
-<h3>4.4. Autenticación</h3>
-<p>Antes de recibir datos, la API necesita saber quién eres. Aquí es donde entran los mecanismos — API Key y OAuth — que se cubren en la siguiente sección.</p>
-<hr />
-<h2>5. Autenticación</h2>
-<h3>5.1. API Key</h3>
-<p>Credencial estática que el administrador genera desde la plataforma y comparte directamente por email, WhatsApp, etc. Tu script la incluye en cada petición.</p>
-<ul>
-<li>Se gestiona manualmente: alguien la genera, la copia y te la pasa</li>
-<li>Es permanente hasta que se revoque a mano — si alguien la roba, tiene acceso indefinido</li>
-<li>Algunas plataformas permiten configurar permisos (Google, Shopify), otras no</li>
-</ul>
-<p>Algunas plataformas la exponen en la URL como parámetro (ej: Windsor.ai). Es funcional pero mala práctica — la key queda visible en el historial del navegador y en los logs del servidor.</p>
-<h3>5.2. OAuth 2.0</h3>
-<p>Protocolo estándar de autorización. Siempre requiere una aplicación registrada en la plataforma — esa aplicación tiene un <code>client_id</code> (identificador público, siempre presente) y en algunos casos un <code>client_secret</code> (solo en aplicaciones de servidor, nunca en apps móviles o frontend porque no hay forma segura de guardarlo).</p>
-<h3>5.3. Otros mecanismos</h3>
-<ul>
-<li><strong>Basic Auth</strong> — usuario y contraseña en cada petición. Simple, antiguo, presente en sistemas legacy.</li>
-<li><strong>Bearer Token</strong> — token en el header de la petición. OAuth lo usa pero también existe de forma independiente.</li>
-<li><strong>JWT</strong> — token con información codificada dentro. Común en APIs modernas.</li>
-<li><strong>HMAC</strong> — firma criptográfica de cada petición. Usado por AWS entre otros.</li>
-</ul>
-<h3>5.4. Diferencia clave entre API Key y OAuth 2.0</h3>
-<p>La diferencia no está en los permisos — ambos pueden tenerlos. Está en dos cosas:</p>
-<ol>
-<li><strong>Permanencia</strong> — API Key es estática hasta revocación manual. OAuth siempre genera tokens temporales que expiran.</li>
-<li><strong>Identidad</strong> — API Key es una credencial suelta. OAuth siempre tiene una aplicación registrada con identidad propia en la plataforma.</li>
-</ol>
-<hr />
-<h2>6. Qué devuelve una API</h2>
-<p>Cuando una petición es exitosa, la API devuelve dos cosas:</p>
-<h3>6.1. Status code</h3>
-<p>Número que indica si la petición funcionó o no. Es lo primero que mirar cuando algo falla.</p>
+<p>Si la petición cumple las reglas, la plataforma responde con datos o haciendo algo (guardar, publicar, enviar, borrar). Si no, responde con un error.</p>
+<h3>Las APIs que no ves y las que puedes usar</h3>
+<p>Detrás de casi cada botón de una aplicación hay una llamada a una API: el "me gusta" lo registra una API, la foto que publicas la guarda otra. Esas APIs las definió quien construyó la aplicación, y su razón de ser principal es comunicar el frontend con el backend.</p>
+<p>Algunas plataformas, además, <strong>abren una parte de sus APIs</strong> para que armes tus propias peticiones sin pasar por sus botones. Esa parte es más pequeña, y sacar datos para analizarlos es solo uno de sus usos. Aun así, para un analista es una de las mejores formas de conseguir datos de manera automática.</p>
+<h3>Quién te da el acceso</h3>
 <table>
 <thead>
 <tr>
-<th>Código</th>
-<th>Significado</th>
+<th>Datos</th>
+<th>Dónde viven</th>
+<th>Quién te da el acceso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>200</code></td>
-<td>Éxito</td>
+<td>De una empresa</td>
+<td>SAP, Oracle, Azure, Google Cloud, AWS</td>
+<td>Alguien de adentro: el área de sistemas o de desarrollo</td>
 </tr>
 <tr>
-<td><code>201</code></td>
-<td>Creado correctamente (respuesta a POST)</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td>Error en tu petición — parámetro mal escrito o faltante</td>
-</tr>
-<tr>
-<td><code>401</code></td>
-<td>No estás autenticado</td>
-</tr>
-<tr>
-<td><code>403</code></td>
-<td>Autenticado pero sin permiso</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>El endpoint no existe</td>
-</tr>
-<tr>
-<td><code>429</code></td>
-<td>Superaste el rate limit</td>
-</tr>
-<tr>
-<td><code>500</code></td>
-<td>Error del servidor, no tuyo</td>
+<td>Tuyos</td>
+<td>Tus cuentas en Notion, GitHub, Google o LinkedIn</td>
+<td>Tú mismo: generas tus credenciales desde la plataforma</td>
 </tr>
 </tbody>
 </table>
-<h3>6.2. Cuerpo de la respuesta</h3>
-<p>Los datos en sí. Casi siempre en formato JSON — un diccionario de clave-valor. Algunas APIs devuelven XML (más antiguo) o CSV.</p>
-<hr />
-<h2>7. Gotchas</h2>
+<blockquote>
+<p><strong>Nota:</strong> para saber si una plataforma tiene API = buscar su sección para desarrolladores.</p>
+</blockquote>
+<h2>2. Con qué APIs vamos a practicar</h2>
+<h3>APIs públicas: no piden credencial</h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Qué datos da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banco Mundial</td>
+<td>Indicadores de todos los países</td>
+</tr>
+<tr>
+<td>Open-Meteo</td>
+<td>El clima de cualquier ciudad</td>
+</tr>
+<tr>
+<td>Open Library</td>
+<td>Libros por género</td>
+</tr>
+<tr>
+<td>PokeAPI</td>
+<td>Todos los Pokémon</td>
+</tr>
+</tbody>
+</table>
+<p>Con ellas se deja atrás el CSV y aparece el formato en el que responden casi todas las APIs: <strong>JSON</strong>. Lo exploraremos junto con lo básico de Python.</p>
+<h3>APIs con autenticación: los datos son tuyos</h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Qué datos da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spotify</td>
+<td>Las canciones que más escuchas</td>
+</tr>
+<tr>
+<td>Notion</td>
+<td>Tus páginas y tus tablas</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>Las estadísticas de tu canal</td>
+</tr>
+</tbody>
+</table>
+<p>Antes de pedir los datos, tienes que demostrar que eres tú.</p>
+<h3>Más adelante: crear y modificar</h3>
+<p>Las APIs no son solo para consultar. También permiten crear o modificar: crear páginas en Notion, publicar en LinkedIn o modificar un repositorio en GitHub. Ese es el mundo del desarrollador; la serie empieza por el del analista, que recibe datos.</p>
+<h2>3. Desde dónde se hace la petición</h2>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Ventaja</th>
+<th>Limitación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal (Mac) / PowerShell (Windows)</td>
+<td>Ya viene instalada</td>
+<td>La respuesta llega amontonada y los comandos cambian entre sistemas</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>Respuesta ordenada, sin código; ideal para explorar</td>
+<td>Hay que descargarla y no automatiza el resto del trabajo</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Pide, limpia, guarda y automatiza</td>
+<td>Requiere instalar y aprender lo básico</td>
+</tr>
+</tbody>
+</table>
+<p>Un ejemplo de por qué la terminal confunde:</p>
+<pre><code class="language-bash">curl https://pokeapi.co/api/v2/pokemon/pikachu
+</code></pre>
 <ul>
-<li><strong>Nunca compartir credenciales en el código</strong>: API Keys y tokens van en variables de entorno o archivos <code>.env</code> no versionados. Una credencial en un repo público es una brecha inmediata.</li>
-<li><strong>OAuth protege contra interceptación de credenciales, no contra acceso físico al dispositivo</strong>: si alguien tiene tu ordenador desbloqueado puede usar las sesiones activas. Son capas de seguridad distintas — OAuth resuelve una, el bloqueo de pantalla resuelve la otra.</li>
-<li><strong>El <code>access_token</code> de OAuth expira</strong>: a diferencia de una API Key, hay que manejar el <code>refresh_token</code> para renovarlo automáticamente.</li>
-<li><strong>OAuth requiere que ambas partes estén registradas en la misma plataforma</strong>: si la plataforma no conoce tu app (<code>client_id</code>), el flujo no puede completarse.</li>
+<li><strong>Mac:</strong> <code>curl</code> es el programa curl y devuelve el JSON.</li>
+<li><strong>Windows PowerShell 5.1:</strong> <code>curl</code> es un alias de <code>Invoke-WebRequest</code>. Muestra una advertencia de seguridad y luego una tabla con el JSON cortado. El curl real se llama con <code>curl.exe</code>.</li>
 </ul>
-<hr />
-<h2>8. Referencia oficial</h2>
-<ul>
-<li><a href="https://oauth.net/2/">OAuth 2.0 — RFC oficial</a></li>
-<li><a href="https://developers.google.com/identity/protocols/oauth2">Google Identity — OAuth 2.0</a></li>
-<li><a href="https://shopify.dev/docs/apps/build/authentication-authorization">Shopify API authentication</a></li>
-</ul></div>
+<h2>4. Qué necesitas para usar Python</h2>
+<ol>
+<li><strong>Python instalado</strong> en tu computadora (salvo en Colab).</li>
+<li><strong>Un lugar donde escribir el código y ver el resultado:</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visual Studio Code</td>
+<td>Editor de código; ejecuta scripts y también notebooks</td>
+</tr>
+<tr>
+<td>Jupyter</td>
+<td>Notebook local</td>
+</tr>
+<tr>
+<td>Google Colab</td>
+<td>Notebook en el navegador; Python ya viene instalado en los servidores de Google</td>
+</tr>
+</tbody>
+</table>
+<h3>Script frente a notebook</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Script (<code>.py</code>)</th>
+<th>Notebook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cómo se ejecuta</td>
+<td>De principio a fin, de una vez</td>
+<td>Por celdas, con el resultado debajo de cada una</td>
+</tr>
+<tr>
+<td>Para qué conviene</td>
+<td>Automatizar</td>
+<td>Explorar datos paso a paso</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Colab</strong> es el atajo para empezar sin instalar nada y funciona igual en Mac y Windows, aunque algunas cosas (como guardar credenciales) se hacen distinto que en tu computadora. Para automatizar, el camino son los scripts.</p>
+<p>Las herramientas con IA, como Cursor, ayudan mucho, pero aquí escribimos el código a mano para entender cómo se manejan las respuestas de una API.</p>
+<h2>5. Recursos</h2>
+<ol>
+<li><a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation">Banco Mundial — API de indicadores</a></li>
+<li><a href="https://open-meteo.com/en/docs">Open-Meteo — documentación</a></li>
+<li><a href="https://openlibrary.org/developers/api">Open Library — APIs</a></li>
+<li><a href="https://pokeapi.co/docs/v2">PokeAPI — documentación</a></li>
+<li><a href="https://developer.spotify.com/documentation/web-api">Spotify — Web API</a></li>
+<li><a href="https://developers.google.com/youtube/v3">YouTube Data API</a></li>
+<li><a href="https://learn.microsoft.com/es-es/powershell/module/microsoft.powershell.utility/invoke-webrequest">Microsoft — Invoke-WebRequest</a>: el comando al que apunta <code>curl</code> en Windows PowerShell 5.1.</li>
+<li><a href="https://www.postman.com/downloads/">Postman</a> · <a href="https://www.python.org/downloads/">Python</a> · <a href="https://code.visualstudio.com/">Visual Studio Code</a> · <a href="https://jupyter.org/">Jupyter</a> · <a href="https://colab.research.google.com/">Google Colab</a></li>
+</ol></div>
     
     <nav class="post-nav">
       
-      
+      <a class="nav-siguiente" href="/anatomia-de-una-peticion-http"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Anatomía de una petición HTTP</span></a>
     </nav>
   </article>
 
