@@ -22,6 +22,7 @@ VAULT_DATABLOG = Path.home() / "infinity-memory" / "vault" / "datablog"
 WEB_ROOT = Path(__file__).parent
 TEMPLATE_PATH = WEB_ROOT / "assets" / "post_template.html"
 TOMBSTONE_TEMPLATE_PATH = WEB_ROOT / "assets" / "tombstone_template.html"
+CATEGORIAS_MD = VAULT_DATABLOG / "00-categorias.md"
 POSTS_JSON = WEB_ROOT / "posts.json"
 LINKS_PERDIDOS = WEB_ROOT / "links-perdidos.json"
 
@@ -144,8 +145,29 @@ def escribir_lapida(slug):
     out_dir.mkdir(exist_ok=True)
     (out_dir / "index.html").write_text(html, encoding="utf-8")
 
+def cargar_categorias():
+    """Lee la tabla Slug | Nombre de vault/datablog/00-categorias.md → {slug: nombre}."""
+    categorias = {}
+    for linea in CATEGORIAS_MD.read_text(encoding="utf-8").splitlines():
+        celdas = [c.strip() for c in linea.strip().strip("|").split("|")]
+        if len(celdas) != 2 or celdas[0] in ("", "Slug") or set(celdas[0]) <= set("-"):
+            continue
+        categorias[celdas[0]] = celdas[1]
+    return categorias
+
+
+def enlace_volver(categoria):
+    """Enlace "volver" de la cabecera del post: a la pantalla de su categoría,
+    o al inicio si la categoría no está en la tabla (ej. archivado)."""
+    nombre = CATEGORIAS.get(categoria)
+    if nombre:
+        return f'<a class="post-volver" href="/?cat={categoria}">← Volver a {nombre}</a>'
+    return '<a class="post-volver" href="/">← Volver al inicio</a>'
+
+
 # ─── CARGAR TEMPLATE ──────────────────────────────────────────────────────────
 template = TEMPLATE_PATH.read_text(encoding="utf-8")
+CATEGORIAS = cargar_categorias()
 
 # ─── LEER TODOS LOS POSTS ─────────────────────────────────────────────────────
 md_files = [f for f in VAULT_DATABLOG.glob("**/*.md") if f.name != "00-index.md"]
@@ -346,6 +368,7 @@ for meta in posts_a_publicar:
     html = html.replace("{{og_image}}", og_image)
     html = html.replace("{{titulo}}", meta.get("titulo", ""))
     html = html.replace("{{descripcion}}", meta.get("descripcion", "") or meta.get("titulo", ""))
+    html = html.replace("{{volver}}", enlace_volver(meta.get("categoria", "")))
     html = html.replace("{{categoria}}", meta.get("categoria", ""))
     html = html.replace("{{updated}}", str(meta.get("updated", "")))
     html = html.replace("{{tags}}", tags_html)

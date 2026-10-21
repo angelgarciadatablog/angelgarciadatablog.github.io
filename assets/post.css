@@ -47,6 +47,19 @@
   min-width: 0;
 }
 
+.post-volver {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--color-acento);
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.post-volver:hover {
+  color: var(--color-acento-hover);
+  text-decoration: underline;
+}
+
 .post-meta {
   display: flex;
   align-items: center;
