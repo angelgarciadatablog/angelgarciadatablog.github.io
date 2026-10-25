@@ -54,7 +54,8 @@ function renderSidebar(query) {
   const q = (query || '').toLowerCase().trim();
 
   nav.appendChild(crearLink('/', 'Inicio', _slugActivo === '__inicio__' && !_catActiva));
-  nav.appendChild(crearLink('/portafolio', 'Portafolio', false));
+  // Portafolio oculto hasta tener casos publicados:
+  // nav.appendChild(crearLink('/portafolio', 'Portafolio', false));
 
   if (q) {
     renderResultadosBusqueda(nav, q);
