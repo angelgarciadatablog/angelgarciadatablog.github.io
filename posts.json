@@ -1,5 +1,73 @@
 [
   {
+    "titulo": "Rutas relativas en Linux: el punto y los dos puntos",
+    "slug": "rutas-relativas-y-los-dos-puntos",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-10-25",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7699287106052558101"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué significan . y .. en Linux, cómo subir y bajar entre carpetas con rutas cortas (../cusco), cómo explorar paso a paso y cuándo conviene la ruta completa con ~.",
+    "serie": "comandos-basicos-de-linux",
+    "series-relacionadas": "",
+    "parte-anterior": "ls-asomarte-sin-moverte",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "ls: asomarte a una carpeta sin moverte",
+    "slug": "ls-asomarte-sin-moverte",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-10-25",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7699286884337421588"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo leer dónde estás en la terminal de Linux (la virgulilla, el $ y el #) y cómo usar ls con una ruta para mirar archivos y carpetas sin moverte, con sus opciones -a, -l y -d.",
+    "serie": "comandos-basicos-de-linux",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": "rutas-relativas-y-los-dos-puntos"
+  },
+  {
+    "titulo": "Nuestra primera petición a una API con Python",
+    "slug": "primera-peticion-a-una-api",
+    "categoria": "apis",
+    "tags": [
+      "datablog",
+      "apis"
+    ],
+    "updated": "2026-10-25",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7699379607102934292",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7699380043545546004",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7699380485109124373"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "La primera petición a una API desde Python con requests (PokeAPI): cómo abrir la respuesta en orden, explorar un JSON enorme por niveles, las credenciales que piden Notion, Spotify y TikTok, y dónde viaja el token.",
+    "serie": "apis-para-analistas",
+    "series-relacionadas": "",
+    "parte-anterior": "anatomia-de-una-peticion-http",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Anatomía de una petición HTTP",
     "slug": "anatomia-de-una-peticion-http",
     "categoria": "apis",
@@ -20,7 +88,7 @@
     "serie": "apis-para-analistas",
     "series-relacionadas": "",
     "parte-anterior": "introduccion-apis-para-analistas",
-    "parte-siguiente": ""
+    "parte-siguiente": "primera-peticion-a-una-api"
   },
   {
     "titulo": "Introducción a APIs para analistas de datos",

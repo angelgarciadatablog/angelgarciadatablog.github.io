@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestra primera petición a una API con Python · Angel García</title>
+  <meta name="description" content="La primera petición a una API desde Python con requests (PokeAPI): cómo abrir la respuesta en orden, explorar un JSON enorme por niveles, las credenciales que piden Notion, Spotify y TikTok, y dónde viaja el token." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/primera-peticion-a-una-api/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Nuestra primera petición a una API con Python" />
+  <meta property="og:description" content="La primera petición a una API desde Python con requests (PokeAPI): cómo abrir la respuesta en orden, explorar un JSON enorme por niveles, las credenciales que piden Notion, Spotify y TikTok, y dónde viaja el token." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/primera-peticion-a-una-api/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Nuestra primera petición a una API con Python", "categoria": "apis", "serie": "apis-para-analistas", "series_relacionadas": "", "slug": "primera-peticion-a-una-api", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-25", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7699379607102934292", "https://www.tiktok.com/@angelgarciadatablog/video/7699380043545546004", "https://www.tiktok.com/@angelgarciadatablog/video/7699380485109124373"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=apis">← Volver a APIs</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">apis</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Nuestra primera petición a una API con Python</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">apis</span></div>
+      <span class="post-updated">Actualizado: 2026-10-25</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7699379607102934292?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7699380043545546004?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7699380485109124373?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. Las cuatro partes de una petición</h2>
+<p>Una petición puede tener cuatro partes, pero no todas las usan:</p>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Método</td>
+<td>Qué quieres que haga la API (<code>GET</code>, <code>POST</code>…)</td>
+</tr>
+<tr>
+<td>Dirección</td>
+<td>Dirección base + endpoint (+ parámetros, si hacen falta)</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>Datos sobre la petición: quién eres, en qué formato envías</td>
+</tr>
+<tr>
+<td>Cuerpo</td>
+<td>Lo que envías a la API. Un <code>GET</code> no lleva</td>
+</tr>
+</tbody>
+</table>
+<h2>2. La primera petición: Pikachu en la PokeAPI</h2>
+<p>Qué endpoints existen lo dice la documentación de cada API. En la PokeAPI:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Qué devuelve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/pokemon/pikachu</code></td>
+<td>Un Pokémon</td>
+</tr>
+<tr>
+<td><code>/type/fire</code></td>
+<td>Los Pokémon de tipo fuego (109)</td>
+</tr>
+</tbody>
+</table>
+<p>La petición en Python, con la librería <code>requests</code>:</p>
+<pre><code class="language-python">import requests
+
+respuesta = requests.get(&quot;https://pokeapi.co/api/v2/pokemon/pikachu&quot;)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>En esta petición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Método</td>
+<td>✅ <code>GET</code></td>
+</tr>
+<tr>
+<td>Dirección</td>
+<td>✅ <code>https://pokeapi.co/api/v2</code> + <code>/pokemon/pikachu</code></td>
+</tr>
+<tr>
+<td>Parámetros</td>
+<td>❌ No hicieron falta</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>❌ Ninguno escrito: esta API no pide identificarte y <code>requests</code> pone los suyos</td>
+</tr>
+<tr>
+<td>Cuerpo</td>
+<td>❌ Un <code>GET</code> no lleva</td>
+</tr>
+</tbody>
+</table>
+<p>Dos de cuatro partes bastan para tener una respuesta.</p>
+<blockquote>
+<p><strong>Nota:</strong> se instala con <code>pip install requests</code></p>
+</blockquote>
+<h2>3. La respuesta es un sobre cerrado</h2>
+<p>Lo que devuelve <code>requests</code> no son los datos todavía:</p>
+<pre><code class="language-python">&gt;&gt;&gt; type(respuesta)
+&lt;class 'requests.models.Response'&gt;
+&gt;&gt;&gt; respuesta
+&lt;Response [200]&gt;
+</code></pre>
+<p>Adentro trae tres cosas, y se abren en este orden:</p>
+<table>
+<thead>
+<tr>
+<th>Orden</th>
+<th>Qué miras</th>
+<th>Cómo</th>
+<th>En Pikachu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>El código de estado</td>
+<td><code>respuesta.status_code</code></td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>El formato (header <code>Content-Type</code>)</td>
+<td><code>respuesta.headers.get("Content-Type")</code></td>
+<td><code>application/json; charset=utf-8</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>El cuerpo, con los datos</td>
+<td><code>datos = respuesta.json()</code></td>
+<td>Un diccionario</td>
+</tr>
+</tbody>
+</table>
+<p>Por qué en ese orden:</p>
+<ol>
+<li>Si el código es un error, el cuerpo no trae tus datos, sino el mensaje de error. Ejemplo: <code>/pokemon/pikachuuu</code> devuelve <code>404</code> y <code>{'status': 404, 'message': 'Not Found'}</code>.</li>
+<li><code>.json()</code> no mira el <code>Content-Type</code>: intenta leer el cuerpo como JSON y, si no lo es, falla.</li>
+</ol>
+<h2>4. Explorar un JSON enorme por niveles</h2>
+<p>El cuerpo de Pikachu tiene <strong>15.580 líneas</strong> (con sangría), y el 93 % es la lista de movimientos. No se imprime entero: se explora por niveles.</p>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué preguntas</th>
+<th>Código</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>¿Qué es?</td>
+<td><code>type(datos)</code></td>
+<td><code>dict</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>¿Qué claves tiene? (sin el contenido)</td>
+<td><code>datos.keys()</code></td>
+<td><code>id</code>, <code>name</code>, <code>height</code>, <code>moves</code>, <code>stats</code>, <code>types</code>…</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Es una lista: ¿cuántos elementos?</td>
+<td><code>len(datos["types"])</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mira uno solo</td>
+<td><code>datos["types"][0]["type"]["name"]</code></td>
+<td><code>'electric'</code></td>
+</tr>
+</tbody>
+</table>
+<p>Con una lista, basta mirar un elemento: los demás tienen la misma forma. Para sacar todos los movimientos:</p>
+<pre><code class="language-python">for movimiento in datos[&quot;moves&quot;]:
+    print(movimiento[&quot;move&quot;][&quot;name&quot;])   # 109 nombres
+</code></pre>
+<p>Para explorar la respuesta hace falta un poco de Python: diccionarios, listas y moverse entre ellos.</p>
+<h2>5. Las credenciales que te vas a encontrar</h2>
+<p>La PokeAPI no pide identificarte. Muchas otras sí: sin credencial responden <code>401</code> (no sé quién eres). Cada API la entrega de una forma distinta:</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Qué haces</th>
+<th>Qué obtienes</th>
+<th>¿Vence?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notion</td>
+<td>Creas una integración y le das acceso a las páginas que quieras</td>
+<td>El token, directo</td>
+<td>No, hasta que lo borres</td>
+</tr>
+<tr>
+<td>Spotify (catálogo)</td>
+<td>Creas una app → recibes Client ID + Client Secret → los cambias por un token con un <code>POST</code></td>
+<td>Un token de la app</td>
+<td>Sí, en 1 hora</td>
+</tr>
+<tr>
+<td>TikTok (tus datos)</td>
+<td>Creas una app → recibes Client ID + Client Secret → inicias sesión y aceptas los permisos</td>
+<td>Un token para tus datos</td>
+<td>Sí, en 24 h (se renueva con el <em>refresh token</em>, que dura 1 año)</td>
+</tr>
+</tbody>
+</table>
+<h3>Qué es una "aplicación" de desarrollador</h3>
+<p>No es una app del celular ni tu código: es un <strong>registro</strong> en el panel para desarrolladores de la API, con un nombre. Al crearlo recibes un Client ID y un Client Secret, que funcionan como el usuario y la contraseña de ese registro. Tu código los usa para pedir el token.</p>
+<blockquote>
+<p><strong>Nota:</strong> Client ID + Client Secret ≠ token</p>
+</blockquote>
+<p>Con el token de Spotify obtenido así puedes pedir el catálogo (artistas, canciones, álbumes), pero no tus datos personales: eso devuelve <code>401</code>. Para tus datos hace falta iniciar sesión, como en TikTok.</p>
+<h2>6. Dónde viaja la credencial</h2>
+<p>Casi siempre en los headers. Notion, Spotify y TikTok la piden en el header <code>Authorization</code>, con la palabra <code>Bearer</code> delante:</p>
+<pre><code>Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p><em>Bearer</em> significa portador: quien trae la credencial, puede entrar. Otras APIs usan un header con otro nombre; cuál usar lo dice la documentación.</p>
+<h3>Las cuatro partes en una sola petición: buscar en Notion</h3>
+<p>Para buscar en Notion el método es <code>POST</code>, aunque lo que quieres son datos: le <strong>envías</strong> lo que quieres buscar, y con eso te responde.</p>
+<pre><code class="language-python">import keyring, requests
+
+token = keyring.get_password(&quot;apis-para-analistas&quot;, &quot;notion-token&quot;)
+
+respuesta = requests.post(
+    &quot;https://api.notion.com/v1/search&quot;,              # método + dirección
+    headers={
+        &quot;Authorization&quot;: f&quot;Bearer {token}&quot;,          # la credencial
+        &quot;Notion-Version&quot;: &quot;2026-03-11&quot;,              # la versión de Notion
+    },                                               # Content-Type lo pone requests
+    json={&quot;query&quot;: &quot;...&quot;},                           # el cuerpo
+)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>En esta petición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Método</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Dirección</td>
+<td><code>https://api.notion.com/v1/search</code></td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>El token (<code>Authorization</code>), la versión de Notion (<code>Notion-Version</code>, obligatoria en cada petición) y el formato del cuerpo (<code>Content-Type: application/json</code>, que <code>requests</code> pone al usar <code>json=</code>)</td>
+</tr>
+<tr>
+<td>Cuerpo</td>
+<td>Lo que quieres buscar</td>
+</tr>
+</tbody>
+</table>
+<h3>El token nunca va escrito en el código</h3>
+<p>El token permite pedir datos en tu nombre. Por eso hay tres cosas distintas:</p>
+<table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Dónde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dónde se <strong>guarda</strong></td>
+<td>En un lugar seguro de tu computadora (en Mac, el Llavero), si trabajas en local</td>
+</tr>
+<tr>
+<td>Cómo <strong>llega</strong> al código</td>
+<td>En una variable: <code>token = keyring.get_password(...)</code></td>
+</tr>
+<tr>
+<td>Dónde <strong>viaja</strong></td>
+<td>En el header: <code>f"Bearer {token}"</code></td>
+</tr>
+</tbody>
+</table>
+<p>En el código solo está la variable, nunca el valor. Dónde guardar la credencial en local y en producción se verá más adelante en la serie.</p>
+<h2>7. Recursos</h2>
+<ol>
+<li><a href="https://pokeapi.co/docs/v2">PokeAPI — documentación</a></li>
+<li><a href="https://requests.readthedocs.io/en/latest/user/quickstart/">Requests — Quickstart</a></li>
+<li><a href="https://developers.notion.com/reference/authentication">Notion — Authentication</a></li>
+<li><a href="https://developers.notion.com/reference/post-search">Notion — Search (POST)</a></li>
+<li><a href="https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow">Spotify — Client Credentials Flow</a></li>
+<li><a href="https://developers.tiktok.com/doc/oauth-user-access-token-management">TikTok — Manage User Access Tokens</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization">MDN — Authorization</a></li>
+<li><a href="https://pypi.org/project/keyring/">keyring (PyPI)</a></li>
+</ol></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/anatomia-de-una-peticion-http"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Anatomía de una petición HTTP</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'primera-peticion-a-una-api';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

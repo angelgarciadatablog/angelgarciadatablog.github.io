@@ -10,6 +10,7 @@ const SERIES_NOMBRES = {
   'introduccion-claude-code': 'Introducción a Claude Code',
   'fundamentos-http': 'Fundamentos de HTTP',
   'bitacora-de-mi-servidor': 'Bitácora de mi servidor',
+  'comandos-basicos-de-linux': 'Comandos básicos de Linux',
 };
 
 async function init() {

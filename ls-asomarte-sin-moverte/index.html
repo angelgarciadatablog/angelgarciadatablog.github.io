@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ls: asomarte a una carpeta sin moverte · Angel García</title>
+  <meta name="description" content="Cómo leer dónde estás en la terminal de Linux (la virgulilla, el $ y el #) y cómo usar ls con una ruta para mirar archivos y carpetas sin moverte, con sus opciones -a, -l y -d." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/ls-asomarte-sin-moverte/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="ls: asomarte a una carpeta sin moverte" />
+  <meta property="og:description" content="Cómo leer dónde estás en la terminal de Linux (la virgulilla, el $ y el #) y cómo usar ls con una ruta para mirar archivos y carpetas sin moverte, con sus opciones -a, -l y -d." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/ls-asomarte-sin-moverte/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "ls: asomarte a una carpeta sin moverte", "categoria": "bash-shell", "serie": "comandos-basicos-de-linux", "series_relacionadas": "", "slug": "ls-asomarte-sin-moverte", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-25", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7699286884337421588"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=bash-shell">← Volver a Bash & Shell</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">ls: asomarte a una carpeta sin moverte</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-10-25</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 1</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7699286884337421588?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 1"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. Dónde estás parado</h2>
+<p>En la terminal de Linux siempre estás dentro de alguna carpeta. Al entrar a tu servidor apareces en tu carpeta personal. La línea de la terminal te lo dice:</p>
+<pre><code>claudia@mi-servidor:~$
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claudia</code></td>
+<td>Tu usuario</td>
+</tr>
+<tr>
+<td><code>mi-servidor</code></td>
+<td>El nombre del servidor</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>La carpeta donde estás. La virgulilla es el atajo de tu carpeta personal</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Eres un usuario normal. Si fueras <code>root</code> verías <code>#</code></td>
+</tr>
+</tbody>
+</table>
+<p>La virgulilla se usa en las rutas: <code>~/practica</code> es lo mismo que <code>/home/claudia/practica</code>.</p>
+<h2>2. Moverte con cd</h2>
+<p><code>cd</code> (<em>change directory</em>) te cambia de carpeta. La parte antes del <code>$</code> cambia con él:</p>
+<table>
+<thead>
+<tr>
+<th>Escribes</th>
+<th>La línea queda así</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd ~/practica</code></td>
+<td><code>claudia@mi-servidor:~/practica$</code></td>
+</tr>
+<tr>
+<td><code>cd</code> (solo)</td>
+<td><code>claudia@mi-servidor:~$</code> (vuelves a tu carpeta)</td>
+</tr>
+</tbody>
+</table>
+<p>El <code>$</code> no cambia al moverte, porque no indica dónde estás sino quién eres. Con <code>#</code> (root), todo lo que escribas se ejecuta con todos los permisos.</p>
+<h2>3. Asomarte con ls</h2>
+<p><code>ls</code> (<em>list</em>) te muestra un archivo o una carpeta <strong>sin moverte</strong>. Se escribe siempre igual:</p>
+<pre><code>ls ruta
+</code></pre>
+<p>Para los ejemplos, esta es la carpeta de práctica:</p>
+<pre><code>~/practica
+├── .secreto
+├── notas.txt
+└── fotos/
+    └── playa.jpg
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Le das</th>
+<th>Te devuelve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La ruta de un archivo</td>
+<td>Su nombre: confirma que existe</td>
+<td><code>ls ~/practica/notas.txt</code> → <code>/home/claudia/practica/notas.txt</code></td>
+</tr>
+<tr>
+<td>Un archivo que no existe</td>
+<td>Un error</td>
+<td><code>ls ~/practica/nada.txt</code> → <code>No such file or directory</code></td>
+</tr>
+<tr>
+<td>La ruta de una carpeta</td>
+<td>Lo que hay dentro</td>
+<td><code>ls ~/practica</code> → <code>fotos  notas.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mirar una carpeta no es entrar en ella, como sí lo es el doble clic en Windows. Después del <code>ls</code> sigues en <code>~</code>.</p>
+<h2>4. Las opciones -a, -l y -d</h2>
+<p>Entre <code>ls</code> y la ruta puedes poner opciones: un guion y una letra.</p>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Viene de</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-a</code></td>
+<td><em>all</em></td>
+<td>Muestra también los archivos ocultos (los que empiezan con <code>.</code>)</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td><em>long</em></td>
+<td>Una línea por elemento con su detalle: permisos, dueño, tamaño y fecha</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td><em>directory</em></td>
+<td>Trata la carpeta como un archivo: no se asoma a su contenido</td>
+</tr>
+</tbody>
+</table>
+<p>Se pueden juntar: <code>ls -al ~/practica</code> muestra todo lo de dentro, incluido lo oculto, con detalle.</p>
+<h3>Por qué hace falta -d</h3>
+<p><code>ls -l ~/practica/fotos</code> no te da el detalle de <code>fotos</code>: se asoma y te da el de lo que hay dentro (<code>playa.jpg</code>). Para ver el detalle de la carpeta misma:</p>
+<pre><code>ls -ld ~/practica/fotos
+</code></pre>
+<h2>5. Resumen</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué ves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls archivo</code></td>
+<td>Confirmas que existe</td>
+</tr>
+<tr>
+<td><code>ls carpeta</code></td>
+<td>Lo que hay dentro</td>
+</tr>
+<tr>
+<td><code>ls -a carpeta</code></td>
+<td>Lo de dentro, incluido lo oculto</td>
+</tr>
+<tr>
+<td><code>ls -l carpeta</code></td>
+<td>Lo de dentro, con detalle</td>
+</tr>
+<tr>
+<td><code>ls -ld carpeta</code></td>
+<td>El detalle de la carpeta misma</td>
+</tr>
+</tbody>
+</table>
+<h2>6. Recursos</h2>
+<ol>
+<li><a href="https://www.gnu.org/software/coreutils/manual/html_node/ls-invocation.html">GNU Coreutils — ls invocation</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html">GNU Bash — Tilde Expansion</a></li>
+</ol></div>
+    
+    <nav class="post-nav">
+      
+      <a class="nav-siguiente" href="/rutas-relativas-y-los-dos-puntos"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Rutas relativas en Linux: el punto y los dos puntos</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'ls-asomarte-sin-moverte';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

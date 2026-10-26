@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutas relativas en Linux: el punto y los dos puntos · Angel García</title>
+  <meta name="description" content="Qué significan . y .. en Linux, cómo subir y bajar entre carpetas con rutas cortas (../cusco), cómo explorar paso a paso y cuándo conviene la ruta completa con ~." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/rutas-relativas-y-los-dos-puntos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Rutas relativas en Linux: el punto y los dos puntos" />
+  <meta property="og:description" content="Qué significan . y .. en Linux, cómo subir y bajar entre carpetas con rutas cortas (../cusco), cómo explorar paso a paso y cuándo conviene la ruta completa con ~." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/rutas-relativas-y-los-dos-puntos/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Rutas relativas en Linux: el punto y los dos puntos", "categoria": "bash-shell", "serie": "comandos-basicos-de-linux", "series_relacionadas": "", "slug": "rutas-relativas-y-los-dos-puntos", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-25", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7699287106052558101"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=bash-shell">← Volver a Bash & Shell</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Rutas relativas en Linux: el punto y los dos puntos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-10-25</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 1</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7699287106052558101?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 1"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. El problema: rutas largas</h2>
+<p>Con <code>ls</code> y una ruta te asomas a cualquier carpeta sin moverte. Pero la ruta completa puede ser larga. Para los ejemplos, esta es la carpeta de práctica, y tú estás dentro de <code>lima</code>:</p>
+<pre><code>~/practica
+├── notas.txt
+├── fotos/
+│   └── playa.jpg
+└── viajes/
+    ├── 2025/
+    │   └── playa.jpg
+    └── 2026/
+        ├── cusco/
+        │   └── machu.jpg
+        └── lima/          ← estás aquí
+            └── plaza.jpg
+</code></pre>
+<pre><code>claudia@mi-servidor:~/practica/viajes/2026/lima$
+</code></pre>
+<p>Para asomarte a <code>cusco</code>, la carpeta de al lado, con la ruta completa:</p>
+<pre><code>ls ~/practica/viajes/2026/cusco
+</code></pre>
+<p>Funciona, pero hay un atajo.</p>
+<h2>2. El punto y los dos puntos</h2>
+<p>Dentro de cada carpeta hay dos entradas que tú no creaste. Aparecen con <code>ls -a</code>:</p>
+<pre><code>ls -a
+.  ..  plaza.jpg
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Significa</th>
+<th>Ejemplo desde <code>lima</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>La carpeta donde estás</td>
+<td><code>ls .</code> = <code>ls</code> → <code>plaza.jpg</code></td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>La carpeta de arriba (la que contiene a la tuya)</td>
+<td><code>ls ..</code> → <code>cusco  lima</code></td>
+</tr>
+</tbody>
+</table>
+<p>Con <code>ls ..</code> miras la carpeta de arriba y sigues en <code>lima</code>.</p>
+<h2>3. Subir y bajar</h2>
+<p>Cada <code>..</code> es un escalón hacia arriba, y la <code>/</code> separa un escalón del otro. La ruta se lee de izquierda a derecha, como un camino.</p>
+<table>
+<thead>
+<tr>
+<th>Escribes (desde <code>lima</code>)</th>
+<th>Recorrido</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls ..</code></td>
+<td>Sube a <code>2026</code></td>
+<td><code>cusco  lima</code></td>
+</tr>
+<tr>
+<td><code>ls ../..</code></td>
+<td>Sube a <code>2026</code> y luego a <code>viajes</code></td>
+<td><code>2025  2026</code></td>
+</tr>
+<tr>
+<td><code>ls ../cusco</code></td>
+<td>Sube a <code>2026</code> y baja a <code>cusco</code></td>
+<td><code>machu.jpg</code></td>
+</tr>
+<tr>
+<td><code>ls ...</code></td>
+<td>Nada: Linux lo busca como el nombre de un archivo</td>
+<td><code>No such file or directory</code></td>
+</tr>
+</tbody>
+</table>
+<p>Para subir dos niveles no se escriben tres puntos: se repite el escalón (<code>../..</code>).</p>
+<h2>4. Explorar paso a paso</h2>
+<p>Si no sabes dónde está la carpeta que buscas, sube un escalón a la vez hasta verla y luego agrega su nombre:</p>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Escribes</th>
+<th>Ves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ls ..</code></td>
+<td><code>cusco  lima</code> (no está)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ls ../..</code></td>
+<td><code>2025  2026</code> (ahí está)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>ls ../../2025</code></td>
+<td><code>playa.jpg</code></td>
+</tr>
+</tbody>
+</table>
+<p>Al escribir el comienzo de un nombre, la tecla <strong>Tab</strong> lo completa: <code>ls ../cu</code> + Tab → <code>ls ../cusco/</code>.</p>
+<h2>5. Puntos o ruta completa</h2>
+<table>
+<thead>
+<tr>
+<th>Lo que buscas está</th>
+<th>Usa</th>
+<th>Ejemplo desde <code>lima</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cerca</td>
+<td>Los puntos</td>
+<td><code>../cusco</code></td>
+</tr>
+<tr>
+<td>Lejos, o no sabes dónde estás</td>
+<td>La ruta desde tu carpeta personal</td>
+<td><code>~/practica/fotos</code></td>
+</tr>
+</tbody>
+</table>
+<p>La ruta con <code>~</code> funciona estés donde estés.</p>
+<p>Con <code>ls</code> solo miras. Para ir de verdad, el mismo camino funciona con <code>cd</code>:</p>
+<pre><code>cd ../cusco
+claudia@mi-servidor:~/practica/viajes/2026/cusco$
+</code></pre>
+<h2>6. Resumen</h2>
+<table>
+<thead>
+<tr>
+<th>Escribes</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>La carpeta donde estás</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>Un nivel arriba</td>
+</tr>
+<tr>
+<td><code>../..</code></td>
+<td>Dos niveles arriba</td>
+</tr>
+<tr>
+<td><code>../cusco</code></td>
+<td>Sube un nivel y baja a <code>cusco</code></td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Nada: no existe</td>
+</tr>
+</tbody>
+</table>
+<h2>7. Recursos</h2>
+<ol>
+<li><a href="https://www.gnu.org/software/coreutils/manual/html_node/ls-invocation.html">GNU Coreutils — ls invocation</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Commands-For-Completion.html">GNU Bash — Commands For Completion (Tab)</a></li>
+</ol></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/ls-asomarte-sin-moverte"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">ls: asomarte a una carpeta sin moverte</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'rutas-relativas-y-los-dos-puntos';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>
