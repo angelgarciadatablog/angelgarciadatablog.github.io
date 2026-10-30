@@ -1,5 +1,53 @@
 [
   {
+    "titulo": "El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP",
+    "slug": "el-firewall-por-dentro",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-10-29",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701962169037982997",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701962373262855445",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701962534974278932"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Por qué ufw, firewalld, iptables y nftables no son cuatro firewalls distintos (todos manejan netfilter), qué son IPv4 e IPv6 y por qué cada regla existe dos veces, y cómo TCP y UDP duplican las puertas de un servidor.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "que-es-un-firewall",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "Qué es un firewall: los guardias del camino de una conexión",
+    "slug": "que-es-un-firewall",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-10-28",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701686885550247189",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701692537832049940",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7701692770150337813"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es un firewall, qué revisa, por qué una conexión pasa por varios (tu computadora, tu router, la empresa, el proveedor y tu servidor), qué puertas usas sin saberlo y por qué en un VPS con Ubuntu el firewall viene apagado.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "permisos-en-linux",
+    "parte-siguiente": "el-firewall-por-dentro"
+  },
+  {
     "titulo": "Rutas relativas en Linux: el punto y los dos puntos",
     "slug": "rutas-relativas-y-los-dos-puntos",
     "categoria": "bash-shell",
@@ -161,7 +209,7 @@
     "serie": "bitacora-de-mi-servidor",
     "series-relacionadas": "",
     "parte-anterior": "llaves-ssh-vps",
-    "parte-siguiente": ""
+    "parte-siguiente": "que-es-un-firewall"
   },
   {
     "titulo": "¿Qué es un VPS? Tu servidor como un edificio",

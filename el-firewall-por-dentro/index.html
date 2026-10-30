@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP · Angel García</title>
+  <meta name="description" content="Por qué ufw, firewalld, iptables y nftables no son cuatro firewalls distintos (todos manejan netfilter), qué son IPv4 e IPv6 y por qué cada regla existe dos veces, y cómo TCP y UDP duplican las puertas de un servidor." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/el-firewall-por-dentro/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP" />
+  <meta property="og:description" content="Por qué ufw, firewalld, iptables y nftables no son cuatro firewalls distintos (todos manejan netfilter), qué son IPv4 e IPv6 y por qué cada regla existe dos veces, y cómo TCP y UDP duplican las puertas de un servidor." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/el-firewall-por-dentro/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "el-firewall-por-dentro", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-10-29", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7701962169037982997", "https://www.tiktok.com/@angelgarciadatablog/video/7701962373262855445", "https://www.tiktok.com/@angelgarciadatablog/video/7701962534974278932"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=sistemas-y-redes">← Volver a Sistemas y redes</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-10-29</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7701962169037982997?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7701962373262855445?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7701962534974278932?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. No solo existe ufw</h2>
+<p>En Linux se escuchan cuatro nombres de firewall: <strong>ufw</strong>, <strong>firewalld</strong>, <strong>iptables</strong> y <strong>nftables</strong>. No son cuatro firewalls distintos. Quien de verdad aplica las reglas es siempre el mismo: <strong>netfilter</strong>, una parte del propio sistema (el kernel).</p>
+<p>Es como un edificio con un mismo sistema de cerrojos en todas las puertas: lo que cambia es el guardia que decide cuál abrir o cerrar.</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Dónde viene por defecto</th>
+<th>Cómo es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ufw</strong> (<em>uncomplicated firewall</em>)</td>
+<td>Ubuntu (viene apagado)</td>
+<td>Órdenes simples, como "deja pasar a la puerta 22"</td>
+</tr>
+<tr>
+<td><strong>firewalld</strong></td>
+<td>Red Hat, Fedora</td>
+<td>Organiza las reglas por zonas (casa, trabajo, red pública)</td>
+</tr>
+<tr>
+<td><strong>iptables</strong></td>
+<td>La herramienta clásica</td>
+<td>Más potente, órdenes más difíciles de escribir</td>
+</tr>
+<tr>
+<td><strong>nftables</strong></td>
+<td>Su reemplazo moderno</td>
+<td>Más potente, órdenes más difíciles de escribir</td>
+</tr>
+</tbody>
+</table>
+<p><strong>¿Cuál es el más seguro?</strong> Ninguno más que otro: todos manejan los mismos cerrojos. Lo que protege un servidor son las reglas que se escriben:</p>
+<ol>
+<li>Cerrar todo lo que entra.</li>
+<li>Abrir solo las puertas que se necesitan.</li>
+<li>Si se puede, sumar otra capa, como el firewall del proveedor.</li>
+</ol>
+<p>El error más común no está en la herramienta, sino en una regla mal puesta.</p>
+<h2>2. IPv4 e IPv6</h2>
+<p>Cada equipo conectado a internet tiene una <strong>dirección IP</strong>, y hoy hay dos formas de escribirla:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cómo se ve</td>
+<td>4 números del 0 al 255, separados por puntos</td>
+<td>8 grupos de números y letras, separados por dos puntos</td>
+</tr>
+<tr>
+<td>Ejemplo</td>
+<td><code>203.0.113.10</code></td>
+<td><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></td>
+</tr>
+<tr>
+<td>Cuántas hay</td>
+<td>Unos 4.300 millones</td>
+<td>Tantas que cada equipo del mundo puede tener la suya</td>
+</tr>
+<tr>
+<td>Estado</td>
+<td>Se acabaron: en 2011 se repartieron los últimos bloques libres</td>
+<td>En uso, junto con IPv4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Si se acabaron, ¿cómo te dan una IPv4 al alquilar un VPS?</strong> Se acabaron las nuevas, no las que ya existen. Los proveedores tienen bloques de direcciones y te prestan una mientras alquilas tu servidor; cuando lo borras, vuelve a su bolsa y la recibe otra persona.</p>
+<p>Un servidor puede tener las dos: es como un edificio con una dirección vieja y una nueva que llevan a las mismas puertas. Por eso <strong>cada regla del firewall tiene que existir en las dos versiones</strong>: si cierras una puerta para quien llega por IPv4 pero no para quien llega por IPv6, esa puerta sigue abierta. ufw lo hace solo: crea cada regla dos veces (<code>Rules updated</code> y <code>Rules updated (v6)</code>).</p>
+<h2>3. TCP y UDP</h2>
+<p>Antes de dejar pasar una conexión, el firewall revisa, entre otras cosas:</p>
+<table>
+<thead>
+<tr>
+<th>Qué revisa</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De dónde viene</td>
+<td>La IP de origen</td>
+</tr>
+<tr>
+<td>Por qué dirección llega</td>
+<td>IPv4 o IPv6</td>
+</tr>
+<tr>
+<td>A qué puerta va</td>
+<td>La 22, la 443</td>
+</tr>
+<tr>
+<td>Cómo viaja</td>
+<td>TCP o UDP</td>
+</tr>
+</tbody>
+</table>
+<p>Todo viaja por internet partido en pedacitos (<strong>paquetes</strong>). TCP y UDP son dos formas de enviarlos:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Se parece a</td>
+<td>Una llamada: primero se saludan</td>
+<td>Postales: se envían y ya</td>
+</tr>
+<tr>
+<td>Confirmación</td>
+<td>Cada pedacito se confirma; si uno se pierde, se reenvía</td>
+<td>No se confirma nada; si uno se pierde, se perdió</td>
+</tr>
+<tr>
+<td>Ventaja</td>
+<td>Llega todo, completo y en orden</td>
+<td>Más rápido</td>
+</tr>
+<tr>
+<td>Se usa para</td>
+<td>Páginas web, SSH, bases de datos</td>
+<td>Videollamadas, juegos en línea</td>
+</tr>
+</tbody>
+</table>
+<p>Lo importante para el firewall: <strong>las puertas de TCP y las de UDP son independientes</strong>. Es como un edificio con dos filas de puertas con la misma numeración: la 22 de TCP y la 22 de UDP son puertas distintas. Las 65.535 puertas de un servidor en realidad son el doble: <strong>131.070</strong>.</p>
+<p>Por eso una regla dice también de qué fila es: <code>22/tcp</code> deja pasar a la 22 solo por TCP, que es por donde viaja SSH, sin abrir la de UDP.</p>
+<h2>4. Recursos</h2>
+<ul>
+<li><a href="https://help.ubuntu.com/community/UFW">UFW · Ubuntu Community Help</a></li>
+<li><a href="https://www.netfilter.org/">Netfilter · netfilter.org</a></li>
+<li><a href="https://firewalld.org/">firewalld · firewalld.org</a></li>
+<li><a href="https://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml">IPv4 Address Space · IANA</a></li>
+<li><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">Registro de puertos de IANA</a></li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/que-es-un-firewall"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Qué es un firewall: los guardias del camino de una conexión</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'el-firewall-por-dentro';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>
