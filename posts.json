@@ -1,5 +1,52 @@
 [
   {
+    "titulo": "UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno",
+    "slug": "ufw-en-tu-vps",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-11-03",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702389479801326849",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702389833141947700",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702390404146187540"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo activar ufw en un VPS recién creado sin quedarte afuera, cómo leer línea por línea lo que responde sudo ufw status verbose y qué anota el firewall en /var/log/ufw.log cuando bloquea a alguien.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "el-firewall-por-dentro",
+    "parte-siguiente": "los-cuadernos-de-tu-vps"
+  },
+  {
+    "titulo": "Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22",
+    "slug": "los-cuadernos-de-tu-vps",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-11-03",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702859917476105493",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702861386245803284"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo saber quién entró a tu VPS con auth.log y journalctl (usuario, llave e IP), y quién lo intentó y falló con btmp y wtmp, que se leen con lastb y last.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "ufw-en-tu-vps",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP",
     "slug": "el-firewall-por-dentro",
     "categoria": "sistemas-y-redes",
@@ -21,7 +68,7 @@
     "serie": "bitacora-de-mi-servidor",
     "series-relacionadas": "",
     "parte-anterior": "que-es-un-firewall",
-    "parte-siguiente": ""
+    "parte-siguiente": "ufw-en-tu-vps"
   },
   {
     "titulo": "Qué es un firewall: los guardias del camino de una conexión",

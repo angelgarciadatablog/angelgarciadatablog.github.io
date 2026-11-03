@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno · Angel García</title>
+  <meta name="description" content="Cómo activar ufw en un VPS recién creado sin quedarte afuera, cómo leer línea por línea lo que responde sudo ufw status verbose y qué anota el firewall en /var/log/ufw.log cuando bloquea a alguien." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/ufw-en-tu-vps/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno" />
+  <meta property="og:description" content="Cómo activar ufw en un VPS recién creado sin quedarte afuera, cómo leer línea por línea lo que responde sudo ufw status verbose y qué anota el firewall en /var/log/ufw.log cuando bloquea a alguien." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/ufw-en-tu-vps/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "ufw-en-tu-vps", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-11-03", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7702389479801326849", "https://www.tiktok.com/@angelgarciadatablog/video/7702389833141947700", "https://www.tiktok.com/@angelgarciadatablog/video/7702390404146187540"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=sistemas-y-redes">← Volver a Sistemas y redes</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-11-03</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7702389479801326849?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7702389833141947700?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7702390404146187540?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. Despertar al guardia</h2>
+<p>En un VPS con Ubuntu, el firewall <strong>ufw</strong> (<em>uncomplicated firewall</em>) viene instalado pero apagado. Así se activa en un servidor recién creado, con tres comandos y en este orden:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Comando</th>
+<th>Qué hace</th>
+<th>Qué responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>sudo ufw status</code></td>
+<td>Pregunta cómo está el firewall</td>
+<td><code>Status: inactive</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>sudo ufw allow OpenSSH</code></td>
+<td>Deja pasar a la puerta 22 (por donde entras tú)</td>
+<td><code>Rules updated</code> y <code>Rules updated (v6)</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>sudo ufw enable</code></td>
+<td>Activa el firewall</td>
+<td><code>Firewall is active and enabled on system startup</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong><code>sudo</code></strong>, porque mirar o cambiar el firewall es tarea de administrador.</li>
+<li><strong><code>OpenSSH</code></strong> no lleva número: es un nombre que ufw ya conoce y equivale a <code>22/tcp</code>.</li>
+<li><strong>La regla se crea dos veces</strong>, una para IPv4 y otra para IPv6.</li>
+<li><strong>Queda activo aunque el servidor se reinicie.</strong></li>
+</ol>
+<p><strong>Por qué el orden importa:</strong> al activarse, ufw cierra todo lo que no está en su lista. Si la 22 no estaba, te deja afuera a ti también, aunque tengas la llave correcta.</p>
+<h2>2. Leer la lista del guardia</h2>
+<p>Para ver el detalle se agrega <code>verbose</code> (detallado):</p>
+<pre><code>sudo ufw status verbose
+</code></pre>
+<p>Esta es la respuesta de un servidor recién creado:</p>
+<pre><code>Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp (OpenSSH)           ALLOW IN    Anywhere
+22/tcp (OpenSSH (v6))      ALLOW IN    Anywhere (v6)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Línea</th>
+<th>Qué dice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Status: active</code></td>
+<td>El firewall está activo</td>
+</tr>
+<tr>
+<td><code>Logging: on (low)</code></td>
+<td>Anota en un registro a quién bloquea, con el nivel de detalle más bajo</td>
+</tr>
+<tr>
+<td><code>Default: deny (incoming)</code></td>
+<td>Lo que entra y no está en la lista: bloqueado</td>
+</tr>
+<tr>
+<td><code>allow (outgoing)</code></td>
+<td>Lo que sale: permitido</td>
+</tr>
+<tr>
+<td><code>disabled (routed)</code></td>
+<td>Lo que solo quiere pasar a través del servidor hacia otra red: desactivado (no se usa en un servidor como este)</td>
+</tr>
+<tr>
+<td><code>New profiles: skip</code></td>
+<td>Instalar un programa no abre ninguna puerta: las abres tú</td>
+</tr>
+</tbody>
+</table>
+<p>La tabla de abajo es la lista de reglas. Cada fila se lee de izquierda a derecha:</p>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Significa</th>
+<th>En este caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>To</code></td>
+<td>Hacia qué puerta</td>
+<td>La 22 por TCP</td>
+</tr>
+<tr>
+<td><code>Action</code></td>
+<td>Qué hace el firewall</td>
+<td><code>ALLOW IN</code>: dejar entrar</td>
+</tr>
+<tr>
+<td><code>From</code></td>
+<td>Desde dónde</td>
+<td><code>Anywhere</code>: desde cualquier lugar</td>
+</tr>
+</tbody>
+</table>
+<p>La segunda fila es la misma regla para IPv6.</p>
+<p><strong>¿La 22 abierta a cualquiera?</strong> Cualquiera puede tocarla, pero tocar no es entrar: para pasar hace falta tu llave SSH.</p>
+<p>En lugar de <code>Anywhere</code> puede ir una IP exacta (<code>203.0.113.7</code>) o un bloque de direcciones (<code>203.0.113.0/24</code>). Dejar la 22 solo para la IP de tu casa suena más seguro, pero esa IP puede cambiar (por ejemplo, al reiniciarse el router), y si cambia, el firewall te deja afuera.</p>
+<h2>3. El cuaderno del guardia</h2>
+<p>Cada vez que ufw bloquea una conexión, la anota en <code>/var/log/ufw.log</code>. <code>/var/log</code> es la carpeta donde guardan sus registros casi todos los programas del servidor.</p>
+<ol>
+<li><strong><code>cat ufw.log</code> responde <code>Permission denied</code>.</strong> Con <code>ls -l ufw.log</code> se ve por qué: <code>-rw-r----- syslog adm</code>. Lo escribe el usuario <code>syslog</code>, lo lee el grupo <code>adm</code> y nadie más.</li>
+<li><strong>Se lee con <code>sudo</code> y solo el final</strong>, porque puede tener miles de líneas:</li>
+</ol>
+<pre><code>sudo tail -n 5 /var/log/ufw.log
+</code></pre>
+<p>Cada línea es un bloqueo. Entre muchos datos técnicos, estos son los que importan:</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fecha y hora</td>
+<td>Cuándo</td>
+</tr>
+<tr>
+<td><code>kernel</code></td>
+<td>Quién lo anotó: el núcleo del sistema, donde viven los cerrojos</td>
+</tr>
+<tr>
+<td><code>[UFW BLOCK]</code></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><code>SRC=</code> (<em>source</em>)</td>
+<td>La IP de quien tocó la puerta</td>
+</tr>
+<tr>
+<td><code>DST=</code> (<em>destination</em>)</td>
+<td>La IP de tu servidor</td>
+</tr>
+<tr>
+<td><code>PROTO=</code></td>
+<td>TCP o UDP</td>
+</tr>
+<tr>
+<td><code>DPT=</code> (<em>destination port</em>)</td>
+<td>La puerta que quiso tocar</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lo que anotó mi servidor en tres días:</strong> más de 14.000 bloqueos, unos 3 por minuto. Las puertas más buscadas fueron la 23 (Telnet, una forma antigua de entrar a un equipo a distancia, sin cifrado) y la 3389 (el escritorio remoto de Windows). La mayoría iban a puertas al azar: bots que tocan todas las puertas por si alguna responde.</p>
+<p>Nadie te ataca a ti en particular. Así es estar en internet, y por eso el firewall tiene que estar activo.</p>
+<h2>4. Recursos</h2>
+<ul>
+<li><a href="https://help.ubuntu.com/community/UFW">UFW · Ubuntu Community Help</a></li>
+<li><a href="https://manpages.ubuntu.com/manpages/noble/man8/ufw.8.html">ufw(8) · Ubuntu Manpages</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/tail.1.html">tail(1) · man7.org</a></li>
+</ul></div>
+    
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/el-firewall-por-dentro"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP</span></a>
+      <a class="nav-siguiente" href="/los-cuadernos-de-tu-vps"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'ufw-en-tu-vps';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>
