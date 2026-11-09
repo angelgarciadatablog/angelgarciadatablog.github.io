@@ -35,7 +35,10 @@
       "permisos-en-linux"
     ],
     "video-youtube": [],
-    "videos-verticales": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705966241218907412",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705966938207341845"
+    ],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo leer los permisos de una carpeta en números (750, 775, 700), por qué una carpeta nueva nace con 775 en Ubuntu y cómo cambiarlos con chmod y mkdir -m.",
@@ -57,7 +60,12 @@
       "permisos-en-linux"
     ],
     "video-youtube": [],
-    "videos-verticales": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705871976811728148",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705872550106123541",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705873213678488838",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7705873634509753621"
+    ],
     "sistema-operativo": "mac-windows",
     "repositorio": "",
     "descripcion": "Cómo crear un usuario en tu VPS con adduser, moverte entre usuarios con sudo -i y su, ver quién está conectado con who y cerrar una sesión que no es tuya con pkill -KILL.",
