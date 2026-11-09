@@ -1,5 +1,72 @@
 [
   {
+    "titulo": "Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22",
+    "slug": "los-cuadernos-de-tu-vps",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-11-09",
+    "posts-relacionados": [],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702859917476105493",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7702861386245803284"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo saber quién entró a tu VPS con auth.log y journalctl (usuario, llave e IP), y quién lo intentó y falló con btmp y wtmp, que se leen con lastb y last.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "ufw-en-tu-vps",
+    "parte-siguiente": "quien-esta-en-mi-servidor"
+  },
+  {
+    "titulo": "Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos",
+    "slug": "permisos-con-numeros",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-11-09",
+    "posts-relacionados": [
+      "permisos-en-linux"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo leer los permisos de una carpeta en números (750, 775, 700), por qué una carpeta nueva nace con 775 en Ubuntu y cómo cambiarlos con chmod y mkdir -m.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "quien-esta-en-mi-servidor",
+    "parte-siguiente": ""
+  },
+  {
+    "titulo": "Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones",
+    "slug": "quien-esta-en-mi-servidor",
+    "categoria": "sistemas-y-redes",
+    "tags": [
+      "datablog",
+      "sistemas-y-redes"
+    ],
+    "updated": "2026-11-09",
+    "posts-relacionados": [
+      "permisos-en-linux"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Cómo crear un usuario en tu VPS con adduser, moverte entre usuarios con sudo -i y su, ver quién está conectado con who y cerrar una sesión que no es tuya con pkill -KILL.",
+    "serie": "bitacora-de-mi-servidor",
+    "series-relacionadas": "",
+    "parte-anterior": "los-cuadernos-de-tu-vps",
+    "parte-siguiente": "permisos-con-numeros"
+  },
+  {
     "titulo": "UFW en tu VPS: despertar al guardia, leer su lista y su cuaderno",
     "slug": "ufw-en-tu-vps",
     "categoria": "sistemas-y-redes",
@@ -22,29 +89,6 @@
     "series-relacionadas": "",
     "parte-anterior": "el-firewall-por-dentro",
     "parte-siguiente": "los-cuadernos-de-tu-vps"
-  },
-  {
-    "titulo": "Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22",
-    "slug": "los-cuadernos-de-tu-vps",
-    "categoria": "sistemas-y-redes",
-    "tags": [
-      "datablog",
-      "sistemas-y-redes"
-    ],
-    "updated": "2026-11-03",
-    "posts-relacionados": [],
-    "video-youtube": [],
-    "videos-verticales": [
-      "https://www.tiktok.com/@angelgarciadatablog/video/7702859917476105493",
-      "https://www.tiktok.com/@angelgarciadatablog/video/7702861386245803284"
-    ],
-    "sistema-operativo": "mac-windows",
-    "repositorio": "",
-    "descripcion": "Cómo saber quién entró a tu VPS con auth.log y journalctl (usuario, llave e IP), y quién lo intentó y falló con btmp y wtmp, que se leen con lastb y last.",
-    "serie": "bitacora-de-mi-servidor",
-    "series-relacionadas": "",
-    "parte-anterior": "ufw-en-tu-vps",
-    "parte-siguiente": ""
   },
   {
     "titulo": "El firewall por dentro: netfilter, IPv4 e IPv6, TCP y UDP",

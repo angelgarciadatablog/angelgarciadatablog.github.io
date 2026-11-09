@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones · Angel García</title>
+  <meta name="description" content="Cómo crear un usuario en tu VPS con adduser, moverte entre usuarios con sudo -i y su, ver quién está conectado con who y cerrar una sesión que no es tuya con pkill -KILL." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/quien-esta-en-mi-servidor/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones" />
+  <meta property="og:description" content="Cómo crear un usuario en tu VPS con adduser, moverte entre usuarios con sudo -i y su, ver quién está conectado con who y cerrar una sesión que no es tuya con pkill -KILL." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/quien-esta-en-mi-servidor/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "quien-esta-en-mi-servidor", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-11-09", "video_youtube": [], "videos_verticales": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=sistemas-y-redes">← Volver a Sistemas y redes</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-11-09</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    
+    <div class="post-body" id="post-body"><p>En los ejemplos, el administrador se llama <code>admin-angel</code> y el servidor, <code>mi-servidor</code>. Las salidas son reales, con esos nombres cambiados.</p>
+<h2>1. Crear un usuario</h2>
+<h3>1.1 El punto de partida</h3>
+<p>En muchos proveedores, un VPS nuevo trae un solo usuario: <strong>root</strong>, el dueño de todo. Lo normal es crear un usuario propio para el día a día con permisos de administrador. Aquí ese usuario es <code>admin-angel</code>.</p>
+<p>Ahora llega alguien nuevo, <code>claudia</code>. Lo crea <code>admin-angel</code>:</p>
+<pre><code>sudo adduser claudia
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sudo</code></td>
+<td>Lo ejecuta con permisos de administrador</td>
+</tr>
+<tr>
+<td><code>adduser</code></td>
+<td>Crea un usuario (<em>add user</em>, agregar usuario)</td>
+</tr>
+<tr>
+<td><code>claudia</code></td>
+<td>El nombre del usuario</td>
+</tr>
+</tbody>
+</table>
+<p>Pide una contraseña y unos datos opcionales que se pueden dejar en blanco.</p>
+<h3>1.2 Qué nace con ese comando</h3>
+<table>
+<thead>
+<tr>
+<th>Qué nace</th>
+<th>Ejemplo</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El usuario</td>
+<td><code>claudia</code>, número <code>1001</code></td>
+<td>Su identidad: tú usas el nombre; el servidor, el número</td>
+</tr>
+<tr>
+<td>Su carpeta personal</td>
+<td><code>/home/claudia</code></td>
+<td>Su espacio en el servidor</td>
+</tr>
+<tr>
+<td>Su grupo personal</td>
+<td>grupo <code>claudia</code>, número <code>1001</code></td>
+<td>Cada archivo que cree queda por defecto en ese grupo</td>
+</tr>
+</tbody>
+</table>
+<p>El usuario y su grupo se llaman igual, pero son dos cosas distintas.</p>
+<h3>1.3 La ficha de un usuario: <code>id</code></h3>
+<pre><code>id claudia
+uid=1001(claudia) gid=1001(claudia) groups=1001(claudia),100(users)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uid</code></td>
+<td>Número de usuario</td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td>Número de su grupo principal</td>
+</tr>
+<tr>
+<td><code>groups</code></td>
+<td>Todos sus grupos</td>
+</tr>
+</tbody>
+</table>
+<p><code>users</code> es un grupo general que <code>adduser</code> agrega solo y que no da permisos especiales. La diferencia con el administrador está en esta lista: <code>admin-angel</code> aparece además en el grupo <code>sudo</code>, y ese es el que le da permisos de administrador.</p>
+<h3>1.4 Qué puede hacer un usuario recién creado</h3>
+<table>
+<thead>
+<tr>
+<th>Puede</th>
+<th>No puede</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Todo dentro de su carpeta personal</td>
+<td>Entrar a la carpeta de otro usuario (<code>Permission denied</code>)</td>
+</tr>
+<tr>
+<td>Recorrer las carpetas del servidor</td>
+<td>Tocar el firewall</td>
+</tr>
+<tr>
+<td>Ver qué otros usuarios existen</td>
+<td>Leer archivos protegidos del sistema</td>
+</tr>
+<tr>
+<td>Leer muchos archivos de configuración</td>
+<td>Usar <code>sudo</code></td>
+</tr>
+</tbody>
+</table>
+<p>Si intenta usar <code>sudo</code>, el servidor responde:</p>
+<pre><code>claudia is not in the sudoers file.
+</code></pre>
+<p>Un usuario nace sin permisos de administrador. Esos permisos se los da el administrador.</p>
+<h2>2. Moverse entre usuarios</h2>
+<h3>2.1 Saber quién eres</h3>
+<p>La línea de la terminal empieza con el nombre del usuario y termina con un símbolo:</p>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Qué indica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td>Un usuario normal</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>root: el servidor ya no te frena</td>
+</tr>
+</tbody>
+</table>
+<p>Para confirmarlo, <code>whoami</code> (<em>who am I</em>, quién soy) imprime el usuario actual.</p>
+<h3>2.2 Los tres comandos</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué hace</th>
+<th>Qué contraseña pide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sudo -i</code></td>
+<td>Pasar a root</td>
+<td>La de quien lo escribe (<code>admin-angel</code>)</td>
+</tr>
+<tr>
+<td><code>su - claudia</code></td>
+<td>Pasar a otro usuario</td>
+<td>La del usuario al que cambias (<code>claudia</code>)</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>Volver un paso atrás</td>
+<td>Ninguna</td>
+</tr>
+</tbody>
+</table>
+<p>Cada cambio es una capa encima de la anterior. <code>sudo -i</code> pone una capa de root sobre <code>admin-angel</code> y <code>exit</code> la quita. Cambiar de carpeta con <code>cd</code> no cambia de usuario.</p>
+<p><strong><code>sudo</code> y <code>su</code> no piden lo mismo.</strong> <code>sudo</code> confirma que eres tú y después revisa si tienes permiso. <code>su</code> solo te pide la contraseña del usuario destino. Por eso <code>sudo</code> funciona aunque root tenga la contraseña bloqueada.</p>
+<h3>2.3 Por qué no entrar directo como root</h3>
+<p>En este servidor, root no puede entrar por SSH: primero se entra como <code>admin-angel</code> y desde ahí se pasa a root. Así, para usar <code>sudo</code> como administrador, alguien necesitaría dos cosas: entrar como <code>admin-angel</code> y conocer su contraseña.</p>
+<h3>2.4 El mismo comando, distinto resultado</h3>
+<pre><code>admin-angel@mi-servidor:~$ sudo whoami
+root
+
+claudia@mi-servidor:~$ sudo whoami
+[sudo] password for claudia:
+claudia is not in the sudoers file.
+</code></pre>
+<p>Lo que cambia es quién lo escribe. Antes de escribir un comando, mira con qué usuario estás.</p>
+<h2>3. Quién está conectado ahora</h2>
+<h3>3.1 <code>who</code></h3>
+<p><code>who</code> (quién) muestra una línea por cada sesión abierta. No es lo mismo que <code>whoami</code>: este dice quién eres tú; <code>who</code>, quién inició sesión en el servidor.</p>
+<pre><code>admin-angel  pts/0  2026-11-08 10:46 (198.51.100.20)
+admin-angel  pts/1  2026-11-08 11:43 (192.0.2.30)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>admin-angel</code></td>
+<td>Usuario con el que se inició sesión</td>
+</tr>
+<tr>
+<td><code>pts/0</code></td>
+<td>Terminal de esa sesión</td>
+</tr>
+<tr>
+<td><code>2026-11-08 10:46</code></td>
+<td>Hora de entrada (en el servidor suele estar en UTC)</td>
+</tr>
+<tr>
+<td><code>198.51.100.20</code></td>
+<td>IP desde donde se conectó</td>
+</tr>
+</tbody>
+</table>
+<p>No hace falta ser administrador: cualquier usuario puede ver quién está conectado.</p>
+<h3>3.2 Lo que <code>who</code> no te dice</h3>
+<ul>
+<li><strong>Muestra el usuario con el que se entró, no con cuál se trabaja.</strong> Si entras como <code>admin-angel</code> y te cambias a <code>claudia</code>, <code>who</code> sigue mostrando <code>admin-angel</code>.</li>
+<li><strong>Muestra el usuario, no la computadora.</strong> La misma persona desde dos computadoras aparece dos veces con el mismo nombre.</li>
+</ul>
+<h3>3.3 Una IP distinta no es un intruso</h3>
+<p>Puede ser la laptop del trabajo, otra red o una VPN. Antes de alarmarte, revisa qué IP tiene tu otra computadora. Si coincide, esa sesión es tuya. Si no coincide con ninguna, toca actuar.</p>
+<h2>4. Cerrar una sesión que no es tuya</h2>
+<h3>4.1 Identificarla</h3>
+<p>Cada sesión tiene su terminal virtual: <code>pts/0</code>, <code>pts/1</code>… (<em>pseudoterminal</em>). Aunque dos sesiones tengan el mismo usuario, ese número las distingue.</p>
+<p>Antes de cerrar nada, mira cuál es la tuya:</p>
+<pre><code>tty
+/dev/pts/0
+</code></pre>
+<h3>4.2 Cerrarla</h3>
+<pre><code>sudo pkill -KILL -t pts/1
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sudo</code></td>
+<td>Hace falta: la sesión puede ser de otro usuario</td>
+</tr>
+<tr>
+<td><code>pkill</code></td>
+<td>Termina procesos</td>
+</tr>
+<tr>
+<td><code>-KILL</code></td>
+<td>Envía una señal que no se puede ignorar</td>
+</tr>
+<tr>
+<td><code>-t pts/1</code></td>
+<td>Solo los procesos de esa terminal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sin <code>-KILL</code> no la cierra.</strong> Por defecto <code>pkill</code> solo le pide a la sesión que termine (<code>SIGTERM</code>), y una terminal abierta ignora esa petición. En mi servidor, <code>who</code> seguía mostrando la sesión; con <code>-KILL</code> desapareció.</p>
+<h3>4.3 Cerrarla no basta</h3>
+<p>Si alguien entró, es porque tenía una forma de entrar, y puede volver en un minuto. Cerrar la sesión es el primer paso; después hay que revisar quién tiene acceso y cambiar las credenciales.</p>
+<h2>5. Recursos</h2>
+<ul>
+<li><a href="https://manpages.ubuntu.com/manpages/noble/man8/adduser.8.html">adduser(8) · Ubuntu Manpages</a></li>
+<li><a href="https://www.sudo.ws/docs/man/sudo.man/">sudo(8) · sudo.ws</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/su.1.html">su(1) · man7.org</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/who.1.html">who(1) · man7.org</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/pgrep.1.html">pgrep y pkill(1) · man7.org</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Signals.html">Señales en Bash · GNU</a></li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/permisos-en-linux">Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/los-cuadernos-de-tu-vps"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22</span></a>
+      <a class="nav-siguiente" href="/permisos-con-numeros"><span class="nav-label">Siguiente en la serie →</span><span class="nav-titulo">Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos</span></a>
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'quien-esta-en-mi-servidor';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

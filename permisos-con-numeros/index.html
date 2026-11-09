@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos · Angel García</title>
+  <meta name="description" content="Cómo leer los permisos de una carpeta en números (750, 775, 700), por qué una carpeta nueva nace con 775 en Ubuntu y cómo cambiarlos con chmod y mkdir -m." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/permisos-con-numeros/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos" />
+  <meta property="og:description" content="Cómo leer los permisos de una carpeta en números (750, 775, 700), por qué una carpeta nueva nace con 775 en Ubuntu y cómo cambiarlos con chmod y mkdir -m." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/permisos-con-numeros/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos", "categoria": "sistemas-y-redes", "serie": "bitacora-de-mi-servidor", "series_relacionadas": "", "slug": "permisos-con-numeros", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-11-09", "video_youtube": [], "videos_verticales": []});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=sistemas-y-redes">← Volver a Sistemas y redes</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">sistemas-y-redes</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Permisos con números: qué significan 750, 775 y 700 y cómo cambiarlos</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">sistemas-y-redes</span></div>
+      <span class="post-updated">Actualizado: 2026-11-09</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+    
+    <div class="post-body" id="post-body"><p>En los ejemplos, <code>claudia</code> es un usuario común del servidor y <code>admin-angel</code>, el administrador. Las salidas son reales, con esos nombres cambiados.</p>
+<h2>1. La carpeta personal</h2>
+<h3>1.1 Mirar sus permisos</h3>
+<p>Como <code>claudia</code>, en su carpeta personal (<code>/home/claudia</code>):</p>
+<pre><code>ls -ld
+drwxr-x--- 3 claudia claudia 4096 Nov  8 14:12 .
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls</code></td>
+<td>Lista el contenido de una carpeta</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>Muestra el detalle, con los permisos</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>Muestra la carpeta misma, no lo que tiene dentro</td>
+</tr>
+</tbody>
+</table>
+<p>Sin nombre, <code>ls -ld</code> muestra la carpeta donde estás: es el <code>.</code> del final.</p>
+<h3>1.2 Cómo se lee</h3>
+<table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Para quién</th>
+<th>Puede</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rwx</code></td>
+<td>La dueña, <code>claudia</code></td>
+<td>Todo</td>
+</tr>
+<tr>
+<td><code>r-x</code></td>
+<td>Su grupo</td>
+<td>Mirar y entrar</td>
+</tr>
+<tr>
+<td><code>---</code></td>
+<td>Los demás</td>
+<td>Nada</td>
+</tr>
+</tbody>
+</table>
+<p>Por eso <code>admin-angel</code>, sin <code>sudo</code>, ni siquiera puede asomarse a la carpeta de <code>claudia</code>.</p>
+<h2>2. Una carpeta nueva</h2>
+<h3>2.1 Crearla</h3>
+<pre><code>mkdir carpeta-prueba
+ls
+carpeta-prueba
+</code></pre>
+<p><code>mkdir</code> viene de <em>make directory</em>, crear carpeta.</p>
+<h3>2.2 Con qué permisos nace</h3>
+<pre><code>ls -ld carpeta-prueba
+drwxrwxr-x 2 claudia claudia 4096 Nov  8 14:12 carpeta-prueba
+</code></pre>
+<p>La dueña y su grupo pueden todo, y los demás pueden mirar y entrar. Nadie lo eligió: así nace por defecto. En Ubuntu, un usuario con grupo propio crea carpetas en las que su grupo también puede escribir.</p>
+<h3>2.3 Los demás igual no llegan</h3>
+<p>Para entrar a <code>carpeta-prueba</code> primero hay que pasar por <code>/home/claudia</code>, y ahí los demás no tienen nada. Un usuario que no sea <code>claudia</code> ni esté en su grupo <strong>ni siquiera puede saber que <code>carpeta-prueba</code> existe</strong>:</p>
+<pre><code>ls /home/claudia/carpeta-prueba
+ls: cannot access '/home/claudia/carpeta-prueba': Permission denied
+</code></pre>
+<h2>3. De letras a números</h2>
+<h3>3.1 Cada letra vale un número</h3>
+<table>
+<thead>
+<tr>
+<th>Letra</th>
+<th>Permiso</th>
+<th>Vale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td>Leer</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>Escribir</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Entrar</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Se suman las que tienes, y cada bloque de tres letras se convierte en un solo número:</p>
+<table>
+<thead>
+<tr>
+<th>Letras</th>
+<th>Suma</th>
+<th>Número</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rwx</code></td>
+<td>4 + 2 + 1</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>r-x</code></td>
+<td>4 + 1</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>---</code></td>
+<td>—</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>No hace falta memorizar todas las combinaciones. Casi siempre verás estos tres: <strong>7, todo; 5, mirar y entrar; 0, nada.</strong></p>
+<h3>3.2 Tres números para todo</h3>
+<p>Uno para la dueña, otro para el grupo y otro para los demás:</p>
+<table>
+<thead>
+<tr>
+<th>Número</th>
+<th>Letras</th>
+<th>La dueña</th>
+<th>El grupo</th>
+<th>Los demás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>750</code></td>
+<td><code>drwxr-x---</code></td>
+<td>Todo</td>
+<td>Mirar y entrar</td>
+<td>Nada</td>
+</tr>
+<tr>
+<td><code>775</code></td>
+<td><code>drwxrwxr-x</code></td>
+<td>Todo</td>
+<td>Todo</td>
+<td>Mirar y entrar</td>
+</tr>
+<tr>
+<td><code>700</code></td>
+<td><code>drwx------</code></td>
+<td>Todo</td>
+<td>Nada</td>
+<td>Nada</td>
+</tr>
+</tbody>
+</table>
+<p>La carpeta personal de <code>claudia</code> es <code>750</code> y <code>carpeta-prueba</code> nació con <code>775</code>.</p>
+<h2>4. Cambiar permisos: <code>chmod</code></h2>
+<p><code>chmod</code> viene de <em>change mode</em>, cambiar el modo:</p>
+<pre><code>chmod &lt;número&gt; &lt;carpeta&gt;
+</code></pre>
+<h3>4.1 Abrir la carpeta personal</h3>
+<p>Si <code>claudia</code> quiere que los demás puedan ver lo que tiene:</p>
+<pre><code>chmod 755 /home/claudia
+</code></pre>
+<p>De <code>750</code> a <code>755</code>: <strong>solo cambió el último número, el de los demás.</strong> Es el más delicado, porque decide qué pueden hacer todos los que no son <code>claudia</code> ni están en su grupo.</p>
+<p>Ahora <code>admin-angel</code>, sin <code>sudo</code>, entra a la carpeta de <code>claudia</code>, ve <code>carpeta-prueba</code> y, como nació con <code>775</code>, también puede mirar dentro.</p>
+<h3>4.2 Cerrar la de adentro</h3>
+<p>Si <code>claudia</code> quiere <code>carpeta-prueba</code> solo para ella, cambia el último número de 5 a 0. ¿Y el del medio, el del grupo? Aquí da igual, porque en su grupo solo está ella: puede quedar en <code>750</code> o en <code>700</code>. Elige <code>700</code>:</p>
+<pre><code>chmod 700 carpeta-prueba
+</code></pre>
+<p>Ahora <code>admin-angel</code> ve que la carpeta existe, pero no puede entrar:</p>
+<pre><code>ls /home/claudia/carpeta-prueba
+ls: cannot open directory '/home/claudia/carpeta-prueba': Permission denied
+</code></pre>
+<p><strong>Con <code>sudo</code> sí podría</strong>, porque root se salta los permisos. Como usuario normal, no.</p>
+<h3>4.3 Cada carpeta tiene sus permisos</h3>
+<p>La de afuera puede estar abierta y la de adentro, cerrada. Al terminar, <code>claudia</code> vuelve a cerrar su carpeta personal:</p>
+<pre><code>chmod 750 /home/claudia
+</code></pre>
+<h2>5. Privada desde el principio: <code>mkdir -m</code></h2>
+<pre><code>mkdir -m 700 notas
+ls -ld notas
+drwx------ 2 claudia claudia 4096 Nov  8 14:12 notas
+</code></pre>
+<p><code>-m</code> viene de <em>mode</em>: la carpeta nace con esos permisos.</p>
+<p>Cuando algo es sensible, no basta con crear la carpeta: hay que decir quién puede entrar. Por ejemplo, la carpeta donde se guardan las llaves de acceso de un usuario (<code>.ssh</code>) tiene que ser <code>700</code>.</p>
+<h2>6. Recursos</h2>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man1/chmod.1.html">chmod(1) · man7.org</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/mkdir.1.html">mkdir(1) · man7.org</a></li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/permisos-en-linux">Permisos en Linux: cómo moverte dentro de tu VPS y leer los permisos</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/quien-esta-en-mi-servidor"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Quién está en mi servidor: crear usuarios, moverse entre ellos y cerrar sesiones</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'permisos-con-numeros';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>
