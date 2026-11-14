@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qué es un CLI y dónde se consigue · Angel García</title>
+  <meta name="description" content="Qué es un CLI, por qué importa ahora que los agentes de IA usan programas, y cómo se instala: gestores de paquetes (Homebrew, winget, apt) y las otras formas." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/que-es-un-cli-y-donde-se-consigue/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Qué es un CLI y dónde se consigue" />
+  <meta property="og:description" content="Qué es un CLI, por qué importa ahora que los agentes de IA usan programas, y cómo se instala: gestores de paquetes (Homebrew, winget, apt) y las otras formas." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/que-es-un-cli-y-donde-se-consigue/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "Qué es un CLI y dónde se consigue", "categoria": "bash-shell", "serie": "programas-por-comandos", "series_relacionadas": "", "slug": "que-es-un-cli-y-donde-se-consigue", "sistema_operativo": "mac-windows", "fecha_publicacion": "2026-11-14", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7707953481419607317", "https://www.tiktok.com/@angelgarciadatablog/video/7707953771220946196", "https://www.tiktok.com/@angelgarciadatablog/video/7707954007502867733"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=bash-shell">← Volver a Bash & Shell</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac & Windows</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">Qué es un CLI y dónde se consigue</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-11-14</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 3</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7707953481419607317?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7707953771220946196?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 3"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7707954007502867733?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 3"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. Qué es un CLI</h2>
+<p>CLI significa <em>Command Line Interface</em>: interfaz de línea de comandos. Es una forma de usar un programa escribiendo instrucciones en la terminal, en lugar de hacer clic en botones.</p>
+<p>La palabra clave es <strong>interfaz</strong>: la puerta por la que entras a un programa. Un mismo programa puede tener varias.</p>
+<table>
+<thead>
+<tr>
+<th>Programa</th>
+<th>Puerta con ventanas</th>
+<th>Puerta por comandos (CLI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker</td>
+<td>Docker Desktop</td>
+<td><code>docker</code></td>
+</tr>
+<tr>
+<td>Amazon Web Services</td>
+<td>La consola web</td>
+<td><code>aws</code></td>
+</tr>
+<tr>
+<td>Visual Studio Code</td>
+<td>El editor</td>
+<td><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h3>1.1 Un ejemplo: recortar un video</h3>
+<p>Con la interfaz visual: un clic para subir el video, un par de clics para recortarlo y otro para exportarlo.</p>
+<p>Con el CLI de <code>ffmpeg</code>, una sola línea:</p>
+<pre><code>ffmpeg -i video.mp4 -ss 10 -to 20 recorte.mp4
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ffmpeg</code></td>
+<td>El programa</td>
+</tr>
+<tr>
+<td><code>-i video.mp4</code></td>
+<td>El video que se va a usar</td>
+</tr>
+<tr>
+<td><code>-ss 10</code></td>
+<td>Desde el segundo 10</td>
+</tr>
+<tr>
+<td><code>-to 20</code></td>
+<td>Hasta el segundo 20</td>
+</tr>
+<tr>
+<td><code>recorte.mp4</code></td>
+<td>Cómo se llamará el video nuevo</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Por qué importa ahora</h3>
+<p>Escribir comandos parece más difícil que hacer clic. Pero hoy no siempre los escribes tú: un agente de IA puede hacerlo por ti. Le pides en lenguaje natural "corta este video" y por detrás ejecuta el comando.</p>
+<p>Un agente que hace clics como una persona (con extensiones que mueven el mouse) es lento: el programa tiene que estar abierto y gasta memoria. Si el programa tiene CLI, el agente entra directo por esa puerta.</p>
+<p>La pregunta que vale la pena hacerse con cada programa que usas: <strong>¿existe una versión por comandos?</strong></p>
+<h2>2. Las tiendas de tu computadora: gestores de paquetes</h2>
+<p>En el celular instalas aplicaciones desde la App Store o la Play Store. En la computadora, para los programas por comandos, existe algo parecido: el <strong>gestor de paquetes</strong>.</p>
+<p>Un <strong>paquete</strong> es la caja en la que viaja un programa. El gestor la busca, la descarga, la abre y deja el programa listo. Todo con un comando: instalar y el nombre del programa.</p>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Gestor</th>
+<th>¿Viene instalado?</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mac</td>
+<td>Homebrew</td>
+<td>No, se instala una vez</td>
+<td><code>brew install ffmpeg</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>winget</td>
+<td>Sí, en Windows 11 y Windows 10 desde la versión 1809</td>
+<td><code>winget install &lt;programa&gt;</code></td>
+</tr>
+<tr>
+<td>Linux (Ubuntu, Debian)</td>
+<td>apt</td>
+<td>Sí</td>
+<td><code>sudo apt install ffmpeg</code></td>
+</tr>
+</tbody>
+</table>
+<h3>2.1 Cómo sabe el gestor dónde está cada programa</h3>
+<p>El gestor tiene un <strong>catálogo de recetas</strong>, una por programa. Al instalar:</p>
+<ol>
+<li>Busca la receta del programa en su catálogo.</li>
+<li>La receta dice de dónde sale el programa (normalmente de quien lo creó) y cómo instalarlo.</li>
+<li>El gestor sigue la receta y te entrega el programa listo.</li>
+</ol>
+<p>La receta de <code>ffmpeg</code> en Homebrew apunta al código oficial de ffmpeg.org e incluye su huella (<code>sha256</code>), para comprobar que lo descargado no cambió.</p>
+<h3>2.2 No es solo para programas pequeños</h3>
+<p>En nuestra Mac instalamos con Homebrew el CLI de Azure (<code>brew install azure-cli</code>) y PostgreSQL, una base de datos (<code>brew install postgresql@17</code>). Una línea cada uno.</p>
+<p>La tienda es la forma más rápida y cómoda, pero no la única ni siempre la mejor: algunos programas prefieren que los instales con el comando de su página oficial.</p>
+<h2>3. Si no está en la tienda</h2>
+<p>Si el gestor responde que no encuentra el programa, nadie escribió todavía su receta para esa tienda. Y a veces el programa sí está, pero su página oficial recomienda otra forma. En los dos casos, la respuesta está en la página oficial, y casi siempre es una de estas:</p>
+<table>
+<thead>
+<tr>
+<th>Forma</th>
+<th>Cómo es</th>
+<th>Ejemplos en nuestra Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Línea de instalación</td>
+<td>Una línea para pegar en la terminal, que descarga instrucciones y las ejecuta</td>
+<td>Claude Code, Homebrew, nvm</td>
+</tr>
+<tr>
+<td>Instalador de siempre</td>
+<td>Un <code>.pkg</code> en Mac o un <code>.exe</code>/<code>.msi</code> en Windows, con doble clic o desde la terminal</td>
+<td>Python, el CLI de AWS</td>
+</tr>
+<tr>
+<td>Catálogo del fabricante</td>
+<td>Una línea agrega a Homebrew el catálogo de la empresa (<code>brew tap</code>) y desde ahí se instala igual</td>
+<td>El CLI de ElevenLabs</td>
+</tr>
+<tr>
+<td>Descargarlo tú mismo</td>
+<td>Bajar el archivo desde la página del proyecto (muchas veces en GitHub) o compilar el código</td>
+<td>Ninguno</td>
+</tr>
+</tbody>
+</table>
+<p>La regla: <strong>antes de instalar, mira qué recomienda la página oficial del programa.</strong> Muchas veces te dirá que uses la tienda de tu sistema; otras, una de estas formas.</p>
+<h2>4. Recursos</h2>
+<ul>
+<li><a href="https://brew.sh/">Homebrew</a> y su documentación sobre <a href="https://docs.brew.sh/Taps">catálogos de terceros (taps)</a></li>
+<li><a href="https://learn.microsoft.com/es-es/windows/package-manager/winget/">winget, el gestor de paquetes de Windows</a> (Microsoft Learn)</li>
+<li><a href="https://ubuntu.com/server/docs/package-management">Gestión de paquetes en Ubuntu (apt)</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg.html">Documentación de ffmpeg</a></li>
+<li><a href="https://code.claude.com/docs/en/setup">Instalar Claude Code</a>: línea oficial, Homebrew y winget</li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">Instalar el CLI de AWS</a>: script, instalador con ventanas o por terminal</li>
+<li><a href="https://github.com/nvm-sh/nvm">nvm</a>: se instala con una línea de instalación</li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/terminal-shell-zsh-y-powershell">Terminal, shell, zsh y PowerShell: qué es cada cosa</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'que-es-un-cli-y-donde-se-consigue';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>

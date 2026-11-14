@@ -1,5 +1,31 @@
 [
   {
+    "titulo": "Qué es un CLI y dónde se consigue",
+    "slug": "que-es-un-cli-y-donde-se-consigue",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-11-14",
+    "posts-relacionados": [
+      "terminal-shell-zsh-y-powershell"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7707953481419607317",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7707953771220946196",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7707954007502867733"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué es un CLI, por qué importa ahora que los agentes de IA usan programas, y cómo se instala: gestores de paquetes (Homebrew, winget, apt) y las otras formas.",
+    "serie": "programas-por-comandos",
+    "series-relacionadas": "",
+    "parte-anterior": "",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22",
     "slug": "los-cuadernos-de-tu-vps",
     "categoria": "sistemas-y-redes",
