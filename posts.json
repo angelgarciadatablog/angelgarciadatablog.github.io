@@ -1,5 +1,30 @@
 [
   {
+    "titulo": "Instalar sin sorpresas: qué hace la línea de instalación y por qué no da lo mismo cómo instalas",
+    "slug": "instalar-sin-sorpresas",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-11-14",
+    "posts-relacionados": [
+      "terminal-shell-zsh-y-powershell"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7707954346851454209",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7707955737552620821"
+    ],
+    "sistema-operativo": "mac-windows",
+    "repositorio": "",
+    "descripcion": "Qué pasa por dentro cuando pegas una línea de instalación en la terminal, cómo reconocer cada caso y por qué la tienda, el script y el instalador no dan lo mismo.",
+    "serie": "programas-por-comandos",
+    "series-relacionadas": "",
+    "parte-anterior": "que-es-un-cli-y-donde-se-consigue",
+    "parte-siguiente": ""
+  },
+  {
     "titulo": "Qué es un CLI y dónde se consigue",
     "slug": "que-es-un-cli-y-donde-se-consigue",
     "categoria": "bash-shell",
@@ -23,7 +48,7 @@
     "serie": "programas-por-comandos",
     "series-relacionadas": "",
     "parte-anterior": "",
-    "parte-siguiente": ""
+    "parte-siguiente": "instalar-sin-sorpresas"
   },
   {
     "titulo": "Los cuadernos de tu VPS: quién entró y quién falló en la puerta 22",
