@@ -7,7 +7,7 @@
       "datablog",
       "bash-shell"
     ],
-    "updated": "2026-11-14",
+    "updated": "2026-11-18",
     "posts-relacionados": [
       "terminal-shell-zsh-y-powershell"
     ],
@@ -22,6 +22,34 @@
     "serie": "programas-por-comandos",
     "series-relacionadas": "",
     "parte-anterior": "que-es-un-cli-y-donde-se-consigue",
+    "parte-siguiente": "el-path"
+  },
+  {
+    "titulo": "El path: por qué la terminal no encuentra lo que instalaste",
+    "slug": "el-path",
+    "categoria": "bash-shell",
+    "tags": [
+      "datablog",
+      "bash-shell"
+    ],
+    "updated": "2026-11-18",
+    "posts-relacionados": [
+      "configurar-atajos-terminal-mac",
+      "terminal-shell-zsh-y-powershell"
+    ],
+    "video-youtube": [],
+    "videos-verticales": [
+      "https://www.tiktok.com/@angelgarciadatablog/video/7709137655107161364",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7709138506450242837",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7709139171604057365",
+      "https://www.tiktok.com/@angelgarciadatablog/video/7709139524470721798"
+    ],
+    "sistema-operativo": "mac",
+    "repositorio": "",
+    "descripcion": "Qué es el .zshrc, qué es el path, qué hay dentro de sus carpetas (accesos directos) y qué hace el comando que te piden pegar cuando instalas algo y la terminal no lo encuentra.",
+    "serie": "programas-por-comandos",
+    "series-relacionadas": "",
+    "parte-anterior": "instalar-sin-sorpresas",
     "parte-siguiente": ""
   },
   {

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El path: por qué la terminal no encuentra lo que instalaste · Angel García</title>
+  <meta name="description" content="Qué es el .zshrc, qué es el path, qué hay dentro de sus carpetas (accesos directos) y qué hace el comando que te piden pegar cuando instalas algo y la terminal no lo encuentra." />
+  <link rel="canonical" href="https://www.angelgarciadatablog.com/el-path/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="El path: por qué la terminal no encuentra lo que instalaste" />
+  <meta property="og:description" content="Qué es el .zshrc, qué es el path, qué hay dentro de sus carpetas (accesos directos) y qué hace el comando que te piden pegar cuando instalas algo y la terminal no lo encuentra." />
+  <meta property="og:url" content="https://www.angelgarciadatablog.com/el-path/" />
+  <meta property="og:image" content="https://www.angelgarciadatablog.com/assets/generico_og_banner_all_post.png" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=4" />
+  <link rel="stylesheet" href="/assets/post.css?v=3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"titulo": "El path: por qué la terminal no encuentra lo que instalaste", "categoria": "bash-shell", "serie": "programas-por-comandos", "series_relacionadas": "", "slug": "el-path", "sistema_operativo": "mac", "fecha_publicacion": "2026-11-18", "video_youtube": [], "videos_verticales": ["https://www.tiktok.com/@angelgarciadatablog/video/7709137655107161364", "https://www.tiktok.com/@angelgarciadatablog/video/7709138506450242837", "https://www.tiktok.com/@angelgarciadatablog/video/7709139171604057365", "https://www.tiktok.com/@angelgarciadatablog/video/7709139524470721798"]});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDXJ37SD');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJ37SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="topnav">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="menu-btn" onclick="abrirSidebar()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a class="topnav-logo" href="/">Angel García</a>
+  </div>
+  <div class="topnav-links">
+    <a href="/">Inicio</a>
+    <div class="topnav-cursos">
+      <button type="button" class="topnav-cursos-btn" aria-expanded="false" aria-haspopup="true">Cursos<span class="topnav-chev"></span></button>
+      <div class="topnav-cursos-menu">
+        <a href="/curso-sql/">SQL desde cero<span>Gratis · 12 bloques</span></a>
+      </div>
+    </div>
+    <!-- Portafolio oculto hasta tener casos publicados: <a href="/portafolio">Portafolio</a> -->
+    <a href="https://www.youtube.com/@angelgarciadatablog" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/angelgarciachanga/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="cerrarSidebar()"></div>
+
+<!-- SIDEBAR FIJO -->
+<aside id="sidebar">
+  <div class="search-box">
+    <input type="text" placeholder="Buscar..." oninput="filtrarSidebar(this.value)" />
+  </div>
+  <nav id="sidebarNav"></nav>
+</aside>
+
+<!-- LAYOUT POST -->
+<div class="post-layout">
+
+  <article class="post-content">
+    <a class="post-volver" href="/?cat=bash-shell">← Volver a Bash & Shell</a>
+    <div class="post-meta">
+      <div class="post-meta-chips">
+        <span class="post-categoria">bash-shell</span>
+        <span class="post-so">Mac</span>
+      </div>
+    </div>
+    <h1 class="post-titulo">El path: por qué la terminal no encuentra lo que instalaste</h1>
+    <div class="post-tags-row">
+      <div class="post-tags"><span class="post-tag">datablog</span> <span class="post-tag">bash-shell</span></div>
+      <span class="post-updated">Actualizado: 2026-11-18</span>
+      <button class="btn-descargar" onclick="descargarPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </button>
+    </div>
+    <hr class="post-divider" />
+    
+<section class="post-shorts" aria-label="Videos cortos">
+  <div class="post-shorts-cabecera">
+    <span class="post-shorts-titulo">En video corto · 4</span>
+    <div class="post-shorts-flechas">
+      <button type="button" class="post-shorts-flecha" data-dir="-1" aria-label="Video anterior">‹</button>
+      <button type="button" class="post-shorts-flecha" data-dir="1" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+  <div class="post-shorts-pista">
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7709137655107161364?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 1 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7709138506450242837?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 2 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7709139171604057365?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 3 de 4"></iframe></div>
+    <div class="post-short"><iframe src="https://www.tiktok.com/player/v1/7709139524470721798?description=0&amp;music_info=0" loading="lazy" allow="fullscreen" allowfullscreen title="Video corto 4 de 4"></iframe></div>
+  </div>
+</section>
+    
+    <div class="post-body" id="post-body"><h2>1. El archivo que se lee cada vez que abres la terminal</h2>
+<p>Cada vez que abres la terminal en Mac, antes de que escribas nada, lee un archivo tuyo y sigue las instrucciones que tenga.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td><code>.zshrc</code></td>
+</tr>
+<tr>
+<td>Dónde está</td>
+<td>En tu carpeta personal (<code>~/.zshrc</code>)</td>
+</tr>
+<tr>
+<td>Por qué ese nombre</td>
+<td>La terminal de Mac usa zsh para entender lo que escribes; <code>rc</code> es la terminación tradicional de los archivos de arranque</td>
+</tr>
+<tr>
+<td>Por qué no lo ves</td>
+<td>Empieza con punto: es un archivo oculto. En el Finder, <code>Cmd + Shift + .</code> los muestra</td>
+</tr>
+<tr>
+<td>En Linux</td>
+<td>Su equivalente suele ser <code>.bashrc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Para qué sirve: para que la terminal arranque como tú quieres. Por ejemplo, para crear atajos.</p>
+<p>Tres cosas que conviene saber:</p>
+<ol>
+<li><strong>Los cambios se aplican en terminales nuevas.</strong> Si lo editas con una terminal abierta, abre otra o pídele que lo vuelva a leer (<code>source ~/.zshrc</code>).</li>
+<li><strong>No es el único archivo.</strong> Existe <code>.zprofile</code>, que se lee justo antes. Algunos instaladores, como el de Homebrew, dejan ahí sus instrucciones.</li>
+<li><strong>Si escribes algo mal</strong>, la terminal muestra un error al abrirse. No se rompe nada: corriges el archivo y listo.</li>
+</ol>
+<p>Y una de las cosas que se configuran ahí no es un atajo: es la lista de carpetas donde la terminal busca los programas. Esa lista se llama <strong>path</strong>.</p>
+<h2>2. Lo instalé y no funciona</h2>
+<p>Instalas un programa, escribes su nombre y la terminal responde:</p>
+<pre><code>zsh: command not found: programa
+</code></pre>
+<p>Pero si escribes la ruta completa (su carpeta y su nombre), funciona. El programa existe; la terminal no lo encuentra.</p>
+<h3>2.1 Cómo busca la terminal</h3>
+<p>Cuando escribes solo el nombre, la terminal no busca en todo el disco. Recorre el path de arriba hacia abajo y, en cada carpeta, pregunta si hay un programa con ese nombre. Usa el primero que encuentra. Si llega al final sin encontrarlo: <code>command not found</code>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instalar</td>
+<td>Tener el programa en tu disco</td>
+</tr>
+<tr>
+<td>Poder usarlo</td>
+<td>Que esté en una carpeta del path</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Ver tu path</h3>
+<pre><code>echo $PATH | tr ':' '\n'
+</code></pre>
+<p>Muestra las carpetas una debajo de otra. En mi Mac salen 15: unas las puso el sistema, otras Homebrew y otras se agregaron después. Tres no existen y una está repetida; a la terminal no le importa: salta las que no existen y no vuelve a revisar las repetidas.</p>
+<h3>2.3 Por qué la lista es tan corta</h3>
+<p>Porque guarda <strong>carpetas</strong>, no programas, y en cada carpeta hay muchos. En mi Mac, las carpetas que existen suman más de 1.800 comandos.</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Qué pasa al instalar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Homebrew (la mayoría)</td>
+<td>Deja el programa en su carpeta, que ya está en el path: funciona sin tocar nada</td>
+</tr>
+<tr>
+<td>Programas de los que puedes tener varias versiones a la vez (PostgreSQL)</td>
+<td>Homebrew no lo pone en su carpeta, para que las versiones no choquen. Te avisa que agregues tú la carpeta de la versión que quieres</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Lo que hay dentro de esas carpetas: el acceso directo</h2>
+<p>El path no guarda programas: guarda direcciones de carpetas. Lo que hay dentro depende de quién puso la carpeta.</p>
+<table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>Ejemplo</th>
+<th>Qué hay dentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema</td>
+<td><code>/usr/bin</code>, <code>/bin</code></td>
+<td>El programa real, no un acceso directo. Protegidas</td>
+</tr>
+<tr>
+<td>Homebrew</td>
+<td><code>/opt/homebrew/bin</code></td>
+<td>Lo que instalas con Homebrew</td>
+</tr>
+<tr>
+<td>Compartida</td>
+<td><code>/usr/local/bin</code></td>
+<td>Para toda la Mac (el instalador pide contraseña). Ej.: <code>docker</code> (app con ventanas) y <code>python3</code> (instalador de python.org)</td>
+</tr>
+<tr>
+<td>Las tuyas</td>
+<td><code>~/.local/bin</code></td>
+<td>Solo para tu usuario. Lo que instalas con el comando de instalación de la página oficial</td>
+</tr>
+</tbody>
+</table>
+<p>En las tres últimas casi nunca está el programa: hay un <strong>acceso directo</strong>.</p>
+<h3>3.1 Qué es</h3>
+<p>Como el acceso directo del escritorio de Windows o el alias de Mac: no es el programa, pero te lleva a él. Su nombre técnico es <strong>enlace simbólico</strong> (symlink).</p>
+<p>Ejemplo: Visual Studio Code vive en Aplicaciones. Cuando activas su comando, en <code>/usr/local/bin</code> aparece <code>code</code>, un acceso directo a la aplicación.</p>
+<h3>3.2 Cómo se crea</h3>
+<p>No basta con escribir la ruta en un archivo de texto: eso sería solo un texto. Se crea con <code>ln -s</code>:</p>
+<pre><code>ln -s &quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code&quot; /usr/local/bin/code
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ln -s</code></td>
+<td>Crea un enlace simbólico</td>
+</tr>
+<tr>
+<td>Primera ruta</td>
+<td>Dónde está el programa de verdad</td>
+</tr>
+<tr>
+<td>Segunda ruta</td>
+<td>Dónde queda el acceso directo y cómo se llama</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El nombre del acceso directo es el comando.</strong> Si lo llamaras <code>abracadabra</code>, escribirías <code>abracadabra</code> para abrir el programa.</p>
+<p>Para ver a dónde apunta uno:</p>
+<pre><code>ls -l ~/.local/bin/claude
+</code></pre>
+<pre><code>~/.local/bin/claude -&gt; ~/.local/share/claude/versions/2.1.327
+</code></pre>
+<p>Para qué sirve: el programa vive donde quiera y tú lo usas siempre con el mismo nombre. Claude Code guarda cada versión en un archivo con su número; al actualizarse, el acceso directo <code>claude</code> pasa a apuntar a la nueva y tú sigues escribiendo <code>claude</code>.</p>
+<h3>3.3 Enlaces rotos</h3>
+<p>Si borras el programa, el acceso directo no se entera. En mi Mac borré dos aplicaciones arrastrándolas a la papelera y quedaron nueve accesos directos apuntando a nada.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Qué responde la terminal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Escribes el nombre</td>
+<td><code>command not found</code></td>
+</tr>
+<tr>
+<td>Escribes la ruta completa del enlace</td>
+<td><code>no such file or directory</code></td>
+</tr>
+</tbody>
+</table>
+<p>Si compruebas que el programa ya no está donde apunta el enlace, puedes borrar el enlace: solo borras el acceso directo. En la carpeta compartida pide contraseña de administrador.</p>
+<p>En Linux los accesos directos funcionan igual (<code>ln -s</code>).</p>
+<h2>4. El comando que pegas para arreglar el path</h2>
+<p>Instalas un programa con el comando de su página oficial, termina bien y al final aparece un aviso: la carpeta donde quedó no está en tu path. Te da un segundo comando. Lo pegas, abres otra terminal y funciona.</p>
+<h3>4.1 Qué pasó</h3>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. El instalador</td>
+<td>Guarda el programa en una carpeta y deja su acceso directo en otra. Para el path importa la del acceso directo</td>
+</tr>
+<tr>
+<td>2. Qué carpeta</td>
+<td>La decide quien hizo el programa: muchos usan <code>~/.local/bin</code>, otros una carpeta propia</td>
+</tr>
+<tr>
+<td>3. Si no existe</td>
+<td>La crea. No es el problema</td>
+</tr>
+<tr>
+<td>4. ¿Está en el path?</td>
+<td>Si ya está, funciona. Si no: unos instaladores la agregan solos; otros te dan el segundo comando</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 El segundo comando</h3>
+<pre><code>echo 'export PATH=&quot;$HOME/.local/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+</code></pre>
+<p>No instala nada. Escribe una instrucción (una línea de texto) al final de tu <code>.zshrc</code>:</p>
+<pre><code>export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Se escribe</td>
+<td>Una sola vez</td>
+</tr>
+<tr>
+<td>Se aplica</td>
+<td>En cada terminal que abres, porque todas leen el <code>.zshrc</code></td>
+</tr>
+<tr>
+<td>La terminal que ya estaba abierta</td>
+<td>No funciona: leyó el archivo antes de que existiera la instrucción</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Lo que viene después</h3>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Otro programa que también usa <code>~/.local/bin</code></td>
+<td>Nada que hacer: la carpeta ya está en el path</td>
+</tr>
+<tr>
+<td>Un programa con carpeta propia</td>
+<td>La primera vez no está en el path: necesita su propia instrucción en el <code>.zshrc</code>. En mi Mac pasa con PostgreSQL</td>
+</tr>
+</tbody>
+</table>
+<p>No es la única manera de agregar una carpeta al path, pero es la que vas a encontrar en estos avisos.</p>
+<h2>5. Recursos</h2>
+<ul>
+<li><a href="https://code.claude.com/docs/en/setup">Instalar Claude Code</a>: se instala en <code>~/.local/bin</code></li>
+<li><a href="https://brew.sh/">Homebrew</a></li>
+<li><a href="https://docs.brew.sh/FAQ#what-does-keg-only-mean">Qué significa keg-only en Homebrew</a>: por qué PostgreSQL no se agrega solo al path</li>
+</ul></div>
+    
+<div class="post-relacionados">
+  <div class="post-relacionados-titulo">Posts relacionados</div>
+  <div class="relacionados-lista">
+    <a class="relacionado-item" href="/configurar-atajos-terminal-mac">Configurar atajos en la terminal de Mac</a>
+<a class="relacionado-item" href="/terminal-shell-zsh-y-powershell">Terminal, shell, zsh y PowerShell: qué es cada cosa</a>
+
+  </div>
+</div>
+    <nav class="post-nav">
+      <a class="nav-anterior" href="/instalar-sin-sorpresas"><span class="nav-label">← Anterior en la serie</span><span class="nav-titulo">Instalar sin sorpresas</span></a>
+      
+    </nav>
+  </article>
+
+  <!-- TOC DERECHO -->
+  <aside class="sidebar-der">
+    <div class="sidebar-section-title">En esta página</div>
+    <nav class="toc-lista" id="toc"></nav>
+  </aside>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>const CURRENT_SLUG = 'el-path';</script>
+<script src="/assets/sidebar.js?v=6"></script>
+<script src="/assets/post.js?v=2"></script>
+
+</body>
+</html>
